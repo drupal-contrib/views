@@ -1422,6 +1422,12 @@ function _views_is_cacheable(&$view) {
     if ($filters[$filter['field']]['cacheable'] == 'no') 
       return false;
   }
+  foreach ($view->field as $i => $field) {
+    if ($field->sortable) {
+      return false;
+    }
+  }
+
   return true;
 }
 
@@ -1644,7 +1650,7 @@ class _views_query {
     else
       $fields = "count($this->count_field) as numrecs";
 
-    if ($this->table_header) {
+    if ($this->header) {
       if ($this->orderby)
         $before = "$this->orderby, ";
       $orderby = tablesort_sql($this->header, $before);
