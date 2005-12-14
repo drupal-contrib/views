@@ -397,7 +397,7 @@ function _views_get_sorts($titles = false) {
 function _views_internal_default_views() {
 
   $view = new stdClass();
-  $view->name = 'tracker_tracker2';
+  $view->name = 'tracker_tracker';
   $view->description = 'Shows all new activity on system.';
   $view->title = 'recent posts';
   $view->use_pager = '1';
@@ -459,113 +459,6 @@ function _views_internal_default_views() {
     ),
   );
 
-  $views['tracker_tracker2'] = $view;
-
-  $view = new stdClass();
-  $view->name = 'testblock';
-  $view->title = 'Recent Articles';
-  $view->description = 'Test of block override.';
-  $view->use_pager = '1';
-  $view->nodes_per_page = '10';
-  $view->nodes_per_block = '5';
-  $view->type = '1';
-  $view->block = '1';
-  $view->url = '2';
-  $view->field = array (
-    array (
-      'tablename' => 'n',
-      'field' => 'title',
-      'label' => '',
-      'handler' => 'views_handler_field_nodelink',
-    ),
-  );
-  $view->sort = array (
-    array (
-      'field' => 'created',
-      'sortorder' => 'DESC',
-      'tablename' => 'n',
-    ),
-  );
-  $view->filter = array (
-    array (
-      'tablename' => 'n',
-      'field' => 'status',
-      'value' => '1',
-      'operator' => '=',
-    ),
-    array (
-      'tablename' => 'term_node',
-      'field' => 'tid',
-      'value' =>  array ( '11' ),
-      'operator' => 'AND',
-    ),
-  );
-  $views['testblock'] = $view;
-
-  $view = new stdClass();
-  $view->name = 'tracker_trackerxxxx';
-  $view->description = 'Shows all new activity on system.';
-  $view->title = 'recent posts';
-  $view->header = '';
-  $view->header_format = '0';
-  $view->type = '2';
-  $view->url = '3';
-  $view->use_pager = '1';
-  $view->nodes_per_page = '25';
-  $view->block = '1';
-  $view->nodes_per_block = '10';
-  $view->block_display_header = '0';
-  $view->sort = array (
-    array (
-      'tablename' => 'node_comment_statistics',
-      'field' => 'last_comment_timestamp',
-      'sortorder' => 'DESC',
-    ),
-  );
-  $view->argument = array (
-    array (
-      'type' => 'uid',
-      'argdefault' => '2',
-    ),
-  );
-  $view->field = array (
-    array (
-      'tablename' => 'n',
-      'field' => 'type',
-      'label' => 'Type',
-    ),
-    array (
-      'tablename' => 'n',
-      'field' => 'title',
-      'label' => 'Title',
-      'handler' => 'views_handler_field_nodelink_with_mark',
-    ),
-    array (
-      'tablename' => 'users',
-      'field' => 'name',
-      'label' => 'Author',
-    ),
-    array (
-      'tablename' => 'node_comment_statistics',
-      'field' => 'comment_count',
-      'label' => 'Replies',
-      'handler' => 'views_handler_comments_with_new',
-    ),
-    array (
-      'tablename' => 'node_comment_statistics',
-      'field' => 'last_comment_timestamp',
-      'label' => 'Last Post',
-      'handler' => 'views_handler_field_since',
-    ),
-  );
-  $view->filter = array (
-    array (
-      'tablename' => 'n',
-      'field' => 'status',
-      'operator' => '=',
-      'value' => '1',
-    ),
-  );
   $views[$view->name] = $view;
 
   return $views;
@@ -1159,7 +1052,9 @@ function views_view_page() {
   drupal_set_title($view->title);
 
   $output = views_view('page', $view, $args);
-  print theme('page', $output);
+  if ($output) {
+    print theme('page', $output);
+  }
 }
 
 function views_view_block($vid) {
@@ -1188,7 +1083,8 @@ function _views_build_query(&$view, $args = array()) {
       // This is what we do if we expected an arg but we didn't get it.
       switch ($argument['argdefault']) {
         case 1:
-          return drupal_not_found();
+          drupal_not_found();
+          return array('fail' => true);
         case 3:
           $level = $i;
           _views_build_summary($query, $argument['type']);
@@ -1246,6 +1142,9 @@ function views_view($type, $view, $args = array()) {
   }
   else {
     $info = _views_build_query($view, $args);
+    if ($info['fail']) {
+      return;
+    }
   }
 
   $sql = db_rewrite_sql($info['sql']);
