@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.14 2005-12-29 06:49:00 merlinofchaos Exp $
+// $Id: README.txt,v 1.15 2006-01-02 19:47:30 merlinofchaos Exp $
 
 
 OVERVIEW
@@ -119,3 +119,8 @@ should be
 12/8/2005 Added options varchar(255) to view_argument as well.
 12/10/2005 Added block_more int(1) to view_view
 12/21/2005 Renamed 'sql' to 'query' and 'countsql' to 'countquery' for consistency
+1/2/2006 SCHEMA CHANGES SCHEMA CHANGES	
+         Too drastic to easily deal with. Before you install this version of
+	 Views, you should export all your old views as a backup, then drop the
+	 views_view table and re-import. Sorry. I hope to not do something like
+	 this ever again.

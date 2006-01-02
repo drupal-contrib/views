@@ -1,4 +1,4 @@
-// $Id: API.txt,v 1.4 2005-12-29 06:49:00 merlinofchaos Exp $
+// $Id: API.txt,v 1.5 2006-01-02 19:47:30 merlinofchaos Exp $
 
 
 Module Developer's API
@@ -245,6 +245,13 @@ The join for 'users_roles' looks like this:
         "field" => "nid"
       ), 
     ),
+
+Additionally, some records might be be broken up in a table, as flexible
+node-types might do. In order to make that work, an 'extra' field may
+be added, which will be ANDED into the join. 'extra' is an array of
+key/value pairs where 'key' is the field and 'value' is the value it
+must be equal to. The field must be in the right table. This is more likely
+to be used on dynamically generated tables, so there are no current examples.
 
 'operator' can be a handler or an array, as can list, as shown in this piece
 of code:
