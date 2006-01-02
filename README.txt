@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.16 2006-01-02 20:54:13 merlinofchaos Exp $
+// $Id: README.txt,v 1.17 2006-01-02 21:35:37 merlinofchaos Exp $
 
 
 OVERVIEW

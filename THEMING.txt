@@ -1,4 +1,4 @@
-// $Id: THEMING.txt,v 1.5 2006-01-02 20:54:13 merlinofchaos Exp $
+// $Id: THEMING.txt,v 1.6 2006-01-02 21:35:37 merlinofchaos Exp $
 
 Much of the power of Views cannot be fully realized until an administrator
 gets accustomed to theming.

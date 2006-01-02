@@ -1,4 +1,4 @@
-// $Id: TODO.txt,v 1.23 2006-01-02 20:54:13 merlinofchaos Exp $
+// $Id: TODO.txt,v 1.24 2006-01-02 21:35:37 merlinofchaos Exp $
 
 
 TODO
@@ -24,6 +24,10 @@ LESS TIME CONSUMING STUFF
 *  Getting started doc
 	-> explain admin/views
 	-> walk-through changing the default tracker view
+* fix tracker default view
+* add my tracker default view
+* add taxonomy/term default view
+* make sure click-sorting works.
 
 DEFAULT VIEWS/MODULES TO SUPPORT
 
