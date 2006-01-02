@@ -1,4 +1,4 @@
-// $Id: API.txt,v 1.5 2006-01-02 19:47:30 merlinofchaos Exp $
+// $Id: API.txt,v 1.6 2006-01-02 20:54:13 merlinofchaos Exp $
 
 
 Module Developer's API
