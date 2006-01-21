@@ -1,4 +1,4 @@
-// $Id: TODO.txt,v 1.26 2006-01-21 01:18:14 merlinofchaos Exp $
+// $Id: TODO.txt,v 1.27 2006-01-21 01:39:06 merlinofchaos Exp $
 
 
 TODO
@@ -28,8 +28,7 @@ LESS TIME CONSUMING STUFF
 * fix tracker default view
 * add my tracker default view
 * add taxonomy/term default view
-* figure out required modules when exporting; guard against that on import.
-* is it possible to integrate search into Views?
+
 * double check the access check on block views
 * controller for external view output control. i.e, centralized code to
   deal with 'calendar', 'xml', 'specialized grouping' and other module-specific
@@ -124,3 +123,4 @@ TO DONE
 * cache default views
 * wildcards in arguments
 * fix [more] link
+* figure out required modules when exporting; guard against that on import.

@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.46 2006-01-21 01:18:14 merlinofchaos Exp $
+// $Id: views.module,v 1.47 2006-01-21 01:39:07 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Acquire Views Data
@@ -823,7 +823,6 @@ function views_view_block($vid) {
   global $user;
   $roles = array_keys($user->roles);
   if ($view->access && !array_intersect($roles, $view->access)) {
-//    dprint_r($view->access);
     return NULL;
   }
 
