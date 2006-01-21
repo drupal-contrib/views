@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.47 2006-01-21 01:39:07 merlinofchaos Exp $
+// $Id: views.module,v 1.48 2006-01-21 02:03:52 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Acquire Views Data
@@ -1989,6 +1989,13 @@ function views_handler_filter_uid_touched($op, $filter, $filterinfo, &$query) {
 
   $query->set_distinct(); // once you do this, there's just one node.
   $query->add_where("node.uid = '%s' OR $table.uid = '%s'", $filter['value'], $filter['value']);
+}
+
+/*
+ * Set a query to be distinct as a filter handler
+ */
+function views_handler_filter_distinct($op, $filter, $filterinfo, &$query) {
+  $query->set_distinct();
 }
 
 // ---------------------------------------------------------------------------
