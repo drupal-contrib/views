@@ -1382,7 +1382,7 @@ class _views_query {
 		if ($this->orderby)
 			$this->orderby .= ", ";
 
-		$this->orderby = " $table.$field $order";
+		$this->orderby .= " $table.$field $order";
   }
 
   function add_groupby($clause) {
