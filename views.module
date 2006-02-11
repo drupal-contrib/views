@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.53 2006-02-11 22:13:18 merlinofchaos Exp $
+// $Id: views.module,v 1.54 2006-02-11 23:20:01 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Acquire Views Data
@@ -1053,8 +1053,11 @@ function _views_delete_view($view) {
     return;
   }
 
-  db_query("DELETE FROM {view_view} where vid=$view->vid");
-  db_query("DELETE FROM {view_sort} where vid=$view->vid");
+  db_query("DELETE FROM {view_view} where vid=%d", $view->vid);
+  db_query("DELETE FROM {view_sort} where vid=%d", $view->vid);
+  db_query("DELETE FROM {view_breadcrumb} where vid=%d", $view->vid);
+  db_query("DELETE FROM {view_argument} where vid=%d", $view->vid);
+  db_query("DELETE FROM {view_tablefield} where vid=%d", $view->vid);
 }
 
 /*
