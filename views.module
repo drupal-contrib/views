@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.52 2006-02-11 20:08:47 merlinofchaos Exp $
+// $Id: views.module,v 1.53 2006-02-11 22:13:18 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Acquire Views Data
@@ -1449,6 +1449,21 @@ function views_handler_field_date($fieldinfo, $fielddata, $value, $data) {
   return format_date($value);
 }
 
+/*
+ * Format a date using small representation.
+ */
+function views_handler_field_date_small($fieldinfo, $fielddata, $value, $data) {
+  return format_date($value, 'small');
+}
+
+/*
+ * Format a date using large representation.
+ */
+function views_handler_field_date_large($fieldinfo, $fielddata, $value, $data) {
+  return format_date($value, 'large');
+}
+
+/*
 /*
  * Format a date as "X time ago".
  */
