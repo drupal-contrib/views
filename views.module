@@ -796,7 +796,7 @@ function _views_view_form($view, $op = '') {
   $group .= form_select(t('View Type'), 'type', $view->type, _views_types(), t('How the nodes should be displayed to the user.'));
   $group .= form_textfield(t('Title'), 'title', $view->title, 60, 255, t('The title of the view will be shown at the top of the view. May be blank if not using a block.'));
   $group .= form_textarea(t('Header'), 'header', $view->header, 60, 6, t('Text to display at the top of the view. May contain an explanation or links or whatever you like. Optional.'));
-  $group .= filter_form('format', $view->header_format);
+  $group .= filter_form('header_format', $view->header_format);
 
   $form .= form_group(t('Display'), $group);
 
@@ -1322,7 +1322,7 @@ function _views_is_cacheable(&$view) {
       return false;
   }
   foreach ($view->field as $i => $field) {
-    if ($field->sortable) {
+    if ($field['sortable']) {
       return false;
     }
   }
@@ -1545,17 +1545,27 @@ class _views_query {
           $fields .= ", $field";
       }
       $groupby = $this->groupby;
+      // ok, tablesort_sql is really, really (really) annoying.
+      // 1) it insists on adding the ORDER BY clause.
+      // 2) You're supposed to give it your stuff as $before, but
+      // 3) You have to add the comma and
+      // 4) if it doesn't have anything to add, it returns NOTHING.
+      // 5) So I'm just going to get what it sends back and chop off
+      //    the orderby, cause otherwise my code is too ugly with
+      //    various checks.
+      if ($this->header) {
+        $result = tablesort_sql($this->header);
+        if ($result) {
+          $this->orderby[] = str_replace('ORDER BY ', '', $result);
+        }
+      }
+         
+      if ($this->orderby) {
+        $orderby = "ORDER BY " . $this->orderby;
+      }
     }
     else
       $fields = "count($this->count_field) as numrecs";
-
-    if ($this->header) {
-      if ($this->orderby)
-        $before = "$this->orderby, ";
-      $orderby = tablesort_sql($this->header, $before);
-    }
-    else if ($this->orderby)
-      $orderby = "ORDER BY $this->orderby";
 
     return "SELECT $fields FROM {node} n $joins $this->where $groupby $orderby";
   }
@@ -1764,7 +1774,7 @@ function _views_construct_header($view, $fields) {
     if ($field['sortable'])
       $header['field'] = $field['fullname'];
     if ($field['defaultsort'])
-      $header['sort'] = $field['defaultsort'];
+      $header['sort'] = strtolower($field['defaultsort']);
 
     // Add CSS id to table cell header cell.
     $header['id'] = "view-field-$field[queryname]";
