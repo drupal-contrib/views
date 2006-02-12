@@ -1686,7 +1686,7 @@ function _views_save_view($view) {
     // Prepare the query:
     foreach ($view as $key => $value) {
       if (in_array($key, $fields)) {
-        $q[] = db_escape_string($key) ." = '%s'";
+        $q[] = '`'.db_escape_string($key) ."` = '%s'";
         $v[] = $value;
       }
     }
