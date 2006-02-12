@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.56 2006-02-12 18:24:11 merlinofchaos Exp $
+// $Id: views.module,v 1.57 2006-02-12 19:40:15 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Acquire Views Data
@@ -1251,7 +1251,7 @@ function _views_construct_header($view, $fields) {
       $header['field'] = $field['fullname'];
     }
     if ($field['defaultsort']) {
-      $header['sort'] = $field['defaultsort'];
+      $header['sort'] = strtolower($field['defaultsort']);
     }
 
     // Add CSS id to table cell header cell.
