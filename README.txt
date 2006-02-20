@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.17 2006-01-02 21:35:37 merlinofchaos Exp $
+// $Id: README.txt,v 1.18 2006-02-20 04:58:30 merlinofchaos Exp $
 
 
 OVERVIEW
@@ -124,3 +124,5 @@ should be
 	 Views, you should export all your old views as a backup, then drop the
 	 views_view table and re-import. Sorry. I hope to not do something like
 	 this ever again.
+2/19/2006 allow a complete formsapi setting in any 'options' or 'value' setting for 'filter'.
+	  Retooled the API to be less hackish.
