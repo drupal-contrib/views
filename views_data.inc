@@ -1,5 +1,6 @@
 <?php
 
+// $Id: views_data.inc,v 1.12 2006-02-24 23:53:31 merlinofchaos Exp $
 // ---------------------------------------------------------------------------
 // Argument definitions.
 
@@ -424,11 +425,11 @@ function _views_internal_tables() {
         'name' => t('Node: Title'),
         'help' => t('Sort by the node title, alphabetically'),
       ),
-      'random' => array(
-        'name' => t('Random'),
-        'handler' => 'views_handler_sort_random',
-        'help' => t('By choosing random, nodes will be ordered completely randomly. This is a good way to choose X random nodes from a group of nodes.'),
-      ),
+//      'random' => array(
+//        'name' => t('Random'),
+//        'handler' => 'views_handler_sort_random',
+//        'help' => t('By choosing random, nodes will be ordered completely randomly. This is a good way to choose X random nodes from a group of nodes.'),
+//      ),
     ),
     'filters' => array(
       'status' => array(

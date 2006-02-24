@@ -1,5 +1,6 @@
 <?php
 
+// $Id: views_query.inc,v 1.12 2006-02-24 23:53:31 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -284,23 +285,20 @@ class _views_query {
    * be.
    */
   function add_orderby($table, $field, $order, $alias = '') {
-    if (!$alias && $table) {
-      $alias = $table . ".";
+    if (!$alias) {
+      $alias = $table;
     }
-    elseif ($alias) {
-      $alias .= ".";
-    }
-
     if ($table) {
       $this->ensure_table($table);
     }
 
-    if (!is_array($field)) {
-      $field = array($field);
+    if (is_array($field)) {
+      foreach ($field as $f) {
+        $this->orderby[] = "$alias.$f $order";
+      }
     }
-
-    foreach($field as $f) {
-      $this->orderby[] = "$alias$f $order";
+    else {
+      $this->orderby[] = "$alias.$field $order";
     }
   }
 
