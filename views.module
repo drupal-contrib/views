@@ -1556,7 +1556,7 @@ class _views_query {
       if ($this->header) {
         $result = tablesort_sql($this->header);
         if ($result) {
-          $this->orderby[] = str_replace('ORDER BY ', '', $result);
+          $this->orderby = str_replace('ORDER BY ', '', $result);
         }
       }
          
