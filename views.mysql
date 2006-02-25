@@ -12,7 +12,7 @@ create table if not exists view_view (
   type int(2),
   block int(1),
   url int(2),
-  sql longtext,
+  'sql' longtext,
   countsql longtext,
   changed int(11),
   PRIMARY KEY (vid),
