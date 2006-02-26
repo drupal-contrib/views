@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_data.inc,v 1.13 2006-02-26 05:04:50 merlinofchaos Exp $
+// $Id: views_data.inc,v 1.14 2006-02-26 07:19:08 merlinofchaos Exp $
 // ---------------------------------------------------------------------------
 // Argument definitions.
 
@@ -186,6 +186,8 @@ function _views_internal_tables() {
         'name' => array(
           'name' => 'Taxonomy: Term',
           'sortable' => true,
+          'handler' => array('views_handler_field_tid' => "No link", 'views_handler_field_tid_link' => "With link"),
+          'addlfields' => array('tid'),
           'help' => t('This will display one of the taxonomy terms associated with the node; if taxonomy terms were used to filter or sort, it will be the one that triggered the sort or filter.'),
         ),
         'description' => array(
