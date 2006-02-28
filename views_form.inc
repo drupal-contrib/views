@@ -1,5 +1,5 @@
 <?php
-// $Id: views_form.inc,v 1.15 2006-02-26 06:51:11 merlinofchaos Exp $
+// $Id: views_form.inc,v 1.16 2006-02-28 05:36:18 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Select Box Definitions
@@ -742,6 +742,7 @@ function views_ui_add_filter(&$form, $filter, &$order, $key, $i) {
   if (!is_array($form['value']['#options']) && function_exists($form['value']['#options'])) {
     $form['value']['#options'] = $form['value']['#options']('value', $filterinfo);
   }
+  $form['value']['#default_value'] = $filter['value'];
 
   if (isset($filterinfo['help'])) {
     $form['help'] = array(
