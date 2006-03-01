@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.75 2006-02-28 21:27:33 merlinofchaos Exp $
+// $Id: views.module,v 1.76 2006-03-01 05:39:19 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Acquire Views Data
@@ -1307,9 +1307,8 @@ function views_table_add_field(&$table, $name, $label, $help, $others) {
  * Helper function to make table creation a little easier. It adds the necessary
  * data to the $table array.
  */
-function views_table_add_filter(&$table, $name, $label, $help, $operator, $others = array()) {
+function views_table_add_filter(&$table, $name, $label, $help, $others = array()) {
   views_table_add_data($table, 'filters', $name, $label, $help, $others);
-  $table['filter'][$name]['operator'] = $operator;
 }
 
 /**
