@@ -1,5 +1,5 @@
 <?php
-// $Id: views_form.inc,v 1.18 2006-03-03 05:38:25 merlinofchaos Exp $
+// $Id: views_form.inc,v 1.19 2006-03-03 05:46:13 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Select Box Definitions
@@ -187,21 +187,6 @@ function _views_view_form($view, $op = '') {
   views_ui_add_add_button($form, 'filter', _views_get_filters(true), t('Add Filter'));
   views_ui_add_add_button($form, 'sort', _views_get_sorts(true), t('Add Criteria'));
 
-/*
-  $filter_names = _views_get_filters(true);
-  $exposable_filters = array();
-  foreach ($view->filter as $filter) {
-    dprint_r($filter);
-    $exposable_filters[$filter['id']] = $filter_names[$filter['id']]['name'];
-  }
-
-  views_ui_add_add_button($form, 'exposed_filter', $exposable_filters, t('Expose Filter'));
-  if (!$exposable_filters) {
-    $form['exposed_filter']['add']['id']['#type'] = 'markup';
-    $form['exposed_filter']['add']['id']['#value'] = 'There are no filters to expose';
-    $form['exposed_filter']['add']['button']['#attributes'] = array('disabled' => NULL);
-  }
-*/
   $allbut = _views_check_ops($view, $op, $form);
   if ($_POST['edit'] && $op != t('Save')) {
     drupal_set_message(t('You have modified this view; changes will not be recorded until you Save the form.'));
