@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.78 2006-03-03 05:46:13 merlinofchaos Exp $
+// $Id: views.module,v 1.79 2006-03-03 14:37:04 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Acquire Views Data
@@ -1017,6 +1017,7 @@ function views_build_view($type, $view, $args = array(), $use_pager = false, $li
 function views_theme() {
   $args = func_get_args();
   $function = array_shift($args);
+  $view = $args[0];
 
   if (!($func = theme_get_function($function . "_" . $view->name))) {
     $func = theme_get_function($function);
