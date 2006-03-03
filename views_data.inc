@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_data.inc,v 1.16 2006-02-28 20:44:05 merlinofchaos Exp $
+// $Id: views_data.inc,v 1.17 2006-03-03 05:38:25 merlinofchaos Exp $
 // ---------------------------------------------------------------------------
 // Argument definitions.
 
@@ -392,6 +392,7 @@ function _views_internal_tables() {
       'option' => 'string',
       'operator' => 'views_handler_operator_andor',
       'handler' => 'views_handler_filter_tid_custom',
+      'value-type' => 'array',
     ));
 
     $tables[$table['name']] = $table;
