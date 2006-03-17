@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.20 2006-03-17 05:25:12 merlinofchaos Exp $
+// $Id: README.txt,v 1.21 2006-03-17 21:44:53 merlinofchaos Exp $
 
 OVERVIEW
 
@@ -16,6 +16,7 @@ INSTALLING VIEWS
 In 4.7, Views can be installed simply by activating the module, thanks to the
 new module installation features.
 
+Please note that this is now TWO modules -- views.module and views_ui.module
 DOCUMENTATION
 
 Documentation is now available at http://drupal.org/handbook/modules/views.
