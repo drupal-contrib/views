@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.85 2006-03-18 17:59:09 merlinofchaos Exp $
+// $Id: views.module,v 1.86 2006-03-18 18:16:39 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1074,6 +1074,8 @@ function theme_views_filters($form) {
  * Display the nodes of a view as a list.
  */
 function theme_views_view_list($view, $nodes) {
+  $fields = _views_get_fields();
+
   foreach ($nodes as $node) {
     $item = '';
     foreach ($view->field as $field) {
