@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.1 2006-03-17 22:22:23 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.2 2006-03-18 18:03:46 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -353,9 +353,6 @@ function views_import_view_submit($formid, $form) {
  * Export a view for cut & paste.
  */
 function views_ui_admin_export_page($vid = '') {
-  // FIXME: Change this to a textarea.
-  $path = drupal_get_path('module', 'views');
-  require_once("$path/views_data.inc");
   $code = views_create_view_code($vid);
   $lines = substr_count($code, "\n");
   $form['code'] = array(
