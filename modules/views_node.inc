@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.1 2006-03-17 21:44:53 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.2 2006-03-19 19:20:14 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -460,7 +460,7 @@ function views_handler_arg_fulldate($op, &$query, $argtype, $arg = '') {
 
   switch($op) {
     case 'summary':
-      $fieldinfo['field'] = "DATE_FORMAT(FROM_UNIXTIME(node.created+$timezone), '%Y%m%d')";
+      $fieldinfo['field'] = "DATE_FORMAT(FROM_UNIXTIME(node.created+$timezone), '%Y%m%%d')";
       $fieldinfo['fieldname'] = 'name';
       $query->add_field('created');
       return $fieldinfo;
