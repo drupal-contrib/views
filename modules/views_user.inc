@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.1 2006-03-17 21:44:53 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.2 2006-03-19 16:31:00 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -165,6 +165,14 @@ function user_views_default_views() {
   $views[$view->name] = $view;
 
   return $views;
+}
+
+/**
+ * Allow replacement of current userid so we can cache these queries
+ */
+function user_views_query_substitutions($view) {
+  global $user;
+  return array('***CURRENT_USER***' => intval($user->uid));
 }
 
 /*
