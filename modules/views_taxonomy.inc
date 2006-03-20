@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.1 2006-03-17 21:44:53 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.2 2006-03-20 20:00:23 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -355,7 +355,7 @@ function _views_add_taxonomy($op, $value, $depth, &$query) {
   // we add 1 chain, but in an and query we actually basically have to add
   // a 2 dimensional array. 
   
-  $query->ensure_table('term_data'); // this is to make sure the views_get_title table comes first.
+//  $query->ensure_table('term_data'); // this is to make sure the views_get_title table comes first.
 
   if ($op == 'OR') {
     $clause = "'" . implode("','", $value) . "'";
