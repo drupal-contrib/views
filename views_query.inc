@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.16 2006-03-17 21:44:53 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.17 2006-03-20 20:02:22 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -555,7 +555,7 @@ class _views_query {
       }
     }
     else {
-      $fields = "count($this->count_field) AS numrecs";
+      $fields = "count($this->count_field)";
     }
 
     if ($this->where) {
