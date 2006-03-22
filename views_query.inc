@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.17 2006-03-20 20:02:22 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.18 2006-03-22 17:23:23 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -21,8 +21,8 @@ function _views_build_query(&$view, $args = array()) {
       // This is what we do if we expected an arg but we didn't get it.
       switch ($argument['argdefault']) {
         case 1:
-          drupal_not_found();
-          exit;
+          $info['fail'] = TRUE;
+          return $info;
         case 3:
         case 4:
           $self_sort = "ASC";
