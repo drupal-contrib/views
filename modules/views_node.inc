@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.3 2006-03-19 19:31:10 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.4 2006-03-23 05:49:10 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -482,8 +482,8 @@ function views_handler_arg_fulldate($op, &$query, $argtype, $arg = '') {
 function views_handler_arg_nid($op, &$query, $argtype, $arg = '') {
   switch($op) {
     case 'summary':
-      $query->add_field("title");
       $query->add_field('nid');
+      $query->add_field("title");
       $fieldinfo['field'] = 'node.nid';
       return $fieldinfo;
     case 'sort':
