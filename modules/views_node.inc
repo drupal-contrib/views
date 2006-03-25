@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.4 2006-03-23 05:49:10 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.5 2006-03-25 03:35:19 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -228,7 +228,7 @@ function node_views_default_views() {
 
   $view = new stdClass();
   $view->name = 'frontpage';
-  $view->description = 'The basic front page view.';
+  $view->description = t('The basic front page view.');
   $view->page = true;
   $view->url = 'frontpage';
   $view->page_title = '';

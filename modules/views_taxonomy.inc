@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.2 2006-03-20 20:00:23 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.3 2006-03-25 03:35:19 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -92,7 +92,7 @@ function taxonomy_views_tables() {
       ),
       'fields' => array(
         'name' => array(
-          'name' => 'Taxonomy: Term',
+          'name' => t('Taxonomy: Term'),
           'sortable' => true,
           'handler' => array('views_handler_field_tid' => "No link", 'views_handler_field_tid_link' => "With link"),
           'addlfields' => array('tid'),
@@ -147,7 +147,7 @@ function taxonomy_views_default_views() {
   $view = new stdClass();
   $view->name = 'taxonomy_term';
   $view->disabled = true;
-  $view->description = 'The taxonomy view with a depth of 0.';
+  $view->description = t('The taxonomy view with a depth of 0.');
   $view->access = array (
 );
   $view->page = TRUE;
