@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.3 2006-03-25 03:35:19 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.4 2006-04-09 15:43:42 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -65,7 +65,7 @@ function taxonomy_views_tables() {
     }
 
     $tables['term_hierarchy'] = array(
-      'name' => 'term_node',
+      'name' => 'term_hierarchy',
       'provider' => 'internal',
       'join' => array(
         'left' => array(
