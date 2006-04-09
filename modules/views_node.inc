@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.5 2006-03-25 03:35:19 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.6 2006-04-09 19:27:24 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -50,6 +50,10 @@ function node_views_tables() {
       ),
     ),
     'sorts' => array(
+      'nid' => array(
+        'name' => t('Node: ID'),
+        'help' => t('Sort by the database ID of the node.'),
+       ),
       'created' => array(
         'name' => t('Node: Created Time'),
         'help' => t('Sort by the submission date of the node.'),
