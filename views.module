@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.95 2006-04-13 15:49:31 unconed Exp $
+// $Id: views.module,v 1.96 2006-04-19 01:01:30 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -965,7 +965,7 @@ function views_new_table($table_name, $provider, $left_table, $left_field, $righ
  * Helper function to make table creation a little easier. It adds the necessary
  * data to the $table array.
  */
-function views_table_add_field(&$table, $name, $label, $help, $others) {
+function views_table_add_field(&$table, $name, $label, $help, $others = array()) {
   views_table_add_data($table, 'fields', $name, $label, $help, $others);
 }
 
