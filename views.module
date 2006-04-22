@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.97 2006-04-21 18:59:48 merlinofchaos Exp $
+// $Id: views.module,v 1.98 2006-04-22 19:53:44 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1293,7 +1293,7 @@ function theme_views_view_table($view, $nodes) {
  * Display the nodes of a view as teasers.
  */
 function theme_views_view_teasers($view, $nodes) {
-  return views_theme('views_view_nodes', $view, $nodes, $true); 
+  return views_theme('views_view_nodes', $view, $nodes, true); 
 }
 
 /**
