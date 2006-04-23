@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.101 2006-04-23 19:02:35 merlinofchaos Exp $
+// $Id: views.module,v 1.102 2006-04-23 19:20:52 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1629,5 +1629,11 @@ function views_handler_filter_like($op, $filter, $filterinfo, &$query) {
   }
 }
 
+/**
+ * Format a field as file size.
+ */
+function views_handler_field_filesize($fieldinfo, $fielddata, $value, $data) {
+  return format_size($value);
+}
 
 
