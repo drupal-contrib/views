@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.6 2006-04-09 19:27:24 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.7 2006-04-23 19:17:04 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -145,6 +145,12 @@ function node_views_tables() {
         'handler' => 'views_handler_filter_distinct',
         'value-type' => 'array',
         'help' => t('This filter ensures that each node may only be listed once, even if it matches multiple criteria. Use this if multiple taxonomy matches return duplicated nodes.'),
+      ),
+      'title' => array(
+        'name' => t('Node: Title'),
+        'operator' => 'views_handler_operator_like',
+        'handler' => 'views_handler_filter_like',
+        'help' => t('This filter allows nodes to be filtered by their title.'),
       ),
     ),
   );
@@ -573,4 +579,7 @@ function views_handler_sort_random($action, &$query, $sortinfo, $sort) {
       break;
   }
 }
+
+ 
+
 
