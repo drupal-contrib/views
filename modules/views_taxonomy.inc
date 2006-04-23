@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.4 2006-04-09 15:43:42 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.5 2006-04-23 18:19:43 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -51,7 +51,7 @@ function taxonomy_views_tables() {
         'filters' => array(
           'tid' => array(
             'name' => t('Taxonomy: Terms for %voc-name', array('%voc-name' => $voc->name)),
-            'list' => 'views_handler_filter_tid',
+            'list' => 'views_handler_filter_tid_by_voc',
             'value-type' => 'array',
             'option' => 'string',
             'operator' => 'views_handler_operator_andor',
@@ -303,7 +303,7 @@ function views_handler_arg_taxletter($op, &$query, $argtype, $arg = '') {
 }
 
 /*
- * Filter a view based on taxonomy id.
+ * Create a simple list of all terms.
  */
 function views_handler_filter_tid($op, $filterinfo) {
   $tids = array();
@@ -322,6 +322,22 @@ function views_handler_filter_tid($op, $filterinfo) {
 
   return $tids;
 }
+
+/**
+ * Create a tree list of terms for a single vocabulary
+ */
+function views_handler_filter_tid_by_voc($op, $filterinfo) {
+  $tree = taxonomy_get_tree($filterinfo[vocabulary]);
+  $options = array();
+
+  if ($tree) {
+    foreach ($tree as $term) {
+      $options[$term->tid] = _taxonomy_depth($term->depth, '-') . $term->name;
+    }
+  }
+  return $options;
+}
+
 /*
  * add custom WHERE clauses and joins to a query based on taxonomy.
  */
