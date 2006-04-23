@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.18 2006-03-22 17:23:23 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.19 2006-04-23 19:24:44 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -519,7 +519,7 @@ class _views_query {
       if (isset($joininfo['extra'])) {
         foreach ($joininfo['extra'] as $field => $value) {
           $joins .= " AND $table_alias.$field";
-          if ($value) {
+          if ($value !== NULL) {
             $joins .= " = '$value'";
           }
         }
