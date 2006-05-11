@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.14 2006-05-11 01:18:21 merlinofchaos Exp $
+  // $Id: views.install,v 1.15 2006-05-11 01:49:04 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -317,6 +317,6 @@ function views_update_6() {
 
 function views_update_7() {
   $ret = array();
-  $ret[] = update_sql("ALTER TABLE {view_argument} MODIFY type varchar(100)");
+  $ret[] = update_sql("ALTER TABLE {view_argument} MODIFY type varchar(255)");
   return $ret;
 }
