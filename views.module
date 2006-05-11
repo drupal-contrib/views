@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.105 2006-04-24 02:23:05 merlinofchaos Exp $
+// $Id: views.module,v 1.106 2006-05-11 01:22:15 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1294,8 +1294,7 @@ function theme_views_view_table($view, $nodes) {
     $row = array();
     foreach ($view->field as $field) {
       $cell['data'] = _views_handle_field($fields, $field, $node);
-      $cell['class'] = 'view-field';
-      $cell['id'] = "view-field-$field[queryname]";
+      $cell['class'] = "view-field view-field-$field[queryname]";
       $row[] = $cell;
     }
     $rows[] = $row;
