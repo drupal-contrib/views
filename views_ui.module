@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.10 2006-05-11 01:50:28 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.11 2006-05-11 02:10:11 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1770,6 +1770,22 @@ function views_create_view_code($vid) {
     $value = var_export($filter['value'], true);
     $output .= "      'options' => '$filter[options]',\n";
     $output .= "      'value' => $value,\n";
+    $output .= "    ),\n";
+    $requires[$fieldbits[0]] = 1;
+  }
+  $output .= "  );\n";
+
+  $output .= "  \$view->exposed_filter = array (\n";
+  foreach ($view->exposed_filter as $filter) {
+    $output .= "    array (\n";
+    $fieldbits = explode('.', $filter['field']);
+    $output .= "      'tablename' => '$fieldbits[0]',\n";
+    $output .= "      'field' => '$fieldbits[1]',\n";
+    $output .= "      'label' => '$filter[label]',\n";
+    $output .= "      'optional' => $filter[optional],\n";
+    $output .= "      'is_default' => $filter[is_default],\n";
+    $output .= "      'operator' => $filter[operator],\n";
+    $output .= "      'single' => $filter[single],\n";
     $output .= "    ),\n";
     $requires[$fieldbits[0]] = 1;
   }
