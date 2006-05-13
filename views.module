@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.113 2006-05-13 23:19:13 merlinofchaos Exp $
+// $Id: views.module,v 1.114 2006-05-13 23:52:19 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -737,8 +737,9 @@ function views_get_title($view, $context = 'menu', $args = NULL) {
   if ($context == 'menu' && $view->menu_title)
     return $view->menu_title;
 
-  if (($context == 'block' && $view->block_title)
+  if ($context == 'block' && $view->block_title) {
     return $view->block_title;
+  }
 
   if ($context == 'block-info') {
     return $view->description ? $view->description : $view->name;

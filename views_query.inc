@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.25 2006-05-13 23:15:15 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.26 2006-05-13 23:52:19 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -406,14 +406,7 @@ class _views_query {
       return false;
     }
     
-    // I don't think this extra code is necessary; remove commented code
-    // if all is working.
-//    if (isset($this->tables[$table])) {
-      $this->tables[$table] += $howmany;
-//    }
-//    else {
-//      $this->tables[$table] = $howmany;
-//    }
+    $this->tables[$table] += $howmany;
 
     for ($i = $this->tables[$table] - $howmany + 1; $i <= $this->tables[$table]; $i++) {
       if ($joininfo) {
@@ -464,7 +457,7 @@ class _views_query {
     // Does it end at our views_get_title table?
     if ($left_table == $this->views_get_title_table) {
       // We are done! Add our tables and unwind.
-      foreach ($add as $table) {
+      foreach (array_reverse($add) as $table) {
         $this->queue_table($table);
       }
       return true;
