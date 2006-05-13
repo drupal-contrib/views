@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.6 2006-04-23 18:38:04 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.7 2006-05-13 22:33:30 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -296,9 +296,9 @@ function views_handler_arg_taxletter($op, &$query, $argtype, $arg = '') {
       $query->add_table('term_data', true);
 
       if ($len <= 0) {
-        $query->add_where("term_data.name = '$arg'");
+        $query->add_where("term_data.name = '%s'", $arg);
       } else {
-        $query->add_where("LEFT(term_data.name, $len) = '$arg'");
+        $query->add_where("LEFT(term_data.name, $len) = '%s'", $arg);
       }
       break;
     case 'link':

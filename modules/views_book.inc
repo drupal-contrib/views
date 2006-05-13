@@ -1,5 +1,5 @@
 <?php
-// $Id: views_book.inc,v 1.3 2006-03-25 03:35:19 merlinofchaos Exp $
+// $Id: views_book.inc,v 1.4 2006-05-13 22:33:30 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of book.module
@@ -101,7 +101,7 @@ function views_handler_arg_book_parent($op, & $query, $argtype, $arg = '') {
       break;
     case 'filter' :
       $query->ensure_table("book");
-      $query->add_where("book.parent = '$arg'");
+      $query->add_where("book.parent = '%s'", $arg);
       $query->add_where("book.vid = node.vid");
       break;
     case 'link' :
