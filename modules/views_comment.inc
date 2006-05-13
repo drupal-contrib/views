@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.1 2006-03-17 21:44:53 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.2 2006-05-13 22:00:01 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -36,12 +36,8 @@ function comment_views_tables() {
       'last_comment_timestamp' => array(
         'name' => t('Comment: Last Comment Time'),
         'sortable' => true,
-        'handler' => array(
-          'views_handler_field_date_small' => t('As Short Date'),
-          'views_handler_field_date'       => t('As Medium Date'),
-          'views_handler_field_date_large' => t('As Long Date'),
-          'views_handler_field_since'      => t('As Time Ago')
-        ),
+        'handler' => views_handler_field_dates(),
+        'option' => string,
         'help' => t('This will display the last comment time.'),
        ),
       'last_comment_name' => array(
