@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.111 2006-05-13 22:33:30 merlinofchaos Exp $
+// $Id: views.module,v 1.112 2006-05-13 23:15:15 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -931,8 +931,8 @@ function _views_save_view($view) {
     require_once("$path/views_query.inc");
 
     $info = _views_build_query($view);
-    $view->query = $info['query'];
-    $view->countquery = $info['countquery'];
+    $view->query = _views_replace_args($info['query'], $info['args']);
+    $view->countquery = _views_replace_args($info['countquery'], $info['args']);
   }
   else {
     $view->query = NULL;
