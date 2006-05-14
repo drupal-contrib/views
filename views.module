@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.119 2006-05-14 16:24:18 merlinofchaos Exp $
+// $Id: views.module,v 1.120 2006-05-14 20:08:44 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -654,15 +654,6 @@ function views_build_view($type, $view, $args = array(), $use_pager = false, $li
     $output .= $function($view, $items);
   }
 
-/*
-  // In block mode, change $view->url to include the proper arguments.
-  if ($type == 'block' && $args) {
-    $url = views_get_summary_link_base($view->argument[count($args)-1]['type'], $view->url, count($args), $args);
-    if ($url) {
-      $view->url = $url;
-    }
-  }
-*/
   $view->real_url = views_get_url($view, $args);
 
   $view->use_pager = $use_pager;
