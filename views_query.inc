@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.26 2006-05-13 23:52:19 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.27 2006-05-14 00:46:48 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -102,7 +102,7 @@ function _views_view_build_filters(&$query, &$view) {
         break;
       }
       // remove these so they don't show up in the pager.
-      if (strstr($_REQUEST['edit']['form_id'], 'views_filters')) {
+      if (strpos($_REQUEST['edit']['form_id'], 'views_filters')) {
         unset($_REQUEST['op']);
         unset($_REQUEST['edit']['form_id']);
       }
