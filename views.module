@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.117 2006-05-14 01:48:32 merlinofchaos Exp $
+// $Id: views.module,v 1.118 2006-05-14 03:30:51 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1526,7 +1526,6 @@ function views_get_summary_link_base($argtype, $url, $level, $args) {
  * Display a summary version of a view.
  */
 function theme_views_summary($view, $type, $level, $nodes, $args) {
-//  $base = views_get_summary_link_base($view->argument[$level]['type'], $view->url, $level, $args);
   foreach ($nodes as $node) {
     $items[] = views_get_summary_link($view->argument[$level]['type'], $node, $view->real_url)  . " (" . $node->num_nodes . ")";
   }
