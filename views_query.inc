@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.27 2006-05-14 00:46:48 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.28 2006-05-14 17:38:14 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -325,8 +325,10 @@ class _views_query {
     if (count($args) == 1 && is_array(reset($args))) {
       $args = current($args);
     }
-    $this->where[] = $clause;
-    $this->where_args = array_merge($this->where_args, $args);
+    if (is_array($args)) {
+      $this->where[] = $clause;
+      $this->where_args = array_merge($this->where_args, $args);
+    }
   }
 
   /*
