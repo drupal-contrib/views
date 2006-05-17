@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.31 2006-05-15 01:11:33 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.32 2006-05-17 05:10:00 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -115,7 +115,9 @@ function _views_view_build_filters(&$query, &$view) {
           $not = "NOT";
         }
         $query->ensure_table($table);
-        $query->add_where("%s.%s $not IN ('%s')", $table, $field, implode("','", $filter['value']));
+        $where_args = array_merge(array($table, $field), $filter['value']);
+        $placeholder = array_fill(0, count($filter['value']), '%s');
+        $query->add_where("%s.%s $not IN ('". implode("','", $placeholder) ."')", $where_args);
       }
       else {
         $howmany = count($filter['value']);
