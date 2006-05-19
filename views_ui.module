@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.16 2006-05-14 01:50:22 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.17 2006-05-19 02:13:10 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -226,17 +226,17 @@ function views_ui_admin_page() {
     }
     else if (isset($views_status[$view->name])) {
       if ($views_status[$view->name] == 'enabled') {
-        $status = 'Enabled';
+        $status = t('Enabled');
       }
       else {
-        $status = 'Disabled';
+        $status = t('Disabled');
       }
     }
     else if ($view->disabled) {
-      $status = 'Disabled';
+      $status = t('Disabled');
     }
     else {
-      $status = 'Enabled';
+      $status = t('Enabled');
     }
 
     $provides = array();
