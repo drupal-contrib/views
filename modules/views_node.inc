@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.9 2006-05-13 22:33:30 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.10 2006-06-14 15:21:19 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -349,7 +349,8 @@ function views_handler_arg_nodetype($op, &$query, $argtype, $arg = '') {
     case 'link':
       return l(node_get_name($query->type), "$arg/$query->type");
     case 'title':
-      return $query;
+      $title = node_get_name($query);
+      return $title ? $title : check_plain($query);
   }
 }
 

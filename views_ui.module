@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.17 2006-05-19 02:13:10 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.18 2006-06-14 15:21:19 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -671,7 +671,7 @@ function _views_view_form($view, $op = '') {
     '#default_value' => $view->name,
     '#size' => 20,
     '#maxlength' => 32,
-    '#description' => t('The unique identifier of the view; it is only important for overridden views and views that modules or themes will need to use.'),
+    '#description' => t('The unique identifier of the view; it is only important for overridden views and views that modules or themes will need to use. Only alphanumeric and _ allowed here'),
     '#required' => true,
   );
 
