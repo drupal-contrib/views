@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.10 2006-06-14 15:21:19 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.11 2006-06-21 00:01:10 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -487,7 +487,7 @@ function views_handler_arg_fulldate($op, &$query, $argtype, $arg = '') {
       $query->add_orderby(NULL, 'name', $argtype);
       break;
     case 'filter':
-      $query->add_where("DATE_FORMAT(FROM_UNIXTIME(node.created+$timezone), '%Y%m%%%%d') = '%s'", $arg);
+      $query->add_where("DATE_FORMAT(FROM_UNIXTIME(node.created+$timezone), '%Y%m%%d') = '%s'", $arg);
       break;
     case 'link':
       return l(format_date($query->created, 'custom', 'F j, Y'), "$arg/$query->name");
