@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.2 2006-05-13 22:00:01 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.3 2006-06-23 22:12:23 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -37,7 +37,7 @@ function comment_views_tables() {
         'name' => t('Comment: Last Comment Time'),
         'sortable' => true,
         'handler' => views_handler_field_dates(),
-        'option' => string,
+        'option' => 'string',
         'help' => t('This will display the last comment time.'),
        ),
       'last_comment_name' => array(
@@ -58,12 +58,20 @@ function comment_views_tables() {
         'help' => t('This will display the comment count.'),
       ),
     ),
+    'filters' => array(
+      'comment_count' => array(
+        'name' => t('Node: Comment Count'),
+        'operator' => 'views_handler_operator_gtlt',
+        'option' => 'integer',
+        'help' => t('This filter allows you to filter by the amount of comments.'),
+      ),
+    ),
     'sorts' => array(
       'last_comment_timestamp' => array(
         'name' => t('Comment: Last Comment Date'),
         'help' => t('This will allow you to sort by the date of the most recent comment on a node.')
-      )
-    )
+      ),
+    ),
   );
   return $tables;
 }
