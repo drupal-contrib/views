@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.5 2006-06-23 23:00:54 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.6 2006-06-23 23:40:42 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -182,8 +182,6 @@ function views_handler_field_username($fieldinfo, $fielddata, $value, $data) {
   $obj->name = $value;
   $uidfield = $fielddata['tablename'] . "_"  . $fieldinfo['uid'];
   $obj->uid = $data->$uidfield;
-  dprint_r($obj);
-  dprint_r($data);
   return theme('username', $obj);
 }
 
