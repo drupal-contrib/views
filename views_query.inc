@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.35 2006-06-23 21:50:25 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.36 2006-06-23 23:12:50 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -50,6 +50,11 @@ function _views_build_query(&$view, $args = array()) {
       ($view->block && ($plugins[$view->block_type]['needs_fields']))) {
       _views_view_build_fields($query, $view);
     }
+  }
+
+  foreach (module_implements('views_query_alter') as $module) {
+    $function = $module .'_views_query_alter';
+    $results = $function($query, $view, $summary, $level);
   }
 
   $info['query'] = $query->query();
@@ -106,6 +111,9 @@ function _views_view_build_filters(&$query, &$view) {
 
     $table = $filterinfo['table'];
 
+    $replace = array('&gt;' => '>', '&lt;' => '<');
+    $filter['operator'] = strtr($filter['operator'], $replace);
+    
     if (function_exists($filterinfo['handler'])) {
       $filterinfo['handler']('handler', $filter, $filterinfo, $query);
     }
