@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.36 2006-06-23 23:12:50 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.37 2006-06-23 23:15:31 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -579,6 +579,10 @@ class _views_query {
     }
 
     $query = "SELECT $fields FROM {" . $this->views_get_title_table . "} $this->views_get_title_table $joins $where $groupby $orderby";
+
+    $replace = array('&gt;' => '>', '&lt;' => '<');
+    $query = strtr($query, $replace);
+
     return $query;
   }
 }
