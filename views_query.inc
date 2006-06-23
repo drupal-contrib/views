@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.37 2006-06-23 23:15:31 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.38 2006-06-23 23:51:18 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -117,7 +117,7 @@ function _views_view_build_filters(&$query, &$view) {
     if (function_exists($filterinfo['handler'])) {
       $filterinfo['handler']('handler', $filter, $filterinfo, $query);
     }
-    else if (is_array($filter['value'])) {
+    else if (is_array($filter['value']) && count($filter['value'])) {
       if ($filter['operator'] == 'OR' || $filter['operator'] == 'NOR') {
         $not = '';
         if ($filter['operator'] == 'NOR') {
