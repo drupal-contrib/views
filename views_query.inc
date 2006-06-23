@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.33 2006-05-17 15:29:17 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.34 2006-06-23 21:23:28 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -263,7 +263,7 @@ class _views_query {
     if ($views_get_title_field) {
       $this->fields = array("$views_get_title_table.$views_get_title_field");
     }
-    $this->count_field = "*";
+    $this->count_field = "$views_get_title_table.$views_get_title_field";
     $this->header = array();
   }
 
