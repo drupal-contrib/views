@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.4 2006-06-23 22:12:23 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.5 2006-06-23 23:00:54 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -31,7 +31,6 @@ function user_views_tables() {
         'name' => t('User: Author Picture'),
         'handler' => 'views_handler_field_userpic',
         'sortable' => false,
-        'notafield' => true,
         'help' => t('Display the user picture of the author.'),
       ),
     ),
