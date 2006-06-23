@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.12 2006-06-23 21:32:56 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.13 2006-06-23 21:50:25 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -633,6 +633,6 @@ function views_handler_sort_random($action, &$query, $sortinfo, $sort) {
   }
 }
 
- 
+
 
 

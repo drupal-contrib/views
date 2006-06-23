@@ -1,5 +1,5 @@
 <?php
-// $Id: views_book.inc,v 1.4 2006-05-13 22:33:30 merlinofchaos Exp $
+// $Id: views_book.inc,v 1.5 2006-06-23 21:50:25 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of book.module
@@ -64,14 +64,14 @@ function book_views_tables() {
       ),
     ),
   );
-  
+
   return $tables;
 }
 
 function book_views_arguments() {
   $arguments = array(
     'book_parent' => array(
-      'name' => t("Book: Parent Node ID"), 
+      'name' => t("Book: Parent Node ID"),
       'handler' => "views_handler_arg_book_parent",
     ),
   );

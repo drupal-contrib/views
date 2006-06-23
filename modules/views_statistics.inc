@@ -1,5 +1,5 @@
 <?php
-// $Id: views_statistics.inc,v 1.4 2006-05-13 22:00:01 merlinofchaos Exp $
+// $Id: views_statistics.inc,v 1.5 2006-06-23 21:50:25 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of statistics.module
@@ -266,7 +266,7 @@ function theme_views_view_popular_recent($view, $type, $nodes) {
       }
       $items[] = $item;
     }
-    
+
     $output = theme('item_list', $items);
     return "<div class='view' id='view-$view->name'>$output</div>\n";
   }
@@ -290,7 +290,7 @@ function theme_views_view_popular_alltime($view, $type, $nodes) {
       }
       $items[] = $item;
     }
-    
+
     $output = theme('item_list', $items);
     return "<div class='view' id='view-$view->name'>$output</div>\n";
   }

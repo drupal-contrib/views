@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.2 2006-03-19 16:31:00 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.3 2006-06-23 21:50:25 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -219,7 +219,7 @@ function views_handler_arg_uid($op, &$query, $argtype, $arg = '') {
     case 'title':
       if (!$query) {
         return variable_get('anonymous', 'Anonymous');
-      } 
+      }
       $user = db_fetch_object(db_query("SELECT name FROM {users} WHERE uid = '%d'", $query));
       return $user->name;
   }
@@ -254,7 +254,7 @@ function views_handler_arg_uid_touch($op, &$query, $argtype, $arg = '') {
     case 'title':
       if (!$query) {
         return variable_get('anonymous', 'Anonymous');
-      } 
+      }
       $user = db_fetch_object(db_query("SELECT name FROM {users} WHERE uid = '%d'", $query));
       return $user->name;
   }

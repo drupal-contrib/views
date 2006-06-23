@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.16 2006-05-14 20:08:44 merlinofchaos Exp $
+  // $Id: views.install,v 1.17 2006-06-23 21:50:25 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -230,7 +230,7 @@
   else {
     drupal_set_message(t('The installation of views module was unsuccessful.'), 'error');
   }
-}      
+}
 
 /*
  * update module for UTF.
