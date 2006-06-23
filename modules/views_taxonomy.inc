@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.11 2006-06-23 21:50:25 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.12 2006-06-23 22:32:27 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -339,9 +339,9 @@ function views_handler_arg_taxletter($op, &$query, $argtype, $arg = '') {
       }
       break;
     case 'link':
-      return l(strtoupper($query->letter), "$arg/$query->letter");
+      return l($query->letter, "$arg/$query->letter");
     case 'title':
-      return strtoupper($query);
+      return check_plain($query);
   }
 }
 
