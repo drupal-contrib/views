@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.20 2006-06-23 21:50:25 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.21 2006-06-23 22:22:13 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1720,7 +1720,7 @@ function views_create_view_code($vid) {
   $output .= "  \$view->description = '" . db_escape_string($view->description) . "';\n";
   $output .= "  \$view->access = " . var_export($view->access, true) . ";\n";
   if (user_access('use PHP for block visibility')) {
-    $output .= "  \$view->view_args_php = '" . db_escape_string($view->view_args_php) . "';\n";
+    $output .= "  \$view->view_args_php = '" . check_plain($view->view_args_php) . "';\n";
   }
   // page items
   if ($view->page) {

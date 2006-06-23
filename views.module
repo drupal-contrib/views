@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.129 2006-06-23 21:50:25 merlinofchaos Exp $
+// $Id: views.module,v 1.130 2006-06-23 22:22:13 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -583,6 +583,11 @@ function views_view_block($vid) {
  *   without paging on.
 */
 function views_build_view($type, $view, $args = array(), $use_pager = false, $limit = 0, $page = 0) {
+  // Fix a number of annoying whines when NULL is passed in..
+  if ($args == NULL) {
+    $args = array();
+  }
+
   $GLOBALS['current_view'] = &$view;
 
   $viewtype = ($type == 'block' ? $view->block_type : $view->page_type);
