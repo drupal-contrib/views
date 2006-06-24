@@ -2230,5 +2230,30 @@ function views_create_view_code($vid) {
   return $output;
 }
 
+function render_view_page() {
+  $args = func_get_args();
+  while ($next = array_shift($args)) {
+    if (!$viewname)
+      $viewname = $next;
+    else
+      $viewname .= "/$next";
+    if ($view = _views_get_view($viewname))
+      break;
+  }
+  if (!$view)
+    return drupal_not_found();
+
+  if ($view->url == 1)
+    return drupal_not_found();
+
+  // Done before theming so theme can change it if it wants.
+  drupal_set_title($view->title);
+
+  $output = views_view('page', $view, $args);
+  if ($output) {
+    print $output;
+  }
+}
+
 
 ?>
