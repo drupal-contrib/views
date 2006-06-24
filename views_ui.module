@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.25 2006-06-24 01:58:49 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.26 2006-06-24 19:28:24 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -383,7 +383,7 @@ function views_ui_admin_export_page($vid = '') {
 /*
  * Provide a form to add a view. Allow adding a view from default templates.
  */
-function views_ui_admin_add_page($template) {
+function views_ui_admin_add_page($template = NULL) {
   $op = $_POST['op'];
   if ($op == t('Cancel')) {
     return 'admin/views';
