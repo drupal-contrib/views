@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.38 2006-06-23 23:51:18 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.39 2006-06-24 23:21:02 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -14,7 +14,7 @@ function _views_build_query(&$view, $args = array()) {
   $view->args = $args; // we'll need these later.
 
   foreach ($view->argument as $i => $argument) {
-    if ($args[$i] != NULL && $args[$i] != '') {
+    if ($args[$i] != NULL && $args[$i] != '' && $args[$i] != '$arg') {
       _views_view_build_arg($query, $args[$i], $argument);
     }
     else {
