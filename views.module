@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.134 2006-06-24 00:25:12 merlinofchaos Exp $
+// $Id: views.module,v 1.135 2006-06-24 01:35:07 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -526,6 +526,10 @@ function views_view_block($vid) {
   }
 
   global $user;
+  if (!$user->roles) {
+    return NULL;
+  }
+
   $roles = array_keys($user->roles);
   if ($view->access && !array_intersect($roles, $view->access)) {
     return NULL;
