@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.14 2006-06-24 00:18:17 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.15 2006-06-24 19:39:07 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -187,6 +187,12 @@ function taxonomy_views_default_views() {
       'argdefault' => '1',
       'title' => '',
       'options' => '0',
+    ),
+    array (
+      'type' => 'node_feed',
+      'argdefault' => '2',
+      'title' => '',
+      'options' => '',
     ),
   );
   $view->field = array (
