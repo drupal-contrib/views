@@ -1,4 +1,5 @@
 <?php
+// $Id: views_rss.module,v 1.3 2006-06-25 01:57:28 merlinofchaos Exp $
 
 function views_rss_help($section = 'admin/help#views_rss') {
   $output = '';
