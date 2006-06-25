@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.15 2006-06-24 19:39:07 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.16 2006-06-25 18:24:56 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -476,7 +476,8 @@ function views_handler_arg_month($op, &$query, $argtype, $arg = '') {
     case 'link':
       return l(format_date($query->created, 'custom', 'F'), "$arg/$query->name");
     case 'title':
-      return format_date(strtotime("2005${query}01"), 'custom', 'F', 0);
+      $month = str_pad($query, 2, '0', STR_PAD_LEFT);
+      return format_date(strtotime("2005{$month}01"), 'custom', 'F', 0);
   }
 }
 function views_handler_arg_week($op, &$query, $argtype, $arg = '') {

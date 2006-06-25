@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.39 2006-06-24 23:21:02 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.40 2006-06-25 18:24:56 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -160,7 +160,7 @@ function _views_view_build_arg(&$query, $arg, $argdata) {
   }
 
   // call the handler, unless the arg is the 'wildcard'.
-  if ($arg != '*') {
+  if ($arg != $argdata['wildcard']) {
     $arginfo[$argdata['type']]['handler']('filter', $query, $argdata, $arg);
   }
 }
