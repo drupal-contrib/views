@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.20 2006-06-25 18:24:56 merlinofchaos Exp $
+  // $Id: views.install,v 1.21 2006-07-24 22:44:27 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -183,9 +183,9 @@
         argdefault varchar(255),
         title varchar(255),
         options varchar(255),
-        position smallint
+        position smallint,
         wildcard varchar(32),
-        wildcard_substitution varchar(32),
+        wildcard_substitution varchar(32)
       )");
       db_query("CREATE INDEX {view_argument}_vid_idx ON {view_argument} (vid)");
 
