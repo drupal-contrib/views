@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.3 2006-06-25 01:57:28 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.4 2006-07-28 04:12:45 weitzman Exp $
 
 function views_rss_help($section = 'admin/help#views_rss') {
   $output = '';
@@ -17,6 +17,8 @@ function views_rss_views_style_plugins() {
     'views_rss' => array(
       'name' => t('Views RSS: RSS feed'),
       'theme' => 'views_rss_feed',
+      'needs_table_header' => TRUE,
+      'needs_fields' => TRUE,
     ),
   );
 }
