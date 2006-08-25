@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.5 2006-08-25 22:33:00 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.6 2006-08-25 23:40:49 merlinofchaos Exp $
 
 function views_rss_help($section = 'admin/help#views_rss') {
   $output = '';
@@ -88,7 +88,9 @@ function views_rss_views_feed_argument($op, &$view, $arg) {
                           'type' => 'application/rss+xml',
                           'title' => check_plain($title),
                           'href' => url($url, NULL, NULL, TRUE)));
-    return theme('feed_icon', url($url));
+    if ($view->build_type != 'block') {
+      return theme('feed_icon', url($url));
+    }
   }
 }
 
