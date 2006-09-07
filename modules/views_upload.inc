@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_upload.inc,v 1.2 2006-09-03 22:36:23 merlinofchaos Exp $
+// $Id: views_upload.inc,v 1.3 2006-09-07 00:49:39 merlinofchaos Exp $
 /**
  * This include file implements views functionality for the file.inc and
  * upload module
@@ -149,4 +149,3 @@ function views_handler_file_filter_fid_exist($op, $filter, $filterdata, &$query)
       }
   }
 }
-
