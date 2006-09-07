@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.153 2006-09-07 05:50:32 merlinofchaos Exp $
+// $Id: views.module,v 1.154 2006-09-07 05:54:53 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1189,7 +1189,7 @@ function views_view_add_block(&$view, $title, $type, $nodes_per_block, $more, $u
  * Add field info to a view.
  */
 function views_view_add_field(&$view, $table, $field, $label, $sortable = FALSE, $default_sort = 0, $handler = '') {
-  $view->filter[] = array(
+  $view->field[] = array(
     'tablename' => $table,
     'field' => $field,
     'label' => $label,
