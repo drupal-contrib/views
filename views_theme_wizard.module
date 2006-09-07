@@ -1,5 +1,5 @@
 <?php
-// $Id: views_theme_wizard.module,v 1.6 2006-09-07 04:26:15 merlinofchaos Exp $
+// $Id: views_theme_wizard.module,v 1.7 2006-09-07 16:44:22 merlinofchaos Exp $
 
 function views_theme_wizard_help($section = 'admin/help#views_theme_wizard') {
   $output = '';
@@ -24,6 +24,7 @@ function views_theme_wizard_menu($may_cache) {
 
 function views_theme_wizard_page() {
   $result = db_query("SELECT name, description FROM {view_view}");
+  $views = array();
   while ($view = db_fetch_object($result)) {
     $views[$view->name] = $view->name . ': ' . $view->description;
   }
