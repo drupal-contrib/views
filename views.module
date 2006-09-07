@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.146 2006-09-07 01:23:33 merlinofchaos Exp $
+// $Id: views.module,v 1.147 2006-09-07 02:31:15 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1366,6 +1366,10 @@ function views_filters_form($view) {
     }
     if ($expose['optional'] && is_array($item['#options'])) {
       $item['#options'] = array('**ALL**' => t('<All>')) + $item['#options'];
+    }
+
+    if ($item['#multiple'] && is_array($item['#options'])) {
+      $item['#size'] = min(count($item['#options']), 8);
     }
 
     if (array_key_exists("filter$count", $_GET)) {
