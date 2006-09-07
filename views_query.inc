@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.45 2006-09-07 05:40:26 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.46 2006-09-07 15:36:11 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -38,6 +38,7 @@ function _views_build_query(&$view, $args = array()) {
           if (!$self_sort) {
             $sort = true;
           }
+          break 2;
         case 7:
           // to trigger empty text, send back an empty query
           $info['query'] = NULL;
@@ -373,7 +374,7 @@ class _views_query {
     }
 
     foreach($field as $f) {
-      $this->add_field($f, $table);
+//      $this->add_field($f, $table);
       $this->orderby[] = "$alias$f $order";
     }
   }
