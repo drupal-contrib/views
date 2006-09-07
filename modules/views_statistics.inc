@@ -1,5 +1,5 @@
 <?php
-// $Id: views_statistics.inc,v 1.6 2006-06-23 23:42:42 merlinofchaos Exp $
+// $Id: views_statistics.inc,v 1.7 2006-09-07 17:03:34 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of statistics.module
@@ -256,6 +256,8 @@ function theme_views_view_popular_recent($view, $type, $nodes) {
     }
 
     $output = theme('item_list', $items);
+    if ($view->block_more && count($nodes) >= $view->nodes_per_block) 
+      $output .= theme('views_more', $view->real_url);
     return "<div class='view' id='view-$view->name'>$output</div>\n";
   }
   else {
