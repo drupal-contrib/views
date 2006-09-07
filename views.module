@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.151 2006-09-07 05:25:34 merlinofchaos Exp $
+// $Id: views.module,v 1.152 2006-09-07 05:48:30 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1826,7 +1826,7 @@ function views_handler_filter_like($op, $filter, $filterinfo, &$query) {
             $field, $filter['value']);
           break;
         case '=':
-          $query->add_where("UPPER(%s) = UPPER('%%%s%%')",
+          $query->add_where("UPPER(%s) = UPPER('%s')",
             $field, $filter['value']);
           break;
       }
