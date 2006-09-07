@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.22 2006-09-07 04:34:10 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.23 2006-09-07 17:11:06 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -309,6 +309,14 @@ function node_views_default_views() {
     ),
   );
   $view->argument = array (
+    array (
+      'type' => 'node_feed',
+      'argdefault' => '2',
+      'title' => '',
+      'options' => '',
+      'wildcard' => '',
+      'wildcard_substitution' => '',
+    ),
   );
   $view->field = array (
   );
