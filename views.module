@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.156 2006-09-07 16:40:18 merlinofchaos Exp $
+// $Id: views.module,v 1.157 2006-09-07 16:46:46 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1806,10 +1806,6 @@ function views_handler_filter_like($op, $filter, $filterinfo, &$query) {
     case 'handler':
       $table = $filterinfo['table'];
       $column = $filterinfo['field'];
-      if (empty($column)) {
-        $fieldbits = explode('.', $filter['field']);
-        $column = $fieldbits[1];
-      }
       $field = "$table.$column";
       $query->ensure_table($table);
 
@@ -1854,10 +1850,6 @@ function views_handler_filter_timestamp($op, $filter, $filterinfo, &$query) {
 
   $table = $filterinfo['table'];
   $column = $filterinfo['field'];
-  if (empty($column)) {
-    $fieldbits = explode('.', $filter['field']);
-    $column = $fieldbits[1];
-  }
   $field = "$table.$column";
   if ($filterinfo['from_unixtime']) {
     $field = "from_UNIXTIME($field)";

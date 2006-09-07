@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.46 2006-09-07 15:36:11 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.47 2006-09-07 16:46:46 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -85,6 +85,7 @@ function _views_view_build_filters(&$query, &$view) {
       $fieldbits = explode('.', $filter['field']);
       $field = $fieldbits[1];
     }
+    $filterinfo['field'] = $field;
 
     $view->used_filters = array();
 
