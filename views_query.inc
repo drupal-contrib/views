@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.47 2006-09-07 16:46:46 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.48 2006-09-07 17:18:07 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -232,7 +232,8 @@ function _views_view_build_fields(&$query, &$view) {
     }
   }
   $plugins = _views_get_style_plugins();
-  if ($view->page && $plugins[$view->page_type]['needs_table_header']) { // table only
+  if (($view->page && $plugins[$view->page_type]['needs_table_header']) || 
+      ($view->block && $plugins[$view->block_type]['needs_table_header'])) { // table only
     $view->table_header = _views_construct_header($view, $fields);
     $query->set_header($view->table_header);
   }
