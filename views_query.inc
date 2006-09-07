@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.43 2006-09-07 04:57:33 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.44 2006-09-07 05:06:08 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -128,14 +128,17 @@ function _views_view_build_filters(&$query, &$view) {
     }
     else if (is_array($filter['value']) && count($filter['value'])) {
       if ($filter['operator'] == 'OR' || $filter['operator'] == 'NOR') {
-        $not = '';
-        if ($filter['operator'] == 'NOR') {
-          $not = "NOT";
-        }
         $query->ensure_table($table);
         $where_args = array_merge(array($table, $field), $filter['value']);
         $placeholder = array_fill(0, count($filter['value']), '%s');
-        $query->add_where("%s.%s $not IN ('". implode("','", $placeholder) ."')", $where_args);
+        if ($filter['operator'] == 'OR') {
+          $query->add_where("%s.%s IN ('". implode("','", $placeholder) ."')", $where_args);
+        }
+        else {
+          $where_args[] = $where_args[0];
+          $where_args[] = $where_args[1];
+          $query->add_where("(%s.%s NOT IN ('". implode("','", $placeholder) ."') OR %s.%s IS NULL)", $where_args);
+        }
       }
       else {
         $howmany = count($filter['value']);
