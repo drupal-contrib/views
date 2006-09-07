@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.19 2006-09-07 05:40:26 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.20 2006-09-07 17:42:26 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -340,8 +340,7 @@ function views_handler_arg_vocid($op, &$query, $argtype, $arg = '') {
     case 'title':
       $result = db_query("SELECT name FROM {vocabulary} WHERE vid = %d", $query);
       $voc = db_fetch_object($result);
-      $title = check_plain($voc->name);
-      return $title;
+      return check_plain($voc->name);
   }
 }
 

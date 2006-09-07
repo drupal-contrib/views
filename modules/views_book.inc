@@ -1,5 +1,5 @@
 <?php
-// $Id: views_book.inc,v 1.5 2006-06-23 21:50:25 merlinofchaos Exp $
+// $Id: views_book.inc,v 1.6 2006-09-07 17:42:26 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of book.module
@@ -110,7 +110,7 @@ function views_handler_arg_book_parent($op, & $query, $argtype, $arg = '') {
       if ($query)
       {
         $term = db_fetch_object(db_query("SELECT title FROM {node} WHERE nid = '%d'", $query));
-        return $term->title;
+        return check_plain($term->title);
       }
   }
 }
