@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.44 2006-09-07 05:06:08 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.45 2006-09-07 05:40:26 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -373,6 +373,7 @@ class _views_query {
     }
 
     foreach($field as $f) {
+      $this->add_field($f, $table);
       $this->orderby[] = "$alias$f $order";
     }
   }
