@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.6 2006-08-25 23:40:49 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.7 2006-09-07 02:54:35 merlinofchaos Exp $
 
 function views_rss_help($section = 'admin/help#views_rss') {
   $output = '';
@@ -84,12 +84,13 @@ function views_rss_views_feed_argument($op, &$view, $arg) {
     $args = views_post_view_make_args($view, $arg, 'feed');
     $url = views_get_url($view, $args);
     $title = views_get_title($view, 'page', $args);
+
     drupal_add_link(array('rel' => 'alternate',
                           'type' => 'application/rss+xml',
                           'title' => check_plain($title),
-                          'href' => url($url, NULL, NULL, TRUE)));
+                          'href' => url($url, drupal_query_string_encode($view->used_filters), NULL, TRUE)));
     if ($view->build_type != 'block') {
-      return theme('feed_icon', url($url));
+      return theme('feed_icon', url($url, drupal_query_string_encode($view->used_filters)));
     }
   }
 }

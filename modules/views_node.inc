@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.19 2006-09-03 22:36:22 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.20 2006-09-07 02:54:35 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -345,7 +345,7 @@ function views_handler_field_nodelink_with_mark($fieldinfo, $fielddata, $value, 
   else {
     $link = l($value, "node/$data->nid");
   }
-  return l($link, "node/$data->nid") .' '. theme('mark', node_mark($data->nid, $data->node_changed));
+  return $link .' '. theme('mark', node_mark($data->nid, $data->node_changed));
 }
 
 /*
