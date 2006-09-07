@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.32 2006-09-07 04:30:03 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.33 2006-09-07 04:56:48 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -509,6 +509,7 @@ function _views_get_arguments_default() {
     4 => t('Summary, sorted ascending'),
     5 => t('Summary, sorted descending'),
     6 => t('Summary, sorted as view'),
+    7 => t('Use Empty Text'),
    );
 }
 

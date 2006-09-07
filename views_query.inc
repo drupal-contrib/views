@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.41 2006-09-07 02:54:35 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.42 2006-09-07 04:56:48 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -38,6 +38,10 @@ function _views_build_query(&$view, $args = array()) {
           if (!$self_sort) {
             $sort = true;
           }
+        case 7:
+          // to trigger empty text, send back an empty query
+          $info['query'] = NULL
+          return $info;
           break 2; // switch and for
       }
     }
