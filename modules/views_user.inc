@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.8 2006-09-07 00:49:39 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.9 2006-09-07 04:34:10 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -117,29 +117,29 @@ function user_views_default_views() {
     array (
       'tablename' => 'node',
       'field' => 'type',
-      'label' => 'Type',
+      'label' => t('Type'),
     ),
     array (
       'tablename' => 'node',
       'field' => 'title',
-      'label' => 'Title',
+      'label' => t('Title'),
       'handler' => 'views_handler_field_nodelink_with_mark',
     ),
     array (
       'tablename' => 'users',
       'field' => 'name',
-      'label' => 'Author',
+      'label' => t('Author'),
     ),
     array (
       'tablename' => 'node_comment_statistics',
       'field' => 'comment_count',
-      'label' => 'Replies',
+      'label' => t('Replies'),
       'handler' => 'views_handler_comments_with_new',
     ),
     array (
       'tablename' => 'node_comment_statistics',
       'field' => 'last_comment_timestamp',
-      'label' => 'Last Post',
+      'label' => t('Last Post'),
       'handler' => 'views_handler_field_since',
     ),
   );

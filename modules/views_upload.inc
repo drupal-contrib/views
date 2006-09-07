@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_upload.inc,v 1.3 2006-09-07 00:49:39 merlinofchaos Exp $
+// $Id: views_upload.inc,v 1.4 2006-09-07 04:34:10 merlinofchaos Exp $
 /**
  * This include file implements views functionality for the file.inc and
  * upload module
@@ -33,7 +33,7 @@ function upload_views_tables() {
     'filters' => array(
       'fid' => array(
         'name' => t('File: Has file downloads'),
-        'operator' => array('=' => 'Exists'),
+        'operator' => array('=' => t('Exists')),
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
         'handler' => 'views_handler_file_filter_fid_exist',
@@ -41,7 +41,7 @@ function upload_views_tables() {
       ),
       'list' => array(
         'name' => t('File: Listed in file downloads'),
-        'operator' => array('=' => 'Equals'),
+        'operator' => array('=' => t('Equals')),
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
         'help' => t('Filter weather the file is listed in downloads'),

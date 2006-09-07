@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.21 2006-09-07 03:54:45 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.22 2006-09-07 04:34:10 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -96,28 +96,28 @@ function node_views_tables() {
     'filters' => array(
       'status' => array(
         'name' => t('Node: Published'),
-        'operator' => array('=' => 'Equals'),
+        'operator' => array('=' => t('Equals')),
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
         'help' => t('Filter by whether or not the node is published. This is recommended for most Views!'),
       ),
       'promote' => array(
         'name' => t('Node: Front Page'),
-        'operator' => array('=' => 'Equals'),
+        'operator' => array('=' => t('Equals')),
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
         'help' => t('Filter by whether or not the node has been promoted to Front Page.'),
       ),
       'sticky' => array(
         'name' => t('Node: Sticky'),
-        'operator' => array('=' => 'Equals'),
+        'operator' => array('=' => t('Equals')),
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
         'help' => t('Filter by whether or not the node is set sticky.'),
       ),
       'moderate' => array(
         'name' => t('Node: Moderated'),
-        'operator' => array('=' => 'Equals'),
+        'operator' => array('=' => t('Equals')),
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
         'help' => t('Filter by whether or not the node is moderated.'),
