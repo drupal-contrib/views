@@ -1,0 +1,4 @@
+; $Id: views_ui.info,v 1.1 2006-09-13 21:21:37 merlinofchaos Exp $
+name = Views UI
+description = The Views UI module allows you to create and edit views.
+versin = 1.1
