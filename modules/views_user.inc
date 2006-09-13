@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.11 2006-09-07 17:42:26 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.12 2006-09-13 21:21:21 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -338,7 +338,7 @@ function views_handler_filter_usercurrent_custom($op, $filter, $filterinfo, &$qu
  * Add special info to see if a user either authored OR commented on a post
  */
 function views_handler_filter_uid_touched($op, $filter, $filterinfo, &$query) {
-  if (!module_exist('comment')) { // not much to do in this case
+  if (!module_exists('comment')) { // not much to do in this case
     $query->add_where("node.uid = '%s'", $filter['value']);
     return;
   }

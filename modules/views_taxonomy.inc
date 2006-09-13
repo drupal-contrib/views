@@ -1,12 +1,12 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.20 2006-09-07 17:42:26 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.21 2006-09-13 21:21:21 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
  */
 
 function taxonomy_views_tables() {
-  if (module_exist('taxonomy')) {
+  if (module_exists('taxonomy')) {
     $table = views_new_table('term_node', 'internal', 'node', 'nid', 'nid');
     views_table_add_field($table, 'name', 'Taxonomy: All Terms', 'This will display all taxonomy terms associated with the node. Note that this causes one extra query per row displayed, and might have a minor performance impact.', array(
       'sortable' => false,

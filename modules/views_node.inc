@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.24 2006-09-07 17:42:26 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.25 2006-09-13 21:21:21 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -377,7 +377,7 @@ function views_handler_field_nodelink_with_mark($fieldinfo, $fielddata, $value, 
  * Format a field as a node type.
  */
 function views_handler_nodetype($fieldinfo, $fielddata, $value, $data) {
-  return node_get_name($value);
+  return node_get_types('name', $value);
 }
 
 /*
@@ -385,7 +385,7 @@ function views_handler_nodetype($fieldinfo, $fielddata, $value, $data) {
  */
 function views_handler_comments_with_new($fieldinfo, $fielddata, $value, $data) {
   $comments = intval($value);
-  if (module_exist('comment') && $comments && $new = comment_num_new($data->nid)) {
+  if (module_exists('comment') && $comments && $new = comment_num_new($data->nid)) {
     $comments .= '<br />';
     $comments .= l(t('%num new', array('%num' => $new)), "node/$data->nid", NULL, NULL, 'new');
   }
@@ -447,9 +447,9 @@ function views_handler_arg_nodetype($op, &$query, $argtype, $arg = '') {
       $query->add_where("node.type = '%s'", $where);
       break;
     case 'link':
-      return l(node_get_name($query->type), "$arg/$query->type");
+      return l(node_get_types('name', $query->type), "$arg/$query->type");
     case 'title':
-      $title = node_get_name($query);
+      $title = node_get_types('name', $query);
       return $title ? $title : check_plain($query);
   }
 }
@@ -634,7 +634,7 @@ function views_handler_filter_isnew($op, $filter, $filterinfo, &$query) {
   $limit = NODE_NEW_LIMIT;
 
   $query->ensure_table('history');
-  if (module_exist('comment')) {
+  if (module_exists('comment')) {
     $query->ensure_table('node_comment_statistics');
     $clause = "OR node_comment_statistics.last_comment_timestamp > $limit";
     $clause2 = "OR history.timestamp < node_comment_statistics.last_comment_timestamp";
