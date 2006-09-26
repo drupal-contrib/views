@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.12 2006-09-13 21:21:21 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.13 2006-09-26 21:13:32 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -281,7 +281,6 @@ function views_handler_arg_username($op, &$query, $argtype, $arg = '') {
       $table_data = _views_get_tables();
       $joininfo = $table_data['users']['join'];
       $query->add_table('users', false, 1, $joininfo);
-      drupal_set_message($name);
       $query->add_where("users.name = '%s'", $name);
       break;
     case 'link':
