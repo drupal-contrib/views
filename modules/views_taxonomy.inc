@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.21 2006-09-13 21:21:21 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.22 2006-10-06 23:53:25 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -406,7 +406,7 @@ function views_handler_filter_tid_by_voc($op, $filterinfo) {
 
   if ($tree) {
     foreach ($tree as $term) {
-      $options[$term->tid] = _taxonomy_depth($term->depth, '-') . $term->name;
+      $options[$term->tid] = str_repeat('-', $term->depth) . $term->name;
     }
   }
   return $options;
