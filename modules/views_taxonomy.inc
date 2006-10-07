@@ -1,12 +1,12 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.21 2006-09-13 21:21:21 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.20.2.1 2006-10-07 21:46:01 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
  */
 
 function taxonomy_views_tables() {
-  if (module_exists('taxonomy')) {
+  if (module_exist('taxonomy')) {
     $table = views_new_table('term_node', 'internal', 'node', 'nid', 'nid');
     views_table_add_field($table, 'name', 'Taxonomy: All Terms', 'This will display all taxonomy terms associated with the node. Note that this causes one extra query per row displayed, and might have a minor performance impact.', array(
       'sortable' => false,
@@ -406,7 +406,7 @@ function views_handler_filter_tid_by_voc($op, $filterinfo) {
 
   if ($tree) {
     foreach ($tree as $term) {
-      $options[$term->tid] = _taxonomy_depth($term->depth, '-') . $term->name;
+      $options[$term->tid] = str_repeat('-', $term->depth) . $term->name;
     }
   }
   return $options;
