@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.8 2006-09-13 21:21:21 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.9 2006-10-08 05:47:08 merlinofchaos Exp $
 
 /**
  * Provide views plugins for the feed types we support.
@@ -156,7 +156,7 @@ function theme_views_rss_feed($view, $nodes) {
     'title'       => variable_get('site_name', 'drupal') .' - '. variable_get('site_slogan', ''),
     'link'        => $base_url,
     'description' => variable_get('site_mission', ''),
-    'language'    => $locale
+    'language'    => $GLOBALS['locale'],
   );
   $channel = array_merge($channel_defaults, $channel);
 
