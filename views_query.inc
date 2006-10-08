@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.50 2006-10-08 05:21:15 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.51 2006-10-08 05:36:31 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -211,7 +211,6 @@ function _views_view_build_sorts(&$query, $view) {
  * Add field information from a view to a query.
  */
 function _views_view_build_fields(&$query, &$view) {
-
   $fields = _views_get_fields();
 
   foreach ($view->field as $field) {
