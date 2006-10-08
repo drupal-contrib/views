@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.25 2006-09-13 21:21:21 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.24.2.1 2006-10-08 04:38:22 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -377,7 +377,7 @@ function views_handler_field_nodelink_with_mark($fieldinfo, $fielddata, $value, 
  * Format a field as a node type.
  */
 function views_handler_nodetype($fieldinfo, $fielddata, $value, $data) {
-  return node_get_types('name', $value);
+  return node_get_name($value);
 }
 
 /*
@@ -385,7 +385,7 @@ function views_handler_nodetype($fieldinfo, $fielddata, $value, $data) {
  */
 function views_handler_comments_with_new($fieldinfo, $fielddata, $value, $data) {
   $comments = intval($value);
-  if (module_exists('comment') && $comments && $new = comment_num_new($data->nid)) {
+  if (module_exist('comment') && $comments && $new = comment_num_new($data->nid)) {
     $comments .= '<br />';
     $comments .= l(t('%num new', array('%num' => $new)), "node/$data->nid", NULL, NULL, 'new');
   }
@@ -447,9 +447,9 @@ function views_handler_arg_nodetype($op, &$query, $argtype, $arg = '') {
       $query->add_where("node.type = '%s'", $where);
       break;
     case 'link':
-      return l(node_get_types('name', $query->type), "$arg/$query->type");
+      return l(node_get_name($query->type), "$arg/$query->type");
     case 'title':
-      $title = node_get_types('name', $query);
+      $title = node_get_name($query);
       return $title ? $title : check_plain($query);
   }
 }
@@ -608,16 +608,32 @@ function views_handler_arg_nid($op, &$query, $argtype, $arg = '') {
       // do nothing here.
       break;
     case 'filter':
-      $query->add_where("node.nid = %d", $arg);
+      $args = _views_break_phrase($arg);
+      if ($args[0] == 'and') {
+        foreach ($args[1] as $arg) {
+          $query->add_where("node.nid = %d", $arg);
+        }
+      }
+      else {
+        $query->add_where("node.nid IN (%s)", implode(',', $args[1]));
+      }
       break;
     case 'link':
       return l($query->title, "$arg/$query->nid");
     case 'title':
-      $node = db_fetch_object(db_query("SELECT title FROM {node} WHERE nid=%d", $query));
-      return check_plain($node->title);
+      list($type, $info) = _views_break_phrase($query);
+      if (!$info) {
+        return t('Untitled');
+      }
+      $nids = implode(',', $info); // only does numbers so safe
+
+      $result = db_query("SELECT title FROM {node} WHERE nid IN (%s)", $nids);
+      while ($node = db_fetch_object($result)) {
+        $title .= ($title ? ($type == 'or' ? ' + ' : ', ') : '') . check_plain($node->title);
+      }
+
   }
 }
-
 
 /*
  * Custom filter for new content.
@@ -634,7 +650,7 @@ function views_handler_filter_isnew($op, $filter, $filterinfo, &$query) {
   $limit = NODE_NEW_LIMIT;
 
   $query->ensure_table('history');
-  if (module_exists('comment')) {
+  if (module_exist('comment')) {
     $query->ensure_table('node_comment_statistics');
     $clause = "OR node_comment_statistics.last_comment_timestamp > $limit";
     $clause2 = "OR history.timestamp < node_comment_statistics.last_comment_timestamp";
