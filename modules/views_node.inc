@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.24.2.3 2006-10-08 06:42:52 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.24.2.4 2006-10-08 06:52:34 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -271,6 +271,10 @@ function node_views_arguments() {
     'nid' => array(
       'name' => t('Node: ID'),
       'handler' => 'views_handler_arg_nid',
+      'option' => array(
+        '#type' => 'select',
+        '#options' => array('equal', 'not equal'),
+      ),
       'help' => t('This argument is a single Node ID.'),
     ),
     // renamed from 'feed' so things don't DIE when you have viewfeed.module still
@@ -615,8 +619,9 @@ function views_handler_arg_nid($op, &$query, $argtype, $arg = '') {
     case 'filter':
       $args = _views_break_phrase($arg);
       if ($args[0] == 'and') {
+        $operator = $argtype['options'] ? '!=' : '=';
         foreach ($args[1] as $arg) {
-          $query->add_where("node.nid = %d", $arg);
+          $query->add_where("node.nid $operator %d", $arg);
         }
       }
       else {
