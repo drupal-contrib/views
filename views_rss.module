@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.7.2.2 2006-10-08 06:08:44 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.7.2.3 2006-10-08 07:13:35 merlinofchaos Exp $
 
 function views_rss_help($section = 'admin/help#views_rss') {
   $output = '';
@@ -19,6 +19,7 @@ function views_rss_views_style_plugins() {
       'theme' => 'views_rss_feed',
       'needs_table_header' => TRUE,
       'needs_fields' => TRUE,
+      'even_empty' => TRUE,
     ),
   );
 }
