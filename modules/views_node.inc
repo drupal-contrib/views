@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.26 2006-10-08 04:37:17 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.27 2006-10-08 05:31:35 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -679,8 +679,8 @@ function views_handler_filter_role() {
  */
 function views_handler_filter_nodetype($op) {
   $nodes = array();
-  foreach (node_get_types() as $type => $name) {
-    $nodes[$type] = $name;
+  foreach (node_get_types() as $type => $info) {
+    $nodes[$type] = $info->name;
   }
   return $nodes;
 }
