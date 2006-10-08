@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.10 2006-10-08 06:08:37 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.11 2006-10-08 07:13:43 merlinofchaos Exp $
 
 /**
  * Provide views plugins for the feed types we support.
@@ -11,6 +11,7 @@ function views_rss_views_style_plugins() {
       'theme' => 'views_rss_feed',
       'needs_table_header' => TRUE,
       'needs_fields' => TRUE,
+      'even_empty' => TRUE,
     ),
   );
 }
