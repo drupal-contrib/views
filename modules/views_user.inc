@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.12 2006-09-13 21:21:21 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.11.2.1 2006-10-09 04:20:44 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -281,7 +281,6 @@ function views_handler_arg_username($op, &$query, $argtype, $arg = '') {
       $table_data = _views_get_tables();
       $joininfo = $table_data['users']['join'];
       $query->add_table('users', false, 1, $joininfo);
-      drupal_set_message($name);
       $query->add_where("users.name = '%s'", $name);
       break;
     case 'link':
@@ -338,7 +337,7 @@ function views_handler_filter_usercurrent_custom($op, $filter, $filterinfo, &$qu
  * Add special info to see if a user either authored OR commented on a post
  */
 function views_handler_filter_uid_touched($op, $filter, $filterinfo, &$query) {
-  if (!module_exists('comment')) { // not much to do in this case
+  if (!module_exist('comment')) { // not much to do in this case
     $query->add_where("node.uid = '%s'", $filter['value']);
     return;
   }
