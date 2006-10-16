@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.20.2.4 2006-10-08 07:02:10 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.20.2.5 2006-10-16 15:13:36 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -270,7 +270,7 @@ function views_handler_field_tid($fieldinfo, $fielddata, $value, $data) {
 function views_handler_field_tid_link($fieldinfo, $fielddata, $value, $data) {
   $fieldname = $fielddata['tablename'] . '_tid';
   $term = taxonomy_get_term($data->$fieldname);
-  $path = taxonomy_get_path($term);
+  $path = taxonomy_term_path($term);
   return l($value, $path);
 }
 
