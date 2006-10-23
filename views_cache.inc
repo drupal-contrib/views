@@ -1,10 +1,10 @@
 <?php
-// $Id: views_cache.inc,v 1.1 2006-10-04 01:02:03 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2 2006-10-23 21:17:40 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
 $path = drupal_get_path('module', 'views') . '/modules';
-$files = system_listing('views_.*\.inc$', $path, 'name', 0);
+$files = drupal_system_listing('views_.*\.inc$', $path, 'name', 0);
 
 foreach($files as $file) {
   // The filename format is very specific. It must be views_MODULENAME.inc
