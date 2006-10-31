@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.26 2006-10-16 15:14:05 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.27 2006-10-31 23:23:25 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -174,7 +174,7 @@ function taxonomy_views_default_views() {
   $view->access = array (
 );
   $view->page = TRUE;
-  $view->page_title = t('taxonomy');
+  $view->page_title = t('Taxonomy');
   $view->page_header = '';
   $view->page_header_format = '1';
   $view->page_type = 'teaser';

@@ -1,12 +1,12 @@
 <?php
-// $Id: views_theme_wizard.module,v 1.10 2006-10-04 01:02:03 merlinofchaos Exp $
+// $Id: views_theme_wizard.module,v 1.11 2006-10-31 23:23:24 merlinofchaos Exp $
 
 function views_theme_wizard_menu($may_cache) {
   if ($may_cache) {
     $items[] = array(
       'path' => 'admin/build/views/wizard',
       'access' => user_access('administer views'),
-      'title' => t('theme wizard'),
+      'title' => t('Theme wizard'),
       'callback' => 'views_theme_wizard_page',
       'type' => MENU_LOCAL_TASK,
     );
