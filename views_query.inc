@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.48.2.2 2006-11-13 03:21:12 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.48.2.3 2006-11-13 04:54:09 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -308,7 +308,9 @@ class _views_query {
     if ($alias) {
       $a = " AS $alias";
     }
-    $this->fields[] = "$table$field$a";
+    if (!in_array("$table$field$a", $this->fields)) {
+      $this->fields[] = "$table$field$a";
+    }
   }
 
   /*
@@ -361,10 +363,7 @@ class _views_query {
    */
   function add_orderby($table, $field, $order, $alias = '') {
     if (!$alias && $table) {
-      $alias = $table . ".";
-    }
-    elseif ($alias) {
-      $alias .= ".";
+      $alias = $table;
     }
 
     if ($table) {
@@ -376,8 +375,9 @@ class _views_query {
     }
 
     foreach($field as $f) {
-//      $this->add_field($f, $table);
-      $this->orderby[] = "$alias$f $order";
+      $as = $alias . '_' . $f;
+      $this->add_field($f, $table, $as);
+      $this->orderby[] = "$as $order";
     }
   }
 
