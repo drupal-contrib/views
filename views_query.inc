@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.48.2.3 2006-11-13 04:54:09 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.48.2.4 2006-11-13 05:45:16 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -77,6 +77,7 @@ function _views_build_query(&$view, $args = array()) {
  */
 function _views_view_build_filters(&$query, &$view) {
   $filters = _views_get_filters();
+  $view->used_filters = array();
 
   foreach ($view->filter as $i => $filter) {
     $filterinfo = $filters[$filter['field']]; // shortcut
@@ -86,8 +87,6 @@ function _views_view_build_filters(&$query, &$view) {
       $field = $fieldbits[1];
     }
     $filterinfo['field'] = $field;
-
-    $view->used_filters = array();
 
     foreach($view->exposed_filter as $count => $expose) {
       if ($filter['id'] == $expose['id']) {
