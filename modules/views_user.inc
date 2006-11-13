@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.14 2006-10-31 23:23:25 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.15 2006-11-13 02:42:15 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -184,9 +184,14 @@ function user_views_query_substitutions($view) {
  * specified in the field info.
  */
 function views_handler_field_username($fieldinfo, $fielddata, $value, $data) {
-  $obj->name = $value;
   $uidfield = $fielddata['tablename'] . "_"  . $fieldinfo['uid'];
-  $obj->uid = $data->$uidfield;
+  if (!$value && $data->$uidfield) {
+    $obj = user_load(array('uid' => $data->$uidfield));
+  }
+  else {
+    $obj->name = $value;
+    $obj->uid = $data->$uidfield;
+  }
   return theme('username', $obj);
 }
 
