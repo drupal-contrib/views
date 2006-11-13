@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.21 2006-07-24 22:44:27 merlinofchaos Exp $
+  // $Id: views.install,v 1.22 2006-11-13 05:03:00 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -234,6 +234,15 @@
   else {
     drupal_set_message(t('The installation of views module was unsuccessful.'), 'error');
   }
+}
+
+function views_uninstall() {
+  db_query("DROP TABLE IF EXISTS {view_view}");
+  db_query("DROP TABLE IF EXISTS {view_sort}");
+  db_query("DROP TABLE IF EXISTS {view_argument}");
+  db_query("DROP TABLE IF EXISTS {view_tablefield}");
+  db_query("DROP TABLE IF EXISTS {view_filter}");
+  db_query("DROP TABLE IF EXISTS {view_exposed_filter}");
 }
 
 /*
