@@ -1,5 +1,6 @@
 <?php
-// $Id: views.module,v 1.159.2.8 2006-11-13 06:15:43 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.9 2006-11-14 05:26:27 merlinofchaos Exp $
+// $Name:  $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
