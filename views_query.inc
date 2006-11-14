@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.48.2.4 2006-11-13 05:45:16 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.48.2.5 2006-11-14 06:52:45 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -192,9 +192,9 @@ function _views_view_build_sorts(&$query, $view) {
       $fieldbits = explode('.', $sort['field']);
       $field = $fieldbits[1];
     }
-
     $table = $sortinfo['table'];
     if (isset($sortinfo['handler']) && function_exists($sortinfo['handler'])) {
+      $sortinfo['field'] = $field;
       $sortinfo['handler']('sort', $query, $sortinfo, $sort);
     }
     else {

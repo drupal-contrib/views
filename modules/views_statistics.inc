@@ -1,5 +1,5 @@
 <?php
-// $Id: views_statistics.inc,v 1.7.2.1 2006-10-02 00:08:22 merlinofchaos Exp $
+// $Id: views_statistics.inc,v 1.7.2.2 2006-11-14 06:52:46 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of statistics.module
@@ -48,6 +48,8 @@ function statistics_views_tables() {
       ),
       'timestamp' => array(
         'name' => t('Node: Last Hit Time'),
+        'handler' => 'views_handler_sort_date',
+        'option' => views_handler_sort_date_options(),
         'help' => t('This allows you to sort by the time a node was last read.'),
       ),
     ),

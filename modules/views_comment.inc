@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.4.2.1 2006-11-13 02:47:31 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.4.2.2 2006-11-14 06:52:45 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -65,6 +65,8 @@ function comment_views_tables() {
     'sorts' => array(
       'timestamp' => array(
         'name' => t('Comment: Created Time'),
+        'handler' => 'views_handler_sort_date',
+        'option' => views_handler_sort_date_options(),
         'help' => t('Sort by the created time of comments.'),
       ),
     ),
@@ -128,6 +130,8 @@ function comment_views_tables() {
     'sorts' => array(
       'last_comment_timestamp' => array(
         'name' => t('Comment: Last Comment Date'),
+        'handler' => 'views_handler_sort_date',
+        'option' => views_handler_sort_date_options(),
         'help' => t('This will allow you to sort by the date of the most recent comment on a node.')
       ),
       'comment_count' => array(
