@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.22 2006-11-13 05:03:00 merlinofchaos Exp $
+  // $Id: views.install,v 1.23 2006-11-14 05:56:38 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -344,5 +344,11 @@ function views_update_9() {
   $ret = array();
   db_add_column($ret, 'view_argument', 'wildcard', 'varchar(32)');
   db_add_column($ret, 'view_argument', 'wildcard_substitution', 'varchar(32)');
+  return $ret;
+}
+
+function views_update_10() {
+  $ret = array();
+  $ret[] = update_sql("UPDATE {system} SET weight = 10 WHERE name = 'views'");
   return $ret;
 }
