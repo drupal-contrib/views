@@ -8,10 +8,29 @@ Views 1.1-dev
   Bugs fixed:
     o 97228: Fatal error on the views help page.
     o View Import was completely not working.
+    o 93873: Exposed filters were completely not working.
+    o 92305: Removed broken and unworkable 'distinct' profile filter.
+    o 93540: Don't use block title if no page title.
+    o 93493: Allow field labels to be turned off if item not sortable.
+    o 91665: Order By pretty much borked in PGSQL.
+    o 85290: Views generated invalid CSS with -- this could have an impact on 
+      your theming!
+    o 90482: Validate that nodes per page is not 0 if pager is on.
+    o 89893: Multiple filters not showing up properly in RSS links
+    o 97462: More robust view export code.
+    o 82634: theme_imagebutton renamed to theme_views_imagebutton
+    o 77859: update module weight to 10 in update.php -- RUN UPDATE.PHP!!
+    o 97589: Add some sorting on plugins so that Views' default plugins are
+      always on top.
 
   New features:
     o New comment fields to allow more Views use of comments. [Egon Bianchet]
     o Recent comments block default view.
     o Add simple 'word search' to text field operators [gordonh]
     o Early views_search.inc -- needs testing! [gordonh]
-
+    o 90643: Access-checking 'edit', 'delete' and 'view' links as fields
+    o Added uninstall function (accessible from the module administration page)
+    o 88849: new views_pre_query hook
+    o 97290: new $offset argument to views_build_view to allow views to to
+      skip the first N nodes [doesn't work if $ pager = true].
+    o 97290: New options for granularity on date sorts
