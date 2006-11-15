@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.20.2.5 2006-10-16 15:13:36 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.20.2.6 2006-11-15 16:52:16 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -528,21 +528,5 @@ function _views_add_vocabulary($op, $value, $depth, &$query) {
       $tablename = $query->get_table_name('term_data', $num);
       $query->add_where("$tablename.vid = '$vid'");
     }
-  }
-}
-
-/*
- * Break x,y,z and x+y+z into an array.
- */
-function _views_break_phrase($str) {
-  if (preg_match('/^([0-9]+[+ ])+[0-9]+$/', $str)) {
-    // The '+' character in a query string may be parsed as ' '.
-    return array('or', preg_split('/[+ ]/', $str));
-  }
-  else if (preg_match('/^([0-9]+,)*[0-9]+$/', $str)) {
-    return array('and', explode(',', $str));
-  }
-  else {
-    return NULL;
   }
 }
