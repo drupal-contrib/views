@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.27 2006-10-31 23:23:25 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.28 2006-11-15 01:44:30 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -254,7 +254,7 @@ function views_handler_field_allterms($fieldinfo, $fielddata, $value, $data) {
     $node->taxonomy = $terms;
     $links = taxonomy_link('taxonomy terms', $node);
   }
-  return theme('links', $links);
+  return implode(' | ', $links);
 }
 
 /**
