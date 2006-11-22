@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.1 2006-11-14 17:44:29 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2.2.2 2006-11-22 17:56:39 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -239,6 +239,8 @@ function _views_get_default_views() {
  * sort callback
  */
 function _views_sort_arrays($a, $b) {
+  $a = (array) $a; // safety -- something send objects.
+  $b = (array) $b;
   if ($a['weight'] == $b['weight']) {
     if ($a['name'] == $b['name']) {
       return 0;
