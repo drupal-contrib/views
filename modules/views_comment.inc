@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.4.2.3 2006-11-30 19:44:20 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.4.2.4 2006-11-30 20:59:44 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -61,6 +61,14 @@ function comment_views_tables() {
         'addlfields' => array('uid'),
         'help' => t('This will display the author of the node.'),
       ),
+    ),
+    'filters' => array(
+      'status' => array(
+        'name' => t('Comment: Pending approval'),
+        'operator' => array('=' => t('Equals')),
+        'list' => 'views_handler_operator_yesno',
+        'list-type' => 'select',
+        ),
     ),
     'sorts' => array(
       'timestamp' => array(
