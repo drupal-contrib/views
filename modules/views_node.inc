@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.35 2006-11-30 17:50:12 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.36 2006-11-30 19:05:26 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -751,10 +751,10 @@ function views_handler_sort_random($action, &$query, $sortinfo, $sort) {
   switch ($GLOBALS['db_type']) {
     case 'mysql':
     case 'mysqli':
-      $query->add_orderby('', "rand()", "ASC");
+      $query->add_orderby('', "rand()", "ASC", 'random_sort');
       break;
     case 'pgsql':
-      $query->add_orderby('', "random()", "ASC");
+      $query->add_orderby('', "random()", "ASC", 'random_sort');
       break;
   }
 }
