@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.36 2006-11-30 19:05:26 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.37 2006-11-30 19:44:07 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -414,18 +414,6 @@ function views_handler_field_nodelink_with_mark($fieldinfo, $fielddata, $value, 
  */
 function views_handler_nodetype($fieldinfo, $fielddata, $value, $data) {
   return node_get_types('name', $value);
-}
-
-/*
- * Format a field as a number of comments, plus the number of unread comments.
- */
-function views_handler_comments_with_new($fieldinfo, $fielddata, $value, $data) {
-  $comments = intval($value);
-  if (module_exists('comment') && $comments && $new = comment_num_new($data->nid)) {
-    $comments .= '<br />';
-    $comments .= l(t('@num new', array('@num' => $new)), "node/$data->nid", NULL, NULL, 'new');
-  }
-  return $comments;
 }
 
 /*

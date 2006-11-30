@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.6 2006-11-14 06:52:57 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.7 2006-11-30 19:44:07 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -175,6 +175,18 @@ function views_handler_field_commentlink($fieldinfo, $fielddata, $value, $data) 
     return check_plain($value);
   }
   return l($value, "node/$data->nid", NULL, NULL, "comment-$data->comments_cid");
+}
+
+/*
+ * Format a field as a number of comments, plus the number of unread comments.
+ */
+function views_handler_comments_with_new($fieldinfo, $fielddata, $value, $data) {
+  $comments = intval($value);
+  if ($comments && $new = comment_num_new($data->nid)) {
+    $comments .= '<br />';
+    $comments .= l(t('@num new', array('@num' => $new)), "node/$data->nid", NULL, comment_page_new_query($data->nid), 'new');
+  }
+  return $comments;
 }
 
 /*
