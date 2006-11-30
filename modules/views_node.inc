@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.33 2006-11-14 06:52:57 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.34 2006-11-30 17:26:07 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -423,7 +423,7 @@ function views_handler_comments_with_new($fieldinfo, $fielddata, $value, $data) 
   $comments = intval($value);
   if (module_exists('comment') && $comments && $new = comment_num_new($data->nid)) {
     $comments .= '<br />';
-    $comments .= l(t('%num new', array('%num' => $new)), "node/$data->nid", NULL, NULL, 'new');
+    $comments .= l(t('@num new', array('@num' => $new)), "node/$data->nid", NULL, NULL, 'new');
   }
   return $comments;
 }
