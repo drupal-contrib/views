@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.55 2006-11-14 06:52:57 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.56 2006-11-30 17:36:40 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -443,7 +443,7 @@ class _views_query {
       if ($joininfo) {
         $this->joins[$table][$i] = $joininfo;
       }
-      $this->tablequeue[] = array('table' => $table, 'num' => $i);
+      $this->tablequeue[] = array('table' => $table, 'num' => $i, 'alias_prefix' => $this->use_alias_prefix);
     }
     return $this->tables[$table];
   }
@@ -522,7 +522,10 @@ class _views_query {
    * @param $alias_prefix
    *   An optional prefix for the table alias.
    */
-  function get_table_name($table, $table_num, $alias_prefix = '') {
+  function get_table_name($table, $table_num, $alias_prefix = null) {
+    if (is_null($alias_prefix)) {
+      $alias_prefix = $this->use_alias_prefix;
+    }
     return ($table_num < 2 ? $alias_prefix . $table : $alias_prefix . $table . $table_num);
   }
 
