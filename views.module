@@ -1,6 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.15 2006-11-15 16:52:16 merlinofchaos Exp $
-// $Name:  $
+// $Id: views.module,v 1.159.2.16 2006-11-30 17:34:31 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -884,7 +883,7 @@ function views_get_title($view, $context = 'menu', $args = NULL) {
  */
 function _views_is_cacheable(&$view) {
   // views with arguments are immediately not cacheable.
-  if (!empty($view->argument) || !empty($view->exposed_filter)) {
+  if (!empty($view->argument) || !empty($view->exposed_filter) || !empty($view->no_cache)) {
     return false;
   }
 
