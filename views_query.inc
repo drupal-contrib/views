@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.48.2.8 2006-12-03 08:30:32 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.48.2.9 2006-12-03 17:06:55 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -388,9 +388,16 @@ class _views_query {
     }
 
     foreach($field as $f) {
-//      $as = $alias . '_' . $f;
-//      $this->add_field($f, $table, $as);
-        $this->orderby[] = "$alias.$f $order";
+      // Only fill out this aliasing if there is a table;
+      // otherwise we assume it is a formula.
+      if ($table) {
+        $as = $alias . '_' . $f;
+      }
+      else {
+        $as = $alias;
+      }
+      $this->add_field($f, $table, $as);
+      $this->orderby[] = "$as $order";
     }
   }
 
