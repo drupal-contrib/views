@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.27.2.1 2006-11-22 17:57:25 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.27.2.2 2006-12-03 18:09:38 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module

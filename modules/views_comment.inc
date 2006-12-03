@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.4.4.1 2006-11-14 17:44:29 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.4.4.2 2006-12-03 18:09:38 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -61,6 +61,14 @@ function comment_views_tables() {
         'addlfields' => array('uid'),
         'help' => t('This will display the author of the node.'),
       ),
+    ),
+    'filters' => array(
+      'status' => array(
+        'name' => t('Comment: Pending approval'),
+        'operator' => array('=' => t('Equals')),
+        'list' => 'views_handler_operator_yesno',
+        'list-type' => 'select',
+        ),
     ),
     'sorts' => array(
       'timestamp' => array(
@@ -178,6 +186,18 @@ function views_handler_field_commentlink($fieldinfo, $fielddata, $value, $data) 
 }
 
 /*
+ * Format a field as a number of comments, plus the number of unread comments.
+ */
+function views_handler_comments_with_new($fieldinfo, $fielddata, $value, $data) {
+  $comments = intval($value);
+  if ($comments && $new = comment_num_new($data->nid)) {
+    $comments .= '<br />';
+    $comments .= l(t('@num new', array('@num' => $new)), "node/$data->nid", NULL, comment_page_new_query($data->nid), 'new');
+  }
+  return $comments;
+}
+
+/*
  * Format a field as a link to a 'mark', stating whether or not the comment has
  * updated since it was last viewed by the user.
  */
@@ -263,6 +283,13 @@ function comment_views_default_views() {
       'operator' => '>',
       'options' => '',
       'value' => '1',
+    ),
+    array (
+      'tablename' => 'comments',
+      'field' => 'status',
+      'operator' => '=',
+      'options' => '',
+      'value' => '0',
     ),
   );
   $view->exposed_filter = array (

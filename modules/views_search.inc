@@ -1,5 +1,5 @@
 <?php
-// $Id: views_search.inc,v 1.2.2.2 2006-11-14 17:44:30 merlinofchaos Exp $
+// $Id: views_search.inc,v 1.2.2.3 2006-12-03 18:09:38 merlinofchaos Exp $
 
 function search_views_tables() {
   $tables['temp_search_results'] = array(
