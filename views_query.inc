@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.58 2006-11-30 19:05:26 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.59 2006-12-03 17:28:17 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -101,7 +101,7 @@ function _views_view_build_filters(&$query, &$view) {
         }
 
         if ($expose['optional']) {
-          if (!isset($_GET["filter$count"]) && !$expose['is_default']) {
+          if ((!isset($_GET["filter$count"]) || $_GET["filter$count"] == '') && !$expose['is_default']) {
             continue 2; // skip
           }
           if ($_GET["filter$count"] == '**ALL**' ||
@@ -110,7 +110,7 @@ function _views_view_build_filters(&$query, &$view) {
             continue 2; // skip this filter entirely.
           }
         }
-        if (isset($_GET["filter$count"])) {
+        if (isset($_GET["filter$count"]) && $_GET["filter$count"] != '') {
           $value = $_GET["filter$count"];
           if ($filterinfo['value-type'] == 'array' && !is_array($value)) {
             $value = array($value);
