@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.37 2006-11-30 19:44:07 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.38 2006-12-03 17:44:51 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -118,6 +118,10 @@ function node_views_tables() {
       'title' => array(
         'name' => t('Node: Title'),
         'help' => t('Sort by the node title, alphabetically'),
+      ),
+      'type' => array(
+        'name' => t('Node: Type'),
+        'help' => t('Sort by the node type, alphabetically'),
       ),
       'random' => array(
         'name' => t('Random'),
