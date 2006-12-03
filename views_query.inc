@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.48.2.9 2006-12-03 17:06:55 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.48.2.10 2006-12-03 17:26:21 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -105,7 +105,7 @@ function _views_view_build_filters(&$query, &$view) {
 
         if ($expose['optional']) {
           // Test to see if the filter is not given
-          if (!isset($_GET["filter$count"] && !$_GET["filter$count"] == '') && !$expose['is_default']) {
+          if ((!isset($_GET["filter$count"]) || $_GET["filter$count"] == '') && !$expose['is_default']) {
             continue 2; // skip
           }
           if ($_GET["filter$count"] == '**ALL**' ||
@@ -116,7 +116,7 @@ function _views_view_build_filters(&$query, &$view) {
         }
         // note that if we get here and the filter wasn't set, it's because we
         // are supposed to leave the default.
-        if (isset($_GET["filter$count"] && $_GET["filter$count"] != '')) {
+        if (isset($_GET["filter$count"]) && $_GET["filter$count"] != '') {
           $value = $_GET["filter$count"];
           if ($filterinfo['value-type'] == 'array' && !is_array($value)) {
             $value = array($value);
