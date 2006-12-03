@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.8 2006-11-30 20:58:31 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.9 2006-12-03 18:04:52 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -283,6 +283,13 @@ function comment_views_default_views() {
       'operator' => '>',
       'options' => '',
       'value' => '1',
+    ),
+    array (
+      'tablename' => 'comments',
+      'field' => 'status',
+      'operator' => '=',
+      'options' => '',
+      'value' => '0',
     ),
   );
   $view->exposed_filter = array (
