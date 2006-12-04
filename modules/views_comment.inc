@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.4.2.5 2006-12-03 18:03:47 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.4.2.6 2006-12-04 17:21:30 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -215,7 +215,7 @@ function views_handler_comments_with_new($fieldinfo, $fielddata, $value, $data) 
   $comments = intval($value);
   if ($comments && $new = comment_num_new($data->nid)) {
     $comments .= '<br />';
-    $comments .= l(t('%num new', array('%num' => $new)), "node/$data->nid", NULL, comment_page_new_query($data->nid), 'new');
+    $comments .= l(t('%num new', array('%num' => $new)), "node/$data->nid", NULL, NULL, 'new');
   }
   return $comments;
 }
