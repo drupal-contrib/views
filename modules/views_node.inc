@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.39 2006-12-07 05:58:55 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.40 2006-12-07 06:51:48 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -719,6 +719,7 @@ function views_handler_filter_nodetype($op) {
  */
 function views_handler_filter_distinct($op, $filter, $filterinfo, &$query) {
   $query->set_distinct();
+  $query->add_groupby('node.nid');
 }
 
 /*

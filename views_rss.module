@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.15 2006-12-07 05:58:55 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.16 2006-12-07 06:51:48 merlinofchaos Exp $
 
 /**
  * Provide views plugins for the feed types we support.
@@ -82,7 +82,7 @@ function views_rss_views_feed_argument($op, &$view, $arg) {
       $filters = drupal_query_string_encode($view->used_filters);
     }
 
-    drupal_add_feed($url, $filters);
+    drupal_add_feed(url($url, $filters), $title);
   }
 }
 
