@@ -1,6 +1,6 @@
-; $Id: views_theme_wizard.info,v 1.4 2006-12-03 17:28:17 merlinofchaos Exp $
+; $Id: views_theme_wizard.info,v 1.5 2006-12-07 05:58:55 merlinofchaos Exp $
 name = Views Theme Wizard
 description = The views theme wizard helps create stub theming for views.
-version = $Name:  $
+version = "$Name:  $"
 package = Views
 dependencies = views

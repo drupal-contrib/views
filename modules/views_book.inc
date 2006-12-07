@@ -1,5 +1,5 @@
 <?php
-// $Id: views_book.inc,v 1.7 2006-12-03 17:55:26 merlinofchaos Exp $
+// $Id: views_book.inc,v 1.8 2006-12-07 05:58:55 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of book.module
@@ -12,10 +12,10 @@ function book_views_tables() {
     'join' => array(
       'left' => array(
         'table' => 'node',
-        'field' => 'nid'
+        'field' => 'vid'
       ),
       'right' => array(
-        'field' => 'nid'
+        'field' => 'vid'
       )
     ),
     "filters" => array(
