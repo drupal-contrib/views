@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.24.2.12 2006-12-07 05:58:28 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.24.2.13 2006-12-08 17:25:01 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -660,7 +660,7 @@ function views_handler_arg_nid($op, &$query, $argtype, $arg = '') {
       while ($node = db_fetch_object($result)) {
         $title .= ($title ? ($type == 'or' ? ' + ' : ', ') : '') . check_plain($node->title);
       }
-
+      return $title;
   }
 }
 
@@ -719,6 +719,7 @@ function views_handler_filter_nodetype($op) {
  */
 function views_handler_filter_distinct($op, $filter, $filterinfo, &$query) {
   $query->set_distinct();
+  $query->add_groupby('node.nid');
 }
 
 /*
