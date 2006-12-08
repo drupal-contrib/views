@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.40 2006-12-07 06:51:48 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.41 2006-12-08 17:39:18 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -660,7 +660,7 @@ function views_handler_arg_nid($op, &$query, $argtype, $arg = '') {
       while ($node = db_fetch_object($result)) {
         $title .= ($title ? ($type == 'or' ? ' + ' : ', ') : '') . check_plain($node->title);
       }
-
+      return $title;
   }
 }
 
