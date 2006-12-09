@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.7.2.4 2006-11-06 20:19:12 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.7.2.5 2006-12-09 01:13:18 merlinofchaos Exp $
 
 function views_rss_help($section = 'admin/help#views_rss') {
   $output = '';
@@ -183,5 +183,6 @@ function theme_views_rss_feed($view, $nodes, $type) {
 
   drupal_set_header('Content-Type: text/xml; charset=utf-8');
   print $output;
+  module_invoke_all('exit');
   exit; 
 }
