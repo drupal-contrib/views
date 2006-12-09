@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.24 2006-12-09 01:31:01 merlinofchaos Exp $
+  // $Id: views.install,v 1.25 2006-12-09 01:47:45 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -229,6 +229,7 @@
   } // End case
 
   if ($success) {
+    module_enable(array('views_ui'));
     drupal_set_message(t('Views module installed tables successfully.'));
   }
   else {
