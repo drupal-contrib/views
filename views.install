@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.23 2006-11-14 05:56:38 merlinofchaos Exp $
+  // $Id: views.install,v 1.24 2006-12-09 01:31:01 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -54,7 +54,7 @@
         view_args_php longtext,
         PRIMARY KEY (vid),
         KEY (name)
-      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      ) /*!40100 DEFAULT CHARACTER SET utf8 */");
 
       db_query("CREATE TABLE if not exists {view_sort} (
         vid int(10) unsigned NOT NULL default '0',
@@ -64,7 +64,7 @@
         options varchar(255),
         tablename varchar(255),
         KEY (vid)
-      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      ) /*!40100 DEFAULT CHARACTER SET utf8 */");
 
       db_query("CREATE TABLE if not exists {view_argument} (
         vid int(10) unsigned NOT NULL default '0',
@@ -76,7 +76,7 @@
         wildcard varchar(32),
         wildcard_substitution varchar(32),
         KEY (vid)
-      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      ) /*!40100 DEFAULT CHARACTER SET utf8 */");
 
       db_query("CREATE TABLE if not exists {view_tablefield} (
         vid int(10) unsigned NOT NULL default '0',
@@ -89,7 +89,7 @@
         options varchar(255),
         position int(2),
         KEY (vid)
-      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      ) /*!40100 DEFAULT CHARACTER SET utf8 */");
 
       db_query("CREATE TABLE if not exists {view_filter} (
         vid int(10) unsigned NOT NULL default '0',
@@ -100,7 +100,7 @@
         options varchar(255),
         position int(2),
         KEY (vid)
-      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      ) /*!40100 DEFAULT CHARACTER SET utf8 */");
 
       db_query("CREATE TABLE if not exists {view_exposed_filter} (
         vid int(10) unsigned NOT NULL default '0',
@@ -112,7 +112,7 @@
         single int(1),
         position int(2),
         KEY (vid)
-      ) TYPE=MyISAM /*!40100 DEFAULT CHARACTER SET utf8 */;");
+      ) /*!40100 DEFAULT CHARACTER SET utf8 */");
 
       $success = TRUE;
       break;
