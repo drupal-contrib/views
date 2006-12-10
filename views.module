@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.23 2006-12-09 02:28:39 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.24 2006-12-10 06:41:22 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1803,9 +1803,9 @@ function views_handler_sort_date($op, &$query, $sortinfo, $sort) {
      $alias = $field;
   }
 
-  $query->add_field($field, $table, $as);
-  $query->orderby[] = "$alias $sort[sortorder]";
-//  $query->add_orderby($table, $field, $sort['sortorder']);
+//  $query->add_field($field, $table, $as);
+//  $query->orderby[] = "$alias $sort[sortorder]";
+  $query->add_orderby($table, $field, $sort['sortorder'], $as);
 }
 
 function views_handler_sort_date_minute($op, &$query, $sortinfo, $sort) {
