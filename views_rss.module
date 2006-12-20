@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.17 2006-12-09 01:13:13 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.18 2006-12-20 05:52:17 merlinofchaos Exp $
 
 /**
  * Provide views plugins for the feed types we support.
@@ -126,6 +126,15 @@ function theme_views_rss_feed($view, $nodes, $type) {
       node_invoke_nodeapi($item, 'view', $teaser, FALSE);
     }
 
+    // Allow modules to add additional item fields
+    $extra = node_invoke_nodeapi($item, 'rss item');
+    $extra = array_merge($extra, array(array('key' => 'pubDate', 'value' =>  date('r', $item->created)), array('key' => 'dc:creator', 'value' => $item->name), array('key' => 'guid', 'value' => $item->nid . ' at ' . $base_url, 'attributes' => array('isPermaLink' => 'false'))));
+    foreach ($extra as $element) {
+      if ($element['namespace']) {
+        $namespaces = array_merge($namespaces, $element['namespace']);
+      }
+    }
+    
     // Prepare the item description
     switch ($item_length) {
       case 'fulltext':
@@ -142,14 +151,6 @@ function theme_views_rss_feed($view, $nodes, $type) {
         break;
     }
 
-    // Allow modules to add additional item fields
-    $extra = node_invoke_nodeapi($item, 'rss item');
-    $extra = array_merge($extra, array(array('key' => 'pubDate', 'value' =>  date('r', $item->created)), array('key' => 'dc:creator', 'value' => $item->name), array('key' => 'guid', 'value' => $item->nid . ' at ' . $base_url, 'attributes' => array('isPermaLink' => 'false'))));
-    foreach ($extra as $element) {
-      if ($element['namespace']) {
-        $namespaces = array_merge($namespaces, $element['namespace']);
-      }
-    }
     $items .= format_rss_item($item->title, $link, $item_text, $extra);
   }
 
