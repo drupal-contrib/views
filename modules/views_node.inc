@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.24.2.14 2006-12-10 06:41:22 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.24.2.15 2006-12-20 06:29:57 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -823,7 +823,7 @@ function views_post_view_make_args($view, $feed_id, $arg) {
         $args[] = $arg;
       }
       else if ($argdata['argdefault'] != 1) {
-        $args[] = '*';
+        $args[] = $argdata['wildcard'] ? check_plain($argdata['wildcard']) : '*';
       }
     }
   }
