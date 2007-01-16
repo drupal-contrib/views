@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.26 2007-01-16 05:04:41 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.27 2007-01-16 06:07:28 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -1381,8 +1381,7 @@ function _views_construct_header($view, $fields) {
     }
 
     // Add CSS id to table cell header cell.
-    $header['id'] = views_css_safe('view-field-'. $field['queryname']);
-    $header['class'] = "view-cell-header";
+    $header['class'] = "view-cell-header" . views_css_safe(' view-field-'. $field['queryname']);
 
     $headers[] = $header;
   }
