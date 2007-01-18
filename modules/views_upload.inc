@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_upload.inc,v 1.5 2006-11-15 01:44:30 merlinofchaos Exp $
+// $Id: views_upload.inc,v 1.6 2007-01-18 05:40:19 merlinofchaos Exp $
 /**
  * This include file implements views functionality for the file.inc and
  * upload module
@@ -157,6 +157,7 @@ function views_handler_file_filename_download($fieldinfo, $fielddata, $value, $d
 function views_handler_file_filter_fid_exist($op, $filter, $filterdata, &$query) {
   switch ($op) {
     case 'handler':
+      $query->ensure_table('file_revisions');
       if ($filter['value']) {
         $query->add_where('file_revisions.fid');
       }
