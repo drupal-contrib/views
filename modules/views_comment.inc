@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.11 2006-12-20 05:41:27 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.12 2007-01-18 05:49:28 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -209,6 +209,7 @@ function views_query_handler_field_last_comment_name($field, $fieldinfo, &$query
 }
 
 function views_handler_field_last_comment_name($fieldinfo, $fielddata, $value, $data) {
+  $obj = new stdClass();
   $obj->name = $value;
   $uidfield = $fielddata['tablename'] . "_"  . $fieldinfo['uid'];
   $obj->uid = $data->$uidfield;
@@ -259,6 +260,7 @@ function views_handler_field_commentlink_with_mark($fieldinfo, $fielddata, $valu
  * Format a field as a comment
  */
 function views_handler_field_comment($fieldinfo, $fielddata, $value, $data) {
+  $obj = new stdClass();
   $obj->comment = check_markup($data->comments_comment, $data->comments_format, FALSE);
   comment_invoke_comment($obj, 'view'); 
   return $obj->comment;

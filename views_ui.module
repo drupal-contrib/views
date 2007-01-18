@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.54 2006-12-20 06:19:51 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.55 2007-01-18 05:49:28 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -335,7 +335,7 @@ function views_ui_admin_import_submit($formid, $form) {
   ob_end_clean();
 
   $tables = array_keys(_views_get_tables());
-  if ($view) {
+  if (isset($view)) {
     if (!is_array($view->requires) || !array_diff($view->requires, $tables)) {
       views_sanitize_view($view);
       drupal_set_title(t('Add a View'));
