@@ -1,5 +1,5 @@
 <?php
-// $Id: views_book.inc,v 1.6.4.2 2006-12-27 18:04:28 merlinofchaos Exp $
+// $Id: views_book.inc,v 1.6.4.3 2007-01-19 00:22:46 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of book.module

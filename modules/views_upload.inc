@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_upload.inc,v 1.4.4.3 2006-12-27 18:04:28 merlinofchaos Exp $
+// $Id: views_upload.inc,v 1.4.4.4 2007-01-19 00:22:46 merlinofchaos Exp $
 /**
  * This include file implements views functionality for the file.inc and
  * upload module
@@ -37,14 +37,14 @@ function upload_views_tables() {
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
         'handler' => 'views_handler_file_filter_fid_exist',
-        'help' => t('Filter weather the node has files for download'),
+        'help' => t('Filter whether the node has files for download'),
       ),
       'list' => array(
         'name' => t('File: Listed in file downloads'),
         'operator' => array('=' => t('Equals')),
         'list' => 'views_handler_operator_yesno',
         'list-type' => 'select',
-        'help' => t('Filter weather the file is listed in downloads'),
+        'help' => t('Filter whether the file is listed in downloads'),
       ),
     ),
   );
@@ -157,6 +157,7 @@ function views_handler_file_filename_download($fieldinfo, $fielddata, $value, $d
 function views_handler_file_filter_fid_exist($op, $filter, $filterdata, &$query) {
   switch ($op) {
     case 'handler':
+      $query->ensure_table('file_revisions');
       if ($filter['value']) {
         $query->add_where('file_revisions.fid');
       }

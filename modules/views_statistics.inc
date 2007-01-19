@@ -1,5 +1,5 @@
 <?php
-// $Id: views_statistics.inc,v 1.9.2.3 2006-12-27 18:04:28 merlinofchaos Exp $
+// $Id: views_statistics.inc,v 1.9.2.4 2007-01-19 00:22:46 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of statistics.module
@@ -64,6 +64,7 @@ function statistics_views_arguments() {
 function statistics_views_default_views() {
   $view = new stdClass();
   $view->name = 'popular_recent';
+  $view->disabled = TRUE;
   $view->description = t('Nodes sorted by recent page-views');
   $view->access = array (
 );
@@ -152,6 +153,7 @@ function statistics_views_default_views() {
 
   $view = new stdClass();
   $view->name = 'popular_alltime';
+  $view->disabled = TRUE;
   $view->description = t('Nodes sorted by total page-views');
   $view->access = array (
 );
