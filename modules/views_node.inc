@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.30.2.5 2007-01-21 20:57:48 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.30.2.6 2007-01-21 23:17:39 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -720,8 +720,10 @@ function views_handler_filter_nodetype($op) {
  * Set a query to be distinct as a filter handler
  */
 function views_handler_filter_distinct($op, $filter, $filterinfo, &$query) {
-  $query->set_distinct();
-  $query->add_groupby('node.nid');
+  if (!$query->no_distinct) {
+    $query->set_distinct();
+    $query->add_groupby('node.nid');
+  }
 }
 
 /*
