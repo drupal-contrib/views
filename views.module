@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.5 2007-01-21 20:57:48 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.6 2007-01-21 21:03:37 merlinofchaos Exp $
 // $Name:  $
 
 // ---------------------------------------------------------------------------
@@ -618,7 +618,7 @@ function views_get_url($view, $args) {
  * Figure out what the title of a view should be.
  */
 function views_get_title($view, $context = 'menu', $args = NULL) {
-  if ($context == 'menu' && $view->menu_title)
+  if (($context == 'menu' || $context == 'admin' )&& $view->menu_title)
     return $view->menu_title;
 
   if ($context == 'block-info') {
@@ -640,11 +640,11 @@ function views_get_title($view, $context = 'menu', $args = NULL) {
     }
   }
 
-  if (!$title && ($context == 'menu' || $context == 'page')) {
+  if (!$title && ($context == 'menu' || $context == 'page' || $context == 'admin')) {
     $title = $view->page_title;
   }
 
-  if (!$title && $context == 'block') {
+  if (!$title && $context == 'block' || $context == 'admin') {
     $title = $view->block_title;
   }
 

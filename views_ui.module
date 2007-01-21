@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.5 2007-01-21 20:54:41 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.44.2.6 2007-01-21 21:03:37 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -178,7 +178,7 @@ function views_ui_admin_page() {
     }
     $items[] = array(
       $view->name, 
-      views_get_title($view, 'menu'), 
+      views_get_title($view, 'admin'), 
       $view->description, 
       implode(', ', $provides), 
       $url, 
