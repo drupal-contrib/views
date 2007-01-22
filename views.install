@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.26 2007-01-16 06:17:41 merlinofchaos Exp $
+  // $Id: views.install,v 1.27 2007-01-22 02:24:13 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');

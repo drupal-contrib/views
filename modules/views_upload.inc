@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_upload.inc,v 1.7 2007-01-18 05:43:12 merlinofchaos Exp $
+// $Id: views_upload.inc,v 1.8 2007-01-22 02:24:13 merlinofchaos Exp $
 /**
  * This include file implements views functionality for the file.inc and
  * upload module

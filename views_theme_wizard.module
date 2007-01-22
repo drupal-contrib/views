@@ -1,5 +1,5 @@
 <?php
-// $Id: views_theme_wizard.module,v 1.15 2007-01-18 06:28:32 merlinofchaos Exp $
+// $Id: views_theme_wizard.module,v 1.16 2007-01-22 02:24:13 merlinofchaos Exp $
 
 function views_theme_wizard_menu($may_cache) {
   if ($may_cache) {

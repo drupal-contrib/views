@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.19 2007-01-16 06:00:44 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.20 2007-01-22 02:24:13 merlinofchaos Exp $
 
 /**
  * Provide views plugins for the feed types we support.

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.16 2007-01-18 05:49:28 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.17 2007-01-22 02:24:13 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
