@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.24.2.17 2007-01-21 23:17:29 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.24.2.18 2007-03-03 22:26:04 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -691,18 +691,6 @@ function views_handler_filter_isnew($op, $filter, $filterinfo, &$query) {
   // Unless it's very very old content. Everything in the query is already
   // type safe cause none of it is coming from outside here.
   $query->add_where("(history.timestamp IS NULL AND (node.changed > (***CURRENT_TIME***-$limit) $clause)) OR history.timestamp < node.changed $clause2");
-}
-
-/*
- * Create a list of roles.
- */
-function views_handler_filter_role() {
-  $rids = array();
-  $result = db_query("SELECT r.rid, r.name FROM {role} r ORDER BY r.name");
-  while ($obj = db_fetch_object($result)) {
-    $rids[$obj->rid] = $obj->name;
-  }
-  return $rids;
 }
 
 /*
