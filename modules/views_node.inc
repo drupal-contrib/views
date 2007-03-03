@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.24.2.18 2007-03-03 22:26:04 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.24.2.19 2007-03-03 22:35:00 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -37,14 +37,16 @@ function node_views_tables() {
         'sortable' => true,
         'handler' => views_handler_field_dates(),
         'option' => 'string',
-        'help' => t('Display the post time of the node.'),
+        'help' => t('Display the post time of the node.').' '.
+                  t('The option field may be used to specify the custom date format as it\'s required by the date() function or if "as time ago" has been chosen to customize the granularity of the time interval.'),
       ),
       'changed' => array(
         'name' => t('Node: Updated Time'),
         'sortable' => true,
         'handler' => views_handler_field_dates(),
         'option' => 'string',
-        'help' => t('Display the last time the node was updated.'),
+        'help' => t('Display the last time the node was updated.').' '.
+                  t('The option field may be used to specify the custom date format as it\'s required by the date() function or if "as time ago" has been chosen to customize the granularity of the time interval.'),
       ),
       'type' => array(
         'name' => t('Node: Type'),
