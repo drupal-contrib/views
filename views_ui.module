@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.8 2007-03-03 22:00:04 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.44.2.9 2007-03-03 22:44:18 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1070,6 +1070,8 @@ function views_edit_view($view, $op = '') {
     '#value' => t('Cancel'),
   );
 
+  // Add the css file for form display.
+  drupal_add_css(drupal_get_path('module', 'views_ui') . '/views_ui.css');
   return $form;
 }
 
