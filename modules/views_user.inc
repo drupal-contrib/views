@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.14.2.4 2007-01-19 00:22:46 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.14.2.5 2007-03-03 22:02:39 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -10,6 +10,7 @@ function user_views_tables() {
     'name' => 'users',
     'provider' => 'internal', // won't show up in external list.
     'join' => array(
+      'type' => 'inner',
       'left' => array(
         'table' => 'node',
         'field' => 'uid'
