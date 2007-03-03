@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.5 2007-01-19 00:22:45 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2.2.6 2007-03-03 22:19:31 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -34,6 +34,12 @@ function _views_get_arguments($titles = false) {
     }
     else {
       $arguments = module_invoke_all('views_arguments');
+      // allow modules to alter the definitions supplied others
+      foreach (module_implements('views_arguments_alter') as $module) {
+        $function = $module . '_views_arguments_alter';
+        $function($arguments);
+      }
+
       uasort($arguments, '_views_sort_arrays');
       foreach ($arguments as $name => $arg) {
         if ($arg['option'] && !is_array($arg['option'])) {
@@ -72,6 +78,11 @@ function _views_get_tables($full = false) {
     else {
       $table_data = module_invoke_all('views_tables');
       $views_tables['tables'] = $table_data;
+      // allow modules to alter the definitions supplied others
+      foreach (module_implements('views_tables_alter') as $module) {
+        $function = $module . '_views_tables_alter';
+        $function($table_data);
+      }
 
       foreach ($table_data as $name => $table) {
         if (is_array($table['filters'])) {
