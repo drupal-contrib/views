@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.6 2007-01-21 21:03:37 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.7 2007-03-03 23:38:01 merlinofchaos Exp $
 // $Name:  $
 
 // ---------------------------------------------------------------------------
@@ -216,7 +216,8 @@ function views_block($op = 'list', $delta = 0) {
     foreach ($default_views as $name => $view) {
       if (!isset($block[$name]) && $view->block &&
         ($views_status[$name] == 'enabled' || (!$view->disabled && $views_status[$name] != 'disabled'))) {
-        $block[$name]['info'] = filter_xss_admin(views_get_title($view, 'block'));
+        $title = filter_xss_admin(views_get_title($view, 'block'));
+        $block[$name]['info'] = empty($title) ? $name : $title;
       }
     }
     return $block;
