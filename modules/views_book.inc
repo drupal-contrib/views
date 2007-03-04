@@ -1,5 +1,5 @@
 <?php
-// $Id: views_book.inc,v 1.6.2.2 2006-12-07 05:58:28 merlinofchaos Exp $
+// $Id: views_book.inc,v 1.6.2.3 2007-03-04 06:30:28 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of book.module
@@ -128,7 +128,7 @@ function views_handler_field_book_parent_title_nl($fieldinfo, $fielddata, $value
 
 function views_handler_filter_book_parent_zero() {
   $parents = array();
-  $result = db_query("SELECT DISTINCT parent FROM {book} INNER JOIN {node} n ON book.vid = n.vid ORDER BY parent");
+  $result = db_query("SELECT DISTINCT parent FROM {book} b INNER JOIN {node} n ON b.vid = n.vid ORDER BY parent");
   while ($obj = db_fetch_object($result)) {
     $parents[$obj->parent] = "$obj->parent";
   }
