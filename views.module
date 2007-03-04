@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.10 2007-03-04 00:39:58 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.11 2007-03-04 01:02:58 merlinofchaos Exp $
 // $Name:  $
 
 // ---------------------------------------------------------------------------
@@ -1778,6 +1778,22 @@ function views_handler_filter_timestamp($op, $filter, $filterinfo, &$query) {
   }
   $query->ensure_table($table);
   $query->add_where("%s %s %s + %d", $field, $filter['operator'], $value, $filter['options']);
+}
+
+/**
+ * Provide validation for filters with array values. The $name
+ * must be provided by whatever added the validator to the
+ * form gadget.
+ */
+function views_filter_validate_array($form, $name) {
+  $op = $_POST['op'];
+
+  if ($op != t('Save') && $op != t('Save and edit')) {
+    return; // only validate on saving!
+  }
+  if (empty($form['#value'])) {
+    form_error($form, t('@filter must have a value!', array('@filter' => $name)));
+  }
 }
 
 /**
