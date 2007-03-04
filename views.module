@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.37 2007-03-04 01:02:55 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.38 2007-03-04 01:13:17 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -2043,7 +2043,10 @@ function views_handler_field_filesize($fieldinfo, $fielddata, $value, $data) {
  * Handle a timestamp filter.
  */
 function views_handler_filter_timestamp($op, $filter, $filterinfo, &$query) {
-  $value = $filter['value'] == 'now' ? "***CURRENT_TIME***" : strtotime($filter['value']);
+  $value = 0;
+  if ($filter['value']) {
+    $value = $filter['value'] == 'now' ? "***CURRENT_TIME***" : strtotime($filter['value']);
+  }
 
   $table = $filterinfo['table'];
   $column = $filterinfo['field'];
