@@ -1,5 +1,5 @@
 <?php
-// $Id: views_statistics.inc,v 1.7.2.3 2007-01-16 06:11:33 merlinofchaos Exp $
+// $Id: views_statistics.inc,v 1.7.2.4 2007-03-04 06:33:48 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of statistics.module
@@ -108,33 +108,33 @@ function statistics_views_default_views() {
     array (
       'tablename' => 'node',
       'field' => 'type',
-      'label' => 'type',
+      'label' => t('type'),
       'sortable' => '1',
     ),
     array (
       'tablename' => 'node',
       'field' => 'title',
-      'label' => 'title',
+      'label' => t('title'),
       'handler' => 'views_handler_field_nodelink',
       'sortable' => '1',
     ),
     array (
       'tablename' => 'users',
       'field' => 'name',
-      'label' => 'author',
+      'label' => t('author'),
       'sortable' => '1',
     ),
     array (
       'tablename' => 'node',
       'field' => 'created',
-      'label' => 'created',
+      'label' => t('created'),
       'handler' => 'views_handler_field_date_small',
       'sortable' => '1',
     ),
     array (
       'tablename' => 'node_counter',
       'field' => 'daycount',
-      'label' => 'recent hits',
+      'label' => t('recent hits'),
       'sortable' => '1',
       'defaultsort' => 'DESC',
     ),

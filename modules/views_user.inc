@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.11.2.5 2007-03-03 22:31:25 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.11.2.6 2007-03-04 06:33:48 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -143,7 +143,7 @@ function user_views_default_views() {
   $view->nodes_per_page = '25';
 
   $view->menu = true;
-  $view->menu_title = 'recent posts';
+  $view->menu_title = t('recent posts');
   $view->block = false;
   $view->field = array (
     array (
