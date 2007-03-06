@@ -1,5 +1,5 @@
 <?php
-// $Id: views_statistics.inc,v 1.9.2.5 2007-02-03 18:29:37 merlinofchaos Exp $
+// $Id: views_statistics.inc,v 1.9.2.6 2007-03-06 21:23:27 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of statistics.module
@@ -243,7 +243,7 @@ function statistics_views_default_views() {
   return $views;
 }
 
-function theme_views_view_popular_recent($view, $type, $nodes) {
+function theme_views_view_list_popular_recent($view, $nodes, $type) {
   if ($type == 'block') {
     $fields = _views_get_fields();
 
@@ -259,17 +259,16 @@ function theme_views_view_popular_recent($view, $type, $nodes) {
       $items[] = $item;
     }
 
-    $output = theme('item_list', $items);
-    if ($view->block_more && count($nodes) >= $view->nodes_per_block) 
-      $output .= theme('views_more', $view->real_url);
-    return "<div class='view' id='view-$view->name'>$output</div>\n";
+    if ($items) {
+      return theme('item_list', $items);
+    }
   }
   else {
-     return theme('views_view', $view, $type, $nodes);
+    return theme('views_view_list', $view, $nodes, $type);
   }
 }
 
-function theme_views_view_popular_alltime($view, $type, $nodes) {
+function theme_views_view_list_popular_alltime($view, $nodes, $type) {
   if ($type == 'block') {
     $fields = _views_get_fields();
 
@@ -285,10 +284,11 @@ function theme_views_view_popular_alltime($view, $type, $nodes) {
       $items[] = $item;
     }
 
-    $output = theme('item_list', $items);
-    return "<div class='view' id='view-$view->name'>$output</div>\n";
+    if ($items) {
+      return theme('item_list', $items);
+    }
   }
   else {
-     return theme('views_view', $view, $type, $nodes);
+     return theme('views_view', $view, $nodes, $type);
   }
 }
