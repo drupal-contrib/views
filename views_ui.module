@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.14 2007-03-06 22:56:28 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.44.2.15 2007-03-06 23:30:57 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1638,6 +1638,10 @@ function views_ui_render_section(&$form, $items, $header, $section, &$collapsed)
   foreach ($order as $key => $i) {
     $row = array();
     foreach ($items as $item) {
+      // Hide the delete button on exposed filters.
+      if ($item == 'delete' && $section == 'filters' && empty($form[$i]['expose'])) {
+        $form[$i][$item]['#printed'] = true;
+      }
       if (($key == 0 && ($item == 'up' || $item == 'top')) ||
           ($key == $count && ($item == 'down' || $item == 'bottom'))) {
         $form[$i][$item]['#printed'] = true;
