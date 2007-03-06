@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.9 2007-03-04 01:02:58 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2.2.10 2007-03-06 23:10:58 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -98,7 +98,7 @@ function _views_get_tables($full = false) {
               }
             }
             if ($data['list']) {
-              $data['value'] = array('#type' => 'select', '#options' => $data['list'], '#validate' => array('views_filter_validate_array' => $data['name']));
+              $data['value'] = array('#type' => 'select', '#options' => $data['list'], '#validate' => array('views_filter_validate_array' => array($data['name'])));
               if ($data['list-type'] != 'select') {
                 $data['value']['#multiple'] = TRUE;
               }
