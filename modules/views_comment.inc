@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.4.2.10 2007-01-21 20:57:57 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.4.2.11 2007-03-06 22:39:18 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -328,7 +328,7 @@ function comment_views_default_views() {
     array (
       'tablename' => 'node_comment_statistics',
       'field' => 'comment_count',
-      'operator' => '>',
+      'operator' => '>=',
       'options' => '',
       'value' => '1',
     ),
