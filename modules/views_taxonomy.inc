@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.20.2.13 2007-03-06 20:07:11 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.20.2.14 2007-03-06 21:44:26 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -373,7 +373,7 @@ function views_handler_arg_vocid($op, &$query, $argtype, $arg = '') {
     case 'title':
       $result = db_query("SELECT name FROM {vocabulary} WHERE vid = %d", $query);
       $voc = db_fetch_object($result);
-      return check_plain($voc->name);
+      return $voc->name? check_plain($voc->name) : t('Uncatgorized');
   }
 }
 
