@@ -1,5 +1,5 @@
 <?php
-// $Id: views_rss.module,v 1.12.2.4 2007-03-03 23:34:59 merlinofchaos Exp $
+// $Id: views_rss.module,v 1.12.2.5 2007-03-06 21:44:32 merlinofchaos Exp $
 
 /**
  * Provide views plugins for the feed types we support.
@@ -94,7 +94,7 @@ function views_rss_views_feed_argument($op, &$view, $arg, $argdata = NULL) {
     }
     $view->feed_url = views_get_url($view, $view_args);
   }
-  else if ($op == 'post_view') {
+  else if ($op == 'post_view' && $view->build_type != 'block') {
     $args = views_post_view_make_args($view, $arg, 'feed');
     $url = views_get_url($view, $args);
     $title = views_get_title($view, 'page', $args);
