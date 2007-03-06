@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.20.2.12 2007-03-03 22:49:32 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.20.2.13 2007-03-06 20:07:11 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -264,16 +264,6 @@ function views_taxonomy_process_form($element) {
     $element['#value'] = implode(',', $element['#value']);
   }
   return $element;
-}
-
-
-/**
- * invalidate the views cache when taxonomy vocabulary changes.
- */
-function views_taxonomy($op, $type, $object = NULL) {
-  if ($type == 'vocabulary' && $op == 'delete' || $op == 'insert' || $op == 'update') {
-    views_invalidate_cache();
-  }
 }
 
 /**
