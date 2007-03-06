@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.13 2007-03-06 22:33:50 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.44.2.14 2007-03-06 22:56:28 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -220,7 +220,7 @@ function views_ui_admin_page() {
 
     $items[] = array(
       $view->name, 
-      views_get_title($view, 'admin'), 
+      filter_xss_admin(views_get_title($view, 'admin')), 
       $view->description, 
       implode(', ', $provides), 
       $url, 
@@ -293,7 +293,15 @@ function views_ui_admin_page() {
       $links[] = array('title' => t('Enable'), 'href' => "admin/build/views/enable/$view->name");
     }
 
-    $items[] = array($view->name, views_get_title($view, 'menu'), $view->description, implode(', ', $provides), $url, $status, theme('links', $links));
+    $items[] = array(
+      $view->name, 
+      filter_xss_admin(views_get_title($view, 'menu')),
+      $view->description, 
+      implode(', ', $provides), 
+      $url, 
+      $status, 
+      theme('links', $links)
+    );
   }
 
   if ($items) {
