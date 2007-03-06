@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.42 2007-03-06 22:56:34 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.43 2007-03-06 23:06:57 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -103,7 +103,7 @@ function _views_get_tables($full = false) {
               }
             }
             if ($data['list']) {
-              $data['value'] = array('#type' => 'select', '#options' => $data['list'], '#validate' => array('views_filter_validate_array' => $data['name']));
+              $data['value'] = array('#type' => 'select', '#options' => $data['list'], '#validate' => array('views_filter_validate_array' => array($data['name'])));
               if ($data['list-type'] != 'select') {
                 $data['value']['#multiple'] = TRUE;
               }
