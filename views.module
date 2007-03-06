@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.13 2007-03-04 06:10:55 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.14 2007-03-06 17:10:57 merlinofchaos Exp $
 // $Name:  $
 
 // ---------------------------------------------------------------------------
@@ -100,7 +100,7 @@ function views_menu_inline_items(&$items) {
     else {
       // Do substitution on args.
       $use_view = $use_menu = FALSE;
-      $view_args = $menu_path = array();
+      $menu_args = $view_args = $menu_path = array();
 
       foreach (explode('/', $url) as $num => $element) {
         if ($element{0} == '$') {
