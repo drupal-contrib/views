@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.51.2.6 2007-03-03 22:56:37 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.51.2.7 2007-03-17 16:21:02 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -311,7 +311,7 @@ class _views_query {
     }
 
     // We check for this specifically because we don't want to add it aliased.
-    if ($table == $query->primary_table && $field == $view->primary_field) {
+    if ($table == $this->primary_table && $field == $this->primary_field) {
       return;
     }
 
