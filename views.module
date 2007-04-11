@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.47 2007-03-17 16:35:13 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.48 2007-04-11 20:30:06 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -2103,7 +2103,7 @@ function views_filter_validate_array($form, $name) {
     return; // only validate on saving!
   }
 
-  if (empty($form['#value'])) {
+  if (!isset($form['#value']) || $form['#value'] == array()) {
     form_error($form, t('@filter must have a value!', array('@filter' => $name)));
   }
 }
