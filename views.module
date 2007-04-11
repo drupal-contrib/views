@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.27 2007-04-11 23:56:07 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.28 2007-04-11 23:58:27 merlinofchaos Exp $
 // $Name:  $
 
 // ---------------------------------------------------------------------------
@@ -814,6 +814,8 @@ function _views_delete_view($view) {
   db_query("DELETE FROM {view_sort} where vid=%d", $view->vid);
   db_query("DELETE FROM {view_argument} where vid=%d", $view->vid);
   db_query("DELETE FROM {view_tablefield} where vid=%d", $view->vid);
+  db_query("DELETE FROM {view_filter} where vid=%d", $view->vid);
+  db_query("DELETE FROM {view_exposed_filter} where vid=%d", $view->vid);
 
   cache_clear_all('views_query:' . $view->name, 'cache_views');
   cache_clear_all(); // In Drupal 5.0 and later this clears the page cache only.
