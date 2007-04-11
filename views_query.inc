@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.48.2.16 2007-03-17 16:21:21 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.48.2.17 2007-04-11 20:48:12 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -411,6 +411,9 @@ class _views_query {
       }
       $this->add_field($f, $table, $as);
       $this->orderby[] = "$as $order";
+      if ($this->groupby) {
+        $this->add_groupby($as);
+      }
     }
   }
 
