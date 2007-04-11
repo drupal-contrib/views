@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.21.4.7 2007-04-11 22:39:11 merlinofchaos Exp $
+  // $Id: views.install,v 1.21.4.8 2007-04-11 22:41:06 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -257,12 +257,27 @@
 }
 
 function views_uninstall() {
-  db_query("DROP TABLE IF EXISTS {view_view}");
-  db_query("DROP TABLE IF EXISTS {view_sort}");
-  db_query("DROP TABLE IF EXISTS {view_argument}");
-  db_query("DROP TABLE IF EXISTS {view_tablefield}");
-  db_query("DROP TABLE IF EXISTS {view_filter}");
-  db_query("DROP TABLE IF EXISTS {view_exposed_filter}");
+  if (db_table_exists('view_view')) {
+    db_query("DROP TABLE {view_view}");
+  }
+  if (db_table_exists('view_sort')) {
+    db_query("DROP TABLE {view_sort}");
+  }
+  if (db_table_exists('view_argument')) {
+    db_query("DROP TABLE {view_argument}");
+  }
+  if (db_table_exists('view_tablefield')) {
+    db_query("DROP TABLE {view_tablefield}");
+  }
+  if (db_table_exists('view_filter')) {
+    db_query("DROP TABLE {view_filter}");
+  }
+  if (db_table_exists('view_exposed_filter')) {
+    db_query("DROP TABLE {view_exposed_filter}");
+  }
+  if (db_table_exists('cache_views')) {
+    db_query("DROP TABLE {cache_views}");
+  }
 }
 
 /*
