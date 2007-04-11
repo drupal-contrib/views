@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.22 2007-03-17 16:35:08 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.23 2007-04-11 20:29:53 merlinofchaos Exp $
 // $Name:  $
 
 // ---------------------------------------------------------------------------
@@ -1921,7 +1921,7 @@ function views_filter_validate_array($form, $name) {
   if ($op != t('Save') && $op != t('Save and edit')) {
     return; // only validate on saving!
   }
-  if (empty($form['#value'])) {
+  if (!isset($form['#value']) || $form['#value'] == array()) {
     form_error($form, t('@filter must have a value!', array('@filter' => $name)));
   }
 }
