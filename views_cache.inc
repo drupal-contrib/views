@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.12 2007-04-11 22:26:33 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2.2.13 2007-04-11 22:46:00 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -87,7 +87,7 @@ function _views_get_tables($full = false) {
       foreach ($table_data as $name => $table) {
         if (is_array($table['filters'])) {
           foreach ($table['filters'] as $filter => $data) {
-            $data['table'] = $name;
+            $data['table'] = $table['name'] ? $table['name'] : $name;
             // translate for deprecated APIs...
             if ($data['option'] && !is_array($data['option'])) {
               if ($data['option'] == 'string' || $data['option'] == 'integer') {
