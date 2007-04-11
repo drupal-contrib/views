@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.21.4.6 2007-03-04 00:37:16 merlinofchaos Exp $
+  // $Id: views.install,v 1.21.4.7 2007-04-11 22:39:11 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -231,6 +231,16 @@
         position smallint
       )");
       db_query("CREATE INDEX {view_exposed_filter}_vid_idx ON {view_exposed_filter} (vid)");
+
+      db_query("CREATE TABLE {cache_views} (
+        cid varchar(255),
+        data bytea,
+        expire integer,
+        created integer,
+        headers text
+      )");
+      db_query("CREATE INDEX {cache_views}_cid_idx ON {cache_views} (cid)");
+      db_query("CREATE INDEX {cache_views}_expire_idx ON {cache_views} (expire)");
 
       $success = TRUE;
       break;
