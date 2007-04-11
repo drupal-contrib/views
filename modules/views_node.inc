@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.30.2.10 2007-04-11 22:15:18 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.30.2.11 2007-04-11 22:26:33 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -790,7 +790,7 @@ function views_post_view_make_url($view, $feed_id, $arg) {
   // assemble the URL
   $args = array();
   foreach ($view->argument as $id => $argdata) {
-    if (isset($view->args[$id])) {
+    if (!empty($view->args[$id])) {
       $args[] = $view->args[$id];
     } else {
       if ($argdata['id'] == $feed_id) {
@@ -814,7 +814,7 @@ function views_post_view_make_args($view, $feed_id, $arg) {
   // assemble the URL
   $args = array();
   foreach ($view->argument as $id => $argdata) {
-    if (isset($view->args[$id])) {
+    if (!empty($view->args[$id])) {
       $args[] = $view->args[$id];
     } else {
       if ($argdata['id'] == $feed_id) {
