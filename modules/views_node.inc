@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.30.2.9 2007-03-03 23:34:59 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.30.2.10 2007-04-11 22:15:18 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -81,7 +81,10 @@ function node_views_tables() {
       ),
       'edit' => array(
         'name' => t('Node: Edit link'),
-        'handler' => 'views_handler_node_edit',
+        'handler' => array(
+          'views_handler_node_edit_destination'   => t('Return To View'),
+          'views_handler_node_edit' => t('Return to Node')
+        ),
         'notafield' => TRUE,
         'addlfields' => array('type', 'uid'),
         'option' => 'string',
@@ -844,6 +847,19 @@ function views_handler_node_edit($fieldinfo, $fielddata, $value, $data) {
   if (node_access('update', $data)) {
     $link_text = $fielddata['options'] ? $fielddata['options'] : t('Edit');
     return l($link_text, "node/$data->nid/edit");
+  }
+}
+
+/**
+ * display a link to edit a node with a destination return
+ */
+function views_handler_node_edit_destination($fieldinfo, $fielddata, $value, $data) {
+  // try to build a fake node object
+  $data->type = $data->node_type;
+  $data->uid = $data->node_uid;
+  if (node_access('update', $data)) {
+    $link_text = $fielddata['options'] ? $fielddata['options'] : t('Edit');
+    return l($link_text, "node/$data->nid/edit", NULL, drupal_get_destination());
   }
 }
 
