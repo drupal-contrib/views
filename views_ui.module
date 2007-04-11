@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.15 2007-03-06 23:30:57 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.44.2.16 2007-04-11 23:05:32 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -156,7 +156,7 @@ function views_ui_add_menu_items(&$items, $view, $url, $base = TRUE, $args = arr
       // cases
       $items[] = array('path' => $url,
         'title' => t('View'),
-        'callback' => 'views_page',
+        'callback' => 'views_view_page',
         'callback arguments' => array_merge(array($view->name), $args),
         'access' => user_access('administer views'),
         'type' => MENU_CALLBACK);
