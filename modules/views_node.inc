@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.24.2.22 2007-04-11 22:26:28 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.24.2.23 2007-04-12 00:54:19 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -30,6 +30,8 @@ function node_views_tables() {
       'nid' => array(
         'name' => t('Node: ID'),
         'sortable' => true,
+        'notafield' => true,
+        'handler' => 'views_handler_node_nid',
         'help' => t('Display the NID of a node.'),
       ),
       'created' => array(
@@ -875,4 +877,11 @@ function views_handler_node_delete($fieldinfo, $fielddata, $value, $data) {
     $link_text = $fielddata['options'] ? $fielddata['options'] : t('delete');
     return l($link_text, "node/$data->nid/delete");
   }
+}
+
+/**
+ * Display a node's nid, which is a little bit special.
+ */
+function views_handler_node_nid($fieldinfo, $fielddata, $value, $data) {
+  return $data->nid;
 }
