@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.51.2.9 2007-04-11 22:26:33 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.51.2.10 2007-04-12 00:54:34 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -281,6 +281,7 @@ class _views_query {
    */
   function _views_query($primary_table = 'node', $primary_field = 'nid', $alias_prefix = '') {
     $this->primary_table = $primary_table;
+    $this->primary_field = $primary_field;
     $this->joins = array();
     $this->where = array();
     $this->orderby = array();
