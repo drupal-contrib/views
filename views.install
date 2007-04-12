@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.21.4.8 2007-04-11 22:41:06 merlinofchaos Exp $
+  // $Id: views.install,v 1.21.4.9 2007-04-12 15:47:44 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -420,5 +420,11 @@ function views_update_12() {
         INDEX expire (expire)
       ) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
 
+  return $ret;
+}
+
+function views_update_13() {
+  $ret = array();
+  $ret[] = update_sql("DELETE FROM {cache_views}");
   return $ret;
 }
