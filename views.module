@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.30 2007-04-12 00:58:51 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.31 2007-04-13 15:40:27 merlinofchaos Exp $
 // $Name:  $
 
 // ---------------------------------------------------------------------------
@@ -1342,7 +1342,7 @@ function theme_views_view_list($view, $nodes, $type) {
   foreach ($nodes as $node) {
     $item = '';
     foreach ($view->field as $field) {
-      if (isset($fields[$field['id']]['visible']) && $fields[$field['id']]['visible'] !== FALSE) {
+      if (!isset($fields[$field['id']]['visible']) && $fields[$field['id']]['visible'] !== FALSE) {
         if ($field['label']) {
           $item .= "<div class='view-label ". views_css_safe('view-label-'. $field['queryname']) ."'>" . $field['label'] . "</div>";
         }
