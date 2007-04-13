@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.53 2007-04-12 00:37:01 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.54 2007-04-13 15:57:55 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -92,7 +92,7 @@ function _views_get_tables($full = false) {
       foreach ($table_data as $name => $table) {
         if (is_array($table['filters'])) {
           foreach ($table['filters'] as $filter => $data) {
-            $data['table'] = $table['name'] ? $table['name'] : $name;
+            $data['table'] = $name;
             // translate for deprecated APIs...
             if ($data['option'] && !is_array($data['option'])) {
               if ($data['option'] == 'string' || $data['option'] == 'integer') {
