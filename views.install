@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.21.4.11 2007-04-13 23:34:26 merlinofchaos Exp $
+  // $Id: views.install,v 1.21.4.12 2007-04-14 03:35:47 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -432,7 +432,7 @@ function views_update_14() {
  * update.
  */
 function views_make_cache_table(&$ret) {
-  if (!db_table_exists('view_view')) {
+  if (!db_table_exists('cache_views')) {
     $ret[] = update_sql("CREATE TABLE {cache_views} (
         cid varchar(255) NOT NULL default '',
         data longblob,
