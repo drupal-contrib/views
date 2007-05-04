@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.159.2.55 2007-04-13 16:27:08 merlinofchaos Exp $
+// $Id: views.module,v 1.159.2.56 2007-05-04 21:06:11 merlinofchaos Exp $
 
 function views_init() {
   // hook init is called even on cached pages, but we don't want to
@@ -2235,7 +2235,7 @@ function views_t_strings($text) {
 }
 
 /**
- * invalidate the views cache when taxonomy vocabulary changes.
+ * Invalidate the views cache when taxonomy vocabulary changes.
  */
 function views_taxonomy($op, $type, $object = NULL) {
   if ($type == 'vocabulary' && $op == 'delete' || $op == 'insert' || $op == 'update') {
