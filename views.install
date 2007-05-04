@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.21.4.13 2007-05-04 21:43:42 merlinofchaos Exp $
+  // $Id: views.install,v 1.21.4.14 2007-05-04 22:16:23 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -425,6 +425,7 @@ function views_update_12() {
       break;
   }
 
+  views_make_cache_table($ret);
   include_once('./'. drupal_get_path('module', 'views') .'/views.module');
   $result = db_query("SELECT name FROM {view_view} ORDER BY name");
   while ($row = db_fetch_array($result)) {
