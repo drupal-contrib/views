@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.27.2.7 2007-03-06 21:44:32 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.27.2.8 2007-05-04 21:06:24 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -230,14 +230,7 @@ function taxonomy_views_default_views() {
 
 function views_taxonomy_form(&$vocabulary) {
   if ($vocabulary->tags) {
-    if ($vocabulary->help) {
-      $help = $vocabulary->help;
-    }
-    else {
-      $help = t('A comma-separated list of terms describing this content. Example: funny, bungee jumping, "Company, Inc.".');
-    }
     $form = array('#type' => 'textfield',
-      '#description' => $help,
       '#autocomplete_path' => 'taxonomy/autocomplete/'. $vocabulary->vid,
       '#process' => array('views_taxonomy_process_form' => array()),
       '#maxlength' => 255,
@@ -246,6 +239,7 @@ function views_taxonomy_form(&$vocabulary) {
   else { 
     $form = taxonomy_form($vocabulary->vid, 0, $vocabulary->help);
     unset($form['#title']);
+    unset($form['#description']);
     unset($form['#options'][0]);
   }
   return $form;
@@ -264,16 +258,6 @@ function views_taxonomy_process_form($element) {
     $element['#value'] = implode(',', $element['#value']);
   }
   return $element;
-}
-
-
-/**
- * invalidate the views cache when taxonomy vocabulary changes.
- */
-function views_taxonomy($op, $type, $object = NULL) {
-  if ($type == 'vocabulary' && $op == 'delete' || $op == 'insert' || $op == 'update') {
-    views_invalidate_cache();
-  }
 }
 
 /**
@@ -583,4 +567,3 @@ function _views_add_vocabulary($op, $value, $depth, &$query) {
     }
   }
 }
-
