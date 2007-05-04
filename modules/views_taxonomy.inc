@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.27.2.8 2007-05-04 21:06:24 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.27.2.9 2007-05-04 23:12:45 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -241,6 +241,7 @@ function views_taxonomy_form(&$vocabulary) {
     unset($form['#title']);
     unset($form['#description']);
     unset($form['#options'][0]);
+    $form['#multiple'] = TRUE;
   }
   return $form;
 }
