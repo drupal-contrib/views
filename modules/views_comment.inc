@@ -1,5 +1,5 @@
 <?php
-// $Id: views_comment.inc,v 1.4.4.6 2007-03-06 22:39:24 merlinofchaos Exp $
+// $Id: views_comment.inc,v 1.4.4.7 2007-05-04 23:23:52 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of comment.module
@@ -178,6 +178,7 @@ function comment_views_tables() {
 }
 
 function views_query_handler_field_last_changed($field, $fieldinfo, &$query) {
+  $query->ensure_table('node_comment_statistics');
   $query->add_field('GREATEST(node.changed, node_comment_statistics.last_comment_timestamp)', '', $field['tablename'] . '_last_changed');
 }
 
