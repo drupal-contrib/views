@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.39 2007-05-05 02:05:28 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.40 2007-05-05 02:40:18 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -145,7 +145,7 @@ function views_menu_inline_items(&$items) {
 function views_views_tabs($op) {
   switch ($op) {
     case 'names':
-      return array('edit', 'view', 'clone', 'export');
+      return array('edit', 'view', 'clone', 'export', 'add');
       break;
   }
 }
@@ -196,9 +196,7 @@ function views_get_all_urls() {
 
     foreach ($default_views as $name => $view) {
       if ($view->page && !$used[$name] && ($views_status[$name] == 'enabled' || (!$view->disabled && $views_status[$name] != 'disabled'))) {
-        if ($view->url{0} == '$' || strpos($view->url, '/$') !== FALSE) {
           $views[$view->name] = $view->url;
-        }
       }
     }
     cache_set("views_urls", 'cache_views', serialize($views));

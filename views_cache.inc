@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.14 2007-04-13 15:57:55 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2.2.15 2007-05-05 02:40:18 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -237,6 +237,7 @@ function _views_get_default_views() {
       foreach ($views as $i => $view) {
         if (!is_array($view->requires) || !array_diff($view->requires, $tables)) {
           views_sanitize_view($view);
+          $view->is_default = TRUE;
           $views_default_views[$i] = $view;
         }
       }
