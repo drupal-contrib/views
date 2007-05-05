@@ -1,6 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.34 2007-05-05 00:32:37 merlinofchaos Exp $
-// $Name:  $
+// $Id: views.module,v 1.166.2.35 2007-05-05 00:35:28 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
