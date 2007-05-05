@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.18 2007-04-12 01:29:08 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.44.2.19 2007-05-05 00:32:37 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -400,6 +400,7 @@ function views_ui_admin_import() {
  * Handle the submit button on importing a view.
  */
 function views_ui_admin_import_submit($formid, $form) {
+  views_load_cache();
   ob_start();
   eval($form['view']);
   ob_end_clean();
