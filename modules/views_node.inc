@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.30.2.16 2007-05-04 23:40:28 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.30.2.17 2007-05-05 00:54:53 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -95,7 +95,10 @@ function node_views_tables() {
       ),
       'delete' => array(
         'name' => t('Node: Delete link'),
-        'handler' => 'views_handler_node_delete',
+        'handler' => array(
+          'views_handler_node_delete_destination'   => t('Return To View'),
+          'views_handler_node_delete' => t('Return To The Frontpage'),
+        ),
         'notafield' => TRUE,
         'addlfields' => array('type', 'uid'),
         'option' => 'string',
@@ -884,6 +887,19 @@ function views_handler_node_delete($fieldinfo, $fielddata, $value, $data) {
   if (node_access('delete', $data)) {
     $link_text = $fielddata['options'] ? $fielddata['options'] : t('Delete');
     return l($link_text, "node/$data->nid/delete");
+  }
+}
+
+/**
+ * display a link to delete a node with a destination return
+ */
+function views_handler_node_delete_destination($fieldinfo, $fielddata, $value, $data) {
+  // try to build a fake node object
+  $data->type = $data->node_type;
+  $data->uid = $data->node_uid;
+  if (node_access('delete', $data)) {
+    $link_text = $fielddata['options'] ? $fielddata['options'] : t('Delete');
+    return l($link_text, "node/$data->nid/delete", NULL, drupal_get_destination());
   }
 }
 
