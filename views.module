@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.37 2007-05-05 01:13:42 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.38 2007-05-05 01:46:22 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1488,7 +1488,7 @@ function views_set_breadcrumb($view) {
         // For next round.
       }
       $args[] = $arg;
-      if ($where && $where = strpos('$arg', $url)) {
+      if ($where && $where = strpos($url, '$arg')) {
         $url = substr_replace($url, $arg, $where, 4);
       }
       else {
