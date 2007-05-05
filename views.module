@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.38 2007-05-05 01:46:22 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.39 2007-05-05 02:05:28 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -2114,6 +2114,12 @@ function views_get_filter_values($input = NULL) {
  */
 function views_taxonomy($op, $type, $object = NULL) {
   if ($type == 'vocabulary' && $op == 'delete' || $op == 'insert' || $op == 'update') {
+    views_invalidate_cache();
+  }
+}
+
+function views_form_alter($form_id, &$form) {
+  if ($form_id == 'profile_field_form') {
     views_invalidate_cache();
   }
 }
