@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.40 2007-05-05 02:40:18 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.41 2007-06-08 03:58:00 weitzman Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -183,7 +183,8 @@ function views_get_all_urls() {
   if ($cache == 0) {
     $views = array();
     $used = array();
-    $result = db_query("SELECT name, url FROM {view_view} WHERE page = 1");
+    // avoid creating empty path items by requiring an URL to be set
+    $result = db_query("SELECT name, url FROM {view_view} WHERE page = 1 AND LENGTH(url) > 0");
 
     while ($view = db_fetch_object($result)) {
       $used[$view->name] = TRUE;
