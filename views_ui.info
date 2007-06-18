@@ -1,6 +1,5 @@
-; $Id: views_ui.info,v 1.4.2.3 2007-01-19 00:22:46 merlinofchaos Exp $
+; $Id: views_ui.info,v 1.4.2.4 2007-06-18 23:07:13 dww Exp $
 name = Views UI
 description = The Views UI module allows you to create and edit views.
-version = "$Name:  $"
 package = Views
 dependencies = views
