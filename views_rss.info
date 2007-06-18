@@ -1,6 +1,5 @@
-; $Id: views_rss.info,v 1.6 2007-01-22 02:24:13 merlinofchaos Exp $
+; $Id: views_rss.info,v 1.7 2007-06-18 22:54:07 dww Exp $
 name = Views RSS
 description = RSS plugin for the views feed selector argument.
-version = "$Name:  $"
 package = Views
 dependencies = views
