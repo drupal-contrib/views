@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.41 2007-06-08 03:58:00 weitzman Exp $
+// $Id: views.module,v 1.166.2.42 2007-06-23 06:54:52 weitzman Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -2121,4 +2121,9 @@ function views_form_alter($form_id, &$form) {
   if ($form_id == 'profile_field_form') {
     views_invalidate_cache();
   }
+}
+
+// An implementation of hook_devel_caches() from devel.module. Must be in views.module so it always is included.
+function views_devel_caches() {
+  return array('cache_views');
 }

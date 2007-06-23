@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.15 2007-05-05 02:40:18 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2.2.16 2007-06-23 06:54:52 weitzman Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -329,9 +329,4 @@ function _views_get_style_plugins($titles = false) {
     }
   }
   return ($titles ? $views_style_plugins['title'] : $views_style_plugins['base']);
-}
-
-// An implementation of hook_devel_caches() from devel.module
-function views_devel_caches() {
-  return array('cache_views');
 }
