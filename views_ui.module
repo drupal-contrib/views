@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.23 2007-06-08 03:37:54 weitzman Exp $
+// $Id: views_ui.module,v 1.44.2.24 2007-07-14 18:49:03 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -540,7 +540,6 @@ function views_ui_admin_delete_confirm($vid = '') {
 function views_ui_admin_delete_confirm_submit($form_id, $form) {
   _views_delete_view((object) $form);
   menu_rebuild();
-  drupal_goto('admin/build/views');
 }
 
 /*
