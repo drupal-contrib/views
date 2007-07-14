@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.17 2007-07-14 18:27:46 merlinofchaos Exp $
+// $Id: views_cache.inc,v 1.2.2.18 2007-07-14 19:12:02 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -77,12 +77,14 @@ function _views_get_tables($full = false) {
     }
     else {
       $table_data = module_invoke_all('views_tables');
-      $views_tables['tables'] = $table_data;
+      
       // allow modules to alter the definitions supplied others
       foreach (module_implements('views_tables_alter') as $module) {
         $function = $module . '_views_tables_alter';
         $function($table_data);
       }
+      
+      $views_tables['tables'] = $table_data;
 
       foreach ($table_data as $name => $table) {
         if (is_array($table['filters'])) {
