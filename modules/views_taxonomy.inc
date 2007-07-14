@@ -1,5 +1,5 @@
 <?php
-// $Id: views_taxonomy.inc,v 1.27.2.11 2007-07-14 18:58:03 merlinofchaos Exp $
+// $Id: views_taxonomy.inc,v 1.27.2.12 2007-07-14 19:30:51 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of taxonomy.module
@@ -377,11 +377,12 @@ function views_handler_arg_vocid($op, &$query, $argtype, $arg = '') {
 }
 
 function views_handler_arg_taxletter($op, &$query, $argtype, $arg = '') {
+  static $field = NULL;
   switch($op) {
     case 'summary':
       $query->add_table('term_data', true);
       $len = intval($arg);
-      $fieldinfo['field'] = ($len <= 0 ? "term_data.name" : "LEFT(term_data.name, $len)");
+      $field = $fieldinfo['field'] = ($len <= 0 ? "term_data.name" : "LEFT(term_data.name, $len)");
 
       $fieldinfo['fieldname'] = 'letter';
       $query->add_field('tid', 'term_data');
@@ -389,7 +390,7 @@ function views_handler_arg_taxletter($op, &$query, $argtype, $arg = '') {
       return $fieldinfo;
       break;
     case 'sort':
-      $query->add_orderby('term_data', 'name', $argtype);
+      $query->add_orderby('', $field, $argtype, 'letter');
       break;
     case 'filter':
       $len = intval($argtype['options']);

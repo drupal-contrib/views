@@ -1,5 +1,5 @@
 <?php
-// $Id: views_node.inc,v 1.30.2.18 2007-07-14 19:07:03 merlinofchaos Exp $
+// $Id: views_node.inc,v 1.30.2.19 2007-07-14 19:30:51 merlinofchaos Exp $
 
 /**
  * This include file implements views functionality on behalf of node.module
@@ -513,15 +513,16 @@ function views_handler_arg_nodetype($op, &$query, $argtype, $arg = '') {
 }
 
 function views_handler_arg_nodeletter($op, &$query, $argtype, $arg = '') {
+  static $field = NULL;
   switch($op) {
     case 'summary':
       $len = intval($arg);
-      $fieldinfo['field'] = ($len <= 0 ? "node.title" : $fieldinfo['field'] = "LEFT(node.title, $len)");
+      $field = $fieldinfo['field'] = ($len <= 0 ? "node.title" : $fieldinfo['field'] = "LEFT(node.title, $len)");
       $fieldinfo['fieldname'] = 'letter';
       return $fieldinfo;
       break;
     case 'sort':
-      $query->add_orderby('node', 'title', $argtype);
+      $query->add_orderby('node', $field, $argtype, 'letter');
       break;
     case 'filter':
       $len = intval($argtype['options']);
