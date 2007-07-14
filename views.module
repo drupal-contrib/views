@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.42 2007-06-23 06:54:52 weitzman Exp $
+// $Id: views.module,v 1.166.2.43 2007-07-14 18:54:16 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1983,6 +1983,23 @@ function views_handler_filter_like($op, $filter, $filterinfo, &$query) {
       }
     break;
   }
+}
+
+/**
+ * Custom filter for IS NULL and IS NOT NULL operations
+ * Operator must be 'IS' or 'IS NOT'
+ */
+function views_handler_filter_null($op, $filter, $filterinfo, &$query) {
+  switch($op) {
+    case 'handler':
+      $table = $filterinfo['table'];
+      $column = $filterinfo['field'];
+      $field = "$table.$column";
+      $query->ensure_table($table);
+      $operator = $filter['operator'];
+      $query->add_where("$field $operator NULL");
+      break;
+  }  
 }
 
 /**
