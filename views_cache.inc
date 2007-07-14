@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.inc,v 1.2.2.16 2007-06-23 06:54:52 weitzman Exp $
+// $Id: views_cache.inc,v 1.2.2.17 2007-07-14 18:27:46 merlinofchaos Exp $
 
 // Load all our module 'on behalfs'.
 // Whenever we decide we need this, load our module 'on behalfs'.
@@ -274,13 +274,14 @@ function _views_get_query(&$view, $args, $filters) {
   else {
     views_load_query();
     $info = _views_build_query($view, $args, $filters);
-    if ($view->is_cacheable) {
-      $data = array(
+    $data = array(
         'query' => _views_replace_args($info['query'], $info['args']),
         'countquery' => _views_replace_args($info['countquery'], $info['args']),
-      );
+    );
+    if ($view->is_cacheable) {
       cache_set('views_query:' . $view->name, 'cache_views', serialize($data));
     }
+    $info = array_merge($info, $data);
   }
 
   // Run-time replacement so we can do cacheing
