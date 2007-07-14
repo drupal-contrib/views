@@ -1,5 +1,5 @@
 <?php
-  // $Id: views.install,v 1.21.4.15 2007-05-05 01:13:42 merlinofchaos Exp $
+  // $Id: views.install,v 1.21.4.16 2007-07-14 22:16:50 merlinofchaos Exp $
 
   function views_install() {
     drupal_set_message('Installing views');
@@ -475,6 +475,12 @@ function views_update_15() {
   return $ret;
 }
 
+function views_update_16() {
+  $ret = array();
+  $ret[] = update_sql("UPDATE {view_view} SET menu_tab_default_parent_type = 'normal' WHERE menu_tab_default_parent_type = '' OR menu_tab_default_parent_type IS NULL");
+  return $ret;
+}
+
 /**
  * This should go in every update to ensure that it's there from a 4.7 -> 5.x
  * update.
@@ -508,3 +514,4 @@ function views_make_cache_table(&$ret) {
     }
   }
 }
+
