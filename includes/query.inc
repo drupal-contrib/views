@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.1 2007-08-12 06:52:14 merlinofchaos Exp $
+// $Id: query.inc,v 1.2 2007-08-12 23:50:08 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -32,14 +32,31 @@ class views_query {
    * or OR.
    */
   var $where = array();
+  /**
+   * The default operator to use when connecting the WHERE groups. May be
+   * AND or OR.
+   */
   var $group_operator = 'AND';
 
+  /**
+   * A simple array of order by clauses.
+   */
   var $orderby = array();
+
+  /**
+   * A simple array of group by clauses.
+   */
   var $groupby = array();
 
-  var $where_args = array();
+  /**
+   * The table header to use for tablesort. This matters because tablesort
+   * needs to modify the query and needs the header.
+   */
   var $header = array();
 
+  /**
+   * A flag as to whether or not to make the primary field distinct.
+   */
   var $distinct = FALSE;
 
   /*
@@ -75,7 +92,7 @@ class views_query {
   }
 
   // ----------------------------------------------------------------
-  // Utility sets
+  // Utility methods to set flags and data.
 
   /*
    * Set the base field to be distinct.
@@ -337,13 +354,13 @@ class views_query {
       foreach (array_reverse($add) as $table => $join) {
         $this->queue_table($table, $relationship, $this->adjust_join($join, $relationship));
       }
-      return true;
+      return TRUE;
     }
 
     // Have we been this way?
     if (isset($traced[$join->left_table])) {
       // we looped. Broked.
-      return false;
+      return FALSE;
     }
 
     // Do we have to add this table?
@@ -608,7 +625,7 @@ class views_query {
    * @param $get_count
    *   Provide a countquery if this is true, otherwise provide a normal query.
    */
-  function query($get_count = false) {
+  function query($get_count = FALSE) {
     // Check query distinct value.
     if (empty($this->no_distinct) && $this->distinct && !empty($this->fields)) {
       $this->fields[$this->primary_field]['distinct'] = TRUE;
