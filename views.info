@@ -1,5 +1,5 @@
-; $Id: views.info,v 1.6 2007-06-18 22:54:07 dww Exp $
+; $Id: views.info,v 1.7 2007-08-12 06:52:14 merlinofchaos Exp $
 name = Views
-description = The views module creates customized views of node lists.
+description = Create customized lists and queries from your database.
 package = Views
-
+core = 6.x

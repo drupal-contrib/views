@@ -1,5 +1,0 @@
-; $Id: views_rss.info,v 1.7 2007-06-18 22:54:07 dww Exp $
-name = Views RSS
-description = RSS plugin for the views feed selector argument.
-package = Views
-dependencies = views
