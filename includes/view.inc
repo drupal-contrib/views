@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.3 2007-08-19 23:29:50 merlinofchaos Exp $
+// $Id: view.inc,v 1.4 2007-08-19 23:43:43 merlinofchaos Exp $
 /** 
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -13,8 +13,8 @@ function views_objects() {
 }
 
 /**
- * Returns the complete list of objects in a view, including the display which is
- * often special.
+ * Returns the complete list of objects in a view, including the display which
+ * is often special.
  */
 function views_objects_all() {
   return array('display', 'argument', 'field', 'sort', 'filter', 'relationship');
