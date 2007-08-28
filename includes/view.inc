@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.6 2007-08-28 00:51:26 merlinofchaos Exp $
+// $Id: view.inc,v 1.7 2007-08-28 00:57:09 merlinofchaos Exp $
 /** 
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -639,7 +639,7 @@ class views_db_object {
    *
    * @param $identifier
    *   The variable to assign the PHP code for this object to.
-   * @param $ident
+   * @param $indent
    *   An optional indentation for prettifying nested code.
    */
   function export_row($identifier = NULL, $indent = '') {

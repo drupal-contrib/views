@@ -1,7 +1,8 @@
 <?php 
-// $Id: plugins.inc,v 1.1 2007-08-27 19:16:49 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.2 2007-08-28 00:57:09 merlinofchaos Exp $
 /**
- * @file Built in plugins for Views output handling.
+ * @file plugins.inc
+ * Built in plugins for Views output handling.
  *
  */
 

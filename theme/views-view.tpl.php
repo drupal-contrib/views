@@ -1,7 +1,8 @@
 <?php 
-// $Id: views-view.tpl.php,v 1.1 2007-08-27 19:16:50 merlinofchaos Exp $
+// $Id: views-view.tpl.php,v 1.2 2007-08-28 00:57:09 merlinofchaos Exp $
 /**
- * @file Main view template
+ * @file views-view.tpl.php
+ * Main view template
  *
  */
 ?>

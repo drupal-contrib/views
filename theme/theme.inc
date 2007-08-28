@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.1 2007-08-27 19:16:50 merlinofchaos Exp $
+// $Id: theme.inc,v 1.2 2007-08-28 00:57:09 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -58,7 +58,7 @@ function template_preprocess_views_view_row(&$vars) {
  *
  * Interesting bits of info:
  * $field->field_alias says what the raw value in $row will be. Reach it like
- * this: @code { $row->{$field->field_alias} @}
+ * this: @code { $row->{$field->field_alias} @endcode
  */
 function theme_views_view_field($view, $field, $row) {
   return $field->handler->render($row);
