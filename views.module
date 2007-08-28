@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.195 2007-08-27 19:16:49 merlinofchaos Exp $
+// $Id: views.module,v 1.196 2007-08-28 00:51:26 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -294,4 +294,19 @@ class views_object {
       $this->real_field = $definition['field'];
     }
   }
+}
+
+/**
+ * Get a view from the database or from default views.
+ *
+ * @param $name
+ *   The name of the view.
+ */
+function views_get_view($name) {
+  views_include('view');
+  $view = new view;
+  if ($view->load($name)) {
+    return $view;
+  }
+  // TODO: check for default views in cache.
 }
