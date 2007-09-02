@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.2 2007-08-28 00:57:09 merlinofchaos Exp $
+// $Id: theme.inc,v 1.3 2007-09-02 04:25:40 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -7,7 +7,7 @@
 function template_preprocess_views_view(&$vars) {
   $view = $vars['view'];
 
-  $vars['rows']    = $view->style_handler->render($view->result);
+  $vars['rows']       = $view->style_handler->render($view->result);
   $vars['css_name']   = views_css_safe($view->name);
 
   if (!$vars['rows']) {
