@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.3 2007-08-19 23:29:50 merlinofchaos Exp $
+// $Id: query.inc,v 1.4 2007-11-08 22:44:57 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -60,10 +60,10 @@ class views_query {
   var $distinct = FALSE;
 
   /**
-   * Create the basic query object and fill with default values.
+   * Constructor; Create the basic query object and fill with default values.
    */
   function views_query($primary_table = 'node', $primary_field = 'nid') {
-    $this->primary_table = $primary_table;
+    $this->primary_table = $primary_table;  // Predefine these above, for clarity.
     $this->primary_field = $primary_field;
     $this->relationships[$primary_table] = array('link' => NULL, 'table' => $primary_table, 'alias' => $primary_table);
 
@@ -668,7 +668,7 @@ class views_query {
     // If it's not a count query, add our fields
     $fields_array = $get_count ? array($this->count_field) : $this->fields;
     foreach ($fields_array as $field) {
-      if ($fields) {
+      if ($fields) {        // TODO: LG: This would be cleaner as an array that gets imploded.
         $fields .= ",\n   ";
       }
       $string = '';
