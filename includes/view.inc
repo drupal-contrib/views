@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.11 2008-01-03 01:36:11 merlinofchaos Exp $
+// $Id: view.inc,v 1.12 2008-01-03 02:50:26 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -300,7 +300,7 @@ class view extends views_db_object {
     $array = &$this->$key;
     foreach ($array as $id => $data) {
       // @todo: we should report an error here if this is not an object.
-      if (is_object($array[$id]->handler)) {
+      if (!empty($array[$id]->handler) && is_object($array[$id]->handler)) {
         $array[$id]->handler->query();
       }
     }
