@@ -1,9 +1,19 @@
-<?php 
-// $Id: views-view.tpl.php,v 1.2 2007-08-28 00:57:09 merlinofchaos Exp $
+<?php
+// $Id: views-view.tpl.php,v 1.3 2008-01-03 01:36:12 merlinofchaos Exp $
 /**
  * @file views-view.tpl.php
  * Main view template
  *
+ * Variables available:
+ * - $header: The view header
+ * - $footer: The view footer
+ * - $rows: The results of the view query, if any
+ * - $empty: The empty text to display if the view is empty
+ * - $pager: The pager next/prev links to display, if any
+ * - $filters: Exposed filter form/info to display
+ * - $feed_icon: Feed icon to display, if any
+ *
+ * @ingroup views_templates
  */
 ?>
 <div class="view view-<?php print $css_name; ?>">

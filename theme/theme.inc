@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.4 2008-01-02 23:26:34 merlinofchaos Exp $
+// $Id: theme.inc,v 1.5 2008-01-03 01:36:12 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -71,8 +71,11 @@ function template_preprocess_views_view_row_summary(&$vars) {
   $row      = $vars['row'];
   $argument = $view->argument[$view->build_info['summary_level']]->handler;
 
-  $vars['link'] = check_plain($row->{$argument->name_alias});
+  $vars['link'] = $argument->summary_name($row);
   $vars['url'] = $argument->summary_link($row, $view->get_url());
   $vars['count'] = intval($row->{$argument->count_alias});
 }
 
+/**
+ * @defgroup views_templates Views' template files
+ */

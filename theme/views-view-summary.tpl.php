@@ -1,8 +1,10 @@
 <?php
-// $Id: views-view-summary.tpl.php,v 1.1 2008-01-02 23:26:34 merlinofchaos Exp $
+// $Id: views-view-summary.tpl.php,v 1.2 2008-01-03 01:36:12 merlinofchaos Exp $
 /**
- * @file views-view-rows.tpl.php
+ * @file views-view-summary.tpl.php
  * Default simple view template to display a list of summary lines
+ *
+ * @ingroup views_templates
  */
 ?>
 <div class="item-list">

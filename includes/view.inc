@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.10 2008-01-02 23:26:34 merlinofchaos Exp $
+// $Id: view.inc,v 1.11 2008-01-03 01:36:11 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -451,7 +451,9 @@ class view extends views_db_object {
    *
    * @todo: Implement this.
    */
-  function get_url($args = NULL) { }
+  function get_url($args = NULL) {
+    return $_GET['q'];
+  }
 
   /**
    * Is this view cacheable?
