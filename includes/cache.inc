@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.2 2008-01-05 01:29:28 merlinofchaos Exp $
+// $Id: cache.inc,v 1.3 2008-01-09 00:05:08 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -107,15 +107,25 @@ function _views_fetch_plugin_data($type = NULL, $plugin = NULL) {
  * @return An associative array of all known default views.
  */
 function _views_discover_default_views() {
-  global $language;
-  views_include_default_views();
-  $defaults = module_invoke_all('views_default_views');
+  static $cache = NULL;
 
-  foreach ($defaults as $name => $view) {
-    if ($should_cache) {
-      views_cache_set('views_default_views:'. $name, $view, TRUE);
+  if (!isset($cache)) {
+    global $language;
+    $data = cache_get('views_default_views:' . $language, 'cache_views');
+
+    if (isset($data->data)) {
+      $cache = $data->data;
     }
-    $cache[$name] = $view;
+    else {
+      views_include_default_views();
+      $defaults = module_invoke_all('views_default_views');
+      $cache = array();
+      dsm('..');
+      foreach ($defaults as $name => $view) {
+        $cache[$name] = $view;
+      }
+      cache_set('views_default_views:' . $language, $cache, 'cache_views');
+    }
   }
 
   return $cache;
