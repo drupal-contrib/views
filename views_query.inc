@@ -1,6 +1,6 @@
 <?php
 
-// $Id: views_query.inc,v 1.51.2.11 2007-04-12 15:18:59 merlinofchaos Exp $
+// $Id: views_query.inc,v 1.51.2.12 2008-01-10 20:15:40 merlinofchaos Exp $
 /*
  * This builds a query for the view.
  */
@@ -658,17 +658,4 @@ class _views_query {
 
     return $query;
   }
-}
-
-/*
- * Support db_query() style argument replacement in a clause.
- */
-
-function _views_replace_args($clause, $args) {
-  // cut & pasted directly from db_query.
-  if (isset($args[0]) and is_array($args[0])) { // 'All arguments in one array' syntax
-    $args = $args[0];
-  }
-  _db_query_callback($args, TRUE);
-  return preg_replace_callback(DB_QUERY_REGEXP, '_db_query_callback', $clause);
 }
