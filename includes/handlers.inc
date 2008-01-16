@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.7 2008-01-05 01:29:28 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.8 2008-01-16 17:31:30 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -7,8 +7,6 @@
 
 /**
  * Instantiate and construct a new handler
- *
- * @todo: move to handlers.inc
  */
 function _views_create_handler($definition) {
 //  dpr('Instantiating handler ' . $definition['handler']);
@@ -23,8 +21,6 @@ function _views_create_handler($definition) {
 
 /**
  * Prepare a handler's data by checking defaults and such.
- *
- * @todo: move to handlers.inc
  */
 function _views_prepare_handler($definition, $data, $field) {
   foreach (array('group', 'title', 'help') as $key) {
@@ -43,8 +39,6 @@ function _views_prepare_handler($definition, $data, $field) {
 
 /**
  * Fetch a handler to join one table to a primary table from the data cache
- *
- * @todo: move to cache.inc (maybe)
  */
 function views_get_table_join($table, $primary_table) {
   $data = views_fetch_data($table);
