@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.6 2008-01-03 03:14:32 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.7 2008-01-18 18:57:56 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -26,6 +26,8 @@ function node_views_data() {
   $data['node']['table']['base'] = array(
     'field' => 'nid',
     'title' => t('Node'),
+    'help' => t('The node type allows views of your site\'s primary content.'),
+    'weight' => 10,
   );
 
   // For other base tables, explain how we join
@@ -169,6 +171,7 @@ function node_views_data() {
   $data['node_revisions']['table']['base'] = array(
     'field' => 'vid',
     'title' => t('Node revisions'),
+    'help' => t('Node revisions allow you to list revisions to nodes.'),
   );
 
   // For other base tables, explain how we join

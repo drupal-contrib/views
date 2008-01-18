@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.206 2008-01-16 17:31:29 merlinofchaos Exp $
+// $Id: views.module,v 1.207 2008-01-18 18:57:56 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -324,7 +324,7 @@ function views_fetch_base_table_names() {
     $data = views_fetch_data();
     foreach ($data as $table => $info) {
       if (!empty($info['table']['base'])) {
-        $base_tables[$table] = $info['table']['base']['title'];
+        $base_tables[$table] = $info['table']['base']['title'] . '<br /><div class="description">' . $info['table']['base']['help'] . "</div>\n";
       }
     }
   }
