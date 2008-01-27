@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.207 2008-01-18 18:57:56 merlinofchaos Exp $
+// $Id: views.module,v 1.208 2008-01-27 19:21:28 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -245,6 +245,24 @@ function views_include($file) {
   }
 
   $used[$file] = TRUE;
+}
+
+/**
+ * Include views .css files.
+ */
+function views_add_css($file) {
+  drupal_add_css(drupal_get_path('module', 'views') . "/css/$file.css");
+}
+
+/**
+ * Include views .js files.
+ */
+function views_add_js($file) {
+  static $base = TRUE;
+  if ($base) {
+    drupal_add_js(drupal_get_path('module', 'views') . "/js/base.js");
+  }
+  drupal_add_js(drupal_get_path('module', 'views') . "/js/$file.js");
 }
 
 /**
