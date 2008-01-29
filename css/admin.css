@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.1 2008-01-28 19:54:29 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.2 2008-01-29 02:34:39 merlinofchaos Exp $ */
 
 .views-tabset .views-tab fieldset { 
   margin-top: 0; 
@@ -82,16 +82,20 @@
   background-color: #eee;
 }
 
-.views-ajax-pad {
+#views-ajax-pad {
   border: 1px solid black;
   margin-top: 10px;
   min-height: 200px;
   _height: 200px; /* stupid IE */
+  padding: 5px;
 }
 
-.views-ajax-pad .message {
+#views-ajax-pad .message {
   margin-top: 75px;
   text-align: center;
 }
 
+#views-ajax-pad .form-buttons {
+  float: right;
+}
 

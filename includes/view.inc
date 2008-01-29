@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.14 2008-01-16 17:31:30 merlinofchaos Exp $
+// $Id: view.inc,v 1.15 2008-01-29 02:34:39 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -846,8 +846,8 @@ class views_db_object {
     // to fill in default values here? That seems very logical.
 
     // Add the new display object to the view.
-    $this->display[] = $display;
-    return max(array_keys($this->display));
+    $this->display[$id] = $display;
+    return $id;
   }
 }
 

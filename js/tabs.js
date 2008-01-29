@@ -1,5 +1,10 @@
+// $Id: tabs.js,v 1.2 2008-01-29 02:34:39 merlinofchaos Exp $
+
 /**
+ * @file tabs.js
  * jQuery UI Tabs (Tabs 3)
+ * 
+ * This is nothing more than the pure jquery UI tabs implementation.
  */
 (function($) {
  
