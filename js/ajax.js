@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.1 2008-01-29 02:34:39 merlinofchaos Exp $
+// $Id: ajax.js,v 1.2 2008-01-29 02:42:13 merlinofchaos Exp $
 /**
 * @file ajax.inc
 *
@@ -52,7 +52,7 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
       $('form', ajax_area).unbind('submit'); // be safe here.
       $('form', ajax_area).submit(function() {
         $(this).ajaxSubmit({
-          url: url,
+          url: data.url,
           data: '',
           type: 'POST',
           success: Drupal.Views.Ajax.ajaxResponse,

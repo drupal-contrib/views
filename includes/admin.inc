@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.2 2008-01-29 02:34:39 merlinofchaos Exp $
+// $Id: admin.inc,v 1.3 2008-01-29 02:42:13 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -260,7 +260,6 @@ function views_ui_add_display_form(&$form_state, $view) {
  * Submit handler to add a display to a view.
  */
 function views_ui_add_display_form_submit($form, &$form_state) {
-  dsm('form submitted');
   $plugin = $form_state['values']['display'];
   $form_state['id'] = $form_state['view']->add_display($plugin);
   views_ui_cache_set($form_state['view']);
