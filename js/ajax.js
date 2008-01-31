@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.2 2008-01-29 02:42:13 merlinofchaos Exp $
+// $Id: ajax.js,v 1.3 2008-01-31 03:29:59 merlinofchaos Exp $
 /**
 * @file ajax.inc
 *
@@ -128,7 +128,8 @@ Drupal.behaviors.ViewsAjaxLinks = function() {
   $('form.views-ajax-form:not(.views-processed)').addClass('views-processed').submit(function() {
     // Translate the href on the link to the ajax href. That way this degrades
     // into a nice, normal link.
-    var url = Drupal.settings.views.forms[$(this).attr('id')];
+    var url = $(this).attr('action');
+    url = url.replace('nojs', 'ajax');
 
     $(this).ajaxSubmit({
       url: url,

@@ -1,12 +1,12 @@
 <?php
-// $Id: ajax.inc,v 1.2 2008-01-29 02:42:13 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.3 2008-01-31 03:29:59 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
  *
  * Handles the server side AJAX interactions of Views.
  *
- * @defgroup ajax
+ * @defgroup ajax Views ajax library
  * @{
  */
 
