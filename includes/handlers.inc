@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.8 2008-01-16 17:31:30 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.9 2008-02-05 01:50:12 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -51,7 +51,7 @@ function views_get_table_join($table, $primary_table) {
     return $handler;
   }
   // DEBUG -- identify missing handlers
-  dsm("missing join: $table $primary_table");
+  vpr("Missing join: $table $primary_table");
 }
 
 /**

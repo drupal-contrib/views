@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.7 2008-01-18 18:57:56 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.8 2008-02-05 01:50:13 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -338,6 +338,7 @@ function node_views_plugins() {
         'handler' => 'views_row_plugin_node_view',
         'theme' => 'views_view_row_node',
         'base' => array('node'), // only works with 'node' as base.
+        'uses options' => TRUE,
       ),
     ),
   );
