@@ -1,7 +1,7 @@
 <?php
-// $Id: views-view-rows.tpl.php,v 1.3 2008-01-03 01:36:12 merlinofchaos Exp $
+// $Id: views-view-unformatted.tpl.php,v 1.1 2008-02-14 21:59:08 merlinofchaos Exp $
 /**
- * @file views-view-rows.tpl.php
+ * @file views-view-unformatted.tpl.php
  * Default simple view template to display a list of rows.
  *
  * @ingroup views_templates

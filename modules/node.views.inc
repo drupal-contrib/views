@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.11 2008-02-14 21:37:14 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.12 2008-02-14 21:59:08 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -157,6 +157,16 @@ function node_views_data() {
      ),
     'sort' => array(
       'handler' => 'views_handler_sort',
+    ),
+  );
+
+  // Bogus fields for aliasing purposes.
+
+  $data['node']['year_month'] = array(
+    'title' => t('Year + month'),
+    'help' => t('In the form of YYYYMM'),
+    'argument' => array(
+      'handler' => 'views_handler_argument_date_year_month',
     ),
   );
 
