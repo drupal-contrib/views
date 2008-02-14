@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.7 2008-02-14 20:00:46 merlinofchaos Exp $
+// $Id: theme.inc,v 1.8 2008-02-14 21:37:14 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -68,14 +68,15 @@ function theme_views_view_field($view, $field, $row) {
 /**
  * Preprocess theme function to print a single record from a row, with fields
  */
-function template_preprocess_views_view_row_summary(&$vars) {
+function template_preprocess_views_view_summary(&$vars) {
   $view     = $vars['view'];
-  $row      = $vars['row'];
   $argument = $view->argument[$view->build_info['summary_level']]->handler;
 
-  $vars['link'] = $argument->summary_name($row);
-  $vars['url'] = $argument->summary_link($row, $view->get_url());
-  $vars['count'] = intval($row->{$argument->count_alias});
+  foreach ($vars['rows'] as $id => $row) {
+    $vars['rows'][$id]->link = $argument->summary_name($row);
+    $vars['rows'][$id]->url = $argument->summary_link($row, $view->get_url());
+    $vars['rows'][$id]->count = intval($row->{$argument->count_alias});
+  }
 }
 
 /**

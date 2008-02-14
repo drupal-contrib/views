@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.19 2008-02-14 20:00:45 merlinofchaos Exp $
+// $Id: view.inc,v 1.20 2008-02-14 21:37:14 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -285,7 +285,9 @@ class view extends views_db_object {
 
     $argument_title = '';
     // build arguments.
+    $position = -1;
     foreach ($this->argument as $id => $arg) {
+      $position++;
       $argument = &$this->argument[$id];
 
       if (!is_object($argument->handler)) {
@@ -293,11 +295,11 @@ class view extends views_db_object {
         continue;
       }
 
-      if (isset($this->args[$id]) && $argument->handler->validate($this->args[$id])) {
+      if (isset($this->args[$position]) && $argument->handler->validate($this->args[$position])) {
         // handle argument that is present.
         // @todo: Do we want to put in argument placeholders here
         // So that we can try to cache queries with arguments too?
-        $argument->handler->argument = $this->args[$id];
+        $argument->handler->argument = $this->args[$position];
         $argument->handler->query();
 
         // Test to see if we should use this argument's title
@@ -621,8 +623,9 @@ class view extends views_db_object {
    * keys from view::db_objects()
    */
   function _save_rows($key) {
+    $count = 0;
     foreach ($this->$key as $position => $object) {
-      $object->position = $position;
+      $object->position = ++$count;
       $object->vid = $this->vid;
       $object->save_row();
     }

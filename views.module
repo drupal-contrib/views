@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.212 2008-02-14 20:00:45 merlinofchaos Exp $
+// $Id: views.module,v 1.213 2008-02-14 21:37:14 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -289,6 +289,7 @@ function views_include_handlers() {
 
   views_include('handlers');
   views_include('cache');
+  views_include('plugins');
   _views_include_handlers();
   $finished = TRUE;
 }
