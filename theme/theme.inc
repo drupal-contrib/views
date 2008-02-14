@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.8 2008-02-14 21:37:14 merlinofchaos Exp $
+// $Id: theme.inc,v 1.9 2008-02-14 22:43:32 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -33,7 +33,7 @@ function template_preprocess_views_view(&$vars) {
 /**
  * Preprocess theme function to print a single record from a row, with fields
  */
-function template_preprocess_views_view_row(&$vars) {
+function template_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
 
   // Loop through the fields for this view.
