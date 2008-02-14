@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.4 2008-02-13 06:30:37 merlinofchaos Exp $
+// $Id: ajax.js,v 1.5 2008-02-14 00:11:59 merlinofchaos Exp $
 /**
 * @file ajax.inc
 *
@@ -96,7 +96,6 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
   // Go through and add any requested tabs
   if (data.tab) {
     for (id in data.tab) {
-      console.log(data.tab[id]['title']);
       $('#views-tabset').addTab(id, data.tab[id]['title'], 0);
       $(id).html(data.tab[id]['body']);
       $(id).addClass('views-tab');

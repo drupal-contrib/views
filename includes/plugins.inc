@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.10 2008-02-13 06:30:37 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.11 2008-02-14 00:11:59 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -911,7 +911,7 @@ class views_display_plugin_page extends views_display_plugin {
         $form['path'] = array(
           '#type' => 'textfield',
           '#description' => t('This view will be displayed by visiting this path on your site.'),
-          '#default_value' => block_description,
+          '#default_value' => $this->get_option('path'),
         );
         break;
     }
