@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.9 2008-02-13 06:30:37 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.10 2008-02-14 20:00:46 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -244,7 +244,7 @@ class views_handler_field_node extends views_handler_field {
 
   function render_link($data, $values) {
     if (!empty($this->data->link_to_node)) {
-      return l($data, "node/" . $values->{$this->node_field}, array('html' => TRUE));
+      return l($data, "node/" . $values->{$this->nid_field}, array('html' => TRUE));
     }
     else {
       return $data;

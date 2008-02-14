@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.10 2008-02-13 06:30:37 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.11 2008-02-14 20:00:45 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -152,8 +152,8 @@ class views_handler extends views_object {
     $this->data = &$data;
 
     // This exist on most handlers, but not all. So they are still optional.
-    if (isset($data->tablename)) {
-      $this->table = $data->tablename;
+    if (isset($data->table)) {
+      $this->table = $data->table;
     }
 
     if (isset($data->field)) {

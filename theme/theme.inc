@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.6 2008-01-03 02:50:26 merlinofchaos Exp $
+// $Id: theme.inc,v 1.7 2008-02-14 20:00:46 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -37,7 +37,7 @@ function template_preprocess_views_view_row(&$vars) {
   $view = $vars['view'];
 
   // Loop through the fields for this view.
-  foreach ($view->get_fields($view->current_display) as $field) {
+  foreach ($view->field as $field) {
     if (!empty($field->handler) && is_object($field->handler)) {
       $themes = array(
         'views_view_field__' . $view->name . '__' . $field->handler->field_alias,
