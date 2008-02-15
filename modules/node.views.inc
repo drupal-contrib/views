@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.13 2008-02-14 22:43:32 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.14 2008-02-15 00:22:34 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -461,11 +461,24 @@ function node_views_plugins() {
  * @ingroup views_row_plugins
  */
 class views_row_plugin_node_view extends views_row_plugin {
+  function construct($display) {
+    return array(
+      'teaser' => TRUE,
+    );
+  }
+
+  function options_form(&$form, &$form_state) {
+    $form['teaser'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display only teaser'),
+      '#default_value' => $this->options['teaser'],
+    );
+  }
   /**
    * Override the behavior of the render() function.
    */
   function render($row) {
-    return theme(array('views_view_row_node__' . $this->view->name, 'views_view_row_node'), $this->view, $row);
+    return theme(array('views_view_row_node__' . $this->view->name, 'views_view_row_node'), $this->view, $this->options, $row);
   }
 }
 
