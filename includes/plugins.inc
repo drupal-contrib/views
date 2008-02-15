@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.17 2008-02-15 05:37:14 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.18 2008-02-15 19:49:17 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -493,7 +493,7 @@ class views_display_plugin extends views_object {
           '#default_value' => $access['type'],
         );
         $form['access']['role'] = array(
-          '#prefix' => '<div class="views-left-30">',
+          '#prefix' => '<div class="views-left-25">',
           '#suffix' => '</div>',
           '#type' => 'checkboxes',
           '#title' => t('If by role'),
@@ -510,7 +510,7 @@ class views_display_plugin extends views_object {
           }
         }
         $form['access']['perm'] = array(
-          '#prefix' => '<div class="views-left-40">',
+          '#prefix' => '<div class="views-left-30">',
           '#suffix' => '</div>',
           '#type' => 'select',
           '#options' => $perms,

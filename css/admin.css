@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.8 2008-02-15 04:11:47 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.9 2008-02-15 19:49:17 merlinofchaos Exp $ */
 
 .views-tabset {
   background: transparent;
@@ -59,7 +59,10 @@
   min-height: 302px;
   _height: 300px; /* stupid IE hack */
 }
-.views-tabset .views-display-deleted {
+
+div.views-display-deleted,
+div.views-display-deleted div.top,
+div.views-display-deleted div.tab-section {
   background-color: #eee;
 }
 

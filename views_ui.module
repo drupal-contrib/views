@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.67 2008-02-15 04:11:47 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.68 2008-02-15 19:49:17 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -121,6 +121,16 @@ function views_ui_theme() {
     'views_ui_edit_view' => array(
       'arguments' => array('view' => NULL),
       'template' => 'views-ui-edit-view',
+      'path' => "$path/theme",
+    ),
+    'views_ui_edit_tab' => array(
+      'arguments' => array('view' => NULL, 'display' => NULL),
+      'template' => 'views-ui-edit-tab',
+      'path' => "$path/theme",
+    ),
+    'views_ui_edit_item' => array(
+      'arguments' => array('type' => NULL, 'view' => NULL, 'display' => NULL),
+      'template' => 'views-ui-edit-item',
       'path' => "$path/theme",
     ),
     'views_ui_rearrange_form' => array(
