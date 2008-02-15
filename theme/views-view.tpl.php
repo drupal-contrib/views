@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view.tpl.php,v 1.3 2008-01-03 01:36:12 merlinofchaos Exp $
+// $Id: views-view.tpl.php,v 1.4 2008-02-15 04:11:48 merlinofchaos Exp $
 /**
  * @file views-view.tpl.php
  * Main view template
@@ -30,7 +30,7 @@
   <?php endif; ?>
 
   <?php if ($rows): ?>
-    <div class="content">
+    <div class="view-content">
       <?php print $rows; ?>
     </div>
   <?php elseif ($empty): ?>

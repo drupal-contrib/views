@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.5 2008-02-14 00:11:59 merlinofchaos Exp $
+// $Id: ajax.js,v 1.6 2008-02-15 04:11:48 merlinofchaos Exp $
 /**
 * @file ajax.inc
 *
@@ -107,7 +107,15 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
       $('#views-tabset').clickTab(instance.$tabs.length);
     }
   }
+  
+  if (data.hilite) {
+    $('.hilited').removeClass('hilited');
+    $(data.hilite).addClass('hilited');
+  }
 
+  if (data.changed) {
+    $('div.views-basic-info').addClass('changed');
+  }
 }
 
 Drupal.behaviors.ViewsAjaxLinks = function() {

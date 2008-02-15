@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.7 2008-02-14 20:00:45 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.8 2008-02-15 04:11:47 merlinofchaos Exp $ */
 
 .views-tabset {
   background: transparent;
@@ -344,10 +344,23 @@ html.js a.views-button-remove {
   padding: 0;
 }
 
-div.views-basic-info div.view-changed {
+div.changed {
+  background: #ffd;
+}
+
+div.view-changed {
+  display: none;
   float: right;
 }
 
-div.views-basic-info div.view-hide {
-  display: none;
+div.changed div.view-changed {
+  display: block;
+}
+
+.hilited {
+  background: #ffd;
+}
+
+.overridden {
+  font-style: italic;
 }
