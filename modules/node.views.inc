@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.15 2008-02-15 04:11:48 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.16 2008-02-15 23:52:57 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -252,7 +252,8 @@ class views_handler_field_node extends views_handler_field {
   function init(&$view, &$data) {
     parent::init($view, $data);
     if (isset($data->data->link_to_node) && $view->base_table != 'node') {
-      $this->additional_fields[] = $nid;
+      // @todo: This can't be right, it'll totally fail with relationships.
+      $this->additional_fields[] = 'nid';
       $this->nid_field = 'node_nid';
     }
     else {
@@ -344,7 +345,7 @@ class views_handler_argument_node_nid extends views_handler_argument {
    * Override the behavior of title(). Get the title of the node.
    */
   function title() {
-    $title = db_fetch_result(db_query(db_rewrite_sql("SELECT n.title FROM {node} n WHERE n.nid = %d"), $this->argument));
+    $title = db_result(db_query(db_rewrite_sql("SELECT n.title FROM {node} n WHERE n.nid = %d"), $this->argument));
     if (empty($title)) {
       return t('No title');
     }

@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.13 2008-02-14 22:43:31 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.14 2008-02-15 23:52:57 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -671,6 +671,7 @@ class views_handler_filter_equality extends views_handler_filter {
     $form['value'] = array(
       '#type' => 'textfield',
       '#title' => t('Value'),
+      '#size' => 30,
       '#default_value' => $this->data->value['value'],
     );
   }
