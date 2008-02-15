@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.9 2008-02-14 22:43:32 merlinofchaos Exp $
+// $Id: theme.inc,v 1.10 2008-02-15 05:37:14 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -24,8 +24,8 @@ function template_preprocess_views_view(&$vars) {
   $vars['feed_icon']  = $view->display_handler->render_feed_icon();
 
   $vars['pager']      = '';
-  if (!empty($view->use_pager)) {
-    $vars['pager']    = theme('pager', array(), $view->page_size, $view->page_element);
+  if (!empty($view->pager['use_pager'])) {
+    $vars['pager']    = theme('pager', array(), $view->pager['items_per_page'], $view->pager['element']);
   }
 
 }
