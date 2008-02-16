@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.23 2008-02-15 05:37:14 merlinofchaos Exp $
+// $Id: view.inc,v 1.24 2008-02-16 16:52:08 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -921,7 +921,7 @@ class views_db_object {
 
     // Create the new display object
     $display = new views_display;
-    $display->construct($type, $id, $title);
+    $display->options($type, $id, $title);
 
     // Add the new display object to the view.
     $this->display[$id] = $display;
@@ -1041,6 +1041,7 @@ class views_sort  extends views_sub_object {
  * A filter in a view.
  */
 class views_filter  extends views_sub_object {
+  var $group = 0;
 }
 
 /**
@@ -1058,14 +1059,14 @@ class views_display extends views_db_object {
     parent::init($init);
   }
 
-  function construct($type, $id, $title) {
+  function options($type, $id, $title) {
     $this->display_plugin = $type;
     $this->id = $id;
     $this->display_title = $title;
 
     // Create a handler to fill in default values.
     $handler = views_get_plugin('display', $type);
-    $handler->construct($this);
+    $handler->options($this);
   }
 }
 
