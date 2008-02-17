@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.14 2008-02-17 03:49:56 merlinofchaos Exp $
+// $Id: admin.inc,v 1.15 2008-02-17 04:07:09 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -74,11 +74,13 @@ function views_ui_list_views($arg = NULL) {
     }
   }
 
-  if (strtolower($ts['sort']) == 'desc') {
-    arsort($sorts);
-  }
-  else {
-    asort($sorts);
+  if (!empty($ts)) {
+    if (strtolower($ts['sort']) == 'desc') {
+      arsort($sorts);
+    }
+    else {
+      asort($sorts);
+    }
   }
 
   $i = array();

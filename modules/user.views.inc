@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.4 2008-02-16 16:52:08 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.5 2008-02-17 04:07:09 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -55,7 +55,7 @@ function user_views_data() {
     // Information for accepting a uid as an argument
     'argument' => array(
       'handler' => 'views_handler_argument_uid',
-    ), 
+    ),
     // Information for accepting a uid as a filter
     'filter' => array(
       'handler' => 'views_handler_filter_equality',
@@ -87,6 +87,10 @@ class views_handler_field_user extends views_handler_field {
     else {
       $this->uid_field = 'uid';
     }
+  }
+
+  function options(&$item) {
+    $item->link_to_user = TRUE;
   }
 
   /**
