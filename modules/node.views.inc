@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.18 2008-02-16 21:53:21 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.19 2008-02-17 07:25:51 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -462,6 +462,14 @@ class views_handler_filter_node_type extends views_handler_filter_in_operator {
       $options[$type] = $info->name;
     }
     $this->value_options = $options;
+  }
+
+  function options(&$item) {
+    parent::options($item);
+    // Set the default value to the first node type, so that there is something
+    // reasonable there.
+    $types = array_keys(node_get_types());
+    $item->value['value'] = array(array_shift($types));
   }
 }
 

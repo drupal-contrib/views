@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.13 2008-02-17 04:07:09 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.14 2008-02-17 07:25:51 merlinofchaos Exp $ */
 
 .views-tabset {
   background: transparent url('/themes/garland/images/gradient-inner.png') repeat-x top;
@@ -215,7 +215,6 @@ div.views-display-deleted div.tab-section {
 #views-ajax-pad .views-messages {
   background: transparent url('/themes/garland/images/gradient-inner.png') repeat-x top;
   margin-left: 118px;
-  border: #ADB7BE 1px solid;
   border-top: 0;  
   padding: 5px;
 }

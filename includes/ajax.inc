@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.6 2008-02-15 04:11:48 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.7 2008-02-17 07:25:51 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -90,7 +90,7 @@ function views_ajax_form($form_id) {
 
   // If the form wasn't submitted successfully, render the form.
   $object = new stdClass();
-  $object->display = theme('status_messages');
+  $object->display = '<div class="views-messages">' . theme('status_messages') . '</div>';
   $object->display .= drupal_render_form($form_id, $form);
   $object->title = empty($form['#title']) ? '' : $form['#title'];
   $object->url = empty($form['#url']) ? url($_GET['q'], array('absolute' => TRUE)) : $form['#url'];
@@ -133,7 +133,7 @@ function views_render_ajax_form($form_id) {
 
   // Render the form and return the object data.
   $output = new stdClass();
-  $output->display = theme('status_messages');
+  $object->display = '<div class="views-messages">' . theme('status_messages') . '</div>';
   $output->display .= drupal_render_form($form_id, $form);
   $output->title = empty($form['#title']) ? '' : $form['#title'];
   $output->url = empty($form['#url']) ? url($_GET['q'], array('absolute' => TRUE)) : $form['#url'];
