@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-item.tpl.php,v 1.3 2008-02-16 16:52:08 merlinofchaos Exp $
+// $Id: views-ui-edit-item.tpl.php,v 1.4 2008-02-17 17:45:36 merlinofchaos Exp $
 /**
  * @file views-ui-edit-item.tpl.php
  *
@@ -19,7 +19,7 @@
     <?php if (!empty($fields['links'])): ?>
       <?php print $field['links']; ?>
     <?php endif; ?>
-    <div class="<?php print $field['class']; ?>">
+    <div class="<?php print $field['class']; if (!empty($field['changed'])) { print ' changed'; } ?>">
       <?php print $field['title']; ?>
       <?php print $field['info']; ?>
     </div>

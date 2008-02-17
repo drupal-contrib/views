@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.15 2008-02-17 17:20:43 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.16 2008-02-17 17:45:35 merlinofchaos Exp $ */
 
 .views-tabset {
   background: transparent url('/themes/garland/images/gradient-inner.png') repeat-x top;
@@ -411,6 +411,10 @@ div.view-changed {
   display: none;
   float: right;
   font-style: italic;
+  color: #f93;
+}
+
+div.views-tab div.changed a {
   color: #f93;
 }
 
