@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.17 2008-02-17 02:22:33 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.18 2008-02-17 03:07:51 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -854,6 +854,8 @@ class views_handler_argument extends views_handler {
       '#description' => t('The title to use for the wildcard in substitutions elsewhere.'),
     );
     $form['title'] = array(
+      '#prefix' => '<div class="clear">',
+      '#suffix' => '</div>',
       '#type' => 'textfield',
       '#title' => t('Title'),
       '#default_value' => $this->data->title,
