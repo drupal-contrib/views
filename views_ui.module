@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.68 2008-02-15 19:49:17 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.69 2008-02-17 02:22:33 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -158,7 +158,10 @@ function views_ui_cache_load($name) {
   $view = views_object_cache_get('view', $name);
 
   if (empty($view)) {
-    $view = views_get_view($name);
+    $v = views_get_view($name);
+    if ($v) {
+      $view = drupal_clone($v);
+    }
   }
 
   if (empty($view)) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.16 2008-02-16 21:53:21 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.17 2008-02-17 02:22:33 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -9,7 +9,7 @@
  * Instantiate and construct a new handler
  */
 function _views_create_handler($definition) {
-//  dpr('Instantiating handler ' . $definition['handler']);
+//  vpr('Instantiating handler ' . $definition['handler']);
   $handler = new $definition['handler'];
   $handler->set_definition($definition);
   // let the handler have something like a constructor.
