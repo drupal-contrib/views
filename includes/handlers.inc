@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.20 2008-02-17 07:25:51 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.21 2008-02-17 17:20:43 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -968,7 +968,7 @@ class views_handler_argument extends views_handler {
       return call_user_func_array(array($this, $info['method']), $info['method args']);
     }
     else {
-      return $this->{$info['method']};
+      return $this->{$info['method']}();
     }
   }
 
