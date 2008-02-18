@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.23 2008-02-18 00:36:12 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.24 2008-02-18 06:11:18 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -793,7 +793,26 @@ class views_handler_filter_in_operator extends views_handler_filter {
   }
 
   function admin_summary() {
-    return check_plain($this->options['operator']['operator']) . ' ' . check_plain(implode(', ', $this->options['value']['value']));
+    if (count($this->options['value']['value']) == 1) {
+      // If there is only one, show it as an =.
+      $keys = array_keys($this->options['value']['value']);
+      $value = check_plain($this->value_options[array_shift($keys)]);
+
+      return ($this->options['operator']['operator'] == 'in' ? '=' : '<>') . ' ' . $value;
+    }
+    $output = '';
+    foreach ($this->options['value']['value'] as $value) {
+      if ($output) {
+        $output .= ', ';
+      }
+      if (strlen($output) > 8) {
+        $output .= '...';
+        break;
+      }
+      $output .= check_plain($this->value_options[$value]);
+    }
+
+    return check_plain($this->options['operator']['operator']) . ' ' . $output;
   }
 
   function query() {
