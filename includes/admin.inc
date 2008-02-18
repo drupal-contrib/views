@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.18 2008-02-18 00:25:07 merlinofchaos Exp $
+// $Id: admin.inc,v 1.19 2008-02-18 04:02:30 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -544,7 +544,7 @@ function template_preprocess_views_ui_edit_item(&$vars) {
     }
     $handler->init($view, $field);
 
-    $field_name = t('@group: @title', array('@group' => $handler->definition['group'], '@title' => $handler->definition['title']));
+    $field_name = t('!group: !title', array('!group' => $handler->definition['group'], '!title' => $handler->definition['title']));
 
     $fields[$id]['title'] = l($field_name, "admin/build/views/nojs/config-item/$view->name/$display->id/$type/$id", array('attributes' => array('class' => 'views-ajax-link')));
     $fields[$id]['class'] = views_ui_item_css($display->id . '-' . $type . '-' . $id);
