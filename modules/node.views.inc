@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.20 2008-02-18 00:25:07 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.21 2008-02-18 06:23:13 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -469,7 +469,7 @@ class views_handler_filter_node_type extends views_handler_filter_in_operator {
     // Set the default value to the first node type, so that there is something
     // reasonable there.
     $types = array_keys(node_get_types());
-    $options['value']['value'] = array(array_shift($types));
+    $options['value'] = array(array_shift($types));
   }
 }
 
