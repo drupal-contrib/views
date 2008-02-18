@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.22 2008-02-18 00:25:07 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.23 2008-02-18 00:36:12 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1081,7 +1081,7 @@ class views_handler_argument extends views_handler {
    */
   function summary_basics($count_field = TRUE) {
     // Add the number of nodes counter
-    $count_alias = $this->query->add_field(NULL, 'COUNT(' . $this->query->primary_field . ')', 'num_records');
+    $count_alias = $this->query->add_field(NULL, 'COUNT('. $this->query->primary_table .'.'. $this->query->primary_field . ')', 'num_records');
     $this->query->add_groupby($this->base_alias);
 
     if ($count_field) {
