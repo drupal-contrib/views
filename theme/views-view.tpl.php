@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view.tpl.php,v 1.4 2008-02-15 04:11:48 merlinofchaos Exp $
+// $Id: views-view.tpl.php,v 1.5 2008-02-20 01:08:25 merlinofchaos Exp $
 /**
  * @file views-view.tpl.php
  * Main view template
@@ -10,7 +10,7 @@
  * - $rows: The results of the view query, if any
  * - $empty: The empty text to display if the view is empty
  * - $pager: The pager next/prev links to display, if any
- * - $filters: Exposed filter form/info to display
+ * - $exposed: Exposed widget form/info to display
  * - $feed_icon: Feed icon to display, if any
  *
  * @ingroup views_templates
@@ -23,9 +23,9 @@
     </div>
   <?php endif; ?>
 
-  <?php if ($filters): ?>
+  <?php if ($exposed): ?>
     <div class="view-filters">
-      <?php print $filters; ?>
+      <?php print $exposed; ?>
     </div>
   <?php endif; ?>
 

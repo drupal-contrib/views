@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.7 2008-02-15 23:31:51 merlinofchaos Exp $
+// $Id: cache.inc,v 1.8 2008-02-20 01:08:25 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -16,6 +16,9 @@ function _views_include_handlers() {
     $module_path = drupal_get_path('module', $module);
     if (file_exists("$module_path/$module.views.inc")) {
       include_once "$module_path/$module.views.inc";
+    }
+    else if (file_exists("$module_path/includes/$module.views.inc")) {
+      include_once "$module_path/includes/$module.views.inc";
     }
     else if (file_exists("$views_path/$module.views.inc")) {
       include_once "$views_path/$module.views.inc";

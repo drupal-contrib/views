@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.11 2008-02-18 00:25:07 merlinofchaos Exp $
+// $Id: theme.inc,v 1.12 2008-02-20 01:08:25 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -17,7 +17,7 @@ function template_preprocess_views_view(&$vars) {
     $vars['empty']    = '';
   }
 
-  $vars['filters']    = $view->display_handler->render_filters();
+  $vars['exposed']    = !empty($view->exposed_widgets) ? $view->exposed_widgets : '';
   $vars['header']     = $view->display_handler->render_header();
   $vars['footer']     = $view->display_handler->render_footer();
   $vars['more']       = $view->display_handler->render_more_link();

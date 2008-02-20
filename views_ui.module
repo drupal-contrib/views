@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.71 2008-02-18 00:25:07 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.72 2008-02-20 01:08:25 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -36,10 +36,11 @@ function views_ui_menu() {
     'page callback' => 'views_ui_add_page',
     'type' => MENU_LOCAL_TASK
   );
-  $items['admin/build/views/edit/%views_ui_cache'] = $callback + array(
+  $items['admin/build/views/edit/%views_ui_cache'] = $base + array(
     'title' => t('Edit'),
     'page callback' => 'views_ui_edit_page',
     'page arguments' => array(4),
+    'type' => MENU_LOCAL_TASK
   );
   $items['admin/build/views/import'] = $base + array(
     'title' => t('Import'),
