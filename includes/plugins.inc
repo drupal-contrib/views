@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.22 2008-02-20 01:08:25 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.23 2008-02-21 02:32:07 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -158,7 +158,22 @@ class views_display_plugin extends views_object {
    * Determine if this display uses exposed filters, so the view
    * will know whether or not to build them.
    */
-  function uses_exposed() { return TRUE; }
+  function uses_exposed() { 
+    if (!isset($this->has_exposed)) {
+      foreach (array('field', 'filter') as $type) {
+        foreach ($this->view->$type as $key => $info) {
+          if ($info['handler']->is_exposed()) {
+            // one is all we need; if we find it, return true.
+            $this->has_exposed = TRUE;
+            return TRUE;
+          }
+        }
+      }
+      $this->has_exposed = FALSE;
+    }
+    
+    return $this->has_exposed;
+  }
 
   /**
    * Static member function to list which sections are defaultable
