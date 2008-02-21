@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.32 2008-02-21 22:43:00 merlinofchaos Exp $
+// $Id: view.inc,v 1.33 2008-02-21 22:51:26 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -521,10 +521,8 @@ class view extends views_db_object {
 
     // Copy pager information from the display.
     // @todo: Should this code live on the display?
-    if (!empty($this->display_handler->definition['use pager'])) {
-      $this->set_use_pager($this->display_handler->get_option('use_pager'));
-      $this->set_pager_element($this->display_handler->get_option('pager_element'));
-    }
+    $this->set_use_pager($this->display_handler->use_pager());
+    $this->set_pager_element($this->display_handler->get_option('pager_element'));
     $this->set_items_per_page($this->display_handler->get_option('items_per_page'));
     $this->set_offset($this->display_handler->get_option('offset'));
 
