@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.26 2008-02-20 01:08:25 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.27 2008-02-21 01:54:32 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -207,6 +207,21 @@ class views_handler extends views_object {
    * There is no need for this function to actually store the data.
    */
   function options_submit($form, &$form_state) { }
+
+  /**
+   * render our chunk of the exposed filter form when selecting
+   */
+  function exposed_form(&$form, &$form_state) { }
+
+  /**
+   * Validate the exposed filter form
+   */
+  function exposed_validate(&$form, &$form_state) { }
+
+  /**
+   * Submit the exposed filter form
+   */
+  function exposed_submit(&$form, &$form_state) { }
 
   /**
    * Add this handler into the query.
