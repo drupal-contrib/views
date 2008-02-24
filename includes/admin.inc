@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.20 2008-02-20 01:08:25 merlinofchaos Exp $
+// $Id: admin.inc,v 1.21 2008-02-24 22:52:53 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1338,9 +1338,14 @@ function views_ui_config_item_form_remove($form, &$form_state) {
  * Override handler for views_ui_edit_display_form
  */
 function views_ui_config_item_form_expose($form, &$form_state) {
-  $item = $form_state['handler']->options;
+  $item = &$form_state['handler']->options;
   // flip
   $item['exposed'] = empty($item['exposed']);
+
+  // If necessary, set new defaults:
+  if ($item['exposed']) {
+    $form_state['handler']->expose_options();
+  }
 
   $form_state['view']->set_item($form_state['display_id'], $form_state['type'], $form_state['id'], $item);
 
