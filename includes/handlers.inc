@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.30 2008-02-24 22:52:53 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.31 2008-02-25 20:26:33 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1046,10 +1046,17 @@ class views_handler_filter extends views_handler {
 
     if (!empty($this->options['expose']['operator']) && isset($input[$this->options['expose']['operator']])) {
       $this->operator = $input[$this->options['expose']['operator']];
+      if ($this->options['expose']['remember']) {
+        $_SESSION['views'][$this->view->name][$this->view->current_display][$this->options['expose']['operator']] = $input[$this->options['expose']['operator']];
+      }
     }
 
     if (!empty($this->options['expose']['identifier'])) {
       $value = $input[$this->options['expose']['identifier']];
+      if ($this->options['expose']['remember']) {
+        $_SESSION['views'][$this->view->name][$this->view->current_display][$this->options['expose']['identifier']] = $value;
+      }
+
       // Various ways to check for the absence of optional input.
       if (!empty($this->options['expose']['optional'])) {
         if ($value == 'All' || $value === array()) {
