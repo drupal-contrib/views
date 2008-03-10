@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.225 2008-02-27 01:40:51 merlinofchaos Exp $
+// $Id: views.module,v 1.226 2008-03-10 19:33:04 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -157,8 +157,6 @@ function views_block($op = 'list', $delta = 0, $edit = array()) {
         $items += $view->execute_hook_block($display_id);
       }
       return $items;
-    case 'configure':
-    case 'list':
     case 'view':
       list($name, $display_id) = explode('-', $delta);
       // Load the view
