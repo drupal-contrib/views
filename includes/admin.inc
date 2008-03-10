@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.22 2008-03-10 22:57:34 merlinofchaos Exp $
+// $Id: admin.inc,v 1.23 2008-03-10 23:01:03 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1172,15 +1172,17 @@ function views_ui_add_item_form_submit($form, &$form_state) {
 
   $form_state['view']->stack = array();
 
-  // Loop through each of the items that were checked and add them to the view.
-  foreach (array_keys(array_filter($form_state['values']['name'])) as $field) {
-    list($table, $field) = explode('.', $field, 2);
-    $id = $form_state['view']->add_item($form_state['display_id'], $type, $table, $field);
-    if (empty($form_state['id'])) {
-      $form_state['id'] = $id;
-    }
-    else {
-      $form_state['view']->stack[] = $id;
+  if (!empty($form_state['values']['name'])) && is_array($form_state['values']['name'])) {
+    // Loop through each of the items that were checked and add them to the view.
+    foreach (array_keys(array_filter($form_state['values']['name'])) as $field) {
+      list($table, $field) = explode('.', $field, 2);
+      $id = $form_state['view']->add_item($form_state['display_id'], $type, $table, $field);
+      if (empty($form_state['id'])) {
+        $form_state['id'] = $id;
+      }
+      else {
+        $form_state['view']->stack[] = $id;
+      }
     }
   }
 
