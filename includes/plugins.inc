@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.26 2008-03-10 19:35:11 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.27 2008-03-10 19:42:52 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -52,6 +52,7 @@ function views_views_plugins() {
         'uses row plugin' => TRUE,
         'uses options' => TRUE,
       ),
+/* -- not yet implemented --
       'table' => array(
         'title' => t('Table'),
         'help' => t('Displays rows in a table.'),
@@ -60,6 +61,7 @@ function views_views_plugins() {
         'uses row plugin' => FALSE,
         'uses fields' => TRUE,
       ),
+*/   
       'default_summary' => array(
         'title' => t('Default'),
         'help' => t('Displays the default summary view'),
