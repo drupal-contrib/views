@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.36 2008-03-10 21:06:39 merlinofchaos Exp $
+// $Id: view.inc,v 1.37 2008-03-10 21:30:40 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -978,7 +978,7 @@ class views_db_object {
     }
     $query = '';
     if (!$update) {
-      $query = "INSERT INTO {" . $this->db_table . "} (`" . implode('`, `', $fields) . '`) VALUES (' . implode(', ', $defs) . ')';
+      $query = "INSERT INTO {" . $this->db_table . "} (" . implode(', ', $fields) . ') VALUES (' . implode(', ', $defs) . ')';
     }
     else {
       $query = '';

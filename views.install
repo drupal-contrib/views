@@ -1,5 +1,5 @@
 <?php
-// $Id: views.install,v 1.35 2008-02-20 01:08:24 merlinofchaos Exp $
+// $Id: views.install,v 1.36 2008-03-10 21:30:40 merlinofchaos Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
@@ -50,7 +50,6 @@ function views_schema() {
       ),
       'view_php' => array(
         'type' => 'blob',
-        'default' => '',
         'description' => t('A chunk of PHP code that can be used to provide modifications to the view prior to building.'),
       ),
       'base_table' => array(
@@ -147,7 +146,6 @@ function views_schema() {
       ),
       'data' => array(
         'type' => 'blob',
-        'default' => '',
         'description' => t('Serialized data being stored.'),
         'serialize' => TRUE,
       ),

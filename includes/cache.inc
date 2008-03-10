@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.8 2008-02-20 01:08:25 merlinofchaos Exp $
+// $Id: cache.inc,v 1.9 2008-03-10 21:30:40 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -121,7 +121,10 @@ function _views_discover_default_views() {
       $cache = array();
 
       foreach ($defaults as $name => $view) {
-        $cache[$name] = $view;
+        // Only views with a sufficiently high api version are eligible.
+        if (isset($view->api_version) && $view->api_version >= 2) {
+          $cache[$name] = $view;
+        }
       }
       cache_set('views_default_views:' . $language->language, $cache, 'cache_views');
     }
