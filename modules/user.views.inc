@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.6 2008-02-18 00:25:07 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.7 2008-03-11 00:50:46 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -27,7 +27,6 @@ function user_views_data() {
 
   $data['users']['table']['join']['node']['handler'] = 'views_join';
   $data['users']['table']['join']['node']['arguments'] = array('users', 'node', 'uid', 'uid');
-  $data['users']['table']['group'] = t('User');
 
   // ----------------------------------------------------------------
   // Fields
