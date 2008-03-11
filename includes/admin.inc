@@ -1,9 +1,16 @@
 <?php
-// $Id: admin.inc,v 1.24 2008-03-10 23:50:20 merlinofchaos Exp $
+// $Id: admin.inc,v 1.25 2008-03-11 17:18:14 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
  */
+
+/**
+ * Page callback for the tools page
+ */
+function views_ui_admin_tools() {
+  return array('markup' => array('#value' => t('This page is not yet implemented.')));
+}
 
 /**
  * Page callback to list views in the system.

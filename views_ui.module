@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.72 2008-02-20 01:08:25 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.73 2008-03-11 17:18:14 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -51,7 +51,7 @@ function views_ui_menu() {
   $items['admin/build/views/tools'] = $base + array(
     'title' => t('Tools'),
     'page callback' => 'drupal_get_form',
-    'callback arguments' => array('views_ui_admin_tools'),
+    'page arguments' => array('views_ui_admin_tools'),
     'type' => MENU_LOCAL_TASK
   );
   $items['admin/build/views/delete/%views_ui_cache'] = $callback + array(
