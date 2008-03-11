@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.39 2008-03-10 22:42:23 merlinofchaos Exp $
+// $Id: view.inc,v 1.40 2008-03-11 00:26:53 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -960,16 +960,11 @@ class views_db_object {
     // Go through our schema and build correlations.
     foreach ($schema['fields'] as $field => $info) {
       // special case -- skip serial types if we are updating.
-      if ($info['type'] == 'serial' && $update) {
+      if ($info['type'] == 'serial') {
         continue;
       }
       $fields[] = $field;
       switch ($info['type']) {
-        case 'serial':
-          $defs[] = '%s';
-          $this->$field = 'NULL';
-          $serials[] = $field;
-          break;
         case 'int':
           $defs[] = '%d';
           break;
