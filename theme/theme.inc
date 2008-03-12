@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.15 2008-03-12 04:28:12 merlinofchaos Exp $
+// $Id: theme.inc,v 1.16 2008-03-12 04:35:58 merlinofchaos Exp $
 
 /**
  * Preprocess the primary theme implementation for a view.
@@ -131,7 +131,7 @@ function template_preprocess_views_view_table(&$vars) {
         $link_options = array(
           'html' => true,
           'attributes' => array('title' => $title),
-          'query' => 'sort=' . urlencode($field) . '&order=' . $initial . $query,
+          'query' => 'order=' . urlencode($field) . '&sort=' . $initial . $query,
         );
         $vars['header'][$field] = l($label . $image, $_GET['q'], $link_options);
       }
