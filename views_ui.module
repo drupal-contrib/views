@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.74 2008-03-11 19:42:47 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.75 2008-03-12 04:20:27 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -152,6 +152,11 @@ function views_ui_theme() {
       'arguments' => array('body' => NULL),
       'file' => '/includes/tabs.inc',
     ),
+
+    'views_ui_style_plugin_table' => array(
+      'arguments' => array('form' => NULL),
+    ),
+
   );
 }
 

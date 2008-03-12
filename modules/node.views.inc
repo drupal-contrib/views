@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.22 2008-02-21 04:40:16 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.23 2008-03-12 04:20:27 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -278,6 +278,7 @@ class views_handler_field_node extends views_handler_field {
    * Provide link to node option
    */
   function options_form(&$form, &$form_state) {
+    parent::options_form($form, $form_state);
     $form['link_to_node'] = array(
       '#title' => t('Link this field to its node'),
       '#type' => 'checkbox',
@@ -484,7 +485,7 @@ function node_views_plugins() {
       'node' => array(
         'title' => t('Node'),
         'help' => t('Display the node with standard node view.'),
-        'handler' => 'views_row_plugin_node_view',
+        'handler' => 'views_plugin_row_node_view',
         'theme' => 'views_view_row_node',
         'base' => array('node'), // only works with 'node' as base.
         'uses options' => TRUE,
@@ -496,9 +497,9 @@ function node_views_plugins() {
 /**
  * Plugin which performs a node_view on the resulting object.
  *
- * @ingroup views_row_plugins
+ * @ingroup views_plugin_rows
  */
-class views_row_plugin_node_view extends views_row_plugin {
+class views_plugin_row_node_view extends views_plugin_row {
   function options($display) {
     return array(
       'teaser' => TRUE,
