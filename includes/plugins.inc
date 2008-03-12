@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.30 2008-03-12 04:20:27 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.31 2008-03-12 04:28:12 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1840,7 +1840,7 @@ class views_plugin_style_table extends views_plugin_style {
     $form['description_markup'] = array(
       '#prefix' => '<div class="description form-item">',
       '#suffix' => '</div>',
-      '#value' => t('Place fields into columns; you may combine multiple fields into the same column. If you do, the separator in the column specified will be used to separate the fields. Check the sortable box to make that column clicksortable, and check the default sort radio to determine which column will be sorted by default, if any.'),
+      '#value' => t('Place fields into columns; you may combine multiple fields into the same column. If you do, the separator in the column specified will be used to separate the fields. Check the sortable box to make that column clicksortable, and check the default sort radio to determine which column will be sorted by default, if any. You may control column order and field labels in the fields section.'),
     );
   }
 
