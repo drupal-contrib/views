@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.views.inc,v 1.1 2008-03-11 00:11:35 merlinofchaos Exp $
+// $Id: poll.views.inc,v 1.2 2008-03-12 04:32:07 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for poll.module
@@ -53,3 +53,7 @@ function poll_views_data() {
 
   return $data;
 }
+
+/**
+ * @}
+ */

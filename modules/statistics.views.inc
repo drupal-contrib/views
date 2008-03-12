@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views.inc,v 1.1 2008-03-11 00:01:48 merlinofchaos Exp $
+// $Id: statistics.views.inc,v 1.2 2008-03-12 04:32:07 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for statistics.module
@@ -295,3 +295,7 @@ class views_handler_field_uid extends views_handler_field {
     }
   }
 }
+
+/**
+ * @}
+ */
