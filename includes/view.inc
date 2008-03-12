@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.42 2008-03-12 04:32:07 merlinofchaos Exp $
+// $Id: view.inc,v 1.43 2008-03-12 17:06:47 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1213,43 +1213,6 @@ class views_db_object {
     // Store.
     $this->display[$display_id]->handler->set_option($types[$type]['plural'], $fields);
   }
-}
-
-class views_sub_object {
-  var $table = '';
-  var $field = '';
-  var $relationship = '';
-}
-
-/**
- * An argument in a view.
- */
-class views_argument extends views_sub_object {
-}
-
-/**
- * A field in a view.
- */
-class views_field  extends views_sub_object  {
-}
-
-/**
- * A sort criterion in a view.
- */
-class views_sort  extends views_sub_object {
-}
-
-/**
- * A filter in a view.
- */
-class views_filter  extends views_sub_object {
-  var $group = 0;
-}
-
-/**
- * A relationship in a view.
- */
-class views_relationship  extends views_sub_object {
 }
 
 /**
