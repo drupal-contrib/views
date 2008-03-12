@@ -1,5 +1,5 @@
 <?php
-// $Id: views-exposed-form.tpl.php,v 1.1 2008-02-25 20:26:34 merlinofchaos Exp $
+// $Id: views-exposed-form.tpl.php,v 1.2 2008-03-12 05:14:11 merlinofchaos Exp $
 /**
  * @file views-exposed-form.tpl.php
  *
@@ -11,6 +11,8 @@
  * - $widget->operator: The operator for the widget. May be optional.
  * - $widget->widget: The widget itself.
  * - $button: The submit button for the form.
+ *
+ * @ingroup views_templates
  */
 ?>
 <div class="views-exposed-form">
