@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.8 2008-02-17 17:20:43 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.9 2008-03-13 21:29:28 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -12,6 +12,13 @@
 
 /**
  * Simple render function to make sure output is what we want.
+ *
+ * This function renders an object into JSON, and that object contains
+ * commands to the ajax response parser on the other side. The actual
+ * commands that can be sent are completely dependent upon the client
+ * javascript parser, which can be anything, but this function assumes
+ * that 'display', at least, will be displayed in some kind of ajax
+ * spot or popup.
  */
 function views_ajax_render($output = NULL, $title = NULL, $url = NULL, $js = NULL) {
   if (empty($output)) {
