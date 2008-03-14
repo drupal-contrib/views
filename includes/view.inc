@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.45 2008-03-14 06:04:37 merlinofchaos Exp $
+// $Id: view.inc,v 1.46 2008-03-14 21:49:43 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -404,7 +404,16 @@ class view extends views_db_object {
 
     if ($this->display_handler->uses_exposed()) {
       // Deal with any exposed filters we may have, before building.
-      $this->exposed_widgets = views_get_form_get('views_exposed_form', $this, $this->display_handler->display);
+      $form_state = array(
+        'view' => &$this,
+        'display' => &$this->display_handler->display,
+        'input' => $_GET,
+        'method' => 'get',
+        're_render' => TRUE,
+        'no_redirect' => TRUE,
+      );
+
+      $this->exposed_widgets = drupal_build_form('views_exposed_form', $form_state);
     }
 
     // Build all the filters.
@@ -1255,6 +1264,39 @@ class views_display extends views_db_object {
   }
 }
 
+/**
+ * Provide a list of views object types used in a view, with some information
+ * about them.
+ */
+function views_object_types() {
+  return array(
+    'field' => array(
+      'title' => t('Fields'),
+      'stitle' => t('Field'),
+      'plural' => 'fields',
+    ),
+    'argument' => array(
+      'title' => t('Arguments'),
+      'stitle' => t('Argument'),
+      'plural' => 'arguments',
+    ),
+    'sort' => array(
+      'title' => t('Sort criteria'),
+      'stitle' => t('Sort criterion'),
+      'plural' => 'sorts',
+    ),
+    'filter' => array(
+      'title' => t('Filters'),
+      'stitle' => t('Filter'),
+      'plural' => 'filters',
+    ),
+    'relationship' => array(
+      'title' => t('Relationships'),
+      'stitle' => t('Relationship'),
+      'plural' => 'relationships',
+    ),
+  );
+}
 
 /**
  * @}
