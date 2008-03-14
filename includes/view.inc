@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.44 2008-03-14 06:00:10 merlinofchaos Exp $
+// $Id: view.inc,v 1.45 2008-03-14 06:04:37 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1027,7 +1027,7 @@ class views_db_object {
     }
     db_query($query, $values);
 
-    if ($serials) {
+    if ($serials && !$update) {
       // get last insert ids and fill them in.
       foreach ($serials as $field) {
         $this->$field = db_last_insert_id($this->db_table, $field);
