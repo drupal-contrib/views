@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.48 2008-03-15 18:47:43 merlinofchaos Exp $
+// $Id: view.inc,v 1.49 2008-03-15 22:48:40 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -941,6 +941,18 @@ class view extends views_db_object {
       }
     }
     return $output;
+  }
+
+  /**
+   * Make a copy of this view that has been sanitized of all database IDs
+   * and handlers and other stuff.
+   *
+   * I'd call this clone() but it's reserved.
+   */
+  function copy() {
+    $code = $this->export();
+    eval($code);
+    return $view;
   }
 }
 
