@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.9 2008-03-12 04:20:27 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.10 2008-03-15 23:33:33 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -22,7 +22,7 @@ function user_views_data() {
   $data['users']['table']['base'] = array(
     'field' => 'uid',
     'title' => t('User'),
-    'help' => t('The node type allows views of your site\'s users.'),
+    'help' => t('Allows views of your site\'s users.'),
   );
 
   $data['users']['table']['join']['node']['handler'] = 'views_join';
