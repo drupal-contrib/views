@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.77 2008-03-15 18:47:43 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.78 2008-03-15 18:50:29 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -139,6 +139,13 @@ function views_ui_menu() {
     'page arguments' => array(3, 5),
   );
   return $items;
+}
+
+function views_ui_help($path, $arg) {
+  switch ($path) {
+    case 'admin/build/views/tools':
+      return '<p>' . t('The converter will make a best-effort attempt to convert a Views 1 view to Views 2. This conversion is not reliable; you will very likely have to make adjustments to your view to get it to match.') . '</p>';
+  }
 }
 
 /*
