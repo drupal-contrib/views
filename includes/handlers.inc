@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.34 2008-03-12 04:38:58 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.35 2008-03-15 00:10:41 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1626,6 +1626,8 @@ class views_handler_argument extends views_handler {
   function default_empty() {
     // We return with no query; this will force the empty text.
     $this->view->built = TRUE;
+    $this->view->executed = TRUE;
+    $this->view->result = array();
     return FALSE;
   }
 

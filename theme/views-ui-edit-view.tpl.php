@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-view.tpl.php,v 1.1 2008-02-15 04:11:48 merlinofchaos Exp $
+// $Id: views-ui-edit-view.tpl.php,v 1.2 2008-03-15 00:10:42 merlinofchaos Exp $
 /**
  * @file views-ui-edit-view.tpl.php
  * Template for the primary view editing window.
@@ -30,3 +30,7 @@
 </div>
 
 <?php print $save_button ?>
+
+<div id='views-live-preview'>
+  <?php print $preview ?>
+</div>

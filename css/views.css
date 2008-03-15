@@ -1,4 +1,4 @@
-/* $Id: views.css,v 1.1 2008-03-10 19:33:04 merlinofchaos Exp $ */
+/* $Id: views.css,v 1.2 2008-03-15 00:10:41 merlinofchaos Exp $ */
 .views-exposed-form .views-exposed-widget {
   float: left;
   padding: .5em 1em 0 0;
@@ -17,4 +17,3 @@
 .views-exposed-widgets {
   margin-bottom: .5em;
 }
-
