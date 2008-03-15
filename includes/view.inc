@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.47 2008-03-15 00:10:41 merlinofchaos Exp $
+// $Id: view.inc,v 1.48 2008-03-15 18:47:43 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -819,6 +819,7 @@ class view extends views_db_object {
     // @todo: Integrate this in with caching.
     $result = db_query("SELECT DISTINCT v.* FROM {views_view} v");
     $views = array();
+    $vids = array();
 
     // Load all the views.
     while ($data = db_fetch_object($result)) {
@@ -826,7 +827,8 @@ class view extends views_db_object {
       $view->load_row($data);
       $view->loaded = TRUE;
       $view->type = t('Normal');
-      $views[$view->vid] = $view;
+      $views[$view->name] = $view;
+      $names[$view->vid] = $view->name;
     }
 
     // Stop if we didn't get any views.
@@ -834,7 +836,7 @@ class view extends views_db_object {
       return array();
     }
 
-    $vids = implode(', ', array_keys($views));
+    $vids = implode(', ', array_keys($names));
     // Now load all the subtables:
     foreach (view::db_objects() as $key) {
       $object_name = "views_$key";
@@ -846,7 +848,7 @@ class view extends views_db_object {
 
         // Because it can get complicated with this much indirection,
         // make a shortcut reference.
-        $location = &$views[$object->vid]->$key;
+        $location = &$views[$names[$object->vid]]->$key;
 
         // If we have a basic id field, load the item onto the view based on
         // this ID, otherwise push it on.
