@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.35 2008-03-15 00:10:41 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.36 2008-03-16 00:48:47 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -14,7 +14,7 @@ function _views_create_handler($definition) {
   $handler->set_definition($definition);
   // let the handler have something like a constructor.
   if (isset($definition['arguments'])) {
-    call_user_func_array(array($handler, 'construct'), $definition['arguments']);
+    call_user_func_array(array(&$handler, 'construct'), $definition['arguments']);
   }
   else {
     $handler->construct();
@@ -50,7 +50,7 @@ function views_get_table_join($table, $primary_table) {
     $h = $data['table']['join'][$primary_table];
     $handler = new $h['handler'];
     if (isset($h['arguments'])) {
-      call_user_func_array(array($handler, 'construct'), $h['arguments']);
+      call_user_func_array(array(&$handler, 'construct'), $h['arguments']);
     }
     return $handler;
   }

@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.33 2008-03-16 00:34:41 merlinofchaos Exp $
+// $Id: admin.inc,v 1.34 2008-03-16 00:48:47 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -141,6 +141,7 @@ function views_ui_preview($js, $view) {
   else {
     views_include('ajax');
     $object = new stdClass();
+    $object->display = '';
     if ($messages = theme('status_messages')) {
       $object->display = '<div class="views-messages">' . $messages . '</div>';
     }
