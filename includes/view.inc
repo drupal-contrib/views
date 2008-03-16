@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.49 2008-03-15 22:48:40 merlinofchaos Exp $
+// $Id: view.inc,v 1.50 2008-03-16 03:14:46 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -953,6 +953,27 @@ class view extends views_db_object {
     $code = $this->export();
     eval($code);
     return $view;
+  }
+
+  /**
+   * Make sure the view is completely valid.
+   *
+   * @return
+   *   TRUE if the view is valid; an array of error strings if it is not.
+   */
+  function validate() {
+    $this->init_display();
+
+    $errors = array();
+
+    foreach ($this->display as $display) {
+      // Make sure displays that use fields HAVE fields.
+      if ($display->handler->uses_fields() && !$display->handler->get_option('fields')) {
+        $errors[] = t('Display @display uses fields but there are none defined for it.', array('@display' => $display->display_title));
+      }
+    }
+
+    return $errors ? $errors : TRUE;
   }
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.35 2008-03-16 00:34:41 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.36 2008-03-16 03:14:46 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -342,6 +342,17 @@ class views_plugin_display extends views_object {
 
     if (array_key_exists($option, $this->display->display_options)) {
       return $this->display->display_options[$option];
+    }
+  }
+
+  /**
+   * Determine if the display's style uses fields.
+   */
+  function uses_fields() {
+    $plugin = views_get_plugin('style', $this->get_option('style_plugin'));
+    $plugin->init($this->view, $this->display);
+    if ($plugin) {
+      return $plugin->uses_fields();
     }
   }
 
