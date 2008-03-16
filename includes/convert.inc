@@ -1,5 +1,5 @@
 <?php
-// $Id: convert.inc,v 1.1 2008-03-15 22:48:40 merlinofchaos Exp $
+// $Id: convert.inc,v 1.2 2008-03-16 01:21:28 merlinofchaos Exp $
 /**
  * @file convert.inc
  *
@@ -173,7 +173,8 @@ function views1_import($imported) {
 
   if (!empty($imported->page)) {
     $handler = &$view->display['page']->handler;
-    $handler->set_option('path', $imported->url);
+    $url = str_replace('$arg', '%', $imported->url);
+    $handler->set_option('path', $url);
     if ($imported->menu) {
       $menu = array('type' => 'normal');
       if ($imported->menu_tab) {
