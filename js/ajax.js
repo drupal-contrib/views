@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.7 2008-03-15 00:10:42 merlinofchaos Exp $
+// $Id: ajax.js,v 1.8 2008-03-16 07:24:57 merlinofchaos Exp $
 /**
 * @file ajax.inc
 *
@@ -75,6 +75,8 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
   else {
     // If no display, reset the form.
     Drupal.Views.Ajax.setForm('', Drupal.settings.views.ajax.defaultForm);
+    //Enable the save button.
+    $('#edit-save').removeAttr('disabled');
     // Trigger an update for the live preview when we reach this state:
     $('#views-ui-preview-form').trigger('submit');
   } 
@@ -183,6 +185,9 @@ Drupal.behaviors.ViewsAjaxLinks = function() {
     // Turn on the hilite to indicate this is in use.
     $(this).addClass('hilite');
 
+    //Disable the save button.
+    $('#edit-save').attr('disabled', 'true');
+    
     $.ajax({
       type: "GET",
       url: url,
