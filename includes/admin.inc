@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.34 2008-03-16 00:48:47 merlinofchaos Exp $
+// $Id: admin.inc,v 1.35 2008-03-16 01:36:34 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -111,6 +111,8 @@ function views_ui_preview($js, $view) {
     $args = explode('/', $form_state['args']);
   }
 
+  // Fix 'q' for paging so that it will go to the NON ajax live preview.
+  $_GET['q'] = str_replace('ajax', 'nojs', $_GET['q']);
   $preview = $view->preview($form_state['display_id'], $args);
 
   $output .= '<div class="views-query-info">';

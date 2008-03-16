@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.11 2008-03-16 01:06:14 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.12 2008-03-16 01:36:34 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -152,10 +152,10 @@ class views_handler_argument_user_uid extends views_handler_argument {
       $title = variable_get('anonymous', t('Anonymous'));
     }
     else {
-      $title = db_result(db_query("SELECT u.title FROM {user} u WHERE u.uid = %d"), $this->argument);
+      $title = db_result(db_query("SELECT u.name FROM {users} u WHERE u.uid = %d", $this->argument));
     }
     if (empty($title)) {
-      return t('No title');
+      return t('No user');
     }
 
     return check_plain($title);
