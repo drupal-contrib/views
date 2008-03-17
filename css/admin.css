@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.22 2008-03-17 00:25:53 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.23 2008-03-17 21:43:04 merlinofchaos Exp $ */
 
 /* 
  * Summary pad
@@ -505,4 +505,9 @@ form#views-ui-preview-form input#preview-submit {
   color: red;
   border: 1px solid red;
   padding: 1em;
+}
+
+/* Hide by default only with js */
+html.js .views-hidden {
+  display: none;
 }

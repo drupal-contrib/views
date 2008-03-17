@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.2 2008-03-15 00:10:41 merlinofchaos Exp $
+// $Id: form.inc,v 1.3 2008-03-17 21:43:04 merlinofchaos Exp $
 
 /**
  * @file form.inc
@@ -184,4 +184,30 @@ function drupal_process_form_new($form_id, &$form, &$form_state) {
       }
     }
   }
+}
+
+/**
+ * Process callback to add dependency to form items.
+ *
+ * Usage:
+ *
+ * On any form item, add
+ * - '#process' => 'views_process_dependency' and
+ * - '#dependency' => array('id-of-form-without-the-#' => array(list, of, values, that, make, this, gadget, visible));
+ */
+function views_process_dependency($element, $edit, &$form_state, &$form) {
+  if (isset($element['#dependency'])) {
+    if (!isset($element['#dependency_count'])) {
+      $element['#dependency_count'] = 1;
+    }
+    if ($form_state['ajax']) {
+      $form_state['js settings']['viewsAjax']['formRelationships'][$element['#id']] = array('num' => $element['#dependency_count'], 'values' => $element['#dependency']);
+    }
+    else {
+      views_add_js('dependent');
+      drupal_add_js(array('views' => array('formRelationships' => $form_state['dependency'])), 'setting');
+    }
+  }
+
+  return $element;
 }
