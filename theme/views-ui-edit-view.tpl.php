@@ -1,11 +1,15 @@
 <?php
-// $Id: views-ui-edit-view.tpl.php,v 1.2 2008-03-15 00:10:42 merlinofchaos Exp $
+// $Id: views-ui-edit-view.tpl.php,v 1.3 2008-03-17 00:25:53 merlinofchaos Exp $
 /**
  * @file views-ui-edit-view.tpl.php
  * Template for the primary view editing window.
  */
 ?>
-
+<?php if ($locked): ?>
+  <div class="view-locked">
+    <?php print t('This view is locked by user !user, and may not be modified. This lock is !age old. Click here to !break.', array('!user' => $locked, '!age' => $lock_age, '!break' => $break)); ?>
+  </div>
+<?php endif; ?>
 <div class="views-basic-info<?php if (!empty($view->changed)) { print " changed"; }?>">
   <?php if (!is_numeric($view->vid)): ?>
     <div class="view-changed view-new"><?php print t('New view'); ?></div>

@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.21 2008-03-15 00:10:41 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.22 2008-03-17 00:25:53 merlinofchaos Exp $ */
 
 /* 
  * Summary pad
@@ -499,4 +499,10 @@ form#views-ui-preview-form div#preview-args-wrapper {
 
 form#views-ui-preview-form input#preview-submit {
   margin: 1.7em 0 0 0;
+}
+
+.view-locked {
+  color: red;
+  border: 1px solid red;
+  padding: 1em;
 }
