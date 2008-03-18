@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.36 2008-03-16 00:48:47 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.37 2008-03-18 15:48:15 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -290,7 +290,7 @@ class views_handler extends views_object {
   /**
    * Take input from exposed filters and assign to this handler, if necessary.
    */
-  function accept_exposed_input($input) { }
+  function accept_exposed_input($input) { return TRUE; }
 }
 
 /**
