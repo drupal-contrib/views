@@ -1,5 +1,5 @@
 <?php
-// $Id: convert.inc,v 1.2 2008-03-16 01:21:28 merlinofchaos Exp $
+// $Id: convert.inc,v 1.3 2008-03-18 15:52:39 merlinofchaos Exp $
 /**
  * @file convert.inc
  *
@@ -128,10 +128,10 @@ function views1_import($imported) {
   foreach (module_list() as $module) {
     $module_path = drupal_get_path('module', $module);
     if (file_exists("$module_path/$module.views_convert.inc")) {
-      include_once "$module_path/$module.views_convert.inc";
+      require_once "./$module_path/$module.views_convert.inc";
     }
     else if (file_exists("$views_path/$module.views_convert.inc")) {
-      include_once "$views_path/$module.views_convert.inc";
+      require_once "./$views_path/$module.views_convert.inc";
     }
   }
 

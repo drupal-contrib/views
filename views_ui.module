@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.81 2008-03-17 00:25:52 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.82 2008-03-18 15:52:39 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -174,7 +174,7 @@ function views_ui_perm() {
 
 function views_ui_theme() {
   $path = drupal_get_path('module', 'views');
-  include_once "$path/includes/admin.inc";
+  require_once "./$path/includes/admin.inc";
 
   return array(
     'views_ui_edit_view' => array(
