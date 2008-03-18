@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.37 2008-03-18 15:48:15 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.38 2008-03-18 16:20:37 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -238,6 +238,15 @@ class views_handler extends views_object {
    *   - label: The label to use for this piece.
    */
   function exposed_info() { }
+  
+ /**
+  * Check whether current user has access to this handler.
+  *
+  * @return boolean
+  */ 
+  function access() {
+    return TRUE;
+  }
 
   /**
    * Run before the view is built.

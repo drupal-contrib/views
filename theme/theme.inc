@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.17 2008-03-14 21:49:43 merlinofchaos Exp $
+// $Id: theme.inc,v 1.18 2008-03-18 16:20:38 merlinofchaos Exp $
 
 function _views_theme_functions($hook, $view, $display = NULL) {
   $themes = array();
@@ -116,9 +116,8 @@ function template_preprocess_views_view_table(&$vars) {
   $options  = $view->style_handler->options;
   $handler  = $view->style_handler;
 
-  $columns  = $handler->sanitize_columns($options['columns']);
-
   $fields   = $view->field;
+  $columns  = $handler->sanitize_columns($options['columns'], $fields);
 
   $active   = !empty($handler->active) ? $handler->active : '';
   $order    = !empty($handler->order) ? $handler->order : 'asc';

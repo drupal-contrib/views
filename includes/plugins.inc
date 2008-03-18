@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.37 2008-03-17 21:43:04 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.38 2008-03-18 16:20:37 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1788,9 +1788,11 @@ class views_plugin_style_table extends views_plugin_style {
    *   An array of all fields; the key is the id of the field and the
    *   value is the id of the column the field should be in.
    */
-  function sanitize_columns($columns) {
+  function sanitize_columns($columns, $fields = NULL) {
     $sanitized = array();
-    $fields = $this->display->handler->get_option('fields');
+    if ($fields === NULL) {
+      $fields = $this->display->handler->get_option('fields');
+    }
 
     // Preconfigure the sanitized array so that the order is retained.
     foreach ($fields as $field => $info) {
