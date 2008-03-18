@@ -1,5 +1,5 @@
 <?php
-// $Id: views.install,v 1.38 2008-03-18 15:49:13 merlinofchaos Exp $
+// $Id: views.install,v 1.39 2008-03-18 15:58:34 merlinofchaos Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
@@ -175,6 +175,12 @@ function views_update_6000() {
   $ret = array();
   if (db_table_exists('views_view')) {
     return $ret;
+  }
+
+  // This has the beneficial effect of wiping out any Views 1 cache at the
+  // same time; not wiping that cache could easily cause problems with Views 2.
+  if (db_table_exists('cache_views')) {
+    db_drop_table($ret, 'cache_views');
   }
 
   // This is mostly the same as drupal_install_schema, but it forces
