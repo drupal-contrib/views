@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.40 2008-03-20 16:24:18 merlinofchaos Exp $
+// $Id: admin.inc,v 1.41 2008-03-20 19:57:42 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -45,7 +45,7 @@ function views_ui_list_views($arg = NULL) {
       }
     }
 
-    if (!empty($view->display)) {
+    if (empty($view->display)) {
       $path = t('Warning! Broken view!');
     }
     else {
