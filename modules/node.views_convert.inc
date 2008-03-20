@@ -1,5 +1,5 @@
 <?php
-//$Id: node.views_convert.inc,v 1.1 2008-03-15 18:47:43 merlinofchaos Exp $
+//$Id: node.views_convert.inc,v 1.2 2008-03-20 15:40:18 merlinofchaos Exp $
 /**
  * @file
  * Field conversion for fields handled by this module.
