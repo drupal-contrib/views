@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.3 2008-03-17 21:43:04 merlinofchaos Exp $
+// $Id: form.inc,v 1.4 2008-03-20 16:24:18 merlinofchaos Exp $
 
 /**
  * @file form.inc
@@ -192,8 +192,8 @@ function drupal_process_form_new($form_id, &$form, &$form_state) {
  * Usage:
  *
  * On any form item, add
- * - '#process' => 'views_process_dependency' and
- * - '#dependency' => array('id-of-form-without-the-#' => array(list, of, values, that, make, this, gadget, visible));
+ * - @code '#process' => 'views_process_dependency' @endcode
+ * - @code '#dependency' => array('id-of-form-without-the-#' => array(list, of, values, that, make, this, gadget, visible)); @endcode
  */
 function views_process_dependency($element, $edit, &$form_state, &$form) {
   if (isset($element['#dependency'])) {

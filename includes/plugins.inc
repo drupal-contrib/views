@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.38 2008-03-18 16:20:37 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.39 2008-03-20 16:24:18 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1787,6 +1787,11 @@ class views_plugin_style_table extends views_plugin_style {
    * @param $columns
    *   An array of all fields; the key is the id of the field and the
    *   value is the id of the column the field should be in.
+   * @param $fields
+   *   The fields to use for the columns. If not provided, they will
+   *   be requested from the current display. The running render should
+   *   send the fields through, as they may be different than what the
+   *   display has listed due to access control or other changes.
    */
   function sanitize_columns($columns, $fields = NULL) {
     $sanitized = array();

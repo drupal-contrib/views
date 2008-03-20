@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.231 2008-03-18 15:52:39 merlinofchaos Exp $
+// $Id: views.module,v 1.232 2008-03-20 16:24:18 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -296,6 +296,25 @@ function views_include($file) {
   }
 
   $used[$file] = TRUE;
+}
+
+/**
+ * Load views files on behalf of modules.
+ */
+function views_module_include($file) {
+  $views_path = drupal_get_path('module', 'views') . '/modules';
+  foreach (module_list() as $module) {
+    $module_path = drupal_get_path('module', $module);
+    if (file_exists("$module_path/$module.$file")) {
+      require_once "./$module_path/$module.$file";
+    }
+    else if (file_exists("$module_path/includes/$module.$file")) {
+      require_once "./$module_path/includes/$module.$file";
+    }
+    else if (file_exists("$views_path/$module.$file")) {
+      require_once "./$views_path/$module.$file";
+    }
+  }
 }
 
 /**
@@ -629,6 +648,12 @@ function views_get_applicable_views($type) {
   foreach ($views as $view) {
     // Skip disabled views.
     if (!empty($view->disabled)) {
+      continue;
+    }
+
+    if (empty($view->display)) {
+      // Skip this view as it is broken.
+      vsm(t("Skipping broken view @view", array('@view' => $view->name)));
       continue;
     }
 
