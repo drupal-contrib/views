@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.54 2008-03-21 09:24:12 merlinofchaos Exp $
+// $Id: view.inc,v 1.55 2008-03-21 23:20:06 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -421,7 +421,14 @@ class view extends views_db_object {
         'no_redirect' => TRUE,
       );
 
+      if (!empty($this->ajax)) {
+        $form_state['ajax'] = TRUE;
+      }
+
       $this->exposed_widgets = drupal_build_form('views_exposed_form', $form_state);
+      if (!empty($form_state['js settings'])) {
+        $this->js_settings = $form_state['js settings'];
+      }
     }
     // Build all the relationships first thing.
     $this->_build('relationship');

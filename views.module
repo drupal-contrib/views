@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.233 2008-03-21 08:43:08 merlinofchaos Exp $
+// $Id: views.module,v 1.234 2008-03-21 23:20:06 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -908,6 +908,7 @@ function views_exposed_form(&$form_state) {
 
   $form['#theme'] = views_theme_functions('views_exposed_form', $view, $display);
 
+  views_add_js('dependent');
   return $form;
 }
 

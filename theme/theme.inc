@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.18 2008-03-18 16:20:38 merlinofchaos Exp $
+// $Id: theme.inc,v 1.19 2008-03-21 23:20:06 merlinofchaos Exp $
 
 function _views_theme_functions($hook, $view, $display = NULL) {
   $themes = array();
@@ -200,7 +200,7 @@ function template_preprocess_views_exposed_form(&$vars) {
   $vars['widgets'] = array();
   foreach ($form['#info'] as $id => $info) {
     // Set aside checkboxes.
-    if ($form[$info['value']]['#type'] == 'checkbox') {
+    if (isset($form[$info['value']]['#type']) && $form[$info['value']]['#type'] == 'checkbox') {
       $checkboxes .= drupal_render($form[$info['value']]);
       continue;
     }

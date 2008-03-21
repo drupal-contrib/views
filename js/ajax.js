@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.9 2008-03-17 21:43:04 merlinofchaos Exp $
+// $Id: ajax.js,v 1.10 2008-03-21 23:20:06 merlinofchaos Exp $
 /**
 * @file ajax.inc
 *
@@ -143,6 +143,7 @@ Drupal.Views.Ajax.previewResponse = function(data) {
     Drupal.settings.viewsAjax = {};
   }
   if (data.js) {
+    console.log('hi');
     $.extend(Drupal.settings, data.js);
   }
 

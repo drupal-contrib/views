@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.4 2008-03-20 16:24:18 merlinofchaos Exp $
+// $Id: form.inc,v 1.5 2008-03-21 23:20:06 merlinofchaos Exp $
 
 /**
  * @file form.inc
@@ -200,12 +200,13 @@ function views_process_dependency($element, $edit, &$form_state, &$form) {
     if (!isset($element['#dependency_count'])) {
       $element['#dependency_count'] = 1;
     }
-    if ($form_state['ajax']) {
+    if (!empty($form_state['ajax'])) {
       $form_state['js settings']['viewsAjax']['formRelationships'][$element['#id']] = array('num' => $element['#dependency_count'], 'values' => $element['#dependency']);
     }
     else {
       views_add_js('dependent');
-      drupal_add_js(array('views' => array('formRelationships' => $form_state['dependency'])), 'setting');
+      $options['viewsAjax']['formRelationships'][$element['#id']] = array('num' => $element['#dependency_count'], 'values' => $element['#dependency']);
+      drupal_add_js($options, 'setting');
     }
   }
 

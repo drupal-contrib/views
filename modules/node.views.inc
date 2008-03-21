@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.27 2008-03-21 16:58:05 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.28 2008-03-21 23:20:06 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -82,7 +82,7 @@ function node_views_data() {
     ),
     // Information for accepting a nid as a filter
     'filter' => array(
-      'handler' => 'views_handler_filter_equality',
+      'handler' => 'views_handler_filter_numeric',
     ),
     // Information for sorting on a nid.
     'sort' => array(
@@ -98,6 +98,7 @@ function node_views_data() {
       'handler' => 'views_handler_field_date',
       'click sortable' => TRUE,
     ),
+    // @todo date sort
     'sort' => array(
       'handler' => 'views_handler_sort',
     ),
