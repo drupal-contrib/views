@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.42 2008-03-21 08:43:08 merlinofchaos Exp $
+// $Id: admin.inc,v 1.43 2008-03-21 09:24:12 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1272,6 +1272,9 @@ function views_ui_edit_display_form_submit($form, &$form_state) {
 
   views_ui_cache_set($form_state['view']);
   // @todo: Need a safe function to use for drupal_set_message in an ajax environ.
+  // This function would check $form_state for the ajax flag and, if set, simply
+  // discard the message. That way we could set some success messages for the
+  // non-jsy types here.
   $form_state['redirect'] = 'admin/build/views/edit/' . $form_state['view']->name;
 }
 

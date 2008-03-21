@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.39 2008-03-20 16:24:18 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.40 2008-03-21 09:24:12 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -932,11 +932,8 @@ class views_plugin_display extends views_object {
   function render_feed_icon() { }
 
   /**
-   * Render the view's title for display
-   * @todo Necessary? Hm.
+   * Render a text area, using hte proper format.
    */
-  function render_title() { }
-
   function render_textarea($area) {
     $value = $this->get_option($area);
     if ($value) {
