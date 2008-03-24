@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.45 2008-03-24 21:23:45 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.46 2008-03-24 21:25:15 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1321,41 +1321,49 @@ class views_handler_filter_string extends views_handler_filter {
         'title' => t('Is equal to'),
         'short' => t('='),
         'method' => 'op_equal',
+        'values' => 1,
       ),
       '!=' => array(
         'title' => t('Is not equal to'),
         'short' => t('='),
         'method' => 'op_equal',
+        'values' => 1,
       ),
       'contains' => array(
         'title' => t('Contains'),
         'short' => t('contains'),
         'method' => 'op_contains',
+        'values' => 1,
       ),
       'word' => array(
         'title' => t('Contains any word'),
         'short' => t('has word'),
         'method' => 'op_word',
+        'values' => 1,
       ),
       'allwords' => array(
         'title' => t('Contains all words'),
         'short' => t('has all'),
         'method' => 'op_word',
+        'values' => 1,
       ),
       'starts' => array(
         'title' => t('Starts with'),
         'short' => t('begins'),
         'method' => 'op_starts',
+        'values' => 1,
       ),
       'ends' => array(
         'title' => t('Ends with'),
         'short' => t('ends'),
         'method' => 'op_ends',
+        'values' => 1,
       ),
       'not' => array(
         'title' => t('Does not contain'),
         'short' => t('!has'),
         'method' => 'op_not',
+        'values' => 1,
       ),
     );
     // if the definition allows for the empty operator, add it.
