@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.2 2008-03-21 09:24:12 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.3 2008-03-25 22:26:51 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -23,7 +23,7 @@ function comment_views_data() {
   $data['comments']['table']['base'] = array(
     'field' => 'cid',
     'title' => t('Comments'),
-    'help' => t('The comments type allows views of your site\'s comments.'),
+    'help' => t('Your site\'s comments.'),
   );
 
   //joins

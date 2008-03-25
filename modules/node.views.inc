@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.31 2008-03-25 00:31:46 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.32 2008-03-25 22:26:51 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -63,7 +63,9 @@ function node_views_data() {
     'filter' => array(
       'handler' => 'views_handler_filter_string',
     ),
-    // @todo: argumennt
+    'argument' => array(
+      'handler' => 'views_handler_argument_string',
+    ),
   );
 
   // nid
@@ -583,7 +585,6 @@ function template_preprocess_views_view_row_node(&$vars) {
     return;
   }
 
-  // @todo add settings so that this can choose teaser, links, etc.
   $vars['node'] = node_view($node, $options['teaser'], FALSE, $options['links']);
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.56 2008-03-24 20:26:24 merlinofchaos Exp $
+// $Id: view.inc,v 1.57 2008-03-25 22:26:51 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -458,6 +458,10 @@ class view extends views_db_object {
         $this->_build('sort');
       }
     }
+
+    // Allow style handler to affect the query:
+
+    $this->style_handler->query();
 
     $this->build_info['query'] = $this->query->query();
     $this->build_info['count_query'] = $this->query->query(TRUE);
