@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.48 2008-03-25 00:31:46 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.49 2008-03-26 00:26:37 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -664,14 +664,24 @@ class views_handler_field_markup extends views_handler_field {
 
     $this->additional_fields = array();
     if (!is_numeric($this->format)) {
-      $this->additional_fields[] = $this->format;
+      $this->additional_fields['format'] = $this->format;
     }
   }
 
   function render($values) {
     $value = $values->{$this->field_alias};
-    $format = is_numeric($this->format) ? $this->format : $values->{$this->aliases[$this->format]};
+    $format = is_numeric($this->format) ? $this->format : $values->{$this->aliases['format']};
     return check_markup($value, $format, FALSE);
+  }
+}
+
+/**
+ * A handler to run a field through simple XSS filtering
+ */
+class views_handler_field_xss extends views_handler_field {
+  function render($values) {
+    $value = $values->{$this->field_alias};
+    return filter_xss($value);
   }
 }
 
