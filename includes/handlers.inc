@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.51 2008-03-27 05:01:50 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.52 2008-03-27 17:21:14 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -147,9 +147,9 @@ class views_join {
     $output = " $this->type JOIN {" . $this->table . "} $table[alias] ON $left[alias].$this->left_field = $table[alias].$this->field";
 
     // Tack on the extra.
-    if (isset($extra)) {
-      foreach ($extra as $field => $value) {
-        $output .= " AND $table[alias].$this->field";
+    if (isset($this->extra)) {
+      foreach ($this->extra as $field => $value) {
+        $output .= " AND $table[alias].$field";
         if (is_array($value) && !empty($value)) {
           $output .= " IN ('". implode("','", $value) ."')";
         }

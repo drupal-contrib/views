@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.57 2008-03-25 22:26:51 merlinofchaos Exp $
+// $Id: view.inc,v 1.58 2008-03-27 17:21:14 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -512,14 +512,12 @@ class view extends views_db_object {
     $items = array();
     if ($query) {
       $replacements = module_invoke_all('views_query_substitutions', $this);
-      foreach ($replacements as $src => $dest) {
-        $query = str_replace($src, $dest, $query);
-        $count_query = str_replace($src, $dest, $this->build_info['count_query']);
+      $query = str_replace(array_keys($replacements), $replacements, $query);
+      $count_query = str_replace(array_keys($replacements), $replacements, $this->build_info['count_query']);
 
-        if (is_array($args)) {
-          foreach ($args as $id => $arg) {
-            $args[$id] = str_replace($src, $dest, $arg);
-          }
+      if (is_array($args)) {
+        foreach ($args as $id => $arg) {
+          $args[$id] = str_replace(array_keys($replacements), $replacements, $arg);
         }
       }
 

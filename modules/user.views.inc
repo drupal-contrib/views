@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.15 2008-03-25 22:26:51 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.16 2008-03-27 17:21:14 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -199,6 +199,13 @@ class views_handler_argument_user_uid extends views_handler_argument {
   }
 }
 
+/**
+ * Allow replacement of current userid so we can cache these queries
+ */
+function user_views_query_substitutions($view) {
+  global $user;
+  return array('***CURRENT_USER***' => intval($user->uid));
+}
 
 /**
  * @}
