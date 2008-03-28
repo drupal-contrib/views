@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.13 2008-03-28 19:10:48 merlinofchaos Exp $
+// $Id: ajax.js,v 1.14 2008-03-28 20:31:51 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -189,7 +189,7 @@ Drupal.Views.updatePreviewForm = function() {
   $(this).ajaxSubmit({
     url: url,
     data: '',
-    type: 'POST',
+    type: 'GET',
     success: Drupal.Views.Ajax.previewResponse,
     error: function() { alert("An error occurred."); },
     dataType: 'json'

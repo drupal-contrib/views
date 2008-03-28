@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.59 2008-03-28 19:10:47 merlinofchaos Exp $
+// $Id: view.inc,v 1.60 2008-03-28 20:31:51 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -744,6 +744,10 @@ class view extends views_db_object {
    * Get the base path used for this view.
    */
   function get_path() {
+    if (!empty($this->override_path)) {
+      return $this->override_path;
+    }
+
     if (empty($this->display_handler)) {
       if (!$this->set_display('default')) {
         return FALSE;
