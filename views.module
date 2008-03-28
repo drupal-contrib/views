@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.236 2008-03-28 17:29:53 merlinofchaos Exp $
+// $Id: views.module,v 1.237 2008-03-28 17:57:48 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -105,7 +105,10 @@ function views_menu() {
   $items = array();
   foreach (views_get_page_views() as $data) {
     list($view, $display_id) = $data;
-    $items += $view->execute_hook_menu($display_id);
+    $result = $view->execute_hook_menu($display_id);
+    if (is_array($result)) {
+      $items += $result;
+    }
   }
   return $items;
 }
@@ -175,7 +178,10 @@ function views_block($op = 'list', $delta = 0, $edit = array()) {
       $items = array();
       foreach (views_get_block_views() as $data) {
         list($view, $display_id) = $data;
-        $items += $view->execute_hook_block($display_id);
+        $result = $view->execute_hook_block($display_id);
+        if (is_array($result)) {
+          $items += $result;
+        }
       }
       return $items;
     case 'view':
