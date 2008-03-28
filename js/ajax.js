@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.14 2008-03-28 20:31:51 merlinofchaos Exp $
+// $Id: ajax.js,v 1.15 2008-03-28 20:48:54 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -189,6 +189,22 @@ Drupal.Views.updatePreviewForm = function() {
   $(this).ajaxSubmit({
     url: url,
     data: '',
+    type: 'POST',
+    success: Drupal.Views.Ajax.previewResponse,
+    error: function() { alert("An error occurred."); },
+    dataType: 'json'
+  });
+
+  return false;
+}
+
+Drupal.Views.updatePreviewFilterForm = function() {
+  var url = $(this).attr('action');
+  url = url.replace('nojs', 'ajax');
+
+  $(this).ajaxSubmit({
+    url: url,
+    data: '',
     type: 'GET',
     success: Drupal.Views.Ajax.previewResponse,
     error: function() { alert("An error occurred."); },
@@ -270,7 +286,7 @@ Drupal.behaviors.ViewsAjaxLinks = function() {
 
   $('div#views-live-preview form:not(.views-processed)')
     .addClass('views-processed')
-    .submit(Drupal.Views.updatePreviewForm);
+    .submit(Drupal.Views.updatePreviewFilterForm);
 
   $('div#views-live-preview a:not(.views-processed)')
     .addClass('views-processed')
