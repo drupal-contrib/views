@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.50 2008-03-28 20:48:53 merlinofchaos Exp $
+// $Id: admin.inc,v 1.51 2008-03-28 22:04:45 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2062,7 +2062,14 @@ function views_ui_disable_page($view) {
  * Page callback for the tools - other page
  */
 function views_ui_admin_tools() {
-  return t('This page is not yet implemented. But try the convert tool.');
+  $form['views_sql_signature'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Add Views signature to all SQL queries'),
+    '#description' => t("All Views-generated queries will include a special 'VIEWS' = 'VIEWS' string in the WHERE clause. This makes identifying Views queries in database server logs simpler, but should only be used when troubleshooting."),
+    '#default_value' => variable_get('views_sql_signature', FALSE),
+  );
+
+  return system_settings_form($form);
 }
 
 /**
