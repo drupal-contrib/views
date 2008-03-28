@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.55 2008-03-28 17:29:54 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.56 2008-03-28 17:44:35 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1602,7 +1602,9 @@ class views_handler_filter_string extends views_handler_filter {
     // not rendered, we can't render dependencies; instead we only
     // render the form items we need.
     $which = 'all';
-    $source = ($form['operator']['#type'] == 'radios') ? 'radio:options[operator]' : 'edit-options-operator';
+    if (!empty($form['operator'])) {
+      $source = ($form['operator']['#type'] == 'radios') ? 'radio:options[operator]' : 'edit-options-operator';
+    }
     if (!empty($form_state['exposed'])) {
       if (empty($this->options['expose']['operator'])) {
         // exposed and locked.
