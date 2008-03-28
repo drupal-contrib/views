@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.42 2008-03-28 01:25:18 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.43 2008-03-28 17:29:54 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -164,7 +164,7 @@ class views_plugin_display extends views_object {
     if (!isset($this->has_exposed)) {
       foreach (array('field', 'filter') as $type) {
         foreach ($this->view->$type as $key => $info) {
-          if ($info['handler']->is_exposed()) {
+          if (!empty($info['handler']) && $info['handler']->is_exposed()) {
             // one is all we need; if we find it, return true.
             $this->has_exposed = TRUE;
             return TRUE;

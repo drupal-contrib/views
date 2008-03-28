@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.46 2008-03-28 01:25:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.47 2008-03-28 17:29:54 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1380,17 +1380,16 @@ function views_ui_rearrange_form(&$form_state) {
       $form[$id]['name'] = array(
         '#value' => $name,
       );
-      $form[$id]['removed'] = array(
-        '#type' => 'checkbox',
-        '#id' => 'views-removed-' . $id,
-        '#attributes' => array('class' => 'views-remove-checkbox'),
-        '#default_value' => 0,
-      );
-
     }
     else {
-      $form[$id]['name'] = array('#value' => t('Broken field @id', $id));
+      $form[$id]['name'] = array('#value' => t('Broken field @id', array('@id' => $id)));
     }
+    $form[$id]['removed'] = array(
+      '#type' => 'checkbox',
+      '#id' => 'views-removed-' . $id,
+      '#attributes' => array('class' => 'views-remove-checkbox'),
+      '#default_value' => 0,
+    );
   }
 
   // Add javascript settings that will be added via $.extend for tabledragging
@@ -1660,12 +1659,13 @@ function views_ui_config_item_form(&$form_state) {
           break;
         }
         $relationship_handler = views_get_handler($relationship['table'], $relationship['field'], 'relationship');
-        $relationship_handler->init($view, $relationship);
-
         // ignore invalid/broken relationships.
         if (empty($relationship_handler)) {
           continue;
         }
+
+        $relationship_handler->init($view, $relationship);
+
         $relationship_options[$relationship['id']] = $relationship_handler->label();
       }
 
