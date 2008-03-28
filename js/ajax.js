@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.11 2008-03-28 01:25:18 merlinofchaos Exp $
+// $Id: ajax.js,v 1.12 2008-03-28 16:53:48 merlinofchaos Exp $
 /**
 * @file ajax.inc
 *
@@ -195,12 +195,16 @@ Drupal.Views.updatePreviewForm = function() {
     dataType: 'json'
   });
 
-  return false;   
+  return false;
 }
 
 Drupal.Views.updatePreviewLink = function() {
   var url = $(this).attr('href');
   url = url.replace('nojs', 'ajax');
+  if (url.substring(0, 18) != '/admin/build/views') {
+//    console.log(url.substring(0, 18));
+    return true;
+  }
 
   $(this).ajaxSubmit({
     url: url,

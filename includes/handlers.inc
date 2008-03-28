@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.53 2008-03-28 01:25:18 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.54 2008-03-28 16:53:48 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -202,9 +202,11 @@ class views_join {
           }
           $extras[] = $extra;
         }
-        $output .= ' AND (' . implode(' ' . $this->extra_type . ' ', $extras) . ')';
+        if ($extras) {
+          $output .= ' AND (' . implode(' ' . $this->extra_type . ' ', $extras) . ')';
+        }
       }
-      else if (is_string($this->extra)) {
+      else if ($this->extra && is_string($this->extra)) {
         $output .= " AND ($this->extra)";
       }
     }
