@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.238 2008-03-28 19:10:47 merlinofchaos Exp $
+// $Id: views.module,v 1.239 2008-03-28 19:57:47 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -76,6 +76,12 @@ function views_theme() {
     'template' => 'views-exposed-form',
     'pattern' => 'views_exposed_form__',
     'arguments' => array('form' => NULL),
+  );
+
+  $hooks['views_more'] = $base + array(
+    'template' => 'views-more',
+    'pattern' => 'views_more__',
+    'arguments' => array('more_url' => NULL),
   );
 
   return $hooks;

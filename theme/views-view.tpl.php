@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view.tpl.php,v 1.6 2008-03-28 19:10:48 merlinofchaos Exp $
+// $Id: views-view.tpl.php,v 1.7 2008-03-28 19:57:48 merlinofchaos Exp $
 /**
  * @file views-view.tpl.php
  * Main view template
@@ -12,6 +12,7 @@
  * - $pager: The pager next/prev links to display, if any
  * - $exposed: Exposed widget form/info to display
  * - $feed_icon: Feed icon to display, if any
+ * - $more: A link to view more, if any
  *
  * @ingroup views_templates
  */
@@ -41,6 +42,10 @@
 
   <?php if ($pager): ?>
     <?php print $pager; ?>
+  <?php endif; ?>
+
+  <?php if ($more): ?>
+    <?php print $more; ?>
   <?php endif; ?>
 
   <?php if ($footer): ?>

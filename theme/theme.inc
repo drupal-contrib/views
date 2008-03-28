@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.20 2008-03-28 19:10:48 merlinofchaos Exp $
+// $Id: theme.inc,v 1.21 2008-03-28 19:57:48 merlinofchaos Exp $
 
 function _views_theme_functions($hook, $view, $display = NULL) {
   $themes = array();
@@ -282,7 +282,7 @@ function theme_views_mini_pager($tags = array(), $limit = 10, $element = 0, $par
 
     $items[] = array(
       'class' => 'pager-current',
-      'data' => t('Page @current of @max', array('@current' => $pager_current, '@max' => $pager_max)),
+      'data' => t('@current of @max', array('@current' => $pager_current, '@max' => $pager_max)),
     );
 
     $items[] = array(
