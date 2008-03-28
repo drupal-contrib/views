@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.56 2008-03-28 17:44:35 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.57 2008-03-28 21:12:01 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -940,7 +940,7 @@ class views_handler_sort_date extends views_handler_sort {
     switch($this->options['granularity']) {
       case 'second':
       default:
-        $this->query->add_orderby($this->table_alias, "$this->table_alias.$this->real_field", $this->options['order']);
+        $this->query->add_orderby($this->table_alias, $this->real_field, $this->options['order']);
         return;
       case 'minute':
         $formula = views_date_sql_format('YmdHi', "$this->table_alias.$this->real_field");
