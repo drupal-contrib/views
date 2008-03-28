@@ -1,11 +1,11 @@
-// $Id: ajax.js,v 1.12 2008-03-28 16:53:48 merlinofchaos Exp $
+// $Id: ajax.js,v 1.13 2008-03-28 19:10:48 merlinofchaos Exp $
 /**
-* @file ajax.inc
-*
-* Handles AJAX submission and response in Views UI.
-*/
+ * @file ajax_admin.js
+ *
+ * Handles AJAX submission and response in Views UI.
+ */
 
-Drupal.Views.Ajax = {};
+Drupal.Views.Ajax = Drupal.Views.Ajax || {};
 
 /**
  * Handles the simple process of setting the ajax form area with new data.

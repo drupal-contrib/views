@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.58 2008-03-27 17:21:14 merlinofchaos Exp $
+// $Id: view.inc,v 1.59 2008-03-28 19:10:47 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -26,6 +26,8 @@ class view extends views_db_object {
 
   var $args = array();
   var $build_info = array();
+
+  var $use_ajax = FALSE;
 
   // pager variables
   var $pager = array(
@@ -82,6 +84,13 @@ class view extends views_db_object {
    */
   function set_items_per_page($items_per_page) {
     $this->pager['items_per_page'] = $items_per_page;
+  }
+
+  /**
+   * Whether or not AJAX should be used.
+   */
+  function set_use_ajax($use_ajax) {
+    $this->use_ajax = $use_ajax;
   }
 
   /**

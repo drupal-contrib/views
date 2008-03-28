@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view.tpl.php,v 1.5 2008-02-20 01:08:25 merlinofchaos Exp $
+// $Id: views-view.tpl.php,v 1.6 2008-03-28 19:10:48 merlinofchaos Exp $
 /**
  * @file views-view.tpl.php
  * Main view template
@@ -16,7 +16,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="view view-<?php print $css_name; ?>">
+<div class="view view-<?php print $css_name; ?> view-id-<?php print $name; ?> view-display-id-<?php print $display_id; ?>">
   <?php if ($header): ?>
     <div class="view-header">
       <?php print $header; ?>

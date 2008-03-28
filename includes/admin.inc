@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.47 2008-03-28 17:29:54 merlinofchaos Exp $
+// $Id: admin.inc,v 1.48 2008-03-28 19:10:47 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2034,7 +2034,7 @@ function views_ui_disable_page($view) {
  * Page callback for the tools - other page
  */
 function views_ui_admin_tools() {
-  return array('markup' => array('#value' => t('This page is not yet implemented.')));
+  return t('This page is not yet implemented. But try the convert tool.');
 }
 
 /**
