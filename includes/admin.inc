@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.52 2008-03-29 00:06:13 merlinofchaos Exp $
+// $Id: admin.inc,v 1.53 2008-03-29 01:12:38 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -957,7 +957,7 @@ function views_ui_standard_form_buttons(&$form, &$form_state, $form_id, $name = 
 
     $form['buttons'][$submit] = array(
       '#type' => 'submit',
-      '#value' => t($third),
+      '#value' => $third,
       '#validate' => array(),
       '#submit' => array($third_submit),
     );

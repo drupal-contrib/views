@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.45 2008-03-28 19:57:47 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.46 2008-03-29 01:12:38 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1341,11 +1341,11 @@ class views_plugin_display_page extends views_plugin_display {
         $menu_str = t('No menu');
         break;
       case 'normal':
-        $menu_str = t('Normal: ' . $menu['title']);
+        $menu_str = t('Normal: @title', array('@title' => $menu['title']));
         break;
       case 'tab':
       case 'default tab':
-        $menu_str = t('Tab: ' . $menu['title']);
+        $menu_str = t('Tab: @title', array('@title' => $menu['title']));
         break;
     }
 
