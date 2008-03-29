@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.11 2008-03-20 16:24:18 merlinofchaos Exp $
+// $Id: cache.inc,v 1.12 2008-03-29 00:06:13 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -87,8 +87,7 @@ function _views_discover_default_views() {
   static $cache = NULL;
 
   if (!isset($cache)) {
-    global $language;
-    $data = cache_get('views_default_views:' . $language->language, 'cache_views');
+    $data = views_cache_get('views_default_views', TRUE);
 
     if (isset($data->data)) {
       $cache = $data->data;
@@ -104,7 +103,7 @@ function _views_discover_default_views() {
           $cache[$name] = $view;
         }
       }
-      cache_set('views_default_views:' . $language->language, $cache, 'cache_views');
+      views_cache_set('views_default_views', $cache, TRUE);
     }
   }
 

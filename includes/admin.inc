@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.51 2008-03-28 22:04:45 merlinofchaos Exp $
+// $Id: admin.inc,v 1.52 2008-03-29 00:06:13 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2069,6 +2069,12 @@ function views_ui_admin_tools() {
     '#default_value' => variable_get('views_sql_signature', FALSE),
   );
 
+  $form['views_skip_cache'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable views data caching'),
+    '#description' => t("Views caches data about tables, modules and views available, to increase performance. By checking this box, Views will skip this cache and always rebuild this data when needed. This can have a serious performance impact on your site."),
+    '#default_value' => variable_get('views_skip_cache', FALSE),
+  );
   return system_settings_form($form);
 }
 
