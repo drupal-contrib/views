@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.41 2008-03-28 17:57:48 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.42 2008-03-29 20:15:48 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -322,7 +322,7 @@ function node_views_data() {
       'field' => 'vid',
     ),
     // Links to user table through node table.
-    'user' => array(
+    'users' => array(
       // Since it doesn't link to the user table, we must specify
       'left_table' => 'node',
       'left_field' => 'vid',
