@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.54 2008-03-30 15:57:01 merlinofchaos Exp $
+// $Id: admin.inc,v 1.55 2008-03-30 16:39:33 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1572,7 +1572,7 @@ function views_ui_add_item_form(&$form_state) {
   }
   else {
     $form['markup'] = array(
-      '#value' => '<div>' . t('There are no @types available to add.', array('@types' =>  strtolower($types[$type]['title']))) . '</div>',
+      '#value' => '<div class="form-item">' . t('There are no @types available to add.', array('@types' =>  strtolower($types[$type]['title']))) . '</div>',
     );
   }
   views_ui_standard_form_buttons($form, $form_state, 'views_ui_add_item_form', t('Add'));
