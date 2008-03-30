@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.58 2008-03-29 20:15:48 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.59 2008-03-30 15:57:01 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1621,7 +1621,7 @@ class views_handler_filter_string extends views_handler_filter {
 
   function admin_summary() {
     $options = $this->operator_options('short');
-    return (!empty($this->options['exposed']) ? t('exposed<br />') : '') . $options[$this->operator];
+    return (!empty($this->options['exposed']) ? t('exposed>') : '') . $options[$this->operator];
   }
 
   function options_form(&$form, &$form_state) {

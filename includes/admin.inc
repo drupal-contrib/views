@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.53 2008-03-29 01:12:38 merlinofchaos Exp $
+// $Id: admin.inc,v 1.54 2008-03-30 15:57:01 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -396,7 +396,7 @@ function views_ui_delete_confirm(&$form_state, $view) {
 function views_ui_delete_confirm_submit(&$form, &$form_state) {
   $form_state['view']->delete();
   views_object_cache_clear('view', $form_state['view']->name);
-  drupal_set_message(t('The view has been deleted'));
+  drupal_set_message(t('The view has been deleted.'));
   $form_state['redirect'] = 'admin/build/views';
 }
 
