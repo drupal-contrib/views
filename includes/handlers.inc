@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.60 2008-03-30 16:18:49 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.61 2008-03-30 17:12:46 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -2513,6 +2513,8 @@ class views_handler_argument extends views_handler {
         'style plugin' => TRUE,
         'breadcrumb' => TRUE, // generate a breadcrumb to here
       ),
+      // @todo: There should be a 'default' where a default value
+      // is filled in if the argument is not present.
     );
 
     if ($which) {
