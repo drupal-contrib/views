@@ -1,5 +1,5 @@
 <?php
-// $Id: views-exposed-form.tpl.php,v 1.2 2008-03-12 05:14:11 merlinofchaos Exp $
+// $Id: views-exposed-form.tpl.php,v 1.3 2008-03-31 17:20:38 merlinofchaos Exp $
 /**
  * @file views-exposed-form.tpl.php
  *
@@ -15,6 +15,13 @@
  * @ingroup views_templates
  */
 ?>
+<?php if (!empty($q)): ?>
+  <?php
+    // This ensures that, if clean URLs are off, the 'q' is added first so that
+    // it shows up first in the URL.
+    print $q;
+  ?>
+<?php endif; ?>
 <div class="views-exposed-form">
   <div class="views-exposed-widgets clear-block">
     <?php foreach($widgets as $id => $widget): ?>

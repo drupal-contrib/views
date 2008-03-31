@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.22 2008-03-29 20:15:48 merlinofchaos Exp $
+// $Id: theme.inc,v 1.23 2008-03-31 17:20:38 merlinofchaos Exp $
 
 function _views_theme_functions($hook, $view, $display = NULL) {
   $themes = array();
@@ -218,6 +218,10 @@ function template_preprocess_views_exposed_form(&$vars) {
 
   // Put all single checkboxes together in the last spot.
   $checkboxes = '';
+
+  if (!empty($form['q'])) {
+    $vars['q'] = drupal_render($form['q']);
+  }
 
   $vars['widgets'] = array();
   foreach ($form['#info'] as $id => $info) {
