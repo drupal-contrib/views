@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.20 2008-03-31 00:18:45 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.21 2008-03-31 18:10:06 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -106,7 +106,6 @@ function user_views_data() {
     'help' => t('The user\'s picture, if allowed'), // The help that appears on the UI,
     // Information for displaying the uid
     'field' => array(
-      'field' => 'uid',
       'handler' => 'views_handler_field_user_picture',
       'click sortable' => TRUE,
     ),
@@ -439,8 +438,8 @@ class views_handler_field_user_mail extends views_handler_field_user {
 class views_handler_field_user_picture extends views_handler_field {
   function construct() {
     parent::construct();
-    $this->additional_fields['uid'] = array('uid');
-    $this->additional_fields['name'] = array('name');
+    $this->additional_fields['uid'] = 'uid';
+    $this->additional_fields['name'] = 'name';
   }
 
   function render($values) {
