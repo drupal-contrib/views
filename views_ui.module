@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.85 2008-03-28 22:04:45 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.86 2008-03-31 00:18:45 merlinofchaos Exp $
 
 /**
  * @file views_ui.module
@@ -135,6 +135,10 @@ function views_ui_menu() {
   );
   $items['admin/build/views/%views_ui_js/config-item/%views_ui_cache'] = $callback + array(
     'page callback' => 'views_ui_config_item',
+    'page arguments' => array(3, 5),
+  );
+  $items['admin/build/views/%views_ui_js/config-item-extra/%views_ui_cache'] = $callback + array(
+    'page callback' => 'views_ui_config_item_extra',
     'page arguments' => array(3, 5),
   );
   // display specific parameters

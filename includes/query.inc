@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.7 2008-03-21 08:43:08 merlinofchaos Exp $
+// $Id: query.inc,v 1.8 2008-03-31 00:18:45 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -480,6 +480,14 @@ class views_query {
   function get_table_info($table) {
     if (!empty($this->table_queue[$table])) {
       return $this->table_queue[$table];
+    }
+
+    // In rare cases we might *only* have aliased versions of the table.
+    if (!empty($this->tables[$this->primary_table][$table])) {
+      $alias = $this->tables[$this->primary_table][$table]['alias'];
+      if (!empty($this->table_queue[$alias])) {
+        return $this->table_queue[$alias];
+      }
     }
   }
 
