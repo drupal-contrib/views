@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.48 2008-03-30 17:22:25 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.49 2008-03-31 03:54:07 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1033,7 +1033,7 @@ class views_plugin_display extends views_object {
   function render_textarea($area) {
     $value = $this->get_option($area);
     if ($value) {
-      return check_markup($value, $this->get_option($area . '_format'));
+      return check_markup($value, $this->get_option($area . '_format'), FALSE);
     }
   }
 
