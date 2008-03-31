@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.62 2008-03-31 00:18:45 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.63 2008-03-31 19:49:56 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -473,6 +473,7 @@ class views_handler_relationship extends views_handler {
   function options(&$options) {
     parent::options($options);
     $options['label'] = !empty($this->definition['label']) ? $this->definition['label'] : $this->definition['field'];
+    $options['required'] = FALSE;
   }
 
   /**
@@ -485,6 +486,13 @@ class views_handler_relationship extends views_handler {
       '#title' => t('Label'),
       '#default_value' => isset($this->options['label']) ? $this->options['label'] : '',
       '#description' => t('The label for this relationship that will be displayed only administratively.'),
+    );
+
+    $form['required'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Require this relationship'),
+      '#description' => t('If required, items that do not contain this relationship will not appear.'),
+      '#default_value' => !empty($this->options['required']),
     );
   }
 
@@ -501,6 +509,10 @@ class views_handler_relationship extends views_handler {
     $def['field'] = $base_field;
     $def['left_table'] = $this->table;
     $def['left_field'] = $this->real_field;
+    if (!empty($this->options['required'])) {
+      $def['type'] = 'INNER';
+    }
+
     if (!empty($def['join_handler']) && class_exists($def['join_handler'])) {
       $join = new $def['join_handler'];
     }
