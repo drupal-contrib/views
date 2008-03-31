@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view-fields.tpl.php,v 1.3 2008-03-31 17:56:15 merlinofchaos Exp $
+// $Id: views-view-fields.tpl.php,v 1.4 2008-03-31 18:05:28 merlinofchaos Exp $
 /**
  * @file views-view-fields.tpl.php
  * Default simple view template to all the fields as a row.
@@ -17,7 +17,12 @@
  */
 ?>
 <?php foreach ($fields as $id => $field): ?>
-  <div class="views-field-<?php print $field->class ?>">
-    <?php print $field->content; ?>
+  <div class="views-field-<?php print $field->class; ?>">
+    <?php if ($field->label): ?>
+      <label class="views-label-<?php print $field->class; ?>">
+        <?php print $field->label; ?>:
+      </label>
+    <?php endif; ?>
+      <span class="field-content"><?php print $field->content; ?></span>
   </div>
 <?php endforeach; ?>
