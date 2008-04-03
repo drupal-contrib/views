@@ -1,5 +1,5 @@
 <?php
-// $Id: sort.handlers.inc,v 1.1 2008-04-03 00:22:26 merlinofchaos Exp $
+// $Id: sort.handlers.inc,v 1.2 2008-04-03 16:29:05 merlinofchaos Exp $
 /**
  * @file
  * Views' sort handlers.
@@ -147,6 +147,22 @@ class views_handler_sort_date extends views_handler_sort {
 
     // Add the field.
     $this->query->add_orderby(NULL, $formula, $this->options['order'], $this->table_alias . '_' . $this->field . '_' . $this->options['granularity']);
+  }
+}
+
+/**
+ * Sort in menu hierarchy order.
+ *
+ * Given a field name of 'p' this produces an ORDER BY on p1, p2, ..., p9.
+ * This is only really useful for the {menu_links} table.
+ */
+class views_handler_sort_menu_hierarchy extends views_handler_sort {
+  function query() {
+    $this->ensure_my_table();
+    $max_depth = isset($this->definition['max depth']) ? $this->definition['max depth'] : MENU_MAX_DEPTH;
+    for ($i = 1; $i <= $max_depth; ++$i) {
+      $this->query->add_orderby($this->table_alias, $this->field . $i, $this->options['order']);
+    }
   }
 }
 
