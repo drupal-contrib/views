@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.43 2008-03-31 00:18:45 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.44 2008-04-03 16:31:20 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -26,7 +26,7 @@ function node_views_data() {
   $data['node']['table']['base'] = array(
     'field' => 'nid',
     'title' => t('Node'),
-    'help' => t('Nodes are a Drupal site\'s primary content.'),
+    'help' => t("Nodes are a Drupal site's primary content."),
     'weight' => 10,
   );
 
