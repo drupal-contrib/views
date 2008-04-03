@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.243 2008-04-01 15:07:49 merlinofchaos Exp $
+// $Id: views.module,v 1.244 2008-04-03 16:30:24 merlinofchaos Exp $
 
 /**
  * @file views.module
@@ -123,11 +123,11 @@ function views_menu() {
     }
   }
   $items['views/ajax'] = array(
-    'title' => t('Views'),
+    'title' => 'Views',
     'page callback' => 'views_ajax',
     'access callback' => 'user_access',
     'access arguments' => array('access content'),
-    'description' => t('Ajax callback for view loading.'),
+    'description' => 'Ajax callback for view loading.',
     'type' => MENU_CALLBACK,
   );
   return $items;
