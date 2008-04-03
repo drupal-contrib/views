@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.58 2008-04-03 00:22:26 merlinofchaos Exp $
+// $Id: admin.inc,v 1.59 2008-04-03 16:39:50 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1556,7 +1556,10 @@ function views_ui_add_item_form(&$form_state) {
   $form['#section'] = $display_id . 'add-item';
 
   // Figure out all the base tables allowed based upon what the relationships provide.
-  $base_tables = array($view->base_table => TRUE);
+  $base_tables = array(
+    $view->base_table => TRUE,
+    '#global' => TRUE,
+  );
   $relationships = $display->handler->get_option('relationships');
   foreach ($relationships as $relationship) {
     $handler = views_get_handler($relationship['table'], $relationship['field'], 'relationship');
