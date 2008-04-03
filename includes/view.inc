@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.62 2008-03-29 20:15:48 merlinofchaos Exp $
+// $Id: view.inc,v 1.63 2008-04-03 16:38:14 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -468,8 +468,10 @@ class view extends views_db_object {
       }
     }
 
-    // Allow style handler to affect the query:
+    // Allow display handler to affect the query:
+    $this->display_handler->query();
 
+    // Allow style handler to affect the query:
     $this->style_handler->query();
 
     if (variable_get('views_sql_signature', FALSE)) {
