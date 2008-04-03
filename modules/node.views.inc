@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.44 2008-04-03 16:31:20 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.45 2008-04-03 17:19:19 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -602,6 +602,7 @@ class views_handler_field_node_link_edit extends views_handler_field_node_link {
   function construct() {
     parent::construct();
     $this->additional_fields['uid'] = 'uid';
+    $this->additional_fields['type'] = 'type';
     $this->additional_fields['format'] = array('table' => 'node_revisions', 'field' => 'format');
   }
 
@@ -610,6 +611,7 @@ class views_handler_field_node_link_edit extends views_handler_field_node_link {
     $node = new stdClass();
     $node->nid = $values->{$this->aliases['nid']};
     $node->uid = $values->{$this->aliases['uid']};
+    $node->type = $values->{$this->aliases['type']};
     $node->format = $values->{$this->aliases['format']};
     $node->status = 1; // unpublished nodes ignore access control
     if (!node_access('update', $node)) {
@@ -629,6 +631,7 @@ class views_handler_field_node_link_edit extends views_handler_field_node_link {
 class views_handler_field_node_link_delete extends views_handler_field_node_link {
   function construct() {
     parent::construct();
+    $this->additional_fields['type'] = 'type';
     $this->additional_fields['uid'] = 'uid';
     $this->additional_fields['format'] = array('table' => 'node_revisions', 'field' => 'format');
   }
@@ -638,6 +641,7 @@ class views_handler_field_node_link_delete extends views_handler_field_node_link
     $node = new stdClass();
     $node->nid = $values->{$this->aliases['nid']};
     $node->uid = $values->{$this->aliases['uid']};
+    $node->type = $values->{$this->aliases['type']};
     $node->format = $values->{$this->aliases['format']};
     $node->status = 1; // unpublished nodes ignore access control
     if (!node_access('delete', $node)) {
