@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.21 2008-03-31 18:10:06 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.22 2008-04-03 00:22:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -25,7 +25,6 @@ function user_views_data() {
     'help' => t('Users who have created accounts on your site.'),
   );
 
-  // @todo: restructure this back to normal.
   $data['users']['table']['join'] = array(
     'node' => array(
       'left_field' => 'uid',

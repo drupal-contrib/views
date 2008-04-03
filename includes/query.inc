@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.8 2008-03-31 00:18:45 merlinofchaos Exp $
+// $Id: query.inc,v 1.9 2008-04-03 00:22:26 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -744,11 +744,20 @@ class views_query {
 
     $clauses = array();
     foreach ($this->where as $group => $info) {
-      $clauses[] = '(' . implode(") " . $info['type'] . " (", $info['clauses']) . ')';
+      $clause = implode(") " . $info['type'] . " (", $info['clauses']);
+      if (count($info['clauses']) > 1) {
+        $clause = '(' . $clause . ')';
+      }
+      $clauses[] = $clause;
     }
 
     if ($clauses) {
-      $where = 'WHERE (' . implode(")\n    " . $this->group_operator . ' (', $clauses) . ")\n";
+      if (count($clauses) > 1) {
+        $where = 'WHERE (' . implode(")\n    " . $this->group_operator . ' (', $clauses) . ")\n";
+      }
+      else {
+        $where = "WHERE " . array_shift($clauses) . "\n";
+      }
     }
 
     $query = "SELECT $fields\n FROM {" . $this->primary_table . "} $this->primary_table \n$joins $where $groupby $orderby";
