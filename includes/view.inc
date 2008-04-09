@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.64 2008-04-03 17:19:19 merlinofchaos Exp $
+// $Id: view.inc,v 1.65 2008-04-09 19:41:20 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -611,9 +611,11 @@ class view extends views_db_object {
 
     // Give field handlers the opportunity to perform additional queries
     // using the entire resultset prior to rendering.
-    foreach ($this->field as $id => $field) {
-      if (!empty($this->field[$id]['handler'])) {
-        $this->field[$id]['handler']->pre_render($this->result);
+    if ($this->style_handler->uses_fields()) {
+      foreach ($this->field as $id => $field) {
+        if (!empty($this->field[$id]['handler'])) {
+          $this->field[$id]['handler']->pre_render($this->result);
+        }
       }
     }
 
