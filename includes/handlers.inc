@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.66 2008-04-09 21:29:14 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.67 2008-04-09 21:45:20 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -308,6 +308,11 @@ class views_handler extends views_object {
 
 /**
  * This many to one helper object is used on both arguments and filters.
+ *
+ * @todo This requires extensive documentation on how this class is to
+ * be used. For now, look at the arguments and filters that use it. Lots
+ * of stuff is just pass-through but there are definitely some interesting
+ * areas where they interact.
  */
 class views_many_to_one_helper {
   function views_many_to_one_helper(&$handler) {
