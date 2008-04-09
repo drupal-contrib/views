@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.52 2008-04-03 19:36:10 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.53 2008-04-09 21:29:14 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2137,11 +2137,11 @@ function theme_views_ui_style_plugin_table($form) {
  * The default style plugin for summaries.
  */
 class views_plugin_style_summary extends views_plugin_style {
-  function options($display) {
+  function options($display = NULL) {
     return array(
       'count' => TRUE,
       'override' => FALSE,
-      'items_per_page' => 0,
+      'items_per_page' => 25,
     );
   }
 
