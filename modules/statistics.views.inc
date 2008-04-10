@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views.inc,v 1.3 2008-03-21 09:24:12 merlinofchaos Exp $
+// $Id: statistics.views.inc,v 1.4 2008-04-10 20:23:30 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for statistics.module
@@ -39,7 +39,7 @@ function statistics_views_data() {
     'help' => t('The total number of times the node has been viewed.'), // The help that appears on the UI,
      // Information for displaying a title as a field
     'field' => array(
-      'handler' => 'views_handler_field',
+      'handler' => 'views_handler_field_numeric',
       'click sortable' => TRUE,
      ),
     'filter' => array(
@@ -56,7 +56,7 @@ function statistics_views_data() {
     'help' => t('The total number of times the node has been viewed today.'), // The help that appears on the UI,
      // Information for displaying a title as a field
     'field' => array(
-      'handler' => 'views_handler_field',
+      'handler' => 'views_handler_field_numeric',
       'click sortable' => TRUE,
      ),
     'filter' => array(
@@ -184,7 +184,7 @@ function statistics_views_data() {
     'help' => t('Time in milliseconds that the page took to load.'), // The help that appears on the UI,
      // Information for displaying a title as a field
     'field' => array(
-      'handler' => 'views_handler_field',
+      'handler' => 'views_handler_field_numeric',
       'click sortable' => TRUE,
     ),
     'filter' => array(

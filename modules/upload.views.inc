@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.1 2008-04-10 19:03:37 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.2 2008-04-10 20:23:31 merlinofchaos Exp $
 /**
  * @file
  *
@@ -103,7 +103,7 @@ function upload_views_data() {
     'title' => t('Weight'),
     'help' => t('The weight, used for sorting.'),
     'field' => array(
-      'handler' => 'views_handler_field',
+      'handler' => 'views_handler_field_numeric',
       'click sortable' => TRUE,
      ),
     'sort' => array(
