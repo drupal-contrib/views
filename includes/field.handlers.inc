@@ -1,5 +1,5 @@
 <?php
-// $Id: field.handlers.inc,v 1.2 2008-04-10 02:18:55 merlinofchaos Exp $
+// $Id: field.handlers.inc,v 1.3 2008-04-10 19:03:37 merlinofchaos Exp $
 /**
  * @file
  * Views' field handlers.
@@ -103,7 +103,7 @@ class views_handler_field extends views_handler {
    */
   function options(&$options) {
     parent::options($options);
-    $options['label'] = $this->ui_name();
+    $options['label'] = $this->definition['title'];
   }
 
   /**

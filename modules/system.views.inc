@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.1 2008-04-10 02:18:55 merlinofchaos Exp $
+// $Id: system.views.inc,v 1.2 2008-04-10 19:03:37 merlinofchaos Exp $
 /**
  * @file
  *
@@ -143,8 +143,8 @@ function system_views_data() {
 
   // status
   $data['files']['status'] = array(
-    'title' => t('Size'),
-    'help' => t('The size of the file.'),
+    'title' => t('Status'),
+    'help' => t('The status of the file.'),
     'field' => array(
       'handler' => 'views_handler_field_file_status',
       'click sortable' => TRUE,

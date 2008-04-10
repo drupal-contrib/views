@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.2 2008-04-09 19:41:20 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.3 2008-04-10 19:03:37 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -375,8 +375,14 @@ class views_handler_filter extends views_handler {
     if ($form['#type'] == 'radios') {
       $form['#type'] = 'select';
     }
-    if ($form['#type'] == 'checkboxes' && !empty($this->options['expose']['single'])) {
-      $form['#type'] = 'select';
+    // Checkboxes don't work so well in exposed forms due to GET conversions.
+    if ($form['#type'] == 'checkboxes') {
+      if (empty($form['#no_convert']) || !empty($this->options['expose']['single'])) {
+        $form['#type'] = 'select';
+      }
+      if (empty($this->options['expose']['single'])) {
+        $form['#multiple'] = TRUE;
+      }
     }
     if (!empty($this->options['expose']['single']) && isset($form['#multiple'])) {
       unset($form['#multiple']);
