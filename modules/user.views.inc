@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.23 2008-04-03 16:31:20 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.24 2008-04-10 02:18:55 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -232,7 +232,7 @@ function user_views_data() {
 
   $data['users_roles']['rid'] = array(
     'title' => t('Roles'),
-    'help' => t('Roles that a user belongs to'),
+    'help' => t('Roles that a user belongs to.'),
     'field' => array(
       'handler' => 'views_handler_field_user_roles',
     ),

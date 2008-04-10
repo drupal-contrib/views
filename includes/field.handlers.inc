@@ -1,5 +1,5 @@
 <?php
-// $Id: field.handlers.inc,v 1.1 2008-04-03 00:22:26 merlinofchaos Exp $
+// $Id: field.handlers.inc,v 1.2 2008-04-10 02:18:55 merlinofchaos Exp $
 /**
  * @file
  * Views' field handlers.
@@ -382,6 +382,15 @@ class views_handler_field_prerender_list extends views_handler_field {
     else if (!empty($this->options['empty'])) {
       return $this->options['empty'];
     }
+  }
+}
+
+/**
+ * Render a numeric value as a size.
+ */
+class views_handler_field_file_size extends views_handler_field {
+  function render($values) {
+    return format_size($values->{$this->field_alias});
   }
 }
 
