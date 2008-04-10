@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.67 2008-04-09 21:45:20 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.68 2008-04-10 19:23:20 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -387,7 +387,12 @@ class views_many_to_one_helper {
 
     // Store what values are used by this table chain so that other chains can
     // automatically discard those values.
-    $this->handler->view->many_to_one_tables[$field] = array_merge($this->handler->view->many_to_one_tables[$field], $this->handler->value);
+    if (empty($this->handler->view->many_to_one_tables[$field])) {
+      $this->handler->view->many_to_one_tables[$field] = $this->handler->value;
+    }
+    else {
+      $this->handler->view->many_to_one_tables[$field] = array_merge($this->handler->view->many_to_one_tables[$field], $this->handler->value);
+    }
 
     return $alias;
   }
@@ -579,6 +584,10 @@ function views_break_phrase($str, $filter = NULL) {
     $filter->value = explode(',', $str);
   }
 
+  // Doubly ensure that all values are numeric only.
+  foreach ($filter->value as $id => $value) {
+    $filter->value[$id] = intval($value);
+  }
   return $filter;
 }
 
