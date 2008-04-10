@@ -1,5 +1,5 @@
 <?php
-// $Id: field.handlers.inc,v 1.3 2008-04-10 19:03:37 merlinofchaos Exp $
+// $Id: field.handlers.inc,v 1.4 2008-04-10 20:25:21 merlinofchaos Exp $
 /**
  * @file
  * Views' field handlers.
@@ -391,6 +391,81 @@ class views_handler_field_prerender_list extends views_handler_field {
 class views_handler_field_file_size extends views_handler_field {
   function render($values) {
     return format_size($values->{$this->field_alias});
+  }
+}
+
+class views_handler_field_numeric extends views_handler_field {
+  function options(&$options) {
+    parent::options($options);
+    $options['set_precision'] = FALSE;
+    $options['precision'] = 0;
+    $options['decimal'] = '.';
+    $options['separator'] = ',';
+    $options['prefix'] = '';
+    $options['suffix'] = '';
+  }
+
+  function options_form(&$form, &$form_state) {
+    parent::options_form($form, $form_state);
+
+    if (!empty($this->definition['float'])) {
+      $form['set_precision'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Round'),
+        '#description' => t('If checked, the number will be rounded.'),
+        '#default_value' => $this->options['set_precision'],
+      );
+      $form['precision'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Precision'),
+        '#default_value' => $this->options['precision'],
+        '#description' => t('Specify how many digits to print after the decimal point.'),
+        '#process' => array('views_process_dependency'),
+        '#dependency' => array('edit-options-set-precision' => array(TRUE)),
+        '#size' => 2,
+      );
+      $form['decimal'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Decimal point'),
+        '#default_value' => $this->options['decimal'],
+        '#description' => t('What single character to use as a decimal point.'),
+        '#size' => 2,
+      );
+    }
+    $form['separator'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Thousands separator'),
+      '#default_value' => $this->options['separator'],
+      '#description' => t('What single character to use as the thousands separator.'),
+      '#size' => 2,
+    );
+    $form['prefix'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Prefix'),
+      '#default_value' => $this->options['prefix'],
+      '#description' => t('Text to put before the number, such as currency symbol.'),
+    );
+    $form['suffix'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Suffix'),
+      '#default_value' => $this->options['suffix'],
+      '#description' => t('Text to put after the number, such as currency symbol.'),
+    );
+  }
+
+  function render($values) {
+    $value = $values->{$this->field_alias};
+    if (!empty($this->options['set_precision'])) {
+      $value = number_format($value, $this->options['precision'], $this->options['decimal'], $this->options['separator']);
+    }
+    else {
+      $remainder = abs($value) - intval(abs($value));
+      $value = number_format($value, 0, '', $this->options['separator']);
+      if ($remainder) {
+        $value .= $this->options['decimal'] . $remainder;
+      }
+    }
+    return check_plain($this->options['prefix'] . $value . $this->options['suffix']);
   }
 }
 
