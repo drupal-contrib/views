@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-tab.tpl.php,v 1.5 2008-03-29 20:15:48 merlinofchaos Exp $
+// $Id: views-ui-edit-tab.tpl.php,v 1.6 2008-04-10 22:07:53 merlinofchaos Exp $
 /**
  * @file views-ui-edit-tab.tpl.php
  * Template for the primary view editing window.
@@ -75,5 +75,6 @@
       </div>
     </div>
   </div>
+  <span class="clear"></span>
 
 </div>

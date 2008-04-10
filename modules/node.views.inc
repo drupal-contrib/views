@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.48 2008-04-10 21:59:58 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.49 2008-04-10 22:07:52 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -789,7 +789,7 @@ class views_handler_field_history_user_timestamp extends views_handler_field_nod
       $created = $values->{$this->aliases['created']};
       $changed = $values->{$this->aliases['changed']};
 
-      $last_comment = module_exists('comment') ? $values->{$this->aliases['last_comment']} : 0;
+      $last_comment = module_exists('comment') && !empty($this->options['comments']) ? $values->{$this->aliases['last_comment']} : 0;
 
       if (!$last_read && $created > NODE_NEW_LIMIT) {
         $mark = MARK_NEW;

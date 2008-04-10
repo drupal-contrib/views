@@ -1,4 +1,4 @@
-/* $Id: views.css,v 1.3 2008-03-29 00:57:37 merlinofchaos Exp $ */
+/* $Id: views.css,v 1.4 2008-04-10 22:07:52 merlinofchaos Exp $ */
 .views-exposed-form .views-exposed-widget {
   float: left;
   padding: .5em 1em 0 0;
@@ -22,4 +22,5 @@ html.js a.views-throbbing,
 html.js span.views-throbbing {
   background:url(../images/status-active.gif) no-repeat right center;
   padding-right:18px;
+  border: 0;
 }
