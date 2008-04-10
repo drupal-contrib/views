@@ -1,5 +1,5 @@
 <?php
-// $Id: field.handlers.inc,v 1.4 2008-04-10 20:25:21 merlinofchaos Exp $
+// $Id: field.handlers.inc,v 1.5 2008-04-10 21:43:36 merlinofchaos Exp $
 /**
  * @file
  * Views' field handlers.
@@ -192,7 +192,7 @@ class views_handler_field_date extends views_handler_field {
     $value = $values->{$this->field_alias};
     $format = $this->options['date_format'];
     if ($format == 'custom') {
-      $custom_format = $this->custom_date_format;
+      $custom_format = $this->options['custom_date_format'];
     }
 
     switch ($format) {
