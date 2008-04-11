@@ -1,9 +1,7 @@
 <?php
-// $Id: views_ui.module,v 1.88 2008-04-03 16:30:24 merlinofchaos Exp $
-
+// $Id: views_ui.module,v 1.89 2008-04-11 09:09:13 merlinofchaos Exp $
 /**
  * @file views_ui.module
- *
  * Provide structure for the administrative interface to Views.
  */
 
