@@ -1,12 +1,12 @@
 <?php
-// $Id: search.views.inc,v 1.1 2008-04-10 20:56:37 merlinofchaos Exp $
+// $Id: search.views.inc,v 1.2 2008-04-11 08:41:00 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for search.module
  */
 
 /**
- * @defgroup views_node_module node.module handlers
+ * @defgroup views_search_module search.module handlers
  *
  * Includes the tables 'search_index'
  * @{

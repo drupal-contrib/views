@@ -1,12 +1,12 @@
 <?php
-//$Id: profile.views.inc,v 1.3 2008-03-31 00:18:45 merlinofchaos Exp $
+//$Id: profile.views.inc,v 1.4 2008-04-11 08:40:59 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
  */
 
 /**
- * @defgroup views_user_module user.module handlers
+ * @defgroup views_profile_module profile.module handlers
  *
  * @{
  */

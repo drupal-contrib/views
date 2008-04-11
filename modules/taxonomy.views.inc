@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.5 2008-04-10 02:18:55 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.6 2008-04-11 08:41:00 merlinofchaos Exp $
 /**
  * @file
  *
@@ -353,10 +353,10 @@ class views_handler_field_term_node_tid extends views_handler_field_prerender_li
     $this->add_additional_fields();
   }
 
-  function pre_render($results) {
+  function pre_render($values) {
     $this->field_alias = $this->aliases['nid'];
     $nids = array();
-    foreach ($results as $result) {
+    foreach ($values as $result) {
       $nids[] = $result->{$this->aliases['nid']};
     }
 

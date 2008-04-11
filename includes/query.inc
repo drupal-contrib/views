@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.12 2008-04-10 20:25:21 merlinofchaos Exp $
+// $Id: query.inc,v 1.13 2008-04-11 08:40:59 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -464,9 +464,9 @@ class views_query {
   /**
    * Retrieve join data from the larger join data cache.
    *
-   * @param
+   * @param $table
    *   The table to get the join information for.
-   * @param
+   * @param $base_table
    *   The path we're following to get this join.
    *
    * @return

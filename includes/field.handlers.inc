@@ -1,5 +1,5 @@
 <?php
-// $Id: field.handlers.inc,v 1.5 2008-04-10 21:43:36 merlinofchaos Exp $
+// $Id: field.handlers.inc,v 1.6 2008-04-11 08:40:59 merlinofchaos Exp $
 /**
  * @file
  * Views' field handlers.
@@ -369,8 +369,8 @@ class views_handler_field_prerender_list extends views_handler_field {
     );
   }
 
-  function render($value) {
-    $field = $value->{$this->field_alias};
+  function render($values) {
+    $field = $values->{$this->field_alias};
     if (!empty($this->items[$field])) {
       if ($this->options['type'] == 'separator') {
         return implode(check_plain($this->options['separator']), $this->items[$field]);

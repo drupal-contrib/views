@@ -1,13 +1,8 @@
 <?php
-// $Id: filter.handlers.inc,v 1.3 2008-04-10 19:03:37 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.4 2008-04-11 08:40:59 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
- */
-/**
- * @defgroup views_sort_handlers Views' sort handlers
- * @{
- * Handlers to tell Views how to sort queries
  */
 
 /**
@@ -1292,5 +1287,3 @@ class views_handler_filter_many_to_one extends views_handler_filter_in_operator 
 /**
  * @}
  */
-
-

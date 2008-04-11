@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.25 2008-04-10 19:23:20 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.26 2008-04-11 08:41:00 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -496,11 +496,11 @@ class views_handler_field_user_roles extends views_handler_field_prerender_list 
     $this->field_alias = $this->aliases['uid'];
   }
 
-  function pre_render($results) {
+  function pre_render($values) {
     $uids = array();
     $this->items = array();
 
-    foreach ($results as $result) {
+    foreach ($values as $result) {
       $uids[] = $result->{$this->aliases['uid']};
     }
 

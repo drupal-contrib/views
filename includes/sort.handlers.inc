@@ -1,8 +1,14 @@
 <?php
-// $Id: sort.handlers.inc,v 1.2 2008-04-03 16:29:05 merlinofchaos Exp $
+// $Id: sort.handlers.inc,v 1.3 2008-04-11 08:40:59 merlinofchaos Exp $
 /**
  * @file
  * Views' sort handlers.
+ */
+
+/**
+ * @defgroup views_sort_handlers Views' sort handlers
+ * @{
+ * Handlers to tell Views how to sort queries
  */
 
 /**
