@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.61 2008-04-10 19:03:37 merlinofchaos Exp $
+// $Id: admin.inc,v 1.62 2008-04-11 22:46:20 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1058,6 +1058,7 @@ function views_ui_add_display_form(&$form_state) {
   $form['display']['display'] = array(
     '#type' => 'select',
     '#options' => views_fetch_plugin_names('display'),
+    '#default_value' => 'page',
   );
 
   $form['display']['add_display'] = array(
