@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.65 2008-04-09 19:41:20 merlinofchaos Exp $
+// $Id: view.inc,v 1.66 2008-04-11 20:38:19 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -84,13 +84,9 @@ class view extends views_db_object {
    */
   function set_items_per_page($items_per_page) {
     $this->pager['items_per_page'] = $items_per_page;
-  }
-
-  /**
-   * Whether or not AJAX should be used.
-   */
-  function set_use_ajax($use_ajax) {
-    $this->use_ajax = $use_ajax;
+    if (empty($items_per_page)) {
+      $this->pager['use_pager'] = FALSE;
+    }
   }
 
   /**
@@ -113,6 +109,15 @@ class view extends views_db_object {
    */
   function set_offset($offset) {
     $this->pager['offset'] = $offset;
+  }
+
+  /**
+   * Whether or not AJAX should be used. If AJAX is used, paging,
+   * tablesorting and exposed filters will be fetched via an AJAX call
+   * rather than a page refresh.
+   */
+  function set_use_ajax($use_ajax) {
+    $this->use_ajax = $use_ajax;
   }
 
   /**

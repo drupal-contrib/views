@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.6 2008-04-11 08:41:00 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.7 2008-04-11 20:38:19 merlinofchaos Exp $
 /**
  * @file
  *
@@ -618,6 +618,8 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
   function value_submit($form, &$form_state) {
     // prevent array_filter from messing up our arrays in parent submit.
   }
+
+  function get_value_options() { }
 
   function admin_summary() {
     // set up $this->value_options for the parent summary
