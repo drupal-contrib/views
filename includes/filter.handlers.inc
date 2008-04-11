@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.4 2008-04-11 08:40:59 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.5 2008-04-11 20:59:16 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -1265,7 +1265,10 @@ class views_handler_filter_many_to_one extends views_handler_filter_in_operator 
       '#size' => count($this->value_options) > 8 ? 8 : $this->value_options,
       '#default_value' => (array) $this->value,
     );
-    $this->helper->options_form($form, $form_state);
+
+    if (empty($form_state['exposed'])) {
+      $this->helper->options_form($form, $form_state);
+    }
   }
 
   /**
