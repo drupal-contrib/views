@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.26 2008-04-11 09:09:13 merlinofchaos Exp $
+// $Id: theme.inc,v 1.27 2008-04-11 23:00:42 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -69,6 +69,9 @@ function template_preprocess_views_view(&$vars) {
   }
   $vars['more']       = $view->display_handler->render_more_link();
   $vars['feed_icon']  = $view->display_handler->render_feed_icon();
+
+  $vars['attachment_before'] = !empty($view->attachment_before) ? $view->attachment_before : '';
+  $vars['attachment_after'] = !empty($view->attachment_after) ? $view->attachment_after : '';
 
   $vars['pager']      = '';
   if (!empty($view->pager['use_pager'])) {

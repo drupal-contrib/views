@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.67 2008-04-11 22:46:20 merlinofchaos Exp $
+// $Id: view.inc,v 1.68 2008-04-11 23:00:42 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -647,9 +647,7 @@ class view extends views_db_object {
       }
     }
 
-    $output = $this->display_handler->render();
-
-    return $this->attachment_before . $output . $this->attachment_after;
+    return $this->display_handler->render();
   }
 
   /**
