@@ -1,5 +1,5 @@
 <?php
-// $Id: views-more.tpl.php,v 1.1 2008-03-29 00:58:35 merlinofchaos Exp $
+// $Id: views-more.tpl.php,v 1.2 2008-04-11 08:46:26 merlinofchaos Exp $
 /**
  * @file views-more.tpl.php
  * Theme the more link
@@ -10,4 +10,8 @@
  */
 ?>
 
-<a href="<?php print $more_url ?>">View more</a>
+<div class="more-link">
+  <a href="<?php print $more_url ?>">
+    <?php print t('more'); ?>
+  </a>
+</div>
