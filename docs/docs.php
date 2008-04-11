@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.1 2008-04-11 08:40:59 merlinofchaos Exp $
+// $Id: docs.php,v 1.2 2008-04-11 20:23:42 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -16,6 +16,7 @@
  * - @ref views_hooks
  * - @ref views_handlers
  * - @ref views_plugins
+ * - @ref views_templates
  */
 
 /**
