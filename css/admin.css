@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.26 2008-04-10 22:49:15 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.27 2008-04-12 17:04:37 merlinofchaos Exp $ */
 
 /* 
  * Summary pad
@@ -508,4 +508,8 @@ form#views-ui-preview-form input#preview-submit {
 /* Hide by default only with js */
 html.js .views-hidden {
   display: none;
+}
+
+.views-query-info {
+  overflow: auto;
 }
