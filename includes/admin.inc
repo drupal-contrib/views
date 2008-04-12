@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.62 2008-04-11 22:46:20 merlinofchaos Exp $
+// $Id: admin.inc,v 1.63 2008-04-12 02:47:18 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2010,7 +2010,7 @@ function views_ui_change_style_form(&$form_state) {
 
     $form['style_plugin'] =  array(
       '#type' => 'radios',
-      '#options' => views_fetch_plugin_names('style', 'summary', TRUE),
+      '#options' => views_fetch_plugin_names('style', 'summary'),
       '#default_value' => $item['style_plugin'],
     );
 
