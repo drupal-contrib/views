@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.56 2008-04-12 02:47:18 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.57 2008-04-13 16:16:52 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -553,10 +553,11 @@ class views_plugin_display extends views_object {
       );
     }
 
+    $items = intval($this->get_option('items_per_page'));
     $options['items_per_page'] = array(
       'category' => 'basic',
       'title' => $this->use_pager() ? t('Items per page') : t('Items to display'),
-      'value' => intval($this->get_option('items_per_page')),
+      'value' => $items ? $items : t('Unlimited'),
       'desc' => t('Change how many items to display.'),
     );
 
