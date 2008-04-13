@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.64 2008-04-13 17:41:19 merlinofchaos Exp $
+// $Id: admin.inc,v 1.65 2008-04-13 22:54:21 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1854,7 +1854,6 @@ function views_ui_config_item_form_expose($form, &$form_state) {
   views_ui_cache_set($form_state['view']);
   $form_state['rerender'] = TRUE;
   $form_state['rebuild'] = TRUE;
-//  $form_state['next'] = $form_state['id'];
 }
 
 /**
