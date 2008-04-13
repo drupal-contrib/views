@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.69 2008-04-12 02:47:18 merlinofchaos Exp $
+// $Id: view.inc,v 1.70 2008-04-13 22:41:13 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -332,12 +332,14 @@ class view extends views_db_object {
         // Remove any handlers which are inaccessible to the current user. For example, see users.mail
         if ($handler->access()) {
           // Deal with difficult PHP indirection:
-          $items[$id]['handler'] = $handler;
+          $items[$id]['handler'] = &$handler;
         }
         else {
           unset($items[$id]);
         }
       }
+      // Protect against reference mangling in PHP4.
+      unset($handler);
     }
   }
 

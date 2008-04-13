@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.5 2008-04-11 20:59:16 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.6 2008-04-13 22:41:13 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -1233,8 +1233,8 @@ class views_handler_filter_date extends views_handler_filter_numeric {
  * concerned about duplicates you'll get more efficient queries.
  */
 class views_handler_filter_many_to_one extends views_handler_filter_in_operator {
-  function construct() {
-    parent::construct();
+  function init(&$view, &$options) {
+    parent::init($view, $options);
     $this->helper = new views_many_to_one_helper($this);
   }
 
