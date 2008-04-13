@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.5 2008-04-13 22:54:21 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.6 2008-04-13 23:08:10 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -180,7 +180,7 @@ class views_handler_argument extends views_handler {
     }
 
     if (!empty($info['method args'])) {
-      return call_user_func_array(array($this, $info['method']), $info['method args']);
+      return call_user_func_array(array(&$this, $info['method']), $info['method args']);
     }
     else {
       return $this->{$info['method']}();
