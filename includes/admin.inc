@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.66 2008-04-14 01:54:31 merlinofchaos Exp $
+// $Id: admin.inc,v 1.67 2008-04-14 13:23:43 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1772,24 +1772,6 @@ function views_ui_config_item_form_validate($form, &$form_state) {
 }
 
 /**
- * Check to see if there is another config item on the 'stack' that should
- * be displayed next.
- */
-function views_ui_check_stack(&$form_state) {
-  if (!empty($form_state['view']->stack)) {
-    // If we came in through a 'stack' system, advance to the next.
-    if ($form_state['stack'] || $form_state['values']['stack']) {
-      $form_state['next'] = array_shift($form_state['view']->stack);
-    }
-    else {
-      // Otherwise, the user has clicked elsewhere and come back; our stack needs
-      // to be removed.
-      unset($form_state['view']->stack);
-    }
-  }
-}
-
-/**
  * Submit handler for configing new item(s) to a view.
  */
 function views_ui_config_item_form_submit($form, &$form_state) {
@@ -1854,6 +1836,25 @@ function views_ui_config_item_form_expose($form, &$form_state) {
   views_ui_cache_set($form_state['view']);
   $form_state['rerender'] = TRUE;
   $form_state['rebuild'] = TRUE;
+  $form_state['force_expose_options'] = TRUE;
+}
+
+/**
+ * Check to see if there is another config item on the 'stack' that should
+ * be displayed next.
+ */
+function views_ui_check_stack(&$form_state) {
+  if (!empty($form_state['view']->stack)) {
+    // If we came in through a 'stack' system, advance to the next.
+    if ($form_state['stack'] || $form_state['values']['stack']) {
+      $form_state['next'] = array_shift($form_state['view']->stack);
+    }
+    else {
+      // Otherwise, the user has clicked elsewhere and come back; our stack needs
+      // to be removed.
+      unset($form_state['view']->stack);
+    }
+  }
 }
 
 /**
