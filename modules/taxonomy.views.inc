@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.9 2008-04-13 22:41:13 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.10 2008-04-14 01:54:31 merlinofchaos Exp $
 /**
  * @file
  *
@@ -126,11 +126,11 @@ function taxonomy_views_data() {
     'title' => t('Weight'),
     'help' => t('The term weight field'),
     'field' => array(
-      'handler' => 'views_hander_field',
+      'handler' => 'views_handler_field',
       'click sortable' => TRUE,
     ),
     'sort' => array(
-      'handler' => 'views_hander_sort',
+      'handler' => 'views_handler_sort',
     ),
   );
 
