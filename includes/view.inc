@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.70 2008-04-13 22:41:13 merlinofchaos Exp $
+// $Id: view.inc,v 1.71 2008-04-14 17:38:42 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -381,7 +381,13 @@ class view extends views_db_object {
         // @todo: Do we want to put in argument placeholders here
         // So that we can try to cache queries with arguments too?
         $argument['handler']->argument = $this->args[$position];
-        $argument['handler']->query();
+        if ($argument['handler']->is_wildcard()) {
+          $arg_title = $argument['handler']->wildcard_title();
+        }
+        else {
+          $arg_title = $argument['handler']->title();
+          $argument['handler']->query();
+        }
 
         // Since we're really generating the breadcrumb for the item above us,
         // check the default action of this argument.
@@ -401,7 +407,8 @@ class view extends views_db_object {
         }
 
         // Add this argument's substitution
-        $substitutions['%' . ($position + 1)] = $argument['handler']->title();
+        $substitutions['%' . ($position + 1)] = $arg_title;
+
         $breadcrumb_args[] = $this->args[$position];
       }
       else {
@@ -1456,6 +1463,7 @@ function views_object_types() {
       'title' => t('Filters'),
       'stitle' => t('Filter'),
       'plural' => 'filters',
+      'options' => 'views_ui_config_filters_form',
     ),
     'relationship' => array(
       'title' => t('Relationships'),

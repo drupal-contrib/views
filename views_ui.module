@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.89 2008-04-11 09:09:13 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.90 2008-04-14 17:38:42 merlinofchaos Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -125,6 +125,10 @@ function views_ui_menu() {
   );
   $items['admin/build/views/%views_ui_js/rearrange/%views_ui_cache'] = $callback + array(
     'page callback' => 'views_ui_rearrange_type',
+    'page arguments' => array(3, 5),
+  );
+  $items['admin/build/views/%views_ui_js/config-type/%views_ui_cache'] = $callback + array(
+    'page callback' => 'views_ui_config_type',
     'page arguments' => array(3, 5),
   );
   $items['admin/build/views/%views_ui_js/add-item/%views_ui_cache'] = $callback + array(
