@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.17 2008-03-30 15:58:26 merlinofchaos Exp $
+// $Id: ajax.js,v 1.18 2008-04-16 04:31:30 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -302,5 +302,11 @@ Drupal.behaviors.ViewsAjaxLinks = function() {
   $('div#views-live-preview a:not(.views-processed)')
     .addClass('views-processed')
     .click(Drupal.Views.updatePreviewLink);
+}
 
+/**
+ * Get rid of irritating tabledrag messages
+ */
+Drupal.theme.tableDragChangedWarning = function () { 
+  return ''; 
 }
