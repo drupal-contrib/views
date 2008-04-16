@@ -1,10 +1,9 @@
 <?php
-// $Id: tabs.inc,v 1.5 2008-04-16 05:01:40 merlinofchaos Exp $
+// $Id: tabs.inc,v 1.6 2008-04-16 05:02:22 merlinofchaos Exp $
 /**
  * @file
  *
- * An array of preprocessors to fill variables for templates and helper
- * functions to make theming easier.
+ * Classes and theme functions for rendering javascript UI tabs.
  */
 
 /**
