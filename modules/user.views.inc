@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.28 2008-04-14 12:09:44 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.29 2008-04-16 19:42:02 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -95,6 +95,8 @@ function user_views_data() {
     'field' => array(
       'handler' => 'views_handler_field_user_mail',
       'click sortable' => TRUE,
+      'access callback' => 'user_access',
+      'access arguments' => array('administer users'),
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
@@ -446,11 +448,6 @@ class views_handler_field_user_mail extends views_handler_field_user {
       ),
       '#default_value' => $this->options['link_to_user'],
     );
-  }
-
-  // An example of field level access control.
-  function access() {
-    return user_access('administer users');
   }
 
   function render($values) {

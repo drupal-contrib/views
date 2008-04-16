@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.71 2008-04-14 17:38:42 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.72 2008-04-16 19:42:01 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -227,6 +227,13 @@ class views_handler extends views_object {
   * @return boolean
   */
   function access() {
+    if (isset($this->definition['access callback']) && function_exists($this->definition['access callback'])) {
+      if (isset($this->definition['access arguments']) && is_array($this->definition['access arguments'])) {
+        return call_user_func_array($this->definition['access callback'], $this->definition['access arguments']);
+      }
+      return $this->definition['access callback']();
+    }
+
     return TRUE;
   }
 
