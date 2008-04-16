@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-view.tpl.php,v 1.4 2008-03-30 15:57:01 merlinofchaos Exp $
+// $Id: views-ui-edit-view.tpl.php,v 1.5 2008-04-16 18:50:49 merlinofchaos Exp $
 /**
  * @file views-ui-edit-view.tpl.php
  * Template for the primary view editing window.
@@ -16,6 +16,9 @@
   <?php else: ?>
     <div class="view-changed"><?php print t('Changed view'); ?></div>
   <?php endif; ?>
+  <div class="views-quick-links">
+    <?php print $quick_links ?>
+  </div>
   <?php print t('View %name, displaying items of type <strong>@base</strong>.',
       array('%name' => $view->name, '@base' => $base_table)); ?>
 </div>
