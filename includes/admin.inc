@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.68 2008-04-14 17:38:42 merlinofchaos Exp $
+// $Id: admin.inc,v 1.69 2008-04-16 17:35:48 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -296,6 +296,7 @@ function views_ui_add_form(&$form_state) {
     '#title' => t('View name'),
     '#description' => t('This is the unique name of the view. It must contain only alphanumeric characters and underscores; it is used to identify the view internally and to generate unique theming template names for this view. If overriding a module provided view, the name must not be changed or instead a new view will be created.'),
     '#required' => TRUE,
+    '#maxlength' => 32,
     '#default_value' => $view ? $view->name : '',
   );
 
