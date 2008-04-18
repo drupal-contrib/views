@@ -1,5 +1,5 @@
 <?php
-// $Id: search.views.inc,v 1.2 2008-04-11 08:41:00 merlinofchaos Exp $
+// $Id: search.views.inc,v 1.3 2008-04-18 23:28:53 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for search.module
@@ -270,7 +270,7 @@ class views_plugin_row_search_view extends views_plugin_row {
    * Override the behavior of the render() function.
    */
   function render($row) {
-    return theme(array('views_view_row_search__' . $this->view->name, 'views_view_row_search'), $this->view, $this->options, $row);
+    return theme($this->theme_functions(), $this->view, $this->options, $row);
   }
 }
 

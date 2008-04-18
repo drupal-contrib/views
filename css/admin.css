@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.29 2008-04-16 21:56:46 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.30 2008-04-18 23:28:53 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -471,6 +471,13 @@ div.changed div.view-changed {
 #views-ajax-pad fieldset {
   background: transparent;
   padding-left: 10px;
+}
+
+#views-ajax-pad pre {
+  overflow: auto;
+  border: 1px solid #333;
+  background-color: #f0f0f0;
+  padding: .5em;
 }
 
 form#views-add-display-form {
