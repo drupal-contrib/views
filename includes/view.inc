@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.72 2008-04-16 01:45:10 merlinofchaos Exp $
+// $Id: view.inc,v 1.73 2008-04-19 20:12:33 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -489,7 +489,7 @@ class view extends views_db_object {
         'display' => &$this->display_handler->display,
         'input' => $_GET,
         'method' => 'get',
-        're_render' => TRUE,
+        'rerender' => TRUE,
         'no_redirect' => TRUE,
       );
 

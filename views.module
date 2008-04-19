@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.256 2008-04-18 23:28:53 merlinofchaos Exp $
+// $Id: views.module,v 1.257 2008-04-19 20:12:32 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1281,7 +1281,7 @@ function views_theme_functions($hook, $view, $display = NULL) {
  * - input: The source of input. If unset this will be $_POST.
  * - no_redirect: Absolutely do not redirect the form even if instructed
  *   to do so.
- * - re_render: If no_redirect is set and the form was successfully submitted,
+ * - rerender: If no_redirect is set and the form was successfully submitted,
  *   rerender the form. Otherwise it will just return.
  *
  */
