@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.61 2008-04-20 16:20:46 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.62 2008-04-20 23:21:56 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1994,12 +1994,18 @@ class views_plugin_display_attachment extends views_plugin_display {
     return $this->view->render($this->display->id);
   }
 
-  function attachment_positions($position) {
+  function attachment_positions($position = NULL) {
     $positions = array(
       'before' => t('Before'),
       'after' => t('After'),
       'both' => t('Both'),
     );
+
+    if ($position) {
+      return $positions[$position];
+    }
+
+    return $positions;
   }
 
   /**
@@ -2069,7 +2075,7 @@ class views_plugin_display_attachment extends views_plugin_display {
       case 'attachment_position':
         $form['#title'] .= t('Position');
         $form['attachment_position'] = array(
-          '#type' => 'checkboxes',
+          '#type' => 'radios',
           '#description' => t('Attach before or after the parent display?'),
           '#options' => $this->attachment_positions(),
           '#default_value' => $this->get_option('attachment_position'),
@@ -2120,8 +2126,7 @@ class views_plugin_display_attachment extends views_plugin_display {
 
     // Get a fresh view because our current one has a lot of stuff on it because it's
     // already been executed.
-    $view = drupal_clone($this->view);
-    $view->init_display(TRUE); // totally reset the displays.
+    $view = $this->view->clone_view();
 
     $args = $this->get_option('inherit_arguments') ? $this->view->args : array();
 
