@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.30 2008-04-18 23:28:53 merlinofchaos Exp $
+// $Id: theme.inc,v 1.31 2008-04-20 23:41:06 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -259,6 +259,30 @@ function template_preprocess_views_view_table(&$vars) {
       }
     }
   }
+}
+
+
+/**
+ * Display a view as a grid style.
+ */
+function template_preprocess_views_view_grid(&$vars) {
+  $view     = $vars['view'];
+  $result   = $view->result;
+  $options  = $view->style_handler->options;
+  $handler  = $view->style_handler;
+
+  $columns  = $options['columns'];
+
+  $rows = array();
+  $row = array();
+  foreach($vars['rows'] as $count => $item) {
+    $row[] = $item;
+    if (($count + 1) % $columns == 0) {
+      $rows[] = $row;
+      $row = array();
+    }
+  }
+  $vars['rows'] = $rows;
 }
 
 /**

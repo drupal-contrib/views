@@ -1,4 +1,4 @@
-/* $Id: views.css,v 1.6 2008-04-16 18:50:48 merlinofchaos Exp $ */
+/* $Id: views.css,v 1.7 2008-04-20 23:41:06 merlinofchaos Exp $ */
 .views-exposed-form .views-exposed-widget {
   float: left;
   padding: .5em 1em 0 0;
@@ -74,3 +74,7 @@ div.view:hover div.views-hide {
   margin-top: -1.5em;
 }
 
+/* Remove the border on tbody that system puts in */
+.views-view-grid tbody {
+  border-top: none;
+}
