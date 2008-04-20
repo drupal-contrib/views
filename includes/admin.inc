@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.73 2008-04-19 20:12:33 merlinofchaos Exp $
+// $Id: admin.inc,v 1.74 2008-04-20 15:47:03 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -7,8 +7,6 @@
 
 /**
  * Page callback to list views in the system.
- *
- * @todo: template.
  */
 function views_ui_list_views($arg = NULL) {
   if ($arg != NULL) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.7 2008-04-19 20:12:33 merlinofchaos Exp $
+// $Id: form.inc,v 1.8 2008-04-20 15:47:03 merlinofchaos Exp $
 
 /**
  * @file form.inc
@@ -162,7 +162,7 @@ function drupal_process_form_new($form_id, &$form, &$form_state) {
     if (!isset($form['#post']['form_id'])) {
       $form['#post']['form_id'] = $form_id;
     }
-    if (!isset($form['#post']['form_token'])) {
+    if (!isset($form['#post']['form_token']) && isset($form['#token'])) {
       $form['#post']['form_token'] = drupal_get_token($form['#token']);
     }
   }
