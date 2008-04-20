@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.12 2008-04-20 15:47:03 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.13 2008-04-20 21:47:31 merlinofchaos Exp $
 /**
  * @file
  *
@@ -602,6 +602,10 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
           $args[] = $value;
           $placeholders[] = "'%s'";
         }
+      }
+
+      if (!$tids) {
+        return;
       }
 
       $result = db_query("SELECT * FROM {term_data} WHERE name IN (" . implode(', ', $placeholders) . ")", $args);

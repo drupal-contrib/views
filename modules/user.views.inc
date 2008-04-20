@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.29 2008-04-16 19:42:02 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.30 2008-04-20 21:47:31 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -585,6 +585,10 @@ class views_handler_filter_user_name extends views_handler_filter_in_operator {
         $args[] = $value;
         $placeholders[] = "'%s'";
       }
+    }
+
+    if (!$args) {
+      return;
     }
 
     $result = db_query("SELECT * FROM {users} WHERE name IN (" . implode(', ', $placeholders) . ")", $args);
