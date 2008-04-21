@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.74 2008-04-20 15:47:03 merlinofchaos Exp $
+// $Id: admin.inc,v 1.75 2008-04-21 05:25:17 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -941,6 +941,14 @@ function template_preprocess_views_ui_edit_tab(&$vars) {
 
   $vars['categories'] = $categories;
 
+  // Add a help icon
+  if (isset($plugin['help topic'])) {
+    $vars['display_help_icon'] = theme('advanced_help_topic', $plugin['module'], $plugin['help topic']);
+  }
+  else {
+    $vars['display_help_icon'] = '';
+  }
+
   // Fetch style plugin info because it has some effect on how/what we render.
   $style_plugin = $display->handler->get_plugin();
 
@@ -1054,6 +1062,7 @@ function template_preprocess_views_ui_edit_item(&$vars) {
   }
 
   $vars['fields'] = $fields;
+  $vars['item_help_icon'] = theme('advanced_help_topic', 'views', $type);
 }
 
 /**

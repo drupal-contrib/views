@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-tab.tpl.php,v 1.7 2008-04-10 22:49:15 merlinofchaos Exp $
+// $Id: views-ui-edit-tab.tpl.php,v 1.8 2008-04-21 05:25:17 merlinofchaos Exp $
 /**
  * @file views-ui-edit-tab.tpl.php
  * Template for the primary view editing window.
@@ -9,6 +9,7 @@
   <?php // top section ?>
   <div class="top">
     <div class="inside">
+      <?php print $display_help_icon; ?>
       <?php print $remove ?>
       <span class="display-title">
         <?php print $title; ?>

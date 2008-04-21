@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-item.tpl.php,v 1.5 2008-03-25 22:26:51 merlinofchaos Exp $
+// $Id: views-ui-edit-item.tpl.php,v 1.6 2008-04-21 05:25:17 merlinofchaos Exp $
 /**
  * @file views-ui-edit-item.tpl.php
  *
@@ -9,6 +9,7 @@
 <?php print $rearrange; ?>
 <?php print $add; ?>
 <div class="views-category-title<?php if ($overridden) { print ' overridden'; }?>">
+  <?php print $item_help_icon; ?>
   <?php print $title; ?>
 </div>
 

@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.30 2008-04-18 23:28:53 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.31 2008-04-21 05:25:17 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -528,4 +528,8 @@ html.js .views-hidden {
 
 .views-quick-links li.last {
   padding-right: 0;
+}
+
+.views-edit-view .advanced-help-link {
+  padding-right: 3px;
 }
