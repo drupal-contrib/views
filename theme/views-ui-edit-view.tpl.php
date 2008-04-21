@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-view.tpl.php,v 1.6 2008-04-21 05:25:17 merlinofchaos Exp $
+// $Id: views-ui-edit-view.tpl.php,v 1.7 2008-04-21 22:11:34 merlinofchaos Exp $
 /**
  * @file views-ui-edit-view.tpl.php
  * Template for the primary view editing window.
@@ -8,7 +8,7 @@
 <div class="views-edit-view">
   <?php if ($locked): ?>
     <div class="view-locked">
-      <?php print t('This view is locked by user !user, and may not be modified. This lock is !age old. Click here to !break.', array('!user' => $locked, '!age' => $lock_age, '!break' => $break)); ?>
+      <?php print t('This view is being edited by user !user, and is therefore locked from editing by others. This lock is !age old. Click here to !break.', array('!user' => $locked, '!age' => $lock_age, '!break' => $break)); ?>
     </div>
   <?php endif; ?>
   <div class="views-basic-info<?php if (!empty($view->changed)) { print " changed"; }?>">

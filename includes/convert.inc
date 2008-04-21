@@ -1,5 +1,5 @@
 <?php
-// $Id: convert.inc,v 1.5 2008-03-20 16:24:18 merlinofchaos Exp $
+// $Id: convert.inc,v 1.6 2008-04-21 22:11:34 merlinofchaos Exp $
 /**
  * @file convert.inc
  *
@@ -129,7 +129,6 @@ function views1_import($imported) {
 
   $view->name = $imported->name;
   $view->description = $imported->description;
-  $view->view_php = $imported->view_args_php;
 
   if (!empty($imported->page)) {
     $view->add_display('page');

@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.67 2008-04-21 21:12:35 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.68 2008-04-21 22:11:34 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -351,10 +351,6 @@ class views_plugin_display extends views_plugin {
       'link_display' => array('link_display'),
       'distinct' => array('distinct'),
 
-    // @todo
-      'php_arg_code' => array('php_arg_code'),
-      'exposed_options' => array('exposed_options'),
-
       // Force these to cascade properly.
       'style_plugin' => array('style_plugin', 'style_options', 'row_plugin', 'row_options'),
       'style_options' => array('style_plugin', 'style_options', 'row_plugin', 'row_options'),
@@ -407,8 +403,6 @@ class views_plugin_display extends views_plugin {
       'distinct' => TRUE,
 
       'link_display' => TRUE,
-      'php_arg_code' => TRUE,
-      'exposed_options' => TRUE,
 
       'style_plugin' => TRUE,
       'style_options' => TRUE,
@@ -1222,7 +1216,6 @@ class views_plugin_display extends views_plugin {
       case 'title':
       case 'access':
       case 'link_display':
-      case 'php_arg_code':
       case 'use_ajax':
         $this->set_option($section, $form_state['values'][$section]);
         break;
