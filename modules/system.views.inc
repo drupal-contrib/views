@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.2 2008-04-10 19:03:37 merlinofchaos Exp $
+// $Id: system.views.inc,v 1.3 2008-04-21 18:02:29 merlinofchaos Exp $
 /**
  * @file
  *
@@ -27,7 +27,7 @@ function system_views_data() {
   // Advertise this table as a possible base table
   $data['files']['table']['base'] = array(
     'field' => 'fid',
-    'title' => t('Files'),
+    'title' => t('File'),
     'help' => t("Files maintained by Drupal and various modules."),
   );
 

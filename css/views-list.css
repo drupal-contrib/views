@@ -1,4 +1,4 @@
-/* $Id: views-list.css,v 1.3 2008-04-21 17:52:09 merlinofchaos Exp $ */
+/* $Id: views-list.css,v 1.4 2008-04-21 18:02:28 merlinofchaos Exp $ */
 
 table.views-entry {
   margin: 2px 0;
@@ -35,9 +35,13 @@ body form#views-ui-list-views-form {
   margin-top: 0;
 }
 
-#views-ui-list-views-form .form-submit {
+#edit-order-wrapper {
   clear: left;
+}
+
+#edit-submit {
   margin-top: 1.65em;
+  float: left;
 }
 
 .views-entry .advanced-help-link {
