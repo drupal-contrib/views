@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.66 2008-04-21 17:52:09 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.67 2008-04-21 21:12:35 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -494,11 +494,22 @@ class views_plugin_display extends views_plugin {
   function uses_breadcrumb() { return FALSE; }
 
   /**
+   * Determine if a given option is set to use the default display or the
+   * current display
+   *
+   * @return
+   *   TRUE for the default display
+   */
+  function is_defaulted($option) {
+    return !$this->is_default_display() && !empty($this->default_display) && !empty($this->display->display_options['defaults'][$option]);
+  }
+
+  /**
    * Intelligently get an option either from this display or from the
    * default display, if directed to do so.
    */
   function get_option($option) {
-    if (!$this->is_default_display() && !empty($this->default_display) && !empty($this->display->display_options['defaults'][$option])) {
+    if ($this->is_defaulted($option)) {
       return $this->default_display->get_option($option);
     }
 
