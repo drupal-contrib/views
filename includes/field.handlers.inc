@@ -1,5 +1,5 @@
 <?php
-// $Id: field.handlers.inc,v 1.7 2008-04-18 23:28:53 merlinofchaos Exp $
+// $Id: field.handlers.inc,v 1.8 2008-04-21 17:52:09 merlinofchaos Exp $
 /**
  * @file
  * Views' field handlers.
@@ -387,11 +387,6 @@ class views_handler_field_prerender_list extends views_handler_field {
       '#process' => array('views_process_dependency'),
       '#dependency' => array('radio:options[type]' => array('separator')),
     );
-
-    if (empty($this->options['empty'])) {
-      // @todo: remove this. IT's just to remove notices for alpha4 users
-      $this->options['empty'] = '';
-    }
 
     $form['empty'] = array(
       '#type' => 'textfield',

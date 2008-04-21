@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.53 2008-04-21 04:26:58 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.54 2008-04-21 17:52:10 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -234,9 +234,6 @@ function node_views_data() {
       'handler' => 'views_handler_field_node_link_delete',
     ),
   );
-  // @todo: feed selector field -- hold for RSS.
-
-  // @todo: Filter by uid -- this will go in user.
 
   // @todo: filter by authored or commented (this should be in comment.views.inc -- maybe)
 
@@ -1034,11 +1031,6 @@ class views_handler_filter_node_type extends views_handler_filter_in_operator {
  * @ingroup views_filter_handlers
  */
 class views_handler_filter_history_user_timestamp extends views_handler_filter {
-  function options_form(&$form, &$form_state) {
-    // Remove all the normal options, including exposing.
-    // @todo: make it so we can expose this filter as a checkbox.
-  }
-
   function query() {
     global $user;
     // This can only work if we're logged in.

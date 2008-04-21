@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.3 2008-04-11 08:41:00 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.4 2008-04-21 17:52:10 merlinofchaos Exp $
 /**
  * @file
  *
@@ -69,7 +69,7 @@ function upload_views_data() {
     'title' => t('Description'),
     'help' => t('The description of the uploaded file.'),
     'field' => array(
-      'handler' => 'views_handler_field_upload_description', // @todo -- make this linkable, but it's a bit tough
+      'handler' => 'views_handler_field_upload_description',
       'click sortable' => TRUE,
      ),
     'sort' => array(

@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.30 2008-04-20 21:47:31 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.31 2008-04-21 17:52:10 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -277,7 +277,6 @@ function user_views_data() {
     ),
   );
 
-  // @todo: tracker default view (in users.default_views.inc -- This really should go in comment)
   return $data;
 }
 

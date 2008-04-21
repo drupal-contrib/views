@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.13 2008-04-20 21:47:31 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.14 2008-04-21 17:52:10 merlinofchaos Exp $
 /**
  * @file
  *
@@ -212,7 +212,6 @@ function taxonomy_views_data() {
   );
 
   // @todo: term_relation
-  // @todo: term_synonym
 
   // ----------------------------------------------------------------------
   // term_hierarchy table

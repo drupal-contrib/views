@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.65 2008-04-21 05:25:17 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.66 2008-04-21 17:52:09 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1954,22 +1954,6 @@ class views_plugin_display_block extends views_plugin_display {
           '#description' => t('This will appear as the name of this block in administer >> site building >> blocks.'),
           '#default_value' => $this->get_option('block_description'),
         );
-        break;
-    }
-  }
-
-  /**
-   * Validate the options form.
-   */
-  function options_validate($form, &$form_state) {
-    // It is very important to call the parent function here:
-    parent::options_validate($form, $form_state);
-
-    switch ($form_state['section']) {
-      case 'block_description':
-        // @todo: validate the block_description against other views
-
-        // @todo: validate the block_description against aliases.
         break;
     }
   }

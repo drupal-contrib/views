@@ -1,5 +1,5 @@
 <?php
-//$Id: profile.views.inc,v 1.5 2008-04-20 21:55:51 merlinofchaos Exp $
+//$Id: profile.views.inc,v 1.6 2008-04-21 17:52:10 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -181,7 +181,6 @@ function profile_views_fetch_field($field) {
           'handler' => 'views_handler_sort',
         ),
         'filter' => array(
-          // @todo
           'handler' => 'views_handler_filter_profile_selection',
           'fid' => $field->fid,
         ),

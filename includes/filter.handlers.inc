@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.7 2008-04-14 13:23:43 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.8 2008-04-21 17:52:09 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -1242,10 +1242,6 @@ class views_handler_filter_date extends views_handler_filter_numeric {
  * The construct method needs to be overridden to provide a list of options;
  * alternately, the value_form and admin_summary methods need to be overriden
  * to provide something that isn't just a select list.
- *
- * @todo Should this handler allow an option as to whether or not to avoid
- * duplicates? That would have an effect on the join, but if you're not
- * concerned about duplicates you'll get more efficient queries.
  */
 class views_handler_filter_many_to_one extends views_handler_filter_in_operator {
   function init(&$view, &$options) {
