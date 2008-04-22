@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.32 2008-04-21 00:00:27 merlinofchaos Exp $
+// $Id: theme.inc,v 1.33 2008-04-22 05:34:03 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -241,7 +241,7 @@ function template_preprocess_views_view_table(&$vars) {
         $field_output = $handler->theme($row);
 
         // Don't bother with separators and stuff if the field does not show up.
-        if (!$field_output) {
+        if (!isset($field_output) && isset($vars['rows'][$num][$column])) {
           continue;
         }
 

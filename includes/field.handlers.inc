@@ -1,5 +1,5 @@
 <?php
-// $Id: field.handlers.inc,v 1.8 2008-04-21 17:52:09 merlinofchaos Exp $
+// $Id: field.handlers.inc,v 1.9 2008-04-22 05:34:03 merlinofchaos Exp $
 /**
  * @file
  * Views' field handlers.
@@ -247,7 +247,7 @@ class views_handler_field_boolean extends views_handler_field {
   function options(&$options) {
     parent::options($options);
     $options['type'] = 'yes-no';
-    $options['not'] = FALSE;
+    $options['not'] = !empty($this->definition['reverse']);
   }
 
   function options_form(&$form, &$form_state) {

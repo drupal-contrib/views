@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.73 2008-04-20 16:07:55 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.74 2008-04-22 05:34:03 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -139,7 +139,7 @@ class views_handler extends views_object {
    * Return a string representing this handler's name in the UI.
    */
   function ui_name() {
-    return t('@group: @title', array('@group' => $this->definition['group'], '@title' => $this->definition['title']));
+    return t('!group: !title', array('!group' => $this->definition['group'], '!title' => $this->definition['title']));
   }
 
   /**
