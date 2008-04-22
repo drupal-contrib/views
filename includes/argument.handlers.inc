@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.9 2008-04-21 22:11:34 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.10 2008-04-22 16:00:08 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -739,7 +739,6 @@ class views_handler_argument_string extends views_handler_argument {
     $form['transform_dash'] = array(
       '#type' => 'checkbox',
       '#title' => t('Transform spaces to dashes in URL'),
-      '#description' => t('Glossary mode applies a limit to the number of characters used in the argument, which allows the summary view to act as a glossary.'),
       '#default_value' => $this->options['transform_dash'],
     );
 
