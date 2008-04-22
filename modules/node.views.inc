@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.55 2008-04-21 21:12:36 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.56 2008-04-22 00:59:08 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -1171,11 +1171,9 @@ function node_views_plugins() {
  * @ingroup views_plugin_rows
  */
 class views_plugin_row_node_view extends views_plugin_row {
-  function options($display) {
-    return array(
-      'teaser' => TRUE,
-      'links' => TRUE,
-    );
+  function options(&$options) {
+    $options['teaser'] = TRUE;
+    $options['links'] = TRUE;
   }
 
   function options_form(&$form, &$form_state) {
@@ -1229,10 +1227,8 @@ function views_preprocess_node($vars) {
  * @ingroup views_plugin_rows
  */
 class views_plugin_row_node_rss extends views_plugin_row {
-  function options($display) {
-    return array(
-      'item_length' => 'default',
-    );
+  function options(&$options) {
+    $options['item_length'] = 'default';
   }
 
   function options_form(&$form, &$form_state) {

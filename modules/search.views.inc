@@ -1,5 +1,5 @@
 <?php
-// $Id: search.views.inc,v 1.3 2008-04-18 23:28:53 merlinofchaos Exp $
+// $Id: search.views.inc,v 1.4 2008-04-22 00:59:08 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for search.module
@@ -252,10 +252,8 @@ function search_views_plugins() {
  * @ingroup views_row_plugins
  */
 class views_plugin_row_search_view extends views_plugin_row {
-  function options($display) {
-    return array(
-      'score' => TRUE,
-    );
+  function options(&$options) {
+    $options['score'] = TRUE;
   }
 
   function options_form(&$form, &$form_state) {
