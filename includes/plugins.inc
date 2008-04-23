@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.69 2008-04-22 00:59:08 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.70 2008-04-23 16:04:47 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1241,8 +1241,13 @@ class views_plugin_display extends views_plugin {
             $row_options = array();
             $plugin->init($this->view, $this->display);
             $plugin->options($row_options);
-            // @todo -- change this
             $this->set_option('row_options', $row_options);
+
+            // send ajax form to options page if we use it.
+            if (!empty($plugin->definition['uses options'])) {
+              $form_state['next'] = 'style_options';
+              $form_state['regenerate form'] = TRUE;
+            }
           }
         }
         break;
@@ -1256,8 +1261,13 @@ class views_plugin_display extends views_plugin {
             $style_options = array();
             $plugin->init($this->view, $this->display);
             $plugin->options($style_options);
-            // @todo -- change this
             $this->set_option('style_options', $style_options);
+
+            // send ajax form to options page if we use it.
+            if (!empty($plugin->definition['uses options'])) {
+              $form_state['next'] = 'style_options';
+              $form_state['regenerate form'] = TRUE;
+            }
           }
         }
         break;

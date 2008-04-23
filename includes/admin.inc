@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.80 2008-04-23 01:58:47 merlinofchaos Exp $
+// $Id: admin.inc,v 1.81 2008-04-23 16:04:46 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1619,7 +1619,14 @@ function views_ui_edit_display($js, $view, $display_id, $section) {
       if (!empty($form_state['regenerate form'])) {
         $form_state['input'] = array(); // Remove the input so it can't post.
         $form_state['executed'] = FALSE;
+        if (!empty($form_state['next'])) {
+          $form_state['section'] = $form_state['next'];
+        }
         $object = views_ajax_form_wrapper('views_ui_edit_display_form', $form_state);
+        if (!empty($form_state['next'])) {
+          $object->url = url("admin/build/views/ajax/display/$view->name/$display_id/$form_state[next]");
+        }
+
       }
       // regenerate all tabs because changes to the default tab could ripple.
       return views_ui_regenerate_tabs($view, NULL, $object);
