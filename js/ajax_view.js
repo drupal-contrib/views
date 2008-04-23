@@ -1,4 +1,4 @@
-// $Id: ajax_view.js,v 1.3 2008-04-03 16:31:20 merlinofchaos Exp $
+// $Id: ajax_view.js,v 1.4 2008-04-23 05:15:21 merlinofchaos Exp $
 
 /**
  * @file ajaxView.js
@@ -47,6 +47,10 @@ Drupal.behaviors.ViewsAjaxView = function() {
         // Process exposed filter forms.
         .find('form#views-exposed-form')
         .each(function () {
+          // remove 'q' from the form; it's there for clean URLs
+          // so that it submits to the right place with regular submit
+          // but this method is submitting elsewhere.
+          $('input[name=q]', this).remove();
           var form = this;
           // ajaxSubmit doesn't accept a data argument, so we have to
           // pass additional fields this way.
