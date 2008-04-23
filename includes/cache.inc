@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.14 2008-04-23 16:04:47 merlinofchaos Exp $
+// $Id: cache.inc,v 1.15 2008-04-23 21:37:19 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -55,6 +55,7 @@ function _views_fetch_data($table = NULL) {
   if (isset($cache[$table])) {
     return $cache[$table];
   }
+
   // Return an empty array if there is no match.
   return array();
 }
