@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.12 2008-03-29 00:06:13 merlinofchaos Exp $
+// $Id: cache.inc,v 1.13 2008-04-23 00:35:05 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -31,8 +31,17 @@ function _views_fetch_data($table = NULL) {
     // NOTE: This happens whether we retrieve them from cache or otherwise.
     views_include_handlers();
 
-    // @todo: We can probably cache the views_data longer than just the current page run.
-    $cache = module_invoke_all('views_data');
+    $cache = views_cache_get('views_data');
+    if (empty($cache)) {
+      $cache = module_invoke_all('views_data');
+      foreach (module_implements('views_data_alter') as $module) {
+        $function = $module . '_views_data_alter';
+        $function($cache);
+      }
+
+      views_cache_set('views_data', $cache);
+    }
+
     vpr('Views data build time: ' . (microtime() - $start) * 1000 . ' ms');
   }
 

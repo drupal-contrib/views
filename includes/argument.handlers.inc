@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.10 2008-04-22 16:00:08 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.11 2008-04-23 00:35:05 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -86,7 +86,8 @@ class views_handler_argument extends views_handler {
     $options['default_action'] = 'ignore';
     $options['style_plugin'] = 'default_summary';
     // provide default options for the summary style.
-    $options['style_options'] = views_plugin_style_summary::options();
+    $options['style_options'] = array();
+    views_plugin_style_summary::options($options['style_options']);
     $options['wildcard'] = 'all';
     $options['wildcard_substitution'] = t('All');
     $options['title'] = '';

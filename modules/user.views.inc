@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.31 2008-04-21 17:52:10 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.32 2008-04-23 00:35:05 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -519,8 +519,6 @@ class views_handler_field_user_roles extends views_handler_field_prerender_list 
  * @ingroup views_argument_handlers
  */
 class views_handler_argument_user_uid extends views_handler_argument {
-  // No constructor is necessary.
-
   /**
    * Override the behavior of title(). Get the name of the user.
    */

@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.56 2008-04-22 00:59:08 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.57 2008-04-23 00:35:05 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -243,8 +243,6 @@ function node_views_data() {
       'handler' => 'views_handler_field_node_link_delete',
     ),
   );
-
-  // @todo: filter by authored or commented (this should be in comment.views.inc -- maybe)
 
   // Language field if translation module enabled
   if (module_exists('translation')) {
