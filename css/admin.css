@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.31 2008-04-21 05:25:17 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.32 2008-04-23 01:58:46 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -340,7 +340,7 @@ html.js #views-ajax-pad {
 
 #views-ajax-pad .views-radio-box {
   overflow: auto;
-  max-height: 180px;
+  height: 180px;
 }
 
 #views-ajax-pad fieldset {
