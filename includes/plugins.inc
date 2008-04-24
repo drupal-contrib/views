@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.72 2008-04-24 20:22:50 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.73 2008-04-24 21:59:14 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -225,12 +225,12 @@ class views_plugin extends views_object {
   /**
    * Validate the options form.
    */
-  function options_form_validate(&$form, &$form_state) { }
+  function options_validate(&$form, &$form_state) { }
 
   /**
    * Handle any special handling on the validate form.
    */
-  function options_form_submit(&$form, &$form_state) { }
+  function options_submit(&$form, &$form_state) { }
 
   /**
    * Add anything to the query that we might need to.

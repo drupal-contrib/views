@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.86 2008-04-24 20:22:50 merlinofchaos Exp $
+// $Id: admin.inc,v 1.87 2008-04-24 21:59:14 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -179,6 +179,13 @@ function template_preprocess_views_ui_list_views(&$vars) {
  * Provide a form for sorting and filtering the list of views.
  */
 function views_ui_list_views_form(&$form_state) {
+  if (!variable_get('clean_url', FALSE)) {
+    $form['q'] = array(
+      '#type' => 'hidden',
+      '#value' => $_GET['q'],
+    );
+  }
+
   $all = array('all' => t('<All>'));
   $none = array('none' => t('<None>'));
 

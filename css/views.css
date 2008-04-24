@@ -1,4 +1,4 @@
-/* $Id: views.css,v 1.7 2008-04-20 23:41:06 merlinofchaos Exp $ */
+/* $Id: views.css,v 1.8 2008-04-24 21:59:14 merlinofchaos Exp $ */
 .views-exposed-form .views-exposed-widget {
   float: left;
   padding: .5em 1em 0 0;
@@ -29,6 +29,11 @@ html.js span.views-throbbing {
 div.view div.views-admin-links {
   font-size: xx-small;
   margin-right: 1em;
+  padding-top: 1em;
+}
+
+.block div.view div.views-admin-links {
+  padding-top: 0;
 }
 
 div.view div.views-admin-links ul {
@@ -78,3 +83,4 @@ div.view:hover div.views-hide {
 .views-view-grid tbody {
   border-top: none;
 }
+

@@ -1,4 +1,13 @@
 <?php
+// $Id: node.views_default.inc,v 1.4 2008-04-24 21:59:14 merlinofchaos Exp $
+/**
+ * @file
+ * Contains default views on behalf of the node module.
+ */
+
+/**
+ * Implementation of hook views_default_views().
+ */
 function node_views_default_views() {
   $views = array();
 
