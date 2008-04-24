@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.96 2008-04-24 19:29:50 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.97 2008-04-24 19:48:05 merlinofchaos Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -135,6 +135,10 @@ function views_ui_menu() {
   $items['admin/views/ajax/autocomplete/user'] = $callback + array(
     'page callback' => 'views_ui_autocomplete_user',
   );
+  $items['admin/views/ajax/autocomplete/tag'] = $callback + array(
+    'page callback' => 'views_ui_autocomplete_tag',
+  );
+
 
   // Generic ajax callback
   // display specific parameters
