@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.77 2008-04-22 15:39:49 merlinofchaos Exp $
+// $Id: view.inc,v 1.78 2008-04-24 20:22:50 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1132,10 +1132,12 @@ class view extends views_db_object {
 
     $errors = array();
 
-    foreach ($this->display as $display) {
-      // Make sure displays that use fields HAVE fields.
-      if ($display->handler->uses_fields() && !$display->handler->get_option('fields')) {
-        $errors[] = t('Display @display uses fields but there are none defined for it.', array('@display' => $display->display_title));
+    foreach ($this->display as $id => $display) {
+      if ($display->handler) {
+        $result = $this->display[$id]->handler->validate();
+        if (!empty($result) && is_array($result)) {
+          $errors = array_merge($errors, $result);
+        }
       }
     }
 

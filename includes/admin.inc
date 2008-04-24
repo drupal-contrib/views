@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.85 2008-04-24 19:48:05 merlinofchaos Exp $
+// $Id: admin.inc,v 1.86 2008-04-24 20:22:50 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2069,11 +2069,13 @@ function views_ui_add_item_form_submit($form, &$form_state) {
     foreach (array_keys(array_filter($form_state['values']['name'])) as $field) {
       list($table, $field) = explode('.', $field, 2);
       $id = $form_state['view']->add_item($form_state['display_id'], $type, $table, $field);
-      // @todo -- check to see if this type has settings, if so add the settings first
+
+      // check to see if this type has settings, if so add the settings form first
       $handler = views_get_handler($table, $field, $type);
       if ($handler && $handler->has_extra_options()) {
         views_ui_add_form_to_stack('config-item-extra', $form_state['view'], $form_state['display_id'], array($type, $id));
       }
+      // Then add the form to the stack
       views_ui_add_form_to_stack('config-item', $form_state['view'], $form_state['display_id'], array($type, $id));
     }
   }
