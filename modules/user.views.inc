@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.32 2008-04-23 00:35:05 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.33 2008-04-24 19:29:50 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -563,7 +563,7 @@ class views_handler_filter_user_name extends views_handler_filter_in_operator {
       '#title' => t('Usernames'),
       '#description' => t('Enter a comma separated list of user names.'),
       '#default_value' => implode(', ', $values),
-      '#autocomplete_path' => 'admin/build/views/autocomplete/user',
+      '#autocomplete_path' => 'admin/ajax/autocomplete/user',
     );
   }
 
