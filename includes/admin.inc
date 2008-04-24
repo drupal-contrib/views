@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.83 2008-04-23 21:43:53 merlinofchaos Exp $
+// $Id: admin.inc,v 1.84 2008-04-24 18:03:13 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2216,8 +2216,6 @@ function views_ui_config_item_form_submit($form, &$form_state) {
 function views_ui_config_item_form_remove($form, &$form_state) {
   // Store the item back on the view
   $form_state['view']->set_item($form_state['display_id'], $form_state['type'], $form_state['id'], NULL);
-
-  views_ui_check_stack($form_state);
 
   // Write to cache
   views_ui_cache_set($form_state['view']);
