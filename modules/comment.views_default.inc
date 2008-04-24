@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views_default.inc,v 1.1 2008-04-24 21:59:14 merlinofchaos Exp $
+// $Id: comment.views_default.inc,v 1.2 2008-04-24 22:01:39 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the comment module.
@@ -13,7 +13,7 @@ function comment_views_default_views() {
   $view = new view;
   $view->name = 'tracker';
   $view->description = t('Shows all new activity on system.');
-  $view->tag = '';
+  $view->tag = t('default');
   $view->view_php = '';
   $view->base_table = 'node';
   $view->is_cacheable = '0';
