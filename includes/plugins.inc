@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.74 2008-04-24 22:14:33 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.75 2008-04-24 22:15:19 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -652,7 +652,7 @@ class views_plugin_display extends views_plugin {
       $options['use_pager'] = array(
         'category' => 'basic',
         'title' => t('Use pager'),
-        'value' => $this->get_option('use_pager') ? ($this->get_option('use_pager') == 'mini' ? t('Mini') : t('Yes')) : t('No'),
+        'value' => $this->get_option('use_pager') ? ($this->get_option('use_pager') === 'mini' ? t('Mini') : t('Yes')) : t('No'),
         'desc' => t("Change this display's pager setting."),
       );
     }
