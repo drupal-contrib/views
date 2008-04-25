@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.76 2008-04-25 14:47:00 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.77 2008-04-25 15:14:59 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -37,7 +37,7 @@ function _views_prepare_handler($definition, $data, $field) {
       $definition[$key] = $data[$field][$key];
     }
     // Then if that doesn't work, check the table level
-    if (!isset($definition['table'][$key]) && !empty($data['table'][$key])) {
+    else if (!isset($definition['table'][$key]) && !empty($data['table'][$key])) {
       $definition[$key] = $data['table'][$key];
     }
   }
