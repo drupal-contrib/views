@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.87 2008-04-24 21:59:14 merlinofchaos Exp $
+// $Id: admin.inc,v 1.88 2008-04-25 14:22:49 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1362,7 +1362,7 @@ function views_ui_add_form_to_stack($key, &$view, $display_id, $args, $top = FAL
     $view->stack = array();
   }
 
-  $stack = array(views_ui_build_identifier($key, $view, $display_id, $args), $key, $view, $display_id, $args);
+  $stack = array(views_ui_build_identifier($key, $view, $display_id, $args), $key, &$view, $display_id, $args);
   if ($top) {
     array_unshift($view->stack, $stack);
   }
