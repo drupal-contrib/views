@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.91 2008-04-25 20:06:10 merlinofchaos Exp $
+// $Id: admin.inc,v 1.92 2008-04-25 23:42:42 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1212,6 +1212,12 @@ function views_ui_standard_form_buttons(&$form, &$form_state, $form_id, $name = 
   // We used to set these items on the form, but now we want them on the $form_state:
   if (isset($form['#title'])) {
     $form_state['title'] = $form['#title'];
+  }
+  if (isset($form['#help_topic'])) {
+    $form_state['help_topic'] = $form['#help_topic'];
+  }
+  if (isset($form['#help_module'])) {
+    $form_state['help_module'] = $form['#help_module'];
   }
   if (isset($form['#url'])) {
     $form_state['url'] = $form['#url'];

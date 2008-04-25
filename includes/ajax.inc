@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.11 2008-04-23 21:37:19 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.12 2008-04-25 23:42:42 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -64,6 +64,10 @@ function views_ajax_form_wrapper($form_id, &$form_state) {
     $object->display .= $output;
 
     $object->title = empty($form_state['title']) ? '' : $form_state['title'];
+    if (!empty($form_state['help_topic'])) {
+      $module = !empty($form_state['help_module']) ? $form_state['help_module'] : 'views';
+      $object->title = theme('advanced_help_topic', $module, $form_state['help_topic']) . $object->title;
+    }
     $object->url = empty($form_state['url']) ? url($_GET['q'], array('absolute' => TRUE)) : $form_state['url'];
     $object->js = empty($form_state['js settings']) ? NULL : $form_state['js settings'];
     if (!empty($form_state['#section'])) {
