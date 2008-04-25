@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.88 2008-04-25 14:22:49 merlinofchaos Exp $
+// $Id: admin.inc,v 1.89 2008-04-25 15:20:07 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -13,8 +13,9 @@ function views_ui_list_views($arg = NULL) {
     return drupal_not_found();
   }
 
+  $output = theme('views_ui_list_views');
   views_ui_check_advanced_help();
-  return theme('views_ui_list_views');
+  return $output;
 }
 
 /**
