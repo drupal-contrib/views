@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.89 2008-04-25 15:20:07 merlinofchaos Exp $
+// $Id: admin.inc,v 1.90 2008-04-25 15:21:24 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -638,8 +638,9 @@ function views_ui_break_lock_confirm_submit(&$form, &$form_state) {
  */
 function views_ui_edit_page($view) {
   drupal_set_title(t('Edit view "%view"', array('%view' => $view->name)));
+  $output = theme('views_ui_edit_view', $view);
   views_ui_check_advanced_help();
-  return theme('views_ui_edit_view', $view);
+  return $output;
 }
 
 /**
