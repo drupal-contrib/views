@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.15 2008-04-23 21:37:19 merlinofchaos Exp $
+// $Id: cache.inc,v 1.16 2008-04-25 15:40:34 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -31,7 +31,7 @@ function _views_fetch_data($table = NULL) {
     // NOTE: This happens whether we retrieve them from cache or otherwise.
     views_include_handlers();
 
-    $data = views_cache_get('views_data');
+    $data = views_cache_get('views_data', TRUE);
     if (!empty($data->data)) {
       $cache = $data->data;
     }
@@ -43,7 +43,7 @@ function _views_fetch_data($table = NULL) {
         $function($cache);
       }
 
-      views_cache_set('views_data', $cache);
+      views_cache_set('views_data', $cache, TRUE);
     }
 
     vpr('Views data build time: ' . (microtime() - $start) * 1000 . ' ms');
