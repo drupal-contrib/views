@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.19 2008-04-16 04:32:49 merlinofchaos Exp $
+// $Id: ajax.js,v 1.20 2008-04-25 18:15:29 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -211,6 +211,7 @@ Drupal.Views.updatePreviewFilterForm = function() {
   url = url.replace('nojs', 'ajax');
 
   $('input[@type=submit]', this).after('<span class="views-throbbing">&nbsp</span>');
+  $('input[@name=q]', this).remove(); // remove 'q' for live preview.
   $(this).ajaxSubmit({
     url: url,
     data: '',
