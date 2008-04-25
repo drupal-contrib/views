@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.75 2008-04-25 14:42:54 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.76 2008-04-25 14:47:00 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -10,7 +10,7 @@
  */
 function _views_create_handler($definition) {
 //  vpr('Instantiating handler ' . $definition['handler']);
-  if (!class_exists($definition['handler'])) {
+  if (empty($definition['handler']) || !class_exists($definition['handler'])) {
     return;
   }
 
