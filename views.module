@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.262 2008-04-23 01:58:46 merlinofchaos Exp $
+// $Id: views.module,v 1.263 2008-04-25 15:51:41 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -571,7 +571,7 @@ function _views_sort_types($a, $b) {
 }
 
 /**
- * Fetch a list of all base tables available
+ * Fetch a list of all fields available for a given base type.
  *
  * @return
  *   A keyed array of in the form of 'base_table' => 'Description'.
