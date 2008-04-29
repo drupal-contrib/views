@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.76 2008-04-25 23:42:42 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.77 2008-04-29 16:31:29 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2453,10 +2453,11 @@ class views_plugin_style extends views_plugin {
 
     if ($this->uses_row_plugin()) {
       $plugin = $this->display->handler->get_plugin('row');
-      if (!empty($plugin)) {
+      if (empty($plugin)) {
         $errors[] = t('Style @style requires a row style but the row plugin is invalid.', array('@style' => $this->definition['title']));
       }
     }
+    return $errors;
   }
 }
 

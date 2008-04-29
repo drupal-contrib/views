@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.78 2008-04-24 20:22:50 merlinofchaos Exp $
+// $Id: view.inc,v 1.79 2008-04-29 16:31:29 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -45,6 +45,7 @@ class view extends views_db_object {
   // Exposed widget input
   var $exposed_data = array();
   var $exposed_input = array();
+
   /**
    * Constructor
    */
@@ -1104,7 +1105,7 @@ class view extends views_db_object {
     $keys = array('current_display', 'display_handler', 'build_info', 'built', 'executed', 'attachment_before', 'attachment_after');
     foreach ($keys as $key) {
       if (isset($clone->$key)) {
-        unset($clone->$key);
+        $clone->$key = FALSE;
       }
     }
 
