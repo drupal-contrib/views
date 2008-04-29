@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.79 2008-04-29 16:31:29 merlinofchaos Exp $
+// $Id: view.inc,v 1.80 2008-04-29 16:37:08 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1135,6 +1135,10 @@ class view extends views_db_object {
 
     foreach ($this->display as $id => $display) {
       if ($display->handler) {
+        if (!empty($display->deleted)) {
+          continue;
+        }
+
         $result = $this->display[$id]->handler->validate();
         if (!empty($result) && is_array($result)) {
           $errors = array_merge($errors, $result);
