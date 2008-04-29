@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.79 2008-04-29 21:24:49 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.80 2008-04-29 22:21:02 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1409,12 +1409,20 @@ class views_plugin_display extends views_plugin {
   /**
    * Render the header of the view.
    */
-  function render_header() { return $this->render_textarea('header'); }
+  function render_header() {
+    if (!empty($this->view->result) || $this->get_option('header_empty')) {
+      return $this->render_textarea('header');
+    }
+  }
 
   /**
    * Render the footer of the view.
    */
-  function render_footer() { return $this->render_textarea('footer'); }
+  function render_footer() {
+    if (!empty($this->view->result) || $this->get_option('footer_empty')) {
+      return $this->render_textarea('footer');
+    }
+  }
 
   /**
    * Render the empty text of the view.
