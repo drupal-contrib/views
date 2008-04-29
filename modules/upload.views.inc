@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.4 2008-04-21 17:52:10 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.5 2008-04-29 00:35:08 merlinofchaos Exp $
 /**
  * @file
  *
@@ -26,8 +26,8 @@ function upload_views_data() {
 
   $data['upload']['table']['join'] = array(
     'node' => array(
-      'left_field' => 'nid',
-      'field' => 'nid',
+      'left_field' => 'vid',
+      'field' => 'vid',
     ),
     'node_revisions' => array(
       'left_field' => 'vid',
@@ -35,8 +35,8 @@ function upload_views_data() {
     ),
     'users' => array(
       'left_table' => 'node',
-      'left_field' => 'nid',
-      'field' => 'nid',
+      'left_field' => 'vid',
+      'field' => 'vid',
     ),
     'files' => array(
       'left_field' => 'fid',

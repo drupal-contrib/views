@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.35 2008-04-24 22:14:34 merlinofchaos Exp $
+// $Id: theme.inc,v 1.36 2008-04-29 00:35:08 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -249,7 +249,7 @@ function template_preprocess_views_view_table(&$vars) {
         // Place the field into the column, along with an optional separator.
         if (isset($vars['rows'][$num][$column])) {
           if (!empty($options['info'][$column]['separator'])) {
-            $vars['rows'][$num][$column] .= $options['info'][$column]['separator'];
+            $vars['rows'][$num][$column] .= filter_xss_admin($options['info'][$column]['separator']);
           }
         }
         else {
@@ -261,7 +261,6 @@ function template_preprocess_views_view_table(&$vars) {
     }
   }
 }
-
 
 /**
  * Display a view as a grid style.

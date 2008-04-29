@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view-summary.tpl.php,v 1.4 2008-02-14 21:59:08 merlinofchaos Exp $
+// $Id: views-view-summary.tpl.php,v 1.5 2008-04-29 00:35:08 merlinofchaos Exp $
 /**
  * @file views-view-summary.tpl.php
  * Default simple view template to display a list of summary lines
@@ -11,9 +11,10 @@
   <ul>
   <?php foreach ($rows as $row): ?>
     <li><a href="<?php print $row->url; ?>"><?php print $row->link; ?></a>
-    <?php if (!empty($options['count'])): ?>
-      (<?php print $row->count?>)
-    <?php endif; ?>
+      <?php if (!empty($options['count'])): ?>
+        (<?php print $row->count?>)
+      <?php endif; ?>
+    </li>
   <?php endforeach; ?>
   </ul>
 </div>
