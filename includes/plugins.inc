@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.78 2008-04-29 21:13:38 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.79 2008-04-29 21:24:49 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1386,8 +1386,9 @@ class views_plugin_display extends views_plugin {
    */
   function render_more_link() {
     if ($this->use_more()) {
-      $path = $this->get_url();
+      $path = $this->get_path();
       if ($path) {
+        $path = $this->view->get_url(NULL, $path);
         $theme = views_theme_functions('views_more', $this->view, $this->display);
         $path = check_url(url($path));
         return theme($theme, $path);
