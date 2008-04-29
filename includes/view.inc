@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.80 2008-04-29 16:37:08 merlinofchaos Exp $
+// $Id: view.inc,v 1.81 2008-04-29 21:39:19 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -359,7 +359,7 @@ class view extends views_db_object {
         continue;
       }
 
-      $arg = isset($this->args[$position]) ? $this->args[$position] : $argument['handler']->get_default_argument();
+      $arg = isset($this->args[$position]) ? $this->args[$position] : ($this->args[$position] = $argument['handler']->get_default_argument());
 
       if (isset($arg)) {
         // handle argument that is present.
