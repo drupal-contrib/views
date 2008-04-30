@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.80 2008-04-29 22:21:02 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.81 2008-04-30 01:18:09 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1957,7 +1957,7 @@ class views_plugin_display_block extends views_plugin_display {
       if (empty($desc)) {
         $desc = $this->view->name;
       }
-      return array($delta => array('info' => $desc));
+      return array($delta => array('info' => $desc, 'cache' => BLOCK_NO_CACHE));
     }
   }
 
