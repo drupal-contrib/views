@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.265 2008-04-29 21:13:38 merlinofchaos Exp $
+// $Id: views.module,v 1.266 2008-05-01 05:32:25 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1267,6 +1267,13 @@ function views_exposed_form_submit(&$form, &$form_state) {
     }
   }
   $form_state['view']->exposed_data = $form_state['values'];
+  $form_state['view']->exposed_raw_input = array();
+
+  foreach ($form_state['values'] as $key => $value) {
+    if (!in_array($key, array('q', 'submit', 'form_build_id', 'form_id', 'form_token'))) {
+      $form_state['view']->exposed_raw_input[$key] = $value;
+    }
+  }
 }
 
 /**

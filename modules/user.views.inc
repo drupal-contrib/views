@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.34 2008-04-24 19:48:06 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.35 2008-05-01 05:32:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -262,6 +262,11 @@ function user_views_data() {
      // Directly links to users table.
     'users' => array(
       'left_table' => 'users_roles',
+      'left_field' => 'rid',
+      'field' => 'rid',
+    ),
+    // needed for many to one helper sometimes
+    'users_roles' => array(
       'left_field' => 'rid',
       'field' => 'rid',
     ),
