@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.92 2008-04-25 23:42:42 merlinofchaos Exp $
+// $Id: admin.inc,v 1.93 2008-05-02 19:47:56 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -275,6 +275,7 @@ function views_ui_list_views_form(&$form_state) {
   $form['submit'] = array(
     '#name' => '', // so it won't in the $_GET args
     '#type' => 'submit',
+    '#id' => 'edit-views-apply',
     '#value' => t('Apply'),
   );
 

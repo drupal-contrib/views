@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.3 2008-04-21 18:02:29 merlinofchaos Exp $
+// $Id: system.views.inc,v 1.4 2008-05-02 19:47:57 merlinofchaos Exp $
 /**
  * @file
  *
@@ -48,21 +48,17 @@ function system_views_data() {
   $data['files']['fid'] = array(
     'title' => t('File ID'),
     'help' => t('The ID of the file.'),
-    // Information for displaying the nid
     'field' => array(
       'handler' => 'views_handler_field_file',
       'click sortable' => TRUE,
     ),
-    // Information for accepting a nid as an argument
     'argument' => array(
       'handler' => 'views_handler_argument_file_fid',
       'name field' => 'filename', // the field to display in the summary.
     ),
-    // Information for accepting a nid as a filter
     'filter' => array(
       'handler' => 'views_handler_filter_numeric',
     ),
-    // Information for sorting on a nid.
     'sort' => array(
       'handler' => 'views_handler_sort',
     ),
