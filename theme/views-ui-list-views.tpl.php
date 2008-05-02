@@ -1,8 +1,9 @@
 <?php
-// $Id*
+// $Id: views-ui-list-views.tpl.php,v 1.4 2008-05-02 17:21:36 merlinofchaos Exp $
 /**
  * @file
  *
+ * Displays the list of views on the administration screen.
  */
 ?>
 <?php print $widgets; ?>
