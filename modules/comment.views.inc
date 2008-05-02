@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.11 2008-05-02 18:24:44 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.12 2008-05-02 19:13:08 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -374,6 +374,24 @@ function comment_views_data_alter(&$data) {
     ),
   );
 
+}
+
+/**
+ * Implementation of hook_views_plugins
+ */
+function comment_views_plugins() {
+  return array(
+    'module' => 'views', // This just tells views our themes are in Views.
+    'row' => array(
+      'comment_rss' => array(
+        'title' => t('Comment'),
+        'help' => t('Display the comment as RSS.'),
+        'handler' => 'views_plugin_row_comment_rss',
+        'base' => array('comment'), // only works with 'comment' as base.
+        'type' => 'feed',
+      ),
+    ),
+  );
 }
 
 /**
@@ -865,6 +883,38 @@ class views_handler_filter_node_comment extends views_handler_filter_in_operator
       COMMENT_NODE_READ_ONLY => t('Read only'),
       COMMENT_NODE_READ_WRITE => t('Read/Write'),
     );
+  }
+}
+
+/**
+ * Plugin which formats the comments as RSS items.
+ *
+ * @ingroup views_plugin_rows
+ */
+class views_plugin_row_comment_rss extends views_plugin_row {
+
+  function render($row) {
+    global $base_url;
+
+    if (empty($this->view->style_handler->namespaces)) {
+      $this->view->style_handler->namespaces['xmlns:dc'] = 'http://purl.org/dc/elements/1.1/';
+    }
+
+    // Load the specified comment:
+    $item = _comment_load($row->cid);
+    $item->link = url('node/' . $item->nid, array('absolute' => TRUE, 'fragment' => 'comment-' . $item->cid));
+
+    $properties = array(
+      array('key' => 'pubDate', 'value' => gmdate('r', $item->timestamp)),
+      array('key' => 'dc:creator', 'value' => $item->name),
+      array(
+        'key' => 'guid',
+        'value' => 'comment ' .  $item->cid . ' at ' . $base_url,
+        'attributes' => array('isPermaLink' => 'false')
+      ),
+    );
+    $item_text = check_markup($item->comment, $item->format, FALSE);
+    return format_rss_item($item->subject, $item->link, $item_text, $properties);
   }
 }
 
