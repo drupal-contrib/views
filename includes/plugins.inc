@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.82 2008-05-05 17:12:34 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.83 2008-05-05 18:28:02 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1655,7 +1655,7 @@ class views_plugin_display_page extends views_plugin_display {
           $items[$path]['type'] = MENU_LOCAL_TASK;
           break;
         case 'default tab':
-          $items[$path]['type'] = MENU_LOCAL_TASK;
+          $items[$path]['type'] = MENU_DEFAULT_LOCAL_TASK;
           break;
       }
 
