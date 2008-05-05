@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.81 2008-04-30 01:18:09 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.82 2008-05-05 17:12:34 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2628,7 +2628,7 @@ class views_plugin_style_table extends views_plugin_style {
 
       // If the field is the column, mark it so, or the column
       // it's set to is a column, that's ok
-      if ($field == $column || $columns[$column] == $column) {
+      if ($field == $column || $columns[$column] == $column && !empty($sanitized[$column])) {
         $sanitized[$field] = $column;
       }
       // Since we set the field to itself initially, ignoring
