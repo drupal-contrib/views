@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.84 2008-05-05 22:26:57 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.85 2008-05-05 22:30:14 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2869,9 +2869,10 @@ class views_plugin_style_summary extends views_plugin_style {
 class views_plugin_style_rss extends views_plugin_style {
   function attach_to($display_id, $path, $title) {
     $display = $this->view->display[$display_id]->handler;
+    $url = url($this->view->get_url(NULL, $path));
     if ($display->has_path()) {
       if (empty($this->preview)) {
-        drupal_add_feed($this->view->get_url(NULL, $path), $title);
+        drupal_add_feed($url, $title);
       }
     }
     else {
@@ -2879,7 +2880,7 @@ class views_plugin_style_rss extends views_plugin_style {
         $this->view->feed_icon = '';
       }
 
-      $this->view->feed_icon .= theme('feed_icon', $this->view->get_url(NULL, $path), $title);
+      $this->view->feed_icon .= theme('feed_icon', $url, $title);
     }
   }
 
