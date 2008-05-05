@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.35 2008-05-05 19:26:23 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.36 2008-05-05 22:51:10 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -545,7 +545,7 @@ html.js .views-hidden {
   padding-right: 3px;
 }
 
-.views-edit-view input,
-.views-edit-view textarea {
+.views-tabset input,
+.views-tabset textarea {
   max-width: 95%;
 }
