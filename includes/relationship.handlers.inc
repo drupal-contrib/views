@@ -1,5 +1,5 @@
 <?php
-// $Id: relationship.handlers.inc,v 1.1 2008-04-03 00:22:26 merlinofchaos Exp $
+// $Id: relationship.handlers.inc,v 1.2 2008-05-05 18:20:51 merlinofchaos Exp $
 /**
  * @file
  * Views' relationship handlers.
@@ -16,6 +16,20 @@
  * to be linked in.
  */
 class views_handler_relationship extends views_handler {
+  /**
+   * Init handler to let relationships live on tables other than
+   * the table they operate on.
+   */
+  function init(&$view, $options) {
+    parent::init($view, $options);
+    if (isset($this->definition['relationship table'])) {
+      $this->table = $this->definition['relationship table'];
+    }
+    if (isset($this->definition['relationship field'])) {
+      $this->field = $this->definition['relationship field'];
+    }
+  }
+
   /**
    * Get this field's label.
    */
@@ -67,7 +81,7 @@ class views_handler_relationship extends views_handler {
     $def['table'] = $this->definition['base'];
     $def['field'] = $base_field;
     $def['left_table'] = $this->table;
-    $def['left_field'] = $this->real_field;
+    $def['left_field'] = $this->field;
     if (!empty($this->options['required'])) {
       $def['type'] = 'INNER';
     }
