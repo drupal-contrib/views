@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.85 2008-05-05 19:22:47 merlinofchaos Exp $
+// $Id: view.inc,v 1.86 2008-05-05 19:37:36 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1136,7 +1136,12 @@ class view extends views_db_object {
     $keys = array('current_display', 'display_handler', 'build_info', 'built', 'executed', 'attachment_before', 'attachment_after');
     foreach ($keys as $key) {
       if (isset($clone->$key)) {
-        $clone->$key = FALSE;
+        if (is_object($clone->$key)) {
+          unset($clone->$key);
+        }
+        else {
+          $clone->$key = FALSE;
+        }
       }
     }
 
