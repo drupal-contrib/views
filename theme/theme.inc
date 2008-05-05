@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.38 2008-05-01 05:32:26 merlinofchaos Exp $
+// $Id: theme.inc,v 1.39 2008-05-05 23:51:47 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -139,6 +139,7 @@ function template_preprocess_views_view_fields(&$vars) {
   $view = $vars['view'];
 
   // Loop through the fields for this view.
+  $inline = FALSE;
   foreach ($view->field as $id => $field) {
     if (!empty($field['handler']) && is_object($field['handler'])) {
       $object = new stdClass();
@@ -150,6 +151,13 @@ function template_preprocess_views_view_fields(&$vars) {
       else {
         $object->raw = NULL; // make sure it exists to reduce NOTICE
       }
+      $object->inline = !empty($vars['options']['inline'][$id]);
+      $object->inline_html = $object->inline ? 'span' : 'div';
+      if (!empty($vars['options']['separator']) && $inline && $object->inline && $object->content) {
+        $object->separator = filter_xss_admin($vars['options']['separator']);
+      }
+
+      $inline = $object->inline;
 
       $object->handler = $field['handler'];
       $object->class = views_css_safe($id);
