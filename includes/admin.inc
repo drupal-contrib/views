@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.93 2008-05-02 19:47:56 merlinofchaos Exp $
+// $Id: admin.inc,v 1.94 2008-05-07 22:37:27 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -884,7 +884,7 @@ function template_preprocess_views_ui_edit_view(&$vars) {
       $path = $display->handler->get_path();
       if (strpos('%', $path) === FALSE && !isset($paths[$path])) {
         $vars['quick_links_raw'][] = array(
-          'title' => t('View "@display"', array('@display' => $display->display_title)),
+          'title' => t('View "!display"', array('!display' => $display->display_title)),
           'alt' => t("Go to the real page for this display"),
           'href' => $path,
         );
