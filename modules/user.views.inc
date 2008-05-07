@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.35 2008-05-01 05:32:26 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.36 2008-05-07 01:57:21 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -176,7 +176,7 @@ function user_views_data() {
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_boolean_operator',
-      'label' => t('Published'),
+      'label' => t('Active'),
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
