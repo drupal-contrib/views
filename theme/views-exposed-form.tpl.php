@@ -1,5 +1,5 @@
 <?php
-// $Id: views-exposed-form.tpl.php,v 1.3 2008-03-31 17:20:38 merlinofchaos Exp $
+// $Id: views-exposed-form.tpl.php,v 1.4 2008-05-07 23:00:25 merlinofchaos Exp $
 /**
  * @file views-exposed-form.tpl.php
  *
@@ -41,6 +41,8 @@
         </div>
       </div>
     <?php endforeach; ?>
+    <div class="views-exposed-widget">
+      <?php print $button ?>
+    </div>
   </div>
-  <?php print $button ?>
 </div>
