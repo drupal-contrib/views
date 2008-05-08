@@ -1,4 +1,4 @@
-<!-- $Id: argument.html,v 1.2 2008-04-29 00:35:07 merlinofchaos Exp $ -->
+<!-- $Id: argument.html,v 1.3 2008-05-08 05:29:29 merlinofchaos Exp $ -->
 Arguments are input. While they often come from the URL, <strong>they don't always</strong> so please don't be shocked when they don't. Each display time may have its own source for arguments. Block displays have no source of arguments at all; they cannot pull arguments from the URL, and often require use of the PHP code default in order to get arguments.
 
 In general, arguments are used to filter the view, and in that sense they have a very close relationship to filters, but that isn't necessarily true for every argument. Arguments can be used for any purpose, really; the extent of what the argument does is up to the developer of the argument, but the arguments that come with Views are almost entirely filters.
@@ -20,7 +20,6 @@ In general, arguments are used to filter the view, and in that sense they have a
 <dt>Provide default</dt>
 <dd>If no argument is given, a default argument can be selected. The method of choosing the default argument is selectable and pluggable. By default, Views comes with 2 methods to choose the default argument: Fixed entry, where you simply enter the argument, and PHP code, where you can enter a snippet of PHP code that returns the argument.</dd>
 </dl>
-
 
 <h3>Wildcards</h3>
 All arguments have a 'wildcard', which is an argument that means to use all values. In practice, it is the same as 'Ignore' above, where the argument is simply removed and the view is created without the argument. The wildcard title is used in titles and breadcrumb trails.

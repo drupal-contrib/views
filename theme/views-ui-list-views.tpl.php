@@ -1,11 +1,12 @@
 <?php
-// $Id: views-ui-list-views.tpl.php,v 1.4 2008-05-02 17:21:36 merlinofchaos Exp $
+// $Id: views-ui-list-views.tpl.php,v 1.5 2008-05-08 05:29:30 merlinofchaos Exp $
 /**
  * @file
  *
  * Displays the list of views on the administration screen.
  */
 ?>
+<p><?php print $help; ?></p>
 <?php print $widgets; ?>
 <?php foreach ($views as $view): ?>
   <table class="views-entry">
