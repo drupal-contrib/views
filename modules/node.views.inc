@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.59 2008-05-08 00:51:24 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.60 2008-05-08 20:12:30 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -989,6 +989,11 @@ class views_handler_argument_node_created_month extends views_handler_argument_f
    */
   function title() {
     return format_date(strtotime("2005" . $this->argument . "15"), 'custom', $this->format, 0);
+  }
+
+  function summary_argument($data) {
+    // Make sure the argument contains leading zeroes.
+    return str_pad($data->{$this->base_alias}, 2, '0', STR_PAD_LEFT);
   }
 }
 
