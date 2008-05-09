@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-item.tpl.php,v 1.6 2008-04-21 05:25:17 merlinofchaos Exp $
+// $Id: views-ui-edit-item.tpl.php,v 1.7 2008-05-09 19:32:12 merlinofchaos Exp $
 /**
  * @file views-ui-edit-item.tpl.php
  *
@@ -13,16 +13,18 @@
   <?php print $title; ?>
 </div>
 
-<?php if (empty($fields)): ?>
-  <div><?php print t('None defined'); ?></div>
-<?php else: ?>
-  <?php foreach ($fields as $pid => $field): ?>
-    <?php if (!empty($field['links'])): ?>
-      <?php print $field['links']; ?>
-    <?php endif; ?>
-    <div class="<?php print $field['class']; if (!empty($field['changed'])) { print ' changed'; } ?>">
-      <?php print $field['title']; ?>
-      <?php print $field['info']; ?>
-    </div>
-  <?php endforeach; ?>
-<?php endif; ?>
+<div class="views-category-content">
+  <?php if (empty($fields)): ?>
+    <div><?php print t('None defined'); ?></div>
+  <?php else: ?>
+    <?php foreach ($fields as $pid => $field): ?>
+      <?php if (!empty($field['links'])): ?>
+        <?php print $field['links']; ?>
+      <?php endif; ?>
+      <div class="<?php print $field['class']; if (!empty($field['changed'])) { print ' changed'; } ?>">
+        <?php print $field['title']; ?>
+        <?php print $field['info']; ?>
+      </div>
+    <?php endforeach; ?>
+  <?php endif; ?>
+</div>
