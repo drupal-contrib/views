@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.16 2008-05-08 05:29:30 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.17 2008-05-09 19:48:44 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -383,14 +383,17 @@ class views_handler_argument extends views_handler {
   }
 
   /**
+   * Determine if the argument is set to provide a default argument.
+   */
+  function has_default_argument() {
+    $info = $this->default_actions($this->options['default_action']);
+    return !empty($info['has default argument']);
+  }
+
+  /**
    * Get a default argument, if available.
    */
   function get_default_argument() {
-    $info = $this->default_actions($this->options['default_action']);
-    if (empty($info['has default argument'])) {
-      return; // NULL
-    }
-
     $plugin = views_get_plugin('argument default', $this->options['default_argument_type']);
     if ($plugin) {
       $plugin->init($this->view, $this);
