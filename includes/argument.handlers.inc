@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.17 2008-05-09 19:48:44 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.18 2008-05-10 00:24:58 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -41,6 +41,7 @@ class views_handler_argument extends views_handler {
       $this->options['default_argument_type'] = 'fixed';
     }
   }
+
   /**
    * Give an argument the opportunity to modify the breadcrumb, if it wants.
    * This only gets called on displays where a breadcrumb is actually used.

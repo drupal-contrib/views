@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.91 2008-05-09 19:48:44 merlinofchaos Exp $
+// $Id: view.inc,v 1.92 2008-05-10 00:24:58 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -285,10 +285,13 @@ class view extends views_db_object {
   function _pre_query() {
     foreach (views_object_types() as $key => $info) {
       $item = &$this->$key;
+      $position = 0;
       foreach ($item as $id => $info) {
         if (!empty($info['handler'])) {
+          $item[$id]['handler']->position = $position;
           $item[$id]['handler']->pre_query();
         }
+        $position++;
       }
     }
   }
