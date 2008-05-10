@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.45 2008-01-12 18:35:02 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.46 2008-05-10 19:35:25 merlinofchaos Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1329,6 +1329,10 @@ function views_filters($view) {
 }
 
 function _views_build_filters_form($view) {
+  // When the form is retrieved through an AJAX callback, the cache hasn't
+  // been loaded yet. The cache is necesssary for _views_get_filters().
+  views_load_cache();
+
   $filters = _views_get_filters();
   foreach ($view->exposed_filter as $count => $expose) {
     $id = $expose['id'];
