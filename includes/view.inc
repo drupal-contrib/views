@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.92 2008-05-10 00:24:58 merlinofchaos Exp $
+// $Id: view.inc,v 1.93 2008-05-10 01:14:31 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -852,12 +852,31 @@ class view extends views_db_object {
     }
 
     $pieces = array();
+    $arguments = isset($arguments) ? $arguments : $this->display_handler->get_option('arguments');
+    $argument_keys = isset($arguments) ? array_keys($arguments) : array();
+    $id = current($argument_keys);
     foreach (explode('/', $path) as $piece) {
       if ($piece != '%') {
         $pieces[] = $piece;
       }
       else {
-        $pieces[] = empty($args) ? $piece : array_shift($args);
+        if (empty($args)) {
+          // Try to never put % in a url; use the wildcard instead.
+          if ($id && !empty($arguments[$id]['wildcard'])) {
+            $pieces[] = $arguments[$id]['wildcard'];
+          }
+          else {
+            $pieces[] = '*'; // gotta put something if there just isn't one.
+          }
+
+        }
+        else {
+          $pieces[] = array_shift($args);
+        }
+
+        if ($id) {
+          $id = next($argument_keys);
+        }
       }
     }
 
