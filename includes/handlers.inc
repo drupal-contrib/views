@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.77 2008-04-25 15:14:59 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.78 2008-05-13 22:12:40 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -323,6 +323,19 @@ class views_handler extends views_object {
    * Take input from exposed filters and assign to this handler, if necessary.
    */
   function accept_exposed_input($input) { return TRUE; }
+
+  /**
+   * Get the join object that should be used for this handler.
+   *
+   * This method isn't used a great deal, but it's very handy for easily
+   * getting the join if it is necessary to make some changes to it, such
+   * as adding an 'extra'.
+   */
+  function get_join() {
+    // get the join from this table that links back to the base table.
+    return drupal_clone(views_get_table_join($this->table, $this->query->base_table));
+  }
+
 }
 
 /**
@@ -417,7 +430,7 @@ class views_many_to_one_helper {
   }
 
   function get_join() {
-    return drupal_clone(views_get_table_join($this->handler->table, $this->handler->query->base_table));
+    return $this->handler->get_join();
   }
 
   /**
