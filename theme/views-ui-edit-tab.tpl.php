@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-tab.tpl.php,v 1.9 2008-05-09 19:32:12 merlinofchaos Exp $
+// $Id: views-ui-edit-tab.tpl.php,v 1.10 2008-05-14 00:30:25 merlinofchaos Exp $
 /**
  * @file views-ui-edit-tab.tpl.php
  * Template for the primary view editing window.
@@ -7,10 +7,12 @@
 ?>
 <div class="clear-block views-display views-display-<?php print $display->id; if (!empty($display->deleted)) { print ' views-display-deleted'; }; ?>">
   <?php // top section ?>
+  <?php if ($remove): ?>
+    <div class="remove-display"><?php print $remove ?></div>
+  <?php endif; ?>
   <div class="top">
     <div class="inside">
       <?php print $display_help_icon; ?>
-      <?php print $remove ?>
       <span class="display-title">
         <?php print $title; ?>
       </span>

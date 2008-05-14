@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.98 2008-05-13 22:12:40 merlinofchaos Exp $
+// $Id: admin.inc,v 1.99 2008-05-14 00:30:25 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1554,7 +1554,6 @@ function views_ui_remove_display_form(&$form_state) {
     );
   }
   $form['#action'] = url("admin/build/views/nojs/remove-display/$view->name/$display_id");
-  $form['#id'] = 'views-add-display-form';
   $form['#attributes'] = array('class' => 'views-ajax-form');
 
   return $form;

@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.38 2008-05-10 01:14:30 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.39 2008-05-14 00:30:24 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -166,11 +166,6 @@ div.views-display-deleted div.tab-section {
 .views-display .form-submit,
 #views-ajax-pad .form-submit {
   margin: 0;
-}
-
-.views-display #views-add-display-form {
-  float: right;
-  margin-bottom: 0;
 }
 
 .views-display .middle {
@@ -555,7 +550,20 @@ html.js .views-hidden {
   padding-right: 3px;
 }
 
-.views-tabset input,
-.views-tabset textarea {
+#views-ajax-pad input,
+#views-ajax-pad textarea {
   max-width: 95%;
+}
+
+.remove-display {
+  float: right;
+  margin: 0;
+  padding: .2em 1em 0 0;
+  position: relative;
+  top: .1em;
+}
+
+.views-display .remove-display form,
+.remove-display input {
+  margin: 0 !important;
 }
