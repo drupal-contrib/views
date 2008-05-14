@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.39 2008-05-14 00:30:24 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.40 2008-05-14 00:51:39 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -493,7 +493,8 @@ form#views-add-display-form {
 }
 
 #views-live-preview {
-  margin: 0 0 0 117px;
+  border-top: 1px solid black;
+  padding-top: .5em;
 }
 
 form#views-ui-preview-form,
