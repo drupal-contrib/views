@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.93 2008-05-10 01:14:31 merlinofchaos Exp $
+// $Id: view.inc,v 1.94 2008-05-14 15:21:56 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -616,7 +616,7 @@ class view extends views_db_object {
           // defaults to 0 so we don't need to set it in an out-of-range condition.
           if (!empty($pager_page_array[$this->pager['element']])) {
             $page = intval($pager_page_array[$this->pager['element']]);
-            if ($page > 0 && $page < $pager_total[$this->pager['element']] - 1) {
+            if ($page > 0 && $page < $pager_total[$this->pager['element']]) {
               $this->pager['current_page'] = $page;
             }
           }
