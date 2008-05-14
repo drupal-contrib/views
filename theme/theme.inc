@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.39 2008-05-05 23:51:47 merlinofchaos Exp $
+// $Id: theme.inc,v 1.40 2008-05-14 01:32:55 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -278,6 +278,12 @@ function template_preprocess_views_view_table(&$vars) {
         $vars['rows'][$num][$column] .= $field_output;
       }
     }
+  }
+
+  $vars['class'] = 'views-table';
+  if (!empty($options['sticky'])) {
+    drupal_add_js('misc/tableheader.js');
+    $vars['class'] .= " sticky-enabled";
   }
 }
 

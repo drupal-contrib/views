@@ -1,17 +1,18 @@
 <?php
-// $Id: views-view-table.tpl.php,v 1.3 2008-03-28 19:17:17 merlinofchaos Exp $
+// $Id: views-view-table.tpl.php,v 1.4 2008-05-14 01:32:55 merlinofchaos Exp $
 /**
  * @file views-view-table.tpl.php
  * Template to display a view as a table.
  *
  * - $header: An array of header labels keyed by field id.
  * - $fields: An array of CSS IDs to use for each field id.
+ * - $class: A class or classes to apply to the table, based on settings.
  * - $rows: An array of row items. Each row is an array of content
  *   keyed by field ID.
  * @ingroup views_templates
  */
 ?>
-<table>
+<table class="<?php print $class; ?>">
   <thead>
     <tr>
       <?php foreach ($header as $field => $label): ?>
