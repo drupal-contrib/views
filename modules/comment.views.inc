@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.12 2008-05-02 19:13:08 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.13 2008-05-15 20:16:55 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -33,11 +33,6 @@ function comment_views_data() {
     'node' => array(
       'left_field' => 'nid',
       'field' => 'nid',
-    ),
-    //...to the user table
-    'users' => array(
-      'left_field' => 'uid',
-      'field' => 'uid',
     ),
   );
 
