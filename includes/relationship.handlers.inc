@@ -1,5 +1,5 @@
 <?php
-// $Id: relationship.handlers.inc,v 1.2 2008-05-05 18:20:51 merlinofchaos Exp $
+// $Id: relationship.handlers.inc,v 1.3 2008-05-15 21:36:57 merlinofchaos Exp $
 /**
  * @file
  * Views' relationship handlers.
@@ -99,7 +99,7 @@ class views_handler_relationship extends views_handler {
     $this->ensure_my_table();
 
     // use a short alias for this:
-    $alias = $this->options['id'];
+    $alias = $def['table'];
 
     $this->alias = $this->query->add_relationship($alias, $join, $this->definition['base'], $this->relationship);
   }
