@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.94 2008-05-14 15:21:56 merlinofchaos Exp $
+// $Id: view.inc,v 1.95 2008-05-15 22:00:43 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -277,6 +277,26 @@ class view extends views_db_object {
       }
       $this->inited = TRUE;
     }
+  }
+
+  /**
+   * Create a list of base tables eligible for this view. Used primarily
+   * for the UI. Display must be already initialized.
+   */
+  function get_base_tables() {
+    $base_tables = array(
+      $this->base_table => TRUE,
+      '#global' => TRUE,
+    );
+
+    $relationships = $this->display_handler->get_option('relationships');
+    foreach ($relationships as $relationship) {
+      $handler = views_get_handler($relationship['table'], $relationship['field'], 'relationship');
+      if ($handler) {
+        $base_tables[$handler->definition['base']] = TRUE;
+      }
+    }
+    return $base_tables;
   }
 
   /**
