@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.94 2008-05-15 22:55:17 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.95 2008-05-15 23:43:50 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -3261,7 +3261,7 @@ class views_plugin_argument_default_php extends views_plugin_argument_default {
     }
 
     // set up variables to make it easier to reference during the argument.
-    $view = &$view;
+    $view = &$this->view;
     $argument = &$this->argument;
     ob_start();
     $result = eval($this->argument->options[$this->option_name]);

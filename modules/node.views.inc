@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.65 2008-05-15 22:55:18 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.66 2008-05-15 23:43:50 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -1174,6 +1174,12 @@ function node_views_plugins() {
         'handler' => 'views_plugin_argument_validate_node',
       ),
     ),
+    'argument default' => array(
+      'node' => array(
+        'title' => t('Node ID from URL'),
+        'handler' => 'views_plugin_argument_default_node',
+      ),
+    ),
   );
 }
 
@@ -1381,6 +1387,23 @@ class views_plugin_argument_validate_node extends views_plugin_argument_validate
     }
 
     return isset($types[$node->type]);
+  }
+}
+
+/**
+ * Default argument plugin to extract a node via menu_get_object
+ */
+class views_plugin_argument_default_node extends views_plugin_argument_default {
+  function argument_form(&$form, &$form_state) {
+  }
+
+  function get_argument() {
+    foreach (range(1, 3) as $i) {
+      $node = menu_get_object('node', $i);
+      if (!empty($node)) {
+        return $node->nid;
+      }
+    }
   }
 }
 
