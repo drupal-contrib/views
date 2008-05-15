@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.18 2008-05-10 00:24:58 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.19 2008-05-15 19:56:49 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -610,7 +610,7 @@ class views_handler_argument extends views_handler {
       return FALSE;
     }
 
-    if (isset($this->definition['numeric']) && !is_numeric($arg)) {
+    if (isset($this->definition['numeric']) && !isset($this->options['break_phrase']) && !is_numeric($arg)) {
       return FALSE;
     }
 
