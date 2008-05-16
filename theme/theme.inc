@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.41 2008-05-15 22:55:18 merlinofchaos Exp $
+// $Id: theme.inc,v 1.42 2008-05-16 22:22:32 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -177,6 +177,17 @@ function template_preprocess_views_view_fields(&$vars) {
  */
 function theme_views_view_field($view, $field, $row) {
   return $field->render($row);
+}
+
+/**
+ * Process a single field within a view.
+ *
+ * This preprocess function isn't normally run, as a function is used by
+ * default, for performance. However, by creating a template, this
+ * preprocess should get pickedup.
+ */
+function template_preprocess_views_view_field(&$vars) {
+  $vars['output'] = $vars['field']->render($vars['row']);
 }
 
 /**
