@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.12 2008-05-13 23:10:04 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.13 2008-05-16 00:13:14 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -418,6 +418,7 @@ class views_handler_filter extends views_handler {
     }
     if (!empty($this->options['expose']['single']) && isset($form['#multiple'])) {
       unset($form['#multiple']);
+      $form['#size'] = NULL;
     }
 
     if ($type == 'value' && !empty($this->options['expose']['optional']) && $form['#type'] == 'select' && empty($form['#multiple'])) {
