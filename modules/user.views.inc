@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.40 2008-05-16 01:13:08 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.41 2008-05-16 01:37:14 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -32,11 +32,14 @@ function user_views_data() {
     'node' => array(
       'left_field' => 'uid',
       'field' => 'uid',
+      'type' => 'INNER', // all nodes have an author.
     ),
     // This goes to the node so that we have consistent authorship.
     'node_revisions' => array(
+      'left_table' => 'node',
       'left_field' => 'uid',
       'field' => 'uid',
+      'type' => 'INNER', // all nodes have an author.
     ),
   );
 
