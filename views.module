@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.274 2008-05-15 22:55:17 merlinofchaos Exp $
+// $Id: views.module,v 1.275 2008-05-16 00:20:37 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -410,10 +410,10 @@ function &views_get_page_view() {
  * Set the current 'current view' that is being built/rendered so that it is
  * easy for other modules or items in drupal_eval to identify
  */
-function &views_set_current_view(&$view = NULL) {
+function &views_set_current_view($view = NULL) {
   static $cache = NULL;
   if (isset($view)) {
-    $cache = &$view;
+    $cache = $view;
   }
 
   return $cache;
