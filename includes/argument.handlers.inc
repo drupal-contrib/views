@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.21 2008-05-17 06:06:11 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.22 2008-05-17 19:46:03 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -464,7 +464,6 @@ class views_handler_argument extends views_handler {
       // so look up the join and add it instead.
       if ($this->table_alias != $this->table) {
         $j = views_get_table_join($this->name_table, $this->table);
-        dsm($this->table);
         if ($j) {
           $join = drupal_clone($j);
           $join->left_table = $this->table_alias;

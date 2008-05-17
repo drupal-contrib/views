@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.16 2008-05-09 18:56:06 merlinofchaos Exp $
+// $Id: query.inc,v 1.17 2008-05-17 19:46:03 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -182,7 +182,15 @@ class views_query {
       return FALSE;
     }
 
+    // Make sure $alias isn't already used; if it, start adding stuff.
+    $alias_base = $alias;
+    $count = 1;
+    while (!empty($this->relationships[$alias])) {
+      $alias = $alias_base . '_' . $count++;
+    }
+
     $join = $this->adjust_join($join, $link_point);
+
     if ($alias = $this->add_table($join->table, $link_point, $join, $alias)) {
       $this->relationships[$alias] = array(
         'link' => $link_point,
@@ -388,7 +396,7 @@ class views_query {
       // the same table with the same join multiple times.  For
       // example, a view that filters on 3 taxonomy terms using AND
       // needs to join term_data 3 times with the same join.
-      
+
       // If we do not have join info, get it the same way queue_table
       // will get it.
       if (!isset($join)) {
@@ -418,7 +426,7 @@ class views_query {
           }
         }
       }
-        
+
       return $this->queue_table($table, $relationship, $join);
     }
   }
