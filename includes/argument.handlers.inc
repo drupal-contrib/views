@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.20 2008-05-16 01:13:08 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.21 2008-05-17 06:06:11 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -414,7 +414,7 @@ class views_handler_argument extends views_handler {
 
     // Change the display style to the summary style for this
     // argument.
-    $this->view->style_plugin = $this->options['style_plugin'];
+    $this->view->plugin_name = $this->options['style_plugin'];
     $this->view->style_options = $this->options['style_options'];
 
     // Clear out the normal primary field and whatever else may have
