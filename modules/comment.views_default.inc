@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views_default.inc,v 1.3 2008-05-15 21:36:57 merlinofchaos Exp $
+// $Id: comment.views_default.inc,v 1.4 2008-05-17 01:13:58 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the comment module.
@@ -322,7 +322,7 @@ function comment_views_default_views() {
   $view->base_table = 'comments';
   $view->is_cacheable = '0';
   $view->api_version = 2;
-  $view->disabled = FALSE; // Edit this to true to make a default view disabled initially
+  $view->disabled = TRUE; // Edit this to true to make a default view disabled initially
   $view->display = array();
     $display = new views_display;
     $display->id = 'default';
