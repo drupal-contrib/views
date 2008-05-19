@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.4 2008-05-09 00:24:10 merlinofchaos Exp $
+// $Id: docs.php,v 1.5 2008-05-19 16:24:09 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -73,6 +73,10 @@ function hook_views_data() {
  * This hook should be placed in MODULENAME.views.inc and it will be auto-loaded.
  * This must either be in the same directory as the .module file or in a subdirectory
  * named 'includes'.
+ *
+ * This is a stub list as a reminder that this needs to be doc'd and is not used
+ * in views anywhere so might not be remembered when this is formally documented:
+ * - style: 'even empty'
  */
 function hook_views_plugins() {
   // example code here

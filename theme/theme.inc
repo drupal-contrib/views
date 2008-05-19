@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.42 2008-05-16 22:22:32 merlinofchaos Exp $
+// $Id: theme.inc,v 1.43 2008-05-19 16:24:09 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -41,7 +41,7 @@ function _views_theme_functions($hook, $view, $display = NULL) {
 function template_preprocess_views_view(&$vars) {
   $view = $vars['view'];
 
-  $vars['rows']       = !empty($view->result) ? $view->style_plugin->render($view->result) : '';
+  $vars['rows']       = !empty($view->result) || !empty($view->style_plugin->definition['even empty']) ? $view->style_plugin->render($view->result) : '';
 
   $vars['css_name']   = views_css_safe($view->name);
   $vars['name']       = $view->name;
