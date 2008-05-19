@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.23 2008-05-19 19:09:21 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.24 2008-05-19 19:11:37 merlinofchaos Exp $
 /**
  * @file
  *
@@ -405,7 +405,7 @@ class views_handler_argument_term_node_tid_depth extends views_handler_argument 
     $args = $tids;
     $last = "tn";
 
-    if ($this->options['depth'] < 0) {
+    if ($this->options['depth'] > 0) {
       $subquery .= "    LEFT JOIN {term_hierarchy} th ON th.tid = tn.tid\n";
       $last = "th";
       foreach (range(1, abs($this->options['depth'])) as $count) {
@@ -415,7 +415,7 @@ class views_handler_argument_term_node_tid_depth extends views_handler_argument 
         $last = "th$count";
       }
     }
-    else if ($this->options['depth'] > 0) {
+    else if ($this->options['depth'] < 0) {
       foreach (range(1, abs($this->options['depth'])) as $count) {
         $subquery .= "    LEFT JOIN {term_hierarchy} th$count ON $last.tid = th$count.parent\n";
         $where .= "    OR th$count.tid $placeholder\n";
