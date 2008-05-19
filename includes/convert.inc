@@ -1,5 +1,5 @@
 <?php
-// $Id: convert.inc,v 1.7 2008-04-24 21:59:14 merlinofchaos Exp $
+// $Id: convert.inc,v 1.8 2008-05-19 16:09:48 merlinofchaos Exp $
 /**
  * @file convert.inc
  *
@@ -313,11 +313,11 @@ function views1_convert_style(&$view, &$handler, $type) {
       break;
     case 'node':
       $handler->set_option('row_plugin', 'node');
-      $handler->set_option('row_options', array('teaser' => FALSE));
+      $handler->set_option('row_options', array('teaser' => FALSE, 'links' => TRUE));
       break;
     case 'teaser':
       $handler->set_option('row_plugin', 'node');
-      $handler->set_option('row_options', array('teaser' => true));
+      $handler->set_option('row_options', array('teaser' => TRUE, 'links' => TRUE));
       break;
     case 'table':
       $options = array();
