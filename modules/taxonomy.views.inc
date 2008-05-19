@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.25 2008-05-19 19:49:26 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.26 2008-05-19 23:37:22 merlinofchaos Exp $
 /**
  * @file
  *
@@ -820,6 +820,11 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
         while ($term = db_fetch_object($result)) {
           $options[$term->tid] = check_plain($term->name);
         }
+      }
+
+      // Since we're overriding, allow the list of options to be reduced.
+      if (!empty($form_state['exposed']) && !empty($this->options['expose']['reduce'])) {
+        $options = $this->reduce_value_options($options);
       }
 
       $form['value'] = array(
