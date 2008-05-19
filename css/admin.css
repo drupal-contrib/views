@@ -1,4 +1,4 @@
-/* $Id: admin.css,v 1.41 2008-05-16 01:15:54 merlinofchaos Exp $ */
+/* $Id: admin.css,v 1.42 2008-05-19 20:28:32 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -343,6 +343,16 @@ html.js #views-ajax-pad {
 #views-ajax-pad .views-right-50 {
   float: right;
   width: 50%;
+}
+
+#views-ajax-pad .views-right-60 {
+  float: right;
+  width: 60%;
+}
+
+#views-ajax-pad .views-right-70 {
+  float: right;
+  width: 70%;
 }
 
 #views-ajax-pad .views-left-75 {
