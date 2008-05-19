@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.100 2008-05-15 22:00:42 merlinofchaos Exp $
+// $Id: admin.inc,v 1.101 2008-05-19 20:07:23 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -811,6 +811,7 @@ function views_ui_edit_view_form_cancel($form, &$form_state) {
 }
 
 function views_ui_edit_view_form_delete($form, &$form_state) {
+  unset($_REQUEST['destination']);
   // Redirect to the delete confirm page
   $form_state['redirect'] = array('admin/build/views/delete/' . $form_state['view']->name, 'cancel=admin/build/views/edit/' . $form_state['view']->name);
 }
