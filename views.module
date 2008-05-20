@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.276 2008-05-20 00:36:01 merlinofchaos Exp $
+// $Id: views.module,v 1.277 2008-05-20 00:46:02 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1335,7 +1335,11 @@ function drupal_build_form($form_id, &$form_state) {
  */
 function views_views_query_substitutions($view) {
   global $language;
-  return array('***CURRENT_TIME***' => time(), '***CURRENT_LANGUAGE***' => $language->language);
+  return array(
+    '***CURRENT_TIME***' => time(),
+    '***CURRENT_LANGUAGE***' => $language->language,
+    '***NO_LANGUAGE***' => '',
+  );
 }
 
 /**

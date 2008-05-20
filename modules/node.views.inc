@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.67 2008-05-16 01:13:08 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.68 2008-05-20 00:46:02 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -1093,7 +1093,7 @@ class views_handler_filter_node_language extends views_handler_filter_in_operato
   function get_value_options() {
     if (!isset($this->value_options)) {
       $this->value_title = t('Language');
-      $languages = array('***CURRENT_LANGUAGE***' => t("Current user's language"));
+      $languages = array('***CURRENT_LANGUAGE***' => t("Current user's language"), '***NO_LANGUAGE***' => t('No language'));
       $languages = array_merge($languages, locale_language_list());
       $this->value_options = $languages;
     }
