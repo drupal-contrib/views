@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.16 2008-05-19 23:37:21 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.17 2008-05-20 01:34:18 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -1435,9 +1435,8 @@ class views_handler_filter_many_to_one extends views_handler_filter_in_operator 
   }
 
   var $value_form_type = 'select';
-
   function value_form(&$form, &$form_state) {
-    parent::options_form();
+    parent::value_form($form, $form_state);
 
     if (empty($form_state['exposed'])) {
       $this->helper->options_form($form, $form_state);

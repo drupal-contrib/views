@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.96 2008-05-16 22:22:32 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.97 2008-05-20 01:34:18 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -947,7 +947,7 @@ class views_plugin_display extends views_plugin {
         $form['footer_empty'] = array(
           '#type' => 'checkbox',
           '#title' => t('Display even if view has no result'),
-          '#default_value' => $this->get_option('header_empty'),
+          '#default_value' => $this->get_option('footer_empty'),
         );
         $form['footer'] = array(
           '#type' => 'textarea',
