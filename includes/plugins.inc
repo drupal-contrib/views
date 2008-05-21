@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.97 2008-05-20 01:34:18 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.98 2008-05-21 18:51:15 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1312,7 +1312,7 @@ class views_plugin_display extends views_plugin {
       );
       $form['override']['markup'] = array(
         '#prefix' => '<div class="description">',
-        '#value' => t('This item is currently using default values; modifying this value will modify it for all displays.'),
+        '#value' => theme('advanced_help_topic', 'views', 'overrides') . t('Status: using default values.'),
         '#suffix' => '</div>',
       );
     }
@@ -1324,7 +1324,7 @@ class views_plugin_display extends views_plugin {
       );
       $form['override']['markup'] = array(
         '#prefix' => '<div class="description">',
-        '#value' => t('This item is currently overriding default values; modifying this value will modify only for this display. Reverting it will remove current values and return to default values.'),
+        '#value' => theme('advanced_help_topic', 'views', 'overrides') . t('Status: using overridden values.'),
         '#suffix' => '</div>',
       );
     }

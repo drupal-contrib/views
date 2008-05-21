@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.102 2008-05-19 20:14:51 merlinofchaos Exp $
+// $Id: admin.inc,v 1.103 2008-05-21 18:51:15 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2121,6 +2121,23 @@ function views_ui_config_item_form(&$form_state) {
     else {
       $handler->init($view, $item);
       $types = views_object_types();
+
+      if (!$view->display_handler->is_default_display()) {
+        if ($view->display_handler->is_defaulted($types[$type]['plural'])) {
+          $form['options']['override'] = array(
+            '#prefix' => '<div class="form-item description">',
+            '#value' => theme('advanced_help_topic', 'views', 'overrides') . t('Status: using default values.'),
+            '#suffix' => '</div>',
+          );
+        }
+        else {
+          $form['options']['override'] = array(
+            '#prefix' => '<div class="form-item description">',
+            '#value' => theme('advanced_help_topic', 'views', 'overrides') . t('Status: using overridden values.'),
+            '#suffix' => '</div>',
+          );
+        }
+      }
 
       // A whole bunch of code to figure out what relationships are valid for
       // this item.
