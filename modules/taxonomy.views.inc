@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.27 2008-05-21 16:36:19 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.28 2008-05-23 18:02:38 merlinofchaos Exp $
 /**
  * @file
  *
@@ -818,7 +818,7 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
         $options = array();
         $result = db_query("SELECT * FROM {term_data} WHERE vid = %d ORDER BY weight, name", $vocabulary->vid);
         while ($term = db_fetch_object($result)) {
-          $options[$term->tid] = check_plain($term->name);
+          $options[$term->tid] = $term->name;
         }
       }
 
