@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views_default.inc,v 1.2 2008-05-10 01:14:31 merlinofchaos Exp $
+// $Id: statistics.views_default.inc,v 1.3 2008-05-23 17:49:38 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the statistics module.
@@ -11,7 +11,7 @@
 function statistics_views_default_views() {
   $view = new view;
   $view->name = 'popular';
-  $view->description = t('Shows the most-viewed nodes on the site.');
+  $view->description = t('Shows the most-viewed nodes on the site. This requires the statistics to be enabled at administer >> site configuration >> statistics.');
   $view->tag = t('default');
   $view->view_php = '';
   $view->base_table = 'node';
@@ -489,5 +489,5 @@ function statistics_views_default_views() {
   $view->display['block_1'] = $display;
 
   $views[$view->name] = $view;
-return $views;
+  return $views;
 }
