@@ -1,4 +1,4 @@
-// $Id: ajax_view.js,v 1.4 2008-04-23 05:15:21 merlinofchaos Exp $
+// $Id: ajax_view.js,v 1.5 2008-05-27 22:31:59 merlinofchaos Exp $
 
 /**
  * @file ajaxView.js
@@ -71,7 +71,7 @@ Drupal.behaviors.ViewsAjaxView = function() {
                 });
               }
             },
-            error: function() { alert(Drupal.t("An error occurred.")); },
+            error: function() { alert(Drupal.t("An error occurred at ") + ajax_path); },
             dataType: 'json'
           });
   
@@ -102,7 +102,7 @@ Drupal.behaviors.ViewsAjaxView = function() {
                     });
                   }
                 },
-                error: function() { $(this).removeClass('views-throbbing'); alert(Drupal.t("An error occurred.")); },
+                error: function() { $(this).removeClass('views-throbbing'); alert(Drupal.t("An error occurred at ") + ajax_path); },
                 dataType: 'json'
               });
 
@@ -134,7 +134,7 @@ Drupal.behaviors.ViewsAjaxView = function() {
                     });
                   }
                 },
-                error: function() { $(this).removeClass('views-throbbing'); alert(Drupal.t("An error occurred.")); },
+                error: function() { $(this).removeClass('views-throbbing'); alert(Drupal.t("An error occurred at ") + ajax_path); },
                 dataType: 'json'
               });
 
