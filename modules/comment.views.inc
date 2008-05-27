@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.14 2008-05-15 22:55:18 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.15 2008-05-27 21:57:06 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -345,7 +345,7 @@ function comment_views_data_alter(&$data) {
   // Comment status of the node
   $data['node']['comment'] = array(
     'title' => t('Comment status'),
-    'help' => t('Whether or not comments are enabled or disabled on the node.'),
+    'help' => t('Whether comments are enabled or disabled on the node.'),
     'field' => array(
       'handler' => 'views_handler_field_node_comment',
       'click sortable' => TRUE,
