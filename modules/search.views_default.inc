@@ -1,5 +1,5 @@
 <?php
-// $Id: search.views_default.inc,v 1.4 2008-05-27 16:25:31 merlinofchaos Exp $
+// $Id: search.views_default.inc,v 1.5 2008-05-27 23:49:38 merlinofchaos Exp $
 
 /**
  * Implementation of hook_views_default_views().
@@ -81,9 +81,6 @@ function search_views_default_views() {
           'label' => '',
         ),
         'relationship' => 'none',
-        'expose_button' => array(
-          'button' => 'Expose',
-        ),
       ),
     ),
     'items_per_page' => 30,

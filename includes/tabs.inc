@@ -1,5 +1,5 @@
 <?php
-// $Id: tabs.inc,v 1.6 2008-04-16 05:02:22 merlinofchaos Exp $
+// $Id: tabs.inc,v 1.7 2008-05-27 23:49:37 merlinofchaos Exp $
 /**
  * @file
  *
@@ -124,7 +124,7 @@ class views_tabset {
    */
   function render() {
     views_add_js('tabs');
-    views_add_css('tabs');
+    views_add_css('views-tabs');
 
     if (empty($this->selected)) {
       $keys = array_keys($this->tabs);
