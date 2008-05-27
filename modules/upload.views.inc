@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.6 2008-05-05 18:20:51 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.7 2008-05-27 23:01:57 merlinofchaos Exp $
 /**
  * @file
  *
@@ -198,6 +198,7 @@ class views_handler_field_upload_description extends views_handler_field_prerend
   }
 
   function options_form(&$form, &$form_state) {
+    parent::options_form($form, $form_state);
     $form['link_to_file'] = array(
       '#title' => t('Link this field to download the file'),
       '#type' => 'checkbox',
