@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.42 2008-05-19 19:09:21 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.43 2008-05-27 20:53:59 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -228,12 +228,11 @@ function user_views_data() {
       'field' => 'uid',
     ),
     'node' => array(
-      'table' => 'users',
       'left_field' => 'uid',
       'field' => 'uid',
     ),
     'node_revisions' => array(
-      'table' => 'users',
+      'left_table' => 'node',
       'left_field' => 'uid',
       'field' => 'uid',
     ),
