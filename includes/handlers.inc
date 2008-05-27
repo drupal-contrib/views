@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.78 2008-05-13 22:12:40 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.79 2008-05-27 23:27:39 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -479,7 +479,7 @@ class views_many_to_one_helper {
       // For 'or' if we're not reducing duplicates, we get the absolute simplest:
       $field = $this->handler->table . '.' . $this->handler->field;
       if ($this->handler->operator == 'or' && empty($this->handler->options['reduce_duplicates'])) {
-        if (empty($this->handler->options['add_table']) || empty($this->handler->view->many_to_one_tables[$field])) {
+        if (empty($this->handler->options['add_table']) && empty($this->handler->view->many_to_one_tables[$field])) {
           // query optimization, INNER joins are slightly faster, so use them
           // when we know we can.
           $join = $this->get_join();
