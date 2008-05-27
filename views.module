@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.279 2008-05-27 21:21:19 merlinofchaos Exp $
+// $Id: views.module,v 1.280 2008-05-27 22:10:58 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -983,8 +983,8 @@ class views_object {
  * Provide debug output for Views. This relies on devel.module
  */
 function views_debug($message) {
-  if (module_exists('devel')) {
-    drupal_set_content('footer', dpr($message, TRUE));
+  if (module_exists('devel') && variable_get('views_devel_output', FALSE)) {
+    drupal_set_content(variable_get('views_devel_region', 'footer'), dpr($message, TRUE));
   }
 }
 
