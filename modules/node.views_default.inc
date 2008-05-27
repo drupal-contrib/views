@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views_default.inc,v 1.4 2008-04-24 21:59:14 merlinofchaos Exp $
+// $Id: node.views_default.inc,v 1.5 2008-05-27 23:40:09 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the node module.
@@ -327,10 +327,6 @@ function node_views_default_views() {
           'label' => '',
         ),
         'relationship' => 'none',
-        'expose_button' =>
-        array (
-          'button' => 'Expose',
-        ),
       ),
     ),
     'items_per_page' => 10,

@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views_default.inc,v 1.4 2008-05-17 01:13:58 merlinofchaos Exp $
+// $Id: comment.views_default.inc,v 1.5 2008-05-27 23:40:09 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the comment module.
@@ -225,6 +225,20 @@ function comment_views_default_views() {
           'operator' => false,
           'label' => '',
         ),
+        'status' => array(
+          'id' => 'status',
+          'table' => 'comments',
+          'field' => 'status',
+          'operator' => '=',
+          'value' => 0,
+          'group' => 0,
+          'exposed' => FALSE,
+          'expose' => array(
+            'operator' => FALSE,
+            'label' => '',
+          ),
+          'relationship' => 'none',
+        ),
       ),
     ),
     'items_per_page' => '25',
@@ -389,9 +403,6 @@ function comment_views_default_views() {
           'label' => '',
         ),
         'relationship' => 'nid',
-        'expose_button' => array(
-          'button' => 'Expose',
-        ),
       ),
     ),
     'items_per_page' => 5,

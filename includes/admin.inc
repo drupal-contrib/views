@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.105 2008-05-27 22:20:10 merlinofchaos Exp $
+// $Id: admin.inc,v 1.106 2008-05-27 23:40:09 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2222,6 +2222,9 @@ function views_ui_config_item_form_submit($form, &$form_state) {
   // Run it through the handler's submit function.
   $form_state['handler']->options_submit($form['options'], $form_state);
   $item = $form_state['handler']->options;
+
+  // Unset a button
+  unset($form_state['values']['options']['expose_button']);
 
   // Store the data we're given.
   foreach ($form_state['values']['options'] as $key => $value) {
