@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.98 2008-05-17 06:11:32 merlinofchaos Exp $
+// $Id: view.inc,v 1.99 2008-05-27 22:27:37 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -411,7 +411,7 @@ class view extends views_db_object {
         // check the default action of this argument.
         if ($this->display_handler->uses_breadcrumb() && $argument['handler']->uses_breadcrumb()) {
           $path = $this->get_url($breadcrumb_args);
-          if (strpos('%', $path) === FALSE) {
+          if (strpos($path, '%') === FALSE) {
             $this->build_info['breadcrumb'][$path] = str_replace(array_keys($substitutions), $substitutions, $title);
           }
         }
