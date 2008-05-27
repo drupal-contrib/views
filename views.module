@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.278 2008-05-23 17:49:38 merlinofchaos Exp $
+// $Id: views.module,v 1.279 2008-05-27 21:21:19 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -115,6 +115,9 @@ function views_help($path, $arg) {
  * Implementation of hook_menu().
  */
 function views_menu() {
+  // Any event which causes a menu_rebuild could potentially mean that the
+  // Views data is updated -- module changes, profile changes, etc.
+  views_invalidate_cache();
   $items = array();
   $items['views/ajax'] = array(
     'title' => 'Views',
