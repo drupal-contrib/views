@@ -1,4 +1,4 @@
-// $Id: base.js,v 1.7 2008-04-16 18:50:49 merlinofchaos Exp $
+// $Id: base.js,v 1.8 2008-05-29 19:44:50 merlinofchaos Exp $
 /**
  * @file base.js
  *
@@ -68,7 +68,7 @@ Drupal.Views.parseQueryString = function (query) {
   for(var i in pairs) {
     var pair = pairs[i].split('=');
     // Ignore the 'q' path argument, if present.
-    if (pair[0] != 'q') {
+    if (pair[0] != 'q' && pair[1]) {
       args[pair[0]] = unescape(pair[1].replace(/\+/g, ' '));
     }
   }
