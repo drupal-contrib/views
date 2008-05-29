@@ -1,5 +1,5 @@
 <?php
-// $Id: sort.handlers.inc,v 1.3 2008-04-11 08:40:59 merlinofchaos Exp $
+// $Id: sort.handlers.inc,v 1.4 2008-05-29 00:16:48 merlinofchaos Exp $
 /**
  * @file
  * Views' sort handlers.
@@ -129,7 +129,7 @@ class views_handler_sort_date extends views_handler_sort {
    */
   function query() {
     $this->ensure_my_table();
-    switch($this->options['granularity']) {
+    switch ($this->options['granularity']) {
       case 'second':
       default:
         $this->query->add_orderby($this->table_alias, $this->real_field, $this->options['order']);

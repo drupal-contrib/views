@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.22 2008-05-17 19:46:03 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.23 2008-05-29 00:16:48 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -471,7 +471,7 @@ class views_handler_argument extends views_handler {
         }
       }
       else {
-        $this->name_table_alias = $this->query->ensure_table($this->name_table);
+        $this->name_table_alias = $this->query->ensure_table($this->name_table, $this->relationship);
       }
     }
     else {
