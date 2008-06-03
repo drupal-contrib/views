@@ -1,9 +1,10 @@
 <?php
-// $Id: views-view-table.tpl.php,v 1.4 2008-05-14 01:32:55 merlinofchaos Exp $
+// $Id: views-view-table.tpl.php,v 1.5 2008-06-03 22:21:42 merlinofchaos Exp $
 /**
  * @file views-view-table.tpl.php
  * Template to display a view as a table.
  *
+ * - $title : The title of this group of rows.  May be empty.
  * - $header: An array of header labels keyed by field id.
  * - $fields: An array of CSS IDs to use for each field id.
  * - $class: A class or classes to apply to the table, based on settings.
@@ -13,6 +14,9 @@
  */
 ?>
 <table class="<?php print $class; ?>">
+  <?php if (!empty($title)) : ?>
+    <caption><?php print $title; ?></caption>
+  <?php endif; ?>
   <thead>
     <tr>
       <?php foreach ($header as $field => $label): ?>
