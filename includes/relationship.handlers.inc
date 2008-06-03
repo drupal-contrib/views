@@ -1,5 +1,5 @@
 <?php
-// $Id: relationship.handlers.inc,v 1.4 2008-05-17 19:46:03 merlinofchaos Exp $
+// $Id: relationship.handlers.inc,v 1.5 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file
  * Views' relationship handlers.
@@ -40,13 +40,14 @@ class views_handler_relationship extends views_handler {
     return $this->options['label'];
   }
 
-  /**
-   * Provide a default label
-   */
-  function options(&$options) {
-    parent::options($options);
-    $options['label'] = !empty($this->definition['label']) ? $this->definition['label'] : $this->definition['field'];
-    $options['required'] = FALSE;
+  function option_definition() {
+    $options = parent::option_definition();
+
+    $label = !empty($this->definition['label']) ? $this->definition['label'] : $this->definition['field'];
+    $options['label'] = array('default' => $label, 'translatable' => TRUE);
+    $options['required'] = array('default' => FALSE);
+
+    return $options;
   }
 
   /**

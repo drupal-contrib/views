@@ -1,5 +1,5 @@
 <?php
-// $Id: views.views.inc,v 1.2 2008-05-07 21:54:10 merlinofchaos Exp $
+// $Id: views.views.inc,v 1.3 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers that aren't tied to any other module.
@@ -71,6 +71,12 @@ class views_handler_sort_random extends views_handler_sort {
  * @ingroup views_argument_handlers
  */
 class views_handler_argument_null extends views_handler_argument {
+  function option_definition() {
+    $options = parent::option_definition();
+    $options['must_not_be'] = array('default' => FALSE);
+    return $options;
+  }
+
   /**
    * Override options_form() so that only the relevant options
    * are displayed to the user.

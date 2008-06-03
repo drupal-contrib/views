@@ -1,5 +1,5 @@
 <?php
-// $Id: search.views.inc,v 1.5 2008-05-07 21:15:23 merlinofchaos Exp $
+// $Id: search.views.inc,v 1.6 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for search.module
@@ -135,13 +135,12 @@ function search_views_data() {
  * @ingroup views_field_handlers
  */
 class views_handler_filter_search extends views_handler_filter {
-  /**
-   * Provide basic defaults for the equality operator
-   */
-  function options(&$options) {
-    parent::options($options);
-    $options['operator'] = 'optional';
-    $options['value'] = '';
+  function option_definition() {
+    $options = parent::option_definition();
+
+    $options['operator']['default'] = 'optional';
+
+    return $options;
   }
 
   /**
@@ -272,8 +271,12 @@ function search_views_plugins() {
  * @ingroup views_row_plugins
  */
 class views_plugin_row_search_view extends views_plugin_row {
-  function options(&$options) {
-    $options['score'] = TRUE;
+  function option_definition() {
+    $options = parent::option_definition();
+
+    $options['score'] = array('default' => TRUE);
+
+    return $options;
   }
 
   function options_form(&$form, &$form_state) {

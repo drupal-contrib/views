@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.7 2008-05-27 23:01:57 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.8 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file
  *
@@ -132,6 +132,13 @@ class views_handler_field_upload_fid extends views_handler_field_prerender_list 
     parent::construct();
   }
 
+  function option_definition() {
+    $options = parent::option_definition();
+    $options['link_to_file'] = array('default' => FALSE);
+    $options['only_listed'] = array('default' => FALSE);
+    return $options;
+  }
+
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
     $form['link_to_file'] = array(
@@ -195,6 +202,12 @@ class views_handler_field_upload_description extends views_handler_field_prerend
     if (!empty($options['link_to_file'])) {
       $this->additional_fields['fid'] = 'fid';
     }
+  }
+
+  function option_definition() {
+    $options = parent::option_definition();
+    $options['link_to_file'] = array('default' => FALSE);
+    return $options;
   }
 
   function options_form(&$form, &$form_state) {

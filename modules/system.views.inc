@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.4 2008-05-02 19:47:57 merlinofchaos Exp $
+// $Id: system.views.inc,v 1.5 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file
  *
@@ -187,6 +187,12 @@ class views_handler_field_file extends views_handler_field {
     if (!empty($options['link_to_file'])) {
       $this->additional_fields['filepath'] = 'filepath';
     }
+  }
+
+  function option_definition() {
+    $options = parent::option_definition();
+    $options['link_to_file'] = array('default' => FALSE);
+    return $options;
   }
 
   /**

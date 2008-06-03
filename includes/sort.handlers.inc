@@ -1,5 +1,5 @@
 <?php
-// $Id: sort.handlers.inc,v 1.4 2008-05-29 00:16:48 merlinofchaos Exp $
+// $Id: sort.handlers.inc,v 1.5 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file
  * Views' sort handlers.
@@ -24,12 +24,12 @@ class views_handler_sort extends views_handler {
     $this->query->add_orderby($this->table_alias, $this->real_field, $this->options['order']);
   }
 
-  /**
-   * Set defaults for new handler
-   */
-  function options(&$options) {
-    parent::options($options);
-    $options['order'] = 'ASC';
+  function option_definition() {
+    $options = parent::option_definition();
+
+    $options['order'] = array('default' => 'ASC');
+
+    return $options;
   }
 
   /**
@@ -100,9 +100,12 @@ class views_handler_sort_formula extends views_handler_sort {
 }
 
 class views_handler_sort_date extends views_handler_sort {
-  function options(&$options) {
-    parent::options($options);
-    $options['granularity'] = 'second';
+  function option_definition() {
+    $options = parent::option_definition();
+
+    $options['granularity'] = array('default' => 'second');
+
+    return $options;
   }
 
   function options_form(&$form, &$form_state) {

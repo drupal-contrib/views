@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.16 2008-04-25 15:40:34 merlinofchaos Exp $
+// $Id: cache.inc,v 1.17 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -67,7 +67,6 @@ function _views_fetch_plugin_data($type = NULL, $plugin = NULL) {
   static $cache = NULL;
   if (!isset($cache)) {
     $start = microtime();
-    views_include('plugins');
     views_include_handlers();
 
     $cache = views_discover_plugins();

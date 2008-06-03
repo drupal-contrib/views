@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views.inc,v 1.5 2008-05-07 22:37:27 merlinofchaos Exp $
+// $Id: statistics.views.inc,v 1.6 2008-06-03 22:34:46 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for statistics.module
@@ -259,9 +259,12 @@ class views_handler_field_accesslog_path extends views_handler_field {
     }
   }
 
-  function options(&$options) {
-    parent::options($options);
-    $options['display_as_link'] = FALSE;
+  function option_definition() {
+    $options = parent::option_definition();
+
+    $options['display_as_link'] = array('default' => TRUE);
+
+    return $options;
   }
 
   /**

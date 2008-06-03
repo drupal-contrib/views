@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.13 2008-05-30 20:18:52 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.14 2008-06-03 22:34:46 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -84,8 +84,7 @@ function views_ajax_render($output = NULL, $title = NULL, $url = NULL, $js = NUL
     $output->js = $js;
   }
 
-  drupal_set_header('Content-Type: text/javascript; charset=utf-8');
-  print drupal_to_js($output);
+  drupal_json($output);
   exit;
 }
 
