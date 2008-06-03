@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.101 2008-06-03 23:38:14 merlinofchaos Exp $
+// $Id: view.inc,v 1.102 2008-06-03 23:57:16 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -375,11 +375,12 @@ class view extends views_db_object {
     foreach ($this->argument as $id => $arg) {
       $position++;
       $argument = &$this->argument[$id];
-      $argument['handler']->set_relationship();
 
       if (!is_object($argument['handler'])) {
         continue;
       }
+
+      $argument['handler']->set_relationship();
 
       $arg = isset($this->args[$position]) ? $this->args[$position] : NULL;
       $argument['handler']->position = $position;

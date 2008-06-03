@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.70 2008-06-03 22:36:55 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.71 2008-06-03 23:57:16 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -964,7 +964,7 @@ class views_handler_argument_node_created_year_month extends views_handler_argum
     $this->arg_format = 'Ym';
     $this->formula = views_date_sql_format($this->arg_format, "***table***.$this->real_field");
   }
-  
+
   /**
    * Provide a link to the next level of the view
    */
