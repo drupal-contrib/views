@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.24 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.25 2008-06-03 22:36:55 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -677,6 +677,42 @@ class views_handler_argument_formula extends views_handler_argument {
     $formula = $this->get_formula();
 
     $this->query->add_where(0, "$formula = '%s'", $this->argument);
+  }
+}
+
+/**
+ * Abstract argument handler for dates.
+ * 
+ * Adds an option to set a default argument based on the current date.
+ * 
+ * @param $arg_format
+ *   The format string to use on the current time when 
+ *   creating a default date argument.
+ * 
+ */
+class views_handler_argument_date extends views_handler_argument_formula {
+  var $option_name = 'default_argument_date';
+  var $arg_format = 'Y-m-d';
+  
+  /**
+   * Add an option to set the default value to the current date.
+   */
+  function default_argument_form(&$form, &$form_state) {
+    parent::default_argument_form($form, $form_state);
+    $form['default_argument_type']['#options'] += array('date' => t('Current date'));
+  }
+  
+  /**
+   * Set the empty argument value to the current date, 
+   * formatted appropriately for this argument.
+   */
+  function get_default_argument($raw = FALSE) {
+    if (!$raw && $this->options['default_argument_type'] == 'date') {
+      return date($this->arg_format, time());
+    }
+    else {
+      return parent::get_default_argument($raw);
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.284 2008-06-03 22:34:45 merlinofchaos Exp $
+// $Id: views.module,v 1.285 2008-06-03 22:36:55 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -87,7 +87,6 @@ function views_theme() {
     'pattern' => 'views_more__',
     'arguments' => array('more_url' => NULL),
   );
-
   return $hooks;
 }
 
