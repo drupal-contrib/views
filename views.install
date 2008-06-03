@@ -1,12 +1,11 @@
 <?php
-// $Id: views.install,v 1.40 2008-05-17 01:13:58 merlinofchaos Exp $
+// $Id: views.install,v 1.41 2008-06-03 23:50:44 merlinofchaos Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
  */
 
 function views_install() {
-  drupal_set_message('Installing views');
   drupal_install_schema('views');
   db_query("UPDATE {system} SET weight = 10 WHERE name = 'views'");
 }
