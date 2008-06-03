@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.102 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.103 2008-06-03 22:45:36 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2052,6 +2052,10 @@ class views_plugin_display_page extends views_plugin_display {
         if (strpos($form_state['values']['path'], '$arg') !== FALSE) {
           form_error($form['path'], t('"$arg" is no longer supported. Use % instead.'));
         }
+
+        // automatically remove '/' from path.
+        $form_state['values']['path'] = trim($form_state['values']['path'], '/');
+
         break;
       case 'menu':
         $path = $this->get_option('path');
