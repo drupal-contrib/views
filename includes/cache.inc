@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.17 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: cache.inc,v 1.18 2008-06-03 23:59:09 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -102,7 +102,7 @@ function _views_discover_default_views() {
   if (!isset($cache)) {
     $data = views_cache_get('views_default_views', TRUE);
 
-    if (isset($data->data)) {
+    if (isset($data->data) && is_array($data->data)) {
       $cache = $data->data;
     }
     else {
