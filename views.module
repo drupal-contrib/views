@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.285 2008-06-03 22:36:55 merlinofchaos Exp $
+// $Id: views.module,v 1.286 2008-06-03 23:54:27 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -194,7 +194,7 @@ function views_arg_load($value, $name, $display_id, $index) {
 
     if (isset($indexes[$index])) {
       if (isset($view->argument[$indexes[$index]])) {
-        return $view->argument[$indexes[$index]]['handler']->validate_argument($value) ? $value : NULL;
+        return $view->argument[$indexes[$index]]['handler']->validate_argument($value) ? $value : FALSE;
       }
     }
   }
