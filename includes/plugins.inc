@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.103 2008-06-03 22:45:36 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.104 2008-06-03 23:43:20 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -988,7 +988,7 @@ class views_plugin_display extends views_plugin {
         $form['offset'] = array(
           '#type' => 'textfield',
           '#title' => t('Offset'),
-          '#description' => t('The number of items to skip. For example, if this field is 3, the first 3 items will be skipped and not displayed.'),
+          '#description' => t('The number of items to skip. For example, if this field is 3, the first 3 items will be skipped and not displayed. Offset can not be used if items to display is 0; instead use a very large number there.'),
           '#default_value' => intval($this->get_option('offset')),
         );
         break;
