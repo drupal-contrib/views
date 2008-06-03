@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.45 2008-06-03 22:21:42 merlinofchaos Exp $
+// $Id: theme.inc,v 1.46 2008-06-03 22:38:43 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -83,7 +83,7 @@ function template_preprocess_views_view(&$vars) {
   }
 
   // if administrator, add some links. These used to be tabs, but this is better.
-  if (user_access('administer views') && module_exists('views_ui')) {
+  if (user_access('administer views') && module_exists('views_ui') && empty($view->hide_admin_links)) {
     $vars['admin_links_raw'] = array(
       array(
         'title' => t('Edit'),
