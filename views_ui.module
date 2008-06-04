@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.98 2008-04-24 21:59:14 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.99 2008-06-04 00:09:53 merlinofchaos Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -162,7 +162,7 @@ function views_ui_help($path, $arg) {
 /*
  * Implementation of hook_perm()
  */
-function views_ui_perm() {
+function views_perm() {
   return array('administer views');
 }
 

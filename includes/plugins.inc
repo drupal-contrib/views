@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.104 2008-06-03 23:43:20 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.105 2008-06-04 00:09:53 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1040,7 +1040,7 @@ class views_plugin_display extends views_plugin {
           '#title' => t('If by role'),
           '#default_value' => $access['role'],
           '#options' => views_ui_get_roles(),
-          '#description' => t('Only the checked roles will be able to access this display.'),
+          '#description' => t('Only the checked roles will be able to access this display. Note that users with "access all views" can see any view, regardless of role.'),
           '#process' => array('expand_checkboxes', 'views_process_dependency'),
           '#dependency' => array('radio:access[type]' => array('role')),
         );
@@ -1059,7 +1059,7 @@ class views_plugin_display extends views_plugin {
           '#options' => $perms,
           '#title' => t('If by permission'),
           '#default_value' => $access['perm'],
-          '#description' => t('Only users with the selected permission flag will be able to access this display.'),
+          '#description' => t('Only users with the selected permission flag will be able to access this display. Note that users with "access all views" can see any view, regardless of other permissions.'),
           '#process' => array('views_process_dependency'),
           // Radios don't *get* ids in this system, so we use a special format
           // for the id.
@@ -1591,6 +1591,11 @@ class views_plugin_display extends views_plugin {
    * Determine if the user has access to this display of the view.
    */
   function access($account) {
+    // Full override.
+    if (user_access('access all views', $account)) {
+      return TRUE;
+    }
+
     $access = $this->get_option('access');
     switch ($access['type']) {
       case 'role':
