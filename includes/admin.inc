@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.110 2008-06-04 05:06:41 merlinofchaos Exp $
+// $Id: admin.inc,v 1.111 2008-06-06 22:43:08 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2397,6 +2397,16 @@ function views_ui_change_style_form(&$form_state) {
   return $form;
 }
 
+function views_ui_change_style_form_validate($form, &$form_state) {
+  // Run it through the handler's submit function.
+  $form_state['handler']->options_validate($form['options'], $form_state);
+
+  $plugin = views_get_plugin('style', $form_state['values']['style_plugin']);
+  if (!$plugin) {
+    form_error($form['style_plugin'], t('Internal error: broken plugin.'));
+  }
+}
+
 /**
  * Submit handler for configing new item(s) to a view.
  */
@@ -2406,6 +2416,11 @@ function views_ui_change_style_form_submit($form, &$form_state) {
   $item = $form_state['handler']->options;
 
   $plugin = views_get_plugin('style', $form_state['values']['style_plugin']);
+  if (!$plugin) {
+    drupal_set_message(t('Internal error: broken plugin.'), 'error');
+    return;
+  }
+
   $plugin->init($form_state['view'], $form_state['view']->display[$form_state['display_id']]);
 
   // If changing style plugin, reset options to defaults.
