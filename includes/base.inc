@@ -1,5 +1,5 @@
 <?php
-// $Id: base.inc,v 1.1 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: base.inc,v 1.2 2008-06-06 19:29:03 merlinofchaos Exp $
 /**
  * @file
  *
@@ -109,6 +109,20 @@ class views_object {
     $this->definition = $definition;
     if (isset($definition['field'])) {
       $this->real_field = $definition['field'];
+    }
+  }
+
+  function destroy() {
+    if (isset($this->view)) {
+      unset($this->view);
+    }
+
+    if (isset($this->display)) {
+      unset($this->display);
+    }
+
+    if (isset($this->query)) {
+      unset($this->query);
     }
   }
 }
