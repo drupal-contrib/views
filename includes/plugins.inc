@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.109 2008-06-06 22:43:08 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.110 2008-06-06 23:08:00 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2369,7 +2369,7 @@ class views_plugin_display_attachment extends views_plugin_display {
 
     $options['attachment_position'] = array('default' => 'before');
     $options['inherit_arguments'] = array('default' => TRUE);
-    $options['display'] = array('default' => array());
+    $options['displays'] = array('default' => array());
 
     return $options;
   }
