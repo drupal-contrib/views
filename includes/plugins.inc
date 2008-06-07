@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.111 2008-06-07 00:12:11 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.112 2008-06-07 18:05:52 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2511,6 +2511,7 @@ class views_plugin_display_attachment extends views_plugin_display {
     // Get a fresh view because our current one has a lot of stuff on it because it's
     // already been executed.
     $view = $this->view->clone_view();
+    $view->original_args = $view->args;
 
     $args = $this->get_option('inherit_arguments') ? $this->view->args : array();
 
