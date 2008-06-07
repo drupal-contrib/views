@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.6 2008-06-06 23:24:06 merlinofchaos Exp $
+// $Id: docs.php,v 1.7 2008-06-07 00:12:11 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -383,16 +383,13 @@ function hook_views_query_alter(&$view, &$query) {
   // example code here
 }
 
-
 /**
- * Stub hook documentation
- *
  * This hook should be placed in MODULENAME.views.inc and it will be auto-loaded.
  * This must either be in the same directory as the .module file or in a subdirectory
  * named 'includes'.
  *
  * Alter the links that appear over a view. They are in a format suitable for
- * theme_links.
+ * theme('links').
  *
  * Warning: $view is not a reference in PHP4 and cannot be modified here. But it IS
  * a reference in PHP5, and can be modified. Please be careful with it.
@@ -400,6 +397,23 @@ function hook_views_query_alter(&$view, &$query) {
  * @see theme_links
  */
 function hook_views_admin_links_alter(&$links, $view) {
+  // example code here
+}
+
+/**
+ * This hook should be placed in MODULENAME.views.inc and it will be auto-loaded.
+ * This must either be in the same directory as the .module file or in a subdirectory
+ * named 'includes'.
+ *
+ * Alter the rows that appear with a view, which includes path and query information.
+ * The rows are suitable for theme('table').
+ *
+ * Warning: $view is not a reference in PHP4 and cannot be modified here. But it IS
+ * a reference in PHP5, and can be modified. Please be careful with it.
+ *
+ * @see theme_table
+ */
+function hook_views_admin_links_alter(&$rows, $view) {
   // example code here
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.110 2008-06-06 23:08:00 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.111 2008-06-07 00:12:11 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2826,9 +2826,6 @@ class views_plugin_style extends views_plugin {
 
   /**
    * Render the display in this style.
-   *
-   * @param $rows
-   *   The full results of the query, loaded into an array of objects.
    */
   function render() {
     if (empty($this->row_plugin)) {
