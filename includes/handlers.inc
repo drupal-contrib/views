@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.82 2008-06-03 23:47:33 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.83 2008-06-09 05:18:33 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -338,6 +338,12 @@ class views_handler_broken extends views_handler {
       '#value' => t('The handler for this item is broken or missing and cannot be used. If a module provided the handler and was disabled, re-enabling the module may restore it. Otherwise, you should probably delete this item.'),
     );
   }
+
+  function label() {
+    return $this->ui_name();
+  }
+
+  function pre_render() { }
 }
 
 /**
