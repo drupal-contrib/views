@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.107 2008-06-10 21:30:43 merlinofchaos Exp $
+// $Id: view.inc,v 1.108 2008-06-10 22:10:20 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -404,8 +404,8 @@ class view extends views_db_object {
         $argument->set_breadcrumb($this->build_info['breadcrumb']);
 
         // Test to see if we should use this argument's title
-        if (!empty($argument->definition['title'])) {
-          $title = $argument->definition['title'];
+        if (!empty($argument->options['title'])) {
+          $title = $argument->options['title'];
         }
 
         // Add this argument's substitution
