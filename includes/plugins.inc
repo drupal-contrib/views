@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.113 2008-06-10 18:35:26 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.114 2008-06-10 20:00:46 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2241,7 +2241,9 @@ class views_plugin_display_block extends views_plugin_display {
     // display, and arguments should be set on the view.
     $info['content'] = $this->view->render();
     $info['subject'] = filter_xss_admin($this->view->get_title());
-    return $info;
+    if (!empty($this->view->result) || $this->get_option('empty') || !empty($this->style_plugin['even empty'])) {
+      return $info;
+    }
   }
 
   /**
