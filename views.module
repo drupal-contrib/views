@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.293 2008-06-11 19:00:59 merlinofchaos Exp $
+// $Id: views.module,v 1.294 2008-06-11 19:32:46 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -441,6 +441,11 @@ function views_add_css($file) {
  * Include views .js files.
  */
 function views_add_js($file) {
+  // If javascript has been disabled by the user, never add js files.
+  if (variable_get('views_no_javascript', FALSE)) {
+    return;
+  }
+
   static $base = TRUE;
   if ($base) {
     drupal_add_js(drupal_get_path('module', 'views') . "/js/base.js");
