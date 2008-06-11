@@ -1,4 +1,4 @@
-/* $Id: views-admin.css,v 1.1 2008-05-27 23:49:36 merlinofchaos Exp $ */
+/* $Id: views-admin.css,v 1.2 2008-06-11 18:41:24 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -508,6 +508,11 @@ div.changed div.view-changed {
 
 form#views-add-display-form {
   margin-bottom: 0em;
+  border-bottom: 1px solid #ccc;
+}
+
+form#views-add-display-form select {
+  width: 8.5em;
 }
 
 #views-ui-edit-view-form {
