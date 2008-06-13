@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.117 2008-06-13 00:56:20 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.118 2008-06-13 15:50:00 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -3653,7 +3653,7 @@ class views_plugin_argument_default_php extends views_plugin_argument_default {
       '#title' => t('PHP argument code'),
       '#default_value' => $this->get_argument(TRUE), // the true forces it raw.
       '#process' => array('views_process_dependency'),
-      '#description' => t('Enter PHP code that returns a value to use for this argument. Do not use &lt;?php ?&gt;.'),
+      '#description' => t('Enter PHP code that returns a value to use for this argument. Do not use &lt;?php ?&gt;. You must return only a single value for just this argument.'),
       '#dependency' => array(
         'radio:options[default_action]' => array('default'),
         'radio:options[default_argument_type]' => array($this->id)
