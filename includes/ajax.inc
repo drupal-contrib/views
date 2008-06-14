@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.14 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.15 2008-06-14 17:42:42 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -52,7 +52,7 @@ function views_ajax() {
       }
     }
     $messages = theme('status_messages');
-    $object->messages = $messages ? '<div class="views-messages">'. $messages .'</div>' : '';
+    $object->messages = $messages ? '<div class="views-messages">' . $messages . '</div>' : '';
 
     views_ajax_render($object);
   }

@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.118 2008-06-13 15:50:00 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.119 2008-06-14 17:42:42 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1394,7 +1394,7 @@ class views_plugin_display extends views_plugin {
     global $theme_engine;
     $extension = '.tpl.php';
     if (isset($theme_engine)) {
-      $extension_function = $theme_engine .'_extension';
+      $extension_function = $theme_engine . '_extension';
       if (function_exists($extension_function)) {
         $extension = $extension_function();
       }

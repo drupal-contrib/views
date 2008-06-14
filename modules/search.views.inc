@@ -1,5 +1,5 @@
 <?php
-// $Id: search.views.inc,v 1.7 2008-06-03 23:53:05 merlinofchaos Exp $
+// $Id: search.views.inc,v 1.8 2008-06-14 17:42:43 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for search.module
@@ -310,7 +310,7 @@ function template_preprocess_views_view_row_search(&$vars) {
   // Fetch terms for snippet
   $node->body .= module_invoke('taxonomy', 'nodeapi', $node, 'update index');
 
-  $vars['url'] = url('node/'. $nid);
+  $vars['url'] = url('node/' . $nid);
   $vars['title'] = check_plain($node->title);
 
   $info = array();

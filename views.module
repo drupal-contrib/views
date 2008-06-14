@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.294 2008-06-11 19:32:46 merlinofchaos Exp $
+// $Id: views.module,v 1.295 2008-06-14 17:42:42 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -139,7 +139,7 @@ function views_menu_alter(&$callbacks) {
       // in the display path, then we use this constructed regex
       // (which will be something like '#^(foo/%[^/]*/bar)$#') to
       // search through the existing paths.
-      $regex = '#^('. preg_replace('#%views_arg#', '%[^/]*', implode('|', array_keys($result))) .')$#';
+      $regex = '#^(' . preg_replace('#%views_arg#', '%[^/]*', implode('|', array_keys($result))) . ')$#';
       $matches = preg_grep($regex, array_keys($callbacks));
 
       // Remove any conflicting items that were found.

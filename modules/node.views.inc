@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.72 2008-06-11 01:22:03 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.73 2008-06-14 17:42:43 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -1357,7 +1357,7 @@ class views_plugin_row_node_rss extends views_plugin_row {
       case 'teaser':
         $item_text = $item->teaser;
         if (!empty($item->readmore)) {
-          $item_text .= '<p>'. l(t('read more'), 'node/'. $item->nid, array('absolute' => TRUE, 'attributes' => array('target' => '_blank'))) .'</p>';
+          $item_text .= '<p>' . l(t('read more'), 'node/' . $item->nid, array('absolute' => TRUE, 'attributes' => array('target' => '_blank'))) . '</p>';
         }
         break;
       case 'title':
