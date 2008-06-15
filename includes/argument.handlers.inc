@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.26 2008-06-14 17:42:42 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.27 2008-06-15 17:31:12 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -491,7 +491,12 @@ class views_handler_argument extends views_handler {
    */
   function summary_basics($count_field = TRUE) {
     // Add the number of nodes counter
-    $count_alias = $this->query->add_field(NULL, 'COUNT(' . $this->query->base_table . '.' . $this->query->base_field . ')', 'num_records');
+    $field = $this->query->base_table . '.' . $this->query->base_field;
+    if (!empty($this->query->distinct) && empty($query->query->no_distinct)) {
+      $field = "DISTINCT($field)";
+    }
+
+    $count_alias = $this->query->add_field(NULL, "COUNT($field)", 'num_records');
     $this->query->add_groupby($this->name_alias);
 
     if ($count_field) {
