@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.84 2008-06-10 18:35:26 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.85 2008-06-17 20:07:03 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -729,7 +729,7 @@ function views_date_sql_field($field, $field_type = 'int', $set_offset = NULL) {
           break;
       }
       if (!empty($offset)) {
-        $field = "($field + 'INTERVAL $offset SECONDS')";
+        $field = "($field + INTERVAL '$offset SECONDS')";
       }
       return $field;
   }
