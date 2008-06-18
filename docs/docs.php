@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.7 2008-06-07 00:12:11 merlinofchaos Exp $
+// $Id: docs.php,v 1.8 2008-06-18 15:25:46 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -413,7 +413,7 @@ function hook_views_admin_links_alter(&$links, $view) {
  *
  * @see theme_table
  */
-function hook_views_admin_links_alter(&$rows, $view) {
+function hook_views_preview_info_alter(&$rows, $view) {
   // example code here
 }
 
