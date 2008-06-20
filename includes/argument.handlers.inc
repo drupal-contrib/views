@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.29 2008-06-19 20:15:11 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.30 2008-06-20 16:24:41 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -961,6 +961,11 @@ class views_handler_argument_string extends views_handler_argument {
   function title() {
     return check_plain($this->case_transform($this->argument, 'case'));
   }
+
+  function summary_name($data) {
+    return $this->case_transform(parent::summary_name($data), 'case');
+  }
+
 }
 
 /**
