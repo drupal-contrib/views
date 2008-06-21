@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.8 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.9 2008-06-21 15:10:03 merlinofchaos Exp $
 /**
  * @file
  *
@@ -30,11 +30,6 @@ function upload_views_data() {
       'field' => 'vid',
     ),
     'node_revisions' => array(
-      'left_field' => 'vid',
-      'field' => 'vid',
-    ),
-    'users' => array(
-      'left_table' => 'node',
       'left_field' => 'vid',
       'field' => 'vid',
     ),
