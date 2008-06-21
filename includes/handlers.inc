@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.86 2008-06-18 15:25:46 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.87 2008-06-21 21:39:33 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -326,6 +326,11 @@ class views_handler extends views_object {
    * Take input from exposed filters and assign to this handler, if necessary.
    */
   function accept_exposed_input($input) { return TRUE; }
+
+  /**
+   * If set to remember exposed input in the session, store it there.
+   */
+  function store_exposed_input($input, $status) { return TRUE; }
 
   /**
    * Get the join object that should be used for this handler.

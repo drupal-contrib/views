@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.111 2008-06-18 15:25:46 merlinofchaos Exp $
+// $Id: view.inc,v 1.112 2008-06-21 21:39:33 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -554,7 +554,9 @@ class view extends views_db_object {
       if (!empty($handlers[$id]) && is_object($handlers[$id])) {
         // Give this handler access to the exposed filter input.
         if (!empty($this->exposed_data)) {
-          if (!$handlers[$id]->accept_exposed_input($this->exposed_data)) {
+          $rc = $handlers[$id]->accept_exposed_input($this->exposed_data);
+          $handlers[$id]->store_exposed_input($this->exposed_data, $rc);
+          if (!$rc) {
             continue;
           }
         }
