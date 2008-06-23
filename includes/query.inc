@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.20 2008-06-23 23:24:12 merlinofchaos Exp $
+// $Id: query.inc,v 1.21 2008-06-23 23:49:40 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -752,9 +752,6 @@ class views_query {
    *   must also be in the SELECT portion. If an $alias isn't specified
    *   one will be generated for from the $field; however, if the
    *   $field is a formula, this alias will likely fail.
-   *
-   * @return $alias
-   *   The alias created.
    */
   function add_orderby($table, $field, $order, $alias = '') {
     if ($table) {
