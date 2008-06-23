@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.117 2008-06-17 20:07:03 merlinofchaos Exp $
+// $Id: admin.inc,v 1.118 2008-06-23 20:59:05 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2663,6 +2663,16 @@ function views_ui_admin_tools() {
 function views_ui_tools_clear_cache() {
   views_invalidate_cache();
   drupal_set_message(t('The cache has been cleared.'));
+}
+
+/**
+ * Submit hook to clear Drupal's theme registry (thereby triggering
+ * a templates rescan).
+ */
+function views_ui_config_item_form_rescan($form, &$form_state) {
+  drupal_rebuild_theme_registry();
+  $form_state['rerender'] = TRUE;
+  $form_state['rebuild'] = TRUE;
 }
 
 /**
