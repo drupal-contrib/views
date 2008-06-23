@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.19 2008-06-19 21:43:23 merlinofchaos Exp $
+// $Id: query.inc,v 1.20 2008-06-23 23:24:12 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -777,8 +777,9 @@ class views_query {
     $this->orderby[] = "$as " . strtoupper($order);
 
     // If grouping, all items in the order by must also be in the
-    // group by clause.
-    if ($this->groupby) {
+    // group by clause. Check $table to ensure that this is not a
+    // formula.
+    if ($this->groupby && $table) {
       $this->add_groupby($as);
     }
   }
