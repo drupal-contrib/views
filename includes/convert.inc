@@ -1,5 +1,5 @@
 <?php
-// $Id: convert.inc,v 1.9 2008-06-11 18:42:11 merlinofchaos Exp $
+// $Id: convert.inc,v 1.10 2008-06-23 19:58:05 merlinofchaos Exp $
 /**
  * @file convert.inc
  *
@@ -451,11 +451,13 @@ function views1_delete($arg) {
     return NULL;
   }
 
-  $result = db_query("DELETE * FROM {view_sort} vs WHERE vid = $view->vid");
-  $result = db_query("DELETE * FROM {view_argument} WHERE vid = $view->vid");
-  $result = db_query("DELETE * FROM {view_tablefield} WHERE vid = $view->vid");
-  $result = db_query("DELETE * FROM {view_filter} WHERE vid = $view->vid");
-  $result = db_query("DELETE * FROM {view_exposed_filter} WHERE vid = $view->vid");
-  $result = db_query("DELETE * FROM {view_view} WHERE vid = $view->vid");
+  
+
+  $result = db_query("DELETE FROM {view_sort} WHERE vid = $view->vid");
+  $result = db_query("DELETE FROM {view_argument} WHERE vid = $view->vid");
+  $result = db_query("DELETE FROM {view_tablefield} WHERE vid = $view->vid");
+  $result = db_query("DELETE FROM {view_filter} WHERE vid = $view->vid");
+  $result = db_query("DELETE FROM {view_exposed_filter} WHERE vid = $view->vid");
+  $result = db_query("DELETE FROM {view_view} WHERE vid = $view->vid");
 }
 
