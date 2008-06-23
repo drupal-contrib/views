@@ -1,4 +1,4 @@
-// $Id: dependent.js,v 1.4 2008-06-23 19:56:24 merlinofchaos Exp $
+// $Id: dependent.js,v 1.5 2008-06-23 20:00:58 merlinofchaos Exp $
 /**
  * @file dependent.js
  *
@@ -71,7 +71,6 @@ Drupal.Views.dependent.autoAttach = function() {
       }
       // Add this ID
       Drupal.Views.dependent.bindings[bind_id].push(id);
-      console.log(bind_id + ': ' + id);
       // Big long if statement.
       // Drupal.settings.viewsAjax.formRelationships[id].values[bind_id] holds the possible values
 
