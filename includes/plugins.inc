@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.125 2008-06-24 01:06:28 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.126 2008-06-24 17:29:59 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1417,12 +1417,19 @@ class views_plugin_display extends views_plugin {
     }
 
     $output = '';
-    $found = FALSE;
+    $picked = FALSE;
     foreach ($themes as $theme) {
       $template = strtr($theme, '_', '-') . $extension;
-      if (!$found && !empty($registry[$theme])) {
-        $template = '<strong>' . $template . '</strong>';
-        $found = TRUE;
+      if (!$picked && !empty($registry[$theme])) {
+        $template_path = isset($registry[$theme]['path']) ? $registry[$theme]['path'] . '/' : './';
+        if (file_exists($template_path . $template)) {
+          $hint = t('File found, in folder @template-path', array('@template-path' => $template_path));
+          $template = '<strong title="'. $hint .'">' . $template . '</strong>';
+        }
+        else {
+          $template = '<strong class="error">' . $template . ' ' . t('(File not found, in folder @template-path)', array('@template-path' => $template_path)) . '</strong>';
+        }
+        $picked = TRUE;
       }
       $fixed[] = $template;
     }
