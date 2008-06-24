@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.112 2008-06-21 21:39:33 merlinofchaos Exp $
+// $Id: view.inc,v 1.113 2008-06-24 00:23:45 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -131,6 +131,37 @@ class view extends views_db_object {
    */
   function set_exposed_input($filters) {
     $this->exposed_input = $filters;
+  }
+
+  /**
+   * Figure out what the exposed input for this view is.
+   */
+  function get_exposed_input() {
+    // Fill our input either from $_GET or from something previously set on the
+    // view.
+    if (empty($this->exposed_input)) {
+      $this->exposed_input = $_GET;
+      // unset items that are definitely not our input:
+      foreach (array('page', 'q') as $key) {
+        if (isset($this->exposed_input[$key])) {
+          unset($this->exposed_input[$key]);
+        }
+      }
+
+      // If we have no input at all, check for remembered input via session.
+
+      // If filters are not overridden, store the 'remember' settings on the
+      // default display. If they are, store them on this display. This way,
+      // multiple displays in the same view can share the same filters and
+      // remember settings.
+      $display_id = ($this->display_handler->is_defaulted('filters')) ? 'default' : $this->current_display;
+
+      if (empty($this->exposed_input) && !empty($_SESSION['views'][$this->name][$display_id])) {
+        $this->exposed_input = $_SESSION['views'][$this->name][$display_id];
+      }
+    }
+
+    return $this->exposed_input;
   }
 
   /**
@@ -477,7 +508,6 @@ class view extends views_db_object {
       $form_state = array(
         'view' => &$this,
         'display' => &$this->display_handler->display,
-        'input' => $_GET,
         'method' => 'get',
         'rerender' => TRUE,
         'no_redirect' => TRUE,

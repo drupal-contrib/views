@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.123 2008-06-23 20:59:05 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.124 2008-06-24 00:23:45 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -3432,8 +3432,9 @@ class views_plugin_style_rss extends views_plugin_style {
   function attach_to($display_id, $path, $title) {
     $display = $this->view->display[$display_id]->handler;
     $url_options = array();
-    if (!empty($view->exposed_raw_input)) {
-      $url_options['query'] = $view->exposed_raw_input;
+    $input = $this->view->get_exposed_input();
+    if ($input) {
+      $url_options['query'] = $input;
     }
 
     $url = url($this->view->get_url(NULL, $path), $url_options);
