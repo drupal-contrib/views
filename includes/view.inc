@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.113 2008-06-24 00:23:45 merlinofchaos Exp $
+// $Id: view.inc,v 1.114 2008-06-24 21:38:33 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -512,6 +512,13 @@ class view extends views_db_object {
         'rerender' => TRUE,
         'no_redirect' => TRUE,
       );
+
+      // Some types of displays (eg. attachments) may wish to use the exposed
+      // filters of their parent displays instead of showning an additional
+      // exposed filter form for the attachment as well as that for the parent.
+      if (!$this->display_handler->displays_exposed()) {
+        unset($form_state['rerender']);
+      }
 
       if (!empty($this->ajax)) {
         $form_state['ajax'] = TRUE;
