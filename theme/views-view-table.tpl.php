@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view-table.tpl.php,v 1.5 2008-06-03 22:21:42 merlinofchaos Exp $
+// $Id: views-view-table.tpl.php,v 1.6 2008-06-25 22:05:11 merlinofchaos Exp $
 /**
  * @file views-view-table.tpl.php
  * Template to display a view as a table.
@@ -23,7 +23,7 @@
         <th class="views-field views-field-<?php print $fields[$field]; ?>">
           <?php print $label; ?>
         </th>
-      <?php endforeach ?>
+      <?php endforeach; ?>
     </tr>
   </thead>
   <tbody>
