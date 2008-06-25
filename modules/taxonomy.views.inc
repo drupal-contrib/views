@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.34 2008-06-25 19:26:01 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.35 2008-06-25 22:20:01 merlinofchaos Exp $
 /**
  * @file
  *
@@ -1059,7 +1059,7 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
         $tids = new stdClass();
         $tids->value = $argument;
         $tids = views_break_phrase($argument, $tids);
-        if ($tids->value == -1) {
+        if ($tids->value == array(-1)) {
           return FALSE;
         }
 

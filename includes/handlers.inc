@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.87 2008-06-21 21:39:33 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.88 2008-06-25 22:20:01 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -648,8 +648,9 @@ function views_break_phrase($str, $filter = NULL) {
   }
 
   // Keep an 'error' value if invalid strings were given.
-  if (!empty($str) && empty($filter->value)) {
+  if (!empty($str) && (empty($filter->value) || !is_array($filter->value))) {
     $filter->value = array(-1);
+    return $filter;
   }
 
   // Doubly ensure that all values are numeric only.
