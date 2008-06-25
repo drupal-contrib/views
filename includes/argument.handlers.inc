@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.37 2008-06-25 20:30:09 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.38 2008-06-25 21:51:26 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -926,7 +926,7 @@ class views_handler_argument_string extends views_handler_argument {
    * $this->ensure_my_table() MUST have been called prior to this.
    */
   function get_formula() {
-    return "LEFT($this->table_alias.$this->real_field, " . intval($this->options['limit']) . ")";
+    return "SUBSTR($this->table_alias.$this->real_field, 1, " . intval($this->options['limit']) . ")";
   }
 
   /**
