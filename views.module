@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.299 2008-06-24 21:39:12 merlinofchaos Exp $
+// $Id: views.module,v 1.300 2008-06-25 21:10:10 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -792,6 +792,9 @@ function vpr_trace() {
  * Be sure that $view and $display are references.
  */
 function views_exposed_form(&$form_state) {
+  // Make sure that we validate because this form might be submitted
+  // multiple times per page.
+  $form_state['must_validate'] = TRUE;
   $view = &$form_state['view'];
   $display = &$form_state['display'];
 
