@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.35 2008-06-25 19:26:01 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.36 2008-06-25 20:14:38 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -96,7 +96,8 @@ class views_handler_argument extends views_handler {
    */
   function needs_style_plugin() {
     $info = $this->default_actions($this->options['default_action']);
-    return !empty($info['style plugin']);
+    $validate_info = $this->default_actions($this->options['validate_fail']);
+    return !empty($info['style plugin']) || !empty($validate_info['style plugin']);
   }
 
   function option_definition() {
