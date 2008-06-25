@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.45 2008-06-21 21:39:33 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.46 2008-06-25 22:55:21 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -351,6 +351,17 @@ class views_plugin_argument_default_user extends views_plugin_argument_default {
         if (!empty($node)) {
           return $node->uid;
         }
+      }
+    }
+
+    if (arg(0) == 'user' && is_numeric(arg(1))) {
+      return arg(1);
+    }
+
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      $node = node_load(arg(1));
+      if ($node) {
+        return $node->uid;
       }
     }
   }

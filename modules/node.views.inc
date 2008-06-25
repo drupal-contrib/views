@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.73 2008-06-14 17:42:43 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.74 2008-06-25 22:55:21 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -1498,6 +1498,10 @@ class views_plugin_argument_default_node extends views_plugin_argument_default {
       if (!empty($node)) {
         return $node->nid;
       }
+    }
+
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+      return arg(1);
     }
   }
 }
