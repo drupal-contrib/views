@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.16 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.17 2008-06-25 19:26:01 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -74,7 +74,7 @@ function comment_views_data() {
   // cid
   $data['comments']['cid'] = array(
     'title' => t('ID'),
-    'help' => t('The commment ID of the field'),
+    'help' => t('The comment ID of the field'),
     'field' => array(
       'handler' => 'views_handler_field_comment',
       'click sortable' => TRUE,

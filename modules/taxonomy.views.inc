@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.33 2008-06-21 21:39:33 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.34 2008-06-25 19:26:01 merlinofchaos Exp $
 /**
  * @file
  *
@@ -94,7 +94,7 @@ function taxonomy_views_data() {
   // Term name field
   $data['term_data']['name'] = array(
     'title' => t('Term'),
-    'help' => t('Taxonomy terms. Note that using this can cause duplicate nodes to appear in views; you must add filters to reduce the resultset.'),
+    'help' => t('Taxonomy terms. Note that using this can cause duplicate nodes to appear in views; you must add filters to reduce the result set.'),
     'field' => array(
       'handler' => 'views_handler_field_taxonomy',
       'click sortable' => TRUE,

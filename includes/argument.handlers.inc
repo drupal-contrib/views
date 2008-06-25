@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.34 2008-06-24 15:20:10 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.35 2008-06-25 19:26:01 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -894,7 +894,7 @@ class views_handler_argument_string extends views_handler_argument {
   }
 
   /**
-   * Build the summary query based on a formula
+   * Build the summary query based on a string
    */
   function summary_query() {
     if (empty($this->definition['many to one'])) {
