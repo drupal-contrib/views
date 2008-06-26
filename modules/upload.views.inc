@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.9 2008-06-21 15:10:03 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.10 2008-06-26 00:58:29 merlinofchaos Exp $
 /**
  * @file
  *
@@ -119,8 +119,6 @@ function upload_views_data_alter(&$data) {
 
 /**
  * Field handler to provide a list of roles.
- *
- * @ingroup views_field_handlers
  */
 class views_handler_field_upload_fid extends views_handler_field_prerender_list {
   function construct() {
@@ -188,8 +186,6 @@ class views_handler_field_upload_fid extends views_handler_field_prerender_list 
 
 /**
  * Field handler to provide a list of roles.
- *
- * @ingroup views_field_handlers
  */
 class views_handler_field_upload_description extends views_handler_field_prerender_list {
   function init(&$view, &$options) {
@@ -260,8 +256,6 @@ class views_handler_field_upload_description extends views_handler_field_prerend
 
 /**
  * Filter by whether or not a node has attached files from the upload module
- *
- * @ingroup views_filter_handlers
  */
 class views_handler_filter_upload_fid extends views_handler_filter_boolean_operator {
   function construct() {

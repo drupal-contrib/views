@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views.inc,v 1.6 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: statistics.views.inc,v 1.7 2008-06-26 00:58:29 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for statistics.module
@@ -245,8 +245,6 @@ function statistics_views_data() {
 
 /**
  * Field handler to provide simple renderer that turns a URL into a clickable link.
- *
- * @ingroup views_field_handlers
  */
 class views_handler_field_accesslog_path extends views_handler_field {
   /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: views.views.inc,v 1.3 2008-06-03 22:34:46 merlinofchaos Exp $
+// $Id: views.views.inc,v 1.4 2008-06-26 00:58:29 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers that aren't tied to any other module.
@@ -39,8 +39,6 @@ function views_views_data() {
 
 /**
  * Handle a random sort.
- *
- * @ingroup views_sort_handlers
  */
 class views_handler_sort_random extends views_handler_sort {
   function query() {
@@ -67,8 +65,6 @@ class views_handler_sort_random extends views_handler_sort {
 
 /**
  * Argument handler that ignores the argument.
- *
- * @ingroup views_argument_handlers
  */
 class views_handler_argument_null extends views_handler_argument {
   function option_definition() {
