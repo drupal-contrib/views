@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.10 2008-06-26 00:58:29 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.11 2008-06-26 22:31:36 merlinofchaos Exp $
 /**
  * @file
  *
@@ -93,6 +93,7 @@ function upload_views_data() {
 
 function upload_views_data_alter(&$data) {
   $data['node']['upload_fid'] = array(
+    'group' => t('Upload'),
     'title' => t('Attached files'),
     'help' => t('All files attached to a node with upload.module.'),
     'real field' => 'vid',

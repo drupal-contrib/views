@@ -1,5 +1,5 @@
 <?php
-// $Id: search.views.inc,v 1.9 2008-06-26 00:58:29 merlinofchaos Exp $
+// $Id: search.views.inc,v 1.10 2008-06-26 22:31:36 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for search.module
@@ -167,7 +167,6 @@ class views_handler_filter_search extends views_handler_filter {
     $key = $this->options['expose']['identifier'];
     $form[$key] = array(
       '#type' => 'textfield',
-      '#title' => t('Search'),
       '#size' => 15,
       '#default_value' => $this->value,
       '#attributes' => array('title' => t('Enter the terms you wish to search for.')),
