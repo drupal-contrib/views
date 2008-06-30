@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.11 2008-06-26 22:31:36 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.12 2008-06-30 16:37:14 merlinofchaos Exp $
 /**
  * @file
  *
@@ -36,6 +36,19 @@ function upload_views_data() {
     'files' => array(
       'left_field' => 'fid',
       'field' => 'fid',
+    ),
+  );
+
+  $data['upload']['vid'] = array(
+    'title' => t('Node'),
+    'help' => t('The node the uploaded file is attached to'),
+    'relationship' => array(
+      'label' => t('upload'),
+      'base' => 'node',
+      'base field' => 'vid',
+      // This allows us to not show this relationship if the base is already
+      // node so users won't create circular relationships.
+      'skip base' => 'node',
     ),
   );
 
