@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.18 2008-06-26 00:58:29 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.19 2008-06-30 21:40:16 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -239,7 +239,7 @@ function comment_views_data() {
       'handler' => 'views_handler_field',
     ),
     'relationship' => array(
-      'base' => 'comment',
+      'base' => 'comments',
       'field' => 'cid',
       'handler' => 'views_handler_relationship',
       'label' => t('Parent comment'),
