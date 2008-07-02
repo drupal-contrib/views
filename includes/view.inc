@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.114 2008-06-24 21:38:33 merlinofchaos Exp $
+// $Id: view.inc,v 1.115 2008-07-02 19:21:47 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1543,7 +1543,12 @@ class views_db_object {
           $this->$field = unserialize($this->$field);
         }
       }
-      $output .= $indent . '$' . $identifier . '->' . $field . ' = ' . views_var_export($this->$field, $indent) . ";\n";
+      $value = $this->$field;
+      if ($info['type'] == 'int') {
+        $value = ($info['size'] == 'tiny') ? (bool) $value : (int) $value;
+      }
+
+      $output .= $indent . '$' . $identifier . '->' . $field . ' = ' . views_var_export($value, $indent) . ";\n";
     }
     return $output;
   }
