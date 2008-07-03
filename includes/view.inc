@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.115 2008-07-02 19:21:47 merlinofchaos Exp $
+// $Id: view.inc,v 1.116 2008-07-03 18:01:44 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1410,6 +1410,10 @@ class views_db_object {
     }
 
     $schema = drupal_get_schema($this->db_table);
+    
+    if (!$schema) {
+      return;
+    }
 
     // Go through our schema and build correlations.
     foreach ($schema['fields'] as $field => $info) {
