@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.132 2008-07-01 22:34:26 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.133 2008-07-03 05:05:12 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -646,7 +646,7 @@ class views_plugin_display extends views_plugin {
     // If unknown, pick the first one.
     if (empty($display_id) || empty($this->view->display[$display_id])) {
       foreach ($this->view->display as $display_id => $display) {
-        if ($display->handler->has_path()) {
+        if (!empty($display->handler) && $display->handler->has_path()) {
           return $display_id;
         }
       }
