@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.39 2008-06-25 22:20:01 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.40 2008-07-04 20:43:33 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -656,7 +656,16 @@ class views_handler_argument extends views_handler {
       return TRUE;
     }
 
-    return $this->validate_arg($arg);
+    $rc = $this->validate_arg($arg);
+
+    // If the validator has changed the validate fail condition to a
+    // soft fail, deal with that:
+    $validate_info = $this->default_actions($this->options['validate_fail']);
+    if (empty($validate_info['hard fail'])) {
+      return TRUE;
+    }
+
+    return $rc;
   }
 
   /**
