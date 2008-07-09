@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views_default.inc,v 1.7 2008-06-23 20:03:52 merlinofchaos Exp $
+// $Id: node.views_default.inc,v 1.8 2008-07-09 18:31:26 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the node module.
@@ -24,13 +24,13 @@ function node_views_default_views() {
       'id' => 'sticky',
       'table' => 'node',
       'field' => 'sticky',
-      'order' => 'ASC',
+      'order' => 'DESC',
     ),
     'created' => array(
       'id' => 'created',
       'table' => 'node',
       'field' => 'created',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'relationship' => 'none',
       'granularity' => 'second',
     ),

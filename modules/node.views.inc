@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.76 2008-07-02 18:14:03 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.77 2008-07-09 18:31:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -215,7 +215,7 @@ function node_views_data() {
       'handler' => 'views_handler_sort',
     ),
   );
-  
+
   // sticky
   $data['node']['sticky'] = array(
     'title' => t('Sticky'), // The item it appears as on the UI,
@@ -1192,6 +1192,7 @@ class views_plugin_row_node_view extends views_plugin_row {
 
     $options['teaser'] = array('default' => TRUE);
     $options['links'] = array('default' => TRUE);
+    $options['comments'] = array('default' => FALSE);
 
     return $options;
   }
@@ -1206,6 +1207,11 @@ class views_plugin_row_node_view extends views_plugin_row {
       '#type' => 'checkbox',
       '#title' => t('Display links'),
       '#default_value' => $this->options['links'],
+    );
+    $form['comments'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display node comments'),
+      '#default_value' => $this->options['comments'],
     );
   }
 }
@@ -1229,6 +1235,10 @@ function template_preprocess_views_view_row_node(&$vars) {
   }
 
   $vars['node'] = node_view($node, $options['teaser'], FALSE, $options['links']);
+  $vars['comments'] = NULL;
+  if (!empty($options['comments'])) {
+    $vars['comments'] = comment_render($vars['node']);
+  }
 }
 
 /**
