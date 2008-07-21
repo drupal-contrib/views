@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.37 2008-07-02 18:53:40 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.38 2008-07-21 20:56:49 merlinofchaos Exp $
 /**
  * @file
  *
@@ -188,6 +188,7 @@ function taxonomy_views_data() {
       'numeric' => TRUE,
     ),
     'filter' => array(
+      'title' => t('Term'),
       'handler' => 'views_handler_filter_term_node_tid',
       'hierarchy table' => 'term_hierarchy',
       'numeric' => TRUE,
