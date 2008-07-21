@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.27 2008-07-21 23:39:44 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.28 2008-07-21 23:49:48 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -1363,6 +1363,31 @@ class views_handler_filter_numeric extends views_handler_filter {
       $output .= check_plain($this->value['value']);
     }
     return $output;
+  }
+}
+
+/**
+ * Simple filter to handle greater than/less than filters.
+ * It based on views_handler_filter_numeric but deals with
+ * float numbers.
+ */
+class views_handler_filter_float extends views_handler_filter_numeric {
+  function op_between($field) {
+    if ($this->operator == 'between') {
+      $a = $this->value['min'];
+      $b = $this->value['max'];
+    }
+    else {
+      $a = $this->value['max'];
+      $b = $this->value['min'];
+    }
+
+    $this->query->add_where($this->options['group'], "$field >= %f", $a);
+    $this->query->add_where($this->options['group'], "$field <= %f", $b);
+  }
+
+  function op_simple($field) {
+    $this->query->add_where($this->options['group'], "$field $this->operator %f", $this->value['value']);
   }
 }
 
