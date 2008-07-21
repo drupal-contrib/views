@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.40 2008-07-21 22:08:07 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.41 2008-07-21 23:18:47 merlinofchaos Exp $
 /**
  * @file
  *
@@ -917,6 +917,13 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
 
   function value_submit($form, &$form_state) {
     // prevent array_filter from messing up our arrays in parent submit.
+  }
+
+  function expose_form_right(&$form, &$form_state) {
+    parent::expose_form_right($form, $form_state);
+    if ($this->options['type'] != 'select') {
+      unset($form['expose']['reduce']);
+    }
   }
 
   function admin_summary() {

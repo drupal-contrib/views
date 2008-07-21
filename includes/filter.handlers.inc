@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.25 2008-07-03 05:05:12 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.26 2008-07-21 23:18:46 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -1090,6 +1090,11 @@ class views_handler_filter_in_operator extends views_handler_filter {
     }
 
     $this->get_value_options();
+
+    if (!is_array($this->value)) {
+      return;
+    }
+
     if (count($this->value) == 1) {
       // If there is only one, show it as an =.
       $keys = $this->value;
