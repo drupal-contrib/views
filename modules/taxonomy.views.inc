@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.39 2008-07-21 21:05:12 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.40 2008-07-21 22:08:07 merlinofchaos Exp $
 /**
  * @file
  *
@@ -814,6 +814,7 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
         '#multiple' => TRUE,
         '#options' => $options,
         '#size' => min(9, count($options)),
+        '#default_value' => !empty($this->value) ? $this->value : array(),
       );
     }
 
