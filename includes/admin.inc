@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.123 2008-07-02 18:43:08 merlinofchaos Exp $
+// $Id: admin.inc,v 1.124 2008-07-22 00:33:15 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -756,6 +756,51 @@ function views_ui_import_validate($form, &$form_state) {
   $test = views_get_view($view->name);
   if ($test && $test->type != t('Default')) {
     form_set_error('', t('A view by that name already exists; please choose a different name'));
+  }
+
+  $view->init_display();
+
+  $broken = FALSE;
+  // Make sure that all plugins and handlers needed by this view actually exist.
+  foreach ($view->display as $id => $display) {
+    if (empty($display->handler) || !empty($display->handler->broken)) {
+      drupal_set_message(t('Display plugin @plugin is not available.', array('@plugin' => $display->display_plugin)), 'error');
+      $broken = TRUE;
+      continue;
+    }
+
+    $plugin = views_get_plugin('style', $display->handler->get_option('style_plugin'));
+    if (!$plugin) {
+      drupal_set_message(t('Style plugin @plugin is not available.', array('@plugin' => $display->handler->get_option('style_plugin'))), 'error');
+      $broken = TRUE;
+    }
+    else if ($plugin->uses_row_plugin()) {
+      $plugin = views_get_plugin('row', $display->handler->get_option('row_plugin'));
+      if (!$plugin) {
+        drupal_set_message(t('Row plugin @plugin is not available.', array('@plugin' => $display->handler->get_option('row_plugin'))), 'error');
+        $broken = TRUE;
+      }
+    }
+
+    foreach (views_object_types() as $type => $info) {
+      $handlers = $display->handler->get_handlers($type);
+      if ($handlers) {
+        foreach ($handlers as $id => $handler) {
+          if ($handler->broken()) {
+            drupal_set_message(t('@type handler @table.@field is not available.', array(
+              '@type' => $info['stitle'],
+              '@table' => $handler->table,
+              '@field' => $handler->field,
+            )), 'error');
+            $broken = TRUE;
+          }
+        }
+      }
+    }
+  }
+
+  if ($broken) {
+    form_set_error('', t('Unable to import view.'));
   }
 
   $form_state['view'] = &$view;
