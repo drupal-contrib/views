@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-item.tpl.php,v 1.7 2008-05-09 19:32:12 merlinofchaos Exp $
+// $Id: views-ui-edit-item.tpl.php,v 1.8 2008-07-28 19:21:18 merlinofchaos Exp $
 /**
  * @file views-ui-edit-item.tpl.php
  *
@@ -14,7 +14,9 @@
 </div>
 
 <div class="views-category-content">
-  <?php if (empty($fields)): ?>
+  <?php if (!empty($no_fields)): ?>
+    <div><?php print t('The style selected does not utilize fields.'); ?></div>
+  <?php elseif (empty($fields)): ?>
     <div><?php print t('None defined'); ?></div>
   <?php else: ?>
     <?php foreach ($fields as $pid => $field): ?>

@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.124 2008-07-22 00:33:15 merlinofchaos Exp $
+// $Id: admin.inc,v 1.125 2008-07-28 19:21:17 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1108,10 +1108,7 @@ function template_preprocess_views_ui_edit_tab(&$vars) {
   $style_plugin = $display->handler->get_plugin();
 
   $vars['fields'] = '';
-  if ($style_plugin && $style_plugin->uses_fields()) {
-    $vars['fields'] = theme('views_ui_edit_item', 'field', $view, $display);
-  }
-
+  $vars['fields'] = theme('views_ui_edit_item', 'field', $view, $display, !($style_plugin && $style_plugin->uses_fields()));
   $vars['relationships'] = theme('views_ui_edit_item', 'relationship', $view, $display);
   $vars['arguments'] = theme('views_ui_edit_item', 'argument', $view, $display);
   $vars['filters'] = theme('views_ui_edit_item', 'filter', $view, $display);
@@ -1143,7 +1140,16 @@ function template_preprocess_views_ui_edit_item(&$vars) {
   $type = $vars['type'];
   $view = $vars['view'];
   $display = $vars['display'];
+
   $types = views_object_types();
+
+  if ($vars['no_fields']) {
+    $vars['title'] = $types[$type]['title'];
+    $vars['item_help_icon'] = theme('advanced_help_topic', 'views', $type);
+    $vars['rearrange'] = NULL;
+    $vars['add'] = NULL;
+    return;
+  }
 
   $vars['rearrange'] = l('<span>' . t('Rearrange') . '</span>', "admin/build/views/nojs/rearrange/$view->name/$display->id/$type", array('attributes' => array('class' => 'views-button-rearrange views-ajax-link', 'title' => t('Rearrange')), 'html' => true));
 
