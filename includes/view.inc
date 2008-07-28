@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.117 2008-07-22 00:33:15 merlinofchaos Exp $
+// $Id: view.inc,v 1.118 2008-07-28 19:10:27 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1092,7 +1092,7 @@ class view extends views_db_object {
         $cache[$arg] = NULL;
       }
       else {
-        $view =& new view();
+        $view = new view();
         $view->load_row($data);
         $view->type = t('Normal');
         // Load all of our subtables.
