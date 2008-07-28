@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.125 2008-07-28 19:21:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.126 2008-07-28 22:08:33 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1148,6 +1148,7 @@ function template_preprocess_views_ui_edit_item(&$vars) {
     $vars['item_help_icon'] = theme('advanced_help_topic', 'views', $type);
     $vars['rearrange'] = NULL;
     $vars['add'] = NULL;
+    $vars['overridden'] = FALSE;
     return;
   }
 
