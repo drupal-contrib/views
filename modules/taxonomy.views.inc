@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.41 2008-07-21 23:18:47 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.42 2008-08-08 18:22:28 merlinofchaos Exp $
 /**
  * @file
  *
@@ -224,6 +224,16 @@ function taxonomy_views_data() {
       'left_table' => 'term_data',
       'left_field' => 'tid',
       'field' => 'tid',
+    ),
+  );
+
+  $data['term_hierarchy']['parent'] = array(
+    'title' => t('Parent term'),
+    'help' => t('The parent term of the term. This can produce records entries if you are using a vocabulary that allows multiple parents.'),
+    'relationship' => array(
+      'base' => 'term_data',
+      'field' => 'parent',
+      'label' => t('Parent'),
     ),
   );
 
