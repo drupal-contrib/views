@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-edit-item.tpl.php,v 1.8 2008-07-28 19:21:18 merlinofchaos Exp $
+// $Id: views-ui-edit-item.tpl.php,v 1.9 2008-08-08 16:57:44 merlinofchaos Exp $
 /**
  * @file views-ui-edit-item.tpl.php
  *
@@ -8,12 +8,26 @@
 ?>
 <?php print $rearrange; ?>
 <?php print $add; ?>
-<div class="views-category-title<?php if ($overridden) { print ' overridden'; }?>">
+<div class="views-category-title<?php
+  if ($overridden) {
+    print ' overridden';
+  }
+  if ($defaulted) {
+    print ' defaulted';
+  }
+  ?>">
   <?php print $item_help_icon; ?>
   <?php print $title; ?>
 </div>
 
-<div class="views-category-content">
+<div class="views-category-content<?php
+  if ($overridden) {
+    print ' overridden';
+  }
+  if ($defaulted) {
+    print ' defaulted';
+  }
+  ?>">
   <?php if (!empty($no_fields)): ?>
     <div><?php print t('The style selected does not utilize fields.'); ?></div>
   <?php elseif (empty($fields)): ?>
