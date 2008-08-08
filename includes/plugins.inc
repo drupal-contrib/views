@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.136 2008-08-08 20:53:18 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.137 2008-08-08 21:55:01 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -1838,8 +1838,17 @@ class views_plugin_display extends views_plugin {
   function validate() {
     $errors = array();
     // Make sure displays that use fields HAVE fields.
-    if ($this->uses_fields() && !$this->get_option('fields')) {
-      $errors[] = t('Display @display uses fields but there are none defined for it.', array('@display' => $this->display->display_title));
+    if ($this->uses_fields()) {
+      $fields = FALSE;
+      foreach ($this->get_handlers('field') as $field) {
+        if (empty($field->options['exclude'])) {
+          $fields = TRUE;
+        }
+      }
+
+      if (!$fields) {
+        $errors[] = t('Display @display uses fields but there are none defined for it or all are excluded.', array('@display' => $this->display->display_title));
+      }
     }
 
     if ($this->has_path() && !$this->get_option('path')) {
