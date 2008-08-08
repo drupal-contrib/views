@@ -1,5 +1,5 @@
 <?php
-// $Id: views_search.inc,v 1.2.2.6 2007-03-03 22:59:33 merlinofchaos Exp $
+// $Id: views_search.inc,v 1.2.2.7 2008-08-08 18:13:29 merlinofchaos Exp $
 
 function search_views_tables() {
   $tables['temp_search_results'] = array(
@@ -40,6 +40,7 @@ function search_views_handler_search_index($op, $filter, $filterdata, &$query) {
       // Calculate maximum relevance, to normalize it
       $normalize = db_result(db_query('SELECT MAX(relevance) FROM temp_search_sids'));
       if (!$normalize) {
+        $query->add_where("FALSE");
         return;
       }
       $select2 = str_replace('i.relevance', '('. (1.0 / $normalize) .' * i.relevance)', $select2);
