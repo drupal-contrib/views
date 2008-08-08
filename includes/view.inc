@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.118 2008-07-28 19:10:27 merlinofchaos Exp $
+// $Id: view.inc,v 1.119 2008-08-08 19:32:30 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1263,7 +1263,14 @@ class view extends views_db_object {
           default:
             if (!$display->handler->is_defaulted($option)) {
               $value = $display->handler->get_option($option);
-              if ((!isset($definition['default']) && !empty($value)) || $value != $definition['default']) {
+              if ($id == 'default') {
+                $default = isset($definition['default']) ? $definition['default'] : NULL;
+              }
+              else {
+                $default = $this->display['default']->handler->get_option($option);
+              }
+
+              if ($value !== $default) {
                 $output .= $indent . '$handler->override_option(\'' . $option . '\', ' . views_var_export($value, $indent) . ");\n";
               }
             }
