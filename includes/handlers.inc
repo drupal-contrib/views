@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.89 2008-07-21 23:35:18 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.90 2008-08-13 17:08:27 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -144,9 +144,7 @@ class views_handler extends views_object {
       }
     }
 
-    if (!empty($view->query)) {
-      $this->query = &$view->query;
-    }
+    $this->query = &$view->query;
   }
 
   /**

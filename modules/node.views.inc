@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.77 2008-07-09 18:31:26 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.78 2008-08-13 17:08:27 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -1238,15 +1238,6 @@ function template_preprocess_views_view_row_node(&$vars) {
   $vars['comments'] = NULL;
   if (!empty($options['comments'])) {
     $vars['comments'] = comment_render($vars['node']);
-  }
-}
-
-/**
- * Automatically allow view-based node templates if called from a view.
- */
-function views_preprocess_node(&$vars) {
-  if (!empty($vars['node']->view) && !empty($vars['node']->view->name)) {
-    $vars['template_files'][] = 'node-view-' . $vars['node']->view->name;
   }
 }
 
