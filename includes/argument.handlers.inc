@@ -1,5 +1,5 @@
 <?php
-// $Id: argument.handlers.inc,v 1.40 2008-07-04 20:43:33 merlinofchaos Exp $
+// $Id: argument.handlers.inc,v 1.41 2008-08-14 22:17:10 merlinofchaos Exp $
 /**
  * @file
  * Views' argument handlers.
@@ -1218,10 +1218,6 @@ class views_handler_argument_many_to_one extends views_handler_argument {
     }
 
     return implode($this->operator == 'or' ? ' + ' : ', ', $this->title_query());
-  }
-
-  function get_join() {
-    return drupal_clone(views_get_table_join($this->table, $this->query->base_table));
   }
 
   function summary_query() {

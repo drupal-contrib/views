@@ -1,5 +1,5 @@
 <?php
-// $Id: relationship.handlers.inc,v 1.7 2008-06-30 16:37:14 merlinofchaos Exp $
+// $Id: relationship.handlers.inc,v 1.8 2008-08-14 22:17:11 merlinofchaos Exp $
 /**
  * @file
  * Views' relationship handlers.
@@ -96,10 +96,12 @@ class views_handler_relationship extends views_handler {
     $table_data = views_fetch_data($this->definition['base']);
     $base_field = empty($this->definition['base field']) ? $table_data['table']['base']['field'] : $this->definition['base field'];
 
+    $this->ensure_my_table();
+
     $def = $this->definition;
     $def['table'] = $this->definition['base'];
     $def['field'] = $base_field;
-    $def['left_table'] = $this->table;
+    $def['left_table'] = $this->table_alias;
     $def['left_field'] = $this->field;
     if (!empty($this->options['required'])) {
       $def['type'] = 'INNER';
@@ -114,11 +116,10 @@ class views_handler_relationship extends views_handler {
 
     $join->definition = $def;
     $join->construct();
-
-    $this->ensure_my_table();
+    $join->adjusted = TRUE;
 
     // use a short alias for this:
-    $alias = $def['table'] . '_' . $def['left_table'];
+    $alias = $def['table'] . '_' . $this->table;
 
     $this->alias = $this->query->add_relationship($alias, $join, $this->definition['base'], $this->relationship);
   }

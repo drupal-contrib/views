@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.122 2008-08-13 17:08:27 merlinofchaos Exp $
+// $Id: view.inc,v 1.123 2008-08-14 22:17:11 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -651,7 +651,9 @@ class view extends views_db_object {
         // support an offset. This is fine as we don't actually need pager
         // query; we've already been doing most of what it does, and we
         // just need to do a little more playing with globals.
-        $this->total_rows = db_result(db_query($count_query, $args));
+        if (!empty($this->pager['use_pager']) || !empty($this->get_total_rows)) {
+          $this->total_rows = db_result(db_query($count_query, $args));
+        }
 
         if (!empty($this->pager['use_pager'])) {
           // dump information about what we already know into the globals
