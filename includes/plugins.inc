@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.137 2008-08-08 21:55:01 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.138 2008-08-19 23:23:57 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -3570,6 +3570,12 @@ class views_plugin_style_rss extends views_plugin_style {
       }
 
       $this->view->feed_icon .= theme('feed_icon', $url, $title);
+      drupal_add_link(array(
+        'rel' => 'alternate',
+        'type' => 'application/rss+xml',
+        'title' => $title,
+        'href' => $url
+      ));
     }
   }
 
