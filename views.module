@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.301 2008-08-13 17:08:27 merlinofchaos Exp $
+// $Id: views.module,v 1.302 2008-08-19 23:21:45 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -128,10 +128,18 @@ function views_menu() {
   $items['views/ajax'] = array(
     'title' => 'Views',
     'page callback' => 'views_ajax',
-    'file' => 'includes/ajax.inc',
     'access callback' => 'user_access',
     'access arguments' => array('access content'),
     'description' => 'Ajax callback for view loading.',
+    'type' => MENU_CALLBACK,
+  );
+  // Path is not admin/build/views due to menu complications with the wildcards from
+  // the generic ajax callback.
+  $items['admin/views/ajax/autocomplete/user'] = array(
+    'page callback' => 'views_ajax_autocomplete_user',
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
+    'file' => 'includes/ajax.inc',
     'type' => MENU_CALLBACK,
   );
   return $items;

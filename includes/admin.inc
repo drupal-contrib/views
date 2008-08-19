@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.128 2008-08-10 18:18:25 merlinofchaos Exp $
+// $Id: admin.inc,v 1.129 2008-08-19 23:21:45 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2766,37 +2766,6 @@ function views_ui_config_item_form_rescan($form, &$form_state) {
 
   $form_state['rerender'] = TRUE;
   $form_state['rebuild'] = TRUE;
-}
-
-/**
- * Page callback for views user autocomplete
- */
-function views_ui_autocomplete_user($string = '') {
-  // The user enters a comma-separated list of tags. We only autocomplete the last tag.
-  $array = drupal_explode_tags($string);
-
-  // Fetch last tag
-  $last_string = trim(array_pop($array));
-  $matches = array();
-  if ($last_string != '') {
-    $prefix = count($array) ? implode(', ', $array) . ', ' : '';
-
-    if (strpos('anonymous', strtolower($last_string)) !== FALSE) {
-      $matches[$prefix . 'Anonymous'] = 'Anonymous';
-    }
-    $result = db_query_range("SELECT name FROM {users} WHERE LOWER(name) LIKE LOWER('%s%%')", $last_string, 0, 10);
-
-    while ($account = db_fetch_object($result)) {
-      $n = $account->name;
-      // Commas and quotes in terms are special cases, so encode 'em.
-      if (strpos($account->name, ',') !== FALSE || strpos($account->name, '"') !== FALSE) {
-        $n = '"' . str_replace('"', '""', $account->name) . '"';
-      }
-      $matches[$prefix . $n] = check_plain($account->name);
-    }
-  }
-
-  drupal_json($matches);
 }
 
 /**
