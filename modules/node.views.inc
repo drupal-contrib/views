@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.79 2008-08-26 19:24:00 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.80 2008-08-26 20:28:27 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -822,9 +822,8 @@ class views_handler_field_history_user_timestamp extends views_handler_field_nod
       elseif ($last_comment > $last_read && $last_comment > NODE_NEW_LIMIT) {
         $mark = MARK_UPDATED;
       }
+      return $this->render_link(theme('mark', $mark), $values);
     }
-
-    return $this->render_link(theme('mark', $mark), $values);
   }
 }
 
