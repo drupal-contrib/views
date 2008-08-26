@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.78 2008-08-13 17:08:27 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.79 2008-08-26 19:24:00 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -1048,6 +1048,7 @@ class views_handler_filter_node_type extends views_handler_filter_in_operator {
  * Filter for new content
  */
 class views_handler_filter_history_user_timestamp extends views_handler_filter {
+  function can_expose() { return FALSE; }
   function query() {
     global $user;
     // This can only work if we're logged in.
