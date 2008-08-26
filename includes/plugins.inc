@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.139 2008-08-19 23:47:43 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.140 2008-08-26 19:56:08 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2494,7 +2494,11 @@ class views_plugin_display_block extends views_plugin_display {
    * Block views use exposed widgets only if AJAX is set.
    */
   function uses_exposed() {
-    return $this->use_ajax();
+    if ($this->use_ajax()) {
+      return parent::uses_exposed();
+    }
+
+    return FALSE;
   }
 }
 
