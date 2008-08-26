@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.handlers.inc,v 1.30 2008-08-26 19:24:00 merlinofchaos Exp $
+// $Id: filter.handlers.inc,v 1.31 2008-08-26 19:49:36 merlinofchaos Exp $
 /**
  * @file
  * Views' filter handlers.
@@ -1065,7 +1065,7 @@ class views_handler_filter_in_operator extends views_handler_filter {
         continue;
       }
       else if (is_object($option)) {
-        $keys = array_keys($option->choice);
+        $keys = array_keys($option->option);
         $key = array_shift($keys);
         if (isset($this->value[$key])) {
           $options[$id] = $option;
