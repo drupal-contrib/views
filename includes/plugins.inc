@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.140 2008-08-26 19:56:08 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.141 2008-08-26 23:05:24 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -2260,6 +2260,10 @@ class views_plugin_display_page extends views_plugin_display {
       case 'path':
         if (strpos($form_state['values']['path'], '$arg') !== FALSE) {
           form_error($form['path'], t('"$arg" is no longer supported. Use % instead.'));
+        }
+
+        if (strpos($form_state['values']['path'], '%') === 0) {
+          form_error($form['path'], t('"%" may not be used for the first segment of a path.'));
         }
 
         // automatically remove '/' from path.
