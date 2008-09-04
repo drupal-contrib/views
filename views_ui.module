@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.103 2008-09-04 06:46:03 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.104 2008-09-04 07:10:06 merlinofchaos Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -210,7 +210,7 @@ function views_ui_theme() {
     // On behalf of a plugin
     'views_ui_style_plugin_table' => array(
       'arguments' => array('form' => NULL),
-      'file' => 'includes/plugins.inc',
+      'file' => 'includes/admin.inc',
     ),
   );
 }
