@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.3 2008-09-10 19:32:35 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.4 2008-09-10 20:19:45 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1447,7 +1447,7 @@ class views_plugin_display extends views_plugin {
    * Render the 'more' link
    */
   function render_more_link() {
-    if ($this->use_more()) {
+    if ($this->use_more() && $this->view->total_rows > $this->view->pager['items_per_page']) {
       $path = $this->get_path();
       if ($path) {
         $path = $this->view->get_url(NULL, $path);
@@ -1547,6 +1547,9 @@ class views_plugin_display extends views_plugin {
     $this->view->set_pager_element($this->get_option('pager_element'));
     $this->view->set_items_per_page($this->get_option('items_per_page'));
     $this->view->set_offset($this->get_option('offset'));
+    if ($this->use_more()) {
+      $this->view->get_total_rows = TRUE;
+    }
   }
 
   /**
