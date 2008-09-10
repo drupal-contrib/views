@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.126 2008-09-10 20:15:50 merlinofchaos Exp $
+// $Id: view.inc,v 1.127 2008-09-10 20:52:42 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -635,6 +635,7 @@ class view extends views_db_object {
     if ($query) {
       $replacements = module_invoke_all('views_query_substitutions', $this);
       $query = str_replace(array_keys($replacements), $replacements, $query);
+      $count_query = str_replace(array_keys($replacements), $replacements, $count_query);
 
       if (is_array($args)) {
         foreach ($args as $id => $arg) {
@@ -655,7 +656,7 @@ class view extends views_db_object {
         // query; we've already been doing most of what it does, and we
         // just need to do a little more playing with globals.
         if (!empty($this->pager['use_pager']) || !empty($this->get_total_rows)) {
-          $this->total_rows = db_result(db_query($count_query, $args));
+          $this->total_rows = db_result(db_query($count_query, $args)) - $this->pager['offset'];
         }
 
         if (!empty($this->pager['use_pager'])) {
