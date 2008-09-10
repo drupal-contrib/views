@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_feed.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_plugin_display_feed.inc,v 1.2 2008-09-10 18:28:39 merlinofchaos Exp $
 /**
  * @file
  * Contains the feed display plugin.
@@ -142,7 +142,7 @@ class views_plugin_display_feed extends views_plugin_display_page {
         }
         $form['displays'] = array(
           '#type' => 'checkboxes',
-          '#description' => t('Attach before or after the parent display?'),
+          '#description' => t('The feed icon will be available only to the selected displays.'),
           '#options' => $displays,
           '#default_value' => $this->get_option('displays'),
         );
