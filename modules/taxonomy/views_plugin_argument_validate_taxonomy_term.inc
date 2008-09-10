@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.2 2008-09-10 16:17:54 merlinofchaos Exp $
 /**
  * @file
  * Contains the 'taxonomy term' argument validator plugin.
@@ -13,7 +13,7 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
     $vocabularies = taxonomy_get_vocabularies();
     $options = array();
     foreach ($vocabularies as $voc) {
-      $options[$voc->vid] = $voc->name;
+      $options[$voc->vid] = check_plain($voc->name);
     }
 
     $form['validate_argument_vocabulary'] = array(
