@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.13 2008-09-03 19:21:29 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.14 2008-09-10 21:29:15 merlinofchaos Exp $
 /**
  * @file
  *
@@ -48,7 +48,7 @@ function upload_views_data() {
       'base field' => 'vid',
       // This allows us to not show this relationship if the base is already
       // node so users won't create circular relationships.
-      'skip base' => 'node',
+      'skip base' => array('node', 'node_revisions'),
     ),
   );
 
