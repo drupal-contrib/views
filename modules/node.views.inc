@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.83 2008-09-04 06:04:20 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.84 2008-09-10 20:48:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -406,7 +406,7 @@ function node_views_data() {
     'help' => t('The revision ID of the node revision.'), // The help that appears on the UI,
     // Information for displaying the nid
     'field' => array(
-      'handler' => 'views_handler_field',
+//      'handler' => 'views_handler_field',
       'click sortable' => TRUE,
     ),
     // Information for accepting a nid as an argument
