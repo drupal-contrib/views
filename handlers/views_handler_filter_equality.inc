@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_equality.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_filter_equality.inc,v 1.2 2008-09-10 01:08:06 merlinofchaos Exp $
 /**
  * Simple filter to handle equal to / not equal to filters
  */
@@ -27,6 +27,13 @@ class views_handler_filter_equality extends views_handler_filter {
       '#size' => 30,
       '#default_value' => $this->value,
     );
+
+    if (!empty($form_state['exposed'])) {
+      $identifier = $this->options['expose']['identifier'];
+      if (!isset($form_state['input'][$identifier])) {
+        $form_state['input'][$identifier] = $this->value;
+      }
+    }
   }
 }
 
