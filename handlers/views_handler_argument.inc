@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_argument.inc,v 1.2 2008-09-10 22:00:18 merlinofchaos Exp $
 
 /**
  * @defgroup views_argument_handlers Handlers for arguments
@@ -200,6 +200,10 @@ class views_handler_argument extends views_handler {
     $validate_types = array('none' => t('<Basic validation>'));
     $plugins = views_fetch_plugin_data('argument validator');
     foreach ($plugins as $id => $info) {
+      if (!empty($info['no ui'])) {
+        continue;
+      }
+
       $valid = TRUE;
       if (!empty($info['type'])) {
         $valid = FALSE;
