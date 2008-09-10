@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.146 2008-09-08 22:50:17 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.147 2008-09-10 00:16:14 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -187,10 +187,8 @@ function views_views_plugins() {
     ),
     'argument validator' => array(
       'parent' => array(
-        // this isn't really a display but is necessary so the file can
-        // be included.
         'no ui' => TRUE,
-        'handler' => 'views_plugin_argument_defaultxx',
+        'handler' => 'views_plugin_argument_validate',
         'parent' => '',
       ),
       'php' => array(
@@ -204,8 +202,6 @@ function views_views_plugins() {
     ),
     'access' => array(
       'parent' => array(
-        // this isn't really a display but is necessary so the file can
-        // be included.
         'no ui' => TRUE,
         'handler' => 'views_plugin_access',
         'parent' => '',

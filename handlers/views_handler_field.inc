@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.2 2008-09-10 00:16:14 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -20,6 +20,7 @@
  */
 class views_handler_field extends views_handler {
   var $field_alias = 'unknown';
+  var $aliases = array();
 
   /**
    * Construct a new field handler.

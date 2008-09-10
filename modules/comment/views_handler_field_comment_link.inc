@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_comment_link.inc,v 1.1 2008-09-03 19:21:29 merlinofchaos Exp $
+// $Id: views_handler_field_comment_link.inc,v 1.2 2008-09-10 00:16:14 merlinofchaos Exp $
 /**
  * Base field handler to present a link.
  */
@@ -28,7 +28,7 @@ class views_handler_field_comment_link extends views_handler_field {
   function query() {
     $this->ensure_my_table();
     $this->add_additional_fields();
- }
+  }
 
   function render($values) {
     $text = !empty($this->options['text']) ? $this->options['text'] : t('view');

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_numeric.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_filter_numeric.inc,v 1.2 2008-09-10 00:16:14 merlinofchaos Exp $
 
 /**
  * Simple filter to handle greater than/less than filters
@@ -225,6 +225,10 @@ class views_handler_filter_numeric extends views_handler_filter {
   }
 
   function admin_summary() {
+    if (!empty($this->options['exposed'])) {
+      return t('exposed');
+    }
+
     $output = check_plain($this->operator) . ' ';
     if (in_array($this->operator, $this->operator_values(2))) {
       $output .= t('@min and @max', array('@min' => $this->value['min'], '@max' => $this->value['max']));
@@ -247,12 +251,35 @@ class views_handler_filter_numeric extends views_handler_filter {
     // the parent gets the right data.
     if (!empty($this->options['expose']['identifier'])) {
       $value = &$input[$this->options['expose']['identifier']];
-      $value = array(
-        'value' => $value,
-      );
+      if (!is_array($value)) {
+        $value = array(
+          'value' => $value,
+        );
+      }
     }
 
-    return parent::accept_exposed_input($input);
+    $rc = parent::accept_exposed_input($input);
+
+    if (!empty($this->options['expose']['optional'])) {
+      // We have to do some of our own optional checking.
+      $info = $this->operators();
+      if (!empty($info[$this->operator]['values'])) {
+        switch ($info[$this->operator]['values']) {
+          case 1:
+            if ($value['value'] === '') {
+              return FALSE;
+            }
+            break;
+          case 2:
+            if ($value['min'] === '' && $value['max'] === '') {
+              return FALSE;
+            }
+            break;
+        }
+      }
+    }
+
+    return $rc;
   }
 }
 
