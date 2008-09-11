@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.5 2008-09-11 20:19:15 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.6 2008-09-11 20:34:03 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1468,8 +1468,19 @@ class views_plugin_display extends views_plugin {
    */
   function render_textarea($area) {
     $value = $this->get_option($area);
+    // Check to make sure the filter format exists; if not, we don't
+    // display anything.
+    $format = $this->get_option($type . '_format');
+    if (empty($format)) {
+      $format = FILTER_FORMAT_DEFAULT;
+    }
+    $format_val = filter_resolve_format($format);
+    if (!filter_formats($format_val)) {
+      return;
+    }
+
     if ($value) {
-      return check_markup($value, $this->get_option($area . '_format'), FALSE);
+      return check_markup($value, $format, FALSE);
     }
   }
 
