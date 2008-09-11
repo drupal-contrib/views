@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.21 2008-09-03 19:21:29 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.22 2008-09-11 22:47:42 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -389,6 +389,7 @@ function comment_views_plugins() {
         'base' => array('comments'), // only works with 'comment' as base.
         'uses options' => TRUE,
         'type' => 'normal',
+        'help topic' => 'style-comment',
       ),
       'comment_rss' => array(
         'title' => t('Comment'),
@@ -397,6 +398,7 @@ function comment_views_plugins() {
         'path' => drupal_get_path('module', 'views') . '/modules/comment', // not necessary for most modules
         'base' => array('comments'), // only works with 'comment' as base.
         'type' => 'feed',
+        'help topic' => 'style-comment-rss',
       ),
     ),
   );

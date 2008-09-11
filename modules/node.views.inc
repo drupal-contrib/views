@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.84 2008-09-10 20:48:26 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.85 2008-09-11 22:47:42 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -648,6 +648,7 @@ function node_views_plugins() {
         'base' => array('node'), // only works with 'node' as base.
         'uses options' => TRUE,
         'type' => 'normal',
+        'help topic' => 'style-node',
       ),
       'node_rss' => array(
         'title' => t('Node'),
@@ -657,6 +658,7 @@ function node_views_plugins() {
         'base' => array('node'), // only works with 'node' as base.
         'uses options' => TRUE,
         'type' => 'feed',
+        'help topic' => 'style-node-rss',
       ),
     ),
     'argument validator' => array(
