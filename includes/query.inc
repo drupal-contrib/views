@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.27 2008-09-11 19:32:26 merlinofchaos Exp $
+// $Id: query.inc,v 1.28 2008-09-11 20:07:48 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -919,10 +919,6 @@ class views_query {
     $where = $this->condition_sql();
 
     $query = "SELECT $fields\n FROM {" . $this->base_table . "} $this->base_table \n$joins $where $groupby $having $orderby";
-
-    if ($get_count) {
-      $query = "SELECT COUNT(*) FROM ($query) count_alias";
-    }
 
     $replace = array('&gt;' => '>', '&lt;' => '<');
     $query = strtr($query, $replace);
