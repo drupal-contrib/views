@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.4 2008-09-10 20:19:45 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.5 2008-09-11 20:19:15 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -721,7 +721,7 @@ class views_plugin_display extends views_plugin {
           $field = $format->name;
         }
         else {
-          $field = t('Unknown/missing filter');
+          $field = t('Unknown/missing format');
         }
       }
 
