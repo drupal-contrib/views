@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.1 2008-09-04 06:17:37 merlinofchaos Exp $
+// $Id: views_plugin_style.inc,v 1.2 2008-09-15 20:32:21 merlinofchaos Exp $
 /**
  * Base class to define a style plugin handler.
  */
@@ -120,7 +120,7 @@ class views_plugin_style extends views_plugin {
    * Render the display in this style.
    */
   function render() {
-    if (empty($this->row_plugin)) {
+    if ($this->uses_row_plugin() && empty($this->row_plugin)) {
       vpr('views_plugin_style_default: Missing row plugin');
       return;
     }
@@ -132,10 +132,16 @@ class views_plugin_style extends views_plugin {
     // method if they wish some other way of handling grouping.
     $output = '';
     foreach ($sets as $title => $records) {
-      $rows = array();
-      foreach ($records as $label => $row) {
-        $rows[] = $this->row_plugin->render($row);
+      if ($this->uses_row_plugin()) {
+        $rows = array();
+        foreach ($records as $label => $row) {
+          $rows[] = $this->row_plugin->render($row);
+        }
       }
+      else {
+        $rows = $records;
+      }
+
       $output .= theme($this->theme_functions(), $this->view, $this->options, $rows, $title);
     }
     return $output;
