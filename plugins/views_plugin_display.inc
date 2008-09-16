@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.8 2008-09-11 22:47:42 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.9 2008-09-16 18:12:18 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -685,7 +685,7 @@ class views_plugin_display extends views_plugin {
       // Only show the 'link display' if there is more than one option.
       $count = 0;
       foreach ($this->view->display as $display_id => $display) {
-        if ($display->handler->has_path()) {
+        if (is_object($display->handler) && $display->handler->has_path()) {
           $count++;
         }
         if ($count > 1) {
