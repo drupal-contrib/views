@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_access_perm.inc,v 1.1 2008-09-08 22:50:17 merlinofchaos Exp $
+// $Id: views_plugin_access_perm.inc,v 1.2 2008-09-17 22:26:55 merlinofchaos Exp $
 
 /**
  * Access plugin that provides no access control at all.
@@ -10,7 +10,7 @@ class views_plugin_access_perm extends views_plugin_access {
   }
 
   function get_access_callback() {
-    return array('user_access', array($this->options['role']));
+    return array('user_access', array($this->options['perm']));
   }
 
   function summary_title() {
