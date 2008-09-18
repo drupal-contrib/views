@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.2 2008-09-18 17:47:26 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -515,6 +515,9 @@ class views_handler_filter extends views_handler {
 
       if (isset($value)) {
         $this->value = $value;
+        if (!empty($this->options['expose']['single'])) {
+          $this->value = array($value);
+        }
       }
       else {
         return FALSE;
