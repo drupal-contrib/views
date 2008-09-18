@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.48 2008-09-03 19:21:29 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.49 2008-09-18 19:04:36 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -337,6 +337,9 @@ function user_views_handlers() {
       ),
       'views_handler_field_user_picture' => array(
         'parent' => 'views_handler_field',
+      ),
+      'views_handler_field_user_roles' => array(
+        'parent' => 'views_handler_field_prerender_list',
       ),
       'views_handler_filter_user_name' => array(
         'parent' => 'views_handler_filter_in_operator',
