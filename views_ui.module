@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.25 2007-07-14 19:54:20 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.44.2.26 2008-09-21 01:09:26 sun Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -384,7 +384,7 @@ function views_ui_admin_import_page() {
   if ($_POST['form_id'] == 'views_edit_view') {
     return views_ui_admin_add_page();
   }
-  drupal_set_title("Import a View");
+  drupal_set_title(t('Import a View'));
 
   return drupal_get_form('views_ui_admin_import', $form);
 }
