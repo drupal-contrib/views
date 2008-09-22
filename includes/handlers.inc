@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.93 2008-09-13 16:31:20 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.94 2008-09-22 18:13:51 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1170,7 +1170,7 @@ class views_join {
         $this->extra = $this->definition['extra'];
       }
       if (!empty($this->definition['extra type'])) {
-        $this->extra = strtoupper($this->definition['extra_type']);
+        $this->extra_type = strtoupper($this->definition['extra type']);
       }
 
       $this->type = !empty($this->definition['type']) ? strtoupper($this->definition['type']) : 'LEFT';

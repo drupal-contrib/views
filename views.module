@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.307 2008-09-10 19:26:37 merlinofchaos Exp $
+// $Id: views.module,v 1.308 2008-09-22 18:13:50 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -513,6 +513,7 @@ function views_add_js($file) {
   static $base = TRUE;
   if ($base) {
     drupal_add_js(drupal_get_path('module', 'views') . "/js/base.js");
+    $base = FALSE;
   }
   drupal_add_js(drupal_get_path('module', 'views') . "/js/$file.js");
 }

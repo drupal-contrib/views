@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_term_node_tid.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_handler_field_term_node_tid.inc,v 1.2 2008-09-22 18:13:51 merlinofchaos Exp $
 
 /**
  * Field handler for terms.
@@ -45,7 +45,7 @@ class views_handler_field_term_node_tid extends views_handler_field_prerender_li
     $options = array();
     $vocabularies = taxonomy_get_vocabularies();
     foreach ($vocabularies as $voc) {
-      $options[$voc->vid] = $voc->name;
+      $options[$voc->vid] = check_plain($voc->name);
     }
 
     $form['vids'] = array(
