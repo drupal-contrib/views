@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node_new_comments.inc,v 1.1 2008-09-03 19:21:29 merlinofchaos Exp $
+// $Id: views_handler_field_node_new_comments.inc,v 1.2 2008-09-22 21:59:39 merlinofchaos Exp $
 
 /**
  * Field handler to display the number of new comments
@@ -79,7 +79,7 @@ class views_handler_field_node_new_comments extends views_handler_field_numeric 
   }
 
   function render($values) {
-    if ($values->{$this->field_alias} || empty($this->options['no_empty'])) {
+    if (!empty($values->{$this->field_alias}) || empty($this->options['no_empty'])) {
       return $this->render_link(parent::render($values), $values);
     }
   }
