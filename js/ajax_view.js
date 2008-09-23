@@ -1,4 +1,4 @@
-// $Id: ajax_view.js,v 1.7 2008-09-22 20:50:58 merlinofchaos Exp $
+// $Id: ajax_view.js,v 1.8 2008-09-23 17:05:14 merlinofchaos Exp $
 
 /**
  * @file ajaxView.js
@@ -154,7 +154,8 @@ Drupal.behaviors.ViewsAjaxView = function() {
 
               return false;
             });
-        });
-    });
-  }
+        }); // .each 'th.views-field a'
+      }); // $view.filter().each
+    }); // .each Drupal.settings.views.ajaxViews
+  } // if
 };
