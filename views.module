@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.308 2008-09-22 18:13:50 merlinofchaos Exp $
+// $Id: views.module,v 1.309 2008-09-24 22:28:06 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1081,4 +1081,11 @@ function views_views_exportables($op = 'list', $views = NULL, $name = 'foo') {
 
     return $code;
   }
+}
+
+/**
+ * For use in array_filter to only strip real FALSE values.
+ */
+function views_array_filter($var) {
+  return $var !== FALSE;
 }
