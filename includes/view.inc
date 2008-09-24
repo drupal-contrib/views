@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.128 2008-09-11 20:07:48 merlinofchaos Exp $
+// $Id: view.inc,v 1.129 2008-09-24 21:04:29 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -285,7 +285,7 @@ class view extends views_db_object {
    */
   function init_style() {
     if (isset($this->style_plugin)) {
-      return;
+      return is_object($this->style_plugin);
     }
 
     if (!isset($this->plugin_name)) {
@@ -301,6 +301,7 @@ class view extends views_db_object {
 
     // init the new display handler with data.
     $this->style_plugin->init($this, $this->display[$this->current_display], $this->style_options);
+    return TRUE;
   }
 
   /**
@@ -552,7 +553,11 @@ class view extends views_db_object {
     // Initialize the style; arguments may have changed which style we use,
     // so waiting as long as possible is important. But we need to know
     // about the style when we go to build fields.
-    $this->init_style();
+    if (!$this->init_style()) {
+      $this->build_info['fail'] = TRUE;
+      return FALSE;
+    }
+
     if ($this->style_plugin->uses_fields()) {
       $this->_build('field');
     }
