@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.57 2008-09-22 20:50:58 merlinofchaos Exp $
+// $Id: theme.inc,v 1.58 2008-09-24 22:48:21 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -179,7 +179,9 @@ function template_preprocess_views_view_fields(&$vars) {
 
       $inline = $object->inline;
 
-      $object->handler = $view->field[$id];
+      $object->handler = &$view->field[$id];
+      $object->element_type = $object->handler->element_type();
+
       $object->class = views_css_safe($id);
       $object->label = check_plain($view->field[$id]->label());
       $vars['fields'][$id] = $object;

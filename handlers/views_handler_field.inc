@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.2 2008-09-10 00:16:14 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.3 2008-09-24 22:48:20 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -115,6 +115,17 @@ class views_handler_field extends views_handler {
       return '';
     }
     return $this->options['label'];
+  }
+
+  /**
+   * Return DIV or SPAN based upon the field's element type.
+   */
+  function element_type() {
+    if (isset($this->definition['element type'])) {
+      return $this->definition['element type'];
+    }
+
+    return 'span';
   }
 
   function option_definition() {
