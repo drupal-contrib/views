@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.133 2008-09-10 21:29:15 merlinofchaos Exp $
+// $Id: admin.inc,v 1.134 2008-09-24 21:35:57 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2182,7 +2182,7 @@ function views_ui_add_item_form(&$form_state) {
     );
 
     foreach ($options as $key => $option) {
-      $group = strtr(strtolower($option['group']), '_ ', '--');
+      $group = preg_replace('/[^a-z0-9]/', '-', strtolower($option['group']));
       $groups[$group] = $option['group'];
       $form['name'][$key] = array(
         '#prefix' => '<div class="views-dependent-all views-dependent-' . $group . '">',
