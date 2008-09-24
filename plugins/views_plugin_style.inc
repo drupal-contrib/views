@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.2 2008-09-15 20:32:21 merlinofchaos Exp $
+// $Id: views_plugin_style.inc,v 1.3 2008-09-24 23:48:31 merlinofchaos Exp $
 /**
  * Base class to define a style plugin handler.
  */
@@ -168,6 +168,9 @@ class views_plugin_style extends views_plugin {
         // the admin or theme layer or anywhere else we'd like.
         if (isset($this->view->field[$grouping_field])) {
           $grouping = $this->view->field[$grouping_field]->theme($row);
+          if ($this->view->field[$grouping_field]->options['label']) {
+            $grouping = $this->view->field[$grouping_field]->options['label'] . ': ' . $grouping;
+          }
         }
         $sets[$grouping][] = $row;
       }
