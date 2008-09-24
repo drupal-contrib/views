@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.129 2008-09-24 21:04:29 merlinofchaos Exp $
+// $Id: view.inc,v 1.130 2008-09-24 21:21:21 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1480,6 +1480,9 @@ class views_db_object {
       }
       $fields[] = $field;
       switch ($info['type']) {
+        case 'blob':
+          $defs[] = '%b';
+          break;
         case 'int':
           $defs[] = '%d';
           break;
@@ -1537,7 +1540,7 @@ class views_db_object {
 
     // Go through our schema and build correlations.
     foreach ($schema['fields'] as $field => $info) {
-      $this->$field = empty($info['serialize']) ? $data->$field : unserialize($data->$field);
+      $this->$field = empty($info['serialize']) ? $data->$field : unserialize(db_decode_blob($data->$field));
     }
   }
 
@@ -1571,7 +1574,7 @@ class views_db_object {
 
         // serialized defaults must be set as serialized.
         if (isset($info['serialize'])) {
-          $this->$field = unserialize($this->$field);
+          $this->$field = unserialize(db_decode_blob($this->$field));
         }
       }
       $value = $this->$field;

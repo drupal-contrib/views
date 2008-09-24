@@ -1,5 +1,5 @@
 <?php
-//$Id: profile.views.inc,v 1.8 2008-09-03 19:21:29 merlinofchaos Exp $
+//$Id: profile.views.inc,v 1.9 2008-09-24 21:21:21 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -82,7 +82,7 @@ function profile_views_get_fields() {
         }
         else {
           // serialized fields or modified version
-          $row->options = unserialize($row->options);
+          $row->options = unserialize(db_decode_blob($row->options));
         }
       }
       $fields[$row->fid] = $row;
