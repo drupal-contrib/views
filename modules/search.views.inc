@@ -1,5 +1,5 @@
 <?php
-// $Id: search.views.inc,v 1.13 2008-09-12 00:06:43 merlinofchaos Exp $
+// $Id: search.views.inc,v 1.14 2008-09-25 00:39:18 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for search.module
@@ -154,6 +154,8 @@ function search_views_handlers() {
  * Implementation of hook_views_plugins
  */
 function search_views_plugins() {
+  return;
+  // DISABLED. This currently doesn't work.
   return array(
     'module' => 'views', // This just tells our themes are elsewhere.
     'row' => array(
