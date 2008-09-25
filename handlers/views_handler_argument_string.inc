@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_string.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_argument_string.inc,v 1.2 2008-09-25 00:09:08 merlinofchaos Exp $
 
 /**
  * Basic argument handler to implement string arguments that may have length
@@ -196,7 +196,12 @@ class views_handler_argument_string extends views_handler_argument {
   }
 
   function title() {
-    return check_plain($this->case_transform($this->argument, 'case'));
+    $title = $this->case_transform($this->argument, 'case');
+    if (!empty($this->options['transform_dash'])) {
+      $title = strtr($title, '-', ' ');
+    }
+
+    return check_plain($title);
   }
 
   function summary_name($data) {
