@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.134 2008-09-24 21:35:57 merlinofchaos Exp $
+// $Id: admin.inc,v 1.135 2008-09-25 17:16:50 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2298,7 +2298,12 @@ function views_ui_config_item_form(&$form_state) {
         }
         $rel = empty($item['relationship']) ? 'none' : $item['relationship'];
         if (empty($relationship_options[$rel])) {
-          $rel = 'none';
+          // Pick the first relationship.
+          $rel = key($relationship_options);
+          // We want this relationship option to get saved even if the user
+          // skips submitting the form.
+          $view->set_item_option($display_id, $type, $id, 'relationship', $rel);
+          views_ui_cache_set($view);
         }
 
         $form['options']['relationship'] = array(
