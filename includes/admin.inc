@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.135 2008-09-25 17:16:50 merlinofchaos Exp $
+// $Id: admin.inc,v 1.136 2008-09-29 19:53:13 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2444,7 +2444,7 @@ function views_ui_config_item_extra_form(&$form_state) {
 
     }
 
-    views_ui_standard_form_buttons($form, $form_state, 'views_ui_config_item_extra_form', NULL, t('Remove'), 'remove');
+    views_ui_standard_form_buttons($form, $form_state, 'views_ui_config_item_extra_form');
   }
   return $form;
 }
