@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.95 2008-09-30 18:52:15 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.96 2008-09-30 23:59:04 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1304,6 +1304,8 @@ function statistics_views_api() { return views_views_api(); }
 function system_views_api() { return views_views_api(); }
 
 function taxonomy_views_api() { return views_views_api(); }
+
+function translation_views_api() { return views_views_api(); }
 
 function upload_views_api() { return views_views_api(); }
 
