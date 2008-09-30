@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.58 2008-09-24 22:48:21 merlinofchaos Exp $
+// $Id: theme.inc,v 1.59 2008-09-30 19:47:11 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -403,6 +403,25 @@ function template_preprocess_views_view_grid(&$vars) {
     }
   }
   $vars['rows'] = $rows;
+}
+
+/**
+ * Display the simple view of rows one after another
+ */
+function template_preprocess_views_view_unformatted(&$vars) {
+  $view     = $vars['view'];
+  $rows     = $vars['rows'];
+
+  $vars['classes'] = array();
+  // Set up striping values.
+  foreach ($rows as $id => $row) {
+    $vars['classes'][$id] = 'views-row-' . ($id + 1);
+    $vars['classes'][$id] .= ' views-row-' . ($id % 2 ? 'even' : 'odd');
+    if ($id == 0) {
+      $vars['classes'][$id] .= ' views-row-first';
+    }
+  }
+  $vars['classes'][$id] .= ' views-row-last';
 }
 
 /**

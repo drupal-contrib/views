@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view-list.tpl.php,v 1.2 2008-06-03 22:21:42 merlinofchaos Exp $
+// $Id: views-view-list.tpl.php,v 1.3 2008-09-30 19:47:11 merlinofchaos Exp $
 /**
  * @file views-view-list.tpl.php
  * Default simple view template to display a list of rows.
@@ -14,8 +14,8 @@
     <h3><?php print $title; ?></h3>
   <?php endif; ?>
   <<?php print $options['type']; ?>>
-    <?php foreach ($rows as $row): ?>
-      <li><?php print $row ?></li>
+    <?php foreach ($rows as $id => $row): ?>
+      <li class="<?php print $classes[$id]; ?>"><?php print $row; ?></li>
     <?php endforeach; ?>
   </<?php print $options['type']; ?>>
 </div>

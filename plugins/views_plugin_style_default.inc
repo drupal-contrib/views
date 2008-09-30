@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_default.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_plugin_style_default.inc,v 1.2 2008-09-30 19:47:11 merlinofchaos Exp $
 /**
  * @file
  * Contains the default style plugin.
@@ -21,6 +21,5 @@ class views_plugin_style_default extends views_plugin_style {
 
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
-    // @todo -- separator option
   }
 }
