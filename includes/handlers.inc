@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.94 2008-09-22 18:13:51 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.95 2008-09-30 18:52:15 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -410,6 +410,7 @@ class views_handler extends views_object {
    */
   function ensure_my_table() {
     if (!isset($this->table_alias)) {
+      if (!method_exists($this->query, 'ensure_table')) { vpr_trace(); exit; }
       $this->table_alias = $this->query->ensure_table($this->table, $this->relationship);
     }
     return $this->table_alias;

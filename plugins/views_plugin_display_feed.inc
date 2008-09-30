@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_feed.inc,v 1.2 2008-09-10 18:28:39 merlinofchaos Exp $
+// $Id: views_plugin_display_feed.inc,v 1.3 2008-09-30 18:52:15 merlinofchaos Exp $
 /**
  * @file
  * Contains the feed display plugin.
@@ -22,7 +22,11 @@ class views_plugin_display_feed extends views_plugin_display_page {
    * Drupal believes that the page has already rendered itself...which it has.
    */
   function execute() {
-    print $this->view->render();
+    $output = $this->view->render();
+    if (empty($output)) {
+      return drupal_not_found();
+    }
+    print $output;
   }
 
   function preview() {
@@ -182,7 +186,10 @@ class views_plugin_display_feed extends views_plugin_display_page {
     // attach a feed icon.
     $plugin = $this->get_plugin();
     if ($plugin) {
-      $plugin->attach_to($display_id, $this->get_path(), $this->get_option('title'));
+      $clone = $this->view->clone_view();
+      $clone->set_display($this->display->id);
+      $clone->build_title();
+      $plugin->attach_to($display_id, $this->get_path(), $clone->get_title());
     }
   }
 }
