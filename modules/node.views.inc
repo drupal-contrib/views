@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.85 2008-09-11 22:47:42 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.86 2008-09-30 22:07:14 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -260,24 +260,6 @@ function node_views_data() {
       'handler' => 'views_handler_field_node_link_delete',
     ),
   );
-
-  // Language field if translation module enabled
-  if (module_exists('translation')) {
-    $data['node']['language'] = array(
-      'title' => t('Language'),
-      'help' => t('The language the content is in.'),
-      'field' => array(
-        'handler' => 'views_handler_field_node_language',
-        'click sortable' => TRUE,
-      ),
-      'filter' => array(
-        'handler' => 'views_handler_filter_node_language',
-      ),
-      'argument' => array(
-        'handler' => 'views_handler_argument_node_language',
-      ),
-    );
-  }
 
   // Bogus fields for aliasing purposes.
 
@@ -542,9 +524,6 @@ function node_views_handlers() {
       'views_handler_field_node' => array(
         'parent' => 'views_handler_field',
       ),
-      'views_handler_field_node_language' => array(
-        'parent' => 'views_handler_field_node',
-      ),
       'views_handler_field_node_type' => array(
         'parent' => 'views_handler_field_node',
       ),
@@ -580,9 +559,6 @@ function node_views_handlers() {
       'views_handler_argument_node_vid' => array(
         'parent' => 'views_handler_argument_numeric',
       ),
-      'views_handler_argument_node_language' => array(
-        'parent' => 'views_handler_argument',
-      ),
       'views_handler_argument_node_created_fulldate' => array(
         // put several handlers in the same file
         'file' => 'views_handler_argument_dates_various.inc',
@@ -616,9 +592,6 @@ function node_views_handlers() {
 
       // filters
       'views_handler_filter_node_type' => array(
-        'parent' => 'views_handler_filter_in_operator',
-      ),
-      'views_handler_filter_node_language' => array(
         'parent' => 'views_handler_filter_in_operator',
       ),
       'views_handler_filter_history_user_timestamp' => array(
