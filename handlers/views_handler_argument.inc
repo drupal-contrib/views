@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument.inc,v 1.2 2008-09-10 22:00:18 merlinofchaos Exp $
+// $Id: views_handler_argument.inc,v 1.3 2008-09-30 21:30:16 merlinofchaos Exp $
 
 /**
  * @defgroup views_argument_handlers Handlers for arguments
@@ -48,16 +48,6 @@ class views_handler_argument extends views_handler {
 
   function init(&$view, &$options) {
     parent::init($view, $options);
-    // Ensure this is set; early arguments did not have validators.
-    if (empty($this->options['validate_type'])) {
-      $this->options['validate_type'] = 'none';
-    }
-    if (empty($this->options['validate_fail'])) {
-      $this->options['validate_fail'] = 'not found';
-    }
-    if (empty($this->options['default_argument_type'])) {
-      $this->options['default_argument_type'] = 'fixed';
-    }
   }
 
   /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_dates_various.inc,v 1.1 2008-09-03 19:21:29 merlinofchaos Exp $
+// $Id: views_handler_argument_dates_various.inc,v 1.2 2008-09-30 21:30:16 merlinofchaos Exp $
 /**
  * Argument handler for a full date (CCYYMMDD)
  */
@@ -8,6 +8,7 @@ class views_handler_argument_node_created_fulldate extends views_handler_argumen
    * Constructor implementation
    */
   function construct() {
+    parent::construct();
     $this->format = 'F j, Y';
     $this->arg_format = 'Ymd';
     $this->formula = views_date_sql_format($this->arg_format, "***table***.$this->real_field");
@@ -37,6 +38,7 @@ class views_handler_argument_node_created_year extends views_handler_argument_da
    * Constructor implementation
    */
   function construct() {
+    parent::construct();
     $this->arg_format = 'Y';
     $this->formula = views_date_sql_extract('YEAR', "***table***.$this->real_field");
   }
@@ -50,6 +52,7 @@ class views_handler_argument_node_created_year_month extends views_handler_argum
    * Constructor implementation
    */
   function construct() {
+    parent::construct();
     $this->format = 'F, Y';
     $this->arg_format = 'Ym';
     $this->formula = views_date_sql_format($this->arg_format, "***table***.$this->real_field");
@@ -79,6 +82,7 @@ class views_handler_argument_node_created_month extends views_handler_argument_d
    * Constructor implementation
    */
   function construct() {
+    parent::construct();
     $this->formula = views_date_sql_extract('MONTH', "***table***.$this->real_field");
     $this->format = 'F';
     $this->arg_format = 'm';
@@ -114,6 +118,7 @@ class views_handler_argument_node_created_day extends views_handler_argument_dat
    * Constructor implementation
    */
   function construct() {
+    parent::construct();
     $this->formula = views_date_sql_extract('DAY', "***table***.$this->real_field");
     $this->format = 'j';
     $this->arg_format = 'd';
@@ -149,6 +154,7 @@ class views_handler_argument_node_created_week extends views_handler_argument_da
    * Constructor implementation
    */
   function construct() {
+    parent::construct();
     $this->arg_format = 'w';
     $this->formula = views_date_sql_extract('WEEK', "***table***.$this->real_field");
   }
