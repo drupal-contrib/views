@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.59 2008-09-30 19:47:11 merlinofchaos Exp $
+// $Id: theme.inc,v 1.60 2008-09-30 20:57:38 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -422,6 +422,13 @@ function template_preprocess_views_view_unformatted(&$vars) {
     }
   }
   $vars['classes'][$id] .= ' views-row-last';
+}
+
+/**
+ * Display the view as an HTML list element
+ */
+function template_preprocess_views_view_list(&$vars) {
+  template_preprocess_views_view_unformatted($vars);
 }
 
 /**
