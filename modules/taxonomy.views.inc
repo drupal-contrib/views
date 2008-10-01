@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.48 2008-09-24 21:14:26 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.49 2008-10-01 17:20:58 merlinofchaos Exp $
 /**
  * @file
  *
@@ -197,7 +197,7 @@ function taxonomy_views_data() {
     'help' => t('The taxonomy term ID'),
     'field' => array(
       'title' => t('All terms'),
-      'help' => t('Display all taxonomy terms associated with a node.'),
+      'help' => t('Display all taxonomy terms associated with a node from specified vocabularies.'),
       'handler' => 'views_handler_field_term_node_tid',
       'skip base' => 'term_data',
     ),

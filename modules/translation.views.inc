@@ -1,5 +1,5 @@
 <?php
-// $Id: translation.views.inc,v 1.1 2008-09-30 22:07:14 merlinofchaos Exp $
+// $Id: translation.views.inc,v 1.2 2008-10-01 17:20:58 merlinofchaos Exp $
 
 /**
  * @file
@@ -36,7 +36,7 @@ function translation_views_data_alter(&$data) {
       'click sortable' => TRUE,
     ),
     'filter' => array(
-      'handler' => 'views_handler_filter_node_language_current',
+      'handler' => 'views_handler_filter_node_language',
     ),
     'argument' => array(
       'handler' => 'views_handler_argument_node_language',
