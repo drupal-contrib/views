@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.50 2008-09-22 18:13:51 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.51 2008-10-01 19:50:31 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -297,6 +297,12 @@ function user_views_plugins() {
       'user' => array(
         'title' => t('User ID from URL'),
         'handler' => 'views_plugin_argument_default_user',
+        'path' => drupal_get_path('module', 'views') . '/modules/user', // not necessary for most modules
+        'parent' => 'fixed', // so that the parent class is included
+      ),
+      'current_user' => array(
+        'title' => t('User ID from logged in user'),
+        'handler' => 'views_plugin_argument_default_current_user',
         'path' => drupal_get_path('module', 'views') . '/modules/user', // not necessary for most modules
         'parent' => 'fixed', // so that the parent class is included
       ),
