@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.136 2008-09-29 19:53:13 merlinofchaos Exp $
+// $Id: admin.inc,v 1.137 2008-10-02 22:55:23 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2283,7 +2283,7 @@ function views_ui_config_item_form(&$form_state) {
         $data = views_fetch_data($relationship['table']);
         $base = $data[$relationship['field']]['relationship']['base'];
         $base_fields = views_fetch_fields($base, $form_state['type']);
-        if (isset($base_fields[$handler->table . '.' . $handler->field])) {
+        if (isset($base_fields[$item['table'] . '.' . $item['field']])) {
           $relationship_handler->init($view, $relationship);
           $relationship_options[$relationship['id']] = $relationship_handler->label();
         }
@@ -2293,7 +2293,7 @@ function views_ui_config_item_form(&$form_state) {
         // Make sure the existing relationship is even valid. If not, force
         // it to none.
         $base_fields = views_fetch_fields($view->base_table, $form_state['type']);
-        if (isset($base_fields[$handler->table . '.' . $handler->field])) {
+        if (isset($base_fields[$item['table'] . '.' . $item['field']])) {
           $relationship_options = array_merge(array('none' => t('Do not use a relationship')), $relationship_options);
         }
         $rel = empty($item['relationship']) ? 'none' : $item['relationship'];
