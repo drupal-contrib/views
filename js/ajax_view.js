@@ -1,4 +1,4 @@
-// $Id: ajax_view.js,v 1.9 2008-09-29 23:56:28 merlinofchaos Exp $
+// $Id: ajax_view.js,v 1.10 2008-10-02 18:45:59 merlinofchaos Exp $
 
 /**
  * @file ajaxView.js
@@ -55,8 +55,9 @@ Drupal.behaviors.ViewsAjaxView = function() {
         view = '.view-id-' + settings.view_name + '.view-display-id-' + settings.view_display_id;
       }
 
+
       // Process exposed filter forms.
-      $('form#views-exposed-form-' + settings.view_name + '-' + settings.view_display_id)
+      $('form#views-exposed-form-' + settings.view_name.replace('_', '-') + '-' + settings.view_display_id.replace('_', '-'))
       .filter(':not(.views-processed)')
       .each(function () {
         // remove 'q' from the form; it's there for clean URLs
