@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.138 2008-10-07 22:05:28 merlinofchaos Exp $
+// $Id: admin.inc,v 1.139 2008-10-07 22:16:27 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -847,7 +847,7 @@ function views_ui_edit_view_form(&$form_state, $view) {
 /**
  * Validate that a view is complete and whole.
  */
-function views_ui_edit_view_form_validate($form, $form_state) {
+function views_ui_edit_view_form_validate($form, &$form_state) {
   // Do not validate cancel or delete.
   if (empty($form_state['clicked_button']['#value']) || $form_state['clicked_button']['#value'] != t('Save')) {
     return;
