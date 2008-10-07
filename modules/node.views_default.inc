@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views_default.inc,v 1.8 2008-07-09 18:31:26 merlinofchaos Exp $
+// $Id: node.views_default.inc,v 1.9 2008-10-07 21:24:15 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the node module.
@@ -300,7 +300,7 @@ function node_views_default_views() {
       'id' => 'created_year_month',
       'table' => 'node',
       'field' => 'created_year_month',
-      'default_action' => 'summary asc',
+      'default_action' => 'summary desc',
       'style_plugin' => 'default_summary',
       'style_options' => array(
         'count' => 1,

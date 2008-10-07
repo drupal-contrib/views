@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.3 2008-09-24 22:48:20 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.4 2008-10-07 21:24:15 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -211,6 +211,7 @@ class views_handler_field extends views_handler {
       }
     }
     $themes[] = $hook . '__' . $this->view->name . '__' . $this->options['id'];
+    $themes[] = $hook . '__' . $this->view->name;
     $themes[] = $hook;
 
     return $themes;
