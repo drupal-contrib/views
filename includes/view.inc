@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.134 2008-10-08 00:14:01 merlinofchaos Exp $
+// $Id: view.inc,v 1.135 2008-10-08 19:05:02 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1412,6 +1412,7 @@ class view extends views_db_object {
     foreach (array_keys($this->display) as $display_id) {
       if (isset($this->display[$display_id]->handler)) {
         $this->display[$display_id]->handler->destroy();
+        unset($this->display[$display_id]->handler);
       }
 
       foreach (views_object_types() as $type => $info) {
