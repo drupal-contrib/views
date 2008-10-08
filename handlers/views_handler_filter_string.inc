@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_string.inc,v 1.2 2008-09-10 01:08:06 merlinofchaos Exp $
+// $Id: views_handler_filter_string.inc,v 1.3 2008-10-08 00:14:00 merlinofchaos Exp $
 
 /**
  * Basic textfield filter to handle string filtering commands
@@ -117,7 +117,7 @@ class views_handler_filter_string extends views_handler_filter {
       '#type' => 'checkbox',
       '#title' => t('Case sensitive'),
       '#default_value' => $this->options['case'],
-      '#description' => t('Case sensitive filters may be faster; MySQL might ignore case sensitivity.'),
+      '#description' => t('Case sensitive filters may be faster. MySQL might ignore case sensitivity.'),
     );
   }
 

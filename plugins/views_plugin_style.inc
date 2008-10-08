@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.3 2008-09-24 23:48:31 merlinofchaos Exp $
+// $Id: views_plugin_style.inc,v 1.4 2008-10-08 00:14:01 merlinofchaos Exp $
 /**
  * Base class to define a style plugin handler.
  */
@@ -91,7 +91,7 @@ class views_plugin_style extends views_plugin {
           '#title' => t('Grouping field'),
           '#options' => $options,
           '#default_value' => $this->options['grouping'],
-          '#description' => t('You may optionally specify a field by which to group the records.  Leave blank to not group.'),
+          '#description' => t('You may optionally specify a field by which to group the records. Leave blank to not group.'),
         );
       }
     }

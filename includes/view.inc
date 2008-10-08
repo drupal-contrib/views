@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.133 2008-10-02 22:54:56 merlinofchaos Exp $
+// $Id: view.inc,v 1.134 2008-10-08 00:14:01 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -258,7 +258,7 @@ class view extends views_db_object {
     if (empty($this->display[$display_id])) {
       $display_id = 'default';
       if (empty($this->display[$display_id])) {
-        vpr(t('set_display called with invalid display id @display', array('@display' => $display_id)));
+        vpr(t('set_display() called with invalid display id @display.', array('@display' => $display_id)));
         return FALSE;
       }
     }

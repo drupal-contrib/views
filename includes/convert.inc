@@ -1,5 +1,5 @@
 <?php
-// $Id: convert.inc,v 1.11 2008-06-26 16:41:01 merlinofchaos Exp $
+// $Id: convert.inc,v 1.12 2008-10-08 00:14:01 merlinofchaos Exp $
 /**
  * @file convert.inc
  *
@@ -102,8 +102,7 @@ function views_ui_delete1_confirm(&$form_state, $vid) {
     $cancel = $_REQUEST['cancel'];
   }
   return confirm_form($form,
-                  t('Are you sure you want to delete the view %name?',
-                  array('%name' => $view->name)),
+                  t('Are you sure you want to delete the view %name?', array('%name' => $view->name)),
                   $cancel,
                   t('This action cannot be undone.'),
                   t('Delete'),
