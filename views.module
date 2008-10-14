@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.314 2008-10-08 19:05:02 merlinofchaos Exp $
+// $Id: views.module,v 1.315 2008-10-14 18:27:18 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1099,7 +1099,7 @@ function views_views_exportables($op = 'list', $views = NULL, $name = 'foo') {
 
   if ($op == 'export') {
     $code = "/**\n";
-    $code .= " * Implementation of hook_default_view_views().\n";
+    $code .= " * Implementation of hook_views_default_views().\n";
     $code .= " */\n";
     $code .= "function " . $name . "_views_default_views() {\n";
     foreach ($views as $view => $truth) {
