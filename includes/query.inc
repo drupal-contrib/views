@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.28 2008-09-11 20:07:48 merlinofchaos Exp $
+// $Id: query.inc,v 1.29 2008-10-14 18:00:35 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -267,7 +267,7 @@ class views_query {
   function queue_table($table, $relationship = NULL, $join = NULL, $alias = NULL) {
     // If the alias is set, make sure it doesn't already exist.
     if (isset($this->table_queue[$alias])) {
-      return TRUE;
+      return $alias;
     }
 
     if (empty($relationship)) {
