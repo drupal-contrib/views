@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.315 2008-10-14 18:27:18 merlinofchaos Exp $
+// $Id: views.module,v 1.316 2008-10-14 19:51:55 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -335,8 +335,10 @@ function views_block($op = 'list', $delta = 0, $edit = array()) {
       }
 
       // This indicates it's a special one.
-      if (substr($delta, 0, 1) == '$') {
-        list($type, $name, $display_id) = explode('-', $delta);
+      if (substr($delta, 0, 1) == '-') {
+        list($nothing, $type, $name, $display_id) = explode('-', $delta);
+        // Put the - back on.
+        $type = '-' . $type;
         if ($view = views_get_view($name)) {
           if ($view->access($display_id)) {
             $view->set_display($display_id);

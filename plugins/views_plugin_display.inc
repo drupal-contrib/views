@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.13 2008-10-14 18:58:01 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.14 2008-10-14 19:51:56 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1655,7 +1655,7 @@ class views_plugin_display extends views_plugin {
    * Provide the block system with any exposed widget blocks for this display.
    */
   function get_special_blocks() {
-    $delta = '$exp-' . $this->view->name . '-' . $this->display->id;
+    $delta = '-exp-' . $this->view->name . '-' . $this->display->id;
     $desc = t('Exposed form: @view-@display_id', array('@view' => $this->view->name, '@display_id' => $this->display->id));
 
     return array(
@@ -1669,7 +1669,7 @@ class views_plugin_display extends views_plugin {
    * Render any special blocks provided for this display.
    */
   function view_special_blocks($type) {
-    if ($type == '$exp') {
+    if ($type == '-exp') {
       // avoid interfering with the admin forms.
       if (arg(0) == 'admin' && arg(1) == 'build' && arg(2) == 'views') {
         return;
