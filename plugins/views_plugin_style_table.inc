@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_table.inc,v 1.3 2008-09-15 20:32:21 merlinofchaos Exp $
+// $Id: views_plugin_style_table.inc,v 1.4 2008-10-14 17:48:14 merlinofchaos Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -167,7 +167,7 @@ class views_plugin_style_table extends views_plugin_style {
 
     if (isset($this->options['default'])) {
       $default = $this->options['default'];
-      if (!isset($fields[$default])) {
+      if (!isset($columns[$default])) {
         $default = -1;
       }
     }
