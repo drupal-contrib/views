@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.60 2008-09-30 20:57:38 merlinofchaos Exp $
+// $Id: theme.inc,v 1.61 2008-10-14 18:58:01 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -31,7 +31,6 @@ function _views_theme_functions($hook, $view, $display = NULL) {
   }
   $themes[] = $hook . '__' . $view->name;
   $themes[] = $hook;
-
   return $themes;
 }
 

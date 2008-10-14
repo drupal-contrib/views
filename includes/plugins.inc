@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.149 2008-10-08 00:14:01 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.150 2008-10-14 18:58:01 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -340,7 +340,7 @@ class views_plugin extends views_object {
   function additional_theme_functions() {
     $funcs = array();
     if (!empty($this->definition['additional themes'])) {
-      foreach ($this->definition['additional themes'] as $theme) {
+      foreach ($this->definition['additional themes'] as $theme => $type) {
         $funcs[] = views_theme_functions($theme, $this->view, $this->display);
       }
     }

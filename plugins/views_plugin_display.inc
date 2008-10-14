@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.12 2008-10-07 21:42:10 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.13 2008-10-14 18:58:01 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1105,7 +1105,7 @@ class views_plugin_display extends views_plugin {
         }
 
         if (!empty($this->definition['additional themes'])) {
-          foreach ($this->definition['additional themes'] as $theme) {
+          foreach ($this->definition['additional themes'] as $theme => $type) {
             $output .= '<p>' . t('This is an alternative template for this display.') . '</p>';
             $output .= '<pre>' . check_plain(file_get_contents('./' . $this->definition['theme path'] . '/' . strtr($theme, '_', '-') . '.tpl.php')) . '</pre>';
           }
@@ -1134,7 +1134,7 @@ class views_plugin_display extends views_plugin {
         }
 
         if (!empty($plugin->definition['additional themes'])) {
-          foreach ($plugin->definition['additional themes'] as $theme) {
+          foreach ($plugin->definition['additional themes'] as $theme => $type) {
             $output .= '<p>' . t('This is an alternative template for this style.') . '</p>';
             $output .= '<pre>' . check_plain(file_get_contents('./' . $plugin->definition['theme path'] . '/' . strtr($theme, '_', '-') . '.tpl.php')) . '</pre>';
           }
@@ -1163,7 +1163,7 @@ class views_plugin_display extends views_plugin {
         }
 
         if (!empty($plugin->definition['additional themes'])) {
-          foreach ($plugin->definition['additional themes'] as $theme) {
+          foreach ($plugin->definition['additional themes'] as $theme => $type) {
             $output .= '<p>' . t('This is an alternative template for this row style.') . '</p>';
             $output .= '<pre>' . check_plain(file_get_contents('./' . $plugin->definition['theme path'] . '/' . strtr($theme, '_', '-') . '.tpl.php')) . '</pre>';
           }
