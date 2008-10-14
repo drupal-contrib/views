@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_term_node_tid.inc,v 1.2 2008-09-22 18:13:51 merlinofchaos Exp $
+// $Id: views_handler_filter_term_node_tid.inc,v 1.3 2008-10-14 19:02:11 merlinofchaos Exp $
 
 /**
  * Filter by term id
@@ -151,8 +151,12 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
   }
 
   function accept_exposed_input($input) {
-    $rc = parent::accept_exposed_input($input);
+    // If it's optional and there's no value don't bother filtering.
+    if ($this->options['expose']['optional'] && empty($this->validated_exposed_input)) {
+      return FALSE;
+    }
 
+    $rc = parent::accept_exposed_input($input);
     if ($rc) {
       // If we have previously validated input, override.
       if (isset($this->validated_exposed_input)) {
