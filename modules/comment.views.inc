@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.24 2008-09-29 23:56:28 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.25 2008-10-16 17:21:36 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -487,6 +487,8 @@ function template_preprocess_views_view_row_comment(&$vars) {
   $plugin = &$view->style_plugin->row_plugin;
   $comment = $plugin->comments[$vars['row']->cid];
   $node = node_load($comment->nid);
+  // Put the view on the node so we can retrieve it in the preprocess.
+  $node->view = &$view;
 
   $links = '';
   if (!empty($options['links'])) {
