@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.86 2008-09-30 22:07:14 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.87 2008-10-16 17:09:52 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -672,7 +672,7 @@ function template_preprocess_views_view_row_node(&$vars) {
 
   $vars['node'] = node_view($node, $options['teaser'], FALSE, $options['links']);
   $vars['comments'] = NULL;
-  if (!empty($options['comments'])) {
+  if (!empty($options['comments']) && function_exists('comment_render')) {
     $vars['comments'] = comment_render($vars['node']);
   }
 }
