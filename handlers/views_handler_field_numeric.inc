@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_numeric.inc,v 1.2 2008-10-15 22:24:30 merlinofchaos Exp $
+// $Id: views_handler_field_numeric.inc,v 1.3 2008-10-18 01:46:39 merlinofchaos Exp $
 /**
  * Render a field as a numeric value
  *
@@ -73,7 +73,6 @@ class views_handler_field_numeric extends views_handler_field {
 
   function render($values) {
     $value = $values->{$this->field_alias};
-    $value = 1.0037;
     if (!empty($this->options['set_precision'])) {
       $value = number_format($value, $this->options['precision'], $this->options['decimal'], $this->options['separator']);
     }
