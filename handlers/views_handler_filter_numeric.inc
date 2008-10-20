@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_numeric.inc,v 1.3 2008-09-10 01:08:06 merlinofchaos Exp $
+// $Id: views_handler_filter_numeric.inc,v 1.4 2008-10-20 20:02:49 merlinofchaos Exp $
 
 /**
  * Simple filter to handle greater than/less than filters
@@ -195,6 +195,14 @@ class views_handler_filter_numeric extends views_handler_filter {
       }
       if (!empty($form_state['exposed']) && !isset($form_state['input'][$identifier]['max'])) {
         $form_state['input'][$identifier]['max'] = $this->value['max'];
+      }
+
+      if (!isset($form['value'])) {
+        // Ensure there is something in the 'value'.
+        $form['value'] = array(
+          '#type' => 'value',
+          '#value' => NULL
+        );
       }
     }
   }

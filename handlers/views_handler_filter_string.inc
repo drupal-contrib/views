@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_string.inc,v 1.3 2008-10-08 00:14:00 merlinofchaos Exp $
+// $Id: views_handler_filter_string.inc,v 1.4 2008-10-20 20:02:49 merlinofchaos Exp $
 
 /**
  * Basic textfield filter to handle string filtering commands
@@ -173,6 +173,14 @@ class views_handler_filter_string extends views_handler_filter {
           '#dependency' => array($source => $this->operator_values(1)),
         );
       }
+    }
+
+    if (!isset($form['value'])) {
+      // Ensure there is something in the 'value'.
+      $form['value'] = array(
+        '#type' => 'value',
+        '#value' => NULL
+      );
     }
   }
 
