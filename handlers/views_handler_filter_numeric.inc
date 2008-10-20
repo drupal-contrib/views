@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_numeric.inc,v 1.4 2008-10-20 20:02:49 merlinofchaos Exp $
+// $Id: views_handler_filter_numeric.inc,v 1.5 2008-10-20 20:05:48 merlinofchaos Exp $
 
 /**
  * Simple filter to handle greater than/less than filters
@@ -251,12 +251,13 @@ class views_handler_filter_numeric extends views_handler_filter {
       return t('exposed');
     }
 
-    $output = check_plain($this->operator) . ' ';
+    $options = $this->operator_options('short');
+    $output = check_plain($options[$this->operator]);
     if (in_array($this->operator, $this->operator_values(2))) {
-      $output .= t('@min and @max', array('@min' => $this->value['min'], '@max' => $this->value['max']));
+      $output .= ' ' . t('@min and @max', array('@min' => $this->value['min'], '@max' => $this->value['max']));
     }
-    else {
-      $output .= check_plain($this->value['value']);
+    elseif (in_array($this->operator, $this->operator_values(1))) {
+      $output .= ' ' . check_plain($this->value['value']);
     }
     return $output;
   }
