@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.3 2008-10-08 00:14:00 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.4 2008-10-20 19:35:53 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -215,7 +215,7 @@ class views_handler_filter extends views_handler {
       );
       $form['expose_button']['markup'] = array(
         '#prefix' => '<div class="description">',
-        '#value' => t('This item is currently exposed. If you <strong>hide</strong> it, users will not able to change the filter as they view it.'),
+        '#value' => t('This item is currently exposed. If you <strong>hide</strong> it, users will not be able to change the filter as they view it.'),
         '#suffix' => '</div>',
       );
     }
