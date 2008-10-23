@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.136 2008-10-16 17:06:25 merlinofchaos Exp $
+// $Id: view.inc,v 1.137 2008-10-23 01:11:54 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -765,7 +765,7 @@ class view extends views_db_object {
 
     // Let modules modify the view just prior to executing it.
     foreach (module_implements('views_pre_render') as $module) {
-      $function = $module . '_views_pre_view';
+      $function = $module . '_views_pre_render';
       $function($this);
     }
 
