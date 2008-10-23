@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.14 2008-10-14 19:51:56 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.15 2008-10-23 01:04:24 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1276,7 +1276,7 @@ class views_plugin_display extends views_plugin {
    * Perform any necessary changes to the form values prior to storage.
    * There is no need for this function to actually store the data.
    */
-  function options_submit($form, &$form_state) {
+  function options_submit(&$form, &$form_state) {
     $section = $form_state['section'];
     switch ($section) {
       case 'display_title':
