@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.96 2008-09-30 23:59:04 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.97 2008-10-23 01:27:51 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -675,7 +675,7 @@ class views_many_to_one_helper {
               'numeric' => !empty($this->handler->definition['numeric']),
             ),
           );
-          $alias = $this->handler->table_aliases[$value] = $this->add_table($join, $this->handler->table . '_' . $value);
+          $alias = $this->handler->table_aliases[$value] = $this->add_table($join, $this->handler->table . '_' . preg_replace('/[^a-z0-9]/', '-', strtolower($value)));
 
           // and set table_alias to the first of these.
           if (empty($this->handler->table_alias)) {
