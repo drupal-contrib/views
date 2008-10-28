@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.62 2008-10-16 17:06:25 merlinofchaos Exp $
+// $Id: theme.inc,v 1.63 2008-10-28 17:46:14 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -293,7 +293,7 @@ function template_preprocess_views_view_table(&$vars) {
     // render the header labels
     if ($field == $column && empty($fields[$field]->options['exclude'])) {
       $label = check_plain(!empty($fields[$field]) ? $fields[$field]->label() : '');
-      if (empty($options['info'][$field]['sortable'])) {
+      if (empty($options['info'][$field]['sortable']) || !$fields[$field]->click_sortable()) {
         $vars['header'][$field] = $label;
       }
       else {
