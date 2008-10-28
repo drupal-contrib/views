@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.31 2008-10-28 19:23:50 merlinofchaos Exp $
+// $Id: query.inc,v 1.32 2008-10-28 20:08:10 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -505,6 +505,13 @@ class views_query {
 
       // Safety! Don't modify an original here.
       $join = drupal_clone($join);
+
+      // Do we need to try to ensure a path?
+      if ($join->left_table != $this->relationships[$relationship]['table'] &&
+          $join->left_table != $this->relationships[$relationship]['base'] &&
+          !isset($this->tables[$relationship][$join->left_table]['alias'])) {
+        $this->ensure_table($join->left_table, $relationship);
+      }
 
       // First, if this is our link point/anchor table, just use the relationship
       if ($join->left_table == $this->relationships[$relationship]['table']) {
