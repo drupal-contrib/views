@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.137 2008-10-23 01:11:54 merlinofchaos Exp $
+// $Id: view.inc,v 1.138 2008-10-29 19:09:49 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -839,8 +839,11 @@ class view extends views_db_object {
     $old_view = views_get_current_view();
     views_set_current_view($this);
 
-    // Prepare the view with the information we have.
-    $this->set_arguments($args);
+    // Prepare the view with the information we have, but only if we were
+    // passed arguments, as they may have been set previously.
+    if ($args) {
+      $this->set_arguments($args);
+    }
 
     $this->preview = TRUE;
 
