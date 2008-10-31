@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.166.2.46 2008-05-10 19:35:25 merlinofchaos Exp $
+// $Id: views.module,v 1.166.2.47 2008-10-31 23:48:58 sun Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -564,10 +564,10 @@ function views_build_view($type, &$view, $args = array(), $use_pager = false, $l
     return $info;
   }
 
-  $query = db_rewrite_sql($info['query'], 'node');
-
   $items = array();
-  if ($query) {
+  if ($info['query']) {
+    $query = db_rewrite_sql($info['query'], 'node');
+
     if ($view->use_pager) {
       $cquery = db_rewrite_sql($info['countquery'], 'node', 'nid', $info['rewrite_args']);
       $result = pager_query($query, $view->pager_limit, $view->use_pager - 1, $cquery, $info['args']);
