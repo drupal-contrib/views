@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.44.2.26 2008-09-21 01:09:26 sun Exp $
+// $Id: views_ui.module,v 1.44.2.27 2008-11-01 00:30:14 sun Exp $
 
 // ---------------------------------------------------------------------------
 // Drupal Hooks
@@ -1716,6 +1716,7 @@ function views_ui_render_section(&$form, $items, $header, $section, &$collapsed)
  * Render the add buttons for one of the dynamic sections on our form.
  */
 function views_ui_render_section_add(&$form, $items,  $label) {
+  asort($form['id']['#options']);
   foreach ($items as $item) {
     $row[] = drupal_render($form[$item], false);
   }
