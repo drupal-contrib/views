@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_date.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_filter_date.inc,v 1.2 2008-11-19 20:52:59 merlinofchaos Exp $
 
 /**
  * Filter to handle dates stored as a timestamp.
@@ -101,7 +101,7 @@ class views_handler_filter_date extends views_handler_filter_numeric {
     // Don't filter if value(s) are empty.
     $operators = $this->operators();
     if (!empty($this->options['expose']['use_operator']) && !empty($this->options['expose']['operator'])) {
-      $operator = $form_state['values'][$this->options['expose']['operator']];
+      $operator = $input[$this->options['expose']['operator']];
     }
     else {
       $operator = $this->operator;
