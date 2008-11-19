@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.99 2008-11-19 19:11:26 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.100 2008-11-19 22:33:55 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -107,11 +107,11 @@ function _views_prepare_handler($definition, $data, $field) {
 function views_fetch_handler_data($handler = NULL) {
   static $cache = NULL;
   if (!isset($cache)) {
-    $start = microtime();
+    $start = views_microtime();
 
     $cache = views_discover_handlers();
 
-    vpr('Views handlers build time: ' . (microtime() - $start) * 1000 . ' ms');
+    vpr('Views handlers build time: ' . (views_microtime() - $start) * 1000 . ' ms');
   }
 
   if (!$handler) {
