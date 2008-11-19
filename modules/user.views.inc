@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.52 2008-10-08 20:56:02 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.53 2008-11-19 19:11:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -115,6 +115,10 @@ function user_views_data() {
     'field' => array(
       'handler' => 'views_handler_field_user_picture',
       'click sortable' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_boolean_operator_string',
+      'label' => t('Has Avatar'),
     ),
   );
 
