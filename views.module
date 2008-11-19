@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.318 2008-11-07 17:32:47 merlinofchaos Exp $
+// $Id: views.module,v 1.319 2008-11-19 19:09:12 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -112,7 +112,7 @@ function views_preprocess_node(&$vars) {
     $vars['view'] = &$vars['node']->view;
     $vars['template_files'][] = 'node-view-' . $vars['node']->view->name;
     if(!empty($vars['node']->view->current_display)) {
-      $vars['template_files'][] = 'node-view-' . $vars['node']->view->name . '-'. $vars['node']->view->current_display;
+      $vars['template_files'][] = 'node-view-' . $vars['node']->view->name . '-' . $vars['node']->view->current_display;
     }
   }
 }
@@ -127,7 +127,7 @@ function views_preprocess_comment(&$vars) {
     $vars['view'] = &$vars['node']->view;
     $vars['template_files'][] = 'comment-view-' . $vars['node']->view->name;
     if(!empty($vars['node']->view->current_display)) {
-      $vars['template_files'][] = 'comment-view-' . $vars['node']->view->name . '-'. $vars['node']->view->current_display;
+      $vars['template_files'][] = 'comment-view-' . $vars['node']->view->name . '-' . $vars['node']->view->current_display;
     }
   }
 }
