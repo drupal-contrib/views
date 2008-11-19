@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.138 2008-10-29 19:09:49 merlinofchaos Exp $
+// $Id: view.inc,v 1.139 2008-11-19 19:39:27 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1433,8 +1433,13 @@ class view extends views_db_object {
         unset($this->style_plugin);
       }
 
+      // Clear these to make sure the view can be processed/used again.
       if (isset($this->display_handler)) {
         unset($this->display_handler);
+      }
+
+      if (isset($this->current_display)) {
+        unset($this->current_display);
       }
 
       if (isset($this->query)) {
