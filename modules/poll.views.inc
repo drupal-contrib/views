@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.views.inc,v 1.2 2008-03-12 04:32:07 merlinofchaos Exp $
+// $Id: poll.views.inc,v 1.3 2008-11-24 19:58:31 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for poll.module
@@ -41,11 +41,12 @@ function poll_views_data() {
     'field' => array(
       'handler' => 'views_handler_field_boolean',
       'click sortable' => TRUE,
-     ),
-     'filter' => array(
-       'handler' => 'views_handler_filter_boolean_operator',
-       'label' => t('Active'),
-       ),
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_boolean_operator',
+      'label' => t('Active'),
+      'type' => 'yes-no',
+    ),
     'sort' => array(
       'handler' => 'views_handler_sort',
     ),

@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.147 2008-11-19 22:33:55 merlinofchaos Exp $
+// $Id: admin.inc,v 1.148 2008-11-24 19:58:30 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -700,7 +700,8 @@ function views_ui_export_page(&$form_state, $view) {
     '#type' => 'textarea',
     '#title' => $view->name,
     '#default_value' => $code,
-    '#rows' => $lines);
+    '#rows' => $lines,
+  );
   return $form;
 }
 
