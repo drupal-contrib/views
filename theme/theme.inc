@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.64 2008-12-02 00:02:06 merlinofchaos Exp $
+// $Id: theme.inc,v 1.65 2008-12-02 22:17:42 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -495,6 +495,20 @@ function template_preprocess_views_view_rss(&$vars) {
   $vars['channel_elements'] = format_xml_elements($style->channel_elements);
 
   drupal_set_header('Content-Type: application/rss+xml; charset=utf-8');
+}
+
+/**
+ * Default theme function for all RSS rows.
+ */
+function template_preprocess_views_view_row_rss(&$vars) {
+  $view     = &$vars['view'];
+  $options  = &$vars['options'];
+  $item     = &$vars['row'];
+
+  $vars['title'] = check_plain($item->title);
+  $vars['link'] = check_url($item->link);
+  $vars['description'] = check_plain($item->description);
+  $vars['item_elements'] = empty($item->elements) ? '' : format_xml_elements($item->elements);
 }
 
 /**

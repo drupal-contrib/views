@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.90 2008-12-02 19:37:08 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.91 2008-12-02 22:17:41 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -632,6 +632,7 @@ function node_views_plugins() {
         'help' => t('Display the node with standard node view.'),
         'handler' => 'views_plugin_row_node_rss',
         'path' => drupal_get_path('module', 'views') . '/modules/node', // not necessary for most modules
+        'theme' => 'views_view_row_rss',
         'base' => array('node'), // only works with 'node' as base.
         'uses options' => TRUE,
         'type' => 'feed',

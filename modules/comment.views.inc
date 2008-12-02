@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.27 2008-12-02 19:37:08 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.28 2008-12-02 22:17:41 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -397,6 +397,7 @@ function comment_views_plugins() {
         'help' => t('Display the comment as RSS.'),
         'handler' => 'views_plugin_row_comment_rss',
         'path' => drupal_get_path('module', 'views') . '/modules/comment', // not necessary for most modules
+        'theme' => 'views_view_row_rss',
         'base' => array('comments'), // only works with 'comment' as base.
         'type' => 'feed',
         'help topic' => 'style-comment-rss',
