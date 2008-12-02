@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.320 2008-11-19 22:33:55 merlinofchaos Exp $
+// $Id: views.module,v 1.321 2008-12-02 19:49:55 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -135,7 +135,7 @@ function views_preprocess_comment(&$vars) {
 /*
  * Implementation of hook_perm()
  */
-function views_ui_perm() {
+function views_perm() {
   return array('access all views');
 }
 
