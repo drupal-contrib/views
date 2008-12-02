@@ -1,5 +1,5 @@
 <?php
-// $Id: translation.views.inc,v 1.4 2008-12-02 16:34:24 merlinofchaos Exp $
+// $Id: translation.views.inc,v 1.5 2008-12-02 18:54:32 merlinofchaos Exp $
 
 /**
  * @file
@@ -70,7 +70,7 @@ function translation_views_data_alter(&$data) {
       'help' => t('The source that this content was translated from.'),
       'base' => 'node',
       'base field' => 'nid',
-      'handler' => 'views_handler_relationship_translation',
+      'handler' => 'views_handler_relationship',
       'label' => t('Source translation'),
     ),
   );
