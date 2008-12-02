@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.16 2008-10-28 20:28:56 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.17 2008-12-02 20:23:21 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -402,7 +402,7 @@ class views_plugin_display extends views_plugin {
     }
 
     $display_id = $this->get_link_display();
-    if ($display_id && !empty($this->view->display[$display_id])) {
+    if ($display_id && !empty($this->view->display[$display_id]) && is_object($this->view->display[$display_id]->handler)) {
       return $this->view->display[$display_id]->handler->get_path();
     }
   }
