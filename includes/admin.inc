@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.148 2008-11-24 19:58:30 merlinofchaos Exp $
+// $Id: admin.inc,v 1.149 2008-12-02 16:04:59 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1220,7 +1220,7 @@ function template_preprocess_views_ui_edit_item(&$vars) {
     }
     $handler->init($view, $field);
 
-    $field_name = $handler->ui_name();
+    $field_name = $handler->ui_name(TRUE);
     if (!empty($field['relationship']) && !empty($relationships[$field['relationship']])) {
       $field_name = '(' . $relationships[$field['relationship']] . ') ' . $field_name;
     }
