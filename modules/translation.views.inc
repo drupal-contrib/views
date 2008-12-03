@@ -1,5 +1,5 @@
 <?php
-// $Id: translation.views.inc,v 1.6 2008-12-02 18:57:27 merlinofchaos Exp $
+// $Id: translation.views.inc,v 1.7 2008-12-03 00:25:59 merlinofchaos Exp $
 
 /**
  * @file
@@ -8,7 +8,7 @@
  */
 
 /**
- * @defgroup views_translation_module taxonomy.module handlers
+ * @defgroup views_translation_module translation.module handlers
  *
  * @{
  */
@@ -146,12 +146,6 @@ function translation_views_handlers() {
       // field handlers
       'views_handler_field_node_language' => array(
         'parent' => 'views_handler_field_node',
-      ),
-      'views_handler_field_node_tnid' => array(
-        'parent' => 'views_handler_field_node',
-      ),
-      'views_handler_field_node_translation_link' => array(
-        'parent' => 'views_handler_field',
       ),
       // argument handlers
       'views_handler_argument_node_language' => array(
