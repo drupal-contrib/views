@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.142 2008-12-16 18:52:04 merlinofchaos Exp $
+// $Id: view.inc,v 1.143 2008-12-16 19:03:48 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -824,6 +824,7 @@ class view extends views_db_object {
       }
     }
 
+    $this->preview = TRUE;
     $this->pre_execute($args);
     // Preview the view.
     $output = $this->display_handler->preview();
