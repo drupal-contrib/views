@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_attachment.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_plugin_display_attachment.inc,v 1.2 2009-01-05 20:16:19 merlinofchaos Exp $
 /**
  * @file
  * Contains the attachment display plugin.
@@ -182,6 +182,7 @@ class views_plugin_display_attachment extends views_plugin_display {
     $view->original_args = $view->args;
 
     $args = $this->get_option('inherit_arguments') ? $this->view->args : array();
+    $view->set_arguments($args);
 
     // because of this, it is very very important that displays that can accept
     // attachments not also be attachments, or this could explode messily.
