@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.34 2009-01-07 19:53:51 merlinofchaos Exp $
+// $Id: query.inc,v 1.35 2009-01-07 19:56:36 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -895,6 +895,8 @@ class views_query {
       }
     }
 
+    $has_aggregate = FALSE;
+    $non_aggregates = array();
 
     foreach ($fields_array as $field) {
       if ($fields) {
@@ -905,11 +907,18 @@ class views_query {
         $string .= $field['table'] . '.';
       }
       $string .= $field['field'];
+      // store for use with non-aggregates below
+      $fieldname = (!empty($field['alias']) ? $field['alias'] : $string);
+
       if (isset($field['distinct'])) {
         $string = "DISTINCT($string)";
       }
       if (isset($field['count'])) {
         $string = "COUNT($string)";
+        $has_aggregate = TRUE;
+      }
+      else {
+        $non_aggregates[] = $fieldname;
       }
       if ($field['alias']) {
         $string .= " AS $field[alias]";
@@ -922,8 +931,8 @@ class views_query {
       }
     }
 
-    if ($this->groupby) {
-      $groupby = "GROUP BY " . implode(', ', $this->groupby) . "\n";
+    if ($has_aggregate || $this->groupby) {
+      $groupby = "GROUP BY " . implode(', ', array_unique(array_merge($this->groupby, $non_aggregates))) . "\n";
       if ($this->having) {
         $having = $this->condition_sql('having');
       }
