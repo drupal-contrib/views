@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.101 2008-12-02 16:04:59 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.102 2009-01-07 19:38:04 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1299,6 +1299,8 @@ function views_views_api() {
     'path' => drupal_get_path('module', 'views') . '/modules',
   );
 }
+
+function aggregator_views_api() { return views_views_api(); }
 
 function book_views_api() { return views_views_api(); }
 
