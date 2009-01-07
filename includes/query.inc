@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.33 2009-01-05 20:16:19 merlinofchaos Exp $
+// $Id: query.inc,v 1.34 2009-01-07 19:53:51 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -591,7 +591,7 @@ class views_query {
    * @return $name
    *   The name that this field can be referred to as. Usually this is the alias.
    */
-  function add_field($table, $field, $alias = '') {
+  function add_field($table, $field, $alias = '', $params = NULL) {
     // We check for this specifically because it gets a special alias.
     if ($table == $this->base_table && $field == $this->base_field && empty($alias)) {
       $alias = $this->base_field;
@@ -615,6 +615,11 @@ class views_query {
         'alias' => $alias,
       );
     }
+    
+    foreach ((array)$params as $key => $value) {
+      $this->fields[$name][$key] = $value;
+    }
+
     return $name;
   }
 
