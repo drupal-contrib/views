@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.102 2009-01-07 19:38:04 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.103 2009-01-07 20:14:46 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -907,7 +907,7 @@ function views_date_sql_format($format, $field, $field_type = 'int', $set_offset
       return "DATE_FORMAT($field, '$format')";
     case 'pgsql':
       $replace = array(
-        'Y' => 'YY',
+        'Y' => 'YYYY',
         'm' => 'MM',
         'd' => 'DD',
         'H' => 'HH24',
