@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.35 2009-01-07 19:56:36 merlinofchaos Exp $
+// $Id: query.inc,v 1.36 2009-01-07 23:34:32 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -452,8 +452,14 @@ class views_query {
       return FALSE;
     }
 
+    // If we do not have join info, fetch it.
     if (!isset($join)) {
       $join = $this->get_join_data($table, $this->relationships[$relationship]['base']);
+    }
+    
+    // If it can't be fetched, this won't work.
+    if (empty($join)) {
+      return FALSE;
     }
 
     // Does a table along this path exist?
