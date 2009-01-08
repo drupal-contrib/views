@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_dates_various.inc,v 1.3 2009-01-07 22:39:33 merlinofchaos Exp $
+// $Id: views_handler_argument_dates_various.inc,v 1.4 2009-01-08 00:25:19 merlinofchaos Exp $
 /**
  * Argument handler for a full date (CCYYMMDD)
  */
@@ -129,14 +129,14 @@ class views_handler_argument_node_created_day extends views_handler_argument_dat
    */
   function summary_name($data) {
     $day = str_pad($data->{$this->name_alias}, 2, '0', STR_PAD_LEFT);
-    return format_date(strtotime("2005" . "05" . $day), 'custom', $this->format);
+    return format_date(strtotime("2005" . "05" . $day), 'custom', $this->format, 0);
   }
 
   /**
    * Provide a link to the next level of the view
    */
   function title() {
-    $day = str_pad($this->argument+1, 2, '0', STR_PAD_LEFT);
+    $day = str_pad($this->argument, 2, '0', STR_PAD_LEFT);
     return format_date(strtotime("2005" . "05" . $day), 'custom', $this->format, 0);
   }
 
