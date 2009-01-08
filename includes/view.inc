@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.145 2009-01-08 00:10:08 merlinofchaos Exp $
+// $Id: view.inc,v 1.146 2009-01-08 00:29:54 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1090,7 +1090,9 @@ class view extends views_db_object {
           $base = FALSE;
           $title = t('Home');
         }
-        $breadcrumb[] = l($title, $path, array('html' => true));
+        if ($title) {
+          $breadcrumb[] = l($title, $path, array('html' => true));
+        }
       }
 
       if ($set) {
