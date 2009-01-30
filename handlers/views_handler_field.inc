@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.6 2009-01-30 00:01:41 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.7 2009-01-30 19:21:12 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -594,7 +594,12 @@ class views_handler_field_broken extends views_handler_field {
  */
 class views_handler_field_file_size extends views_handler_field {
   function render($values) {
-    return format_size($values->{$this->field_alias});
+    if ($values->{$this->field_alias}) {
+      return format_size($values->{$this->field_alias});
+    }
+    else {
+      return '';
+    }
   }
 }
 
