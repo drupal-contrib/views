@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.10 2008-10-02 22:54:56 merlinofchaos Exp $
+// $Id: docs.php,v 1.11 2009-02-06 21:23:42 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -12,6 +12,9 @@
  * Much of this information is actually stored in the advanced help; please
  * check the API topic. This help will primarily be aimed at documenting
  * classes and function calls.
+ *
+ * An online version of the advanced help API documentation is available from:
+ * @link http://views-help.doc.logrus.com/help/views/api @endlink
  *
  * Topics:
  * - @ref view_lifetime
