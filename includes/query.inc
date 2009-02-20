@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.37 2009-02-10 22:07:54 merlinofchaos Exp $
+// $Id: query.inc,v 1.38 2009-02-20 20:35:37 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -913,6 +913,7 @@ class views_query {
         $string .= $field['table'] . '.';
       }
       $string .= $field['field'];
+
       // store for use with non-aggregates below
       $fieldname = (!empty($field['alias']) ? $field['alias'] : $string);
 
@@ -921,6 +922,9 @@ class views_query {
       }
       if (!empty($field['count'])) {
         $string = "COUNT($string)";
+        $has_aggregate = TRUE;
+      }
+      else if (!empty($field['aggregate'])) {
         $has_aggregate = TRUE;
       }
       else {
