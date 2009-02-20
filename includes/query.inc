@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.38 2009-02-20 20:35:37 merlinofchaos Exp $
+// $Id: query.inc,v 1.39 2009-02-20 20:37:59 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -880,7 +880,7 @@ class views_query {
     $fields_array = $this->fields;
     if ($get_count && !$this->groupby) {
       foreach ($fields_array as $field) {
-        if (isset($field['distinct'])) {
+        if (!empty($field['distinct'])) {
           $get_count_optimized = FALSE;
           break;
         }
