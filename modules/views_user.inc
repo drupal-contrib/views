@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user.inc,v 1.14.2.7 2007-03-03 22:31:27 merlinofchaos Exp $
+// $Id: views_user.inc,v 1.14.2.8 2009-02-21 03:45:07 sun Exp $
 
 /**
  * This include file implements views functionality on behalf of user.module
@@ -33,6 +33,11 @@ function user_views_tables() {
         'handler' => 'views_handler_field_userpic',
         'sortable' => false,
         'help' => t('Display the user picture of the author.'),
+      ),
+      'mail' => array(
+        'name' => t('User: E-mail'),
+        'sortable' => TRUE,
+        'help' => t("Display the user's email address. Beware that this should only be shown to administrators in a normal Drupal installation. Further, no attempt is made to obfuscate the email address."),
       ),
     ),
     'sorts' => array(
