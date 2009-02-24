@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.40 2009-02-23 22:19:47 merlinofchaos Exp $
+// $Id: query.inc,v 1.41 2009-02-24 20:13:12 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -812,7 +812,6 @@ class views_query {
     // group by clause. Check $table to ensure that this is not a
     // formula.
     if ($this->groupby && $table) {
-      vsm_trace();
       $this->add_groupby($as);
     }
   }
