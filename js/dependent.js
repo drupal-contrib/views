@@ -1,4 +1,4 @@
-// $Id: dependent.js,v 1.5 2008-06-23 20:00:58 merlinofchaos Exp $
+// $Id: dependent.js,v 1.6 2009-03-24 23:03:32 merlinofchaos Exp $
 /**
  * @file dependent.js
  *
@@ -75,7 +75,7 @@ Drupal.Views.dependent.autoAttach = function() {
       // Drupal.settings.viewsAjax.formRelationships[id].values[bind_id] holds the possible values
 
       if (bind_id.substring(0, 6) == 'radio:') {
-        var trigger_id = "input[@name='" + bind_id.substring(6) + "']";
+        var trigger_id = "input[name='" + bind_id.substring(6) + "']";
       }
       else {
         var trigger_id = '#' + bind_id;
