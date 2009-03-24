@@ -1,5 +1,5 @@
 <?php
-//$Id: node.views_convert.inc,v 1.3 2009-02-23 18:58:18 merlinofchaos Exp $
+//$Id: node.views_convert.inc,v 1.4 2009-03-24 22:14:27 merlinofchaos Exp $
 
 /**
  * @file
@@ -49,12 +49,16 @@ function node_views_convert($display, $type, &$view, $field, $id = NULL) {
         case 'filter':
           switch ($field['field']) {
             case 'type':
-              $view->display[$display]->display_options['filters'][$field['field']]['value'] = drupal_map_assoc($field['value']);
+              $item = $view->get_item($display, 'filter', $id);
+              $item['value'] = drupal_map_assoc($field['value']);
+              $view->set_item($display, 'filter', $id, $item);
               break;
             case 'status':
             case 'promote':
             case 'sticky':
-              $view->display[$display]->display_options['filters'][$field['field']]['value'] = $field['value'];
+              $item = $view->get_item($display, 'filter', $id);
+              $item['value'] = $field['value'];
+              $view->set_item($display, 'filter', $id, $item);
               break;
           }
           break;
