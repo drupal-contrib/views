@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.8 2009-02-22 00:24:38 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.9 2009-04-07 19:34:35 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -191,7 +191,7 @@ class views_handler_field extends views_handler {
 
       $form['alter']['text'] = array(
         '#title' => t('Text'),
-        '#type' => 'textfield',
+        '#type' => 'textarea',
         '#default_value' => $this->options['alter']['text'],
         '#description' => t('The text to display for this field. You may include HTML. You may enter data from this view as per the "Replacement patterns" below.'),
         '#process' => array('views_process_dependency'),
