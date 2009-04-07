@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.9 2009-04-07 19:34:35 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.10 2009-04-07 19:52:50 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -457,7 +457,9 @@ class views_handler_field extends views_handler {
     // $path will be run through check_url() by l() so we do not need to
     // sanitize it ourselves.
     $path = $this->options['alter']['path'];
-    $path = strtr($path, $tokens);
+
+    // Use strip tags as there should never be HTML in the path.
+    $path = strip_tags(strtr($path, $tokens));
 
     $alt = $this->options['alter']['alt'];
     $alt = strtr($alt, $tokens);
