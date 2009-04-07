@@ -1,4 +1,4 @@
-// $Id: dependent.js,v 1.6 2009-03-24 23:03:32 merlinofchaos Exp $
+// $Id: dependent.js,v 1.7 2009-04-07 23:10:00 merlinofchaos Exp $
 /**
  * @file dependent.js
  *
@@ -21,11 +21,9 @@
  *   override it.
  */
 
-Drupal.Views.dependent = {};
+Drupal.Views = Drupal.Views || {};
 
-Drupal.Views.dependent.bindings = {};
-Drupal.Views.dependent.activeBindings = {};
-Drupal.Views.dependent.activeTriggers = [];
+Drupal.Views.dependent = { bindings: {}, activeBindings: {}, activeTriggers: [] };
 
 Drupal.Views.dependent.inArray = function(array, search_term) {
   var i = array.length;
