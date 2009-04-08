@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.13 2009-04-08 03:51:17 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14 2009-04-08 05:23:56 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -452,7 +452,7 @@ class views_handler_field extends views_handler {
     $value = drupal_substr($value, 0, $this->options['alter']['max_length']);
 
     if (!empty($this->options['alter']['word_boundary'])) {
-      if (preg_match ("/(.*)\b.+/u", $value, $matches)) {
+      if (preg_match ("/(.*)\b.+/us", $value, $matches)) {
         // Remove scraps of HTML entities from the end of a strings
         $value = preg_replace('/(?:<(?!.+>)|&(?!.+;))/us', '', $matches[1]);
         // Strip spare space at the end.
