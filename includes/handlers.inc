@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.108 2009-03-25 17:29:33 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.109 2009-04-10 20:22:54 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -575,7 +575,7 @@ class views_many_to_one_helper {
 
     // If we found that there are tables in between, add the relationship.
     if ($r_join->table != $join->table) {
-      $relationship = $this->handler->query->add_relationship(NULL, $r_join, $r_join->table, $this->handler->relationship);
+      $relationship = $this->handler->query->add_relationship($this->handler->table, $r_join, $r_join->table, $this->handler->relationship);
     }
 
     // And now add our table, using the new relationship if one was used.
