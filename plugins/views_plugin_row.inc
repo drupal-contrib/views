@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_row.inc,v 1.2 2009-03-24 22:22:11 merlinofchaos Exp $
+// $Id: views_plugin_row.inc,v 1.3 2009-04-11 17:18:58 merlinofchaos Exp $
 /**
  * @file
  * Contains the base row style plugin.
@@ -33,6 +33,8 @@ class views_plugin_row extends views_plugin {
     if (isset($this->base_table)) {
       $options['relationship'] = array('default' => 'none');
     }
+
+    return $options;
   }
 
   /**
