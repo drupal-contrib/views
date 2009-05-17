@@ -1,4 +1,4 @@
-# $Id: uk.po,v 1.1.4.3 2009-05-17 12:29:01 podarok Exp $
+# $Id: uk.po,v 1.1.4.4 2009-05-17 12:32:06 podarok Exp $
 #
 # Ukrainian translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
@@ -159,7 +159,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: views uk Ukrainian translation\n"
 "POT-Creation-Date: 2009-05-17 14:10+0300\n"
-"PO-Revision-Date: 2009-05-17 15:27+0300\n"
+"PO-Revision-Date: 2009-05-17 15:31+0300\n"
 "Last-Translator: Andriy Podanenko <podarok@ua.fm>\n"
 "Language-Team: uk <podarok@ua.fm>\n"
 "MIME-Version: 1.0\n"
