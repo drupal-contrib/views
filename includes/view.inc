@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.2 2009-05-20 03:03:38 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.3 2009-05-20 03:09:36 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -578,7 +578,6 @@ class view extends views_db_object {
 
     // Let the handlers interact with each other if they really want.
     $this->_pre_query();
-
     if ($this->display_handler->uses_exposed()) {
       $this->exposed_widgets = $this->render_exposed_form();
       if (form_set_error() || !empty($this->build_info['abort'])) {

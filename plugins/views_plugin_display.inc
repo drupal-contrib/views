@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.1 2009-05-20 02:52:52 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.2 2009-05-20 03:09:37 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -71,9 +71,9 @@ class views_plugin_display extends views_plugin {
    */
   function uses_exposed() {
     if (!isset($this->has_exposed)) {
-      foreach (array('field', 'filter') as $type) {
-        foreach ($this->view->$type as $key => $handler) {
-          if ($handler->is_exposed()) {
+      foreach ($this->handlers as $type => $value) {
+        foreach ($this->view->$type as $id => $handler) {
+          if ($handler->can_expose() && $handler->is_exposed()) {
             // one is all we need; if we find it, return true.
             $this->has_exposed = TRUE;
             return TRUE;
