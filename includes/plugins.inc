@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.152 2009-01-07 23:31:12 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.152.2.1 2009-05-20 03:03:38 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -233,6 +233,18 @@ function views_views_plugins() {
         'handler' => 'views_plugin_access_perm',
         'uses options' => TRUE,
         'help topic' => 'access-perm',
+      ),
+    ),
+    'query' => array(
+      'parent' => array(
+        'no ui' => TRUE,
+        'handler' => 'views_plugin_query',
+        'parent' => '',
+      ),
+      'views_query' => array(
+        'title' => t('SQL Query'),
+        'help' => t('Query will be generated and run using the Drupal database API.'),
+        'handler' => 'views_plugin_query_default'
       ),
     ),
   );
