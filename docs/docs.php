@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.13.2.1 2009-06-01 22:48:14 merlinofchaos Exp $
+// $Id: docs.php,v 1.13.2.2 2009-06-01 23:33:38 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -503,6 +503,17 @@ function hook_views_default_views() {
 
   // At the end, return array of default views.
   return $views;
+}
+
+/**
+ * This hook is called right before all default views are cached to the
+ * database. It takes a keyed array of views by reference.
+ */
+function hook_views_default_views_alter(&$views) {
+  if (isset($views['taxonomy_term'])) {
+    $views['taxonomy_term']->set_display('default');
+    $views['taxonomy_term']->display_handler->set_option('title', 'Categories');
+  }
 }
 
 /**
