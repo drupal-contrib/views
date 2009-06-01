@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.50 2009-01-08 00:36:02 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.51 2009-06-01 21:29:11 merlinofchaos Exp $
 /**
  * @file
  *
@@ -219,6 +219,7 @@ function taxonomy_views_data() {
       'hierarchy table' => 'term_hierarchy',
       'numeric' => TRUE,
       'skip base' => 'term_data',
+      'allow empty' => TRUE,
     ),
   );
 
