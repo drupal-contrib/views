@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.43 2009-06-01 20:11:46 merlinofchaos Exp $
+// $Id: query.inc,v 1.44 2009-06-01 23:18:08 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -664,7 +664,7 @@ class views_query {
     $groups = &$this->$where;
 
     if (!isset($group)) {
-      $group = max(array_keys($groups)) + 1;
+      $group = empty($groups) ? 1 : max(array_keys($groups)) + 1;
     }
 
     // Create an empty group
