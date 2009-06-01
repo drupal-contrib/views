@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.6.2.1 2009-05-20 03:09:36 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.6.2.2 2009-06-01 21:30:00 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -163,8 +163,8 @@ class views_handler_filter extends views_handler {
   function show_value_form(&$form, &$form_state) {
     $this->value_form($form, $form_state);
     if (empty($this->no_operator)) {
-      $form['value']['#prefix'] = '<div class="views-right-70">';
-      $form['value']['#suffix'] = '</div>';
+      $form['value']['#prefix'] = '<div class="views-right-70">' . (isset($form['value']['#prefix']) ? $form['value']['#prefix'] : '');
+      $form['value']['#suffix'] = (isset($form['value']['#suffix']) ? $form['value']['#suffix'] : '') . '</div>';
     }
   }
 
