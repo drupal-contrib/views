@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.1 2009-05-20 03:03:38 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.2 2009-06-01 23:18:08 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -665,7 +665,7 @@ class views_plugin_query_default extends views_plugin_query{
     $groups = &$this->$where;
 
     if (!isset($group)) {
-      $group = max(array_keys($groups)) + 1;
+      $group = empty($groups) ? 1 : max(array_keys($groups)) + 1;
     }
 
     // Create an empty group
