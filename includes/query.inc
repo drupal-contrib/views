@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.42 2009-03-24 23:06:24 merlinofchaos Exp $
+// $Id: query.inc,v 1.43 2009-06-01 20:11:46 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -205,12 +205,6 @@ class views_query {
       'base' => $base,
     );
     return $alias;
-
-    return $alias;
-/*
-    if ($alias = $this->add_table($join->table, $link_point, $join, $alias)) {
-    }
-*/
   }
 
   /**
