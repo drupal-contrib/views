@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.93 2009-04-08 20:54:57 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.94 2009-06-01 20:13:29 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -317,6 +317,60 @@ function node_views_data() {
     'help' => t('In the form of WW (01 - 53).'),
     'argument' => array(
       'field' => 'created',
+      'handler' => 'views_handler_argument_node_created_week',
+    ),
+  );
+
+  $data['node']['changed_fulldate'] = array(
+    'title' => t('Updated date'),
+    'help' => t('In the form of CCYYMMDD.'),
+    'argument' => array(
+      'field' => 'changed',
+      'handler' => 'views_handler_argument_node_created_fulldate',
+    ),
+  );
+
+  $data['node']['changed_year_month'] = array(
+    'title' => t('Updated year + month'),
+    'help' => t('In the form of YYYYMM.'),
+    'argument' => array(
+      'field' => 'changed',
+      'handler' => 'views_handler_argument_node_created_year_month',
+    ),
+  );
+
+  $data['node']['changed_year'] = array(
+    'title' => t('Updated year'),
+    'help' => t('In the form of YYYY.'),
+    'argument' => array(
+      'field' => 'changed',
+      'handler' => 'views_handler_argument_node_created_year',
+    ),
+  );
+
+  $data['node']['changed_month'] = array(
+    'title' => t('Updated month'),
+    'help' => t('In the form of MM (01 - 12).'),
+    'argument' => array(
+      'field' => 'changed',
+      'handler' => 'views_handler_argument_node_created_month',
+    ),
+  );
+
+  $data['node']['changed_day'] = array(
+    'title' => t('Updated day'),
+    'help' => t('In the form of DD (01 - 31).'),
+    'argument' => array(
+      'field' => 'changed',
+      'handler' => 'views_handler_argument_node_created_day',
+    ),
+  );
+
+  $data['node']['changed_week'] = array(
+    'title' => t('Updated week'),
+    'help' => t('In the form of WW (01 - 53).'),
+    'argument' => array(
+      'field' => 'changed',
       'handler' => 'views_handler_argument_node_created_week',
     ),
   );
