@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.1 2009-06-02 18:42:52 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.2 2009-06-02 19:58:05 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -107,7 +107,7 @@ function template_preprocess_views_view(&$vars) {
       ),
     );
 
-    drupal_alter('views_admin_links', $vars['admin_links_raw']);
+    drupal_alter('views_admin_links', $vars['admin_links_raw'], $view);
     $vars['admin_links'] = theme('links', $vars['admin_links_raw']);
     views_add_css('views');
   }
