@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.75 2009-06-02 19:58:00 merlinofchaos Exp $
+// $Id: theme.inc,v 1.76 2009-06-02 20:28:52 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -438,7 +438,8 @@ function template_preprocess_views_view_unformatted(&$vars) {
   $vars['classes'] = array();
   // Set up striping values.
   foreach ($rows as $id => $row) {
-    $vars['classes'][$id] = 'views-row-' . ($id + 1);
+    $vars['classes'][$id] = 'views-row';
+    $vars['classes'][$id] .= ' views-row-' . ($id + 1);
     $vars['classes'][$id] .= ' views-row-' . ($id % 2 ? 'even' : 'odd');
     if ($id == 0) {
       $vars['classes'][$id] .= ' views-row-first';
