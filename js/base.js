@@ -1,4 +1,4 @@
-// $Id: base.js,v 1.10 2009-01-27 22:11:26 merlinofchaos Exp $
+// $Id: base.js,v 1.10.2.1 2009-06-02 18:45:40 merlinofchaos Exp $
 /**
  * @file base.js
  *
