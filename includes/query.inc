@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.44 2009-06-01 23:18:08 merlinofchaos Exp $
+// $Id: query.inc,v 1.45 2009-06-02 18:17:06 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -287,7 +287,12 @@ class views_query {
     }
 
     if (!$alias && $join && $relationship && !empty($join->adjusted) && $table != $join->table) {
-      $alias = $table;
+      if ($relationship == $this->base_table) {
+        $alias = $table;
+      }
+      else {
+        $alias = $relationship . '_' . $table;
+      }
     }
 
     // Check this again to make sure we don't blow up existing aliases for already
