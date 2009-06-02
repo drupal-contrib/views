@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.50.2.2 2009-06-02 19:13:22 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.50.2.3 2009-06-02 19:22:55 merlinofchaos Exp $
 /**
  * @file
  *
@@ -130,7 +130,7 @@ function taxonomy_views_data() {
       'handler' => 'views_handler_argument_string',
       'help' => t('Taxonomy term name.'),
       'many to one' => TRUE,
-      'empty name field' => t('Uncategorized'),
+      'empty field name' => t('Uncategorized'),
     ),
   );
 
@@ -209,7 +209,7 @@ function taxonomy_views_data() {
       'handler' => 'views_handler_argument_term_node_tid',
       'name table' => 'term_data',
       'name field' => 'name',
-      'empty name field' => t('Uncategorized'),
+      'empty field name' => t('Uncategorized'),
       'numeric' => TRUE,
       'skip base' => 'term_data',
     ),
@@ -298,7 +298,7 @@ function taxonomy_views_data() {
     'argument' => array(
       'handler' => 'views_handler_argument_string',
       'many to one' => TRUE,
-      'empty name field' => t('Uncategorized'),
+      'empty field name' => t('Uncategorized'),
     ),
   );
   return $data;
