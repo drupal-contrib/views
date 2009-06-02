@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.50.2.1 2009-06-01 21:30:00 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.50.2.2 2009-06-02 19:13:22 merlinofchaos Exp $
 /**
  * @file
  *
@@ -263,6 +263,10 @@ function taxonomy_views_data() {
       'field' => 'parent',
       'label' => t('Parent'),
     ),
+    'argument' => array(
+      'help' => t('The parent term of the term.'),
+      'handler' => 'views_handler_argument_numeric',
+    ),    
   );
 
   // ----------------------------------------------------------------------
