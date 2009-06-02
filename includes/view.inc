@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.4 2009-06-02 19:38:29 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.5 2009-06-02 20:00:39 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -470,6 +470,9 @@ class view extends views_db_object {
           $argument->query();
         }
 
+        // Add this argument's substitution
+        $substitutions['%' . ($position + 1)] = $arg_title;
+
         // Since we're really generating the breadcrumb for the item above us,
         // check the default action of this argument.
         if ($this->display_handler->uses_breadcrumb() && $argument->uses_breadcrumb()) {
@@ -487,9 +490,6 @@ class view extends views_db_object {
         if (!empty($argument->options['title'])) {
           $title = $argument->options['title'];
         }
-
-        // Add this argument's substitution
-        $substitutions['%' . ($position + 1)] = $arg_title;
 
         $breadcrumb_args[] = $arg;
       }
