@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.3 2009-06-02 20:07:58 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.4 2009-06-02 21:59:32 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2742,6 +2742,7 @@ function views_ui_admin_tools() {
   );
 
   $regions = system_region_list(variable_get('theme_default', 'garland'));
+  $regions['watchdog'] = t('Watchdog');
 
   $form['views_devel_region'] = array(
     '#type' => 'select',
