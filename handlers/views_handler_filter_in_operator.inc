@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_in_operator.inc,v 1.8 2009-06-01 22:33:49 merlinofchaos Exp $
+// $Id: views_handler_filter_in_operator.inc,v 1.9 2009-06-02 18:22:20 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of multiple options selectable via checkboxes
  *
@@ -222,11 +222,11 @@ class views_handler_filter_in_operator extends views_handler_filter {
       else if (is_object($option)) {
         $keys = array_keys($option->option);
         $key = array_shift($keys);
-        if (isset($this->value[$key])) {
+        if (isset($this->options['value'][$key])) {
           $options[$id] = $option;
         }
       }
-      else if (isset($this->value[$id])) {
+      else if (isset($this->options['value'][$id])) {
         $options[$id] = $option;
       }
     }
