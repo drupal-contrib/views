@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.158 2009-06-02 21:59:30 merlinofchaos Exp $
+// $Id: admin.inc,v 1.159 2009-06-03 00:12:24 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1316,7 +1316,7 @@ function views_ui_regenerate_tabs(&$view, $display_id = NULL, $object = NULL) {
   foreach ($displays as $id) {
     list($title, $body) = views_ui_display_tab($view, $view->display[$id]);
     $object->replace['#views-tab-' . $id] = $body;
-    $object->replace['#views-tab-title-' . $id] = $title;
+    $object->replace['#views-tab-title-' . $id] = check_plain($title);
   }
 
   if (!empty($view->changed)) {
