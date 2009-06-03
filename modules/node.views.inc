@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.95 2009-06-02 20:09:33 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.96 2009-06-03 02:16:48 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -514,6 +514,39 @@ function node_views_data() {
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_date',
+    ),
+  );
+
+  // input format id
+  $data['node_revisions']['format'] = array(
+    'title' => t('Input format id'), // The item it appears as on the UI,
+    'help' => t('The numeric input format of the node revision. !default means the default input format.', array('!default' => FILTER_FORMAT_DEFAULT)), // The help that appears on the UI,
+     // Information for displaying an input format as a field
+    'field' => array(
+      'handler' => 'views_handler_field_numeric',
+      'click sortable' => TRUE,
+    ),
+    // Information for sorting on input format
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+    // Information for accepting input format as a filter
+    'filter' => array(
+      'handler' => 'views_handler_filter_numeric',
+    ),
+  );
+
+  // input format name
+  // A (numeric) format of 0 means the default; Drupal also applies the default
+  // if the format specifed for a node revision has been deleted.
+  // This complexity makes sorting and filtering by format name tricky,
+  // hence these are not yet supported.
+  $data['node_revisions']['format_name'] = array(
+    'title' => t('Input format'), // The item it appears as on the UI,
+    'help' => t('The name of the input format of the node revision.'), // The help that appears on the UI,
+     // Information for displaying an input format as a field
+    'field' => array(
+      'handler' => 'views_handler_field_filter_format_name',
     ),
   );
 
