@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.6.2.3 2009-06-03 00:00:55 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.6.2.4 2009-06-03 00:05:36 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -373,7 +373,7 @@ class views_handler_filter extends views_handler {
   /**
    * Tell the renderer about our exposed form. This only needs to be
    * overridden for particularly complex forms. And maybe not even then.
-   * 
+   *
    * @return
    *   An array with the following keys:
    *   - operator: The $form key of the operator. Set to NULL if no operator.
@@ -476,7 +476,6 @@ class views_handler_filter extends views_handler {
       }
 
       $session[$this->options['expose']['identifier']] = $input[$this->options['expose']['identifier']];
-      vsm_trace();
     }
   }
 
