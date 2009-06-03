@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.337 2009-06-02 21:59:30 merlinofchaos Exp $
+// $Id: views.module,v 1.338 2009-06-03 00:01:00 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -939,15 +939,14 @@ function views_exposed_form(&$form_state) {
   $view = &$form_state['view'];
   $display = &$form_state['display'];
 
-  // Check if the form was already created
-  if ($cache = views_exposed_form_cache($view->name, $view->current_display)) {
-    return $cache;
-  }
-
   $form_state['input'] = $view->get_exposed_input();
 
   // Let form plugins know this is for exposed widgets.
   $form_state['exposed'] = TRUE;
+  // Check if the form was already created
+  if ($cache = views_exposed_form_cache($view->name, $view->current_display)) {
+    return $cache;
+  }
 
   $form['#info'] = array();
 
