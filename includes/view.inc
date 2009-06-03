@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.7 2009-06-02 22:35:54 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.8 2009-06-03 00:00:55 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1397,7 +1397,7 @@ class view extends views_db_object {
   function clone_view() {
     $clone = version_compare(phpversion(), '5.0') < 0 ? $this : clone($this);
 
-    $keys = array('current_display', 'display_handler', 'build_info', 'built', 'executed', 'attachment_before', 'attachment_after', 'field', 'argument', 'filter', 'sort', 'relationship', 'query', 'result', 'inited', 'style_plugin', 'plugin_name', 'exposed_data', 'exposed_input', 'many_to_one_tables');
+    $keys = array('current_display', 'display_handler', 'build_info', 'built', 'executed', 'attachment_before', 'attachment_after', 'field', 'argument', 'filter', 'sort', 'relationship', 'query', 'inited', 'style_plugin', 'plugin_name', 'exposed_data', 'exposed_input', 'many_to_one_tables');
     foreach ($keys as $key) {
       if (isset($clone->$key)) {
         unset($clone->$key);
@@ -1407,6 +1407,7 @@ class view extends views_db_object {
     $clone->build_info = array();
     $clone->attachment_before = '';
     $clone->attachment_after = '';
+    $clone->result = array();
 
     // shallow cloning means that all the display objects
     // *were not cloned*. We must clone them ourselves.

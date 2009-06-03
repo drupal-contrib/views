@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.6.2.2 2009-06-01 21:30:00 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.6.2.3 2009-06-03 00:00:55 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -476,6 +476,7 @@ class views_handler_filter extends views_handler {
       }
 
       $session[$this->options['expose']['identifier']] = $input[$this->options['expose']['identifier']];
+      vsm_trace();
     }
   }
 
