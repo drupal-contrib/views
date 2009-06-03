@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.8 2009-06-03 00:00:55 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.9 2009-06-03 23:40:06 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -733,6 +733,10 @@ class view extends views_db_object {
       vpr('Used cached output');
     }
     else {
+      if ($cache) {
+        $cache->cache_start();
+      }
+
       // Initialize the style plugin.
       $this->init_style();
 
