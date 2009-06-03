@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.4 2009-06-03 18:01:51 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.5 2009-06-03 19:56:11 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -473,7 +473,6 @@ class views_handler_field extends views_handler {
     if (!empty($this->options['alter']['ellipsis'])) {
       $value .= '...';
     }
-    dsm($value);
 
     if (!empty($this->options['alter']['html'])) {
       $value = _filter_htmlcorrector($value);
