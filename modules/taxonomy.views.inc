@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.53 2009-06-02 19:23:00 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.54 2009-06-05 01:26:35 merlinofchaos Exp $
 /**
  * @file
  *
@@ -317,6 +317,9 @@ function taxonomy_views_data_alter(&$data) {
       'handler' => 'views_handler_argument_term_node_tid_depth',
       'accept depth modifier' => TRUE,
     ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_term_node_tid_depth',
+    ),
   );
 
   $data['node']['term_node_tid_depth_modifier'] = array(
@@ -365,6 +368,9 @@ function taxonomy_views_handlers() {
       ),
       'views_handler_filter_term_node_tid' => array(
         'parent' => 'views_handler_filter_many_to_one',
+      ),
+      'views_handler_filter_term_node_tid_depth' => array(
+        'parent' => 'views_handler_filter_term_node_tid',
       ),
     ),
   );
