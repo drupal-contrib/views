@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_in_operator.inc,v 1.9 2009-06-02 18:22:20 merlinofchaos Exp $
+// $Id: views_handler_filter_in_operator.inc,v 1.10 2009-06-10 22:04:57 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of multiple options selectable via checkboxes
  *
@@ -173,6 +173,11 @@ class views_handler_filter_in_operator extends views_handler_filter {
     }
 
     if ($which == 'all' || $which == 'value') {
+      if ($this->value_form_type == 'checkboxes') {
+        foreach ($options as $key => $option) {
+          $options[$key] = check_plain($option);
+        }
+      }
       $form['value'] = array(
         '#type' => $this->value_form_type,
         '#title' => $this->value_title,
