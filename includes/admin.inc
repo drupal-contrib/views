@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.5 2009-06-03 00:12:15 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.6 2009-06-10 22:02:26 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2774,8 +2774,6 @@ function views_ui_tools_clear_cache() {
  * a templates rescan).
  */
 function views_ui_config_item_form_rescan($form, &$form_state) {
-  // Clear *all* theme registry entries:
-  cache_clear_all('theme_registry:', 'cache', TRUE);
   drupal_rebuild_theme_registry();
 
   // The 'Theme: Information' page is about to be shown again. That page
@@ -2787,6 +2785,18 @@ function views_ui_config_item_form_rescan($form, &$form_state) {
   unset($GLOBALS['theme']);
   init_theme();
 
+  $form_state['rerender'] = TRUE;
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Override handler for views_ui_edit_display_form
+ */
+function views_ui_edit_display_form_change_theme($form, &$form_state) {
+  // This is just a temporary variable.
+  $form_state['view']->theme = $form_state['values']['theme'];
+
+  views_ui_cache_set($form_state['view']);
   $form_state['rerender'] = TRUE;
   $form_state['rebuild'] = TRUE;
 }
