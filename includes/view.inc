@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.161 2009-06-17 18:30:27 merlinofchaos Exp $
+// $Id: view.inc,v 1.162 2009-06-17 18:31:00 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -820,7 +820,7 @@ class view extends views_db_object {
 
       // Let the theme play too, because pre render is a very themey thing.
       $function = $GLOBALS['theme'] . '_views_pre_render';
-      if (function_exists($function) {
+      if (function_exists($function)) {
         $function($this, $this->display_handler->output, $cache);
       }
 
@@ -849,7 +849,7 @@ class view extends views_db_object {
 
     // Let the theme play too, because post render is a very themey thing.
     $function = $GLOBALS['theme'] . '_views_post_render';
-    if (function_exists($function) {
+    if (function_exists($function)) {
       $function($this, $this->display_handler->output, $cache);
     }
 
