@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.159 2009-06-04 18:40:45 merlinofchaos Exp $
+// $Id: view.inc,v 1.160 2009-06-17 18:25:03 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -818,6 +818,12 @@ class view extends views_db_object {
         $function($this);
       }
 
+      // Let the theme play too, because pre render is a very themey thing.
+      $function = $GLOBALS['theme']) . '_views_pre_render';
+      if (function_exists($function) {
+        $function($this, $this->display_handler->output, $cache);
+      }
+
       // Give field handlers the opportunity to perform additional queries
       // using the entire resultset prior to rendering.
       if ($this->style_plugin->uses_fields()) {
@@ -831,6 +837,20 @@ class view extends views_db_object {
       if ($cache) {
         $cache->cache_set('output');
       }
+    }
+
+    $cache->post_render($this, $this->display_handler->output);
+
+    // Let modules modify the view output after it is rendered.
+    foreach (module_implements('views_post_render') as $module) {
+      $function = $module . '_views_post_render';
+      $function($this, $this->display_handler->output, $cache);
+    }
+
+    // Let the theme play too, because post render is a very themey thing.
+    $function = $GLOBALS['theme']) . '_views_post_render';
+    if (function_exists($function) {
+      $function($this, $this->display_handler->output, $cache);
     }
 
     if (!empty($this->live_preview) && variable_get('views_show_additional_queries', FALSE)) {
