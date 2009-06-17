@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_cache.inc,v 1.3 2009-06-17 18:25:03 merlinofchaos Exp $
+// $Id: views_plugin_cache.inc,v 1.4 2009-06-17 19:57:03 merlinofchaos Exp $
 
 /**
  * The base plugin to handle caching.
@@ -154,7 +154,7 @@ class views_plugin_cache extends views_plugin {
    * All of the cached result data will be available in $view->result, as well,
    * so all ids used in the query should be discoverable.
    */
-  function post_render(&$view, &$output) { }
+  function post_render(&$output) { }
 
   /**
    * Start caching javascript, css and other out of band info.
