@@ -1,4 +1,6 @@
 CHANGELOG for Views 2 for Drupal 6
+    o #488908 by sl27257: "Node: Has new content" only worked when exposed.
+
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
 
