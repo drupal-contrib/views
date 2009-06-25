@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.93.2.3 2009-06-03 02:16:42 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.93.2.4 2009-06-25 21:56:15 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -375,6 +375,18 @@ function node_views_data() {
     ),
   );
 
+  // uid field
+  $data['node']['uid'] = array(
+    'title' => t('Author'),
+    'help' => t('Relate a node to the user who created it.'),
+    'relationship' => array(
+      'handler' => 'views_handler_relationship',
+      'base' => 'users',
+      'field' => 'uid',
+      'label' => t('user'),
+    ),
+  );
+  
   // ----------------------------------------------------------------------
   // Node revisions table
 
@@ -398,7 +410,7 @@ function node_views_data() {
     ),
   );
 
-  // uid field
+  // uid field for node revisions
   $data['node_revisions']['uid'] = array(
     'title' => t('User'),
     'help' => t('Relate a node revision to the user who created the revision.'),
@@ -406,7 +418,7 @@ function node_views_data() {
       'handler' => 'views_handler_relationship',
       'base' => 'users',
       'field' => 'uid',
-      'label' => t('user'),
+      'label' => t('revision user'),
     ),
   );
 

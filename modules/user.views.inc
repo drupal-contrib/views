@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.56.2.1 2009-06-02 20:18:31 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.56.2.2 2009-06-25 21:56:17 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -61,6 +61,14 @@ function user_views_data() {
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
+    ),
+    'relationship' => array(
+      'title' => t('Nodes authored'),
+      'help' => t('Relate nodes to the user who created it. This relationship will create one record for every node created by the user.'),
+      'handler' => 'views_handler_relationship',
+      'base' => 'node',
+      'field' => 'uid',
+      'label' => t('nodes'),
     ),
   );
 
