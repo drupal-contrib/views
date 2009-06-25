@@ -10,6 +10,7 @@ CHANGELOG for Views 2 for Drupal 6
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
 	o #501552 by neclimdul: Work around a core bug with DISTINCT on nodes.
+	o #430068 by overall and aclight: Improvements to the global "counter" field.
 
 Views 2.6
   Bugs fixed:
