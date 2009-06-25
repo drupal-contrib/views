@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.164 2009-06-18 19:27:32 merlinofchaos Exp $
+// $Id: view.inc,v 1.165 2009-06-25 22:06:55 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -788,6 +788,8 @@ class view extends views_db_object {
     if (!empty($this->build_info['fail'])) {
       return;
     }
+
+    init_theme();
 
     $start = views_microtime();
     if (!empty($this->live_preview) && variable_get('views_show_additional_queries', FALSE)) {
