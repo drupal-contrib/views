@@ -4,6 +4,7 @@ CHANGELOG for Views 2 for Drupal 6
     o #488908 by sl27257: "Node: Has new content" only worked when exposed.
 	o #451110 by wonder95: Fixed missing word in transform case help text.
 	o #385904 by JirkaRybka: Prevent duplication of id edit-submit on views exposed form.
+	o #489888 by TheRec: Remove erroneous "alt" attribute from <a> when using link rewriting.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
