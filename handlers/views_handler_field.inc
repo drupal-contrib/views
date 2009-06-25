@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.7 2009-06-25 22:26:50 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.8 2009-06-25 22:54:34 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -263,7 +263,7 @@ class views_handler_field extends views_handler {
         '#title' => t('Target'),
         '#type' => 'textfield',
         '#default_value' => $this->options['alter']['target'],
-        '#description' => t('Target of the link, such as _blank, _parent or an iframe's name. This field is rarely used.'),
+        '#description' => t("Target of the link, such as _blank, _parent or an iframe's name. This field is rarely used."),
         '#process' => array('views_process_dependency'),
         '#dependency' => array(
           'edit-options-alter-make-link' => array(1)
