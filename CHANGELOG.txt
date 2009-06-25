@@ -2,6 +2,7 @@ CHANGELOG for Views 2 for Drupal 6
   Bug fixes:
     o Table style when not overriding sorts put sorts in wrong order.
     o #488908 by sl27257: "Node: Has new content" only worked when exposed.
+	o #451110 by wonder95: Fixed missing word in transform case help text.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
