@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.5 2009-06-03 19:56:11 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.6 2009-06-25 22:04:27 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -518,7 +518,6 @@ class views_handler_field extends views_handler {
     $alt = strtr($alt, $tokens);
     if ($alt) {
       $options['attributes']['title'] = $alt;
-      $options['attributes']['alt'] = $alt;
     }
 
     $class = $this->options['alter']['link_class'];
