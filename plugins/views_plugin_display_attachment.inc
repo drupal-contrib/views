@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_attachment.inc,v 1.3.2.1 2009-05-20 02:52:52 merlinofchaos Exp $
+// $Id: views_plugin_display_attachment.inc,v 1.3.2.2 2009-06-25 22:19:37 merlinofchaos Exp $
 /**
  * @file
  * Contains the attachment display plugin.
@@ -174,6 +174,10 @@ class views_plugin_display_attachment extends views_plugin_display {
     $displays = $this->get_option('displays');
 
     if (empty($displays[$display_id])) {
+      return;
+    }
+
+    if (!$this->access()) {
       return;
     }
 
