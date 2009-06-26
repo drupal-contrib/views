@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.22 2009-06-25 22:54:40 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.23 2009-06-26 00:23:42 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -637,7 +637,7 @@ class views_handler_field extends views_handler {
  * A special handler to take the place of missing or broken handlers.
  */
 class views_handler_field_broken extends views_handler_field {
-  function ui_name() {
+  function ui_name($short = FALSE) {
     return t('Broken/missing handler');
   }
 
