@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_feed.inc,v 1.5 2009-06-26 00:23:42 merlinofchaos Exp $
+// $Id: views_plugin_display_feed.inc,v 1.6 2009-06-30 17:25:51 merlinofchaos Exp $
 /**
  * @file
  * Contains the feed display plugin.
@@ -191,5 +191,9 @@ class views_plugin_display_feed extends views_plugin_display_page {
       $clone->build_title();
       $plugin->attach_to($display_id, $this->get_path(), $clone->get_title());
     }
+  }
+  
+  function uses_link_display() {
+    return TRUE;
   }
 }

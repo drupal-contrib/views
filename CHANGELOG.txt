@@ -8,6 +8,7 @@ CHANGELOG for Views 2 for Drupal 6
 	o #499078 by Darren Oh: Make sure theme is initialized for pre_render hook.
 	o #490516 by v_20q: Some fields not properly being marked as translatable due to option unpacking bug.
 	o #484222 by dereine: Attachment displays were ignoring access settings.
+	o #503098 by Davide Goode: Feed displays should have link displays since they link to a page display.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
