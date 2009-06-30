@@ -10,6 +10,7 @@ CHANGELOG for Views 2 for Drupal 6
 	o #484222 by dereine: Attachment displays were ignoring access settings.
 	o #503098 by Davide Goode: Feed displays should have link displays since they link to a page display.
 	o #381346 by ayalon: Allow Taxonomy: Tid as a field, which is now needed for rewrites which may need tids.
+	o #485296 by overall and deekayen: Remove unnecessary t() call.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
