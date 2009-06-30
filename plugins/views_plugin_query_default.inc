@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.4 2009-06-30 17:21:03 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.5 2009-06-30 19:28:34 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -894,6 +894,7 @@ class views_plugin_query_default extends views_plugin_query{
     if (empty($this->no_distinct) && $this->distinct && !empty($this->fields)) {
       if (!empty($this->fields[$this->base_field])) {
         $this->fields[$this->base_field]['distinct'] = TRUE;
+        $this->add_groupby($this->base_field);
       }
     }
 
@@ -946,6 +947,9 @@ class views_plugin_query_default extends views_plugin_query{
       if (!empty($field['count'])) {
         $string = "COUNT($string)";
         $has_aggregate = TRUE;
+      }
+      elseif ($this->distinct && !in_array($fieldname, $this->groupby)) {
+        $string = $GLOBALS['db_type'] == 'pgsql' ? "FIRST($string)" : $string;
       }
       else {
         $non_aggregates[] = $fieldname;
