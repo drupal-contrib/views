@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.46 2009-06-25 17:50:33 merlinofchaos Exp $
+// $Id: query.inc,v 1.47 2009-06-30 19:28:44 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -893,6 +893,7 @@ class views_query {
     if (empty($this->no_distinct) && $this->distinct && !empty($this->fields)) {
       if (!empty($this->fields[$this->base_field])) {
         $this->fields[$this->base_field]['distinct'] = TRUE;
+        $this->add_groupby($this->base_field);
       }
     }
 
@@ -949,6 +950,9 @@ class views_query {
       }
       else if (!empty($field['aggregate'])) {
         $has_aggregate = TRUE;
+      }
+      elseif ($this->distinct && !in_array($fieldname, $this->groupby)) {
+        $string = $GLOBALS['db_type'] == 'pgsql' ? "FIRST($string)" : $string;
       }
       else {
         $non_aggregates[] = $fieldname;

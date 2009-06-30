@@ -11,6 +11,7 @@ CHANGELOG for Views 2 for Drupal 6
 	o #503098 by Davide Goode: Feed displays should have link displays since they link to a page display.
 	o #381346 by ayalon: Allow Taxonomy: Tid as a field, which is now needed for rewrites which may need tids.
 	o #485296 by overall and deekayen: Remove unnecessary t() call.
+	o #460838 by Darren Oh: Make DISTINCT more distinct.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
