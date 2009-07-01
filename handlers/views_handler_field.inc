@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.24 2009-06-30 19:09:54 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.25 2009-07-01 21:16:41 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -282,7 +282,8 @@ class views_handler_field extends views_handler {
       }
       $count = 0; // This lets us prepare the key as we want it printed.
       foreach ($this->view->display_handler->get_handlers('argument') as $arg => $handler) {
-        $options[t('Arguments')]['%' . ++$count] = $handler->ui_name();
+        $options[t('Arguments')]['%' . ++$count] = t('@argument title', array('@argument' => $handler->ui_name()));
+        $options[t('Arguments')]['!' . $count] = t('@argument input', array('@argument' => $handler->ui_name()));
       }
 
       // Default text.
@@ -577,6 +578,8 @@ class views_handler_field extends views_handler {
       if (!isset($tokens[$token])) {
         $tokens[$token] = '';
       }
+
+      $tokens['!' . $count] = isset($this->view->args[$count - 1]) ? check_plain($this->view->args[$count - 1]) : '';
     }
 
     // Now add replacements for our fields.
