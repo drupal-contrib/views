@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.11 2009-07-01 21:16:34 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.12 2009-07-01 21:59:11 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -513,7 +513,9 @@ class views_handler_field extends views_handler {
     $path = $this->options['alter']['path'];
 
     // Use strip tags as there should never be HTML in the path.
-    $path = strip_tags(strtr($path, $tokens));
+    // However, we need to preserve special characters like " that
+    // were removed by check_plain().
+    $path = strip_tags(html_entity_decode(strtr($path, $tokens)));
 
     // Parse the URL and move any query and fragment parameters out of the path.
     $url = parse_url($path);

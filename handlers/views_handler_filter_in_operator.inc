@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_in_operator.inc,v 1.6.2.4 2009-06-10 22:05:24 merlinofchaos Exp $
+// $Id: views_handler_filter_in_operator.inc,v 1.6.2.5 2009-07-01 21:59:11 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of multiple options selectable via checkboxes
  *
@@ -205,6 +205,7 @@ class views_handler_filter_in_operator extends views_handler_filter {
         );
       }
     }
+    dsm($form_state['input']);
   }
 
   /**
@@ -268,7 +269,6 @@ class views_handler_filter_in_operator extends views_handler_filter {
     // instead.
 
     $form_state['values']['options']['value'] = $form['value']['#value'];
-//    $form_state['values']['options']['value'] = array_filter($form_state['values']['options']['value']);
   }
 
   function admin_summary() {
