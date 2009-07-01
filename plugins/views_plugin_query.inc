@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.2.1 2009-05-20 03:03:38 merlinofchaos Exp $
+// $Id: views_plugin_query.inc,v 1.1.2.2 2009-07-01 15:36:26 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the base query class, which is the underlying layer in a View.
@@ -42,4 +42,12 @@ class views_plugin_query extends views_plugin {
    * $view->pager['current_page'].
    */
   function execute(&$view) {  }
+
+  /**
+   * Add a signature to the query, if such a thing is feasible.
+   *
+   * This signature is something that can be used when perusing query logs to
+   * discern where particular queries might be coming from.
+   */
+  function add_signature(&$view) { }
 }

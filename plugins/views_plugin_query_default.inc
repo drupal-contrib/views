@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.5 2009-06-30 19:28:34 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.6 2009-07-01 15:36:26 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1105,4 +1105,9 @@ class views_plugin_query_default extends views_plugin_query{
     }
     $view->execute_time = views_microtime() - $start;
   }
+
+  function add_signature(&$view) {
+    $view->query->add_field(NULL, "'" . $view->name . ':' . $view->current_display . "'", 'view_name');
+  }
+
 }
