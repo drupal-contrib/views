@@ -16,6 +16,7 @@ CHANGELOG for Views 2 for Drupal 6
     o #506098: Table sorting with no default was overriding sorts even tho it was not supposed to.
 	o #407538: Ensure views_break_phrase() will stop providing warnings on empty strings.
 	o #420850 by dereine: Commas should not be used to separate items in a profile list field.
+	o #482162 by agentrickard: link path needed further sanitization to properly encode special characters.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
