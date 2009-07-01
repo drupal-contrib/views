@@ -17,6 +17,7 @@ CHANGELOG for Views 2 for Drupal 6
 	o #407538: Ensure views_break_phrase() will stop providing warnings on empty strings.
 	o #420850 by dereine: Commas should not be used to separate items in a profile list field.
 	o #482162 by agentrickard: link path needed further sanitization to properly encode special characters.
+	o Tables would not accept 0 as having data so columns with zeroes would lose data when merging with other columns.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
