@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.109.2.4 2009-06-03 02:16:42 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.109.2.5 2009-07-01 06:13:42 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1324,8 +1324,23 @@ class views_join {
    * Build the SQL for the join this object represents.
    */
   function join($table, &$query) {
-    $left = $query->get_table_info($this->left_table);
-    $output = " $this->type JOIN {" . $this->table . "} $table[alias] ON $left[alias].$this->left_field = $table[alias].$this->field";
+    if (empty($this->definition['table formula'])) {
+      $right_table = "{" . $this->table . "}";
+    }
+    else {
+      $right_table = $this->definition['table formula'];
+    }
+
+    if ($this->left_table) {
+      $left = $query->get_table_info($this->left_table);
+      $left_field = "$left[alias].$this->left_field";
+    }
+    else {
+      // This can be used if left_field is a formula or something. It should be used only *very* rarely.
+      $left_field = $this->left_field;
+    }
+
+    $output = " $this->type JOIN $right_table $table[alias] ON $left_field = $table[alias].$this->field";
 
     // Tack on the extra.
     if (isset($this->extra)) {
