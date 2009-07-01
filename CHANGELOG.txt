@@ -14,6 +14,7 @@ CHANGELOG for Views 2 for Drupal 6
 	o #460838 by Darren Oh: Make DISTINCT more distinct.
 	o #503774 by dereine: Cache time failed to return the proper cutoff time.
     o #506098: Table sorting with no default was overriding sorts even tho it was not supposed to.
+	o #407538: Ensure views_break_phrase() will stop providing warnings on empty strings.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.

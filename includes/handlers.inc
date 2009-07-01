@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.115 2009-07-01 06:13:49 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.116 2009-07-01 16:11:35 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -787,6 +787,21 @@ function views_break_phrase($str, $filter = NULL) {
   if (!$filter) {
     $filter = new stdClass();
   }
+
+  // Set up defaults:
+
+  if (!isset($filter->value)) {
+    $filter->value = array();
+  }
+
+  if (!isset($filter->operator)) {
+    $filter->operator = 'or';
+  }
+
+  if (empty($str)) {
+    return $filter;
+  }
+
   if (preg_match('/^([0-9]+[+ ])+[0-9]+$/', $str)) {
     // The '+' character in a query string may be parsed as ' '.
     $filter->operator = 'or';
