@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.4 2009-07-01 21:59:11 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.5 2009-07-01 22:52:42 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -169,7 +169,7 @@ function template_preprocess_views_view_fields(&$vars) {
     // render this even if set to exclude so it can be used elsewhere.
     $field_output = $view->field[$id]->theme($vars['row']);
     $empty = $field_output !== 0 && empty($field_output);
-    if (empty($field->options['exclude']) && (!$empty || empty($field->options['hide_empty'])) {
+    if (empty($field->options['exclude']) && (!$empty || empty($field->options['hide_empty']))) {
       $object = new stdClass();
 
       $object->content = $field_output;
