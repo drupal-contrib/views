@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_prerender_list.inc,v 1.1.2.1 2009-07-01 23:06:44 merlinofchaos Exp $
+// $Id: views_handler_field_prerender_list.inc,v 1.1.2.2 2009-07-02 00:13:06 merlinofchaos Exp $
 
 /**
  * Field handler to provide a list of items.
@@ -17,7 +17,6 @@ class views_handler_field_prerender_list extends views_handler_field {
 
     $options['type'] = array('default' => 'separator');
     $options['separator'] = array('default' => ', ');
-    $options['empty'] = array('default' => '', 'translatable' => TRUE);
 
     return $options;
   }
@@ -42,13 +41,6 @@ class views_handler_field_prerender_list extends views_handler_field {
       '#process' => array('views_process_dependency'),
       '#dependency' => array('radio:options[type]' => array('separator')),
     );
-
-    $form['empty'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Empty list text'),
-      '#default_value' => $this->options['empty'],
-      '#description' => t('If the list is empty, you may enter text here that will be displayed.'),
-    );
   }
 
   /**
@@ -68,9 +60,6 @@ class views_handler_field_prerender_list extends views_handler_field {
         return theme('item_list', $this->items[$field], NULL, $this->options['type']);
       }
     }
-    else if (!empty($this->options['empty'])) {
-      return $this->options['empty'];
-    }
   }
 
   /**
@@ -87,9 +76,6 @@ class views_handler_field_prerender_list extends views_handler_field {
       else {
         return theme('item_list', $items, NULL, $this->options['type']);
       }
-    }
-    else if (!empty($this->options['empty'])) {
-      return $this->options['empty'];
     }
   }
 
