@@ -1,4 +1,4 @@
-// $Id: ajax_view.js,v 1.17.2.1 2009-06-02 19:30:40 merlinofchaos Exp $
+// $Id: ajax_view.js,v 1.17.2.2 2009-07-21 00:09:40 merlinofchaos Exp $
 
 /**
  * @file ajaxView.js
@@ -73,7 +73,7 @@ Drupal.behaviors.ViewsAjaxView = function() {
       })
       .addClass('views-processed')
       .submit(function () {
-        $('input[type=submit]', this).after('<span class="views-throbbing">&nbsp</span>');
+        $('input[type=submit], button', this).after('<span class="views-throbbing">&nbsp</span>');
         var object = this;
         $(this).ajaxSubmit({
           url: ajax_path,
