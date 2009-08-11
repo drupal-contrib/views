@@ -20,6 +20,7 @@ CHANGELOG for Views 2 for Drupal 6
     o Tables would not accept 0 as having data so columns with zeroes would lose data when merging with other columns.
     o #529164: Fatal typo in profile list field.
     o #537870 by dww: Fixed a bug in the [uplodate_fid-size] token where format_size() was called on it twice.
+    o #510910 by mfb: Fixed bug where multiple fields sharing a column in a table was broken so only the final field would display.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
