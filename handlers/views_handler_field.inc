@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.15 2009-08-12 00:07:46 dww Exp $
+// $Id: views_handler_field.inc,v 1.14.2.16 2009-08-21 23:58:38 dww Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -596,7 +596,8 @@ class views_handler_field extends views_handler {
     }
 
     $alt = strtr($alter['alt'], $tokens);
-    if ($alt) {
+    // Set the title attribute of the link only if it improves accessibility
+    if ($alt && $alt != $text) {
       $options['attributes']['title'] = $alt;
     }
 
