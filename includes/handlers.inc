@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.109.2.7 2009-09-15 15:57:37 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.109.2.8 2009-09-15 16:57:26 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -626,7 +626,7 @@ class views_many_to_one_helper {
     $form['reduce_duplicates'] = array(
       '#type' => 'checkbox',
       '#title' => t('Reduce duplicates'),
-      '#description' => t('This filter can cause items that have more than one of the selected options to appear as duplicate results. If this filter causes duplicate results to occur, this checkbox can reduce those duplicates; however, the more terms it has to search for, the less performant the query will be, so use this with caution.'),
+      '#description' => t('This filter can cause items that have more than one of the selected options to appear as duplicate results. If this filter causes duplicate results to occur, this checkbox can reduce those duplicates; however, the more terms it has to search for, the less performant the query will be, so use this with caution. Shouldn\'t be set on single-value fields, as it may cause values to disappear from display, if used on an incompatible field.'),
       '#default_value' => !empty($this->handler->options['reduce_duplicates']),
     );
   }
