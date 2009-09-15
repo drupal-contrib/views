@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.93.2.4 2009-06-25 21:56:15 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.93.2.5 2009-09-15 21:54:47 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -817,7 +817,6 @@ function template_preprocess_views_view_row_node(&$vars) {
  * Implementation of hook_views_query_substitutions().
  */
 function node_views_query_substitutions() {
-  global $language;
   return array(
     '***ADMINISTER_NODES***' => intval(user_access('administer nodes')),
   );
