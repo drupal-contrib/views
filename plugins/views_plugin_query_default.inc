@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.6 2009-07-01 15:36:26 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.7 2009-09-15 19:29:09 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -200,6 +200,11 @@ class views_plugin_query_default extends views_plugin_query{
     $count = 1;
     while (!empty($this->relationships[$alias])) {
       $alias = $alias_base . '_' . $count++;
+    }
+
+    // Make sure this join is adjusted for our relationship.
+    if ($link_point && isset($this->relationships[$link_point])) {
+      $join = $this->adjust_join($join, $link_point);
     }
 
     // Add the table directly to the queue to avoid accidentally marking
