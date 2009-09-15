@@ -36,7 +36,8 @@ Views 2.x-dev
     o #544098 by joachim: Fix validation quirks with defaulted handlers.
     o #485872 by dereine: Make sure views.css is always loaded for all users.
     o #442982 by killes: Make destroy() method more robust so that views are more readily reused.
-    
+    o #520558 by bdurbin: node access filter not properly checking 'view'.
+
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
 	o #501552 by neclimdul: Work around a core bug with DISTINCT on nodes.
