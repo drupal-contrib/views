@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.14 2009-09-15 17:57:04 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.15 2009-09-15 21:34:25 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1500,6 +1500,17 @@ class view extends views_db_object {
       if (isset($this->query)) {
         unset($this->query);
       }
+
+      $keys = array('current_display', 'display_handler', 'build_info', 'built', 'executed', 'attachment_before', 'attachment_after', 'field', 'argument', 'filter', 'sort', 'relationship', 'query', 'result', 'inited', 'style_plugin', 'plugin_name', 'exposed_data', 'exposed_input', 'many_to_one_tables');
+      foreach ($keys as $key) {
+        if (isset($this->$key)) {
+          unset($this->$key);
+        }
+      }
+      $this->built = $this->executed = FALSE;
+      $this->build_info = array();
+      $this->attachment_before = '';
+      $this->attachment_after = '';
     }
   }
 
