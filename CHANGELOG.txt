@@ -38,6 +38,7 @@ Views 2.x-dev
     o #442982 by killes: Make destroy() method more robust so that views are more readily reused.
     o #520558 by bdurbin: node access filter not properly checking 'view'.
     o #535424 by Hugo Wetterberg: Download file link could provide empty a tag if no file is available.
+    o #554000 by killes: Preview checking wrong flag for preview state causes feeds to display incorrectly when embedded.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
