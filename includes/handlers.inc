@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.118 2009-09-15 16:57:28 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.119 2009-09-15 19:29:12 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -572,10 +572,9 @@ class views_many_to_one_helper {
     while ($r_join->left_table != $base_table) {
       $r_join = views_get_table_join($r_join->left_table, $base_table);
     }
-
     // If we found that there are tables in between, add the relationship.
     if ($r_join->table != $join->table) {
-      $relationship = $this->handler->query->add_relationship($this->handler->table, $r_join, $r_join->table, $this->handler->relationship);
+      $relationship = $this->handler->query->add_relationship($this->handler->table . '_' . $r_join->table, $r_join, $r_join->table, $this->handler->relationship);
     }
 
     // And now add our table, using the new relationship if one was used.
@@ -855,7 +854,7 @@ function views_get_timezone() {
 
       $already_set = true;
     }
-  }  
+  }
 
   return $timezone;
 }

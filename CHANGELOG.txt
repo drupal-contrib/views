@@ -52,6 +52,7 @@ Views 2.x-dev
     o #510920 by apanag: Add set_current_page() method to view class.
     o #337741 by joachim: Allow profile fields to have "link to user" option.
     o #534680 by dagmar: Visual indicator if checkbox will expand options.
+    o #512650 by sdboyer: Multiple many to one arguments on the same relationship were not relationship safe.
 
 Views 2.6
   Bugs fixed:
