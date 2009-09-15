@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.6 2009-06-10 22:02:26 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.7 2009-09-15 16:47:09 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -912,7 +912,7 @@ function views_ui_edit_view_form_submit($form, &$form_state) {
   }
 
   $form_state['view']->save();
-  drupal_set_message(t('The view has been saved.'));
+  drupal_set_message(t('The view %name has been saved.', array('%name' => $form_state['view']->name)));
 
   // Make sure menu items get rebuilt as neces
   menu_rebuild();
