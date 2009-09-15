@@ -29,6 +29,7 @@ Views 2.x-dev
     o #468370 by emackn: Proper timezone support on postgres.
     o #508124 by voxpelli: Optionally allow boolean to treat NULL as FALSE.
     o #487528 by dereine: Fix typo in 'Maximum length' field instructions.
+    o #303800 by Justin W Freeman: Improve dashes to spaces transformation.
     
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
