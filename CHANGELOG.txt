@@ -33,6 +33,9 @@ Views 2.x-dev
     o #538530 by elcuco: Views export textareas should be LTR.
     o #538204 by dereine: User picture should be sortable.
     o #540122 by stella: Attachment displays should attach even if arguments caused the primary display to abort.
+    o #544098 by joachim: Fix validation quirks with defaulted handlers.
+    o #485872 by dereine: Make sure views.css is always loaded for all users.
+    o #442982 by killes: Make destroy() method more robust so that views are more readily reused.
     
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
