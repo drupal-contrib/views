@@ -31,6 +31,7 @@ Views 2.x-dev
     o #487528 by dereine: Fix typo in 'Maximum length' field instructions.
     o #303800 by Justin W Freeman: Improve dashes to spaces transformation.
     o #538530 by elcuco: Views export textareas should be LTR.
+    o #538204 by dereine: User picture should be sortable.
     
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
