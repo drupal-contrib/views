@@ -42,6 +42,7 @@ Views 2.x-dev
 	o #433318: Special handling for empty fields, allowing them to avoid rewriting and not be displayed.
     o #354457 by ausvalue: Example integrating node_example.module with Views API.
     o #479728 by enboig: Allow "Does not start with" and "Does not end with" as string operators.
+    o #511468 by dereine: State which view was saved after saving a view.
 
 Views 2.6
   Bugs fixed:
