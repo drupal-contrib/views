@@ -47,6 +47,7 @@ Views 2.x-dev
     o #520632 by DamZ: Add comment hostname and mail to available comment fields.
     o #523580 by JirkaRybka: More documentation on Reduce Duplicates option.
     o #510920 by apanag: Add set_current_page() method to view class.
+    o #337741 by joachim: Allow profile fields to have "link to user" option.
 
 Views 2.6
   Bugs fixed:
