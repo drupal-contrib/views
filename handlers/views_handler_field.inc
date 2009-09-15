@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.16 2009-08-21 23:58:38 dww Exp $
+// $Id: views_handler_field.inc,v 1.14.2.17 2009-09-15 16:40:20 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -332,7 +332,7 @@ class views_handler_field extends views_handler {
         '#title' => t('Maximum length'),
         '#type' => 'textfield',
         '#default_value' => $this->options['alter']['max_length'],
-        '#description' => t('The maximum number of characters his field can be.'),
+        '#description' => t('The maximum number of characters this field can be.'),
         '#process' => array('views_process_dependency'),
         '#dependency' => array(
           'edit-options-alter-trim' => array(1)
