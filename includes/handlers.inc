@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.116 2009-07-01 16:11:35 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.117 2009-09-15 15:57:41 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -842,15 +842,20 @@ function views_get_timezone() {
   }
 
   // set up the database timezone
-  if (in_array($GLOBALS['db_type'], array('mysql', 'mysqli'))) {
+  if (in_array($GLOBALS['db_type'], array('mysql', 'mysqli', 'pgsql'))) {
+    $offset = '+00:00';
     static $already_set = false;
     if (!$already_set) {
-      if ($GLOBALS['db_type'] == 'mysqli' || version_compare(mysql_get_server_info(), '4.1.3', '>=')) {
-        db_query("SET @@session.time_zone = '+00:00'");
+      if ($GLOBALS['db_type'] == 'pgsql') {
+        db_query("SET TIME ZONE INTERVAL '$offset' HOUR TO MINUTE");
       }
+      elseif ($GLOBALS['db_type'] == 'mysqli' || version_compare(mysql_get_server_info(), '4.1.3', '>=')) {
+        db_query("SET @@session.time_zone = '$offset'");
+      }
+
       $already_set = true;
     }
-  }
+  }  
 
   return $timezone;
 }
@@ -861,7 +866,7 @@ function views_get_timezone() {
  * @param $field
  *   The real table and field name, like 'tablename.fieldname'.
  * @param $field_type
- *   The type of date field, 'int' or 'datetime'.
+ *  The type of date field, 'int' or 'datetime'.
  * @param $set_offset
  *   The name of a field that holds the timezone offset or a fixed timezone
  *   offset value. If not provided, the normal Drupal timezone handling
