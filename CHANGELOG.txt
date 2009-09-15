@@ -32,6 +32,7 @@ Views 2.x-dev
     o #303800 by Justin W Freeman: Improve dashes to spaces transformation.
     o #538530 by elcuco: Views export textareas should be LTR.
     o #538204 by dereine: User picture should be sortable.
+    o #540122 by stella: Attachment displays should attach even if arguments caused the primary display to abort.
     
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
