@@ -39,6 +39,7 @@ Views 2.x-dev
     o #520558 by bdurbin: node access filter not properly checking 'view'.
     o #535424 by Hugo Wetterberg: Download file link could provide empty a tag if no file is available.
     o #554000 by killes: Preview checking wrong flag for preview state causes feeds to display incorrectly when embedded.
+    o #554016 by webchick: views_embed_view() should check view access.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
