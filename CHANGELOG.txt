@@ -46,6 +46,7 @@ Views 2.x-dev
     o #511468 by dereine: State which view was saved after saving a view.
     o #520632 by DamZ: Add comment hostname and mail to available comment fields.
     o #523580 by JirkaRybka: More documentation on Reduce Duplicates option.
+    o #510920 by apanag: Add set_current_page() method to view class.
 
 Views 2.6
   Bugs fixed:

@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.165 2009-06-25 22:06:55 merlinofchaos Exp $
+// $Id: view.inc,v 1.166 2009-09-15 16:59:57 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -99,6 +99,13 @@ class view extends views_db_object {
     if (empty($items_per_page)) {
       $this->pager['use_pager'] = FALSE;
     }
+  }
+
+  /**
+   * Change/Set the current page for the pager.
+   */
+  function set_current_page($page) {
+    $this->pager['current_page'] = $page;
   }
 
   /**
