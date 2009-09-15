@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.13 2009-09-15 16:59:54 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.14 2009-09-15 17:57:04 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -602,6 +602,7 @@ class view extends views_db_object {
     // Arguments can, in fact, cause this whole thing to abort.
     if (!$this->_build_arguments()) {
       $this->build_time = views_microtime() - $start;
+      $this->attach_displays();
       return $this->built;
     }
 
