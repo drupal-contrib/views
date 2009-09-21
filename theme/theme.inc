@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.7 2009-09-21 21:20:32 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.8 2009-09-21 21:36:30 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -302,12 +302,15 @@ function template_preprocess_views_view_table(&$vars) {
   // Fields must be rendered in order as of Views 2.3, so we will pre-render
   // everything.
   $renders = array();
+  $view->row_index = 0;
   $keys = array_keys($view->field);
   foreach ($result as $count => $row) {
     foreach ($keys as $id) {
       $renders[$count][$id] = $view->field[$id]->theme($row);
     }
+    $view->row_index = $count;
   }
+  unset($view->row_index);
 
   foreach ($columns as $field => $column) {
     // render the header labels

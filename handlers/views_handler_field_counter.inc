@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_counter.inc,v 1.1.2.3 2009-06-25 22:09:38 merlinofchaos Exp $
+// $Id: views_handler_field_counter.inc,v 1.1.2.4 2009-09-21 21:36:29 merlinofchaos Exp $
 
 class views_handler_field_counter extends views_handler_field {
   function option_definition() {
@@ -35,7 +35,7 @@ class views_handler_field_counter extends views_handler_field {
       $count += ($pager['items_per_page'] * $pager['current_page']) + $pager['offset'];
     }
     // Add the counter for the current site.
-    $count += array_search($values, $this->view->result) + 1;
+    $count += $this->view->row_index + 1;
 
     return $count;
   }
