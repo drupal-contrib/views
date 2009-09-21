@@ -44,6 +44,7 @@ Views 2.x-dev
     o #563540 by dereine: Fix description of cache plugin settings.
     o #563564 by dereine: Unformatted style does not use options, so the options icon should not appear.
     o #564536 by dereine: Node links should allow language setting from node data.
+    o #551752 by dereine: Clean up row counter code.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
