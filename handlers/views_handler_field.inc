@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.31 2009-09-15 16:40:23 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.32 2009-09-21 21:34:07 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -618,6 +618,9 @@ class views_handler_field extends views_handler {
     }
     if (isset($alter['fragment'])) {
       $options['fragment'] = strtr($alter['fragment'], $tokens);
+    }
+    if (isset($this->options['alter']['language'])) {
+      $options['language'] = $this->options['alter']['language'];
     }
 
     $value .= l($text, $path, $options);
