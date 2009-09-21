@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.8 2009-09-21 21:36:30 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.9 2009-09-21 21:40:23 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -398,14 +398,21 @@ function template_preprocess_views_view_grid(&$vars) {
 
   if ($options['alignment'] == 'horizontal') {
     $row = array();
+    $row_count = 0;
     foreach ($vars['rows'] as $count => $item) {
       $row[] = $item;
+      $row_count++;
       if (($count + 1) % $columns == 0) {
         $rows[] = $row;
         $row = array();
+        $row_count = 0;
       }
     }
     if ($row) {
+      // Fill up the last line.
+      for ($i = 0; $i < ($columns - $row_count); $i++) {
+        $row[] = '';
+      }
       $rows[] = $row;
     }
   }
@@ -427,6 +434,12 @@ function template_preprocess_views_view_grid(&$vars) {
         $row = 0;
         $col++;
         $remainders--;
+      }
+    }
+    for ($i = 0; $i < count($rows[0]); $i++) {
+      // This should be string so that's okay :)
+      if (!isset($rows[count($rows) - 1][$i])) {
+        $rows[count($rows) - 1][$i] = '';
       }
     }
   }
