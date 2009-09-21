@@ -41,6 +41,8 @@ Views 2.x-dev
     o #554000 by killes: Preview checking wrong flag for preview state causes feeds to display incorrectly when embedded.
     o #554016 by webchick: views_embed_view() should check view access.
     o #523222 by gpk: Contact link should not be allowed for the anonymous user.
+    o #563540 by dereine: Fix description of cache plugin settings.
+    o #563564 by dereine: Unformatted style does not use options, so the options icon should not appear.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
@@ -61,6 +63,7 @@ Views 2.x-dev
     o #337741 by joachim: Allow profile fields to have "link to user" option.
     o #534680 by dagmar: Visual indicator if checkbox will expand options.
     o #512650 by sdboyer: Multiple many to one arguments on the same relationship were not relationship safe.
+    o #536994 by dboulet: Store result in variables for use in unformatted style.
 
 Views 2.6
   Bugs fixed:

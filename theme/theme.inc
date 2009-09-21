@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.80 2009-09-15 20:59:58 merlinofchaos Exp $
+// $Id: theme.inc,v 1.81 2009-09-21 21:26:56 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -281,7 +281,8 @@ function template_preprocess_views_view_table(&$vars) {
   // However, the template also needs to use for the rendered fields.  We
   // therefore swap the raw data out to a new variable and reset $vars['rows']
   // so that it can get rebuilt.
-  $result   = $vars['rows'];
+  // Store rows so that they may be used by further preprocess functions.
+  $result   = $vars['result'] = $vars['rows'];
   $vars['rows'] = array();
 
   $options  = $view->style_plugin->options;
