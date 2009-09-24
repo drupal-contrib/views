@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.32 2009-09-21 21:34:07 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33 2009-09-24 23:28:30 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -493,7 +493,7 @@ class views_handler_field extends views_handler {
       return '';
     }
 
-    if ($alter['alter_text'] !== '' && $alter['text'] !== '') {
+    if (!empty($alter['alter_text']) && $alter['text'] !== '') {
       $tokens = $this->get_render_tokens($alter);
       $value = $this->render_altered($alter, $tokens);
     }
