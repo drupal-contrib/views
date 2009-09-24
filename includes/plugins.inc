@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.155 2009-09-21 21:26:56 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.156 2009-09-24 22:47:02 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -96,6 +96,7 @@ function views_views_plugins() {
         'theme' => 'views_view_unformatted',
         'uses row plugin' => TRUE,
         'uses grouping' => TRUE,
+        'uses options' => TRUE,
         'type' => 'normal',
         'help topic' => 'style-unformatted',
       ),
