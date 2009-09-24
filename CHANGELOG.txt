@@ -25,7 +25,6 @@ Views 2.x-dev
     o #510910 by mfb: Fixed bug where multiple fields sharing a column in a table was broken so only the final field would display.
     o #546586 by dww: Fixed bugs that prevented '0' being a valid rewrite text or empty text for a view field. Also fixes a logic bug regarding the handling of the 'Count the number 0 as empty' setting.
     o #507884 by TheRec: Removed matching title (alt) attribute on node links.\
-    o #333439 by killes: Fix query for multiply inherited taxonomy terms with taxonomy filter.
     o #468370 by emackn: Proper timezone support on postgres.
     o #508124 by voxpelli: Optionally allow boolean to treat NULL as FALSE.
     o #487528 by dereine: Fix typo in 'Maximum length' field instructions.
