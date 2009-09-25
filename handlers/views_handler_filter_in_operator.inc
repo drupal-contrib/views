@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_in_operator.inc,v 1.6.2.8 2009-09-25 00:29:38 merlinofchaos Exp $
+// $Id: views_handler_filter_in_operator.inc,v 1.6.2.9 2009-09-25 14:33:06 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of multiple options selectable via checkboxes
  *
@@ -204,7 +204,6 @@ class views_handler_filter_in_operator extends views_handler_filter {
         }
         $process[] = 'views_process_dependency';
         $form['value']['#dependency'] = array($source => $this->operator_values(1));
-        );
       }
       if (!empty($process)) {
         $form['value']['#process'] = $process;
