@@ -68,6 +68,7 @@ Views 2.x-dev
     o #534680 by dagmar: Visual indicator if checkbox will expand options.
     o #512650 by sdboyer: Multiple many to one arguments on the same relationship were not relationship safe.
     o #536994 by dboulet: Store result in variables for use in unformatted style.
+    o #458194 by voxpelli: Add first and last row classes to table style.
 
 Views 2.6
   Bugs fixed:
