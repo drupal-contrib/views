@@ -47,6 +47,7 @@ Views 2.x-dev
     o #561892 by dereine: Unchecking "rewrite this field" but leaving a value caused field to be rewritten anyway.
     o #408894 by dereine: Views AJAX incorrectly used "access content" permission.
     o #574150 by dereine: Remove user search because user.module does not store user keywords.
+    o #511908 by dww: Too many check plains in selects because of problems with checkboxes.
 
   Other changes:
     o Implement a post_render hook (for themes too) and cache method.
