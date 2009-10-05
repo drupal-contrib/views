@@ -1,5 +1,5 @@
 <?php
-// $Id: query.inc,v 1.49 2009-10-05 22:31:09 merlinofchaos Exp $
+// $Id: query.inc,v 1.50 2009-10-05 22:49:03 merlinofchaos Exp $
 /**
  * @file query.inc
  * Defines the query object which is the underlying layer in a View.
@@ -264,7 +264,6 @@ class views_query {
     }
 
     $join = $this->adjust_join($join, $relationship);
-    dsm($join);
 
     return $this->queue_table($table, $relationship, $join, $alias);
   }
