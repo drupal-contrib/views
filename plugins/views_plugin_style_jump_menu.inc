@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_jump_menu.inc,v 1.1.2.1 2009-10-28 02:11:17 merlinofchaos Exp $
+// $Id: views_plugin_style_jump_menu.inc,v 1.1.2.2 2009-10-28 23:07:48 merlinofchaos Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -88,6 +88,7 @@ class views_plugin_style_jump_menu extends views_plugin_style {
           if ($this->view->field[$this->options['grouping']]->options['label']) {
             $grouping = $this->view->field[$this->options['grouping']]->options['label'] . ': ' . $grouping;
           }
+          $grouping = url($grouping);
         }
         $sets[$grouping][] = $row;
       }
