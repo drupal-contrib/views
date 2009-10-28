@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_summary_jump_menu.inc,v 1.1.2.1 2009-10-28 02:11:17 merlinofchaos Exp $
+// $Id: views_plugin_style_summary_jump_menu.inc,v 1.1.2.2 2009-10-28 02:22:47 merlinofchaos Exp $
 /**
  * @file
  * Contains the default summary style plugin, which displays items in an HTML list.
@@ -63,7 +63,7 @@ class views_plugin_style_summary_jump_menu extends views_plugin_style {
       $args[$argument->position] = $argument->summary_argument($row);
       $path = url($this->view->get_url($args), $url_options);
 
-      $options[$path] = $argument->summary_name($row);
+      $options[$path] = strip_tags($argument->summary_name($row));
       if (!empty($this->options['count'])) {
         $options[$path] .= ' (' . intval($row->{$argument->count_alias}) . ')';
       }
