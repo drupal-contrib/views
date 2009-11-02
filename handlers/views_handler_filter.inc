@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.6.2.5 2009-06-26 00:23:37 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.6.2.6 2009-11-02 23:17:12 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -270,6 +270,10 @@ class views_handler_filter extends views_handler {
 
     if (!empty($form_state['values']['options']['expose']['identifier']) && $form_state['values']['options']['expose']['identifier'] == 'value') {
       form_error($form['expose']['identifier'], t('This identifier is not allowed.'));
+    }
+    
+    if (!$this->view->display_handler->is_identifier_unique($form_state['id'], $form_state['values']['options']['expose']['identifier'])) {
+      form_error($form['expose']['identifier'], t('This identifier is used by another handler.'));
     }
   }
 
