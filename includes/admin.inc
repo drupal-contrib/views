@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.7 2009-09-15 16:47:09 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.8 2009-11-02 20:09:17 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -398,7 +398,7 @@ function views_ui_preview($js, $view) {
           if ($queries) {
             $queries .= "\n";
           }
-          $queries .= t('[@time ms]', array('@time' => intval($query[1] * 100000) / 100)) . ' ' . $query[0];
+          $queries .= t('[@time ms]', array('@time' => intval($query[1] * 100000) / 100)) . ' ' . check_plain($query[0]);
         }
 
         $rows[] = array('<strong>' . t('Other queries') . '</strong>', '<pre>' . $queries . '</pre>');
