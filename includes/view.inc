@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.15 2009-09-15 21:34:25 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.16 2009-11-02 23:34:26 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -712,6 +712,9 @@ class view extends views_db_object {
     }
     else {
       $this->query->execute($this);
+      if ($cache) {
+        $cache->cache_set('results');
+      }
     }
 
     $this->executed = TRUE;
