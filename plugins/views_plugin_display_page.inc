@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.6 2009-05-20 02:53:30 merlinofchaos Exp $
+// $Id: views_plugin_display_page.inc,v 1.8.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -258,14 +258,16 @@ class views_plugin_display_page extends views_plugin_display {
           '#type' => 'textfield',
           '#description' => t('This view will be displayed by visiting this path on your site. You may use "%" in your URL to represent values that will be used for arguments: For example, "node/%/feed".'),
           '#default_value' => $this->get_option('path'),
-          '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+	  '#field_prefix' => '<span dir="ltr">' . url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+	  '#field_suffix' => '</span>&lrm;',
+	  '#attributes' => array('dir'=>'ltr'),
         );
         break;
       case 'menu':
         $form['#title'] .= t('Menu item entry');
         $form['#help_topic'] = 'menu';
         $form['menu'] = array(
-          '#prefix' => '<div class="clear-block">',
+          '#prefix' => '<div class="clearfix">',
           '#suffix' => '</div>',
           '#tree' => TRUE,
         );
@@ -303,15 +305,6 @@ class views_plugin_display_page extends views_plugin_display {
           '#process' => array('views_process_dependency'),
           '#dependency' => array('radio:menu[type]' => array('normal', 'tab', 'default tab')),
         );
-        $form['menu']['name-warning'] = array(
-          '#type' => 'markup',
-          '#prefix' => '<div class="warning">',
-          '#value' => t("Warning: Changing this item's menu will not work reliably in Drupal 6.4 or earlier. Please upgrade your copy of Drupal at !url.", array('!url' => l('drupal.org', 'http://drupal.org/project/Drupal+project'))),
-          '#suffix' => '</div>',
-          '#process' => array('views_process_dependency'),
-          '#dependency' => array('radio:menu[type]' => array('normal')),
-          '#access' => version_compare(VERSION, '6.5', '<'),
-        );
 
         // Only display the menu selector if menu module is enabled.
         if (module_exists('menu')) {
@@ -331,7 +324,7 @@ class views_plugin_display_page extends views_plugin_display {
             '#value' => $menu['name'],
           );
           $form['menu']['markup'] = array(
-            '#value' => t('Menu selection requires the activation of menu module.'),
+            '#markup' => t('Menu selection requires the activation of menu module.'),
           );
         }
         $form['menu']['weight'] = array(
@@ -352,13 +345,11 @@ class views_plugin_display_page extends views_plugin_display {
         }
 
         $form['tab_markup'] = array(
-          '#prefix' => '<div class="form-item description">',
-          '#suffix' => '</div>',
-          '#value' => t('When providing a menu item as a tab, Drupal needs to know what the parent menu item of that tab will be. Sometimes the parent will already exist, but other times you will need to have one created. The path of a parent item will always be the same path with the last part left off. i.e, if the path to this view is <em>foo/bar/baz</em>, the parent path would be <em>foo/bar</em>.'),
+          '#markup' => '<div class="form-item description">' . t('When providing a menu item as a tab, Drupal needs to know what the parent menu item of that tab will be. Sometimes the parent will already exist, but other times you will need to have one created. The path of a parent item will always be the same path with the last part left off. i.e, if the path to this view is <em>foo/bar/baz</em>, the parent path would be <em>foo/bar</em>.') . '</div>',
         );
 
         $form['tab_options'] = array(
-          '#prefix' => '<div class="clear-block">',
+          '#prefix' => '<div class="clearfix">',
           '#suffix' => '</div>',
           '#tree' => TRUE,
         );
@@ -401,7 +392,7 @@ class views_plugin_display_page extends views_plugin_display {
     }
   }
 
-  function options_validate($form, &$form_state) {
+  function options_validate(&$form, &$form_state) {
     // It is very important to call the parent function here:
     parent::options_validate($form, $form_state);
     switch ($form_state['section']) {
@@ -439,7 +430,7 @@ class views_plugin_display_page extends views_plugin_display {
     }
   }
 
-  function options_submit($form, &$form_state) {
+  function options_submit(&$form, &$form_state) {
     // It is very important to call the parent function here:
     parent::options_submit($form, $form_state);
     switch ($form_state['section']) {

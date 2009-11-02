@@ -1,12 +1,12 @@
 <?php
-// $Id: comment.views_default.inc,v 1.7 2009-01-27 20:24:09 merlinofchaos Exp $
+// $Id: comment.views_default.inc,v 1.7.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the comment module.
  */
 
 /**
- * Implementation of hook_default_view_views().
+ * Implements hook_default_view_views().
  */
 function comment_views_default_views() {
   $view = new view;
@@ -281,7 +281,7 @@ function comment_views_default_views() {
         'table' => 'comments',
         'field' => 'status',
         'operator' => '=',
-        'value' => 0,
+        'value' => 1,
         'group' => 0,
         'exposed' => FALSE,
         'expose' => array(

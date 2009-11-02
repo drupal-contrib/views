@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_history_user_timestamp.inc,v 1.1 2008-09-03 19:21:29 merlinofchaos Exp $
+// $Id: views_handler_field_history_user_timestamp.inc,v 1.1.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * Field handler to display the marker for new content.
  */
@@ -66,7 +66,7 @@ class views_handler_field_history_user_timestamp extends views_handler_field_nod
       elseif ($last_comment > $last_read && $last_comment > NODE_NEW_LIMIT) {
         $mark = MARK_UPDATED;
       }
-      return $this->render_link(theme('mark', $mark), $values);
+      return $this->render_link(theme('mark', array('type' => $mark)), $values);
     }
   }
 }

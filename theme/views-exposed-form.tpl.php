@@ -1,5 +1,5 @@
 <?php
-// $Id: views-exposed-form.tpl.php,v 1.4 2008-05-07 23:00:25 merlinofchaos Exp $
+// $Id: views-exposed-form.tpl.php,v 1.4.6.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * @file views-exposed-form.tpl.php
  *
@@ -23,7 +23,7 @@
   ?>
 <?php endif; ?>
 <div class="views-exposed-form">
-  <div class="views-exposed-widgets clear-block">
+  <div class="views-exposed-widgets clearfix">
     <?php foreach($widgets as $id => $widget): ?>
       <div class="views-exposed-widget">
         <?php if (!empty($widget->label)): ?>

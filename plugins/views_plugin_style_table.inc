@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_table.inc,v 1.5 2008-10-15 22:25:36 merlinofchaos Exp $
+// $Id: views_plugin_style_table.inc,v 1.7.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -28,10 +28,27 @@ class views_plugin_style_table extends views_plugin_style {
    * Determine if we should provide sorting based upon $_GET inputs.
    */
   function build_sort() {
+    if (!isset($_GET['order']) && $this->options['default'] == -1) {
+      return TRUE;
+    }
+
+    // If a sort we don't know anything about gets through, exit gracefully.
+    if (isset($_GET['order']) && empty($this->view->field[$_GET['order']])) {
+      return TRUE;
+    }
+
+    // Let the builder know whether or not we're overriding the default sorts.
+    return empty($this->options['override']);
+  }
+
+  /**
+   * Add our actual sort criteria
+   */
+  function build_sort_post() {
     if (!isset($_GET['order'])) {
       // check for a 'default' clicksort. If there isn't one, exit gracefully.
       if (empty($this->options['default'])) {
-        return TRUE;
+        return;
       }
       $sort = $this->options['default'];
       $this->order = !empty($this->options['order']) ? $this->options['order'] : 'asc';
@@ -44,7 +61,7 @@ class views_plugin_style_table extends views_plugin_style {
 
     // If a sort we don't know anything about gets through, exit gracefully.
     if (empty($this->view->field[$sort])) {
-      return TRUE;
+      return;
     }
 
     // Ensure $this->order is valid.
@@ -57,9 +74,6 @@ class views_plugin_style_table extends views_plugin_style {
 
     // Tell the field to click sort.
     $this->view->field[$sort]->click_sort($this->order);
-
-    // Let the builder know whether or not we're overriding the default sorts.
-    return empty($this->options['override']);
   }
 
   /**
@@ -123,9 +137,7 @@ class views_plugin_style_table extends views_plugin_style {
     $handlers = $this->display->handler->get_handlers('field');
     if (empty($handlers)) {
       $form['error_markup'] = array(
-        '#value' => t('You need at least one field before you can configure your table settings'),
-        '#prefix' => '<div class="error form-item description">',
-        '#suffix' => '</div>',
+        '#markup' => '<div class="error form-item description">' . t('You need at least one field before you can configure your table settings') . '</div>',
       );
       return;
     }
@@ -195,7 +207,7 @@ class views_plugin_style_table extends views_plugin_style {
           '#dependency' => array($id => array($field)),
         );
         // Provide an ID so we can have such things.
-        $radio_id = form_clean_id('edit-default-' . $field);
+        $radio_id = drupal_html_id('edit-default-' . $field);
         $form['default'][$field] = array(
           '#type' => 'radio',
           '#return_value' => $field,
@@ -218,7 +230,7 @@ class views_plugin_style_table extends views_plugin_style {
 
       // markup for the field name
       $form['info'][$field]['name'] = array(
-        '#value' => $field_names[$field],
+        '#markup' => $field_names[$field],
       );
     }
 
@@ -232,9 +244,7 @@ class views_plugin_style_table extends views_plugin_style {
     );
 
     $form['description_markup'] = array(
-      '#prefix' => '<div class="description form-item">',
-      '#suffix' => '</div>',
-      '#value' => t('Place fields into columns; you may combine multiple fields into the same column. If you do, the separator in the column specified will be used to separate the fields. Check the sortable box to make that column click sortable, and check the default sort radio to determine which column will be sorted by default, if any. You may control column order and field labels in the fields section.'),
+      '#markup' => '<div class="description form-item">' . t('Place fields into columns; you may combine multiple fields into the same column. If you do, the separator in the column specified will be used to separate the fields. Check the sortable box to make that column click sortable, and check the default sort radio to determine which column will be sorted by default, if any. You may control column order and field labels in the fields section.') . '</div>',
     );
   }
 }

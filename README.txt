@@ -1,8 +1,8 @@
-// $Id: README.txt,v 1.26 2008-10-20 19:34:53 merlinofchaos Exp $
+// $Id: README.txt,v 1.26.6.1 2009-11-02 22:01:25 merlinofchaos Exp $
 
 Welcome to Views 2. Please see the advanced help for more information.
 
-If you're having trouble installing this module, please ensure that your 
+If you're having trouble installing this module, please ensure that your
 tar program is not flattening the directory tree, truncating filenames
 or losing files.
 

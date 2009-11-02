@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.4 2009-04-08 05:10:07 merlinofchaos Exp $
+// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.6.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Contains the 'taxonomy term' argument validator plugin.
@@ -24,7 +24,7 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
       '#options' => $options,
       '#default_value' => isset($this->argument->options['validate_argument_vocabulary']) ? $this->argument->options['validate_argument_vocabulary'] : array(),
       '#description' => t('If you wish to validate for specific vocabularies, check them; if none are checked, all terms will pass.'),
-      '#process' => array('expand_checkboxes', 'views_process_dependency'),
+      '#process' => array('form_process_checkboxes', 'views_process_dependency'),
       '#dependency' => array('edit-options-validate-type' => array($this->id)),
     );
 
@@ -48,7 +48,7 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
       '#title' => t('Transform dashes in URL to spaces in term name arguments'),
       '#default_value' => isset($this->argument->options['validate_argument_transform']) ? $this->argument->options['validate_argument_transform'] : FALSE,
       '#process' => array('views_process_dependency'),
-      '#dependency' => array('edit-options-validate-type' => array($this->id)),
+      '#dependency' => array('edit-options-validate-argument-type' => array('convert')),
     );
   }
 
@@ -63,7 +63,7 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
           return FALSE;
         }
 
-        $result = db_fetch_object(db_query("SELECT * FROM {term_data} WHERE tid = %d", $argument));
+        $result = db_query("SELECT * FROM {taxonomy_term_data} WHERE tid = :tid", array(':tid' => $argument))->fetchObject();
         if (!$result) {
           return FALSE;
         }
@@ -77,13 +77,11 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
           return FALSE;
         }
 
-        $placeholders = implode(', ', array_fill(0, sizeof($tids->value), '%d'));
-
         $test = drupal_map_assoc($tids->value);
         $titles = array();
 
-        $result = db_query("SELECT * FROM {term_data} WHERE tid IN ($placeholders)", $tids->value);
-        while ($term = db_fetch_object($result)) {
+        $result = db_query("SELECT * FROM {taxonomy_term_data} WHERE tid IN (:tid)", array(':tid' => $this->value));
+        foreach ($result as $term) {
           if ($vids && empty($vids[$term->vid])) {
             return FALSE;
           }
@@ -91,6 +89,9 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
           $titles[] = check_plain($term->name);
           unset($test[$term->tid]);
         }
+
+        // Remove duplicate titles
+        $titles = array_unique($titles);
 
         $this->argument->validated_title = implode($tids->operator == 'or' ? ' + ' : ', ', $titles);
         // If this is not empty, we did not find a tid.
@@ -102,9 +103,11 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
           $and = " AND td.vid IN(" . implode(', ', $vids) . ')';
         }
         if ($transform) {
-          $argument = str_replace('-', ' ', $argument);
+          $result = db_fetch_object(db_query("SELECT td.* FROM {taxonomy_term_data} td LEFT JOIN {taxonomy_term_synonym} ts ON ts.tid = td.tid WHERE (replace(td.name, ' ', '-') = '%s' OR replace(ts.name, ' ', '-') = '%s')$and", $argument, $argument));
         }
-        $result = db_fetch_object(db_query("SELECT td.* FROM {term_data} td LEFT JOIN {term_synonym} ts ON ts.tid = td.tid WHERE (td.name = '%s' OR ts.name = '%s')$and", $argument, $argument));
+        else {
+          $result = db_fetch_object(db_query("SELECT td.* FROM {taxonomy_term_data} td LEFT JOIN {taxonomy_term_synonym} ts ON ts.tid = td.tid WHERE (td.name = '%s' OR ts.name = '%s')$and", $argument, $argument));
+        }
         if (!$result) {
           return FALSE;
         }

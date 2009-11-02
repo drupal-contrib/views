@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_date.inc,v 1.3 2009-03-24 22:28:26 merlinofchaos Exp $
+// $Id: views_handler_argument_date.inc,v 1.3.6.1 2009-11-02 22:01:25 merlinofchaos Exp $
 /**
  * Abstract argument handler for dates.
  *
@@ -36,16 +36,16 @@ class views_handler_argument_date extends views_handler_argument_formula {
    */
   function get_default_argument($raw = FALSE) {
     if (!$raw && $this->options['default_argument_type'] == 'date') {
-      return date($this->arg_format, time());
+      return date($this->arg_format, REQUEST_TIME);
     }
-    else if (!$raw) {
+    elseif (!$raw) {
       foreach (range(1, 3) as $i) {
         $node = menu_get_object('node', $i);
         if (!empty($node)) {
           continue;
         }
       }
-  
+
       if (arg(0) == 'node' && is_numeric(arg(1))) {
         $node = node_load(arg(1));
       }
@@ -53,10 +53,10 @@ class views_handler_argument_date extends views_handler_argument_formula {
       if (empty($node)) {
         return parent::get_default_argument();
       }
-      else if ($this->options['default_argument_type'] == 'node_created') {
+      elseif ($this->options['default_argument_type'] == 'node_created') {
         return date($this->arg_format, $node->created);
       }
-      else if ($this->options['default_argument_type'] == 'node_changed') {
+      elseif ($this->options['default_argument_type'] == 'node_changed') {
         return date($this->arg_format, $node->changed);
       }
     }

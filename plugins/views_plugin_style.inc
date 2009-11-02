@@ -1,5 +1,20 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.5 2009-03-24 22:22:11 merlinofchaos Exp $
+// $Id: views_plugin_style.inc,v 1.8.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
+
+/**
+ * @defgroup views_style_plugins Views' style plugins
+ * @{
+ * Style plugins control how a view is rendered. For example, they
+ * can choose to display a collection of fields, node_view() output,
+ * table output, or any kind of crazy output they want.
+ *
+ * Many style plugins can have an optional 'row' plugin, that displays
+ * a single record. Not all style plugins can utilize this, so it is
+ * up to the plugin to set this up and call through to the row plugin.
+ *
+ * @see hook_views_plugins
+ */
+
 /**
  * Base class to define a style plugin handler.
  */
@@ -105,6 +120,12 @@ class views_plugin_style extends views_plugin {
   function build_sort() { return TRUE; }
 
   /**
+   * Called by the view builder to let the style build a second set of
+   * sorts that will come after any other sorts in the view.
+   */
+  function build_sort_post() { }
+
+  /**
    * Allow the style to do stuff before each row is rendered.
    *
    * @param $result
@@ -121,7 +142,7 @@ class views_plugin_style extends views_plugin {
    */
   function render() {
     if ($this->uses_row_plugin() && empty($this->row_plugin)) {
-      vpr('views_plugin_style_default: Missing row plugin');
+      debug('views_plugin_style_default: Missing row plugin');
       return;
     }
 
@@ -131,19 +152,28 @@ class views_plugin_style extends views_plugin {
     // Render each group separately and concatenate.  Plugins may override this
     // method if they wish some other way of handling grouping.
     $output = '';
+    $this->view->row_index = 0;
     foreach ($sets as $title => $records) {
       if ($this->uses_row_plugin()) {
         $rows = array();
         foreach ($records as $label => $row) {
           $rows[] = $this->row_plugin->render($row);
+          $this->view->row_index++;
         }
       }
       else {
         $rows = $records;
       }
 
-      $output .= theme($this->theme_functions(), $this->view, $this->options, $rows, $title);
+      $output .= theme($this->theme_functions(),
+        array(
+          'view' => $this->view,
+          'options' => $this->options,
+          'rows' => $rows,
+          'title' => $title)
+        );
     }
+    unset($this->view->row_index);
     return $output;
   }
 
@@ -161,6 +191,7 @@ class views_plugin_style extends views_plugin {
   function render_grouping($records, $grouping_field = '') {
     $sets = array();
     if ($grouping_field) {
+      $this->view->row_index = 0;
       foreach ($records as $row) {
         $grouping = '';
         // Group on the rendered version of the field, not the raw.  That way,
@@ -168,12 +199,14 @@ class views_plugin_style extends views_plugin {
         // the admin or theme layer or anywhere else we'd like.
         if (isset($this->view->field[$grouping_field])) {
           $grouping = $this->view->field[$grouping_field]->theme($row);
+          $this->view->row_index++;
           if ($this->view->field[$grouping_field]->options['label']) {
             $grouping = $this->view->field[$grouping_field]->options['label'] . ': ' . $grouping;
           }
         }
         $sets[$grouping][] = $row;
       }
+      unset($this->view->row_index);
     }
     else {
       // Create a single group with an empty grouping field.
@@ -201,4 +234,8 @@ class views_plugin_style extends views_plugin {
     }
   }
 }
+
+/**
+ * @}
+ */
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_sort.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_sort.inc,v 1.2.4.1 2009-11-02 22:01:25 merlinofchaos Exp $
 /**
  * @defgroup views_sort_handlers Views' sort handlers
  * @{
@@ -62,7 +62,7 @@ class views_handler_sort extends views_handler {
  * A special handler to take the place of missing or broken handlers.
  */
 class views_handler_sort_broken extends views_handler_sort {
-  function ui_name() {
+  function ui_name($short = FALSE) {
     return t('Broken/missing handler');
   }
 
@@ -70,8 +70,7 @@ class views_handler_sort_broken extends views_handler_sort {
   function query() { /* No query to run */ }
   function options_form(&$form, &$form_state) {
     $form['markup'] = array(
-      '#prefix' => '<div class="form-item description">',
-      '#value' => t('The handler for this item is broken or missing and cannot be used. If a module provided the handler and was disabled, re-enabling the module may restore it. Otherwise, you should probably delete this item.'),
+      '#markup' => '<div class="form-item description">' . t('The handler for this item is broken or missing and cannot be used. If a module provided the handler and was disabled, re-enabling the module may restore it. Otherwise, you should probably delete this item.') . '</div>',
     );
   }
 

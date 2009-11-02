@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_comment_username.inc,v 1.2 2009-01-30 00:01:42 merlinofchaos Exp $
+// $Id: views_handler_field_comment_username.inc,v 1.2.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * Field handler to allow linking to a user account or homepage
  */
@@ -34,7 +34,9 @@ class views_handler_field_comment_username extends views_handler_field {
       $account->name = $values->{$this->field_alias};
       $account->homepage = $values->{$this->aliases['homepage']};
 
-      return theme('username', $account);
+      return theme('username', array(
+        'account' => $account
+      ));
     }
     else {
       return $data;

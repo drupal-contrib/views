@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_search.inc,v 1.5 2009-04-10 19:32:19 merlinofchaos Exp $
+// $Id: views_handler_filter_search.inc,v 1.5.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 
 /**
  * Field handler to provide simple renderer that allows linking to a node.
@@ -107,7 +107,7 @@ class views_handler_filter_search extends views_handler_filter {
       }
 
       $this->query->add_groupby("$search_index.sid");
-      $this->query->add_having($this->options['group'], 'COUNT(*) >= %d', $this->search_query[4]);
+      $this->query->add_having($this->options['group'], 'COUNT(*)', $this->search_query[4], '>=');
     }
   }
 }

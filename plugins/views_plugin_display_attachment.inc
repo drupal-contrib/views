@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_attachment.inc,v 1.4 2009-05-20 02:53:30 merlinofchaos Exp $
+// $Id: views_plugin_display_attachment.inc,v 1.6.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * @file
  * Contains the attachment display plugin.
@@ -79,7 +79,7 @@ class views_plugin_display_attachment extends views_plugin_display {
     if (count($displays) > 1) {
       $attach_to = t('Multiple displays');
     }
-    else if (count($displays) == 1) {
+    elseif (count($displays) == 1) {
       $display = array_shift($displays);
       if (!empty($this->view->display[$display])) {
         $attach_to = check_plain($this->view->display[$display]->display_title);
@@ -154,7 +154,7 @@ class views_plugin_display_attachment extends views_plugin_display {
    * Perform any necessary changes to the form values prior to storage.
    * There is no need for this function to actually store the data.
    */
-  function options_submit($form, &$form_state) {
+  function options_submit(&$form, &$form_state) {
     // It is very important to call the parent function here:
     parent::options_submit($form, $form_state);
     switch ($form_state['section']) {
@@ -174,6 +174,10 @@ class views_plugin_display_attachment extends views_plugin_display {
     $displays = $this->get_option('displays');
 
     if (empty($displays[$display_id])) {
+      return;
+    }
+
+    if (!$this->access()) {
       return;
     }
 

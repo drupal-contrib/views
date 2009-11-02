@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views.inc,v 1.9 2008-10-28 20:21:37 merlinofchaos Exp $
+// $Id: statistics.views.inc,v 1.9.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for statistics.module
@@ -13,7 +13,7 @@
  */
 
 /**
- * Implementation of hook_views_data()
+ * Implements hook_views_data()
  */
 function statistics_views_data() {
   // Basic table information.
@@ -247,20 +247,11 @@ function statistics_views_data() {
 }
 
 /**
- * Implementation of hook_views_handlers() to register all of the basic handlers
+ * Implements hook_views_handlers() to register all of the basic handlers
  * views uses.
  */
 function statistics_views_handlers() {
-  return array(
-    'info' => array(
-      'path' => drupal_get_path('module', 'views') . '/modules/statistics',
-    ),
-    'handlers' => array(
-      'views_handler_field_accesslog_path' => array(
-        'parent' => 'views_handler_field',
-      ),
-    ),
-  );
+  return array('views_handler_field_accesslog_path');
 }
 
 /**

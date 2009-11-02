@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.24 2009-02-17 23:31:05 merlinofchaos Exp $
+// $Id: cache.inc,v 1.25.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -27,9 +27,8 @@ function _views_include_default_views() {
 function _views_fetch_data($table = NULL) {
   static $cache = NULL;
   if (!isset($cache)) {
-    $start = views_microtime();
+    $start = microtime(TRUE);
     // NOTE: This happens whether we retrieve them from cache or otherwise.
-    views_include_handlers();
 
     $data = views_cache_get('views_data', TRUE);
     if (!empty($data->data)) {
@@ -37,6 +36,7 @@ function _views_fetch_data($table = NULL) {
     }
 
     if (empty($cache)) {
+      views_include_handlers();
       $cache = module_invoke_all('views_data');
       foreach (module_implements('views_data_alter') as $module) {
         $function = $module . '_views_data_alter';
@@ -46,7 +46,7 @@ function _views_fetch_data($table = NULL) {
       views_cache_set('views_data', $cache, TRUE);
     }
 
-    vpr('Views data build time: ' . (views_microtime() - $start) * 1000 . ' ms');
+    debug('Views data build time: ' . (microtime(TRUE) - $start) * 1000 . ' ms');
   }
 
   if (!$table) {
@@ -66,24 +66,25 @@ function _views_fetch_data($table = NULL) {
 function _views_fetch_plugin_data($type = NULL, $plugin = NULL) {
   static $cache = NULL;
   if (!isset($cache)) {
-    $start = views_microtime();
+    $start = microtime(TRUE);
+    views_include('plugins');
     views_include_handlers();
 
     $cache = views_discover_plugins();
 
-    vpr('Views plugins build time: ' . (views_microtime() - $start) * 1000 . ' ms');
+    //debug('Views plugins build time: ' . (microtime(TRUE) - $start) * 1000 . ' ms');
   }
 
   if (!$type && !$plugin) {
     return $cache;
   }
-  else if (!$plugin) {
+  elseif (!$plugin) {
     // Not in the if above so the else below won't run
     if (isset($cache[$type])) {
       return $cache[$type];
     }
   }
-  else if (isset($cache[$type][$plugin])) {
+  elseif (isset($cache[$type][$plugin])) {
     return $cache[$type][$plugin];
   }
 
@@ -118,6 +119,10 @@ function _views_discover_default_views() {
           $cache[$name] = $view;
         }
       }
+
+      // Allow modules to modify default views before they are cached.
+      drupal_alter('views_default_views', $cache);
+
       views_cache_set('views_default_views', $cache, TRUE);
     }
   }
@@ -209,9 +214,16 @@ function views_object_cache_get($obj, $name, $skip_cache = FALSE) {
   }
 
   if (!array_key_exists($key, $cache)) {
-    $data = db_fetch_object(db_query("SELECT * FROM {views_object_cache} WHERE sid = '%s' AND obj = '%s' AND name = '%s'", session_id(), $obj, $name));
-    if ($data) {
-      $cache[$key] = unserialize($data->data);
+    $result = db_query("SELECT * FROM {views_object_cache} WHERE sid = :sid AND obj = :obj AND name = :name",
+      array(
+        ':sid' => session_id(),
+        ':obj' => $obj,
+        ':name' => $name
+      ));
+    foreach ($result as $data) {
+      if ($data) {
+        $cache[$key] = unserialize($data->data);
+      }
     }
   }
   return isset($cache[$key]) ? $cache[$key] : NULL;
@@ -230,7 +242,15 @@ function views_object_cache_get($obj, $name, $skip_cache = FALSE) {
  */
 function views_object_cache_set($obj, $name, $cache) {
   views_object_cache_clear($obj, $name);
-  db_query("INSERT INTO {views_object_cache} (sid, obj, name, data, updated) VALUES ('%s', '%s', '%s', '%s', %d)", session_id(), $obj, $name, serialize($cache), time());
+  db_insert('views_object_cache')
+    ->fields(array(
+      'sid' => session_id(),
+      'obj' => $obj,
+      'name' => $name,
+      'data' => serialize($cache),
+      'updated' => REQUEST_TIME,
+    ))
+    ->execute();
 }
 
 /**
@@ -243,7 +263,11 @@ function views_object_cache_set($obj, $name, $cache) {
  *   The name of the view (or other object) being stored.
  */
 function views_object_cache_clear($obj, $name) {
-  db_query("DELETE FROM {views_object_cache} WHERE sid = '%s' AND obj = '%s' AND name = '%s'", session_id(), $obj, $name);
+  db_delete('views_object_cache')
+    ->condition('sid', session_id())
+    ->condition('obj', $obj)
+    ->condition('name', $name)
+    ->execute();
 }
 
 /**
@@ -258,7 +282,9 @@ function views_object_cache_clean($age = NULL) {
   if (empty($age)) {
     $age = 86400 * 7; // 7 days
   }
-  db_query("DELETE FROM {views_object_cache} WHERE updated < %d", time() - $age);
+  db_delete('views_object_cache')
+    ->condition('updated', REQUEST_TIME - $age, '<')
+    ->execute();
 }
 
 /**

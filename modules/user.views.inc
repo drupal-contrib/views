@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.56 2009-02-06 20:54:53 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.59.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -12,7 +12,7 @@
  */
 
 /**
- * Implementation of hook_views_data()
+ * Implements hook_views_data()
  */
 function user_views_data() {
   // ----------------------------------------------------------------
@@ -62,6 +62,14 @@ function user_views_data() {
     'sort' => array(
       'handler' => 'views_handler_sort',
     ),
+    'relationship' => array(
+      'title' => t('Nodes authored'),
+      'help' => t('Relate nodes to the user who created it. This relationship will create one record for every node created by the user.'),
+      'handler' => 'views_handler_relationship',
+      'base' => 'node',
+      'field' => 'uid',
+      'label' => t('nodes'),
+    ),
   );
 
   // uid
@@ -108,6 +116,22 @@ function user_views_data() {
     ),
   );
 
+  // language
+  $data['users']['language'] = array(
+    'title' => t('Language'), // The item it appears as on the UI,
+    'help' => t('Language of the user'),
+    'field' => array(
+      'handler' => 'views_handler_field_user_language',
+      'click sortable' => TRUE,
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_node_language',
+    ),
+  );
+
   // picture
   $data['users']['picture'] = array(
     'title' => t('Picture'),
@@ -116,6 +140,9 @@ function user_views_data() {
     'field' => array(
       'handler' => 'views_handler_field_user_picture',
       'click sortable' => TRUE,
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_boolean_operator_string',
@@ -293,7 +320,7 @@ function user_views_data() {
 }
 
 /**
- * Implementation of hook_views_plugins
+ * Implements hook_views_plugins
  */
 function user_views_plugins() {
   return array(
@@ -303,13 +330,11 @@ function user_views_plugins() {
         'title' => t('User ID from URL'),
         'handler' => 'views_plugin_argument_default_user',
         'path' => drupal_get_path('module', 'views') . '/modules/user', // not necessary for most modules
-        'parent' => 'fixed', // so that the parent class is included
       ),
       'current_user' => array(
         'title' => t('User ID from logged in user'),
         'handler' => 'views_plugin_argument_default_current_user',
         'path' => drupal_get_path('module', 'views') . '/modules/user', // not necessary for most modules
-        'parent' => 'fixed', // so that the parent class is included
       ),
     ),
     'argument validator' => array(
@@ -323,55 +348,25 @@ function user_views_plugins() {
 }
 
 /**
- * Implementation of hook_views_handlers() to register all of the basic handlers
+ * Implements hook_views_handlers() to register all of the basic handlers
  * views uses.
  */
 function user_views_handlers() {
   return array(
-    'info' => array(
-      'path' => drupal_get_path('module', 'views') . '/modules/user',
-    ),
-    'handlers' => array(
-      'views_handler_argument_user_uid' => array(
-        'parent' => 'views_handler_argument_numeric',
-      ),
-      'views_handler_field_user' => array(
-        'parent' => 'views_handler_field',
-      ),
-      'views_handler_field_user_name' => array(
-        'parent' => 'views_handler_field_user',
-      ),
-      'views_handler_field_user_link' => array(
-        'parent' => 'views_handler_field',
-      ),
-      'views_handler_field_user_link_edit' => array(
-        'parent' => 'views_handler_field_user_link',
-      ),
-      'views_handler_field_user_link_delete' => array(
-        'parent' => 'views_handler_field_user_link',
-      ),
-      'views_handler_field_user_mail' => array(
-        'parent' => 'views_handler_field_user',
-      ),
-      'views_handler_field_user_picture' => array(
-        'parent' => 'views_handler_field',
-      ),
-      'views_handler_field_user_roles' => array(
-        'parent' => 'views_handler_field_prerender_list',
-      ),
-      'views_handler_filter_user_name' => array(
-        'parent' => 'views_handler_filter_in_operator',
-      ),
-      'views_handler_filter_user_current' => array(
-        'parent' => 'views_handler_filter_boolean_operator',
-      ),
-      'views_handler_filter_user_roles' => array(
-        'parent' => 'views_handler_filter_many_to_one',
-      ),
-      'views_handler_argument_users_roles_rid' => array(
-        'parent' => 'views_handler_argument_many_to_one',
-      ),
-    ),
+    'views_handler_argument_user_uid',
+    'views_handler_field_user',
+    'views_handler_field_user_name',
+    'views_handler_field_user_link',
+    'views_handler_field_user_link_edit',
+    'views_handler_field_user_link_delete',
+    'views_handler_field_user_mail',
+    'views_handler_field_user_language',
+    'views_handler_field_user_picture',
+    'views_handler_field_user_roles',
+    'views_handler_filter_user_name',
+    'views_handler_filter_user_current',
+    'views_handler_filter_user_roles',
+    'views_handler_argument_users_roles_rid',
   );
 }
 
@@ -381,7 +376,7 @@ function user_views_handlers() {
  */
 function user_views_query_substitutions($view) {
   global $user;
-  return array('***CURRENT_USER***' => intval($user->uid));
+  return array(':user-current-user' => intval($user->uid));
 }
 
 /**

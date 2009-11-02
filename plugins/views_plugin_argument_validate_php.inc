@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_php.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_plugin_argument_validate_php.inc,v 1.1.6.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * @file
  * Contains the php code argument validator plugin.
@@ -31,7 +31,7 @@ class views_plugin_argument_validate_php extends views_plugin_argument_validate 
    * validate plugin.
    */
   function access() {
-    return user_access('use PHP for block visibility');
+    return user_access('use PHP for settings');
   }
 
   function validate_argument($argument) {

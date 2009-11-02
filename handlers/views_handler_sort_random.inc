@@ -1,13 +1,12 @@
 <?php
-// $Id: views_handler_sort_random.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_sort_random.inc,v 1.1.6.1 2009-11-02 22:01:25 merlinofchaos Exp $
 
 /**
  * Handle a random sort.
  */
 class views_handler_sort_random extends views_handler_sort {
   function query() {
-    global $db_type;
-    switch ($db_type) {
+    switch (db_driver()) {
       case 'mysql':
       case 'mysqli':
         $formula = 'RAND()';

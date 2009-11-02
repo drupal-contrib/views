@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_user_name.inc,v 1.2 2009-02-05 04:31:15 merlinofchaos Exp $
+// $Id: views_handler_field_user_name.inc,v 1.2.6.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * Field handler to provide simple renderer that allows using a themed user link
  */
@@ -53,7 +53,7 @@ class views_handler_field_user_name extends views_handler_field_user {
       }
       elseif (!empty($this->options['link_to_user'])) {
         $account->name = $values->{$this->field_alias};
-        return theme('username', $account);
+        return theme('username', array('account' => $account));
       }
     }
     // Otherwise, there's no special handling, so return the data directly.

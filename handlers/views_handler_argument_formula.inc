@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_formula.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_argument_formula.inc,v 1.1.6.1 2009-11-02 22:01:25 merlinofchaos Exp $
 /**
  * Abstract argument handler for simple formulae.
  *
@@ -50,6 +50,6 @@ class views_handler_argument_formula extends views_handler_argument {
     // Now that our table is secure, get our formula.
     $formula = $this->get_formula();
 
-    $this->query->add_where(0, "$formula = '%s'", $this->argument);
+    $this->query->add_where(0, $formula, $this->argument);
   }
 }

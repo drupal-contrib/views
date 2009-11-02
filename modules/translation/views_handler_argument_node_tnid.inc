@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_node_tnid.inc,v 1.1 2008-09-30 22:07:15 merlinofchaos Exp $
+// $Id: views_handler_argument_node_tnid.inc,v 1.1.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Provide node tnid argument handler.
@@ -14,10 +14,9 @@ class views_handler_argument_node_tnid extends views_handler_argument_numeric {
    */
   function title_query() {
     $titles = array();
-    $placeholders = implode(', ', array_fill(0, sizeof($this->value), '%d'));
 
-    $result = db_query("SELECT n.title FROM {node} n WHERE n.tnid IN ($placeholders)", $this->value);
-    while ($term = db_fetch_object($result)) {
+    $result = db_query("SELECT n.title FROM {node} n WHERE n.tnid IN (:tnids)", array(':tnis' => $this->value));
+    foreach ($result as $term) {
       $titles[] = check_plain($term->title);
     }
     return $titles;

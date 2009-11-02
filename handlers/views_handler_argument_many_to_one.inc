@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_many_to_one.inc,v 1.1 2008-09-03 19:21:28 merlinofchaos Exp $
+// $Id: views_handler_argument_many_to_one.inc,v 1.1.6.1 2009-11-02 22:01:25 merlinofchaos Exp $
 /**
  * An argument handler for use in fields that have a many to one relationship
  * with the table(s) to the left. This adds a bunch of options that are
@@ -75,7 +75,7 @@ class views_handler_argument_many_to_one extends views_handler_argument {
   function query() {
     if (empty($this->argument)) {
       parent::ensure_my_table();
-      $this->query->add_where(0, "$this->table_alias.$this->real_field IS NULL");
+      $this->query->add_where(0, "$this->table_alias.$this->real_field", NULL, 'IS NULL');
       return;
     }
 

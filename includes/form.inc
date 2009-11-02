@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.10 2008-06-25 21:10:10 merlinofchaos Exp $
+// $Id: form.inc,v 1.11.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
 
 /**
  * @file form.inc
@@ -174,12 +174,12 @@ function drupal_process_form_new($form_id, &$form, &$form_state) {
   if ((!empty($form['#programmed'])) || (!empty($form['#post']) && (isset($form['#post']['form_id']) && ($form['#post']['form_id'] == $form_id)))) {
     drupal_validate_form_new($form_id, $form, $form_state);
 
-    // form_clean_id() maintains a cache of element IDs it has seen,
+    // drupal_html_id() maintains a cache of element IDs it has seen,
     // so it can prevent duplicates. We want to be sure we reset that
     // cache when a form is processed, so scenerios that result in
     // the form being built behind the scenes and again for the
     // browser don't increment all the element IDs needlessly.
-    form_clean_id(NULL, TRUE);
+    drupal_html_id(NULL, TRUE);
 
     if ((!empty($form_state['submitted'])) && !form_get_errors() && empty($form_state['rebuild'])) {
       $form_state['redirect'] = NULL;
@@ -280,3 +280,20 @@ function views_process_dependency($element, $edit, &$form_state, &$form) {
 
   return $element;
 }
+
+/**
+ * #process callback to see if we need to check_plain() the options.
+ *
+ * Since FAPI is inconsistent, the #options are sanitized for you in all cases
+ * _except_ checkboxes. We have form elements that are sometimes 'select' and
+ * sometimes 'checkboxes', so we need decide late in the form rendering cycle
+ * if the options need to be sanitized before they're rendered. This callback
+ * inspects the type, and if it's still 'checkboxes', does the sanitation.
+ */
+function views_process_check_options($element, $edit, &$form_state, &$form) {
+  if ($element['#type'] == 'checkboxes' || $element['#type'] == 'checkbox') {
+    $element['#options'] = array_map('check_plain', $element['#options']);
+  }
+  return $element;
+}
+

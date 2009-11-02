@@ -1,5 +1,5 @@
 <?php
-// $Id: aggregator.views.inc,v 1.2 2009-04-07 23:07:31 merlinofchaos Exp $
+// $Id: aggregator.views.inc,v 1.3.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for aggregator.module
@@ -15,7 +15,7 @@
  */
 
 /**
- * Implementation of hook_views_data()
+ * Implements hook_views_data()
  */
 function aggregator_views_data() {
   // ----------------------------------------------------------------------
@@ -261,35 +261,92 @@ function aggregator_views_data() {
     ),
   );
 
+  // ----------------------------------------------------------------------
+  // Aggregator category feed table
+
+  $data['aggregator_category_feed']['table']['join'] = array(
+    'aggregator_item' => array(
+      'left_field' => 'fid',
+      'field' => 'fid',
+    ),
+  );
+
+  // ----------------------------------------------------------------------
+  // Aggregator category table
+
+  $data['aggregator_category']['table']['group'] = t('Aggregator category');
+
+  $data['aggregator_category']['table']['join'] = array(
+    'aggregator_item' => array(
+      'left_table' => 'aggregator_category_feed',
+      'left_field' => 'cid',
+      'field' => 'cid',
+    ),
+  );
+
+  // cid
+  $data['aggregator_category']['cid'] = array(
+    'title' => t('Category ID'),
+    'help' => t('The unique ID of the aggregator category.'),
+    'field' => array(
+      'handler' => 'views_handler_field_numeric',
+      'click sortable' => TRUE,
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_aggregator_category_cid',
+      'name field' => 'title',
+      'numeric' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_aggregator_category_cid',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+  );
+
+  // title
+  $data['aggregator_category']['title'] = array(
+    'title' => t('Category'),
+    'help' => t('The title of the aggregator category.'),
+    'field' => array(
+      'handler' => 'views_handler_field_aggregator_category',
+      'click sortable' => TRUE,
+     ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_string',
+    ),
+  );
+
   return $data;
 }
 
 /**
- * Implementation of hook_views_handlers() to register all of the basic handlers
+ * Implements hook_views_handlers() to register all of the basic handlers
  * views uses.
  */
 function aggregator_views_handlers() {
   return array(
-    'info' => array(
-      'path' => drupal_get_path('module', 'views') . '/modules/aggregator',
-    ),
-    'handlers' => array(
-      // field handler
-      'views_handler_field_aggregator_title_link' => array(
-        'parent' => 'views_handler_field',
-      ),
 
-      // argument handlers
-      'views_handler_argument_aggregator_fid' => array(
-        'parent' => 'views_handler_argument_numeric',
-      ),
-    ),
+    // field handlers
+    'views_handler_field_aggregator_title_link',
+    'views_handler_field_aggregator_category',
+
+    // argument handlers
+    'views_handler_argument_aggregator_fid',
+    'views_handler_argument_aggregator_category_cid',
+
+    // filter handlers
+      'views_handler_filter_aggregator_category_cid',
   );
 }
 
 
 /**
- * Implementation of hook_views_plugins
+ * Implements hook_views_plugins
  */
 function aggregator_views_plugins() {
   return array(
@@ -299,7 +356,7 @@ function aggregator_views_plugins() {
         'title' => t('Aggregator item'),
         'help' => t('Display the aggregator item using the data from the original source.'),
         'handler' => 'views_plugin_row_aggregator_rss',
-        'path' => drupal_get_path('module', 'views') . '/modules/aggregator', // not necessary for most modules
+        'path' => drupal_get_path('module', 'views') . '/modules/node', // not necessary for most modules
         'theme' => 'views_view_row_rss',
         'base' => array('aggregator_item'), // only works with 'node' as base.
         'uses options' => TRUE,

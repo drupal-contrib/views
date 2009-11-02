@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_float.inc,v 1.1 2009-03-25 17:29:33 merlinofchaos Exp $
+// $Id: views_handler_filter_float.inc,v 1.1.6.1 2009-11-02 22:01:25 merlinofchaos Exp $
 
 /**
  * Simple filter to handle greater than/less than filters.
@@ -9,15 +9,14 @@
 class views_handler_filter_float extends views_handler_filter_numeric {
   function op_between($field) {
     if ($this->operator == 'between') {
-      $this->query->add_where($this->options['group'], "$field >= %f", $this->value['min']);
-      $this->query->add_where($this->options['group'], "$field <= %f", $this->value['max']);
+      $this->query->add_where($this->options['group'], $field, array($this->value['min'], $this->value['max']), 'BETWEEN');
     }
     else {
-      $this->query->add_where($this->options['group'], "$field <= %f OR $field >= %f", $this->value['min'], $this->value['max']);
+      $this->query->add_where($this->options['group'], db_or()->condition($field, $this->value['min'], '<=')->condition($field, $this->value['max'], '>='));
     }
   }
 
   function op_simple($field) {
-    $this->query->add_where($this->options['group'], "$field $this->operator %f", $this->value['value']);
+    $this->query->add_where($this->options['group'], $field, $this->value['value'], $this->operator);
   }
 }

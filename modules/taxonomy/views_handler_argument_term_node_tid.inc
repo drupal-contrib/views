@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_term_node_tid.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_handler_argument_term_node_tid.inc,v 1.1.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * Allow taxonomy term ID(s) as argument
  */
@@ -30,10 +30,9 @@ class views_handler_argument_term_node_tid extends views_handler_argument_many_t
 
   function title_query() {
     $titles = array();
-    $placeholders = implode(', ', array_fill(0, sizeof($this->value), '%d'));
 
-    $result = db_query("SELECT name FROM {term_data} WHERE tid IN ($placeholders)", $this->value);
-    while ($term = db_fetch_object($result)) {
+    $result = db_query("SELECT name FROM {taxonomy_term_data} WHERE tid IN (:tids)", array(':tids' => $this->value));
+    foreach ($result as $term) {
       $titles[] = check_plain($term->name);
     }
     return $titles;

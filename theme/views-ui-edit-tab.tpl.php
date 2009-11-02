@@ -1,11 +1,11 @@
 <?php
-// $Id: views-ui-edit-tab.tpl.php,v 1.11 2008-08-08 16:57:44 merlinofchaos Exp $
+// $Id: views-ui-edit-tab.tpl.php,v 1.11.6.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * @file views-ui-edit-tab.tpl.php
  * Template for the primary view editing window.
  */
 ?>
-<div class="clear-block views-display views-display-<?php print $display->id; if (!empty($display->deleted)) { print ' views-display-deleted'; }; ?>">
+<div class="clearfix views-display views-display-<?php print $display->id; if (!empty($display->deleted)) { print ' views-display-deleted'; }; ?>">
   <?php // top section ?>
   <?php if ($remove): ?>
     <div class="remove-display"><?php print $remove ?></div>

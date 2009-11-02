@@ -1,10 +1,11 @@
-// $Id: ajax_view.js,v 1.17 2009-03-25 00:11:25 merlinofchaos Exp $
+// $Id: ajax_view.js,v 1.19.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
 
 /**
  * @file ajaxView.js
  *
  * Handles AJAX fetching of views, including filter submission and response.
  */
+(function ($) {
 
 Drupal.Views.Ajax = Drupal.Views.Ajax || {};
 
@@ -29,7 +30,7 @@ Drupal.Views.Ajax.ajaxViewResponse = function(target, response) {
     $view = $newView;
     Drupal.attachBehaviors($view.parent());
   }
- 
+
   if (response.messages) {
     // Show any messages (but first remove old ones, if there are any).
     $view.find('.views-messages').remove().end().prepend(response.messages);
@@ -37,7 +38,7 @@ Drupal.Views.Ajax.ajaxViewResponse = function(target, response) {
 };
 
 /**
- * Ajax behavior for views. 
+ * Ajax behavior for views.
  */
 Drupal.behaviors.ViewsAjaxView = function() {
   if (Drupal.settings && Drupal.settings.views && Drupal.settings.views.ajaxViews) {
@@ -73,7 +74,7 @@ Drupal.behaviors.ViewsAjaxView = function() {
       })
       .addClass('views-processed')
       .submit(function () {
-        $('input[type=submit]', this).after('<span class="views-throbbing">&nbsp</span>');
+        $('input[type=submit], button', this).after('<span class="views-throbbing">&nbsp</span>');
         var object = this;
         $(this).ajaxSubmit({
           url: ajax_path,
@@ -107,8 +108,8 @@ Drupal.behaviors.ViewsAjaxView = function() {
           var target = this;
           $(this)
             .addClass('views-processed')
-            // Process pager, tablesort, and summary links.
-            .find('ul.pager > li > a, th.views-field a, .views-summary a')
+            // Process pager, tablesort, and attachment summary links.
+            .find('ul.pager > li > a, th.views-field a, .attachment .views-summary a')
             .each(function () {
               var viewData = {};
               // Construct an object using the settings defaults and then overriding
@@ -154,3 +155,5 @@ Drupal.behaviors.ViewsAjaxView = function() {
     }); // .each Drupal.settings.views.ajaxViews
   } // if
 };
+
+})(jQuery);

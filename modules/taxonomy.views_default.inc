@@ -1,12 +1,12 @@
 <?php
-// $Id: taxonomy.views_default.inc,v 1.3 2008-06-10 21:30:43 merlinofchaos Exp $
+// $Id: taxonomy.views_default.inc,v 1.3.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Contains default views on behalf of the statistics module.
  */
 
 /**
- * Implementation of hook_default_view_views().
+ * Implements hook_default_view_views().
  */
 function taxonomy_views_default_views() {
   $view = new view;

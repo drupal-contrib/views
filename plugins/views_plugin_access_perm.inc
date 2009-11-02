@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_access_perm.inc,v 1.3 2009-01-07 23:31:13 merlinofchaos Exp $
+// $Id: views_plugin_access_perm.inc,v 1.3.6.1 2009-11-02 22:01:27 merlinofchaos Exp $
 
 /**
  * Access plugin that provides permission-based access control.
@@ -24,9 +24,10 @@ class views_plugin_access_perm extends views_plugin_access {
   function options_form(&$form, &$form_state) {
     $perms = array();
     // Get list of permissions
-    foreach (module_list(FALSE, FALSE, TRUE) as $module) {
-      if ($permissions = module_invoke($module, 'perm')) {
-        $perms[$module] = drupal_map_assoc($permissions);
+    foreach (module_implements('permission') as $module) {
+      $permissions = module_invoke($module, 'permission');
+      foreach ($permissions as $name => $perm) {
+        $perms[$module][$name] = $perm['title'];
       }
     }
     $form['perm'] = array(

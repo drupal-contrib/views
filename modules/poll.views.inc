@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.views.inc,v 1.4 2008-12-03 19:10:21 merlinofchaos Exp $
+// $Id: poll.views.inc,v 1.4.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for poll.module
@@ -13,7 +13,7 @@
  */
 
 /**
- * Implementation of hook_views_data()
+ * Implements hook_views_data()
  */
 function poll_views_data() {
   // Basic table information.

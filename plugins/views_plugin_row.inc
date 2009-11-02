@@ -1,8 +1,19 @@
 <?php
-// $Id: views_plugin_row.inc,v 1.3 2009-04-11 17:18:58 merlinofchaos Exp $
+// $Id: views_plugin_row.inc,v 1.4.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
 /**
  * @file
  * Contains the base row style plugin.
+ */
+
+/**
+ * @defgroup views_row_plugins Views' row plugins
+ * @{
+ *
+ * Row plugins control how Views outputs an individual record. They are
+ * tightly coupled to style plugins, in that a style plugin is what calls
+ * the row plugin.
+ *
+ * @see hook_views_plugins
  */
 
 /**
@@ -119,6 +130,17 @@ class views_plugin_row extends views_plugin {
    * of some form, but not always.
    */
   function render($row) {
-    return theme($this->theme_functions(), $this->view, $this->options, $row, $this->field_alias);
+    return theme($this->theme_functions(),
+      array(
+        'view' => $this->view,
+        'options' => $this->options,
+        'row' => $row,
+        'field_alias' => $this->field_alias
+      ));
   }
 }
+
+/**
+ * @}
+ */
+

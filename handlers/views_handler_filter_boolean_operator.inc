@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_boolean_operator.inc,v 1.3 2008-11-24 19:58:30 merlinofchaos Exp $
+// $Id: views_handler_filter_boolean_operator.inc,v 1.6.4.1 2009-11-02 22:01:25 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of boolean values
  *
@@ -15,11 +15,16 @@ class views_handler_filter_boolean_operator extends views_handler_filter {
   var $no_single = TRUE;
   // Don't display empty space where the operator would be.
   var $no_operator = TRUE;
+  // Whether to accept NULL as a false value or not
+  var $accept_null = FALSE;
 
   function construct() {
     $this->value_value = t('True');
     if (isset($this->definition['label'])) {
       $this->value_value = $this->definition['label'];
+    }
+    if (isset($this->definition['accept_null'])) {
+      $this->accept_null = (bool) $this->definition['accept null'];
     }
     $this->value_options = NULL;
     parent::construct();
@@ -89,6 +94,18 @@ class views_handler_filter_boolean_operator extends views_handler_filter {
       if (!isset($form_state['input'][$identifier])) {
         $form_state['input'][$identifier] = $this->value;
       }
+      // If we're configuring an exposed filter, add an <Any> option.
+      $any_label = variable_get('views_exposed_filter_any_label', 'old_any') == 'old_any' ? t('<Any>') : t('- Any -');
+      if ($form['value']['#type'] != 'select') {
+        $any_label = check_plain($any_label);
+      }
+      $form['value']['#options'] = array('All' => $any_label) + $form['value']['#options'];
+    }
+  }
+
+  function value_validate(&$form, &$form_state) {
+    if ($form_state['values']['options']['value'] == 'All' && empty($form_state['values']['options']['expose']['optional'])) {
+      form_set_error('value', t('You must select a value unless this is an optional exposed filter.'));
     }
   }
 
@@ -115,6 +132,22 @@ class views_handler_filter_boolean_operator extends views_handler_filter {
 
   function query() {
     $this->ensure_my_table();
-    $this->query->add_where($this->options['group'], "$this->table_alias.$this->real_field " . (empty($this->value) ? '=' : '<>') . " 0");
+    $field = "$this->table_alias.$this->real_field";
+
+    if (empty($this->value)) {
+
+      if ($this->accept_null) {
+        $or = db_or()
+          ->condition($field, 0, '=')
+          ->condition($field, NULL, 'IS NULL');
+        $this->query->add_where($this->options['group'], $or);
+      }
+      else {
+        $this->query->add_where($this->options['group'], $field, 0, '=');
+      }
+    }
+    else {
+      $this->query->add_where($this->options['group'], $field, 0, '<>');
+    }
   }
 }

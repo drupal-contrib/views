@@ -1,5 +1,5 @@
 <?php
-// $Id: book.views.inc,v 1.5 2008-12-02 19:37:08 merlinofchaos Exp $
+// $Id: book.views.inc,v 1.5.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for book.module
@@ -12,7 +12,7 @@
  */
 
 /**
- * Implementation of hook_views_data()
+ * Implements hook_views_data()
  */
 function book_views_data() {
   // ----------------------------------------------------------------------
