@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.7 2009-09-15 19:29:09 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.8 2009-11-02 22:57:01 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -117,19 +117,7 @@ class views_plugin_query_default extends views_plugin_query{
    */
   function set_distinct($value = TRUE) {
     if (!(isset($this->no_distinct) && $value)) {
-      // Hack in a check to see if node_access is going to add its own DISTINCT
-      // and break this query.
-      // See http://drupal.org/node/284392 for the core bug.
-      //
-      // We want to bypass views distinct code if this bug will be triggered so
-      // if the base table is node and there is a node access module, bypass
-      // views distinct code.
-      if ($this->base_table != 'node' || !node_access_view_all_nodes()) {
-        $this->distinct = FALSE;
-      }
-      else {
-        $this->distinct = $value;
-      }
+      $this->distinct = $value;
     }
   }
 
