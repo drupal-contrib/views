@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.6 2009-04-07 23:05:29 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.10.2.1 2009-11-02 23:17:16 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -163,8 +163,8 @@ class views_handler_filter extends views_handler {
   function show_value_form(&$form, &$form_state) {
     $this->value_form($form, $form_state);
     if (empty($this->no_operator)) {
-      $form['value']['#prefix'] = '<div class="views-right-70">';
-      $form['value']['#suffix'] = '</div>';
+      $form['value']['#prefix'] = '<div class="views-right-70">' . (isset($form['value']['#prefix']) ? $form['value']['#prefix'] : '');
+      $form['value']['#suffix'] = (isset($form['value']['#suffix']) ? $form['value']['#suffix'] : '') . '</div>';
     }
   }
 
@@ -362,6 +362,10 @@ class views_handler_filter extends views_handler {
 
     if (!empty($form_state['values']['options']['expose']['identifier']) && $form_state['values']['options']['expose']['identifier'] == 'value') {
       form_error($form['expose']['identifier'], t('This identifier is not allowed.'));
+    }
+    
+    if (!$this->view->display_handler->is_identifier_unique($form_state['id'], $form_state['values']['options']['expose']['identifier'])) {
+      form_error($form['expose']['identifier'], t('This identifier is used by another handler.'));
     }
   }
 
@@ -589,7 +593,7 @@ class views_handler_filter extends views_handler {
  * A special handler to take the place of missing or broken handlers.
  */
 class views_handler_filter_broken extends views_handler_filter {
-  function ui_name() {
+  function ui_name($short = FALSE) {
     return t('Broken/missing handler');
   }
 
