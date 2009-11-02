@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.33.4.2 2009-11-02 23:25:01 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -196,7 +196,7 @@ function comment_views_data() {
     'filter' => array(
       'handler' => 'views_handler_filter_date',
     ),
-  );
+  );  
 
   // status (approved or not)
   $data['comment']['status'] = array(
@@ -321,7 +321,7 @@ function comment_views_data() {
   $data['node_comment_statistics']['table']['join'] = array(
     //...to the node table
     'node' => array(
-      'type' => 'INNER',
+      'type' => 'INNER',      
       'left_field' => 'nid',
       'field' => 'nid',
      ),
