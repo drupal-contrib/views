@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.32 2009-04-08 06:38:41 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.33.2.1 2009-11-02 23:25:14 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -128,6 +128,44 @@ function comment_views_data() {
     ),
   );
 
+  // hostname
+  $data['comments']['hostname'] = array(
+    'title' => t('Hostname'),
+    'help' => t('Hostname of user that posted the comment.'),
+    'field' => array(
+      'handler' => 'views_handler_field',
+      'click sortable' => TRUE,
+     ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_string',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_string',
+    ),
+  );
+
+  // mail
+  $data['comments']['mail'] = array(
+    'title' => t('Mail'),
+    'help' => t('Email of user that posted the comment. Will be empty if the author is a registered user.'),
+    'field' => array(
+      'handler' => 'views_handler_field',
+      'click sortable' => TRUE,
+     ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_string',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_string',
+    ),
+  );
+
   // timestamp (when comment was posted)
   $data['comments']['timestamp'] = array(
     'title' => t('Post date'),
@@ -204,7 +242,7 @@ function comment_views_data() {
       'help' => t('Display the standard comment link used on regular nodes.'),
       'handler' => 'views_handler_field_comment_node_link',
     ),
-  );  
+  );
 
   $data['comments']['thread'] = array(
     'field' => array(
@@ -224,7 +262,7 @@ function comment_views_data() {
     'help' => t('The node the comment is a reply to.'),
     'relationship' => array(
       'base' => 'node',
-      'field' => 'nid',
+      'base field' => 'nid',
       'handler' => 'views_handler_relationship',
       'label' => t('Node'),
     ),
@@ -235,7 +273,7 @@ function comment_views_data() {
     'help' => t("The User ID of the comment's author."),
     'relationship' => array(
       'base' => 'users',
-      'field' => 'uid',
+      'base field' => 'uid',
       'handler' => 'views_handler_relationship',
       'label' => t('User'),
     ),
@@ -251,7 +289,7 @@ function comment_views_data() {
       'title' => t('Parent comment'),
       'help' => t('The parent comment.'),
       'base' => 'comments',
-      'field' => 'cid',
+      'base field' => 'cid',
       'handler' => 'views_handler_relationship',
       'label' => t('Parent comment'),
     ),
@@ -267,7 +305,7 @@ function comment_views_data() {
   $data['node_comment_statistics']['table']['join'] = array(
     //...to the node table
     'node' => array(
-      'type' => 'INNER',      
+      'type' => 'INNER',
       'left_field' => 'nid',
       'field' => 'nid',
      ),
