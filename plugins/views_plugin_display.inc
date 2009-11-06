@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.2.3 2009-11-02 23:17:16 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.2.4 2009-11-06 18:19:40 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1862,8 +1862,8 @@ class views_plugin_display extends views_plugin {
 
   /**
    * Check if the provided identifier is unique.
-   */ 
-  function is_identifier_unique($id, $identifier) {   
+   */
+  function is_identifier_unique($id, $identifier) {
     foreach (views_object_types() as $type => $info) {
       foreach ($this->get_handlers($type) as $key => $handler) {
         if ($handler->can_expose() && $handler->is_exposed()) {
