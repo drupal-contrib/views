@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.20.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.20.4.2 2009-11-09 22:38:07 dereine Exp $
 
 /**
  * @file ajax.inc
@@ -189,6 +189,9 @@ function views_ajax_form_wrapper($form_id, &$form_state) {
   $form_state += array(
     're_render' => FALSE,
     'no_redirect' => !empty($form_state['ajax']),
+    'build_info' => array(
+      'args' => array(),
+    ),
   );
 
   $output = drupal_render(drupal_build_form($form_id, $form_state));
