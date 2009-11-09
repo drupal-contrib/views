@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.16.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: upload.views.inc,v 1.16.4.2 2009-11-09 22:49:56 dereine Exp $
 /**
  * @file
  *
@@ -129,7 +129,7 @@ function upload_views_data_alter(&$data) {
       'relationship table' => 'upload',
       'relationship field' => 'fid',
       'base' => 'file',
-      'field' => 'fid',
+      'base field' => 'fid',
       'handler' => 'views_handler_relationship',
       'label' => t('Files'),
     ),
