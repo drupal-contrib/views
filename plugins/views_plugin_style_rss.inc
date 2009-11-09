@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_rss.inc,v 1.2.6.1 2009-11-02 22:01:27 merlinofchaos Exp $
+// $Id: views_plugin_style_rss.inc,v 1.2.6.2 2009-11-09 23:07:29 dereine Exp $
 /**
  * @file
  * Contains the RSS style plugin.
@@ -31,7 +31,7 @@ class views_plugin_style_rss extends views_plugin_style {
       }
 
       $this->view->feed_icon .= theme('feed_icon', array('url' => $url, 'title' => $title));
-      drupal_add_link(array(
+      drupal_add_html_head_link(array(
         'rel' => 'alternate',
         'type' => 'application/rss+xml',
         'title' => $title,
