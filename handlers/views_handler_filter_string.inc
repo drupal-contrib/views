@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_string.inc,v 1.7.2.2 2009-09-15 16:25:52 merlinofchaos Exp $
+// $Id: views_handler_filter_string.inc,v 1.7.2.3 2009-11-10 23:20:05 merlinofchaos Exp $
 
 /**
  * Basic textfield filter to handle string filtering commands
@@ -300,7 +300,7 @@ class views_handler_filter_string extends views_handler_filter {
   function op_not($field, $upper) {
     $this->query->add_where($this->options['group'], "$upper(%s) NOT LIKE $upper('%%%s%%')", $field, $this->value);
   }
-  
+
   function op_shorter($field, $upper) {
     $this->query->add_where($this->options['group'], "LENGTH($upper(%s)) < %d", $field, $this->value);
   }

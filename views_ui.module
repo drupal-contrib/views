@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.109 2009-01-30 00:56:01 merlinofchaos Exp $
+// $Id: views_ui.module,v 1.109.2.1 2009-11-10 23:20:05 merlinofchaos Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -265,6 +265,7 @@ function views_ui_cache_set(&$view) {
   unset($view->display_handler);
   unset($view->current_display);
   unset($view->default_display);
+  $view->query = NULL;
   foreach (array_keys($view->display) as $id) {
     unset($view->display[$id]->handler);
     unset($view->display[$id]->default_display);

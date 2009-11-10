@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.50.2.6 2009-07-01 06:13:42 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.50.2.7 2009-11-10 23:20:05 merlinofchaos Exp $
 /**
  * @file
  *
@@ -203,6 +203,7 @@ function taxonomy_views_data() {
       'help' => t('Display all taxonomy terms associated with a node from specified vocabularies.'),
       'handler' => 'views_handler_field_term_node_tid',
       'skip base' => 'term_data',
+      'no group by' => TRUE,
     ),
     'argument' => array(
       'handler' => 'views_handler_argument_term_node_tid',
@@ -265,7 +266,7 @@ function taxonomy_views_data() {
     'argument' => array(
       'help' => t('The parent term of the term.'),
       'handler' => 'views_handler_argument_numeric',
-    ),    
+    ),
   );
 
   // ----------------------------------------------------------------------
