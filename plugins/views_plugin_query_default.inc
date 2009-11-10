@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.8 2009-11-02 22:57:01 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.9 2009-11-10 22:44:09 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1085,6 +1085,12 @@ class views_plugin_query_default extends views_plugin_query{
       }
       else {
         $result = db_query($query, $args);
+      }
+
+      // If we already know how many items we have even if we did not run the
+      // count query, go ahead and set that value:
+      if (empty($this->pager['items_per_page'])) {
+        $this->total_rows = count($this->result);
       }
 
       $view->result = array();
