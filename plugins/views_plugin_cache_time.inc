@@ -1,13 +1,16 @@
 <?php
-// $Id: views_plugin_cache_time.inc,v 1.3.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
+// $Id: views_plugin_cache_time.inc,v 1.3.4.2 2009-11-13 23:19:22 dereine Exp $
 
 /**
  * Simple caching of query results for Views displays.
  */
 class views_plugin_cache_time extends views_plugin_cache {
-  function option_defaults(&$options) {
-    $options['results_lifespan'] = 3600;
-    $options['output_lifespan'] = 3600;
+  function option_definition() {
+    $options = parent::option_definition();
+    $options['results_lifespan'] = array('default' => 3600);
+    $options['output_lifespan'] = array('default' => 3600);
+
+    return $options;
   }
 
   function options_form(&$form, &$form_state) {

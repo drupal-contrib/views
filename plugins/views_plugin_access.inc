@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_access.inc,v 1.1 2008-09-08 22:50:17 merlinofchaos Exp $
+// $Id: views_plugin_access.inc,v 1.1.6.1 2009-11-13 23:19:22 dereine Exp $
 
 /**
  * The base plugin to handle access control.
@@ -18,19 +18,19 @@ class views_plugin_access extends views_plugin {
   function init(&$view, &$display) {
     $this->view = &$view;
     $this->display = &$display;
-    $this->options = array();
 
     if (is_object($display->handler)) {
-    // Note: The below is read only.
-      $this->options = $display->handler->get_option('access');
+      $options = $display->handler->get_option('access');
+      // Overlay incoming options on top of defaults
+      $this->unpack_options($this->options, $options);
     }
   }
 
   /**
-   * Retrieve the default options when this is a new access
+   * Retrieve the options when this is a new access
    * control plugin
    */
-  function option_defaults(&$options) { }
+  function option_definition() { return array(); }
 
   /**
    * Provide the default form for setting options.
