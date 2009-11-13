@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_access_perm.inc,v 1.3 2009-01-07 23:31:13 merlinofchaos Exp $
+// $Id: views_plugin_access_perm.inc,v 1.3.2.1 2009-11-13 22:07:54 merlinofchaos Exp $
 
 /**
  * Access plugin that provides permission-based access control.
@@ -17,8 +17,12 @@ class views_plugin_access_perm extends views_plugin_access {
     return t($this->options['perm']);
   }
 
-  function option_defaults(&$options) {
-    $options['perm'] = 'access content';
+
+  function option_definition() {
+    $options = parent::option_definition();
+    $options['perm'] = array('default' => 'access content');
+
+    return $options;
   }
 
   function options_form(&$form, &$form_state) {

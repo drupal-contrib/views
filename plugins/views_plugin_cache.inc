@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_cache.inc,v 1.1.2.4 2009-06-25 18:48:25 merlinofchaos Exp $
+// $Id: views_plugin_cache.inc,v 1.1.2.5 2009-11-13 22:07:54 merlinofchaos Exp $
 
 /**
  * The base plugin to handle caching.
@@ -28,19 +28,13 @@ class views_plugin_cache extends views_plugin {
   function init(&$view, &$display) {
     $this->view = &$view;
     $this->display = &$display;
-    $this->options = array();
 
     if (is_object($display->handler)) {
-      // Note: The below is read only.
-      $this->options = $display->handler->get_option('cache');
+      $options = $display->handler->get_option('cache');
+      // Overlay incoming options on top of defaults
+      $this->unpack_options($this->options, $options);
     }
   }
-
-  /**
-   * Retrieve the default options when this is a new access
-   * control plugin
-   */
-  function option_defaults(&$options) { }
 
   /**
    * Return a string to display as the clickable title for the

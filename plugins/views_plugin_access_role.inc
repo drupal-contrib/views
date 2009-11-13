@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_access_role.inc,v 1.2 2009-01-07 23:31:13 merlinofchaos Exp $
+// $Id: views_plugin_access_role.inc,v 1.2.2.1 2009-11-13 22:07:54 merlinofchaos Exp $
 
 /**
  * Access plugin that provides role-based access control.
@@ -30,8 +30,12 @@ class views_plugin_access_role extends views_plugin_access {
     }
   }
 
-  function option_defaults(&$options) {
-    $options['role'] = array();
+
+  function option_definition() {
+    $options = parent::option_definition();
+    $options['role'] = array('default' => array());
+
+    return $options;
   }
 
   function options_form(&$form, &$form_state) {
