@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_comment_user_uid.inc,v 1.2.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: views_handler_filter_comment_user_uid.inc,v 1.2.4.2 2009-11-13 12:36:06 dereine Exp $
 
 /**
  * Filter handler to accept a user id to check for nodes that user posted or
@@ -16,7 +16,7 @@ class views_handler_filter_comment_user_uid extends views_handler_filter_user_na
     $subselect = $subselect->countQuery();
 
     $condition = db_or()
-      ->condition("$this->table_alias.uid", $this->value, $this->operator);
+      ->condition("$this->table_alias.uid", $this->value, $this->operator)
       ->condition(0, $subselect, '<');
 
     $this->query->add_where(0, $condition);
