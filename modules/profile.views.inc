@@ -1,5 +1,5 @@
 <?php
-//$Id: profile.views.inc,v 1.10.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+//$Id: profile.views.inc,v 1.10.4.2 2009-11-15 08:25:42 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -70,7 +70,7 @@ function profile_views_get_fields() {
 
   if (!isset($fields)) {
     $fields = array();
-    $results = db_query("SELECT * FROM {profile_fields} ORDER BY category, weight");
+    $results = db_query("SELECT * FROM {profile_field} ORDER BY category, weight");
 
     foreach ($results as $row) {
       if (!empty($row->options)) {
