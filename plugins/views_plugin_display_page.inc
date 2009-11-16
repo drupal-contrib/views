@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.5.2.4 2009-11-16 19:52:56 merlinofchaos Exp $
+// $Id: views_plugin_display_page.inc,v 1.5.2.5 2009-11-16 20:05:39 merlinofchaos Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -66,7 +66,7 @@ class views_plugin_display_page extends views_plugin_display {
 
     $path = implode('/', $bits);
 
-    $access_plugin = $this->get_plugin('access');
+    $access_plugin = $this->get_access_plugin();
 
     if ($path) {
       $items[$path] = array(
