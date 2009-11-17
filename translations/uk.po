@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Views (all releases)\n"
-"POT-Creation-Date: 2009-11-12 01:14+0000\n"
-"PO-Revision-Date: 2009-11-10 07:42+0000\n"
+"POT-Creation-Date: 2009-11-17 08:42+0000\n"
+"PO-Revision-Date: 2009-11-17 08:41+0000\n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -111,10 +111,10 @@ msgid "@current of @max"
 msgstr "@current з @max"
 
 msgid "@field-name"
-msgstr "@назва поля"
+msgstr "@field-name"
 
 msgid "@filter must have a value!"
-msgstr "@filter мусить містити значення!"
+msgstr "@filter повинен мати значення!"
 
 msgid "@min and @max"
 msgstr "@min та @max"
@@ -123,7 +123,7 @@ msgid "@num new"
 msgstr "@num новий"
 
 msgid "@time ms"
-msgstr "@time мсек"
+msgstr "@time мс"
 
 msgid "@type handler @table.@field is not available."
 msgstr "Оброблювач @type для @table.@field не доступний."
@@ -143,7 +143,7 @@ msgid "Access"
 msgstr "Повноваження"
 
 msgid "Access log"
-msgstr "Лоґ доступу"
+msgstr "Журнал доступу"
 
 msgid "Access options"
 msgstr "Параметри доступу"
@@ -152,10 +152,10 @@ msgid "Access restrictions"
 msgstr "Обмеження доступу"
 
 msgid "Access will be granted to users with any of the specified roles."
-msgstr "Доступ буде надано користувачам будь-якої вказаної ролі"
+msgstr "Доступ буде наданий користувачам з будь-якими із зазначених ролей."
 
 msgid "Access will be granted to users with the specified permission string."
-msgstr "Доступ буде надано користувачам вказаного рядка повноважень"
+msgstr "Доступ буде наданий користувачам із зазначеним дозволом."
 
 msgid "Actions"
 msgstr "Події"
@@ -258,7 +258,7 @@ msgid ""
 msgstr "Дозволяє ігнорувати аргумент. Запит не буде змінювати цей аргумент."
 
 msgid "Allow multiple arguments to work together."
-msgstr "Дозволити багато аргументів в спільній роботі"
+msgstr "Дозволити кілька аргументів, щоб вони працювали разом."
 
 msgid "Allow multiple terms per argument"
 msgstr "Дозволити багато термінів на аргумент"
@@ -270,7 +270,7 @@ msgid "Allows exporting multiple views at once."
 msgstr "Дозволяє експортувати кілька вистав за раз."
 
 msgid "Already exists"
-msgstr "Вже наявне"
+msgstr "Уже існує"
 
 msgid "Already exists (don't create)"
 msgstr "Уже існує (не створювати)"
@@ -406,7 +406,7 @@ msgid "Back to !info."
 msgstr "Повернутись до !info"
 
 msgid "Basic"
-msgstr "Базовий"
+msgstr "Базово"
 
 msgid "Basic Information"
 msgstr "Основна інформація"
@@ -685,7 +685,7 @@ msgid "Convert stored Views 1 views."
 msgstr "Конвертувати збережений View 1 view."
 
 msgid "Convert view"
-msgstr "Конвертація виду"
+msgstr "Конвертувати вид"
 
 msgid "Converted"
 msgstr "Конвертовано"
@@ -730,7 +730,7 @@ msgid "Current installed version"
 msgstr "Теперішня встановлена версія"
 
 msgid "Current language"
-msgstr "Теперішня мова"
+msgstr "Поточна мова"
 
 msgid "Current node's creation time"
 msgstr "Час створення поточного матеріалу"
@@ -739,7 +739,7 @@ msgid "Current node's update time"
 msgstr "Час відновлення поточного матеріалу"
 
 msgid "Current user's language"
-msgstr "Теперішня мова користувача"
+msgstr "Мова поточного користувача"
 
 msgid "Currently Logged In User"
 msgstr "Користувач, що ввійшов у систему"
@@ -751,7 +751,7 @@ msgid "Custom date format"
 msgstr "Власний формат дати"
 
 msgid "Custom text"
-msgstr "Свій текст"
+msgstr "Користувацький текст"
 
 msgid "Cut and paste the results of an Export View here."
 msgstr "Вирізати й вставляти результати вивантаження виду."
@@ -823,7 +823,7 @@ msgid "Delete this item."
 msgstr "Вилучити цей елемент."
 
 msgid "Delete view"
-msgstr "Стерти вид"
+msgstr "Вилучити вид"
 
 msgid "Depth"
 msgstr "Глибина"
@@ -866,7 +866,7 @@ msgid "Display as link"
 msgstr "Відображати як посилання"
 
 msgid "Display empty text"
-msgstr "Відображати пустий текст"
+msgstr "Показати порожній текст"
 
 msgid "Display even if view has no result"
 msgstr "Показувати навіть якщо результат порожній"
@@ -881,10 +881,10 @@ msgid "Display links"
 msgstr "Відображення посилань"
 
 msgid "Display node comments"
-msgstr "Відображає коментарі до матеріалу"
+msgstr "Показувати коментарі до матеріалу"
 
 msgid "Display nothing if no new comments"
-msgstr "Не відображає нічого, за відсутності коментарів"
+msgstr "При відсутності нових коментарів нічого не відображати"
 
 msgid "Display only distinct items, without duplicates."
 msgstr "Показувати тільки унікальні елементи, без дублікатів."
@@ -1019,7 +1019,7 @@ msgid "Edit"
 msgstr "Редагувати"
 
 msgid "Edit link"
-msgstr "Посилання на редагування"
+msgstr "Посилання Змінити"
 
 msgid "Edit this view"
 msgstr "Правити вид"
@@ -1104,13 +1104,13 @@ msgid "Error: missing @component"
 msgstr "Помилка: відсутній @component"
 
 msgid "Example content"
-msgstr "Матеріал приклад"
+msgstr "Приклад змісту"
 
 msgid "Example node"
-msgstr "Матеріал приклад"
+msgstr "Приклад матеріалу"
 
 msgid "Example table"
-msgstr "Таблиця приклад"
+msgstr "Приклад таблиці"
 
 msgid "Example table contains example content and can be related to nodes."
 msgstr ""
@@ -1120,7 +1120,7 @@ msgid "Exclude from display"
 msgstr "Прибрати з показу"
 
 msgid "Exclude the argument"
-msgstr "Пропук аргумента"
+msgstr "Виключити аргумент"
 
 msgid "Existing Views"
 msgstr "Доступні види"
@@ -1156,10 +1156,10 @@ msgid "Feed"
 msgstr "RSS стрічка"
 
 msgid "Feed ID"
-msgstr "Feed ID"
+msgstr "ID стрічки"
 
 msgid "Feed settings"
-msgstr "Налаштування вибірок"
+msgstr "Настроювання стрічки"
 
 msgid "Field"
 msgstr "Поле"
@@ -1168,7 +1168,7 @@ msgid "Field @field (ID: @id)"
 msgstr "Поле @field (ID: @id)"
 
 msgid "Field can contain HTML"
-msgstr "Поле може сприймати HTML"
+msgstr "Поле може містити HTML"
 
 msgid "Fields"
 msgstr "Поля"
@@ -1278,7 +1278,7 @@ msgid "Force Single"
 msgstr "Одиночний"
 
 msgid "Force single"
-msgstr "Примусово одиничний"
+msgstr "Тільки один"
 
 msgid "Force this exposed filter to accept only one option."
 msgstr "Дозволяє цьому відкритому фільтру ухвалювати тільки одне настроювання."
@@ -1317,7 +1317,7 @@ msgid "Global"
 msgstr "Глобальне"
 
 msgid "Glossary mode"
-msgstr "Режим глосарію"
+msgstr "Словниковий режим"
 
 msgid "Go"
 msgstr "Перехід"
@@ -1353,13 +1353,13 @@ msgid "Grouped List"
 msgstr "Групований список"
 
 msgid "Grouping field"
-msgstr "Групуюче поле"
+msgstr "Групувати по полю"
 
 msgid "Groups"
 msgstr "Групи"
 
 msgid "HTML List"
-msgstr "Список HTML"
+msgstr "HTML список"
 
 msgid "Handler"
 msgstr "Обробник"
@@ -1669,13 +1669,13 @@ msgid "Information"
 msgstr "Інформація"
 
 msgid "Inherit"
-msgstr "Залежність"
+msgstr "Успадковувати"
 
 msgid "Inherit arguments"
-msgstr "Залежність аргументів"
+msgstr "Успадковувати аргументи"
 
 msgid "Inherit exposed filters"
-msgstr "Залежність відображених фільтрів"
+msgstr "Успадковувати розкриті фільтри"
 
 msgid "Inline fields"
 msgstr "Поля без розділювачів"
@@ -1721,7 +1721,7 @@ msgstr ""
 "Знайдений невірний ідентифікатор відображення під час відновлення вкладок"
 
 msgid "Invalid input"
-msgstr "Некоректний ввід"
+msgstr "Помилкове введення"
 
 msgid "Is All Of"
 msgstr "Все з"
@@ -1805,7 +1805,7 @@ msgid "Just a numeric field."
 msgstr "Просто поле з просто цифр."
 
 msgid "Just a plain text field."
-msgstr "Просто поле з просто текстом."
+msgstr "Текстове поле."
 
 msgid "Just a timestamp field."
 msgstr "Просто поле для часу"
@@ -1847,10 +1847,10 @@ msgid "Last modified"
 msgstr "Востаннє змінено"
 
 msgid "Limit list to selected items"
-msgstr "Ліміт списку обраних пунктів"
+msgstr "Обмежити список обраними елементами"
 
 msgid "Limit terms by vocabulary"
-msgstr "Ліміт термінів словника"
+msgstr "Обмежити терміни словником"
 
 msgid "Link"
 msgstr "Посилання"
@@ -1880,7 +1880,7 @@ msgid "Link to contact page"
 msgstr "Посилання на сторінку контактів"
 
 msgid "Links from"
-msgstr "Посилання з"
+msgstr "Посилання від"
 
 msgid "Links to"
 msgstr "Посилання на"
@@ -1980,7 +1980,7 @@ msgid "More link"
 msgstr "Посилання \"ще(далі)\""
 
 msgid "Most recent view"
-msgstr "Найактуальніший вид"
+msgstr "Останній перегляд"
 
 msgid "Move this item down."
 msgstr "Перемістити елемент униз."
@@ -1998,7 +1998,7 @@ msgid "Multiple displays"
 msgstr "Сукупність відображень"
 
 msgid "Multiple roles"
-msgstr "Багато ролей"
+msgstr "Кілька ролей"
 
 msgid "Name"
 msgstr "Ім'я"
@@ -2010,7 +2010,7 @@ msgid "Never cache"
 msgstr "Не кешувати"
 
 msgid "New comments"
-msgstr "Новий коментар"
+msgstr "Нові коментарі"
 
 msgid "New view"
 msgstr "Новий вид"
@@ -2037,7 +2037,7 @@ msgid "No fields available."
 msgstr "Недоступні поля"
 
 msgid "No language"
-msgstr "Нема мови"
+msgstr "Немає мови"
 
 msgid "No link"
 msgstr "Без посилання"
@@ -2049,7 +2049,7 @@ msgid "No menu entry"
 msgstr "Без пункта меню"
 
 msgid "No name"
-msgstr "Без назви"
+msgstr "Без імені"
 
 msgid "No query was run"
 msgstr "Немає запущених запитів"
@@ -2061,7 +2061,7 @@ msgid "No role(s) selected"
 msgstr "Жодної ролі(ролей не обрано)"
 
 msgid "No title"
-msgstr "Без заголовку"
+msgstr "Без назви"
 
 msgid "No transform"
 msgstr "Без перетворення"
@@ -2085,7 +2085,7 @@ msgid "Node access"
 msgstr "Доступ до матеріалу"
 
 msgid "Node link"
-msgstr "Посилання матеріалу"
+msgstr "Посилання на матеріал"
 
 msgid "Node revision"
 msgstr "Редакція матеріалу"
@@ -2221,7 +2221,7 @@ msgid "Normal"
 msgstr "Нормально"
 
 msgid "Normal menu entry"
-msgstr "Нормальний пункт меню"
+msgstr "Звичайний пункт меню"
 
 msgid "Normal menu item"
 msgstr "Нормальний елемент меню"
@@ -2370,7 +2370,7 @@ msgid "Parent"
 msgstr "Батько"
 
 msgid "Parent CID"
-msgstr "Батьківська CID"
+msgstr "Батьківський CID"
 
 msgid "Parent Menu Item Title"
 msgstr "Заголовок батьківського пункту меню"
@@ -2397,19 +2397,19 @@ msgid "Path: !path"
 msgstr "Шлях: !path"
 
 msgid "Per page"
-msgstr "Для сторінки"
+msgstr "По сторінках"
 
 msgid "Per role"
-msgstr "Для ролі"
+msgstr "По ролях"
 
 msgid "Per role per page"
-msgstr "Для ролі і для сторінки"
+msgstr "По ролях по сторінках"
 
 msgid "Per user"
-msgstr "Для користувача"
+msgstr "По користувачах"
 
 msgid "Per user per page"
-msgstr "Для користувача і для сторінки"
+msgstr "По користувачах по сторінках"
 
 msgid "Permanent"
 msgstr "Постійна"
@@ -2470,7 +2470,7 @@ msgid "Profile URL"
 msgstr "URL профілю"
 
 msgid "Profile checkbox"
-msgstr "Чекбокс профілю"
+msgstr "Прапорець профілю"
 
 msgid "Profile date %field-name."
 msgstr "Профіль датою %field-name."
@@ -2485,7 +2485,7 @@ msgid "Profile textarea"
 msgstr "Багаторядкове поле введення тексту профілю"
 
 msgid "Profile textfield"
-msgstr "Однорядкове поле введення тексту профілю"
+msgstr "Текстове поле профілю"
 
 msgid "Profile: @field-name"
 msgstr "Профіль: @field-name"
@@ -2539,7 +2539,7 @@ msgid "Query results"
 msgstr "Результат запиту"
 
 msgid "RSS Feed"
-msgstr "RSS потік"
+msgstr "RSS стрічка"
 
 msgid "RSS description"
 msgstr "Опис RSS"
@@ -2617,7 +2617,7 @@ msgid "Remove display"
 msgstr "Видалити вид"
 
 msgid "Remove this item"
-msgstr "Видалити цей елемент"
+msgstr "Вилучити цей елемент"
 
 msgid "Replacement patterns"
 msgstr "Шаблони заміни"
@@ -2626,7 +2626,7 @@ msgid "Replies"
 msgstr "Відповіді"
 
 msgid "Reply-to link"
-msgstr "Посилання відповіді"
+msgstr "Посилання Відповісти на"
 
 msgid "Require this relationship"
 msgstr "Цей зв'язок обов'язковий"
@@ -2750,7 +2750,7 @@ msgid "Selection based profile field help"
 msgstr "Допомога по полю профілю, заснована на виборі"
 
 msgid "Selection type"
-msgstr "Тип вибору"
+msgstr "Спосіб вибору"
 
 msgid "Separate arguments with a / as though they were a URL path."
 msgstr "Аргументи, розділені '/' як в URL шляхи."
@@ -2768,7 +2768,7 @@ msgid "Show All"
 msgstr "Показати все"
 
 msgid "Show None"
-msgstr "Не позувати нічого"
+msgstr "Не показувати нічого"
 
 msgid "Show a marker if the node has new or updated content."
 msgstr "Показує прапор, якщо матеріал новий, або його вміст змінився."
@@ -2813,7 +2813,7 @@ msgid "Some example content that references a node."
 msgstr "Деякі приклади, пов'язані з матеріалами"
 
 msgid "Sort Criteria"
-msgstr "Критерій сортування"
+msgstr "Критерій Сортування"
 
 msgid "Sort by"
 msgstr "Сортувати за"
@@ -2864,7 +2864,7 @@ msgid "Source"
 msgstr "Джерело"
 
 msgid "Source translation"
-msgstr "Базовий переклад"
+msgstr "Джерело перекладу"
 
 msgid "Specify how many digits to print after the decimal point."
 msgstr "Скільки цифр виводити після десяткової коми."
@@ -2888,7 +2888,7 @@ msgid "Storage"
 msgstr "Накопичувач"
 
 msgid "Strip HTML tags"
-msgstr "Обмежувати теги HTML"
+msgstr "Вилучити Html-Теги."
 
 msgid "Style"
 msgstr "Стиль"
@@ -2933,7 +2933,7 @@ msgid "Tab Weight"
 msgstr "Вага закладки"
 
 msgid "Tab weight"
-msgstr "Вага закладки"
+msgstr "Вага вкладки"
 
 msgid "Tab: @title"
 msgstr "Закладка: @title"
@@ -3014,7 +3014,7 @@ msgid "Term name/synonym converted to Term ID"
 msgstr "Термін/синонім, перетворений в ID"
 
 msgid "Term synonym"
-msgstr "Термін синонім"
+msgstr "Синонім терміна"
 
 msgid "Term synonyms may be used to find terms by alternate names."
 msgstr ""
@@ -3025,7 +3025,7 @@ msgid "Text"
 msgstr "Текст"
 
 msgid "Text to display"
-msgstr "Текст для виду"
+msgstr "Текст для показу"
 
 msgid ""
 "Text to display at the bottom of the view. May contain an explanation or "
@@ -3135,10 +3135,10 @@ msgid "The cache has been cleared."
 msgstr "Кеш - очищено!"
 
 msgid "The comment ID of the field"
-msgstr "ID коментаря поля"
+msgstr "ID коментаря"
 
 msgid "The date the file was uploaded."
-msgstr "Дата завантаження."
+msgstr "Дата завантаження файлу."
 
 msgid "The date the node revision was created."
 msgstr "Дата створення редакції матеріалу."
@@ -3223,7 +3223,7 @@ msgid "The name of the author of the last posted comment."
 msgstr "Ім'я автора останнього коментаря."
 
 msgid "The name of the file."
-msgstr "Ім'я файлу"
+msgstr "Ім'я файлу."
 
 msgid "The name of this display"
 msgstr "Ім'я виду"
@@ -3274,10 +3274,10 @@ msgstr ""
 "змішувалися. Можна використовувати Html-Код."
 
 msgid "The size of the file."
-msgstr "Розмір файлу"
+msgstr "Розмір файлу."
 
 msgid "The status of the file."
-msgstr "Статус файлу."
+msgstr "Стан файлу."
 
 msgid ""
 "The stored teaser field. This may not be valid or useful data on all node "
@@ -3299,7 +3299,7 @@ msgid "The taxonomy vocabulary ID"
 msgstr "ID словника Таксономії"
 
 msgid "The term weight field"
-msgstr "Термі напівжирного поля"
+msgstr "Вага терміна"
 
 msgid "The terms to search for."
 msgstr "Терміни для пошуку."
@@ -3481,7 +3481,7 @@ msgid "This code goes in a file named views-list-@s.tpl.php"
 msgstr "Цей код потрібно помістити у файл views-list-@s.tpl.php"
 
 msgid "This code goes in your template.php file"
-msgstr "Цей код підійде у ваш файл template.php"
+msgstr "Цей код міститься у Ваш файл template.php"
 
 msgid "This display has no path."
 msgstr "Цей вид немає шляху"
@@ -3539,7 +3539,7 @@ msgstr ""
 "множинні збіги таксономії повертають дубльовані матеріали."
 
 msgid "This identifier is not allowed."
-msgstr "Ідентифікатор недозволено"
+msgstr "Ідентифікатор неприпустимий."
 
 msgid "This is a basic theme function"
 msgstr "Це основна функція шаблону"
@@ -3670,7 +3670,7 @@ msgid "Thousands separator"
 msgstr "Розділювач тисяч"
 
 msgid "Thread"
-msgstr "Гілки"
+msgstr "Обговорення"
 
 msgid "Time ago"
 msgstr "Часу назад"
@@ -3706,7 +3706,7 @@ msgid "Title only"
 msgstr "Тільки назва"
 
 msgid "Title plus teaser"
-msgstr "Назва плюс анонс"
+msgstr "Заголовок і анонс"
 
 msgid "Title: @title"
 msgstr "Заголовок: @title"
@@ -3724,7 +3724,7 @@ msgid "Top level book"
 msgstr "Верхній рівень підшивки"
 
 msgid "Total views"
-msgstr "Переглядів"
+msgstr "Усього переглядів"
 
 msgid "Translation"
 msgstr "Переклад"
@@ -3751,7 +3751,7 @@ msgid "True"
 msgstr "Так"
 
 msgid "True/False"
-msgstr "True/False"
+msgstr "Правда/Неправда"
 
 msgid "Type"
 msgstr "Тип"
@@ -3898,7 +3898,7 @@ msgid "User"
 msgstr "Користувач"
 
 msgid "User ID from URL"
-msgstr "ІД користувача з Адреси"
+msgstr "ID користувача з URL"
 
 msgid "User ID from logged in user"
 msgstr "ІД зареєстрованого користувача"
@@ -3980,7 +3980,7 @@ msgid "View details"
 msgstr "Деталі Вигляду"
 
 msgid "View link"
-msgstr "Показати посилання"
+msgstr "Посилання Прочитати"
 
 msgid "View name"
 msgstr "Ім'я Вигляду"
@@ -4171,7 +4171,7 @@ msgid ""
 msgstr "Необхідно хоча б одне поле для можливості настроювання таблиці"
 
 msgid "[@time ms]"
-msgstr "[@time мсек]"
+msgstr "[@time мс]"
 
 msgid "[More] Link?"
 msgstr "Посилання [читати далі]?"
@@ -4222,7 +4222,7 @@ msgid "ends"
 msgstr "закінчується"
 
 msgid "exposed"
-msgstr "відображено"
+msgstr "розкритий"
 
 msgid "field"
 msgstr "поле"
