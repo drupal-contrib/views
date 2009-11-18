@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.16 2009-11-16 20:05:39 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.17 2009-11-18 20:27:27 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1064,6 +1064,7 @@ class views_plugin_display extends views_plugin {
         $form['#title'] .= t('Access options');
         if ($plugin) {
           $form['#help_topic'] = $plugin->definition['help topic'];
+          $form['#help_module'] = $plugin->definition['module'];
 
           $form['access_options'] = array(
             '#tree' => TRUE,
@@ -1105,6 +1106,7 @@ class views_plugin_display extends views_plugin {
         $form['#title'] .= t('Caching options');
         if ($plugin) {
           $form['#help_topic'] = $plugin->definition['help topic'];
+          $form['#help_module'] = $plugin->definition['module'];
 
           $form['cache_options'] = array(
             '#tree' => TRUE,
@@ -1198,6 +1200,7 @@ class views_plugin_display extends views_plugin {
         if ($plugin) {
           if (isset($plugin->definition['help topic'])) {
             $form['#help_topic'] = $plugin->definition['help topic'];
+            $form['#help_module'] = $plugin->definition['module'];
           }
           $form[$form_state['section']] = array(
             '#tree' => TRUE,
