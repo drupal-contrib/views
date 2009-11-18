@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.25.2.1 2009-07-21 00:09:40 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.2 2009-11-18 20:17:07 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -309,5 +309,5 @@ Drupal.behaviors.ViewsAjaxLinks = function() {
  * Get rid of irritating tabledrag messages
  */
 Drupal.theme.tableDragChangedWarning = function () { 
-  return ' '; 
+  return '<div></div>';
 }
