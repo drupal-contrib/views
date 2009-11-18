@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.12 2009-10-23 21:38:27 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.13 2009-11-18 20:37:51 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -571,6 +571,7 @@ function template_preprocess_views_exposed_form(&$vars) {
     // set up defaults so that there's always something there.
     $widget->label = $widget->operator = $widget->widget = NULL;
 
+    $widget->id = $form[$info['value']]['#id'];
     if (!empty($info['label'])) {
       $widget->label = $info['label'];
     }
