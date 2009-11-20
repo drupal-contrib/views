@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.2 2009-11-09 22:38:07 dereine Exp $
+// $Id: admin.inc,v 1.161.4.3 2009-11-20 22:03:07 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2055,7 +2055,7 @@ function views_ui_rearrange_form($form, &$form_state) {
     $form[$id] = array('#tree' => TRUE);
     $form[$id]['weight'] = array(
       '#type' => 'weight',
-      '#delta' => 25,
+      '#delta' => 200,
       '#default_value' => ++$count,
     );
     $handler = views_get_handler($field['table'], $field['field'], $type);
