@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.109.2.13 2009-11-16 20:05:39 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.109.2.14 2009-11-26 00:35:16 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -278,6 +278,10 @@ class views_handler extends views_object {
   function option_definition() {
     $options = parent::option_definition();
 
+    $options['id'] = array('default' => '');
+    $options['table'] = array('default' => '');
+    $options['field'] = array('default' => '');
+    $options['relationship'] = array('default' => 'none');
     $options['group_type'] = array('default' => 'group');
 
     return $options;
