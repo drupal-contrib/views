@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.5 2009-11-13 23:25:17 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.6 2009-11-29 18:21:15 chx Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -576,7 +576,6 @@ class views_plugin_query_default extends views_plugin_query {
       $table = $this->table_queue[$table]['table'];
     }
     return views_get_table_join($table, $base_table);
-
   }
 
   /**
@@ -889,8 +888,7 @@ class views_plugin_query_default extends views_plugin_query {
     // Add all the tables to the query via joins. We assume all LEFT joins.
     foreach ($this->table_queue as $table) {
       if (is_object($table['join'])) {
-        $join_data = $table['join']->join_data($table, $this);
-        $query->leftJoin($join_data['table'], $join_data['alias'], $join_data['condition']);
+        $table['join']->build_join($query, $table, $this);
       }
     }
 
