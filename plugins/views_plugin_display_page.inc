@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.8.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
+// $Id: views_plugin_display_page.inc,v 1.8.4.2 2009-11-29 20:03:38 dereine Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -175,7 +175,7 @@ class views_plugin_display_page extends views_plugin_display {
     $this->view->get_breadcrumb(TRUE);
 
     // And the title, which is much easier.
-    drupal_set_title(filter_xss_admin($this->view->get_title()));
+    drupal_set_title(filter_xss_admin($this->view->get_title()), PASS_THROUGH);
 
     // And now render the view.
     return $this->view->render();
