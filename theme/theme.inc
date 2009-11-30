@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.2 2009-11-18 20:37:41 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.4.3 2009-11-30 19:05:39 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -79,7 +79,7 @@ function template_preprocess_views_view(&$vars) {
   $vars['pager']      = '';
 
   $exposed_input = isset($view->exposed_data_raw) ? $view->exposed_data_raw : NULL;
-  if (!empty($view->pager['use_pager'])) {
+  if ($view->display_handler->render_pager()) {
     $pager_type = ($view->pager['use_pager'] === 'mini' ? 'views_mini_pager' : 'pager');
     $pager_theme = views_theme_functions($pager_type, $view, $view->display_handler->display);
     $vars['pager']    = theme($pager_theme,
