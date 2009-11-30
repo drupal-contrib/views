@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument.inc,v 1.7 2009-02-20 20:12:38 merlinofchaos Exp $
+// $Id: views_handler_argument.inc,v 1.9.2.1 2009-11-30 20:47:03 merlinofchaos Exp $
 
 /**
  * @defgroup views_argument_handlers Handlers for arguments
@@ -101,6 +101,7 @@ class views_handler_argument extends views_handler {
     $options['wildcard'] = array('default' => 'all');
     $options['wildcard_substitution'] = array('default' => t('All'), 'translatable' => TRUE);
     $options['title'] = array('default' => '', 'translatable' => TRUE);
+    $options['breadcrumb'] = array('default' => '', 'translatable' => TRUE);
     $options['default_argument_type'] = array('default' => 'fixed');
     $options['default_argument'] = array('default' => '');
     $options['validate_type'] = array('default' => 'none');
@@ -119,6 +120,15 @@ class views_handler_argument extends views_handler {
       '#title' => t('Title'),
       '#default_value' => $this->options['title'],
       '#description' => t('The title to use when this argument is present. It will override the title of the view and titles from previous arguments. You can use percent substitution here to replace with argument titles. Use "%1" for the first argument, "%2" for the second, etc.'),
+    );
+
+    $form['breadcrumb'] = array(
+      '#prefix' => '<div class="clear-block">',
+      '#suffix' => '</div>',
+      '#type' => 'textfield',
+      '#title' => t('Breadcrumb'),
+      '#default_value' => $this->options['breadcrumb'],
+      '#description' => t('The Breadcrumb title to use when this argument is present. If no breadcrumb is set here, default Title values will be used, see "Title" for percent substitutions.'),
     );
 
     $form['clear_start'] = array(
@@ -740,7 +750,7 @@ class views_handler_argument extends views_handler {
  * @ingroup views_argument_handlers
  */
 class views_handler_argument_broken extends views_handler_argument {
-  function ui_name() {
+  function ui_name($short = FALSE) {
     return t('Broken/missing handler');
   }
 
