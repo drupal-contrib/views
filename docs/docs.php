@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.13.2.3 2009-06-25 18:48:24 merlinofchaos Exp $
+// $Id: docs.php,v 1.13.2.4 2009-11-30 23:55:30 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -217,6 +217,14 @@ function hook_views_data() {
  */
 function hook_views_plugins() {
   // example code here
+}
+
+/**
+ * Alter existing plugins data, defined by modules.
+ */
+function hook_views_plugins_alter(&$plugins) {
+  // Add apachesolr to the base of the node row plugin.
+  $plugins['row']['node']['base'][] = 'apachesolr';
 }
 
 /**
