@@ -1,5 +1,5 @@
 <?php
-// $Id: book.views.inc,v 1.5.6.2 2009-11-09 22:49:56 dereine Exp $
+// $Id: book.views.inc,v 1.5.6.3 2009-11-30 19:44:04 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for book.module
@@ -85,7 +85,7 @@ function book_views_data() {
 
   $data['book_menu_links']['p'] = array(
     'title' => t('Hierarchy'),
-    'help' => t('The order of pages in the book hierarchy. If you want the exactly right order, remember to sort by weight, too.'),
+    'help' => t('The order of pages in the book hierarchy.'),
     'sort' => array(
       'handler' => 'views_handler_sort_menu_hierarchy',
     ),
