@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.332 2009-04-08 16:11:51 merlinofchaos Exp $
+// $Id: views.module,v 1.341.2.1 2009-11-30 19:11:35 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -100,7 +100,7 @@ function views_theme() {
   $hooks['views_more'] = $base + array(
     'template' => 'views-more',
     'pattern' => 'views_more__',
-    'arguments' => array('more_url' => NULL),
+    'arguments' => array('more_url' => NULL, 'link_text' => 'more'),
   );
   return $hooks;
 }
@@ -157,8 +157,7 @@ function views_menu() {
   $items['views/ajax'] = array(
     'title' => 'Views',
     'page callback' => 'views_ajax',
-    'access callback' => 'user_access',
-    'access arguments' => array('access content'),
+    'access callback' => TRUE,
     'description' => 'Ajax callback for view loading.',
     'file' => 'includes/ajax.inc',
     'type' => MENU_CALLBACK,
@@ -397,7 +396,7 @@ function views_block($op = 'list', $delta = 0, $edit = array()) {
  * Implementation of hook_flush_caches().
  */
 function views_flush_caches() {
-  return array('cache_views');
+  return array('cache_views', 'cache_views_data');
 }
 
 /**
@@ -857,7 +856,6 @@ function views_get_view($name, $reset = FALSE) {
   return $view->clone_view();
 }
 
-
 // ------------------------------------------------------------------
 // Views debug helper functions
 
@@ -872,7 +870,12 @@ function views_debug($message) {
     else {
       $output = var_export($message, TRUE);
     }
-    drupal_set_content(variable_get('views_devel_region', 'footer'), '<pre>' . $output . '</pre>');
+    if (variable_get('views_devel_region', 'footer') != 'watchdog') {
+      drupal_set_content(variable_get('views_devel_region', 'footer'), '<pre>' . $output . '</pre>');
+    }
+    else {
+      watchdog('views_logging', '<pre>' . $output . '</pre>');
+    }
   }
 }
 
@@ -938,6 +941,10 @@ function views_exposed_form(&$form_state) {
 
   // Let form plugins know this is for exposed widgets.
   $form_state['exposed'] = TRUE;
+  // Check if the form was already created
+  if ($cache = views_exposed_form_cache($view->name, $view->current_display)) {
+    return $cache;
+  }
 
   $form['#info'] = array();
 
@@ -962,6 +969,7 @@ function views_exposed_form(&$form_state) {
     '#name' => '', // prevent from showing up in $_GET.
     '#type' => 'submit',
     '#value' => t('Apply'),
+    '#id' => form_clean_id('edit-submit-' . $view->name),
   );
 
   $form['#action'] = url($view->get_url());
@@ -974,6 +982,10 @@ function views_exposed_form(&$form_state) {
     drupal_add_js('misc/jquery.form.js');
   }
   views_add_js('dependent');
+
+  // Save the form
+  views_exposed_form_cache($view->name, $view->current_display, $form);
+
   return $form;
 }
 
@@ -1007,6 +1019,31 @@ function views_exposed_form_submit(&$form, &$form_state) {
       $form_state['view']->exposed_raw_input[$key] = $value;
     }
   }
+}
+
+/**
+ * Save the Views exposed form for later use.
+ *
+ * @param $views_name
+ *   String. The views name.
+ * @param $display_name
+ *   String. The current view display name.
+ * @param $form_output
+ *   Array (optional). The form structure. Only needed when inserting the value.
+ * @return
+ *   Array. The form structure, if any. Otherwise, return FALSE.
+ */
+function views_exposed_form_cache($views_name, $display_name, $form_output = NULL) {
+  static $views_exposed;
+
+  // Save the form output
+  if (!empty($form_output)) {
+    $views_exposed[$views_name][$display_name] = $form_output;
+    return;
+  }
+
+  // Return the form output, if any
+  return empty($views_exposed[$views_name][$display_name]) ? FALSE : $views_exposed[$views_name][$display_name];
 }
 
 // ------------------------------------------------------------------
@@ -1079,7 +1116,7 @@ function views_embed_view($name, $display_id = 'default') {
   }
 
   $view = views_get_view($name);
-  if (!$view) {
+  if (!$view || !$view->access($display_id)) {
     return;
   }
 
@@ -1087,9 +1124,54 @@ function views_embed_view($name, $display_id = 'default') {
 }
 
 /**
+* Get the result of a view.
+*
+* @param string $name
+*      The name of the view to retrieve the data from.
+* @param string $display_id
+*      The display id. On the edit page for the view in question, you'll find
+*      a list of displays at the left side of the control area. "Defaults"
+*      will be at the top of that list. Hover your cursor over the name of the
+*      display you want to use. An URL will appear in the status bar of your
+*      browser. This is usually at the bottom of the window, in the chrome.
+*      Everything after #views-tab- is the display ID, e.g. page_1.
+ * @param ...
+ *   Any additional parameters will be passed as arguments.
+* @return
+*      array
+*          An array containing an object for each view item.
+*/
+function views_get_view_result($name, $display_id = NULL) {
+  $args = func_get_args();
+  array_shift($args); // remove $name
+  if (count($args)) {
+    array_shift($args); // remove $display_id
+  }
+
+  $view = views_get_view($name);
+  if (is_object($view)) {
+    if (is_array($args)) {
+      $view->set_arguments($args);
+    }
+    if (is_string($display_id)) {
+      $view->set_display($display_id);
+    }
+    else {
+      $view->init_display();
+    }
+    $view->pre_execute();
+    $view->execute();
+    return $view->result;
+  }
+  else {
+    return array();
+  }
+}
+
+/**
  * Export a field.
  */
-function views_var_export($var, $prefix = '') {
+function views_var_export($var, $prefix = '', $init = TRUE) {
   if (is_array($var)) {
     if (empty($var)) {
       $output = 'array()';
@@ -1097,7 +1179,7 @@ function views_var_export($var, $prefix = '') {
     else {
       $output = "array(\n";
       foreach ($var as $key => $value) {
-        $output .= "  '$key' => " . views_var_export($value, '  ') . ",\n";
+        $output .= "  '$key' => " . views_var_export($value, '  ', FALSE) . ",\n";
       }
       $output .= ')';
     }
@@ -1105,12 +1187,23 @@ function views_var_export($var, $prefix = '') {
   else if (is_bool($var)) {
     $output = $var ? 'TRUE' : 'FALSE';
   }
+  else if (is_string($var) && strpos($var, "\n") !== FALSE) {
+    // Replace line breaks in strings with a token for replacement
+    // at the very end. This protects multi-line strings from
+    // unintentional indentation.
+    $var = str_replace("\n", "***BREAK***", $var);
+    $output = var_export($var, TRUE);
+  }
   else {
     $output = var_export($var, TRUE);
   }
 
   if ($prefix) {
     $output = str_replace("\n", "\n$prefix", $output);
+  }
+
+  if ($init) {
+    $output = str_replace("***BREAK***", "\n", $output);
   }
 
   return $output;
