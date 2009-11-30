@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.18 2009-11-26 00:35:16 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.19 2009-11-30 19:05:43 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -117,6 +117,13 @@ class views_plugin_display extends views_plugin {
       return $this->get_option('use_pager');
     }
     return FALSE;
+  }
+
+  /**
+   * Does the display render the pager if it has it enabled?
+   */
+  function render_pager() {
+    return $this->use_pager();
   }
 
   /**
