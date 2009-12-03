@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.2.3 2009-11-10 23:20:06 merlinofchaos Exp $
+// $Id: views_plugin_query.inc,v 1.1.2.4 2009-12-03 01:47:31 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the base query class, which is the underlying layer in a View.
@@ -9,6 +9,10 @@
  * Object used to create a SELECT query.
  */
 class views_plugin_query extends views_plugin {
+  /**
+   * A pager plugin that should be provided by the display.
+   */
+  var $pager = NULL;
 
   /**
    * Constructor; Create the basic query object and fill with default values.
@@ -57,4 +61,37 @@ class views_plugin_query extends views_plugin {
    * If NULL, aggregation is not allowed.
    */
   function get_aggregation_info() { }
+
+  /**
+   * Set a LIMIT on the query, specifying a maximum number of results.
+   */
+  function set_limit($limit) {
+    $this->limit = $limit;
+  }
+
+  /**
+   * Set an OFFSET on the query, specifying a number of results to skip
+   */
+  function set_offset($offset) {
+    $this->offset = $offset;
+  }
+
+  function init_pager(&$view) {
+    // @todo -- probably this should be a method on the display rather than directly calling
+    // get plugin?
+    $this->pager = $view->display_handler->get_plugin('pager');
+  }
+
+  /**
+   * Render the pager, if necessary.
+   */
+  function render_pager() {
+    if (!empty($this->pager) && $this->pager->use_pager()) {
+      $exposed_input = isset($this->view->exposed_data_raw) ? $this->view->exposed_data_raw : NULL;
+      return $this->pager->render($exposed_input);
+    }
+    return '';
+  }
+
+
 }

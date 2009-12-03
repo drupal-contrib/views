@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_cache.inc,v 1.1.2.5 2009-11-13 22:07:54 merlinofchaos Exp $
+// $Id: views_plugin_cache.inc,v 1.1.2.6 2009-12-03 01:47:31 merlinofchaos Exp $
 
 /**
  * The base plugin to handle caching.
@@ -68,7 +68,7 @@ class views_plugin_cache extends views_plugin {
         $data = array(
           'result' => $this->view->result,
           'total_rows' => $this->view->total_rows,
-          'pager' => $this->view->pager,
+          'current_page' => $this->view->get_current_page(),
         );
         cache_set($this->get_results_key(), $data, $this->table);
         break;
@@ -94,12 +94,12 @@ class views_plugin_cache extends views_plugin {
         return FALSE;
       case 'results':
         // Values to set: $view->result, $view->total_rows, $view->execute_time,
-        // $view->pager['current_page'].
+        // $view->current_page.
         if ($cache = cache_get($this->get_results_key(), $this->table)) {
           if (!$cutoff || $cache->created > $cutoff) {
             $this->view->result = $cache->data['result'];
             $this->view->total_rows = $cache->data['total_rows'];
-            $this->view->pager = $cache->data['pager'];
+            $this->view->set_current_page = $cache->data['current_page'];
             $this->view->execute_time = 0;
             return TRUE;
           }

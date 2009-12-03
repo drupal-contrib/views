@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form.inc,v 1.1.2.3 2009-11-30 21:54:19 merlinofchaos Exp $
+// $Id: views_plugin_exposed_form.inc,v 1.1.2.4 2009-12-03 01:47:31 merlinofchaos Exp $
 
 /**
  * The base plugin to handle exposed filter forms.
@@ -14,12 +14,11 @@ class views_plugin_exposed_form extends views_plugin {
    * @param $display
    *   The display handler.
    */
-  function init(&$view, &$display) {
+  function init(&$view, &$display, $options = array()) {
     $this->view = &$view;
     $this->display = &$display;
 
-    $exposed_form = $display->handler->get_option('exposed_form');
-    $this->unpack_options($this->options, $exposed_form['options']);
+    $this->unpack_options($this->options, $options);
   }
 
   /**
@@ -92,9 +91,9 @@ class views_plugin_exposed_form extends views_plugin {
   function pre_execute() { }
 
   function exposed_form_alter(&$form, &$form_state) { }
-  
+
   function exposed_form_validate(&$form, &$form_state) { }
-  
+
   /**
    * This function is executed when exposed form is submited.
    *
@@ -103,8 +102,8 @@ class views_plugin_exposed_form extends views_plugin {
    * @param $form_state
    *   A keyed array containing the current state of the form.
    * @param $exclude
-   *   Nested array of keys to exclude of insert into 
+   *   Nested array of keys to exclude of insert into
    *   $view->exposed_raw_input
-   */ 
+   */
   function exposed_form_submit(&$form, &$form_state, &$exclude) { }
 }

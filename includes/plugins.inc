@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.152.2.8 2009-11-30 23:55:30 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.152.2.9 2009-12-03 01:47:31 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -288,6 +288,42 @@ function views_views_plugins() {
         'handler' => 'views_plugin_exposed_form_input_required',
         'uses options' => TRUE,
         'help topic' => 'exposed-form-input-required',
+      ),
+    ),
+    'pager' => array(
+      'parent' => array(
+        'no ui' => TRUE,
+        'handler' => 'views_plugin_pager',
+        'parent' => '',
+      ),
+      'none' => array(
+        'title' => t('Display all items'),
+        'help' => t("Display all items that this view might find"),
+        'handler' => 'views_plugin_pager_none',
+        'help topic' => 'pager-none',
+        'uses options' => TRUE,
+      ),
+      'some' => array(
+        'title' => t('Display a specified number of items'),
+        'help' => t('Display a limited number items that this view might find.'),
+        'handler' => 'views_plugin_pager_some',
+        'help topic' => 'pager-some',
+        'uses options' => TRUE,
+      ),
+      'full' => array(
+        'title' => t('Paged output, full pager'),
+        'help' => t('Paged output, full Drupal style'),
+        'handler' => 'views_plugin_pager_full',
+        'help topic' => 'pager-full',
+        'uses options' => TRUE,
+      ),
+      'mini' => array(
+        'title' => t('Paged output, mini pager'),
+        'help' => t('Use the mini pager output.'),
+        'handler' => 'views_plugin_pager_mini',
+        'help topic' => 'pager-mini',
+        'uses options' => TRUE,
+        'parent' => 'full',
       ),
     ),
   );
