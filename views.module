@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.332.2.14 2009-11-30 21:54:19 merlinofchaos Exp $
+// $Id: views.module,v 1.332.2.15 2009-12-03 21:47:21 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -357,7 +357,6 @@ function views_block($op = 'list', $delta = 0, $edit = array()) {
 
       return $items;
     case 'view':
-      $start = views_microtime();
       // if this is 32, this should be an md5 hash.
       if (strlen($delta) == 32) {
         $hashes = variable_get('views_block_hashes', array());
@@ -389,7 +388,6 @@ function views_block($op = 'list', $delta = 0, $edit = array()) {
       if ($view = views_get_view($name)) {
         if ($view->access($display_id)) {
           $output = $view->execute_display($display_id);
-          vpr("Block $view->name execute time: " . (views_microtime() - $start) * 1000 . "ms");
           $view->destroy();
           return $output;
         }
