@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.20 2009-12-03 01:47:31 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.21 2009-12-03 21:02:02 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -2141,9 +2141,12 @@ class views_plugin_display extends views_plugin {
         return;
       }
       $this->view->init_handlers();
-      return array(
-        'content' => $this->view->render_exposed_form(TRUE),
-      );
+      if ($this->uses_exposed()) {
+        $exposed_form = $this->get_plugin('exposed_form');
+        return array(
+          'content' => $exposed_form->render_exposed_form(TRUE),
+        );
+      }
     }
   }
 
