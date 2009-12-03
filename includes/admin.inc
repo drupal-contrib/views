@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.4 2009-11-20 22:04:10 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.5 2009-12-03 21:57:43 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -138,8 +138,25 @@ function template_preprocess_views_ui_list_views(&$vars) {
       $item->path = t('Warning! Broken view!');
     }
     else {
-      $item->path = $raw_path = $view->get_path();
-      $item->path = $item->path && empty($view->disabled) && strpos($item->path, '%') === FALSE ? l($item->path, $item->path) : check_plain($item->path);
+      $view->init_display();   // Make sure all the handlers are set up
+      $all_paths = array();
+      foreach ($view->display as $display) {
+        if (!empty($display->handler) && $display->handler->has_path()) {
+          $one_path = $display->handler->get_option('path');
+          if (empty($path_sort)) {
+            $path_sort = strtolower($one_path);
+          }
+          if (empty($view->disabled) && strpos($one_path, '%') === FALSE) {
+            $all_paths[] = l($one_path, $one_path);
+          } 
+          else {
+            $all_paths[] = check_plain($one_path);
+          }
+        }
+      }
+      if (!empty($all_paths)) {
+        $item->path = implode(', ', array_unique($all_paths));
+      }
     }
 
     $item->type = $view->type;
