@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.3 2009-11-09 22:49:56 dereine Exp $
+// $Id: comment.views.inc,v 1.33.4.4 2009-12-03 20:59:30 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -521,7 +521,7 @@ function template_preprocess_views_view_row_comment(&$vars) {
   // Put the view on the node so we can retrieve it in the preprocess.
   $node->view = &$view;
 
-  $links = '';
+  $links = array();
   if (!empty($options['links'])) {
     $links = module_invoke_all('link', 'comment', $comment, 0);
     drupal_alter('link', $links, $node);
