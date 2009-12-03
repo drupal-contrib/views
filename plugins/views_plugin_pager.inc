@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager.inc,v 1.1.2.1 2009-12-03 01:47:31 merlinofchaos Exp $
+// $Id: views_plugin_pager.inc,v 1.1.2.2 2009-12-03 23:28:53 merlinofchaos Exp $
 
 /**
  * The base plugin to handle pager.
@@ -72,6 +72,13 @@ class views_plugin_pager extends views_plugin {
    */
   function get_total_items() {
     return $this->total_items;
+  }
+
+  /**
+   * Get the pager id, if it exists
+   */
+  function get_pager_id() {
+    return isset($this->options['id']) ? $this->options['id'] : 0;
   }
 
   /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.15 2009-12-03 01:47:31 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.16 2009-12-03 23:28:53 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -137,7 +137,7 @@ function template_preprocess_views_view(&$vars) {
             'view_dom_id' => $vars['dom_id'],
             // To fit multiple views on a page, the programmer may have
             // overridden the display's pager_element.
-            'pager_element' => $view->pager['element'],
+            'pager_element' => $view->query->pager->get_pager_id(),
           ),
         ),
       ),

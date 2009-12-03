@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.22 2009-12-03 21:06:43 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.23 2009-12-03 23:28:53 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1695,6 +1695,9 @@ class views_plugin_display extends views_plugin {
       case 'title':
       case 'link_display':
         $this->set_option($section, $form_state['values'][$section]);
+        break;
+      case 'use_ajax':
+        $this->set_option($section, (bool)$form_state['values'][$section]);
         break;
       case 'use_more':
         $this->set_option($section, intval($form_state['values'][$section]));
