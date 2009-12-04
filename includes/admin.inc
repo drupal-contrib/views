@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.6 2009-12-04 19:07:37 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.7 2009-12-04 19:08:51 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2799,7 +2799,7 @@ function views_ui_admin_tools() {
   $form['views_exposed_filter_any_label'] = array(
     '#type' => 'select',
     '#title' => t('Label for "Any" value on optional single-select exposed filters'),
-    '#options' => array('old_any' => t('<Any>'), 'new_any' => t('- Any -')),
+    '#options' => array('old_any' => '<Any>', 'new_any' => t('- Any -')),
     '#default_value' => variable_get('views_exposed_filter_any_label', 'old_any'),
   );
 
