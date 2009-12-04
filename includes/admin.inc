@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.5 2009-12-03 21:57:43 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.6 2009-12-04 19:07:37 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -148,7 +148,7 @@ function template_preprocess_views_ui_list_views(&$vars) {
           }
           if (empty($view->disabled) && strpos($one_path, '%') === FALSE) {
             $all_paths[] = l($one_path, $one_path);
-          } 
+          }
           else {
             $all_paths[] = check_plain($one_path);
           }
