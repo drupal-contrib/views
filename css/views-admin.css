@@ -1,4 +1,4 @@
-/* $Id: views-admin.css,v 1.13.2.2 2009-11-18 20:24:18 merlinofchaos Exp $ */
+/* $Id: views-admin.css,v 1.13.2.3 2009-12-04 01:08:09 merlinofchaos Exp $ */
 
 /*
  * Summary pad
@@ -547,6 +547,14 @@ div.changed div.view-changed {
   border: 1px solid #333;
   background-color: #f0f0f0;
   padding: .5em;
+}
+
+form#views-ui-reorder-displays-button {
+  margin-bottom: 0em;
+  border-bottom: 1px solid #ccc;
+}
+form#views-ui-reorder-displays-button input.form-submit{
+  margin-bottom: 2em;
 }
 
 form#views-add-display-form {

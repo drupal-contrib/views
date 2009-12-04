@@ -1,4 +1,4 @@
-// $Id: base.js,v 1.10.2.1 2009-06-02 18:45:40 merlinofchaos Exp $
+// $Id: base.js,v 1.10.2.2 2009-12-04 01:08:09 merlinofchaos Exp $
 /**
  * @file base.js
  *
@@ -23,6 +23,18 @@ Drupal.behaviors.viewsTabs = function (context) {
       var id = $(this).attr('id').replace('views-remove-link-', '');
       $('#views-row-' + id).hide();
       $('#views-removed-' + id).attr('checked', true);
+      return false;
+    });
+  /**
+   * Here is to handle display deletion 
+   * (checking in the hidden checkbox and hiding out the row) 
+   */
+  $('a.display-remove-link')
+    .addClass('display-processed')
+    .click(function() {
+      var id = $(this).attr('id').replace('display-remove-link-', '');
+      $('#display-row-' + id).hide();
+      $('#display-removed-' + id).attr('checked', true);
       return false;
     });
 }
