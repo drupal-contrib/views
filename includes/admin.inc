@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.4 2009-12-04 19:04:04 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.5 2009-12-04 19:04:40 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
