@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_many_to_one.inc,v 1.1.2.1 2009-06-01 21:30:00 merlinofchaos Exp $
+// $Id: views_handler_filter_many_to_one.inc,v 1.1.2.2 2009-12-07 19:03:05 merlinofchaos Exp $
 
 /**
  * Complex filter to handle filtering for many to one relationships,
@@ -10,7 +10,7 @@
  * to provide something that isn't just a select list.
  */
 class views_handler_filter_many_to_one extends views_handler_filter_in_operator {
-  function init(&$view, &$options) {
+  function init(&$view, $options) {
     parent::init($view, $options);
     $this->helper = new views_many_to_one_helper($this);
   }
