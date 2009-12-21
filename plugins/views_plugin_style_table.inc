@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_table.inc,v 1.7.4.2 2009-11-10 19:30:43 merlinofchaos Exp $
+// $Id: views_plugin_style_table.inc,v 1.7.4.3 2009-12-21 08:56:38 dww Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -28,7 +28,7 @@ class views_plugin_style_table extends views_plugin_style {
    * Determine if we should provide sorting based upon $_GET inputs.
    */
   function build_sort() {
-    if (!isset($_GET['order']) && $this->options['default'] == -1 || empty($this->view->field[$this->options['default']])) {
+    if (!isset($_GET['order']) && ($this->options['default'] == -1 || empty($this->view->field[$this->options['default']]))) {
       return TRUE;
     }
 
