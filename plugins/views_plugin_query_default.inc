@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.13 2009-12-04 00:48:32 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.14 2009-12-22 00:35:49 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -65,6 +65,8 @@ class views_plugin_query_default extends views_plugin_query{
    * A flag as to whether or not to make the primary field distinct.
    */
   var $distinct = FALSE;
+
+  var $has_aggregate = FALSE;
 
   /**
    * Constructor; Create the basic query object and fill with default values.
@@ -897,7 +899,6 @@ class views_plugin_query_default extends views_plugin_query{
 
   function compile_fields($fields_array) {
     $fields = $distinct = array();
-    $has_aggregate = FALSE;
     $non_aggregates = array();
 
     foreach ($fields_array as $field) {
@@ -924,7 +925,7 @@ class views_plugin_query_default extends views_plugin_query{
           $string = $info[$field['function']]['method']($field['function'], $string);
         }
 
-        $has_aggregate = TRUE;
+        $this->has_aggregate = TRUE;
       }
       elseif ($this->distinct && !in_array($fieldname, $this->groupby)) {
         $string = $GLOBALS['db_type'] == 'pgsql' ? "FIRST($string)" : $string;
@@ -944,7 +945,7 @@ class views_plugin_query_default extends views_plugin_query{
         $fields[] = $string;
       }
 
-      if ($get_count_optimized) {
+      if (!empty($get_count_optimized)) {
         // We only want the first field in this case.
         break;
       }
