@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.56.2.5 2009-11-10 23:20:06 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.56.2.6 2009-12-23 21:17:50 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -96,6 +96,11 @@ function user_views_data() {
     ),
     'argument' => array(
       'handler' => 'views_handler_argument_string',
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_string',
+      'title' => t('Name (raw)'),
+      'help' => t('The user or author name. This filter does not check if the user exists and allows partial matching. Does not utilize autocomplete.')
     ),
   );
 
