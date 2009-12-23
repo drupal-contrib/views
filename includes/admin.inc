@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.18 2009-12-23 21:30:32 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.19 2009-12-23 21:46:51 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2601,6 +2601,7 @@ function views_ui_config_item_form_submit($form, &$form_state) {
   $handler->options['table'] = $item['table'];
   $handler->options['field'] = $item['field'];
   $handler->options['exposed'] = $item['exposed'];
+  $handler->options['group_type'] = $item['group_type'];
 
   // Store the item back on the view
   $form_state['view']->set_item($form_state['display_id'], $form_state['type'], $form_state['id'], $handler->options);
