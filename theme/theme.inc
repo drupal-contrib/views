@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.4 2009-12-23 20:37:13 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.4.5 2009-12-23 21:30:27 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -360,6 +360,11 @@ function template_preprocess_views_view_table(&$vars) {
     $vars['fields'][$field] = views_css_safe($field);
     if ($active == $field) {
       $vars['fields'][$field] .= ' active';
+    }
+
+    // Add a CSS align class to each field if one was set
+    if (!empty($options['info'][$field]['align'])) {
+      $vars['fields'][$field] .= ' ' . views_css_safe($options['info'][$field]['align']);
     }
 
     // Render each field into its appropriate column.
