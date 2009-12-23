@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.17 2009-12-04 19:08:55 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.18 2009-12-23 21:30:32 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -3333,6 +3333,7 @@ function theme_views_ui_style_plugin_table($form) {
   $header = array(
     t('Field'),
     t('Column'),
+    t('Align'),
     t('Separator'),
     array(
       'data' => t('Sortable'),
@@ -3348,6 +3349,7 @@ function theme_views_ui_style_plugin_table($form) {
     $row = array();
     $row[] = drupal_render($form['info'][$id]['name']);
     $row[] = drupal_render($form['columns'][$id]);
+    $row[] = drupal_render($form['info'][$id]['align']);
     $row[] = drupal_render($form['info'][$id]['separator']);
     if (!empty($form['info'][$id]['sortable'])) {
       $row[] = array(
