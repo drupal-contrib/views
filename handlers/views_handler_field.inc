@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.21 2009-11-10 23:20:05 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.22 2009-12-23 21:44:30 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -147,6 +147,7 @@ class views_handler_field extends views_handler {
     $options = parent::option_definition();
 
     $options['label'] = array('default' => $this->definition['title'], 'translatable' => TRUE);
+    $options['exclude'] = array('default' => FALSE, 'bool' => TRUE);
     $options['alter'] = array(
       'contains' => array(
         'alter_text' => array('default' => FALSE),
