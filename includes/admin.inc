@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.5 2009-12-04 19:04:40 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.6 2009-12-23 21:57:01 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1034,7 +1034,6 @@ function template_preprocess_views_ui_edit_view(&$vars) {
 
   $vars['quick_links'] = theme('links', $vars['quick_links_raw']);
   views_add_css('views-admin');
-  views_add_css('views');
   views_add_js('ajax');
   drupal_add_js('misc/jquery.form.js');
 
