@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.4 2009-11-30 19:05:47 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.5 2009-12-23 20:40:28 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -364,8 +364,9 @@ function template_preprocess_views_view_table(&$vars) {
     }
   }
 
+  $count = 0;
   foreach ($vars['rows'] as $num => $row) {
-    $vars['row_classes'][$num][] = ($num % 2 == 0) ? 'odd' : 'even';
+    $vars['row_classes'][$num][] = ($count++ % 2 == 0) ? 'odd' : 'even';
   }
 
   $vars['row_classes'][0][] = 'views-row-first';
