@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.332.2.16 2009-12-23 20:29:00 merlinofchaos Exp $
+// $Id: views.module,v 1.332.2.17 2009-12-23 21:56:57 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -21,6 +21,13 @@ function views_api_version() {
  */
 function views_api_minimum_version() {
   return '2';
+}
+
+/**
+ * Implementation of hook_init().
+ */
+function views_init() {
+  drupal_add_css(drupal_get_path('module', 'views') . '/css/views.css');
 }
 
 /**
