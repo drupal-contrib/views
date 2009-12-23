@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.2 2009-11-09 22:49:56 dereine Exp $
+// $Id: node.views.inc,v 1.97.4.3 2009-12-23 19:18:44 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -235,6 +235,7 @@ function node_views_data() {
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
+      'help' => t('Whether or not the node is sticky. To list sticky nodes first, set this to descending.'),      
     ),
   );
 
