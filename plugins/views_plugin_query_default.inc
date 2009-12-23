@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.6 2009-11-29 18:21:15 chx Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.7 2009-12-23 19:28:00 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -212,6 +212,12 @@ class views_plugin_query_default extends views_plugin_query {
       'table' => $join->table,
       'base' => $base,
     );
+
+    $this->tables[$this->base_table][$alias] = array(
+      'count' => 1,
+      'alias' => $alias,
+    );
+
     return $alias;
   }
 
