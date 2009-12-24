@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.109.2.14 2009-11-26 00:35:16 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.109.2.15 2009-12-24 01:08:26 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -932,13 +932,12 @@ class views_many_to_one_helper {
  * @param $str
  *   The string to parse.
  * @param $filter
- *   The filter object to use as a base. If not specified one will
- *   be created.
+ *   The filter object to use as a base.
  *
  * @return $filter
  *   The new filter object.
  */
-function views_break_phrase($str, $filter = NULL) {
+function views_break_phrase($str, &$filter) {
   if (!$filter) {
     $filter = new stdClass();
   }

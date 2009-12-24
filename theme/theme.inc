@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.19 2009-12-23 21:56:57 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.20 2009-12-24 01:08:26 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -197,7 +197,8 @@ function template_preprocess_views_view_fields(&$vars) {
  * this: @code { $row->{$field->field_alias} @endcode
  */
 function theme_views_view_field($view, $field, $row) {
-  return $field->advanced_render($row);
+  // Reference safe for PHP 4:
+  return $view->field[$field->options['id']]->advanced_render($row);
 }
 
 /**
