@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.32.2.5 2009-12-03 20:59:51 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.32.2.6 2009-12-24 00:16:00 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -179,6 +179,60 @@ function comment_views_data() {
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_date',
+    ),
+  );
+  
+  $data['comments']['timestamp_fulldate'] = array(
+    'title' => t('Created date'),
+    'help' => t('In the form of CCYYMMDD.'),
+    'argument' => array(
+      'field' => 'timestamp',
+      'handler' => 'views_handler_argument_node_created_fulldate',
+    ),
+  );
+
+  $data['comments']['timestamp_year_month'] = array(
+    'title' => t('Created year + month'),
+    'help' => t('In the form of YYYYMM.'),
+    'argument' => array(
+      'field' => 'timestamp',
+      'handler' => 'views_handler_argument_node_created_year_month',
+    ),
+  );
+
+  $data['comments']['timestamp_year'] = array(
+    'title' => t('Created year'),
+    'help' => t('In the form of YYYY.'),
+    'argument' => array(
+      'field' => 'timestamp',
+      'handler' => 'views_handler_argument_node_created_year',
+    ),
+  );
+
+  $data['comments']['timestamp_month'] = array(
+    'title' => t('Created month'),
+    'help' => t('In the form of MM (01 - 12).'),
+    'argument' => array(
+      'field' => 'timestamp',
+      'handler' => 'views_handler_argument_node_created_month',
+    ),
+  );
+
+  $data['comments']['timestamp_day'] = array(
+    'title' => t('Created day'),
+    'help' => t('In the form of DD (01 - 31).'),
+    'argument' => array(
+      'field' => 'timestamp',
+      'handler' => 'views_handler_argument_node_created_day',
+    ),
+  );
+
+  $data['comments']['timestamp_week'] = array(
+    'title' => t('Created week'),
+    'help' => t('In the form of WW (01 - 53).'),
+    'argument' => array(
+      'field' => 'timestamp',
+      'handler' => 'views_handler_argument_node_created_week',
     ),
   );
 
