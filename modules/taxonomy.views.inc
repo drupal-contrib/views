@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.57.4.2 2009-12-24 00:14:41 merlinofchaos Exp $
 /**
  * @file
  *
@@ -51,6 +51,10 @@ function taxonomy_views_data() {
       'handler' => 'views_handler_field',
       'click sortable' => TRUE,
     ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+      'help' => t('The taxonomy vocabulary name'),
+    ),
   );
   $data['taxonomy_vocabulary']['machine_name'] = array(
     'title' => t('Vocabulary machine name'), // The item it appears as on the UI,
@@ -66,6 +70,9 @@ function taxonomy_views_data() {
     'argument' => array(
       'handler' => 'views_handler_argument_vocabulary_vid',
       'name field' => 'name',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
     ),
   );
 
