@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_search.inc,v 1.5.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: views_handler_filter_search.inc,v 1.5.6.2 2009-12-24 00:37:00 merlinofchaos Exp $
 
 /**
  * Field handler to provide simple renderer that allows linking to a node.
@@ -77,7 +77,7 @@ class views_handler_filter_search extends views_handler_filter {
   function query() {
     if (!isset($this->search_query) || empty($this->search_query[3])) {
       if ($this->operator == 'required') {
-        $this->query->add_where($this->options['group'], '0');
+        $this->query->add_where($this->options['group'], 'FALSE');
       }
     }
     else {
