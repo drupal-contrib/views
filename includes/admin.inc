@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.9 2009-12-23 22:37:29 dereine Exp $
+// $Id: admin.inc,v 1.161.4.10 2009-12-24 00:41:11 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -942,6 +942,12 @@ function views_ui_edit_view_form_submit($form, &$form_state) {
   foreach ($form_state['view']->display as $id => $display) {
     if (!empty($display->deleted)) {
       unset($form_state['view']->display[$id]);
+    }
+  }
+  // Rename display ids if needed.
+  foreach ($form_state['view']->display as $id => $display) {
+    if (!empty($display->new_id)) {
+      $form_state['view']->display[$id]->id = $display->new_id;
     }
   }
 
