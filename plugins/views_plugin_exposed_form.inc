@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form.inc,v 1.2 2009-12-26 19:50:12 dereine Exp $
+// $Id: views_plugin_exposed_form.inc,v 1.3 2009-12-26 21:01:44 dereine Exp $
 
 /**
  * The base plugin to handle exposed filter forms.
@@ -90,5 +90,4 @@ class views_plugin_exposed_form extends views_plugin {
 
   function pre_execute() { }
 
-  function post_execute() { }
 }
