@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.3 2009-11-18 02:35:01 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.4.4 2009-12-26 19:41:09 dereine Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1617,6 +1617,9 @@ class views_db_object {
       if ($info['type'] == 'serial') {
         $serials[] = $field;
         continue;
+      }
+      elseif ($info['type'] == 'int') {
+        $this->$field = (int) $this->$field;
       }
       $fields[$field] = empty($info['serialize']) ? $this->$field : serialize($this->$field);
     }
