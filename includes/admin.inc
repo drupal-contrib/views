@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.21 2009-12-24 00:41:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.22 2009-12-28 21:34:25 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2899,12 +2899,12 @@ function views_ui_config_style_form(&$form_state) {
 
     $form['#section'] = $display_id . '-' . $type . '-style-options';
 
-    $plugin = views_get_plugin('style', $item['style_plugin']);
+    $plugin = views_get_plugin('style', $handler->options['style_plugin']);
     if ($plugin) {
       $form['style_options'] = array(
         '#tree' => TRUE,
       );
-      $plugin->init($view, $view->display[$display_id], $item['style_options']);
+      $plugin->init($view, $view->display[$display_id], $handler->options['style_options']);
 
       $plugin->options_form($form['style_options'], $form_state);
     }

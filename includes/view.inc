@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.24 2009-12-03 21:47:21 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.25 2009-12-28 21:34:25 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -109,6 +109,16 @@ class view extends views_db_object {
     if (!empty($this->query->pager)) {
       return $this->query->pager->get_items_per_page();
     }
+  }
+
+  /**
+   * Set the items per page on the pager.
+   */
+  function set_items_per_page($items_per_page) {
+    if (empty($this->query->pager)) {
+      $this->query->init_pager($this);
+    }
+    $this->query->pager->set_items_per_page($items_per_page);
   }
 
   /**
