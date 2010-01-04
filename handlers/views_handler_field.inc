@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.2 2009-11-02 23:31:09 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.3 2010-01-04 23:42:40 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -666,12 +666,12 @@ class views_handler_field extends views_handler {
       else {
         $tokens["[$field]"] = '';
       }
+      $this->add_self_tokens($tokens, $item);
+
       // We only use fields up to (and including) this one.
       if ($field == $this->options['id']) {
         break;
       }
-
-      $this->add_self_tokens($tokens, $item);
     }
 
     return $tokens;
