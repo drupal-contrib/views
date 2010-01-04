@@ -1,4 +1,4 @@
-// $Id: ajax_view.js,v 1.19.2.2 2009-11-30 22:47:05 merlinofchaos Exp $
+// $Id: ajax_view.js,v 1.19.2.3 2010-01-04 23:31:15 merlinofchaos Exp $
 
 /**
  * @file ajaxView.js
@@ -122,6 +122,7 @@ Drupal.behaviors.ViewsAjaxView = function() {
                 settings
               );
               $(this).click(function () {
+                $.extend(viewData, Drupal.Views.parseViewArgs($(this).attr('href'), settings.view_base_path));
                 $(this).addClass('views-throbbing');
                 $.ajax({
                   url: ajax_path,
