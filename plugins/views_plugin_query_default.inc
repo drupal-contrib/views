@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.15 2009-12-23 19:28:03 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.16 2010-01-04 23:55:02 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1007,8 +1007,11 @@ class views_plugin_query_default extends views_plugin_query{
 
     list($distinct, $fields, $non_aggregates) = $this->compile_fields($fields_array);
 
-   if ($this->has_aggregate || $this->groupby) {
-     $groupby = "GROUP BY " . implode(', ', array_unique(array_merge($this->groupby, $non_aggregates))) . "\n";
+    if (count($this->having)) {
+      $this->has_aggregate = TRUE;
+    }
+    if ($this->has_aggregate || $this->groupby) {
+      $groupby = "GROUP BY " . implode(', ', array_unique(array_merge($this->groupby, $non_aggregates))) . "\n";
       if ($this->having) {
         $having = $this->condition_sql('having');
       }
