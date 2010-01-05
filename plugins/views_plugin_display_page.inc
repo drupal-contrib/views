@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.5 2009-01-27 18:40:31 merlinofchaos Exp $
+// $Id: views_plugin_display_page.inc,v 1.8.2.1 2010-01-05 01:38:47 merlinofchaos Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -67,7 +67,9 @@ class views_plugin_display_page extends views_plugin_display {
     $path = implode('/', $bits);
 
     $access_plugin = $this->get_access_plugin();
-
+    if (!isset($access_plugin)) {
+      $access_plugin = views_get_plugin('access', 'none');
+    }
     if ($path) {
       $items[$path] = array(
         // default views page entry
@@ -194,7 +196,7 @@ class views_plugin_display_page extends views_plugin_display {
       'title' => t('Page settings'),
     );
 
-    $path = $this->get_option('path');
+    $path = strip_tags($this->get_option('path'));
     if (empty($path)) {
       $path = t('None');
     }
@@ -258,7 +260,9 @@ class views_plugin_display_page extends views_plugin_display {
           '#type' => 'textfield',
           '#description' => t('This view will be displayed by visiting this path on your site. You may use "%" in your URL to represent values that will be used for arguments: For example, "node/%/feed".'),
           '#default_value' => $this->get_option('path'),
-          '#field_prefix' => url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+	  '#field_prefix' => '<span dir="ltr">' . url(NULL, array('absolute' => TRUE)) . (variable_get('clean_url', 0) ? '' : '?q='),
+	  '#field_suffix' => '</span>&lrm;',
+	  '#attributes' => array('dir'=>'ltr'),
         );
         break;
       case 'menu':
@@ -401,7 +405,7 @@ class views_plugin_display_page extends views_plugin_display {
     }
   }
 
-  function options_validate($form, &$form_state) {
+  function options_validate(&$form, &$form_state) {
     // It is very important to call the parent function here:
     parent::options_validate($form, $form_state);
     switch ($form_state['section']) {
@@ -439,7 +443,7 @@ class views_plugin_display_page extends views_plugin_display {
     }
   }
 
-  function options_submit($form, &$form_state) {
+  function options_submit(&$form, &$form_state) {
     // It is very important to call the parent function here:
     parent::options_submit($form, $form_state);
     switch ($form_state['section']) {
