@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_cache.inc,v 1.5.4.2 2009-11-13 23:19:22 dereine Exp $
+// $Id: views_plugin_cache.inc,v 1.5.4.3 2010-01-05 01:12:28 merlinofchaos Exp $
 
 /**
  * The base plugin to handle caching.
@@ -244,6 +244,7 @@ return; // @TODO: fixme
         'build_info' => $build_info,
         'roles' => array_keys($user->roles),
         'super-user' => $user->uid == 1, // special caching for super user.
+        'language' => $GLOBALS['language'],
       );
       foreach (array('exposed_info', 'page', 'sort', 'order') as $key) {
         if (isset($_GET[$key])) {
@@ -264,6 +265,8 @@ return; // @TODO: fixme
         'result' => $this->view->result,
         'roles' => array_keys($user->roles),
         'super-user' => $user->uid == 1, // special caching for super user.
+        'theme' => $GLOBALS['theme'],
+        'language' => $GLOBALS['language'],
       );
 
       $this->_output_key = $this->view->name . ':' . $this->display->id . ':output:' . md5(serialize($key_data));
