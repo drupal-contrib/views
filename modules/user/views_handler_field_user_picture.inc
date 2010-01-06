@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_user_picture.inc,v 1.1.2.2 2010-01-05 01:36:59 merlinofchaos Exp $
+// $Id: views_handler_field_user_picture.inc,v 1.1.2.3 2010-01-06 20:55:10 merlinofchaos Exp $
 
 /**
  * Field handler to provide simple renderer that allows using a themed user link
@@ -9,7 +9,7 @@ class views_handler_field_user_picture extends views_handler_field {
     parent::construct();
     $this->additional_fields['uid'] = 'uid';
     $this->additional_fields['name'] = 'name';
-    $this->additional_fields['name'] = 'mail';   
+    $this->additional_fields['mail'] = 'mail';   
   }
 
   function element_type() {
