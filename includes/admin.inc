@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.10 2009-12-24 00:41:11 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.11 2010-01-17 21:52:36 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -34,7 +34,7 @@ function views_ui_check_advanced_help() {
     $filename = db_query_range("SELECT filename FROM {system} WHERE type = 'module' AND name = 'advanced_help'", 0, 1)
       ->fetchField();
     if ($filename && file_exists($filename)) {
-      drupal_set_message(t('If you <a href="@modules">enable the advanced help module</a>, Views will provide more and better help. <a href="@hide">Hide this message.</a>', array('@modules' => url('admin/build/modules'),'@hide' => url('admin/structure/views/tools'))));
+      drupal_set_message(t('If you <a href="@modules">enable the advanced help module</a>, Views will provide more and better help. <a href="@hide">Hide this message.</a>', array('@modules' => url('admin/modules'),'@hide' => url('admin/structure/views/tools'))));
     }
     else {
       drupal_set_message(t('If you install the advanced help module from !href, Views will provide more and better help. <a href="@hide">Hide this message.</a>', array('!href' => l('http://drupal.org/project/advanced_help', 'http://drupal.org/project/advanced_help'), '@hide' => url('admin/structure/views/tools'))));
