@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node_revision_link_delete.inc,v 1.1 2008-09-03 19:21:29 merlinofchaos Exp $
+// $Id: views_handler_field_node_revision_link_delete.inc,v 1.1.6.1 2010-01-17 19:56:43 dereine Exp $
 /**
  * Field handler to present delete a node revision.
  */
@@ -9,7 +9,6 @@ class views_handler_field_node_revision_link_delete extends views_handler_field_
     $this->additional_fields['uid'] = array('table' => 'node', 'field' => 'uid');
     $this->additional_fields['node_vid'] = array('table' => 'node', 'field' => 'vid');
     $this->additional_fields['vid'] = 'vid';
-    $this->additional_fields['format'] = 'format';
   }
 
   function access() {
@@ -22,7 +21,6 @@ class views_handler_field_node_revision_link_delete extends views_handler_field_
     $node->nid = $values->{$this->aliases['nid']};
     $node->vid = $values->{$this->aliases['vid']};
     $node->uid = $values->{$this->aliases['uid']};
-    $node->format = $values->{$this->aliases['format']};
     $node->status = 1; // unpublished nodes ignore access control
     if (!node_access('delete', $node)) {
       return;
