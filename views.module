@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.6 2010-01-05 00:04:18 merlinofchaos Exp $
+// $Id: views.module,v 1.341.4.7 2010-01-18 23:39:25 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -547,6 +547,9 @@ function views_get_module_apis() {
       $info = module_invoke($module, 'views_api');
       if (isset($info['api']) && $info['api'] == 2.000) {
         $cache[$module] = $info;
+        if (!isset($info['path'])) {
+          $info['path'] = drupal_get_path('module', $module);
+        }
       }
     }
   }
