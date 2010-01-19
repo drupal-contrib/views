@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form_input_required.inc,v 1.1.2.1 2009-11-11 01:42:53 merlinofchaos Exp $
+// $Id: views_plugin_exposed_form_input_required.inc,v 1.1.2.3 2010-01-19 22:11:28 merlinofchaos Exp $
 
 /**
  * Exposed form plugin that provides basic exposed form
@@ -31,7 +31,7 @@ class views_plugin_exposed_form_input_required extends views_plugin_exposed_form
     $form['text_input_required_format'] = filter_form($this->options['text_input_required_format'], NULL, array('text_input_required_format'));
   }
 
-  function options_submit(&$form, &$form_state) {
+  function options_submit($form, &$form_state) {
     $form_state['values']['exposed_form_options']['text_input_required_format'] = $form_state['values']['text_input_required_format'];
 
     parent::options_submit($form, $form_state);
@@ -61,8 +61,22 @@ class views_plugin_exposed_form_input_required extends views_plugin_exposed_form
 
   function pre_render() {
     if (!$this->exposed_filter_applied()) {
-      $this->view->display_handler->set_option('empty', $this->options['text_input_required']);
-      $this->view->display_handler->set_option('empty_format', $this->options['text_input_required_format']);
+      $options = array(
+        'id' => 'area',
+        'table' => 'views',
+        'field' => 'area',
+        'label' => '',
+        'relationship' => 'none',
+        'group_type' => 'group',
+        'content' => $this->options['text_input_required'],
+        'format' => $this->options['text_input_required_format'],
+      );
+      $handler = views_get_handler('views', 'area', 'area');
+      $handler->init($this->view, $options);
+      $this->display->handler->handlers['empty'] = array(
+        'area' => $handler,
+      );
+      $this->display->handler->set_option('empty', array('text' => $options));
     }
   }
 
