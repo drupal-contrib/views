@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager.inc,v 1.1.2.4 2010-01-19 21:50:01 merlinofchaos Exp $
+// $Id: views_plugin_pager.inc,v 1.1.2.5 2010-01-19 21:59:04 merlinofchaos Exp $
 
 /**
  * The base plugin to handle pager.
@@ -98,7 +98,7 @@ class views_plugin_pager extends views_plugin {
   /**
    * Provide the default form form for submitting options
    */
-  function options_submit(&$form, &$form_state) { }
+  function options_submit($form, &$form_state) { }
 
   /**
    * Return a string to display as the clickable title for the
