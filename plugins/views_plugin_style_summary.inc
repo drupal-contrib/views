@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_summary.inc,v 1.1.6.1 2009-11-02 22:01:27 merlinofchaos Exp $
+// $Id: views_plugin_style_summary.inc,v 1.1.6.2 2010-01-20 23:51:42 dereine Exp $
 /**
  * @file
  * Contains the default summary style plugin, which displays items in an HTML list.
@@ -53,11 +53,12 @@ class views_plugin_style_summary extends views_plugin_style {
       // @todo: Include separator as an option.
       $rows[] = $row;
     }
-    
-    // TODO: Verify that this works. $this->theme_functions() seems
-    // like it should return an array!
-    // TODO: Convert to D7 theme signature.
-    return theme($this->theme_functions(), $this->view, $this->options, $rows);
+
+    return theme($this->theme_functions(), array(
+      'view' => $this->view,
+      'options' => $this->options,
+      'rows' => $rows
+    ));
   }
 }
 
