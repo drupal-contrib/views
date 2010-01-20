@@ -1,5 +1,5 @@
 <?php
-// $Id: views-ui-list-views.tpl.php,v 1.6 2008-10-28 18:11:43 merlinofchaos Exp $
+// $Id: views-ui-list-views.tpl.php,v 1.6.6.1 2010-01-20 23:24:24 dereine Exp $
 /**
  * @file
  *
@@ -26,7 +26,7 @@
           <?php if ($view->title): ?>
             <?php print t('Title: @title', array('@title' => $view->title)); ?> <br />
           <?php endif; ?>
-          <?php if ($view->path): ?>
+          <?php if (isset($view->path)): ?>
             <?php print t('Path: !path', array('!path' => $view->path)); ?> <br />
           <?php endif; ?>
           <?php if ($view->displays): ?>
