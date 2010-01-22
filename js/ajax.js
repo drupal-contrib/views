@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.25.2.6 2010-01-22 01:41:24 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.7 2010-01-22 06:15:40 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -337,7 +337,7 @@ Drupal.Views.Ajax.handleErrors = function (xhr, path) {
     // Fix end lines
     error_text = error_text.replace(/[\n]+\s+/g,"\n");
   }
-  if (xhr.status == 500) {
+  else if (xhr.status == 500) {
     error_text = xhr.status + ': ' + Drupal.t("Internal server error. Please see server or PHP logs for error information.");
   }
   else {
@@ -347,7 +347,7 @@ Drupal.Views.Ajax.handleErrors = function (xhr, path) {
   alert(Drupal.t("An error occurred at @path.\n\nError Description: @error", {'@path': path, '@error': error_text}));
 }
 
-// $Id: ajax.js,v 1.25.2.6 2010-01-22 01:41:24 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.7 2010-01-22 06:15:40 merlinofchaos Exp $
 
 Drupal.behaviors.ViewsGroupedTableDrag = function(context) {
   var table_id = 'arrange';
