@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.6.2.12 2009-12-23 19:21:31 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.6.2.14 2010-01-22 01:41:24 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -110,7 +110,7 @@ class views_handler_filter extends views_handler {
   /**
    * Simple submit handler
    */
-  function options_submit(&$form, &$form_state) {
+  function options_submit($form, &$form_state) {
     unset($form_state['values']['expose_button']); // don't store this.
     $this->operator_submit($form, $form_state);
     $this->value_submit($form, $form_state);
@@ -500,6 +500,18 @@ class views_handler_filter extends views_handler {
     $this->ensure_my_table();
     $this->query->add_where($this->options['group'], "$this->table_alias.$this->real_field " . $this->operator . " '%s'", $this->value);
   }
+
+  /**
+   * Can this filter be used in OR groups?
+   *
+   * Some filters have complicated where clauses that cannot be easily used
+   * with OR groups. Some filters must also use HAVING which also makes
+   * them not groupable. These filters will end up in a special group
+   * if OR grouping is in use.
+   */
+   function can_group() {
+     return TRUE;
+   }
 }
 
 

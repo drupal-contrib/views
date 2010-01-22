@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.29 2010-01-19 22:11:28 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.30 2010-01-22 01:41:24 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -272,7 +272,7 @@ class views_plugin_display extends views_plugin {
       'fields' => array('fields'),
       'sorts' => array('sorts'),
       'arguments' => array('arguments'),
-      'filters' => array('filters'),
+      'filters' => array('filters', 'filter_groups'),
     );
     if ($section) {
       if (!empty($sections[$section])) {
@@ -345,6 +345,7 @@ class views_plugin_display extends views_plugin {
           'sorts' => TRUE,
           'arguments' => TRUE,
           'filters' => TRUE,
+          'filter_groups' => TRUE,
         ),
         'export' => FALSE,
       ),
@@ -476,6 +477,12 @@ class views_plugin_display extends views_plugin {
       'arguments' => array(
         'default' => array(),
         'export' => 'export_handler',
+      ),
+      'filter_groups' => array(
+        'contains' => array(
+          'operator' => array('default' => 'AND'),
+          'groups' => array('default' => array(0 => 'AND')),
+        ),
       ),
       'filters' => array(
         'default' => array(),

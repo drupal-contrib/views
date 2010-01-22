@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.26 2010-01-19 22:11:28 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.27 2010-01-22 01:41:24 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -566,6 +566,15 @@ class view extends views_db_object {
 
     // Build all the relationships first thing.
     $this->_build('relationship');
+
+    // Set the filtering groups.
+    $filter_groups = $this->display_handler->get_option('filter_groups');
+    if ($filter_groups) {
+      $this->query->set_group_operator($filter_groups['operator']);
+      foreach($filter_groups['groups'] as $id => $operator) {
+        $this->query->set_where_group($operator, $id);
+      }
+    }
 
     // Build all the filters.
     $this->_build('filter');
