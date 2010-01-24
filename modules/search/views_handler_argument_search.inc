@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_search.inc,v 1.1.2.1 2009-12-24 00:55:12 merlinofchaos Exp $
+// $Id: views_handler_argument_search.inc,v 1.1.2.2 2010-01-24 22:37:52 dereine Exp $
 
 /**
  * Argument that accepts query keys for search.
@@ -44,6 +44,7 @@ class views_handler_argument_search extends views_handler_argument {
       }
 
       $this->query->add_groupby("$search_index.sid");
-      $this->query->add_having($this->options['group'], 'COUNT(*) >= %d', $this->search_query[4]);    }
+      $this->query->add_having($this->options['group'], 'COUNT(*)', $this->search_query[4], '>=');
+    }
   }
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.4.2 2009-11-02 22:01:27 merlinofchaos Exp $
+// $Id: views_plugin_query.inc,v 1.1.4.3 2010-01-24 22:37:52 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the base query class, which is the underlying layer in a View.
@@ -50,4 +50,11 @@ class views_plugin_query extends views_plugin {
    * discern where particular queries might be coming from.
    */
   function add_signature(&$view) { }
+
+  /**
+   * Get aggregation info for group by queries.
+   *
+   * If NULL, aggregation is not allowed.
+   */
+  function get_aggregation_info() { }
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.5 2009-12-24 00:15:56 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.33.4.6 2010-01-24 22:37:52 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -459,6 +459,7 @@ function comment_views_data_alter(&$data) {
     'help' => t('The number of new comments on the node.'),
     'field' => array(
       'handler' => 'views_handler_field_node_new_comments',
+      'no group by' => TRUE,
     ),
   );
 
