@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.17 2010-01-22 01:41:24 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.18 2010-01-25 19:45:51 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -843,6 +843,10 @@ class views_plugin_query_default extends views_plugin_query{
   function condition_sql($where = 'where') {
     $clauses = array();
     foreach ($this->$where as $group => $info) {
+      if (empty($info['clauses'])) {
+        continue;
+      }
+
       $clause = implode(") " . $info['type'] . " (", $info['clauses']);
       if (count($info['clauses']) > 1) {
         $clause = '(' . $clause . ')';
