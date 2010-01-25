@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.30 2010-01-22 01:41:24 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.31 2010-01-25 22:37:48 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -418,7 +418,7 @@ class views_plugin_display extends views_plugin {
       ),
       'pager' => array(
         'contains' => array(
-          'type' => array('default' => 'none', 'export' => 'export_plugin'),
+          'type' => array('default' => 'full', 'export' => 'export_plugin'),
           'options' => array('default' => array(), 'export' => FALSE),
          ),
       ),
