@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument.inc,v 1.7.2.9 2010-01-05 00:05:55 merlinofchaos Exp $
+// $Id: views_handler_argument.inc,v 1.7.2.11 2010-01-25 19:02:37 merlinofchaos Exp $
 
 /**
  * @defgroup views_argument_handlers Handlers for arguments
@@ -46,7 +46,7 @@ class views_handler_argument extends views_handler {
     }
   }
 
-  function init(&$view, &$options) {
+  function init(&$view, $options) {
     parent::init($view, $options);
   }
 
@@ -274,7 +274,7 @@ class views_handler_argument extends views_handler {
 
   }
 
-  function options_submit(&$form, &$form_state) {
+  function options_submit($form, &$form_state) {
     if (empty($form_state['values']['options'])) {
       return;
     }
@@ -293,7 +293,7 @@ class views_handler_argument extends views_handler {
     $plugin = $this->get_plugin('argument validator', $validate_id);
     if ($plugin) {
       $options = &$form_state['values']['options']['argument_validate'][$validate_id];
-      $plugin->options_submit($form['argument_validate'][$default_id], $form_state, $options);
+      $plugin->options_submit($form['argument_validate'][$validate_id], $form_state, $options);
       // Copy the now submitted options to their final resting place so they get saved.
       $form_state['values']['options']['validate_options'] = $options;
     }

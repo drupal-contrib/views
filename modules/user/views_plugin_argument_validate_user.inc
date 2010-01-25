@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_user.inc,v 1.2.2.1 2009-11-26 00:35:16 merlinofchaos Exp $
+// $Id: views_plugin_argument_validate_user.inc,v 1.2.2.3 2010-01-25 19:02:38 merlinofchaos Exp $
 
 /**
  * Validate whether an argument is a valid user.
@@ -19,7 +19,7 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
   }
 
   function options_form(&$form, &$form_state) {
-    $form['validate_user_argument_type'] = array(
+    $form['type'] = array(
       '#type' => 'radios',
       '#title' => t('Type of user argument to allow'),
       '#options' => array(
@@ -30,7 +30,7 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
       '#default_value' => $this->options['type'],
     );
 
-    $form['validate_user_restrict_roles'] = array(
+    $form['restrict_roles'] = array(
       '#type' => 'checkbox',
       '#title' => t('Restrict user based on role'),
       '#default_value' => $this->options['restrict_roles'],
@@ -38,7 +38,7 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
 
     $form['roles'] = array(
       '#type' => 'checkboxes',
-      '#prefix' => '<div id="edit-options-validate-user-roles-wrapper">',
+      '#prefix' => '<div id="edit-options-argument-validate-user-roles-wrapper">',
       '#suffix' => '</div>',
       '#title' => t('Restrict to the selected roles'),
       '#options' => user_roles(TRUE),
@@ -46,12 +46,12 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
       '#description' => t('If no roles are selected, users from any role will be allowed.'),
       '#process' => array('expand_checkboxes', 'views_process_dependency'),
       '#dependency' => array(
-        'edit-options-validate-user-restrict-roles' => array(1),
+        'edit-options-argument-validate-user-restrict-roles' => array(1),
       ),
     );
   }
 
-  function options_submit(&$form, &$form_state, &$options) {
+  function options_submit($form, &$form_state, &$options) {
     // filter trash out of the options so we don't store giant unnecessary arrays
     $options['roles'] = array_filter($options['roles']);
   }
