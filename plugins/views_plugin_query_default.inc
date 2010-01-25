@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.18 2010-01-25 19:45:51 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.19 2010-01-25 22:33:42 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -647,6 +647,12 @@ class views_plugin_query_default extends views_plugin_query{
     // Make sure an alias is assigned
     $alias = $alias ? $alias : $field;
 
+    // PostgreSQL truncates aliases to 63 characters: http://drupal.org/node/571548
+
+    // We limit the length of the original alias up to 60 characters
+    // to get a unique alias later if its have duplicates
+    $alias = substr($alias, 0, 60);
+
     // Create a field info array.
     $field_info = array(
       'field' => $field,
@@ -805,7 +811,7 @@ class views_plugin_query_default extends views_plugin_query{
     }
 
     if ($field) {
-      $this->add_field($table, $field, $as, $params);
+      $as = $this->add_field($table, $field, $as, $params);
     }
 
     $this->orderby[] = "$as " . strtoupper($order);
