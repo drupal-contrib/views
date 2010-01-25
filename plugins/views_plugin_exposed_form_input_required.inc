@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form_input_required.inc,v 1.2.2.2 2009-12-26 20:36:39 dereine Exp $
+// $Id: views_plugin_exposed_form_input_required.inc,v 1.2.2.3 2010-01-25 16:18:12 dereine Exp $
 
 /**
  * Exposed form plugin that provides basic exposed form
@@ -14,7 +14,7 @@ class views_plugin_exposed_form_input_required extends views_plugin_exposed_form
     $options = parent::option_definition();
 
     $options['text_input_required'] = array('default' => t('Select any filter and click on Apply to see results'), 'translatable' => TRUE);
-    $options['text_input_required_format'] = array('default' => FILTER_FORMAT_DEFAULT);
+    $options['text_input_required_format'] = array('default' => filter_default_format());
     return $options;
   }
 
