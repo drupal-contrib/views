@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_row.inc,v 1.4.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
+// $Id: views_plugin_row.inc,v 1.4.4.2 2010-01-27 23:28:35 dereine Exp $
 /**
  * @file
  * Contains the base row style plugin.
@@ -108,12 +108,14 @@ class views_plugin_row extends views_plugin {
   function options_submit($form, &$form_state) { }
 
   function query() {
-    if (isset($this->base_table) && isset($this->options['relationship']) && isset($this->view->relationship[$this->options['relationship']])) {
-      $relationship = $this->view->relationship[$this->options['relationship']];
-      $this->field_alias = $this->view->query->add_field($relationship->alias, $this->base_field);
-    }
-    else {
-      $this->field_alias = $this->view->base_field;
+    if (isset($this->base_table)) {
+      if (isset($this->options['relationship']) && isset($this->view->relationship[$this->options['relationship']])) {
+        $relationship = $this->view->relationship[$this->options['relationship']];
+        $this->field_alias = $this->view->query->add_field($relationship->alias, $this->base_field);
+      }
+      else {
+        $this->field_alias = $this->view->query->add_field($this->base_table, $this->base_field);
+      }
     }
   }
 
