@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.7 2010-01-27 23:28:35 dereine Exp $
+// $Id: comment.views.inc,v 1.33.4.8 2010-01-28 00:00:55 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -511,7 +511,7 @@ function comment_views_plugins() {
         'handler' => 'views_plugin_row_comment_view',
         'theme' => 'views_view_row_comment',
         'path' => drupal_get_path('module', 'views') . '/modules/comment', // not necessary for most modules
-        'base' => array('comments'), // only works with 'comment' as base.
+        'base' => array('comment'), // only works with 'comment' as base.
         'uses options' => TRUE,
         'type' => 'normal',
         'help topic' => 'style-comment',
@@ -522,7 +522,7 @@ function comment_views_plugins() {
         'handler' => 'views_plugin_row_comment_rss',
         'theme' => 'views_view_row_rss',
         'path' => drupal_get_path('module', 'views') . '/modules/comment', // not necessary for most modules
-        'base' => array('comments'), // only works with 'comment' as base.
+        'base' => array('comment'), // only works with 'comment' as base.
         'type' => 'feed',
         'help topic' => 'style-comment-rss',
       ),
@@ -576,14 +576,7 @@ function template_preprocess_views_view_row_comment(&$vars) {
   // Put the view on the node so we can retrieve it in the preprocess.
   $node->view = &$view;
 
-  $links = array();
-  if (!empty($options['links'])) {
-    $links = module_invoke_all('link', 'comment', $comment, 0);
-    drupal_alter('link', $links, $node);
-  }
-
-  // TODO: Check that this corresponds to a real theme template or function.
-  $vars['comment'] = theme('comment_view', array('comment' => $comment, 'node' => $node, 'links' => $links));
+  $vars['comment'] = drupal_render(comment_view_multiple(array($comment->cid => $comment), $node));
 }
 
 /**

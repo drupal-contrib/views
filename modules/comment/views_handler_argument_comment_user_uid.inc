@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_comment_user_uid.inc,v 1.2.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: views_handler_argument_comment_user_uid.inc,v 1.2.4.2 2010-01-28 00:00:56 dereine Exp $
 
 /**
  * Argument handler to accept a user id to check for nodes that
@@ -37,7 +37,7 @@ class views_handler_argument_comment_user_uid extends views_handler_argument {
   function query() {
     $this->ensure_my_table();
 
-    $subselect = db_select('comments', 'c');
+    $subselect = db_select('comment', 'c');
     $subselect->addField('c', 'cid');
     $subselect->condition('uid', $this->argument);
     $subselect->condition('nid', "$this->table_alias.nid");
