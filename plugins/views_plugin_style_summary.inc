@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_summary.inc,v 1.1.6.2 2010-01-20 23:51:42 dereine Exp $
+// $Id: views_plugin_style_summary.inc,v 1.1.6.3 2010-01-28 22:44:37 dereine Exp $
 /**
  * @file
  * Contains the default summary style plugin, which displays items in an HTML list.
@@ -14,8 +14,8 @@ class views_plugin_style_summary extends views_plugin_style {
   function option_definition() {
     $options = parent::option_definition();
 
-    $options['count'] = array('default' => TRUE);
-    $options['override'] = array('default' => FALSE);
+    $options['count'] = array('default' => TRUE, 'bool' => TRUE);
+    $options['override'] = array('default' => FALSE, 'bool' => TRUE);
     $options['items_per_page'] = array('default' => 25);
 
     return $options;

@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.156.4.3 2009-12-26 19:50:12 dereine Exp $
+// $Id: plugins.inc,v 1.156.4.4 2010-01-28 22:44:36 dereine Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -160,9 +160,14 @@ function views_views_plugins() {
       ),
     ),
     'argument default' => array(
+      'parent' => array(
+        'no ui' => TRUE,
+        'handler' => 'views_plugin_argument_default',
+        'parent' => '',
+      ),
       'fixed' => array(
         'title' => t('Fixed entry'),
-        'handler' => 'views_plugin_argument_default',
+        'handler' => 'views_plugin_argument_default_fixed',
       ),
       'php' => array(
         'title' => t('PHP Code'),
