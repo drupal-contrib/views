@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.8 2010-01-28 00:00:55 dereine Exp $
+// $Id: comment.views.inc,v 1.33.4.9 2010-01-28 23:18:39 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -306,14 +306,6 @@ function comment_views_data() {
     ),
   );
 
-  $data['comment']['node_link'] = array(
-    'field' => array(
-      'title' => t('Node link'),
-      'help' => t('Display the standard comment link used on regular nodes.'),
-      'handler' => 'views_handler_field_comment_node_link',
-    ),
-  );
-
   $data['comment']['thread'] = array(
     'field' => array(
       'title' => t('Depth'),
@@ -460,6 +452,14 @@ function comment_views_data_alter(&$data) {
     'field' => array(
       'handler' => 'views_handler_field_node_new_comments',
       'no group by' => TRUE,
+    ),
+  );
+
+  $data['node']['comments_link'] = array(
+    'field' => array(
+      'title' => t('Add comment link'),
+      'help' => t('Display the standard add comment link used on regular nodes, which will only display if the viewing user has access to add a comment.'),
+      'handler' => 'views_handler_field_comment_node_link',
     ),
   );
 

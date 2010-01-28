@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_row.inc,v 1.4.4.2 2010-01-27 23:28:35 dereine Exp $
+// $Id: views_plugin_row.inc,v 1.4.4.3 2010-01-28 23:18:39 dereine Exp $
 /**
  * @file
  * Contains the base row style plugin.
@@ -137,7 +137,7 @@ class views_plugin_row extends views_plugin {
         'view' => $this->view,
         'options' => $this->options,
         'row' => $row,
-        'field_alias' => $this->field_alias
+        'field_alias' => isset($this->field_alias) ? $this->field_alias : '',
       ));
   }
 }
