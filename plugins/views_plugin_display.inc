@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.13 2010-01-28 22:44:37 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.14 2010-01-28 23:34:52 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1989,7 +1989,7 @@ class views_plugin_display extends views_plugin {
     }
     $this->view->init_handlers();
     if ($this->uses_exposed()) {
-      $exposed_form = $this->get_exposed_form_plugin();
+      $exposed_form = $this->get_plugin('exposed_form');
       $exposed_form->pre_execute();
     }
   }
