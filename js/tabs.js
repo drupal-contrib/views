@@ -1,4 +1,4 @@
-// $Id: tabs.js,v 1.4.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: tabs.js,v 1.4.4.2 2010-01-28 17:16:40 merlinofchaos Exp $
 
 /**
  * @file tabs.js
@@ -171,7 +171,7 @@
         this.$containers.addClass(o.hideClass);
         $lis.removeClass(o.selectedClass);
         if (!o.unselected) {
-          this.$containers.slice(o.initial, o.initial + 1).show();
+          this.$containers.slice(o.initial, o.initial + 1).css('display', 'block');
           $lis.slice(o.initial, o.initial + 1).addClass(o.selectedClass);
         }
 

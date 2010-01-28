@@ -1,4 +1,4 @@
-/* $Id: views.css,v 1.11.6.2 2010-01-05 00:00:29 merlinofchaos Exp $ */
+/* $Id: views.css,v 1.11.6.3 2010-01-28 17:16:40 merlinofchaos Exp $ */
 .views-exposed-form .views-exposed-widget {
   float: left;
   padding: .5em 1em 0 0;
@@ -31,12 +31,6 @@
 }
 .views-align-center {
   text-align: center;
-}
-
-html.js a.views-throbbing,
-html.js span.views-throbbing {
-  background:url(../images/status-active.gif) no-repeat right center;
-  padding-right:18px;
 }
 
 /* administrative hover links */

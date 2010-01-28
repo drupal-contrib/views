@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_boolean_operator.inc,v 1.6.4.2 2009-12-04 19:08:51 merlinofchaos Exp $
+// $Id: views_handler_filter_boolean_operator.inc,v 1.6.4.3 2010-01-28 17:16:40 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of boolean values
  *
@@ -91,7 +91,7 @@ class views_handler_filter_boolean_operator extends views_handler_filter {
     );
     if (!empty($this->options['exposed'])) {
       $identifier = $this->options['expose']['identifier'];
-      if (!isset($form_state['input'][$identifier])) {
+      if (!empty($form_state['exposed']) && !isset($form_state['input'][$identifier])) {
         $form_state['input'][$identifier] = $this->value;
       }
       // If we're configuring an exposed filter, add an <Any> option.

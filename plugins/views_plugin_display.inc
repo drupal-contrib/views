@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.11 2010-01-24 22:37:52 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.12 2010-01-28 17:16:40 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1879,7 +1879,7 @@ class views_plugin_display extends views_plugin {
         }
         $theme = views_theme_functions('views_more', $this->view, $this->display);
         $path = check_url(url($path, $url_options));
-        
+
         return theme($theme, array('more_url' => $path, 'link_text' => $this->use_more_text()));
       }
     }
@@ -1992,7 +1992,7 @@ class views_plugin_display extends views_plugin {
     if ($this->uses_exposed()) {
       $exposed_form = $this->get_exposed_form_plugin();
       $exposed_form->pre_execute();
-    }    
+    }
   }
 
   /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.20.4.2 2009-11-09 22:38:07 dereine Exp $
+// $Id: ajax.inc,v 1.20.4.3 2010-01-28 17:16:40 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -167,6 +167,19 @@ function views_ajax_command_disable_buttons() {
 function views_ajax_command_enable_buttons() {
   $command = array(
     'command' => 'viewsEnableButtons',
+  );
+  return $command;
+}
+
+/**
+ * Trigger the Views live preview.
+ *
+ * @return
+ *   An array suitable for use with the ajax_render() function.
+ */
+function views_ajax_command_trigger_preview() {
+  $command = array(
+    'command' => 'viewsTriggerPreview',
   );
   return $command;
 }
