@@ -1,5 +1,5 @@
 <?php
-// $Id: base.inc,v 1.3.4.2 2010-01-28 22:44:36 dereine Exp $
+// $Id: base.inc,v 1.3.4.3 2010-01-29 00:14:42 dereine Exp $
 /**
  * @file
  *
@@ -84,9 +84,13 @@ class views_object {
     if (!isset($definition)) {
       $definition = $this->option_definition();
     }
-
     foreach ($options as $key => $value) {
       if (is_array($value)) {
+        // Ignore arrays with no definition.
+        if (!$all && empty($definition[$key])) {
+          continue;
+        }
+
         if (!isset($storage[$key]) || !is_array($storage[$key])) {
           $storage[$key] = array();
         }
