@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument.inc,v 1.9.4.6 2010-01-28 23:29:51 dereine Exp $
+// $Id: views_handler_argument.inc,v 1.9.4.7 2010-01-29 00:18:54 dereine Exp $
 
 /**
  * @defgroup views_argument_handlers Handlers for arguments
@@ -293,7 +293,7 @@ class views_handler_argument extends views_handler {
     $plugin = $this->get_plugin('argument validator', $validate_id);
     if ($plugin) {
       $options = &$form_state['values']['options']['argument_validate'][$validate_id];
-      $plugin->options_submit($form['argument_validate'][$default_id], $form_state, $options);
+      $plugin->options_submit($form['argument_validate'][$validate_id], $form_state, $options);
       // Copy the now submitted options to their final resting place so they get saved.
       $form_state['values']['options']['validate_options'] = $options;
     }
