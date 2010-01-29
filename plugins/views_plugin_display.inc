@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.15 2010-01-28 23:36:56 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.16 2010-01-29 00:09:03 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1054,7 +1054,7 @@ class views_plugin_display extends views_plugin {
           '#type' => 'checkbox',
           '#title' => t('Group by'),
           '#description' => t('If enabled, some fields may become unavailable. All fields that are selected for grouping will be collapsed to one record per distinct value. Other fields which are selected for aggregation will have the function run on them. For example, you can group nodes on title and count the number of nids in order to get a list of duplicate titles.'),
-          '#default_value' => $this->get_option('distinct'),
+          '#default_value' => $this->get_option('group_by'),
         );
         break;
       case 'access':
