@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.8.4.3 2010-01-28 22:44:37 dereine Exp $
+// $Id: views_plugin_display_page.inc,v 1.8.4.4 2010-01-29 00:11:08 dereine Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -67,7 +67,9 @@ class views_plugin_display_page extends views_plugin_display {
     $path = implode('/', $bits);
 
     $access_plugin = $this->get_plugin('access');
-
+    if (!isset($access_plugin)) {
+      $access_plugin = views_get_plugin('access', 'none');
+    }
     if ($path) {
       $items[$path] = array(
         // default views page entry
