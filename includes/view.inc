@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.7 2010-01-28 22:44:36 dereine Exp $
+// $Id: view.inc,v 1.167.4.8 2010-01-29 19:46:08 dereine Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1226,7 +1226,7 @@ class view extends views_db_object {
    *  If TRUE, reset this entry in the load cache.
    * @return A view object or NULL if it was not available.
    */
-  function &load($arg, $reset = FALSE) {
+  static function &load($arg, $reset = FALSE) {
     static $cache = array();
 
     // We want a NULL value to return TRUE here, so we can't use isset() or empty().
@@ -1286,7 +1286,7 @@ class view extends views_db_object {
    * that would be very slow.  Buiding the views externally from unified queries is
    * much faster.
    */
-  function load_views() {
+  static function load_views() {
     $result = db_query("SELECT DISTINCT v.* FROM {views_view} v");
     $views = array();
     $vids = array();
