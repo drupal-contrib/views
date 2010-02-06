@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_dates_various.inc,v 1.4 2009-01-08 00:25:19 merlinofchaos Exp $
+// $Id: views_handler_argument_dates_various.inc,v 1.4.6.1 2010-02-06 16:38:11 dereine Exp $
 /**
  * Argument handler for a full date (CCYYMMDD)
  */
@@ -63,14 +63,16 @@ class views_handler_argument_node_created_year_month extends views_handler_argum
    */
   function summary_name($data) {
     $created = $data->{$this->name_alias};
-    return format_date(strtotime($created . "15"), 'custom', $this->format, 0);
+    // @todo fix this! I removed ,0 but the whole timezone handling is broken.
+    return format_date(strtotime($created . "15"), 'custom', $this->format);
   }
 
   /**
    * Provide a link to the next level of the view
    */
   function title() {
-    return format_date(strtotime($this->argument . "15"), 'custom', $this->format, 0);
+    // @todo fix this! I removed ,0 but the whole timezone handling is broken.
+    return format_date(strtotime($this->argument . "15"), 'custom', $this->format);
   }
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.13 2010-02-06 13:35:12 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.14 2010-02-06 16:38:11 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1215,4 +1215,3 @@ class views_plugin_query_default extends views_plugin_query {
 function views_query_default_aggregation_method_simple($group_type, $field) {
   return strtoupper($group_type) . '(' . $field . ')';
 }
-
