@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.19 2010-01-25 22:33:42 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.20 2010-02-06 10:25:17 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -891,7 +891,7 @@ class views_plugin_query_default extends views_plugin_query{
 
       if (!empty($field['count'])) {
         // Retained for compatibility
-        $field['function'] = 'COUNT';
+        $field['function'] = 'count';
       }
 
       if (!empty($field['function'])) {
