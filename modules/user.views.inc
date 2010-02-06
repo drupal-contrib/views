@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.59.4.3 2010-01-24 22:37:52 dereine Exp $
+//$Id: user.views.inc,v 1.59.4.4 2010-02-06 16:16:41 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -229,8 +229,9 @@ function user_views_data() {
     'help' => t("The user's signature."), // The help that appears on the UI,
      // Information for displaying a title as a field
     'field' => array(
-      'handler' => 'views_handler_field_xss',
-     ),
+      'handler' => 'views_handler_field_markup',
+      'format' => filter_fallback_format(),
+    ),
     'filter' => array(
       'handler' => 'views_handler_filter_string',
     ),
