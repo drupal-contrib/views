@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.10 2010-01-29 00:07:01 dereine Exp $
+// $Id: views.module,v 1.341.4.11 2010-02-06 14:17:10 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -45,7 +45,7 @@ function views_theme() {
 
   // Our extra version of pager from pager.inc
   $hooks['views_mini_pager'] = $base + array(
-    'variables' => array('tags' => array(), 'limit' => 10, 'element' => 0, 'parameters' => array()),
+    'variables' => array('tags' => array(), 'quantity' => 10, 'element' => 0, 'parameters' => array()),
     'pattern' => 'views_mini_pager__',
   );
 
