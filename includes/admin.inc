@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.17 2010-02-06 15:14:02 dereine Exp $
+// $Id: admin.inc,v 1.161.4.18 2010-02-06 16:20:59 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -3200,3 +3200,4 @@ function theme_views_ui_style_plugin_table($variables) {
   $output .= drupal_render_children($form);
   return $output;
 }
+
