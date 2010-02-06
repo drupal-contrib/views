@@ -1,5 +1,14 @@
 <?php
-// $Id: views_test.module,v 1.1.4.2 2009-12-22 00:38:03 merlinofchaos Exp $
+// $Id: views_test.module,v 1.1.4.3 2010-02-06 10:52:05 dereine Exp $
+
+/**
+ * Implements hook_views_api().
+ */
+function views_test_views_api() {
+  return array(
+    'api' => 3.0,
+  );
+}
 
 /**
  * Implements hook_views_data()
