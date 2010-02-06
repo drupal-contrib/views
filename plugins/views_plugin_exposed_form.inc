@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form.inc,v 1.2.2.4 2010-01-29 00:23:16 dereine Exp $
+// $Id: views_plugin_exposed_form.inc,v 1.2.2.5 2010-02-06 13:29:48 dereine Exp $
 
 /**
  * The base plugin to handle exposed filter forms.
@@ -14,12 +14,11 @@ class views_plugin_exposed_form extends views_plugin {
    * @param $display
    *   The display handler.
    */
-  function init(&$view, &$display) {
+  function init(&$view, &$display, $options = array()) {
     $this->view = &$view;
     $this->display = &$display;
 
-    $exposed_form = $display->handler->get_option('exposed_form');
-    $this->unpack_options($this->options, $exposed_form['options']);
+    $this->unpack_options($this->options, $options);
   }
 
   /**
@@ -108,9 +107,9 @@ class views_plugin_exposed_form extends views_plugin {
       );
     }
   }
-  
+
   function exposed_form_validate(&$form, &$form_state) { }
-  
+
   /**
   * This function is executed when exposed form is submited.
   *
@@ -119,9 +118,9 @@ class views_plugin_exposed_form extends views_plugin {
   * @param $form_state
   *   A keyed array containing the current state of the form.
   * @param $exclude
-  *   Nested array of keys to exclude of insert into 
+  *   Nested array of keys to exclude of insert into
   *   $view->exposed_raw_input
-  */ 
+  */
   function exposed_form_submit(&$form, &$form_state, &$exclude) {
     if (isset($form_state['values']['op']) && $form_state['values']['op'] == t('Reset')) {
       $this->reset_form($form, $form_state);
