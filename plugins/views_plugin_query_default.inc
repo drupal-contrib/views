@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.9 2010-01-25 22:33:30 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.10 2010-02-06 09:53:09 chx Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -919,6 +919,10 @@ class views_plugin_query_default extends views_plugin_query {
         }
 
         $this->has_aggregate = TRUE;
+      }
+      // This is a formula, using no tables.
+      elseif (empty($field['table'])) {
+        $query->addExpression($string, $fieldname);
       }
 
       elseif ($this->distinct && !in_array($fieldname, $this->groupby)) {
