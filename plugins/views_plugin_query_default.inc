@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.10 2010-02-06 09:53:09 chx Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.11 2010-02-06 11:01:42 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -902,13 +902,9 @@ class views_plugin_query_default extends views_plugin_query {
 
       if (!empty($field['count'])) {
         // Retained for compatibility
-        $field['function'] = 'COUNT';
+        $field['function'] = 'count';
         // It seems there's no way to abstract the table+column reference
         // without adding a field, aliasing, and then using the alias.
-        $table = !empty($field['table']) ? $field['table'] : $this->base_table;
-        $alias = $table . '_' . $field['field'] . '_viewscount';
-        $query->addField($table, $field['field'], $alias);
-        $query->addExpression('COUNT(' . $field['table'] .'.'. $field['field'] . ')', $fieldname);
       }
 
       if (!empty($field['function'])) {
