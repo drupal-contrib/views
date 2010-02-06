@@ -1,7 +1,9 @@
 <?php
-// $Id: views_handler_field_history_user_timestamp.inc,v 1.1.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: views_handler_field_history_user_timestamp.inc,v 1.1.6.2 2010-02-06 16:29:52 dereine Exp $
 /**
  * Field handler to display the marker for new content.
+ *
+ * The handler is named history_user, because of compability reasons, the table is history.
  */
 class views_handler_field_history_user_timestamp extends views_handler_field_node {
   function init(&$view, $options) {

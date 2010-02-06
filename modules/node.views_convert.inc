@@ -1,5 +1,5 @@
 <?php
-//$Id: node.views_convert.inc,v 1.7.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+//$Id: node.views_convert.inc,v 1.7.4.2 2010-02-06 16:29:52 dereine Exp $
 
 /**
  * @file
@@ -119,7 +119,7 @@ function node_views_convert($display, $type, &$view, $field, $id = NULL) {
         case 'history':
           switch ($field['field']) {
             case 'timestamp':
-              $view->set_item_option($display, 'filter', $id, 'table', 'history_user');
+              $view->set_item_option($display, 'filter', $id, 'table', 'history');
               break;
           }
           break;

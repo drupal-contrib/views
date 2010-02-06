@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views_default.inc,v 1.7.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: comment.views_default.inc,v 1.7.6.2 2010-02-06 16:29:52 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the comment module.
@@ -197,7 +197,7 @@ function comment_views_default_views() {
     ),
     'timestamp' => array(
       'id' => 'timestamp',
-      'table' => 'history_user',
+      'table' => 'history',
       'field' => 'timestamp',
       'label' => '',
       'comments' => 1,

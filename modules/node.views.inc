@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.5 2010-01-27 23:28:35 dereine Exp $
+// $Id: node.views.inc,v 1.97.4.6 2010-02-06 16:29:52 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -544,10 +544,10 @@ function node_views_data() {
   // We're actually defining a specific instance of the table, so let's
   // alias it so that we can later add the real table for other purposes if we
   // need it.
-  $data['history_user']['table']['group']  = t('Node');
+  $data['history']['table']['group']  = t('Node');
 
   // Explain how this table joins to others.
-  $data['history_user']['table']['join'] = array(
+  $data['history']['table']['join'] = array(
      // Directly links to node table.
     'node' => array(
       'table' => 'history',
@@ -559,7 +559,7 @@ function node_views_data() {
     ),
   );
 
-  $data['history_user']['timestamp'] = array(
+  $data['history']['timestamp'] = array(
     'title' => t('Has new content'),
     'field' => array(
       'handler' => 'views_handler_field_history_user_timestamp',

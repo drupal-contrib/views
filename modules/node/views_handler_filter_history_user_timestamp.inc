@@ -1,7 +1,9 @@
 <?php
-// $Id: views_handler_filter_history_user_timestamp.inc,v 1.3.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: views_handler_filter_history_user_timestamp.inc,v 1.3.4.2 2010-02-06 16:29:52 dereine Exp $
 /**
  * Filter for new content
+ *
+ * The handler is named history_user, because of compability reasons, the table is history.
  */
 class views_handler_filter_history_user_timestamp extends views_handler_filter {
   // Don't display empty space where the operator would be.
