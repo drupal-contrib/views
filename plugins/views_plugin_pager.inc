@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager.inc,v 1.1.4.3 2010-02-06 14:17:10 dereine Exp $
+// $Id: views_plugin_pager.inc,v 1.1.4.4 2010-02-07 13:17:04 dereine Exp $
 
 /**
  * The base plugin to handle pager.
@@ -33,6 +33,15 @@ class views_plugin_pager extends views_plugin {
    */
   function get_items_per_page() {
     return isset($this->options['items_per_page']) ? $this->options['items_per_page'] : 0;
+  }
+
+  /**
+   * Set how many items per page this pager will display.
+   *
+   * This is mostly used for things that will override the value.
+   */
+  function set_items_per_page($items) {
+    $this->options['items_per_page'] = $items;
   }
 
   /**
