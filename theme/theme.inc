@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.8 2010-02-07 13:26:07 dereine Exp $
+// $Id: theme.inc,v 1.84.4.9 2010-02-07 13:44:07 dereine Exp $
 
 /**
  * @file theme.inc
@@ -49,27 +49,15 @@ function template_preprocess_views_view(&$vars) {
   $vars['name']       = $view->name;
   $vars['display_id'] = $view->current_display;
 
-  if (!$vars['rows']) {
-    $vars['empty']    = $view->display_handler->render_empty();
-    if (!$view->display_handler->get_option('header_empty')) {
-      $vars['header'] = '';
-    }
-    if (!$view->display_handler->get_option('footer_empty')) {
-      $vars['footer'] = '';
-    }
-  }
-  else {
-    $vars['empty']    = '';
-    $header = TRUE;
+  $empty = empty($vars['rows']);
+
+  $vars['header'] = $view->display_handler->render_area('header', $empty);
+  $vars['footer'] = $view->display_handler->render_area('footer', $empty);
+  if ($empty) {
+    $vars['empty'] = $view->display_handler->render_area('empty');
   }
 
   $vars['exposed']    = !empty($view->exposed_widgets) ? $view->exposed_widgets : '';
-  if (!isset($vars['header'])) {
-    $vars['header']   = $view->display_handler->render_header();
-  }
-  if (!isset($vars['footer'])) {
-    $vars['footer']   = $view->display_handler->render_footer();
-  }
   $vars['more']       = $view->display_handler->render_more_link();
   $vars['feed_icon']  = !empty($view->feed_icon) ? $view->feed_icon : '';
   $vars['pager']      = $view->query->render_pager();

@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.5 2010-02-06 16:38:10 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.6 2010-02-07 13:44:07 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1164,6 +1164,13 @@ function views_views_handlers() {
     ),
     'views_handler_sort_group_by_numeric' => array(
       'parent' => 'views_handler_sort',
+    ),
+    // area handlers
+    'views_handler_area' => array(
+      'parent' => 'views_handler',
+    ),
+    'views_handler_area_text' => array(
+      'parent' => 'views_handler_area',
     ),
   );
 }

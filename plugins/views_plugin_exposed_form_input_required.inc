@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form_input_required.inc,v 1.2.2.3 2010-01-25 16:18:12 dereine Exp $
+// $Id: views_plugin_exposed_form_input_required.inc,v 1.2.2.4 2010-02-07 13:44:07 dereine Exp $
 
 /**
  * Exposed form plugin that provides basic exposed form
@@ -61,8 +61,22 @@ class views_plugin_exposed_form_input_required extends views_plugin_exposed_form
 
   function pre_render() {
     if (!$this->exposed_filter_applied()) {
-      $this->view->display_handler->set_option('empty', $this->options['text_input_required']);
-      $this->view->display_handler->set_option('empty_format', $this->options['text_input_required_format']);
+      $options = array(
+        'id' => 'area',
+        'table' => 'views',
+        'field' => 'area',
+        'label' => '',
+        'relationship' => 'none',
+        'group_type' => 'group',
+        'content' => $this->options['text_input_required'],
+        'format' => $this->options['text_input_required_format'],
+      );
+      $handler = views_get_handler('views', 'area', 'area');
+      $handler->init($this->view, $options);
+      $this->display->handler->handlers['empty'] = array(
+        'area' => $handler,
+      );
+      $this->display->handler->set_option('empty', array('text' => $options));
     }
   }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: views.views.inc,v 1.7.4.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: views.views.inc,v 1.7.4.2 2010-02-07 13:44:07 dereine Exp $
 /**
  * @file
  * Provide views data and handlers that aren't tied to any other module.
@@ -49,6 +49,14 @@ function views_views_data() {
     'help' => t('Displays the actual position of the view result'),
     'field' => array(
       'handler' => 'views_handler_field_counter',
+    ),
+  );
+
+  $data['views']['area'] = array(
+    'title' => t('Text area'),
+    'help' => t('Provide markup text for the area.'),
+    'area' => array(
+      'handler' => 'views_handler_area_text',
     ),
   );
 
