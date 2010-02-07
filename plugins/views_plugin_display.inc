@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.18 2010-02-06 14:21:01 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.19 2010-02-07 13:26:07 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -117,6 +117,11 @@ class views_plugin_display extends views_plugin {
             return TRUE;
           }
         }
+      }
+      $pager = $this->get_plugin('pager');
+      if (isset($pager) && $pager->uses_exposed()) {
+        $this->has_exposed = TRUE;
+        return TRUE;
       }
       $this->has_exposed = FALSE;
     }

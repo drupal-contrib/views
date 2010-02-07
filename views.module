@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.14 2010-02-06 16:38:10 dereine Exp $
+// $Id: views.module,v 1.341.4.15 2010-02-07 13:26:07 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -994,7 +994,7 @@ function views_exposed_form($form, &$form_state) {
   $form['submit'] = array(
     '#name' => '', // prevent from showing up in $_GET.
     '#type' => 'submit',
-    '#value' => t('Submit'),
+    '#value' => t('Apply'),
     '#id' => drupal_html_id('edit-submit-' . $view->name),
   );
 
