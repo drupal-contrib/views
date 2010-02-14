@@ -1,5 +1,5 @@
 <?php
-// $Id: views_query.test,v 1.1.2.2 2009-11-28 16:29:17 dereine Exp $
+// $Id: views_query.test,v 1.1.2.3 2010-02-14 15:57:17 dereine Exp $
 
 /**
  * @file
@@ -78,6 +78,13 @@ abstract class ViewsTestCase extends DrupalWebTestCase {
         return 0;
     }
     return $this->sort_order * (($value1 < $value2) ? -1 : 1);
+  }
+
+  /**
+   * Helper function to check whether a button with a certain id exists and has a certain label.
+   */
+  protected function helperButtonHasLabel($id, $expected_label, $message = 'Label has the expected value: %label.') {
+    return $this->assertFieldById($id, $expected_label, t($message, array('%label' => $expected_label)));
   }
 }
 
