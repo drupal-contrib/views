@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.1 2010-02-22 12:50:20 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.2 2010-02-22 19:18:17 dereine Exp $
 
 /**
  * @file
@@ -141,7 +141,6 @@ function field_views_field_default_views_data($field) {
 
       case 'text':
       case 'blob':
-        // TODO add markup handlers for these types
       default:
         $filter = 'views_handler_filter_string';
         $argument = 'views_handler_argument_string';
