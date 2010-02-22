@@ -1,7 +1,7 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.2.6 2010-01-22 01:41:24 merlinofchaos Exp $
+// $Id: views_plugin_query.inc,v 1.1.2.7 2010-02-22 17:41:54 merlinofchaos Exp $
 /**
- * @file views_plugin_query_default.inc
+ * @file
  * Defines the base query class, which is the underlying layer in a View.
  */
 
