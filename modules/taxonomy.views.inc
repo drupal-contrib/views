@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.50.2.7 2009-11-10 23:20:05 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.50.2.9 2010-02-22 18:24:16 merlinofchaos Exp $
 /**
  * @file
  *
@@ -51,6 +51,10 @@ function taxonomy_views_data() {
       'handler' => 'views_handler_field',
       'click sortable' => TRUE,
     ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+      'help' => t('The taxonomy vocabulary name'),
+    ),
   );
   $data['vocabulary']['vid'] = array(
     'title' => t('Vocabulary ID'), // The item it appears as on the UI,
@@ -58,6 +62,9 @@ function taxonomy_views_data() {
     'argument' => array(
       'handler' => 'views_handler_argument_vocabulary_vid',
       'name field' => 'name',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
     ),
   );
 
@@ -164,6 +171,15 @@ function taxonomy_views_data() {
     'help' => t('Filter the results of "Taxonomy: Term" to a particular vocabulary.'),
     'filter' => array(
       'handler' => 'views_handler_filter_vocabulary_vid',
+    ),
+  );
+
+  // Link to edit the term
+  $data['term_data']['edit_term'] = array(
+    'field' => array(
+      'title' => t('Term edit link'),
+      'help' => t('Provide a simple link to edit the term.'),
+      'handler' => 'views_handler_field_term_link_edit',
     ),
   );
 
@@ -385,6 +401,9 @@ function taxonomy_views_handlers() {
       ),
       'views_handler_relationship_node_term_data' => array(
         'parent' => 'views_handler_relationship',
+      ),
+      'views_handler_field_term_link_edit' => array(
+        'parent' => 'views_handler_field',
       ),
     ),
   );
