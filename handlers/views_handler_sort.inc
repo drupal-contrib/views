@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_sort.inc,v 1.2.4.2 2009-12-23 20:37:13 merlinofchaos Exp $
+// $Id: views_handler_sort.inc,v 1.2.4.3 2010-02-22 10:15:28 dereine Exp $
 /**
  * @defgroup views_sort_handlers Views' sort handlers
  * @{
@@ -65,7 +65,7 @@ class views_handler_sort extends views_handler {
     if ($this->can_expose()) {
       $this->show_expose_button($form, $form_state);
     }
-    $form['op_val_start'] = array('#value' => '<div class="clear-block">');
+    $form['op_val_start'] = array('#value' => '<div class="clearfix">');
     $this->show_sort_form($form, $form_state);
     $form['op_val_end'] = array('#value' => '</div>');
     if ($this->can_expose()) {
