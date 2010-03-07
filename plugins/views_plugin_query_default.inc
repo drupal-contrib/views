@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.15 2010-03-07 08:28:35 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.16 2010-03-07 08:36:01 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1085,8 +1085,7 @@ class views_plugin_query_default extends views_plugin_query {
     $items = array();
     if ($query) {
       $additional_arguments = module_invoke_all('views_query_substitutions', $view);
-      // We have already build a working count query. Views optimeses it automatically.
-      //$count_query = $count_query->countQuery();
+      $count_query = $count_query->countQuery();
 
       // Add additional arguments as a fake condition.
       // XXX: this doesn't work... because PDO mandates that all bound arguments
