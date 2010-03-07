@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.14 2010-02-06 16:38:11 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.15 2010-03-07 08:28:35 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1141,7 +1141,6 @@ class views_plugin_query_default extends views_plugin_query {
         db_set_active();
       }
 
-      debug((string) $query);
     }
     $view->execute_time = microtime(TRUE) - $start;
   }

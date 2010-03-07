@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.15 2010-02-07 13:26:07 dereine Exp $
+// $Id: views.module,v 1.341.4.16 2010-03-07 08:28:35 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -407,7 +407,6 @@ function views_block_view($delta) {
   if ($view = views_get_view($name)) {
     if ($view->access($display_id)) {
       $output = $view->execute_display($display_id);
-      debug("Block $view->name execute time: " . (microtime(TRUE) - $start) * 1000 . "ms");
       $view->destroy();
       return $output;
     }

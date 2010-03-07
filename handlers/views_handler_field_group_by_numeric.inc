@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_group_by_numeric.inc,v 1.1.4.2 2010-01-24 22:37:52 dereine Exp $
+// $Id: views_handler_field_group_by_numeric.inc,v 1.1.4.3 2010-03-07 08:28:35 dereine Exp $
 
 /**
  * Handler for GROUP BY on simple numeric fields.
@@ -23,7 +23,6 @@ class views_handler_field_group_by_numeric extends views_handler_field {
       'function' => $this->options['group_type'],
     );
 
-    debug($this->real_field);
     $this->field_alias = $this->query->add_field($this->table_alias, $this->real_field, NULL, $params);
     $this->add_additional_fields();
   }
