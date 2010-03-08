@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_many_to_one.inc,v 1.2.2.1 2009-12-07 19:03:07 merlinofchaos Exp $
+// $Id: views_handler_filter_many_to_one.inc,v 1.2.2.2 2010-03-08 19:53:49 merlinofchaos Exp $
 
 /**
  * Complex filter to handle filtering for many to one relationships,
@@ -61,7 +61,7 @@ class views_handler_filter_many_to_one extends views_handler_filter_in_operator 
           'values' => 0,
         ),
         'not empty' => array(
-          'title' => t('Is not empty (NULL)'),
+          'title' => t('Is not empty (NOT NULL)'),
           'method' => 'op_empty',
           'short' => t('not empty'),
           'values' => 0,
