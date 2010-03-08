@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.5.2.7 2010-01-05 01:38:43 merlinofchaos Exp $
+// $Id: views_plugin_display_page.inc,v 1.5.2.9 2010-03-08 20:33:05 merlinofchaos Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -137,6 +137,7 @@ class views_plugin_display_page extends views_plugin_display {
               'load arguments'  => array($this->view->name, $this->display->id, '%index'),
               'title' => $tab_options['title'],
               'description' => $tab_options['description'],
+              'menu_name' => $tab_options['name'],
             );
             switch ($tab_options['type']) {
               default:
@@ -391,6 +392,27 @@ class views_plugin_display_page extends views_plugin_display {
           '#process' => array('views_process_dependency'),
           '#dependency' => array('radio:tab_options[type]' => array('normal', 'tab')),
         );
+        // Only display the menu selector if menu module is enabled.
+        if (module_exists('menu')) {
+          $form['tab_options']['name'] = array(
+            '#title' => t('Menu'),
+            '#type' => 'select',
+            '#options' => menu_get_menus(),
+            '#default_value' => $tab_options['name'],
+            '#description' => t('Insert item into an available menu.'),
+            '#process' => array('views_process_dependency'),
+            '#dependency' => array('radio:tab_options[type]' => array('normal')),
+          );
+        }
+        else {
+          $form['tab_options']['name'] = array(
+            '#type' => 'value',
+            '#value' => $tab_options['name'],
+          );
+          $form['tab_options']['markup'] = array(
+            '#value' => t('Menu selection requires the activation of menu module.'),
+          );
+        }
         $form['tab_options']['weight'] = array(
           '#suffix' => '</div>',
           '#title' => t('Tab weight'),
@@ -443,7 +465,7 @@ class views_plugin_display_page extends views_plugin_display {
     }
   }
 
-  function options_submit(&$form, &$form_state) {
+  function options_submit($form, &$form_state) {
     // It is very important to call the parent function here:
     parent::options_submit($form, $form_state);
     switch ($form_state['section']) {
