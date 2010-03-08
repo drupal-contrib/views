@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.25.2.7 2010-01-22 06:15:40 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.8 2010-03-08 20:16:13 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -85,7 +85,9 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
     //Enable the save button.
     $('#edit-save').removeAttr('disabled');
     // Trigger an update for the live preview when we reach this state:
-    $('#views-ui-preview-form').trigger('submit');
+    if ($('#views-ui-preview-form input#edit-live-preview').is(':checked')) {
+      $('#views-ui-preview-form').trigger('submit');
+    }
   }
 
   // Go through the 'add' array and add any new content we're instructed to add.
@@ -347,7 +349,7 @@ Drupal.Views.Ajax.handleErrors = function (xhr, path) {
   alert(Drupal.t("An error occurred at @path.\n\nError Description: @error", {'@path': path, '@error': error_text}));
 }
 
-// $Id: ajax.js,v 1.25.2.7 2010-01-22 06:15:40 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.8 2010-03-08 20:16:13 merlinofchaos Exp $
 
 Drupal.behaviors.ViewsGroupedTableDrag = function(context) {
   var table_id = 'arrange';
