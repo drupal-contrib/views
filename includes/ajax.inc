@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.20.4.3 2010-01-28 17:16:40 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.20.4.4 2010-03-08 21:51:19 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -202,11 +202,13 @@ function views_ajax_form_wrapper($form_id, &$form_state) {
   $form_state += array(
     're_render' => FALSE,
     'no_redirect' => !empty($form_state['ajax']),
+    'no_cache' => TRUE,
     'build_info' => array(
       'args' => array(),
     ),
   );
 
+  dsm($form_state);
   $output = drupal_render(drupal_build_form($form_id, $form_state));
   if (!empty($form_state['ajax']) && empty($form_state['executed'])) {
     // If the form didn't execute and we're using ajax, build up a
