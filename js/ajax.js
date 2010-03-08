@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.26.2.4 2010-01-22 06:16:18 merlinofchaos Exp $
+// $Id: ajax.js,v 1.26.2.5 2010-03-08 20:16:09 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -85,7 +85,9 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
     //Enable the save button.
     $('#edit-save').removeAttr('disabled');
     // Trigger an update for the live preview when we reach this state:
-    $('#views-ui-preview-form').trigger('submit');
+    if ($('#views-ui-preview-form input#edit-live-preview').is(':checked')) {
+      $('#views-ui-preview-form').trigger('submit');
+    }
   }
 
   // Go through the 'add' array and add any new content we're instructed to add.

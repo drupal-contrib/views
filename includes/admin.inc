@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.6 2009-12-23 21:57:01 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.7 2010-03-08 20:16:09 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -498,6 +498,13 @@ function views_ui_preview_form(&$form_state) {
     '#type' => 'submit',
     '#value' => t('Preview'),
     '#id' => 'preview-submit',
+  );
+
+
+  $form['live_preview'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Automatic live preview'),
+    '#default_value' => !variable_get('views_ui_disable_live_preview', 0),
   );
 
   $form['#action'] = url("admin/build/views/nojs/preview/$view->name");
@@ -2710,6 +2717,13 @@ function views_ui_admin_tools() {
     '#title' => t('Show query above live preview'),
     '#description' => t("The live preview feature will show you the output of the view you're creating, as well as the view. Check here to show the query and other information above the view; leave this unchecked to show that information below the view."),
     '#default_value' => variable_get('views_ui_query_on_top', FALSE),
+  );
+
+  $form['views_ui_disable_live_preview'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable automatic live preview'),
+    '#description' => t("Don't automatically update the preview. This can speed up the editing of views a bit.'"),
+    '#default_value' => variable_get('views_ui_disable_live_preview', 0),
   );
 
   $form['views_show_additional_queries'] = array(
