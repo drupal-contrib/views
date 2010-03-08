@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_in_operator.inc,v 1.6.2.9 2009-09-25 14:33:06 merlinofchaos Exp $
+// $Id: views_handler_filter_in_operator.inc,v 1.6.2.10 2010-03-08 19:53:47 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of multiple options selectable via checkboxes
  *
@@ -93,7 +93,7 @@ class views_handler_filter_in_operator extends views_handler_filter {
           'values' => 0,
         ),
         'not empty' => array(
-          'title' => t('Is not empty (NULL)'),
+          'title' => t('Is not empty (NOT NULL)'),
           'method' => 'op_empty',
           'short' => t('not empty'),
           'values' => 0,
