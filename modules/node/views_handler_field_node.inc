@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node.inc,v 1.7.4.2 2010-01-24 22:37:52 dereine Exp $
+// $Id: views_handler_field_node.inc,v 1.7.4.3 2010-03-10 19:50:23 merlinofchaos Exp $
 /**
  * @file
  * Contains the basic 'node' field handler.
@@ -52,6 +52,9 @@ class views_handler_field_node extends views_handler_field {
         $languages = language_list();
         if (isset($languages[$values->{$this->aliases['language']}])) {
           $this->options['alter']['language'] = $languages[$values->{$this->aliases['language']}];
+        }
+        else {
+          unset($this->options['alter']['language']);
         }
       }
     }
