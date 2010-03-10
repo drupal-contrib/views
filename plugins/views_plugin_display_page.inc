@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.8.4.5 2010-03-08 20:33:03 merlinofchaos Exp $
+// $Id: views_plugin_display_page.inc,v 1.8.4.6 2010-03-10 21:06:38 merlinofchaos Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -47,7 +47,7 @@ class views_plugin_display_page extends views_plugin_display {
   /**
    * Add this display's path information to Drupal's menu system.
    */
-  function execute_hook_menu() {
+  function execute_hook_menu($callbacks) {
     $items = array();
     // Replace % with the link to our standard views argument loader
     // views_arg_load -- which lives in views.module
