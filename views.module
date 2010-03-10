@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.17 2010-03-08 20:18:17 merlinofchaos Exp $
+// $Id: views.module,v 1.341.4.18 2010-03-10 20:54:46 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -362,7 +362,11 @@ function views_block_info() {
     }
   }
 
-  variable_set('views_block_hashes', $hashes);
+  // Only save hashes if they have changed.
+  $old_hashes = variable_get('views_block_hashes', array());
+  if ($hashes != $old_hashes) {
+    variable_set('views_block_hashes', $hashes);
+  }
   // Save memory: Destroy those views.
   foreach ($views as $view) {
     $view->destroy();
