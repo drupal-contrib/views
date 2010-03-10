@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.2.2 2010-01-04 23:03:53 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.2.3 2010-03-10 23:49:14 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -473,7 +473,7 @@ class views_handler_field extends views_handler {
     }
 
     if (empty($this->last_render)) {
-      if ($this->last_render !== 0 || !empty($this->options['empty_zero'])) {
+      if (($this->last_render !== 0 && $this->last_render !== '0') || !empty($this->options['empty_zero'])) {
         $this->last_render = $this->options['empty'];
       }
     }
@@ -493,7 +493,7 @@ class views_handler_field extends views_handler {
       return '';
     }
 
-    if (!empty($alter['alter_text']) && $alter['text'] !== '') {
+    if ($alter['alter_text'] !== '' && $alter['text'] !== '') {
       $tokens = $this->get_render_tokens($alter);
       $value = $this->render_altered($alter, $tokens);
     }
