@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.25.2.2 2010-01-05 01:44:50 merlinofchaos Exp $
+// $Id: cache.inc,v 1.25.2.3 2010-03-10 20:24:14 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -115,7 +115,6 @@ function _views_discover_default_views() {
     // If missing index, rebuild the cache
     else {
       views_include_default_views();
-      $defaults = module_invoke_all('views_default_views');
       $cache = array();
 
       foreach(module_implements('views_default_views') as $module) {
