@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.27 2010-01-22 01:41:24 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.28 2010-03-10 20:57:36 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1359,7 +1359,7 @@ class view extends views_db_object {
   /**
    * Delete the view from the database.
    */
-  function delete() {
+  function delete($clear = TRUE) {
     if (empty($this->vid)) {
       return;
     }
@@ -1371,8 +1371,11 @@ class view extends views_db_object {
     }
 
     cache_clear_all('views_query:' . $this->name, 'cache_views');
-    cache_clear_all(); // In Drupal 5.0 and later this clears the page cache only.
-    menu_rebuild(); // force a menu rebuild when a view is deleted.
+
+    if ($clear) {
+      cache_clear_all(); // this clears the block and page caches only.
+      menu_rebuild(); // force a menu rebuild when a view is deleted.
+    }
   }
 
   /**
