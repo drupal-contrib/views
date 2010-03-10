@@ -1,5 +1,5 @@
 <?php
-// $Id: views-exposed-form.tpl.php,v 1.4.2.2 2010-01-19 21:50:01 merlinofchaos Exp $
+// $Id: views-exposed-form.tpl.php,v 1.4.2.3 2010-03-10 19:57:13 merlinofchaos Exp $
 /**
  * @file views-exposed-form.tpl.php
  *
@@ -53,22 +53,22 @@
       <div class="views-exposed-widget">
         <?php print $sort_order; ?>
       </div>
-    <? endif; ?>
+    <?php endif; ?>
     <?php if (!empty($items_per_page)): ?>
       <div class="views-exposed-widget">
         <?php print $items_per_page; ?>
       </div>
-    <? endif; ?>
+    <?php endif; ?>
     <?php if (!empty($offset)): ?>
       <div class="views-exposed-widget">
         <?php print $offset; ?>
       </div>
-    <? endif; ?>
+    <?php endif; ?>
     <?php if (!empty($reset_button)): ?>
       <div class="views-exposed-widget">
         <?php print $reset_button; ?>
       </div>
-    <? endif; ?>
+    <?php endif; ?>
     <div class="views-exposed-widget">
       <?php print $button ?>
     </div>
