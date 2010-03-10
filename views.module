@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.332.2.23 2010-03-10 21:03:22 merlinofchaos Exp $
+// $Id: views.module,v 1.332.2.24 2010-03-10 21:06:43 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -196,7 +196,7 @@ function views_menu_alter(&$callbacks) {
   $views = views_get_applicable_views('uses hook menu');
   foreach ($views as $data) {
     list($view, $display_id) = $data;
-    $result = $view->execute_hook_menu($display_id);
+    $result = $view->execute_hook_menu($display_id, $callbacks);
     if (is_array($result)) {
       // The menu system doesn't support having two otherwise
       // identical paths with different placeholders.  So we
