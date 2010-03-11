@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.8.4.6 2010-03-10 21:06:38 merlinofchaos Exp $
+// $Id: views_plugin_display_page.inc,v 1.8.4.7 2010-03-11 00:02:09 merlinofchaos Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -38,6 +38,7 @@ class views_plugin_display_page extends views_plugin_display {
         'title' => array('default' => '', 'translatable' => FALSE),
         'description' => array('default' => '', 'translatable' => FALSE),
         'weight' => array('default' => 0),
+        'name' => array('default' => 'navigation'),
        ),
     );
 
