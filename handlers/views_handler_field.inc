@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.7 2010-03-11 00:43:35 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.8 2010-03-11 00:52:56 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -562,7 +562,7 @@ class views_handler_field extends views_handler {
     $value = rtrim(preg_replace('/(?:<(?!.+>)|&(?!.+;)).*$/us', '', $value));
 
     if (!empty($alter['ellipsis'])) {
-      $value .= '...';
+      $value .= '&#8230;';
     }
 
     if (!empty($alter['html'])) {
