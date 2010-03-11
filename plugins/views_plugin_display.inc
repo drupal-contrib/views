@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.32 2010-03-11 00:06:14 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.33 2010-03-11 00:31:53 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -266,7 +266,7 @@ class views_plugin_display extends views_plugin {
 
       // These guys are special
       'header' => array('header'),
-      'footer' => array('empty'),
+      'footer' => array('footer'),
       'empty' => array('empty'),
       'relationships' => array('relationships'),
       'fields' => array('fields'),
