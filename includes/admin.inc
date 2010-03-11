@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.7 2010-03-08 20:16:09 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.8 2010-03-11 23:14:16 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -788,6 +788,11 @@ function views_ui_import_validate($form, &$form_state) {
     else {
       form_error($form['view'], t('That view is not compatible with this version of Views.'));
     }
+  }
+  elseif ($view->api_version > views_api_version()) {
+    form_error($form['view'], t('That view is created for the version @import_version of views, but you only have @api_version', array(
+      '@import_version' => $view->api_version,
+      '@api_version' => views_api_version())));
   }
 
   // View name must be alphanumeric or underscores, no other punctuation.
