@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.22 2010-01-19 22:11:28 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.23 2010-03-11 23:43:59 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -361,6 +361,7 @@ function template_preprocess_views_view_table(&$vars) {
     drupal_add_js('misc/tableheader.js');
     $vars['class'] .= " sticky-enabled";
   }
+  $vars['class'] .= ' cols-'. count($vars['rows']);
 }
 
 /**
