@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.93.2.9 2010-03-08 20:02:34 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.93.2.10 2010-03-11 00:24:54 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -265,6 +265,15 @@ function node_views_data() {
       'handler' => 'views_handler_field_node_link_delete',
     ),
   );
+  
+  $data['node']['path'] = array(
+    'field' => array(
+      'title' => t('Path'),
+      'help' => t('The aliased path to this node.'),
+      'handler' => 'views_handler_field_node_path',
+    ),
+  );
+  
 
   // Bogus fields for aliasing purposes.
 
@@ -657,6 +666,9 @@ function node_views_handlers() {
         'parent' => 'views_handler_field_node',
       ),
       'views_handler_field_node_link' => array(
+        'parent' => 'views_handler_field',
+      ),
+      'views_handler_field_node_path' => array(
         'parent' => 'views_handler_field',
       ),
       'views_handler_field_node_type' => array(
