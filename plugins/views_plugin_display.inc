@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.31 2010-01-25 22:37:48 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.32 2010-03-11 00:06:14 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -698,6 +698,35 @@ class views_plugin_display extends views_plugin {
     }
 
     return $this->handlers[$type];
+  }
+
+  /**
+   * Retrieve a list of fields for the current display with the
+   *  relationship associated if it exists.
+   */ 
+  function get_field_labels() {
+    $options = array();
+    foreach ($this->get_handlers('relationship') as $relationship => $handler) {
+      if ($label = $handler->label()) {
+        $relationships[$relationship] = $label;
+      }
+      else {
+        $relationships[$relationship] = $handler->ui_name();
+      }
+    }
+
+    foreach ($this->get_handlers('field') as $id => $handler) {
+      if ($label = $handler->label()) {
+        $options[$id] = $label;
+      }
+      else {
+        $options[$id] = $handler->ui_name();
+      }
+      if (!empty($handler->options['relationship']) && !empty($relationships[$handler->options['relationship']])) {
+        $options[$id] = '(' . $relationships[$handler->options['relationship']] . ') ' . $options[$id];
+      }
+    }
+    return $options;
   }
 
   /**

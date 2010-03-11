@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_table.inc,v 1.5.2.5 2009-12-23 21:30:32 merlinofchaos Exp $
+// $Id: views_plugin_style_table.inc,v 1.5.2.6 2010-03-11 00:06:14 merlinofchaos Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -172,14 +172,7 @@ class views_plugin_style_table extends views_plugin_style {
     $columns = $this->sanitize_columns($this->options['columns']);
 
     // Create an array of allowed columns from the data we know:
-    foreach ($handlers as $field => $handler) {
-      if ($label = $handler->label()) {
-        $field_names[$field] = $label;
-      }
-      else {
-        $field_names[$field] = $handler->ui_name();
-      }
-    }
+    $field_names = $this->display->handler->get_field_labels();
 
     if (isset($this->options['default'])) {
       $default = $this->options['default'];
