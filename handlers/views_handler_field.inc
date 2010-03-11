@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.24 2010-03-10 23:49:08 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.25 2010-03-11 00:43:39 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -591,6 +591,12 @@ class views_handler_field extends views_handler {
     // However, we need to preserve special characters like " that
     // were removed by check_plain().
     $path = strip_tags(html_entity_decode(strtr($path, $tokens)));
+
+    // If the path is empty do not build a link around the given text and return
+    // it as is.
+    if (empty($path)) {
+      return $text;
+    }
 
     // Parse the URL and move any query and fragment parameters out of the path.
     $url = parse_url($path);
