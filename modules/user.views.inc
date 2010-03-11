@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.59.4.4 2010-02-06 16:16:41 dereine Exp $
+//$Id: user.views.inc,v 1.59.4.5 2010-03-11 23:51:36 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -118,6 +118,9 @@ function user_views_data() {
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_string',
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_string',
     ),
   );
 
