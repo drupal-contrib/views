@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.25.2.9 2010-03-10 20:06:03 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.10 2010-03-12 01:33:23 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -79,7 +79,7 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
 
     Drupal.attachBehaviors(ajax_area);
   }
-  else {
+  else if (!data.tab) {
     // If no display, reset the form.
     Drupal.Views.Ajax.setForm('', Drupal.settings.views.ajax.defaultForm);
     //Enable the save button.
@@ -116,6 +116,11 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
 
       $(id).html(data.tab[id]['body']);
       $(id).addClass('views-tab');
+
+      // Update the preview widget to preview the new tab.
+      var display_id = id.replace('#views-tab-', '');
+      $("#preview-display-id").append('<option selected="selected" value="' + id + '">' + data.tab[id]['title'] + '</option>');
+
       Drupal.attachBehaviors(id);
     }
   }
@@ -312,6 +317,19 @@ Drupal.behaviors.ViewsAjaxLinks = function() {
 }
 
 /**
+ * Sync preview display.
+ */
+Drupal.behaviors.syncPreviewDisplay = function() {
+  $("#views-tabset a").click(function() {
+    var href = $(this).attr('href');
+    // Cut of #views-tabset.
+    var display_id = href.substr(11);
+    // Set the form element.
+    $("#views-live-preview #preview-display-id").val(display_id);
+  });
+}
+
+/**
  * Get rid of irritating tabledrag messages
  */
 Drupal.theme.tableDragChangedWarning = function () {
@@ -348,7 +366,7 @@ Drupal.Views.Ajax.handleErrors = function (xhr, path) {
   alert(Drupal.t("An error occurred at @path.\n\nError Description: @error", {'@path': path, '@error': error_text}));
 }
 
-// $Id: ajax.js,v 1.25.2.9 2010-03-10 20:06:03 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.10 2010-03-12 01:33:23 merlinofchaos Exp $
 
 Drupal.behaviors.ViewsGroupedTableDrag = function(context) {
   var table_id = 'arrange';
