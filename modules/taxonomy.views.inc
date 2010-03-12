@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.50 2009-01-08 00:36:02 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.57.2.1 2010-03-12 00:54:15 merlinofchaos Exp $
 /**
  * @file
  *
@@ -98,7 +98,6 @@ function taxonomy_views_data() {
     'field' => array(
       'handler' => 'views_handler_field_numeric',
       'click sortable' => TRUE,
-      'skip base' => array('node', 'node_revision'),
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
@@ -126,11 +125,15 @@ function taxonomy_views_data() {
     'sort' => array(
       'handler' => 'views_handler_sort',
     ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_string',
+      'help' => t('Taxonomy term name.'),
+    ),
     'argument' => array(
       'handler' => 'views_handler_argument_string',
       'help' => t('Taxonomy term name.'),
       'many to one' => TRUE,
-      'empty name field' => t('Uncategorized'),
+      'empty field name' => t('Uncategorized'),
     ),
   );
 
@@ -195,6 +198,17 @@ function taxonomy_views_data() {
     ),
   );
 
+  $data['term_node']['vid'] = array(
+    'title' => t('Node'),
+    'help' => t('Get all nodes tagged with a term.'),
+    'relationship' => array(
+      'handler' => 'views_handler_relationship',
+      'base' => 'node',
+      'base field' => 'vid',
+      'label' => t('node'),
+    ),
+  );
+
   // tid field
   $data['term_node']['tid'] = array(
     'title' => t('Term ID'),
@@ -209,7 +223,7 @@ function taxonomy_views_data() {
       'handler' => 'views_handler_argument_term_node_tid',
       'name table' => 'term_data',
       'name field' => 'name',
-      'empty name field' => t('Uncategorized'),
+      'empty field name' => t('Uncategorized'),
       'numeric' => TRUE,
       'skip base' => 'term_data',
     ),
@@ -219,6 +233,7 @@ function taxonomy_views_data() {
       'hierarchy table' => 'term_hierarchy',
       'numeric' => TRUE,
       'skip base' => 'term_data',
+      'allow empty' => TRUE,
     ),
   );
 
@@ -262,6 +277,10 @@ function taxonomy_views_data() {
       'field' => 'parent',
       'label' => t('Parent'),
     ),
+    'argument' => array(
+      'help' => t('The parent term of the term.'),
+      'handler' => 'views_handler_argument_numeric',
+    ),    
   );
 
   // ----------------------------------------------------------------------
@@ -293,7 +312,7 @@ function taxonomy_views_data() {
     'argument' => array(
       'handler' => 'views_handler_argument_string',
       'many to one' => TRUE,
-      'empty name field' => t('Uncategorized'),
+      'empty field name' => t('Uncategorized'),
     ),
   );
   return $data;
@@ -303,6 +322,17 @@ function taxonomy_views_data() {
  * Implementation of hook_views_data_alter().
  */
 function taxonomy_views_data_alter(&$data) {
+  $data['node']['term_node_tid'] = array(
+    'group' => t('Taxonomy'),
+    'title' => t('Related terms'),
+    'help' => t('Relate nodes to taxonomy terms, specifiying which vocabulary or vocabularies to use. This relationship will cause duplicated records if there are multiple terms.'),
+    'relationship' => array(
+      'handler' => 'views_handler_relationship_node_term_data',
+      'label' => t('term'),
+      'base' => 'term_data',
+    ),
+  );
+
   $data['node']['term_node_tid_depth'] = array(
     'group' => t('Taxonomy'),
     'title' => t('Term ID (with depth)'),
@@ -311,6 +341,9 @@ function taxonomy_views_data_alter(&$data) {
     'argument' => array(
       'handler' => 'views_handler_argument_term_node_tid_depth',
       'accept depth modifier' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_term_node_tid_depth',
     ),
   );
 
@@ -360,6 +393,12 @@ function taxonomy_views_handlers() {
       ),
       'views_handler_filter_term_node_tid' => array(
         'parent' => 'views_handler_filter_many_to_one',
+      ),
+      'views_handler_filter_term_node_tid_depth' => array(
+        'parent' => 'views_handler_filter_term_node_tid',
+      ),
+      'views_handler_relationship_node_term_data' => array(
+        'parent' => 'views_handler_relationship',
       ),
     ),
   );
