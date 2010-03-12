@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.20 2010-02-06 10:25:17 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.21 2010-03-12 01:02:45 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -987,7 +987,7 @@ class views_plugin_query_default extends views_plugin_query{
     }
 
     if (!$get_count_optimized) {
-      // we only add the groupby if we're not counting.
+      // We only add the orderby if we're not counting, because of performance reasons.
       if ($this->orderby) {
         $orderby = "ORDER BY " . implode(', ', $this->orderby) . "\n";
       }
