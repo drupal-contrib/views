@@ -1,5 +1,5 @@
 <?php
-// $Id: cache.inc,v 1.24.2.4 2010-03-08 20:18:19 merlinofchaos Exp $
+// $Id: cache.inc,v 1.24.2.5 2010-03-12 01:51:42 merlinofchaos Exp $
 /**
  * @file cache.inc
  *
@@ -100,7 +100,7 @@ function _views_discover_default_views($reset = FALSE) {
   static $cache = NULL;
 
   if (!isset($cache) || $reset) {
-    $index = views_cache_get('views_default_views_index');
+    $index = views_cache_get('views_default_views_index', TRUE);
 
     // Retrieve each cached default view
     if (!$reset && isset($index->data) && is_array($index->data)) {
@@ -141,7 +141,7 @@ function _views_discover_default_views($reset = FALSE) {
 
       // Cache the index
       $index = array_keys($cache);
-      views_cache_set('views_default_views_index', $index);
+      views_cache_set('views_default_views_index', $index, TRUE);
 
       // Cache each view
       foreach ($cache as $name => $view) {
