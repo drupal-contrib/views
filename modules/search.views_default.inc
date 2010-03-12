@@ -1,12 +1,12 @@
 <?php
-// $Id: search.views_default.inc,v 1.6.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: search.views_default.inc,v 1.6.6.2 2010-03-12 08:54:51 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the search module.
  */
 
 /**
- * Implements hook_default_view_views().
+ * Implements hook_views_default_views().
  */
 function search_views_default_views() {
   $view = new view;

@@ -1,12 +1,12 @@
 <?php
-// $Id: comment.views_default.inc,v 1.7.6.3 2010-02-13 08:37:35 dereine Exp $
+// $Id: comment.views_default.inc,v 1.7.6.4 2010-03-12 08:54:51 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the comment module.
  */
 
 /**
- * Implements hook_default_view_views().
+ * Implements hook_views_default_views().
  */
 function comment_views_default_views() {
   $view = new view;

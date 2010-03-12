@@ -1,12 +1,12 @@
 <?php
-// $Id: statistics.views_default.inc,v 1.5.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: statistics.views_default.inc,v 1.5.6.2 2010-03-12 08:54:51 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the statistics module.
  */
 
 /**
- * Implements hook_default_view_views().
+ * Implements hook_views_default_views().
  */
 function statistics_views_default_views() {
   $view = new view;
