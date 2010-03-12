@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.7 2010-03-11 07:58:28 dereine Exp $
+// $Id: node.views.inc,v 1.97.4.8 2010-03-12 09:00:15 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -462,7 +462,7 @@ function node_views_data() {
      // Information for displaying a title as a field
     'field' => array(
       'field' => 'title', // the real field
-      'handler' => 'views_handler_field_node',
+      'handler' => 'views_handler_field_node_revision',
       'click sortable' => TRUE,
      ),
     'sort' => array(
@@ -599,6 +599,7 @@ function node_views_handlers() {
     'views_handler_field_node_revision_link_revert',
     'views_handler_field_node_revision_link_delete',
     'views_handler_field_history_user_timestamp',
+    'views_handler_field_node_revision',
 
     // argument handlers
     'views_handler_argument_node_type',
