@@ -1,7 +1,7 @@
-/* $Id: views.css,v 1.11.2.2 2009-12-24 00:37:04 merlinofchaos Exp $ */
+/* $Id: views.css,v 1.11.2.3 2010-03-12 00:25:33 merlinofchaos Exp $ */
 .views-exposed-form .views-exposed-widget {
-  float: left;
-  padding: .5em 1em 0 0;
+  float: left; /* LTR */
+  padding: .5em 1em 0 0; /* LTR */
 }
 
 .views-exposed-form .views-exposed-widget .form-submit {
