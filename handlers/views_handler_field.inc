@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.8 2010-03-11 00:52:56 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.9 2010-03-13 01:14:21 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -553,8 +553,17 @@ class views_handler_field extends views_handler {
 
     $value = drupal_substr($value, 0, $alter['max_length']);
 
+    // TODO: replace this with cleanstring of ctools
     if (!empty($alter['word_boundary'])) {
-      if (preg_match("/(.*)\b.+/us", $value, $matches)) {
+      $regex = "(.*)\b.+";
+      if (function_exists('mb_ereg')) {
+        mb_regex_encoding('UTF-8');
+        $found = mb_ereg($regex, $value, $matches);
+      }
+      else {
+        $found = preg_match("/$regex/us", $value, $matches);
+      }
+      if ($found) {
         $value = $matches[1];
       }
     }
