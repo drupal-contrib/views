@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_boolean_operator.inc,v 1.3.2.5 2009-12-04 19:08:55 merlinofchaos Exp $
+// $Id: views_handler_filter_boolean_operator.inc,v 1.3.2.7 2010-03-13 00:50:55 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of boolean values
  *
@@ -24,7 +24,7 @@ class views_handler_filter_boolean_operator extends views_handler_filter {
       $this->value_value = $this->definition['label'];
     }
     if (isset($this->definition['accept_null'])) {
-      $this->accept_null = (bool) $this->definition['accept null'];
+      $this->accept_null = (bool) $this->definition['accept_null'];
     }
     $this->value_options = NULL;
     parent::construct();
@@ -103,7 +103,7 @@ class views_handler_filter_boolean_operator extends views_handler_filter {
     }
   }
 
-  function value_validate(&$form, &$form_state) {
+  function value_validate($form, &$form_state) {
     if ($form_state['values']['options']['value'] == 'All' && empty($form_state['values']['options']['expose']['optional'])) {
       form_set_error('value', t('You must select a value unless this is an optional exposed filter.'));
     }
