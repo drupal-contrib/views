@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.25 2010-03-13 00:12:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.26 2010-03-13 00:23:33 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1296,7 +1296,8 @@ function template_preprocess_views_ui_edit_item(&$vars) {
     $handler = $display->handler->get_handler($type, $id);
     if (empty($handler)) {
       $fields[$id]['class'][] = 'broken';
-      $fields[$id]['title'] = t("Error: handler for @table > @field doesn't exist!", array('@table' => $field['table'], '@field' => $field['field']));
+      $field_name = t('Broken/missing handler: @table > @field', array('@table' => $field['table'], '@field' => $field['field']));
+      $fields[$id]['title'] = l($field_name, "admin/structure/views/nojs/config-item/$view->name/$display->id/$type/$id", array('attributes' => array('class' => array('views-ajax-link')), 'html' => TRUE));
       $fields[$id]['info'] = '';
       continue;
     }
