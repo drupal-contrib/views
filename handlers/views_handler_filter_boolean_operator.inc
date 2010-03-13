@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_boolean_operator.inc,v 1.6.4.3 2010-01-28 17:16:40 merlinofchaos Exp $
+// $Id: views_handler_filter_boolean_operator.inc,v 1.6.4.4 2010-03-13 00:50:48 merlinofchaos Exp $
 /**
  * Simple filter to handle matching of boolean values
  *
@@ -24,7 +24,7 @@ class views_handler_filter_boolean_operator extends views_handler_filter {
       $this->value_value = $this->definition['label'];
     }
     if (isset($this->definition['accept_null'])) {
-      $this->accept_null = (bool) $this->definition['accept null'];
+      $this->accept_null = (bool) $this->definition['accept_null'];
     }
     $this->value_options = NULL;
     parent::construct();
