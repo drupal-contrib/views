@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.28 2010-03-12 23:48:59 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.29 2010-03-13 00:12:20 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -904,7 +904,7 @@ function views_ui_edit_view_form(&$form_state, $view) {
   if (is_numeric($view->vid)) {
     $form['buttons']['delete'] = array(
       '#type' => 'submit',
-      '#value' => t('Delete'),
+      '#value' => $view->type == t('Overridden') ? t('Revert') : t('Delete'),
       '#submit' => array('views_ui_edit_view_form_delete'),
     );
   }
@@ -917,7 +917,7 @@ function views_ui_edit_view_form(&$form_state, $view) {
  * Validate that a view is complete and whole.
  */
 function views_ui_edit_view_form_validate($form, &$form_state) {
-  // Do not validate cancel or delete.
+  // Do not validate cancel or delete or revert.
   if (empty($form_state['clicked_button']['#value']) || $form_state['clicked_button']['#value'] != t('Save')) {
     return;
   }
