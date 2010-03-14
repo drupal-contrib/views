@@ -1,11 +1,16 @@
 <?php
-// $Id: views_test.module,v 1.1.2.3 2010-02-13 21:03:23 dereine Exp $
+// $Id: views_test.module,v 1.1.2.4 2010-03-14 11:57:21 dereine Exp $
 
 /**
- * Implements hook_perm().
+ * Implements hook_permission().
  */
-function views_test_perm() {
-  return array('views_test test permission');
+function views_test_permission() {
+  return array(
+    'views_test test permission' => array(
+      'title' => t('Test permission'),
+      'description' => t('views_test test permission'),
+    ),
+  );
 }
 
 /**
