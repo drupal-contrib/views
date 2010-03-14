@@ -1,7 +1,5 @@
 <?php
-// $Id: views_groupby.test,v 1.1.4.2 2010-01-26 15:53:02 dereine Exp $
-
-module_load_include('inc', 'views', 'tests/views_query');
+// $Id: views_groupby.test,v 1.1.4.3 2010-03-14 11:45:38 dereine Exp $
 
 class ViewsQueryGroupByTest extends ViewsSqlTest {
   public static function getInfo() {

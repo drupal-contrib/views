@@ -1,7 +1,6 @@
 <?php
-// $Id: views_access.test,v 1.1.4.2 2010-02-13 21:03:23 dereine Exp $
+// $Id: views_access.test,v 1.1.4.3 2010-03-14 11:45:38 dereine Exp $
 
-module_load_include('inc', 'views', 'tests/views_query');
 /**
 * Basic test for pluggable access.
 */
