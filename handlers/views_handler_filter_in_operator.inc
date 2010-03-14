@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_in_operator.inc,v 1.12.4.3 2010-03-08 19:53:43 merlinofchaos Exp $
+// $Id: views_handler_filter_in_operator.inc,v 1.12.4.4 2010-03-14 08:28:31 dereine Exp $
 /**
  * Simple filter to handle matching of multiple options selectable via checkboxes
  *
@@ -57,6 +57,7 @@ class views_handler_filter_in_operator extends views_handler_filter {
 
     $options['operator']['default'] = 'IN';
     $options['value']['default'] = array();
+    $options['expose']['contains']['reduce'] = array('default' => FALSE);
 
     return $options;
   }

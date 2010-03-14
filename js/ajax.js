@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.26.4.4 2010-02-06 14:36:07 dereine Exp $
+// $Id: ajax.js,v 1.26.4.5 2010-03-14 08:28:31 dereine Exp $
 /**
  * @file ajax_admin.js
  *
@@ -40,7 +40,7 @@
     $('#views-tabset').viewsAddTab(id, response.title, 0);
     $(id).html(response.body).addClass('views-tab');
     Drupal.attachBehaviors(id);
-    var instance = $.viewsUi.tabs.instances[$('#views-tabset').get(0).UI_TABS_UUID];
+    var instance = $.ui.tabs.instances[$('#views-tabset').get(0).UI_TABS_UUID];
     $('#views-tabset').viewsClickTab(instance.$tabs.length);
   };
 
