@@ -1,6 +1,5 @@
 <?php
-// $Id: views_argument_validator.test,v 1.1.4.3 2010-03-14 12:13:28 dereine Exp $
-module_load_include('inc', 'views', 'tests/views_query');
+// $Id: views_argument_validator.test,v 1.1.4.4 2010-03-16 16:57:52 dereine Exp $
 
 class viewsArgumentValidatorTest extends ViewsSqlTest {
   function getInfo() {
