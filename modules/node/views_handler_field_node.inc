@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node.inc,v 1.7.2.1 2010-03-10 19:50:29 merlinofchaos Exp $
+// $Id: views_handler_field_node.inc,v 1.7.2.2 2010-03-16 23:09:05 merlinofchaos Exp $
 /**
  * @file
  * Contains the basic 'node' field handler.
@@ -14,7 +14,7 @@ class views_handler_field_node extends views_handler_field {
    */
   function construct() {
     parent::construct();
-    $this->additional_fields['nid'] = 'nid';
+    $this->additional_fields['nid'] = array('table' => 'node', 'field' => 'nid');
     if (module_exists('translation')) {
       $this->additional_fields['language'] = array('table' => 'node', 'field' => 'language');
     }
