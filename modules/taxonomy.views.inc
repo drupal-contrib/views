@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.4.6 2010-03-16 23:20:41 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.57.4.7 2010-03-16 23:38:16 merlinofchaos Exp $
 /**
  * @file
  *
@@ -434,8 +434,13 @@ function views_taxonomy_set_breadcrumb(&$breadcrumb, &$argument) {
     if ($parent->tid == $argument->argument) {
       continue;
     }
-    $args[$argument->position] = $parent->tid;
-    $path = $argument->view->get_url($args);
+    if ($argument->options['use_taxonomy_term_path']) {
+      $path = taxonomy_term_path($parent);
+    }
+    else {
+      $args[$argument->position] = $parent->tid;
+      $path = $argument->view->get_url($args);
+    }
     $breadcrumb[$path] = check_plain($parent->name);
   }
 }
