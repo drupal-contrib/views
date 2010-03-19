@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.2.6 2010-03-13 01:14:28 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.2.7 2010-03-19 23:50:13 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -221,6 +221,7 @@ class views_handler_field extends views_handler {
         '#dependency' => array(
           'edit-options-alter-make-link' => array(1)
         ),
+        '#maxlength' => 255,
       );
       $form['alter']['link_class'] = array(
         '#title' => t('Link class'),
