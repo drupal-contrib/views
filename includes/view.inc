@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.16 2010-03-12 00:17:13 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.4.17 2010-03-19 22:52:32 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -417,6 +417,12 @@ class view extends views_db_object {
     $output = drupal_render(drupal_build_form('views_exposed_form', $form_state));
     if (!empty($form_state['js settings'])) {
       $this->js_settings = $form_state['js settings'];
+    }
+ 
+    // Don't render exposed filter form when there's form errors.
+    // Applies when filters are in a block ("exposed_block" option).
+    if (form_get_errors() && empty($form_state['rerender'])) {
+      return NULL;
     }
 
     return $output;
