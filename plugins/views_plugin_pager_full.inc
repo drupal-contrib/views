@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager_full.inc,v 1.1.4.5 2010-03-13 00:34:49 merlinofchaos Exp $
+// $Id: views_plugin_pager_full.inc,v 1.1.4.6 2010-03-19 22:26:40 merlinofchaos Exp $
 
 /**
  * The plugin to handle full pager.
@@ -109,8 +109,8 @@ class views_plugin_pager_full extends views_plugin_pager {
     $form['expose']['offset'] = array(
       '#type' => 'checkbox',
       '#title' => t('Expose Offset'),
-      '#description' => t('When checked, users can determine how many items per page show in a view'),
-      '#default_value' => $this->options['expose']['items_per_page'],
+      '#description' => t('When checked, users can determine how many items should be skipped at the beginning.'),
+      '#default_value' => $this->options['expose']['offset'],
     );
 
     $form['expose']['offset_label'] = array(
