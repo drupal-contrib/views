@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.8 2010-03-12 09:00:15 dereine Exp $
+// $Id: node.views.inc,v 1.97.4.9 2010-03-19 23:40:58 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -731,6 +731,13 @@ function node_views_analyze($view) {
           }
           $ret[] = views_ui_analysis(t('Display %display has no access control but does not contain a filter for published nodes.', array('%display' => $display->display_title)), 'warning');
         }
+      }
+    }
+  }
+  foreach ($view->display as $id => $display) {
+    if ($display->display_plugin == 'page') {
+      if ($display->handler->get_option('path') == 'node/%') {
+        $ret[] = views_ui_analysis(t('Display %display has set node/% as path. This will not produce what you want. If you want to have multiple versions of the node view, use panels.', array('%display' => $display->display_title)), 'warning');
       }
     }
   }
