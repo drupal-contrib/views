@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_area_text.inc,v 1.1.4.2 2010-02-07 13:44:07 dereine Exp $
+// $Id: views_handler_area_text.inc,v 1.1.4.3 2010-03-20 23:43:48 dereine Exp $
 
 class views_handler_area_text extends views_handler_area {
 
@@ -14,17 +14,15 @@ class views_handler_area_text extends views_handler_area {
     parent::options_form($form, $form_state);
 
     $form['content'] = array(
-      '#type' => 'textarea',
+      '#type' => 'text_format',
       '#default_value' => $this->options['content'],
       '#rows' => 6,
       '#description' => $description,
+      '#format' => $this->options['format'],
     );
-
-    $form['format'] = filter_form($this->options['format']);
   }
 
   function options_submit(&$form, &$form_state) {
-    $form_state['values']['options']['format'] = $form_state['values']['format'];
     parent::options_submit($form, $form_state);
   }
 
