@@ -1,4 +1,4 @@
-// $Id: base.js,v 1.11.4.2 2010-03-14 08:28:31 dereine Exp $
+// $Id: base.js,v 1.11.4.3 2010-03-20 23:16:37 dereine Exp $
 /**
  * @file base.js
  *
@@ -13,7 +13,7 @@ Drupal.Views = {};
  */
 Drupal.behaviors.viewsTabs = {
   attach: function (context) {
-	if ($.ui && $.ui.tabs) {
+  if ($.viewsUi && $.viewsUi.tabs) {
     $('#views-tabset').once('views-processed').viewsTabs({
       selectedClass: 'active'
     });
