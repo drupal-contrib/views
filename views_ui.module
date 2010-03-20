@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.109.6.6 2010-03-20 23:20:52 dereine Exp $
+// $Id: views_ui.module,v 1.109.6.7 2010-03-20 23:47:26 dereine Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -359,7 +359,9 @@ function views_ui_ajax_deliver($page_callback_result) {
     $commands[] = ajax_command_prepend(NULL, theme('status_messages'));
   }
   $js = drupal_add_js();
-  $commands[] = ajax_command_settings($js['settings']['data']);
+  if ($js) {
+    $commands[] = ajax_command_settings($js['settings']['data']);
+  }
 
   // This function needs to do the same thing that drupal_deliver_html_page()
   // does: add any needed http headers, print rendered output, and perform
