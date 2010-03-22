@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.30 2010-03-22 19:30:15 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.31 2010-03-22 20:59:36 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -608,6 +608,10 @@ class views_handler_field extends views_handler {
     // parsed values.
     if (isset($alter['query'])) {
       $options['query'] = strtr($alter['query'], $tokens);
+    }
+    if (isset($alter['alias'])) {
+      // Alias is a boolean field, so no token.
+      $options['alias'] = $alter['alias'];
     }
     if (isset($alter['fragment'])) {
       $options['fragment'] = strtr($alter['fragment'], $tokens);
