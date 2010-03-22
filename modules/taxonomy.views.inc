@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.4.7 2010-03-16 23:38:16 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.57.4.8 2010-03-22 22:34:03 merlinofchaos Exp $
 /**
  * @file
  *
@@ -414,6 +414,13 @@ function taxonomy_views_plugins() {
         'title' => t('Taxonomy term'),
         'handler' => 'views_plugin_argument_validate_taxonomy_term',
         'path' => drupal_get_path('module', 'views') . '/modules/taxonomy', // not necessary for most modules
+      ),
+    ),
+    'argument default' => array(
+      'taxonomy_tid' => array(
+        'title' => t('Taxonomy Term ID from URL'),
+        'handler' => 'views_plugin_argument_default_taxonomy_tid',
+        'path' => drupal_get_path('module', 'views') . '/modules/taxonomy',
       ),
     ),
   );
