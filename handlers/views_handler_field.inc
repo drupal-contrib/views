@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.10 2010-03-19 23:50:03 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.11 2010-03-22 19:30:10 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -634,7 +634,7 @@ class views_handler_field extends views_handler {
       $options['attributes']['class'] = array($class);
     }
 
-    $target = check_plain(trim($alter['target']));
+    $target = check_plain(trim(strtr($alter['target'],$tokens)));
     if (!empty($target)) {
       $options['attributes']['target'] = $target;
     }
