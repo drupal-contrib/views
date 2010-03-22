@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.6.2.14 2010-01-22 01:41:24 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.6.2.15 2010-03-22 20:44:52 merlinofchaos Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -308,6 +308,7 @@ class views_handler_filter extends views_handler {
       return;
     }
 
+    // Build the exposed form, when its based on an operator.
     if (!empty($this->options['expose']['use_operator']) && !empty($this->options['expose']['operator'])) {
       $operator = $this->options['expose']['operator'];
       $this->operator_form($form, $form_state);
@@ -322,6 +323,7 @@ class views_handler_filter extends views_handler {
       unset($form['operator']);
     }
 
+    // Build the form and set the value based on the identifier.
     if (!empty($this->options['expose']['identifier'])) {
       $value = $this->options['expose']['identifier'];
       $this->value_form($form, $form_state);
