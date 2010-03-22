@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.332.2.24 2010-03-10 21:06:43 merlinofchaos Exp $
+// $Id: views.module,v 1.332.2.25 2010-03-22 19:22:02 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1327,4 +1327,37 @@ function views_views_exportables($op = 'list', $views = NULL, $name = 'foo') {
 function views_microtime() {
   list($usec, $sec) = explode(' ', microtime());
   return (float)$sec + (float)$usec;
+}
+
+/**
+ * Trim the field down to the specified length.
+ *
+ * @param $alter
+ *   - max_length: Maximum lenght of the string, the rest gets truncated.
+ *   - word_boundary: Trim only on a word boundary.
+ *   - ellipsis: Trim only on a word boundary.
+ *   - html: Take sure that the html is correct.
+ */
+function drupal_trim_text($alter, $value) {
+  dsm('strlen $value ' . drupal_strlen($value));
+  dsm('max_length ' . $alter['max_length']);
+  if (drupal_strlen($value) > $alter['max_length']) {
+    $value = drupal_substr($value, 0, $alter['max_length']);
+    if (!empty($alter['word_boundary'])) {
+      if (preg_match("/(.*)\b.+/us", $value, $matches)) {
+        $value = $matches[1];
+      }
+    } 
+    // Remove scraps of HTML entities from the end of a strings
+    $value = rtrim(preg_replace('/(?:<(?!.+>)|&(?!.+;)).*$/us', '', $value));
+    
+    if (!empty($alter['ellipsis'])) {
+      $value .= '...';
+    }
+  }
+  if (!empty($alter['html'])) {
+    $value = _filter_htmlcorrector($value);
+  }
+
+  return $value;
 }
