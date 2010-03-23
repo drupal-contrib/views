@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.2.8 2010-03-22 19:22:08 merlinofchaos Exp $
+// $Id: views.module,v 1.341.2.9 2010-03-23 05:22:25 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1304,8 +1304,6 @@ function views_microtime() {
  *   - html: Take sure that the html is correct.
  */
 function drupal_trim_text($alter, $value) {
-  dsm('strlen $value ' . drupal_strlen($value));
-  dsm('max_length ' . $alter['max_length']);
   if (drupal_strlen($value) > $alter['max_length']) {
     $value = drupal_substr($value, 0, $alter['max_length']);
     if (!empty($alter['word_boundary'])) {
