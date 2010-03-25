@@ -1,10 +1,18 @@
 <?php
-// $Id: views-view.tpl.php,v 1.12 2009-05-06 19:33:00 merlinofchaos Exp $
+// $Id: views-view.tpl.php,v 1.13.2.1 2010-03-25 18:44:41 merlinofchaos Exp $
 /**
  * @file views-view.tpl.php
  * Main view template
  *
  * Variables available:
+ * - $classes_array: An array of classes determined in
+ *   template_preprocess_views_view(). Default classes are:
+ *     .view
+ *     .view-[css_name]
+ *     .view-id-[view_name]
+ *     .view-display-id-[display_name]
+ *     .view-dom-id-[dom_id]
+ * - $classes: A string version of $classes_array for use in the class attribute
  * - $css_name: A css-safe version of the view name.
  * - $header: The view header
  * - $footer: The view footer
@@ -20,7 +28,7 @@
  * @ingroup views_templates
  */
 ?>
-<div class="view view-<?php print $css_name; ?> view-id-<?php print $name; ?> view-display-id-<?php print $display_id; ?> view-dom-id-<?php print $dom_id; ?>">
+<div class="<?php print $classes; ?>">
   <?php if ($admin_links): ?>
     <div class="views-admin-links views-hide">
       <?php print $admin_links; ?>
@@ -39,7 +47,7 @@
   <?php endif; ?>
 
   <?php if ($attachment_before): ?>
-    <div class="attachment-before">
+    <div class="attachment attachment-before">
       <?php print $attachment_before; ?>
     </div>
   <?php endif; ?>
@@ -59,7 +67,7 @@
   <?php endif; ?>
 
   <?php if ($attachment_after): ?>
-    <div class="attachment-after">
+    <div class="attachment attachment-after">
       <?php print $attachment_after; ?>
     </div>
   <?php endif; ?>
