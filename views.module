@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.2.9 2010-03-23 05:22:25 merlinofchaos Exp $
+// $Id: views.module,v 1.341.2.10 2010-03-25 18:32:55 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1303,7 +1303,7 @@ function views_microtime() {
  *   - ellipsis: Trim only on a word boundary.
  *   - html: Take sure that the html is correct.
  */
-function drupal_trim_text($alter, $value) {
+function views_trim_text($alter, $value) {
   if (drupal_strlen($value) > $alter['max_length']) {
     $value = drupal_substr($value, 0, $alter['max_length']);
     if (!empty($alter['word_boundary'])) {
