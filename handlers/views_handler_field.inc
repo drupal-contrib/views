@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.31 2010-03-22 20:59:36 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.32 2010-03-25 18:32:53 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -544,7 +544,7 @@ class views_handler_field extends views_handler {
       // this may be why =)
       $this->definition['element type'] = 'span';
     }
-    return drupal_trim_text($alter, $value);
+    return views_trim_text($alter, $value);
   }
 
   /**
