@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.34 2010-03-25 01:14:19 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.35 2010-03-25 20:12:28 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1979,9 +1979,7 @@ class views_plugin_display extends views_plugin {
    * Render this display.
    */
   function render() {
-    if (empty($view->result) && $view->display_handler->render_area('empty')) {
-      return theme($this->theme_functions(), $this->view);
-    }
+    return theme($this->theme_functions(), $this->view);
   }
 
   function render_area($area, $empty = FALSE) {
