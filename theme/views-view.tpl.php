@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view.tpl.php,v 1.13.4.2 2010-03-25 18:44:36 merlinofchaos Exp $
+// $Id: views-view.tpl.php,v 1.13.4.3 2010-03-25 20:25:16 merlinofchaos Exp $
 /**
  * @file views-view.tpl.php
  * Main view template
@@ -14,6 +14,7 @@
  *     .view-dom-id-[dom_id]
  * - $classes: A string version of $classes_array for use in the class attribute
  * - $css_name: A css-safe version of the view name.
+ * - $css_class: The user-specified classes names, if any
  * - $header: The view header
  * - $footer: The view footer
  * - $rows: The results of the view query, if any
