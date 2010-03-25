@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.26 2010-03-25 18:44:38 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.27 2010-03-25 20:25:23 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -55,6 +55,12 @@ function template_preprocess_views_view(&$vars) {
   $vars['classes_array'][] = 'view-' . views_css_safe($vars['name']);
   $vars['classes_array'][] = 'view-id-' . $vars['name'];
   $vars['classes_array'][] = 'view-display-id-' . $vars['display_id'];
+
+  $css_class = $view->display_handler->get_option('css_class');
+  if (!empty($css_class)) {
+    $vars['css_class'] = preg_replace('/[^a-zA-Z0-9- ]/', '-', $css_class);
+    $vars['classes_array'][] = $vars['css_class'];
+  }
 
   $empty = empty($vars['rows']);
 
