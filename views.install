@@ -1,5 +1,5 @@
 <?php
-// $Id: views.install,v 1.50.4.2 2009-12-24 00:41:11 merlinofchaos Exp $
+// $Id: views.install,v 1.50.4.3 2010-03-27 21:31:18 dereine Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
@@ -11,12 +11,7 @@ function views_install() {
     db_query("DROP AGGREGATE IF EXISTS first(anyelement)");
     db_query("CREATE AGGREGATE first(sfunc = first, basetype = anyelement, stype = anyelement);");
   }
-  drupal_install_schema('views');
   db_query("UPDATE {system} SET weight = 10 WHERE name = 'views'");
-}
-
-function views_uninstall() {
-  drupal_uninstall_schema('views');
 }
 
 /**
