@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.28 2010-03-24 18:20:47 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.29 2010-03-29 20:20:33 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -500,7 +500,7 @@ function views_ui_preview($js, $view) {
     if ($display) {
       $commands[] = ajax_command_html('div#views-live-preview', $display);
     }
-    ajax_render($commands);
+    return $js ? array('#type' => 'ajax', '#commands' => $commands) : $commands;
   }
 }
 
