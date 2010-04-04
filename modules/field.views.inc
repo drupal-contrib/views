@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.4 2010-03-28 13:42:20 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.5 2010-04-04 15:46:54 dereine Exp $
 
 /**
  * @file
@@ -24,11 +24,12 @@ function field_views_data() {
 
     $module = $field['module'];
     $result = (array) module_invoke($module, 'field_views_data', $field);
-    drupal_alter('field_views_data', $result, $field);
 
     if (empty($result)) {
       $result = field_views_field_default_views_data($field);
     }
+    drupal_alter('field_views_data', $result, $field, $module);
+
     if (is_array($result)) {
       $data = array_merge($data, $result);
     }
