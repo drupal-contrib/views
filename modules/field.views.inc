@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.5 2010-04-04 15:46:54 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.6 2010-04-04 16:16:03 dereine Exp $
 
 /**
  * @file
@@ -48,10 +48,6 @@ function field_views_field_default_views_data($field) {
   if (!isset($field_types[$field['type']])) {
     return;
   }
-
-  // Note: this should be in the $field object already, see http://drupal.org/node/645926.
-  $field_storage_details = field_sql_storage_field_storage_details($field, NULL);
-  $field += $field_storage_details;
 
   $data = array();
 
@@ -161,10 +157,10 @@ function field_views_field_default_views_data($field) {
 
     foreach ($tables as $type => $table) {
       $group = $type == FIELD_LOAD_CURRENT ? t('Fields') : t('Fields (historical data)');
-      $column_real_name = $field['sql'][$type][$table][$column];
+      $column_real_name = $field['storage']['details']['sql'][$type][$table][$column];
 
       // Load all the fields from the table by default.
-      $additional_fields = array_values($field['sql'][$type][$table]);
+      $additional_fields = array_values($field['storage']['details']['sql'][$type][$table]);
 
       $data[$table][$column_real_name] = array(
         'group' => $group,
