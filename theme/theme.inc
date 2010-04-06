@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.11 2010-03-25 20:25:28 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.12 2010-04-06 20:08:48 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -431,8 +431,10 @@ function template_preprocess_views_view_grid(&$vars) {
     }
     if ($row) {
       // Fill up the last line.
-      for ($i = 0; $i < ($columns - $row_count); $i++) {
-        $row[] = '';
+      if (count($rows)) {
+        for ($i = 0; $i < ($columns - $row_count); $i++) {
+          $row[] = '';
+        }
       }
       $rows[] = $row;
     }
