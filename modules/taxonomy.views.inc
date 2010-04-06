@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.2.4 2010-03-22 22:34:18 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.57.2.5 2010-04-06 19:59:29 merlinofchaos Exp $
 /**
  * @file
  *
@@ -238,7 +238,46 @@ function taxonomy_views_data() {
     ),
   );
 
-  // @todo: term_relation
+  // term_relation
+
+  $data['term_relation']['table']['group']  = t('Taxonomy');
+
+  $data['term_relation']['table']['join'] = array(
+    'term_data' => array(
+      // links directly to term_data via tid
+      'left_field' => 'tid',
+      'field' => 'tid1',
+    ),
+    'term_relation' => array(
+      // links to self through left.tid1 = right.tid2
+      'left_field' => 'tid1',
+      'field' => 'tid2',
+    ),
+    'node' => array(
+      'left_table' => 'term_node',
+      'left_field' => 'tid',
+      'field' => 'tid1',
+    ),
+    'node_revisions' => array(
+      'left_table' => 'term_node',
+      'left_field' => 'tid',
+      'field' => 'tid1',
+    ),
+  );
+
+  $data['term_relation']['tid2'] = array(
+    'title' => t('Related terms'),
+    'help' => t('The related terms of the term. This can produce duplicate entries if there is more than one related term.'),
+    'relationship' => array(
+      'base' => 'term_data',
+      'field' => 'tid2',
+      'label' => t('Related term'),
+    ),
+    'argument' => array(
+      'help' => t('A related term of the term.'),
+      'handler' => 'views_handler_argument_numeric',
+    ),    
+  );
 
   // ----------------------------------------------------------------------
   // term_hierarchy table
