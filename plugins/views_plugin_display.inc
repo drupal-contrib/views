@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.2.10 2010-03-25 20:25:28 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.2.11 2010-04-07 21:50:58 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -865,7 +865,7 @@ class views_plugin_display extends views_plugin {
     }
 
     $options['css_class'] = array(
-      'category' => 'style',
+      'category' => 'basic',
       'title' => t('CSS class'),
       'value' => $css_class,
       'desc' => t('Change the CSS class name(s) that will be added to this display.'),
