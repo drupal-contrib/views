@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.2.10 2010-03-25 18:32:55 merlinofchaos Exp $
+// $Id: views.module,v 1.341.2.11 2010-04-07 23:40:35 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -415,6 +415,16 @@ function views_flush_caches() {
  */
 function views_invalidate_cache() {
   cache_clear_all('*', 'cache_views', true);
+}
+
+/**
+ * Access callback to determine if the user can import Views.
+ *
+ * View imports require an additional access check because they are PHP
+ * code and PHP is more locked down than administer views.
+ */
+function views_import_access() {
+  return user_access('administer views') && user_access('use PHP for block visibility');
 }
 
 /**
@@ -1310,10 +1320,10 @@ function views_trim_text($alter, $value) {
       if (preg_match("/(.*)\b.+/us", $value, $matches)) {
         $value = $matches[1];
       }
-    } 
+    }
     // Remove scraps of HTML entities from the end of a strings
     $value = rtrim(preg_replace('/(?:<(?!.+>)|&(?!.+;)).*$/us', '', $value));
-    
+
     if (!empty($alter['ellipsis'])) {
       $value .= '...';
     }
