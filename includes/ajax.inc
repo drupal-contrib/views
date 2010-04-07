@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.19.2.2 2009-12-03 23:28:53 merlinofchaos Exp $
+// $Id: ajax.inc,v 1.19.2.3 2010-04-07 23:40:32 merlinofchaos Exp $
 
 /**
  * @file ajax.inc
@@ -19,8 +19,8 @@ function views_ajax() {
     $display_id = $_REQUEST['view_display_id'];
     $args = isset($_REQUEST['view_args']) && $_REQUEST['view_args'] !== '' ? explode('/', $_REQUEST['view_args']) : array();
     $path = isset($_REQUEST['view_path']) ? $_REQUEST['view_path'] : NULL;
-    $dom_id = isset($_REQUEST['view_dom_id']) ? $_REQUEST['view_dom_id'] : NULL;
-    $pager_element = isset($_REQUEST['pager_element']) ? $_REQUEST['pager_element'] : NULL;
+    $dom_id = isset($_REQUEST['view_dom_id']) ? intval($_REQUEST['view_dom_id']) : NULL;
+    $pager_element = isset($_REQUEST['pager_element']) ? intval($_REQUEST['pager_element']) : NULL;
 
     $ajax_arguments = array(
       'view_name' => $name,
