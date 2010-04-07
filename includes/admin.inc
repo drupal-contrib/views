@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.30 2010-03-24 18:20:53 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.31 2010-04-07 21:04:11 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1143,7 +1143,7 @@ function template_preprocess_views_ui_edit_tab(&$vars) {
   }
 
   $tag = empty($view->tag) ? t('None') : $view->tag;
-  $vars['details'] = t('Tag') . ': ' . l($tag, "admin/build/views/nojs/details/$view->name", array('attributes' => array('class' => 'views-ajax-link')));
+  $vars['details'] = t('Description') . '/' . t('Tag') . ': ' . l($tag, "admin/build/views/nojs/details/$view->name", array('attributes' => array('class' => 'views-ajax-link')));
 
   // Calculate options from display plugin.
   $options = $categories = array();
