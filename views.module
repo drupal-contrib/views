@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.22 2010-03-25 18:32:48 merlinofchaos Exp $
+// $Id: views.module,v 1.341.4.23 2010-04-07 23:40:26 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -430,6 +430,16 @@ function views_flush_caches() {
  */
 function views_invalidate_cache() {
   cache_clear_all('*', 'cache_views', TRUE);
+}
+
+/**
+ * Access callback to determine if the user can import Views.
+ *
+ * View imports require an additional access check because they are PHP
+ * code and PHP is more locked down than administer views.
+ */
+function views_import_access() {
+  return user_access('administer views') && user_access('use PHP for block visibility');
 }
 
 /**
