@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.25.2.10 2010-03-12 01:33:23 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.11 2010-04-08 21:29:51 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -119,7 +119,7 @@ Drupal.Views.Ajax.ajaxResponse = function(data) {
 
       // Update the preview widget to preview the new tab.
       var display_id = id.replace('#views-tab-', '');
-      $("#preview-display-id").append('<option selected="selected" value="' + id + '">' + data.tab[id]['title'] + '</option>');
+      $("#preview-display-id").append('<option selected="selected" value="' + display_id + '">' + data.tab[id]['title'] + '</option>');
 
       Drupal.attachBehaviors(id);
     }
@@ -366,7 +366,7 @@ Drupal.Views.Ajax.handleErrors = function (xhr, path) {
   alert(Drupal.t("An error occurred at @path.\n\nError Description: @error", {'@path': path, '@error': error_text}));
 }
 
-// $Id: ajax.js,v 1.25.2.10 2010-03-12 01:33:23 merlinofchaos Exp $
+// $Id: ajax.js,v 1.25.2.11 2010-04-08 21:29:51 merlinofchaos Exp $
 
 Drupal.behaviors.ViewsGroupedTableDrag = function(context) {
   var table_id = 'arrange';
