@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.38 2010-04-08 21:41:26 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.39 2010-04-08 22:18:06 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -677,6 +677,10 @@ class views_plugin_display extends views_plugin {
       $types = views_object_types();
       $plural = $types[$type]['plural'];
       foreach ($this->get_option($plural) as $id => $info) {
+        if ($info['id'] != $id) {
+          $info['id'] = $id;
+        }
+
         // If aggregation is on, the group type might override the actual
         // handler that is in use. This piece of code checks that and,
         // if necessary, sets the override handler.
