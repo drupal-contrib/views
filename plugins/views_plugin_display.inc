@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.37 2010-04-06 20:18:57 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.38 2010-04-08 21:41:26 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -108,10 +108,10 @@ class views_plugin_display extends views_plugin {
             $converted = TRUE;
           }
         }
-      }
-      // Ensure that options are at least an empty array
-      if (!$converted) {
-        $this->set_option($area, array());
+        // Ensure that options are at least an empty array
+        if (!$converted) {
+          $this->set_option($area, array());
+        }
       }
     }
   }
