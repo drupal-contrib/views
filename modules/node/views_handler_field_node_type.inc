@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node_type.inc,v 1.1.2.2 2010-03-25 18:22:42 merlinofchaos Exp $
+// $Id: views_handler_field_node_type.inc,v 1.1.2.3 2010-04-08 17:24:41 merlinofchaos Exp $
 
 /**
  * Field handler to translate a node type into its readable form.
@@ -8,7 +8,7 @@ class views_handler_field_node_type extends views_handler_field_node {
 
   function option_definition() {
     $options = parent::option_definition();
-    $options['machine_name'] = array('default' => TRUE);
+    $options['machine_name'] = array('default' => FALSE);
 
     return $options;
   }
