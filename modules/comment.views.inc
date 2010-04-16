@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.9 2010-01-28 23:18:39 dereine Exp $
+// $Id: comment.views.inc,v 1.33.4.10 2010-04-16 22:25:29 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -434,6 +434,20 @@ function comment_views_data() {
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_ncs_last_updated',
+    ),
+  );
+
+  $data['node_comment_statistics']['cid'] = array(
+    'title' => t('Last comment CID'),
+    'help' => t('Display the last comment of a node'),
+    'relationship' => array(
+      'title' => t('Last Comment'),
+      'help' => t('The last comment of a node.'),
+      'group' => t('Comment'),
+      'base' => 'comment',
+      'base field' => 'cid',
+      'handler' => 'views_handler_relationship',
+      'label' => t('Last Comment'),
     ),
   );
 
