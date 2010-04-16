@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.19 2010-03-22 20:55:02 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.4.20 2010-04-16 22:30:00 dereine Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -73,11 +73,8 @@ class view extends views_db_object {
   /**
    * Returns the complete list of dependent objects in a view, for the purpose
    * of initialization and loading/saving to/from the database.
-   *
-   * Note: In PHP5 this should be static, but PHP4 doesn't support static
-   * methods.
    */
-  function db_objects() {
+  static function db_objects() {
     return array('display');
   }
 
