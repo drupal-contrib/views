@@ -1,11 +1,11 @@
 <?php
-// $Id: views_cache.test,v 1.1.2.1 2009-12-22 00:38:03 merlinofchaos Exp $
+// $Id: views_cache.test,v 1.1.2.2 2010-04-16 22:11:07 dereine Exp $
 /**
  * @file
  *   test cache system.
  */
 
-module_load_include('inc', 'views', 'tests/views_query');
+module_load_include('test', 'views', 'tests/views_query');
 /**
  * Basic test for pluggable caching.
  */

@@ -1,7 +1,7 @@
 <?php
-// $Id: views_argument_default.test,v 1.1.4.2 2010-02-13 22:27:54 dereine Exp $
+// $Id: views_argument_default.test,v 1.1.4.3 2010-04-16 22:11:07 dereine Exp $
 
-module_load_include('inc', 'views', 'tests/views_query');
+module_load_include('test', 'views', 'tests/views_query');
 
 /**
 * Basic test for pluggable argument default.

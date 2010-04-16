@@ -1,11 +1,11 @@
 <?php
-// $Id: views_glossary.test,v 1.1.2.2 2010-02-07 10:39:14 dereine Exp $
+// $Id: views_glossary.test,v 1.1.2.3 2010-04-16 22:11:07 dereine Exp $
 /**
  * @file
  *   Test glossary view ( summary of arguments )
  */
 
-module_load_include('inc', 'views', 'tests/views_query');
+module_load_include('test', 'views', 'tests/views_query');
 
 class ViewsGlossaryTestCase extends ViewsSqlTest {
   public static function getInfo() {
