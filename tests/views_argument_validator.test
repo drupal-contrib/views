@@ -1,9 +1,9 @@
 <?php
-// $Id: views_argument_validator.test,v 1.1.2.3 2010-04-16 22:11:07 dereine Exp $
+// $Id: views_argument_validator.test,v 1.1.2.4 2010-04-18 08:19:11 dereine Exp $
 module_load_include('test', 'views', 'tests/views_query');
 
 class viewsArgumentValidatorTest extends ViewsSqlTest {
-  function getInfo() {
+  public static function getInfo() {
     return array(
       'name' => t('Argument validator tests.'),
       'group' => t('Views'),

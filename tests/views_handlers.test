@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handlers.test,v 1.1.2.1 2010-03-10 20:12:06 merlinofchaos Exp $
+// $Id: views_handlers.test,v 1.1.2.2 2010-04-18 08:19:11 dereine Exp $
 
 /**
 * @file
@@ -7,7 +7,7 @@
 */
 
 class ViewsHandlersTest extends ViewsSqlTest {
-  function getInfo() {
+  public static function getInfo() {
     return array(
     'name' => t('Handlers test'),
     'description' => t('test abstract handler definitions'),
