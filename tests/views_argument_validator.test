@@ -1,8 +1,8 @@
 <?php
-// $Id: views_argument_validator.test,v 1.1.4.4 2010-03-16 16:57:52 dereine Exp $
+// $Id: views_argument_validator.test,v 1.1.4.5 2010-04-18 08:16:46 dereine Exp $
 
 class viewsArgumentValidatorTest extends ViewsSqlTest {
-  function getInfo() {
+  public static function getInfo() {
     return array(
       'name' => t('Argument validator tests.'),
       'group' => t('Views'),
