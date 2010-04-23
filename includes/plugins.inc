@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.156.4.6 2010-03-13 09:22:21 dereine Exp $
+// $Id: plugins.inc,v 1.156.4.7 2010-04-23 21:20:07 dereine Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -408,7 +408,7 @@ class views_plugin extends views_object {
   /**
    * Handle any special handling on the validate form.
    */
-  function options_submit($form, &$form_state) { }
+  function options_submit(&$form, &$form_state) { }
 
   /**
    * Add anything to the query that we might need to.
