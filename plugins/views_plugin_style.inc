@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.8.4.3 2010-03-11 00:06:09 merlinofchaos Exp $
+// $Id: views_plugin_style.inc,v 1.8.4.4 2010-04-29 18:21:47 merlinofchaos Exp $
 
 /**
  * @defgroup views_style_plugins Views' style plugins
@@ -213,6 +213,12 @@ class views_plugin_style extends views_plugin {
       $plugin = $this->display->handler->get_plugin('row');
       if (empty($plugin)) {
         $errors[] = t('Style @style requires a row style but the row plugin is invalid.', array('@style' => $this->definition['title']));
+      }
+      else {
+        $result = $plugin->validate();
+        if (!empty($result) && is_array($result)) {
+          $errors = array_merge($errors, $result);
+        }
       }
     }
     return $errors;
