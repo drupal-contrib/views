@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager.inc,v 1.1.4.6 2010-03-27 17:14:02 dereine Exp $
+// $Id: views_plugin_pager.inc,v 1.1.4.7 2010-04-29 18:39:26 merlinofchaos Exp $
 
 /**
  * The base plugin to handle pager.
@@ -52,6 +52,13 @@ class views_plugin_pager extends views_plugin {
    */
   function get_offset() {
     return isset($this->options['offset']) ? $this->options['offset'] : 0;
+  }
+
+  /**
+   * Set the page offset, or how many items to skip.
+   */
+  function set_offset($offset) {
+    $this->options['offset'] = $offset;
   }
 
   /**
