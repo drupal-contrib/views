@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_prerender_list.inc,v 1.3.4.1 2009-11-02 22:01:25 merlinofchaos Exp $
+// $Id: views_handler_field_prerender_list.inc,v 1.3.4.2 2010-05-08 22:05:48 dereine Exp $
 
 /**
  * Field handler to provide a list of items.
@@ -81,7 +81,7 @@ class views_handler_field_prerender_list extends views_handler_field {
       else {
         return theme('item_list',
           array(
-            'items' => $this->items[$field],
+            'items' => $items,
             'title' => NULL,
             'type' => $this->options['type']
           ));
