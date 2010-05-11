@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.9 2010-03-19 23:40:58 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.97.4.10 2010-05-11 21:14:54 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -708,6 +708,7 @@ function template_preprocess_views_view_row_node(&$vars) {
 function node_views_query_substitutions() {
   return array(
     ':node-administer-nodes' => intval(user_access('administer nodes')),
+    ':node-view-own-unpublished-nodes' => intval(user_access('view own unpublished content')),
   );
 }
 
