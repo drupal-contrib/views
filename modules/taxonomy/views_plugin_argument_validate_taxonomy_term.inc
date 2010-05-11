@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.6.4.3 2010-03-19 23:44:11 merlinofchaos Exp $
+// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.6.4.4 2010-05-11 21:37:38 dereine Exp $
 /**
  * @file
  * Contains the 'taxonomy term' argument validator plugin.
@@ -96,14 +96,34 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
         $test = drupal_map_assoc($tids->value);
         $titles = array();
 
-        $result = db_query("SELECT * FROM {taxonomy_term_data} WHERE tid IN (:tid)", array(':tid' => $this->value));
-        foreach ($result as $term) {
-          if ($vids && empty($vids[$term->vid])) {
-            return FALSE;
+        // check, if some tids already verified
+        static $validated_cache = array();
+        foreach ($test as $tid) {
+          if (isset($validated_cache[$tid])) {
+            if ($validated_cache[$tid] === FALSE) {
+              return FALSE;
+            }
+            else {
+              $titles[] = $validated_cache[$tid];
+              unset($test[$tid]);
+            }
           }
+        }
 
-          $titles[] = check_plain($term->name);
-          unset($test[$term->tid]);
+        // if unverified tids left - verify them and cache results
+        if (count($test)) {
+          $placeholders = implode(', ', array_fill(0, count($test), '%d'));
+
+          $result = db_query("SELECT * FROM {taxonomy_term_data} WHERE tid IN (:tid)", array(':tid' => $test));
+          foreach ($result as $term) {
+            if ($vids && empty($vids[$term->vid])) {
+              $validated_cache[$term->tid] = FALSE;
+              return FALSE;
+            }
+
+            $titles[] = $validated_cache[$term->tid] = check_plain($term->name);
+            unset($test[$term->tid]);
+          }
         }
 
         // Remove duplicate titles
