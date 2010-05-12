@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_row_fields.inc,v 1.2.4.2 2010-03-11 00:06:09 merlinofchaos Exp $
+// $Id: views_plugin_row_fields.inc,v 1.2.4.3 2010-05-12 22:29:46 dereine Exp $
 /**
  * @file
  * Contains the base row style plugin.
@@ -62,7 +62,7 @@ class views_plugin_row_fields extends views_plugin_row {
    * Perform any necessary changes to the form values prior to storage.
    * There is no need for this function to actually store the data.
    */
-  function options_submit($form, &$form_state) {
+  function options_submit(&$form, &$form_state) {
     $form_state['values']['row_options']['inline'] = array_filter($form_state['values']['row_options']['inline']);
   }
 }
