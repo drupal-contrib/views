@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.26.4.8 2010-05-11 21:54:30 dereine Exp $
+// $Id: ajax.js,v 1.26.4.10 2010-05-14 21:15:09 dereine Exp $
 /**
  * @file ajax_admin.js
  *
@@ -58,7 +58,9 @@
   }
 
   Drupal.ajax.prototype.commands.viewsTriggerPreview = function(ajax, response, status) {
-    $('#views-ui-preview-form input[type=submit]').trigger('click');
+    if ($('#views-live-preview div.form-item-live-preview input').is(':checked')) {
+      $('#views-live-preview input[type=submit]').trigger('click');
+    }
   }
 
   /**
