@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.18 2010-03-22 20:26:29 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.19 2010-05-14 17:07:10 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1082,8 +1082,10 @@ class views_plugin_query_default extends views_plugin_query {
     $items = array();
     if ($query) {
       $additional_arguments = module_invoke_all('views_query_substitutions', $view);
-      // We have already build a working count query. Views optimeses it automatically.
-      //$count_query = $count_query->countQuery();
+      // Build the count query. db_select::countQuery does not work with groupby.
+      $count_query = db_select($count_query);
+      $count_query->addExpression('COUNT(*)');
+      //  $count_query->distinct = FALSE;
 
       // Add additional arguments as a fake condition.
       // XXX: this doesn't work... because PDO mandates that all bound arguments
