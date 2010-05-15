@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.views.inc,v 1.16.4.3 2010-01-24 22:37:52 dereine Exp $
+// $Id: upload.views.inc,v 1.16.4.4 2010-05-15 07:36:18 dereine Exp $
 /**
  * @file
  *
@@ -33,7 +33,7 @@ function upload_views_data() {
       'left_field' => 'vid',
       'field' => 'vid',
     ),
-    'file' => array(
+    'file_managed' => array(
       'left_field' => 'fid',
       'field' => 'fid',
     ),
@@ -129,7 +129,7 @@ function upload_views_data_alter(&$data) {
       'help' => t('Add a relationship to gain access to more file data for files uploaded by upload.module. Note that this relationship will cause duplicate nodes if there are multiple files attached to the node.'),
       'relationship table' => 'upload',
       'relationship field' => 'fid',
-      'base' => 'file',
+      'base' => 'file_managed',
       'base field' => 'fid',
       'handler' => 'views_handler_relationship',
       'label' => t('Files'),
