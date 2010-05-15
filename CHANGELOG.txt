@@ -235,6 +235,19 @@ Views 3.x-7.x-dev
     o #730454 by stella: Add "translate" link along with view/edit/delete links on nodes.
     o #685938 by dereine: Sync preview widget to current tab to reduce WTFs when previewing the wrong display.
     o #685938 Follow up by tobiasb: Remove console.log.
+    o #783718 by dereine: Fix strict errors. There might be some more.
+    o by dereine: Fix access tests.
+    o #734066 by dereine: Initial version of the fix for the countquery
+    o #799200 by dereine: Fix live preview
+    o #484600 by dereine: Ability to disable the automatic live preview. Fix live preview css.
+    o by dereine: Remove includes/query.inc. This is a 2.x file. The query is now handled in the pluggable query backend.
+    o by dereine: Add missing file in registry: views_handler_field_user_language.
+    o #496840 by dereine: Allow boolean filters to define additional output formats and provide an additional for Node: Sticky.
+    o by dereine: Rename {file} table to {file_managed}.
+    o #790956 by pwolanin: Adding/import a new View should be a local action.
+    o by dereine: Fix views_export output display.
+    o by dereine: Fix warning in views_plugin_argument_validate_node::convert_options.
+    o by dereine: $node->title is not a fieldapi field anymore. Fix views_plugin_row_node_rss with this patch.
 
 Views 6.x-3.x-dev
     o #396380 by merlinofchaos, dereine and dagmar: Initial support for GROUP BY queries!!!!!!!!!!!!

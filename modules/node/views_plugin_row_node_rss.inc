@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_row_node_rss.inc,v 1.7.4.3 2010-04-29 18:31:27 merlinofchaos Exp $
+// $Id: views_plugin_row_node_rss.inc,v 1.7.4.4 2010-05-15 08:37:07 dereine Exp $
 /**
  * @file
  * Contains the node RSS row style plugin.
@@ -84,7 +84,7 @@ class views_plugin_row_node_rss extends views_plugin_row {
     }
 
     $item->description = $item_text;
-    $item->title = $node->title[FIELD_LANGUAGE_NONE][0]['value'];
+    $item->title = $node->title;
     $item->link = url("node/$node->nid", array('absolute' => TRUE));
     $item->elements = $node->rss_elements;
     $item->nid = $node->nid;
