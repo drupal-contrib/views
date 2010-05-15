@@ -1,5 +1,5 @@
 <?php
-// $Id: views_export.module,v 1.9.4.2 2009-11-28 16:53:15 dereine Exp $
+// $Id: views_export.module,v 1.9.4.3 2010-05-15 08:01:09 dereine Exp $
 
 /**
  * @file views_export.module
@@ -77,8 +77,9 @@ function views_export_export() {
       ),
     );
 
-    $output = drupal_render(drupal_build_form('views_export_export_form', $form_state));
-    if (!$output) {
+    $form = drupal_build_form('views_export_export_form', $form_state);
+    $output = drupal_render($form);
+    if ($form_state['submitted']) {
       $output = $form_state['output'];
     }
     return $output;
@@ -208,7 +209,7 @@ function views_export_export_form_submit(&$form, &$form_state) {
 
   $types = system_element_info();
 
-  $info  = '; $Id: views_export.module,v 1.9.4.2 2009-11-28 16:53:15 dereine Exp $'."\n";
+  $info  = '; $Id: views_export.module,v 1.9.4.3 2010-05-15 08:01:09 dereine Exp $'."\n";
   $info .= "\n";
   $info .= strtr("name = @module Export Module\n", array('@module' => $form_state['values']['name']));
   $info .= strtr("description = Exports some views of @module\n", array('@module' => $form_state['values']['name']));
