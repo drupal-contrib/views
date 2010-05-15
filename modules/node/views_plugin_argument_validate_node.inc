@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_node.inc,v 1.2.4.2 2010-01-28 22:44:36 dereine Exp $
+// $Id: views_plugin_argument_validate_node.inc,v 1.2.4.3 2010-05-15 08:11:14 dereine Exp $
 /**
  * @file
  * Contains the 'node' argument validator plugin.
@@ -58,7 +58,7 @@ class views_plugin_argument_validate_node extends views_plugin_argument_validate
     if (!isset($options['types']) && !empty($this->argument->options['validate_argument_node_type'])) {
       $options['types'] = $this->argument->options['validate_argument_node_type'];
       $options['access'] = !empty($this->argument->options['validate_argument_node_access']);
-      $options['nid_type'] = $this->argument->options['validate_argument_nid_type'];
+      $options['nid_type'] = isset($this->argument->options['validate_argument_nid_type']) ? $this->argument->options['validate_argument_nid_type'] : array();
     }
   }
 
