@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_row_node_rss.inc,v 1.7.4.4 2010-05-15 08:37:07 dereine Exp $
+// $Id: views_plugin_row_node_rss.inc,v 1.7.4.5 2010-05-19 20:22:41 dereine Exp $
 /**
  * @file
  * Contains the node RSS row style plugin.
@@ -13,6 +13,9 @@ class views_plugin_row_node_rss extends views_plugin_row {
   // Basic properties that let the row style follow relationships.
   var $base_table = 'node';
   var $base_field = 'nid';
+
+  // Stores the nodes loaded with pre_render.
+  var $nodes = array();
 
   function option_definition() {
     $options = parent::option_definition();
@@ -38,6 +41,13 @@ class views_plugin_row_node_rss extends views_plugin_row {
     );
   }
 
+  function pre_render($values) {
+    foreach ($values as $row) {
+      $nids[] = $row->{$this->field_alias};
+    }
+    $this->nodes = node_load_multiple($nids);
+  }
+
   function render($row) {
     // For the most part, this code is taken from node_feed() in node.module
     global $base_url;
@@ -53,7 +63,7 @@ class views_plugin_row_node_rss extends views_plugin_row {
     }
 
     // Load the specified node:
-    $node = node_load($nid);
+    $node = $this->nodes[$nid];
     if (empty($node)) {
       return;
     }

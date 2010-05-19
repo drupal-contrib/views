@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_row_node_view.inc,v 1.3 2009-04-08 20:54:58 merlinofchaos Exp $
+// $Id: views_plugin_row_node_view.inc,v 1.3.6.1 2010-05-19 20:22:41 dereine Exp $
 /**
  * @file
  * Contains the node view row style plugin.
@@ -14,6 +14,9 @@ class views_plugin_row_node_view extends views_plugin_row {
   // Basic properties that let the row style follow relationships.
   var $base_table = 'node';
   var $base_field = 'nid';
+
+  // Stores the nodes loaded with pre_render.
+  var $nodes = array();
 
   function init(&$view, &$display, $options = NULL) {
     parent::init($view, $display, $options);
@@ -69,5 +72,12 @@ class views_plugin_row_node_view extends views_plugin_row {
       '#title' => t('Display node comments'),
       '#default_value' => $this->options['comments'],
     );
+  }
+
+  function pre_render($values) {
+    foreach ($values as $row) {
+      $nids[] = $row->{$this->field_alias};
+    }
+    $this->nodes = node_load_multiple($nids);
   }
 }
