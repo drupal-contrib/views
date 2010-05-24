@@ -1,7 +1,7 @@
 <?php
-// $Id: views_handler_field_boolean.test,v 1.1.2.2 2010-05-24 16:48:32 dereine Exp $
+// $Id: views_handler_field_boolean.test,v 1.1.2.3 2010-05-24 17:12:34 dereine Exp $
 
-class ViewsHandlerFieldBoolean extends ViewsSqlTest {
+class ViewsHandlerFieldBooleanTest extends ViewsSqlTest {
   public static function getInfo() {
     return array(
       'name' => 'Field: Boolean',
