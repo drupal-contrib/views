@@ -1,5 +1,5 @@
 <?php
-// $Id: views_pager.test,v 1.1.2.4 2010-03-22 20:25:10 merlinofchaos Exp $
+// $Id: views_pager.test,v 1.1.2.5 2010-05-24 19:58:36 dereine Exp $
 /**
  * @file
  *   Tests the pluggable pager system
@@ -8,9 +8,9 @@
 class ViewsPagerTest extends DrupalWebTestCase {
   public static function getInfo() {
     return array(
-      'name' => 'Pluggable pagers',
+      'name' => 'Pager',
       'description' => 'Test the pluggable pager system',
-      'group' => 'Views',
+      'group' => 'Views Plugins',
     );
   }
 

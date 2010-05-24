@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handlers.test,v 1.1.4.3 2010-04-18 08:16:46 dereine Exp $
+// $Id: views_handlers.test,v 1.1.4.4 2010-05-24 19:58:36 dereine Exp $
 
 /**
 * @file
@@ -16,7 +16,7 @@ class ViewsHandlersTest extends ViewsSqlTest {
   }
 
   function setUp() {
-    parent::setUp('views', 'views_ui', 'views_test');
+    parent::setUp('views', 'views_ui');
     module_enable(array('views_ui'));
   }
 

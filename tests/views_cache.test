@@ -1,5 +1,5 @@
 <?php
-// $Id: views_cache.test,v 1.1.4.2 2010-05-24 19:44:15 dereine Exp $
+// $Id: views_cache.test,v 1.1.4.3 2010-05-24 19:58:36 dereine Exp $
 /**
  * @file
  *   test cache system.
@@ -12,9 +12,9 @@ module_load_include('test', 'views', 'tests/views_query');
 class ViewsCacheTest extends ViewsSqlTest {
   public static function getInfo() {
     return array(
-      'name' => t('Pluggable caching test'),
+      'name' => t('Cache'),
       'description' => t('Tests pluggable caching for views.'),
-      'group' => t('Views')
+      'group' => t('Views Plugins')
     );
   }
 

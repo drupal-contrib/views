@@ -1,5 +1,5 @@
 <?php
-// $Id: views_access.test,v 1.1.4.4 2010-05-12 22:55:25 dereine Exp $
+// $Id: views_access.test,v 1.1.4.5 2010-05-24 19:58:36 dereine Exp $
 
 /**
 * Basic test for pluggable access.
@@ -7,9 +7,9 @@
 class ViewsAccessTest extends ViewsSqlTest {
   public static function getInfo() {
     return array(
-      'name' => t('Pluggable access test'),
+      'name' => t('Access'),
       'description' => t('Tests pluggable access for views.'),
-      'group' => t('Views')
+      'group' => t('Views Plugins')
     );
   }
 

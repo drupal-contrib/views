@@ -1,12 +1,12 @@
 <?php
-// $Id: views_module.test,v 1.1.2.1 2010-04-29 18:26:00 merlinofchaos Exp $
+// $Id: views_module.test,v 1.1.2.2 2010-05-24 19:58:36 dereine Exp $
 module_load_include('test', 'views', 'tests/views_query');
 class viewsModuleTest extends ViewsSqlTest {
   public static function getInfo() {
     return array(
-    'name' => 'Tests views.module',
-    'description' => 'Tests some basic functions of views.module',
-    'group' => 'Views',
+      'name' => 'Tests views.module',
+      'description' => 'Tests some basic functions of views.module',
+      'group' => 'Views',
     );
   }
   
