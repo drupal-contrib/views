@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_date.test,v 1.1.2.1 2010-05-24 18:21:43 dereine Exp $
+// $Id: views_handler_field_date.test,v 1.1.2.2 2010-05-24 18:27:00 dereine Exp $
 
 class ViewsHandlerFieldDateTest extends ViewsSqlTest {
   public static function getInfo() {
@@ -19,8 +19,6 @@ class ViewsHandlerFieldDateTest extends ViewsSqlTest {
   public function testFieldDate() {
     $view = $this->getBasicView();
 
-    // Alter the text of the field to a random string.
-    $random = $this->randomName();
     $view->display['default']->handler->override_option('fields', array(
       'created' => array(
         'id' => 'created',
