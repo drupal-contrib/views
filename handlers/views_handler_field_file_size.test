@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_file_size.test,v 1.1.2.2 2010-05-27 20:29:03 dereine Exp $
+// $Id: views_handler_field_file_size.test,v 1.1.2.3 2010-05-27 20:37:04 dereine Exp $
 
 /**
  * @see CommonXssUnitTest
@@ -30,7 +30,7 @@ class ViewsHandlerTestFileSize extends ViewsSqlTest {
     return $data;
   }
 
-  public function testFieldXss() {
+  public function testFieldFileSize() {
     $view = $this->getBasicView();
 
     $view->display['default']->handler->override_option('fields', array(
