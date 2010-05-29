@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_default_taxonomy_tid.inc,v 1.1.2.2 2010-04-29 18:36:11 merlinofchaos Exp $
+// $Id: views_plugin_argument_default_taxonomy_tid.inc,v 1.1.2.3 2010-05-29 23:08:43 dereine Exp $
 /**
  * @file
  *   Taxonomy tid default argument.
@@ -33,7 +33,7 @@ class views_plugin_argument_default_taxonomy_tid extends views_plugin_argument_d
       '#type' => 'checkbox',
       '#title' => t('Limit terms by vocabulary'),
       '#default_value'=> $this->options['limit'],
-      '#process' => array('expand_checkboxes', 'views_process_dependency'),
+      '#process' => array('form_process_checkboxes', 'views_process_dependency'),
       '#dependency' => array(
         'edit-options-argument-default-taxonomy-tid-node' => array(1),
       ),
@@ -52,7 +52,7 @@ class views_plugin_argument_default_taxonomy_tid extends views_plugin_argument_d
       '#title' => t('Vocabularies'),
       '#options' => $options,
       '#default_value' => $this->options['vids'],
-      '#process' => array('expand_checkboxes', 'views_process_dependency'),
+      '#process' => array('form_process_checkboxes', 'views_process_dependency'),
       '#dependency' => array(
         //'edit-options-argument-default-taxonomy-tid-limit' => array(1),
         'edit-options-argument-default-taxonomy-tid-node' => array(1),
