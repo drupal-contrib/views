@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.8 2010-05-12 22:29:46 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.9 2010-05-29 23:13:56 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1334,12 +1334,7 @@ class views_join {
       }
     }
 
-    if ($this->type == 'LEFT') {
-      $select_query->leftJoin($table['table'], $table['alias'], $condition, $arguments);
-    }
-    else {
-      $select_query->innerJoin($table['table'], $table['alias'], $condition, $arguments);
-    }
+    $select_query->addJoin($this->type, $right_table, $table['alias'], $condition, $arguments);
   }
 }
 
