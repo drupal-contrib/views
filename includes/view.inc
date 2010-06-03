@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.20 2010-04-16 22:30:00 dereine Exp $
+// $Id: view.inc,v 1.167.4.21 2010-06-03 07:47:05 dereine Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -797,7 +797,7 @@ class view extends views_db_object {
     }
 
     $exposed_form = $this->display_handler->get_plugin('exposed_form');
-    $exposed_form->pre_render();
+    $exposed_form->pre_render($this->result);
 
     // Check for already-cached output.
     if (!empty($this->live_preview)) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_term_node_tid_depth.inc,v 1.1.6.1 2009-11-02 22:01:26 merlinofchaos Exp $
+// $Id: views_handler_filter_term_node_tid_depth.inc,v 1.1.6.2 2010-06-03 07:47:06 dereine Exp $
 /**
  * Filter handler for taxonomy terms with depth.
  *
@@ -61,7 +61,7 @@ class views_handler_filter_term_node_tid_depth extends views_handler_filter_term
     }
 
     // Now build the subqueries.
-    $subquery = dbtng_select('term_node', 'tn');
+    $subquery = db_select('term_node', 'tn');
     $subquery->addField('tn', 'vid');
     $where = db_or()->condition('tn.tid', $this->value, $operator);
     $last = "tn";

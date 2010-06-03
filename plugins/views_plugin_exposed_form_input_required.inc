@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form_input_required.inc,v 1.2.2.4 2010-02-07 13:44:07 dereine Exp $
+// $Id: views_plugin_exposed_form_input_required.inc,v 1.2.2.5 2010-06-03 07:47:06 dereine Exp $
 
 /**
  * Exposed form plugin that provides basic exposed form
@@ -59,7 +59,7 @@ class views_plugin_exposed_form_input_required extends views_plugin_exposed_form
     return $cache;
   }
 
-  function pre_render() {
+  function pre_render($values) {
     if (!$this->exposed_filter_applied()) {
       $options = array(
         'id' => 'area',
