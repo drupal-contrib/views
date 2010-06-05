@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.2 2010-06-05 06:52:20 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.3 2010-06-05 06:53:31 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -50,7 +50,6 @@ class views_handler_field_field extends views_handler_field {
 
     $options['type'] = array(
       'default' => $field_type['default_formatter'],
-      'translatable' => TRUE,
     );
 
     return $options;
