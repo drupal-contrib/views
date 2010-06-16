@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.16 2010-04-08 21:38:36 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.17 2010-06-16 19:15:32 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -94,6 +94,13 @@ class views_handler_field extends views_handler {
           else {
             $table_alias = $this->table_alias;
           }
+
+          if (empty($table_alias)) {
+            vpr(t('Handler @handler tried to add additional_field @identifier but @table could not be added!', array('@handler' => $this->definition['handler'], '@identifier' => $identifier, '@table' => $info['table'])));
+            $this->aliases[$identifier] = 'broken';
+            continue;
+          }
+
           $params = array();
           if (!empty($info['params'])) {
             $params = $info['params'];
@@ -508,7 +515,7 @@ class views_handler_field extends views_handler {
       $tokens = $this->get_render_tokens($alter);
       $value = $this->render_altered($alter, $tokens);
     }
- 
+
     if (!empty($alter['strip_tags'])) {
       $value = strip_tags($value);
     }
