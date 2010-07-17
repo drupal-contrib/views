@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.20 2010-07-04 10:04:51 dereine Exp $
+// $Id: theme.inc,v 1.84.4.21 2010-07-17 19:51:04 dereine Exp $
 
 /**
  * @file theme.inc
@@ -87,16 +87,6 @@ function template_preprocess_views_view(&$vars) {
         'href' => "admin/structure/views/edit/$view->name",
         'fragment' => 'views-tab-' . $view->current_display,
         'query' => drupal_get_destination(),
-      ),
-      array(
-        'title' => t('Export'),
-        'alt' => t("Export this view"),
-        'href' => "admin/structure/views/export/$view->name",
-      ),
-      array(
-        'title' => t('Clone'),
-        'alt' => t("Create a copy of this view"),
-        'href' => "admin/structure/views/clone/$view->name",
       ),
     );
     drupal_alter('views_admin_links', $links, $view);
