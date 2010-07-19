@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.7.6.2 2010-05-15 07:36:18 dereine Exp $
+// $Id: system.views.inc,v 1.7.6.3 2010-07-19 09:18:42 dereine Exp $
 /**
  * @file
  *
@@ -171,19 +171,6 @@ function system_views_data() {
 
 
   return $data;
-}
-
-/**
- * Implements hook_views_handlers() to register all of the basic handlers
- * views uses.
- */
-function system_views_handlers() {
-  return array(
-    'views_handler_field_file',
-    'views_handler_field_file_status',
-    'views_handler_filter_file_status',
-    'views_handler_argument_file_fid',
-  );
 }
 
 function _views_file_status($choice = NULL) {

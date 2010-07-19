@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.16.4.3 2010-03-08 20:04:35 merlinofchaos Exp $
+// $Id: docs.php,v 1.16.4.4 2010-07-19 09:18:42 dereine Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -225,16 +225,6 @@ function hook_views_plugins() {
 function hook_views_plugins_alter(&$plugins) {
   // Add apachesolr to the base of the node row plugin.
   $plugins['row']['node']['base'][] = 'apachesolr';
-}
-
-/**
- * Register handler, file and parent information so that handlers can be
- * loaded only on request.
- *
- * The full documentation for this hook is in the advanced help.
- */
-function hook_views_handlers() {
-  // example code here
 }
 
 /**

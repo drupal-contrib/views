@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.6 2010-04-04 16:16:03 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.7 2010-07-19 09:18:42 dereine Exp $
 
 /**
  * @file
@@ -232,23 +232,6 @@ function field_views_field_default_views_data($field) {
 
   return $data;
 }
-
-/**
- * Implements hook_views_handlers().
- */
-function field_views_handlers() {
-  return array(
-    'info' => array(
-      'path' => drupal_get_path('module', 'views') . '/modules/field',
-    ),
-    'handlers' => array(
-      'views_handler_field_field' => array(
-        'parent' => 'views_handler_field',
-      ),
-    ),
-  );
-}
-
 
 /**
  * @}

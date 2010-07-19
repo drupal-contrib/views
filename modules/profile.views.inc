@@ -1,5 +1,5 @@
 <?php
-//$Id: profile.views.inc,v 1.10.4.4 2010-03-10 19:52:36 merlinofchaos Exp $
+//$Id: profile.views.inc,v 1.10.4.5 2010-07-19 09:18:42 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -216,18 +216,6 @@ function profile_views_fetch_field($field) {
 
   // @todo: add access control to hidden fields.
   return $data;
-}
-
-/**
- * Implements hook_views_handlers() to register all of the basic handlers
- * views uses.
- */
-function profile_views_handlers() {
-  return array(
-    'views_handler_field_profile_date',
-    'views_handler_field_profile_list',
-    'views_handler_filter_profile_selection',
-  );
 }
 
 /**

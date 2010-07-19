@@ -1,5 +1,5 @@
 <?php
-// $Id: aggregator.views.inc,v 1.3.4.2 2010-01-29 00:27:47 dereine Exp $
+// $Id: aggregator.views.inc,v 1.3.4.3 2010-07-19 09:18:42 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for aggregator.module
@@ -323,28 +323,6 @@ function aggregator_views_data() {
 
   return $data;
 }
-
-/**
- * Implements hook_views_handlers() to register all of the basic handlers
- * views uses.
- */
-function aggregator_views_handlers() {
-  return array(
-
-    // field handlers
-    'views_handler_field_aggregator_title_link',
-    'views_handler_field_aggregator_category',
-    'views_handler_field_aggregator_item_description',
-
-    // argument handlers
-    'views_handler_argument_aggregator_fid',
-    'views_handler_argument_aggregator_category_cid',
-
-    // filter handlers
-      'views_handler_filter_aggregator_category_cid',
-  );
-}
-
 
 /**
  * Implements hook_views_plugins
