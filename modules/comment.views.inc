@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.32.2.7 2009-12-28 21:11:50 merlinofchaos Exp $
+// $Id: comment.views.inc,v 1.32.2.8 2010-07-27 22:13:02 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -86,7 +86,7 @@ function comment_views_data() {
       'handler' => 'views_handler_sort',
     ),
     'argument' => array(
-      'handler' => 'views_handler_argument',
+      'handler' => 'views_handler_argument_numeric',
     ),
   );
 
