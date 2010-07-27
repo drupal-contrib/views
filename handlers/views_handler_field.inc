@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.2.16 2010-07-27 21:46:51 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.2.17 2010-07-27 21:50:29 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -153,6 +153,7 @@ class views_handler_field extends views_handler {
         'text' => array('default' => '', 'translatable' => TRUE),
         'make_link' => array('default' => FALSE),
         'path' => array('default' => '', 'translatable' => TRUE),
+        'absolute' => array('default' => '', 'translatable' => FALSE),
         'alt' => array('default' => '', 'translatable' => TRUE),
         'link_class' => array('default' => ''),
         'prefix' => array('default' => '', 'translatable' => TRUE),
@@ -228,6 +229,16 @@ class views_handler_field extends views_handler {
         ),
         '#maxlength' => 255,
       );
+       $form['alter']['absolute'] = array(
+         '#type' => 'checkbox',
+         '#title' => t('Use absolute path'),
+         '#default_value' => $this->options['alter']['absolute'],
+         '#process' => array('views_process_dependency'),
+         '#dependency' => array(
+           'edit-options-alter-make-link' => array(1)
+         ),
+       );
+
       $form['alter']['link_class'] = array(
         '#title' => t('Link class'),
         '#type' => 'textfield',
@@ -558,7 +569,8 @@ class views_handler_field extends views_handler {
     }
 
     $options = array(
-      'html' => 'true',
+      'html' => TRUE,
+      'absolute' => !empty($alter['absolute']) ? TRUE : FALSE,
     );
 
     // $path will be run through check_url() by l() so we do not need to
