@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.59.2.6 2010-07-27 22:57:26 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.59.2.7 2010-07-27 23:28:08 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -322,7 +322,7 @@ function user_views_data() {
 
   // ----------------------------------------------------------------------
   // authmap table
-  
+
   $data['authmap']['table']['group']  = t('User');
   $data['authmap']['table']['join'] = array(
      // Directly links to users table.
@@ -377,7 +377,7 @@ function user_views_data() {
       'handler' => 'views_handler_argument_string',
     ),
   );
-  
+
   return $data;
 }
 
