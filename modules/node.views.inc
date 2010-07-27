@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.2.7 2010-03-25 01:14:22 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.97.2.8 2010-07-27 21:43:36 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -661,9 +661,6 @@ function node_views_handlers() {
       ),
       'views_handler_field_node_path' => array(
         'parent' => 'views_handler_field',
-      ),
-      'views_handler_field_node_type' => array(
-        'parent' => 'views_handler_field_node',
       ),
       'views_handler_field_node_link_edit' => array(
         'parent' => 'views_handler_field_node_link',
