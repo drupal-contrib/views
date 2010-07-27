@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.56.2.12 2010-07-27 22:49:50 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.56.2.13 2010-07-27 23:00:45 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -67,6 +67,7 @@ function user_views_data() {
       'help' => t('Relate nodes to the user who created it. This relationship will create one record for every node created by the user.'),
       'handler' => 'views_handler_relationship',
       'base' => 'node',
+      'base field' => 'uid',
       'field' => 'uid',
       'label' => t('nodes'),
     ),
@@ -332,7 +333,7 @@ function user_views_data() {
 
   // ----------------------------------------------------------------------
   // authmap table
-  
+
   $data['authmap']['table']['group']  = t('User');
   $data['authmap']['table']['join'] = array(
      // Directly links to users table.
@@ -387,7 +388,7 @@ function user_views_data() {
       'handler' => 'views_handler_argument_string',
     ),
   );
-  
+
   return $data;
 }
 
