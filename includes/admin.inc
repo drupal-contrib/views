@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.37 2010-07-15 07:19:26 dereine Exp $
+// $Id: admin.inc,v 1.161.4.38 2010-07-27 22:37:59 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -657,8 +657,8 @@ function views_ui_add_form_validate($form, &$form_state) {
   $name = $form_state['values']['name'];
 
   // View name must be alphanumeric or underscores, no other punctuation.
-  if (preg_match('/[^a-zA-Z0-9_]/', $name)) {
-    form_error($form['name'], t('View name must be alphanumeric or underscores only.'));
+  if (preg_match('/[^a-zA-Z0-9_]/', $name) || is_numeric($name)) {
+    form_error($form['name'], t('View name must be alphanumeric or underscores only, but cannot be numeric.'));
   }
 
   // View name must already exist.
