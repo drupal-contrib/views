@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.56.2.10 2010-03-22 20:32:44 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.56.2.11 2010-07-27 22:27:44 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -210,7 +210,7 @@ function user_views_data() {
     ),
   );
 
-  // published status
+  // active status
   $data['users']['status'] = array(
     'title' => t('Active'), // The item it appears as on the UI,
     'help' => t('Whether a user is active or blocked.'), // The help that appears on the UI,
