@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_feed.inc,v 1.7.4.1 2009-11-02 22:01:27 merlinofchaos Exp $
+// $Id: views_plugin_display_feed.inc,v 1.7.4.2 2010-07-27 22:19:10 merlinofchaos Exp $
 /**
  * @file
  * Contains the feed display plugin.
@@ -30,7 +30,7 @@ class views_plugin_display_feed extends views_plugin_display_page {
   }
 
   function preview() {
-    if (!empty($this->live_preview)) {
+    if (!empty($this->view->live_preview)) {
       return '<pre>' . check_plain($this->view->render()) . '</pre>';
     }
     return $this->view->render();
