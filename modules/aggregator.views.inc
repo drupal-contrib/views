@@ -1,5 +1,5 @@
 <?php
-// $Id: aggregator.views.inc,v 1.3.4.3 2010-07-19 09:18:42 dereine Exp $
+// $Id: aggregator.views.inc,v 1.3.4.4 2010-07-27 22:45:22 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for aggregator.module
@@ -34,6 +34,26 @@ function aggregator_views_data() {
 
   // ----------------------------------------------------------------
   // Fields
+
+  // item id.
+  $data['aggregator_item']['iid'] = array(
+    'title' => t('Feed Item ID'),
+    'help' => t('The unique ID of the aggregator item.'),
+    'field' => array(
+      'handler' => 'views_handler_field_numeric',
+      'click sortable' => TRUE,
+    ),
+    'argument' => array(
+      'handler' => 'views_handler_argument_numeric',
+      'numeric' => TRUE,
+    ),
+    'filter' => array(
+      'handler' => 'views_handler_filter_numeric',
+    ),
+    'sort' => array(
+      'handler' => 'views_handler_sort',
+    ),
+  );
 
   // title
   $data['aggregator_item']['title'] = array(
@@ -161,7 +181,7 @@ function aggregator_views_data() {
     'filter' => array(
       'handler' => 'views_handler_filter_numeric',
     ),
-    // Information for sorting on a nid.
+    // Information for sorting on a fid.
     'sort' => array(
       'handler' => 'views_handler_sort',
     ),
