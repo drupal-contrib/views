@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.59.2.4 2010-07-27 22:27:47 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.59.2.5 2010-07-27 22:49:53 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -283,6 +283,7 @@ function user_views_data() {
       'name table' => 'role',
       'name field' => 'name',
       'empty field name' => t('No role'),
+      'zero is null' => TRUE,
       'numeric' => TRUE,
     ),
   );
