@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.41 2010-07-27 21:53:33 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.42 2010-07-27 22:25:04 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1671,6 +1671,10 @@ class views_plugin_display extends views_plugin {
       break;
       case 'display_id':
         if ($form_state['values']['display_id']) {
+          if (preg_match('/[^a-zA-Z0-9_]/', $form_state['values']['display_id'])) {
+            form_error($form['display_id'], t('Display id must be alphanumeric or underscores only.'));
+          }
+
           foreach ($this->view->display as $id => $display) {
             if ($id != $this->view->current_display && ($form_state['values']['display_id'] == $id || $form_state['values']['display_id'] == $display->new_id)) {
               form_error($form['display_id'], t('Display id should be unique.'));
