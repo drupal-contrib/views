@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.10.4.5 2010-03-22 20:44:50 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.10.4.6 2010-08-01 14:48:58 dereine Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -52,6 +52,12 @@ class views_handler_filter extends views_handler {
       'contains' => array(
         'operator' => array('default' => FALSE),
         'label' => array('default' => '', 'translatable' => TRUE),
+        'use_operator' => array('default' => 0),
+        'operator' => array('default' => ''),
+        'identifier' => array('default' => ''),
+        'optional' => array('default' => 1),
+        'remember' => array('default' => 0),
+        'single' => array('default' => 1),
       ),
     );
 
