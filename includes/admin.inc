@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.40 2010-08-01 19:15:56 dereine Exp $
+// $Id: admin.inc,v 1.161.4.41 2010-08-04 23:03:24 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1117,6 +1117,8 @@ function template_preprocess_views_ui_edit_view(&$vars) {
   views_add_css('views-admin');
   views_add_js('ajax');
   drupal_add_js('misc/jquery.form.js');
+  // @TODO Remove this line when http://drupal.org/node/561858 is in.
+  drupal_add_js('misc/jquery.cookie.js');
 
   // Also add any js files required by plugins:
   $plugins = views_fetch_plugin_data();
