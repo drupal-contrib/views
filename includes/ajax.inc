@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.20.4.10 2010-08-01 19:15:56 dereine Exp $
+// $Id: ajax.inc,v 1.20.4.11 2010-08-06 20:07:40 dereine Exp $
 
 /**
  * @file ajax.inc
@@ -235,7 +235,7 @@ function views_ajax_form_wrapper($form_id, &$form_state) {
     }
 
     if (!empty($form_state['#section'])) {
-      $commands[] = views_ajax_command_hilite('.' . views_ui_item_css($form_state['#section']));
+      $commands[] = views_ajax_command_hilite('.' . drupal_clean_css_identifier($form_state['#section']));
     }
 
     return $commands;
