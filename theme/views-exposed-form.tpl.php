@@ -1,5 +1,5 @@
 <?php
-// $Id: views-exposed-form.tpl.php,v 1.4.6.5 2010-07-27 21:39:55 merlinofchaos Exp $
+// $Id: views-exposed-form.tpl.php,v 1.4.6.6 2010-08-13 21:45:25 merlinofchaos Exp $
 /**
  * @file views-exposed-form.tpl.php
  *
@@ -64,13 +64,13 @@
         <?php print $offset; ?>
       </div>
     <?php endif; ?>
+    <div class="views-exposed-widget views-submit-button">
+      <?php print $button ?>
+    </div>
     <?php if (!empty($reset_button)): ?>
-      <div class="views-exposed-widget">
+      <div class="views-exposed-widget views-reset-button">
         <?php print $reset_button; ?>
       </div>
     <?php endif; ?>
-    <div class="views-exposed-widget">
-      <?php print $button ?>
-    </div>
   </div>
 </div>
