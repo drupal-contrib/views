@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.33 2010-07-27 22:38:05 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.34 2010-08-13 21:47:07 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -998,7 +998,7 @@ function views_ui_edit_view_form_cancel($form, &$form_state) {
 function views_ui_edit_view_form_delete($form, &$form_state) {
   unset($_REQUEST['destination']);
   // Redirect to the delete confirm page
-  $form_state['redirect'] = array('admin/build/views/delete/' . $form_state['view']->name, 'cancel=admin/build/views/edit/' . $form_state['view']->name);
+  $form_state['redirect'] = array('admin/build/views/delete/' . $form_state['view']->name, 'cancel=admin/build/views/edit/' . $form_state['view']->name . '&' . drupal_get_destination());
 }
 
 /**
