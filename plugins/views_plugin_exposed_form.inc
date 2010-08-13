@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form.inc,v 1.1.2.11 2010-08-13 22:24:20 merlinofchaos Exp $
+// $Id: views_plugin_exposed_form.inc,v 1.1.2.12 2010-08-13 22:52:07 merlinofchaos Exp $
 
 /**
  * The base plugin to handle exposed filter forms.
@@ -128,7 +128,12 @@ class views_plugin_exposed_form extends views_plugin {
       $this->view->js_settings = $form_state['js settings'];
     }
 
-    return $output;
+    if (!$this->view->display_handler->displays_exposed() || (!$block && $this->view->display_handler->get_option('exposed_block'))) {
+      return "";
+    }
+    else {
+      return $output;
+    }
   }
 
   function query() {
