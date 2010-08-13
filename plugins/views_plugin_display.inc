@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.42 2010-07-27 22:25:04 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.43 2010-08-13 23:23:24 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -288,30 +288,6 @@ class views_plugin_display extends views_plugin {
     }
     else {
       return $sections;
-    }
-  }
-
-  /**
-   * Set default options.
-   *
-   * Displays put their options in a different place than everything else; also
-   * displays spread their options out. We don't want to set defaults for
-   * items that are normally defaulted elsewhere.
-   */
-  function _set_option_defaults(&$storage, $options, $level = 0) {
-    foreach ($options as $option => $definition) {
-      // If defaulted to elsewhere and we're not the default display, skip.
-      if ($level == 0 && !$this->is_default_display() && !empty($options['defaults']['default'][$option])) {
-        continue;
-      }
-
-      if (isset($definition['contains']) && is_array($definition['contains'])) {
-        $storage[$option] = array();
-        $this->_set_option_defaults($storage[$option], $definition['contains'], $level++);
-      }
-      else {
-        $storage[$option] = isset($definition['default']) ? $definition['default'] : NULL;
-      }
     }
   }
 
