@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_term_node_tid.inc,v 1.8.6.2 2010-01-29 00:14:42 dereine Exp $
+// $Id: views_handler_filter_term_node_tid.inc,v 1.8.6.3 2010-08-13 22:55:10 merlinofchaos Exp $
 
 /**
  * Filter by term id
@@ -16,6 +16,7 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
     $options['limit'] = array('default' => TRUE);
     $options['vid'] = array('default' => 0);
     $options['hierarchy'] = array('default' => 0);
+    $options['error_message'] = array('default' => TRUE);
 
     return $options;
   }
@@ -270,8 +271,11 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
       $tids[] = $term->tid;
     }
 
-    if ($missing) {
+    if ($missing && !empty($this->options['error_message'])) {
       form_error($form, format_plural(count($missing), 'Unable to find term: @terms', 'Unable to find terms: @terms', array('@terms' => implode(', ', array_keys($missing)))));
+    }
+    elseif ($missing && empty($this->options['error_message'])) {
+      $tids = array(0);
     }
 
     return $tids;
@@ -286,6 +290,11 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
     if ($this->options['type'] != 'select') {
       unset($form['expose']['reduce']);
     }
+    $form['error_message'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display error message'),
+      '#default_value' => !empty($this->options['error_message']),
+    );
   }
 
   function admin_summary() {
