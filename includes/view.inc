@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.2.7 2010-03-22 20:55:11 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.2.8 2010-08-13 23:07:39 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1460,7 +1460,7 @@ class view extends views_db_object {
     $output = '';
     $output .= $this->export_row('view', $indent);
     // Set the API version
-    $output .= $indent . '$view->api_version = ' . views_api_version() . ";\n";
+    $output .= $indent . '$view->api_version = \'' . views_api_version() . "';\n";
     $output .= $indent . '$view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */' . "\n";
 
     foreach ($this->display as $id => $display) {
