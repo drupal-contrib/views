@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.35 2010-08-13 23:18:53 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.36 2010-08-14 00:18:23 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -541,7 +541,7 @@ class view extends views_db_object {
       $class = get_class($this->query);
       if ($class && $class != 'stdClass') {
         // return if query is already initialized.
-        return;
+        return TRUE;
       }
     }
 
@@ -552,11 +552,19 @@ class view extends views_db_object {
       $this->base_database = $views_data['table']['base']['database'];
     }
 
+    // Load the options.
+    $query_options = $this->display_handler->get_option('query');
+
     // Create and initialize the query object.
     $plugin = !empty($views_data['table']['base']['query class']) ? $views_data['table']['base']['query class'] : 'views_query';
     $this->query = views_get_plugin('query', $plugin);
 
-    $this->query->init($this->base_table, $this->base_field);
+    if (empty($this->query)) {
+      return FALSE;
+    }
+
+    $this->query->init($this->base_table, $this->base_field, $query_options['options']);
+    return TRUE;
   }
 
   /**
@@ -1083,9 +1091,7 @@ class view extends views_db_object {
    */
   function build_title() {
     $this->init_display();
-    if (empty($this->built)) {
-      $this->init_query();
-    }
+
     $this->init_handlers();
 
     $this->_build_arguments();
