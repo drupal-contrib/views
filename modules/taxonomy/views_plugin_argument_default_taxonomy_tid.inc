@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_default_taxonomy_tid.inc,v 1.1.2.3 2010-05-29 23:08:43 dereine Exp $
+// $Id: views_plugin_argument_default_taxonomy_tid.inc,v 1.1.2.4 2010-08-16 20:53:39 dereine Exp $
 /**
  * @file
  *   Taxonomy tid default argument.
@@ -82,10 +82,21 @@ class views_plugin_argument_default_taxonomy_tid extends views_plugin_argument_d
       }
       // Just check, if a node could be detected.
       if ($node) {
+        $taxonomy = array();
+        $fields = field_info_instances('node', $node->type);
+        foreach ($fields as $name => $info) {
+          $field_info = field_info_field($name);
+          if ($field_info['type'] == 'taxonomy_term_reference') {
+            $items = field_get_items('node', $node, $name);
+            foreach ($items as $item) {
+              $taxonomy[$item['tid']] = $item['taxonomy_term'];
+            }
+          }
+        }
         if (!empty($this->options['limit'])) {
           $tids = array();
           // filter by vid
-          foreach ($node->taxonomy as $tid => $term) {
+          foreach ($taxonomy as $tid => $term) {
             if (!empty($this->options['vids'][$term->vid])) {
               $tids[] = $tid;
             }
@@ -94,7 +105,7 @@ class views_plugin_argument_default_taxonomy_tid extends views_plugin_argument_d
         }
         // Return all tids.
         else {
-          return implode(",", array_keys($node->taxonomy));
+          return implode(",", array_keys($taxonomy));
         }
       }
     }

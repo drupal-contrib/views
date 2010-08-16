@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.21 2010-08-12 05:21:28 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.22 2010-08-16 20:53:39 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -450,7 +450,7 @@ class views_plugin_query_default extends views_plugin_query {
       // add_table() which requires the ability to intentionally add
       // the same table with the same join multiple times.  For
       // example, a view that filters on 3 taxonomy terms using AND
-      // needs to join term_data 3 times with the same join.
+      // needs to join taxonomy_term_data 3 times with the same join.
 
       // scan through the table queue to see if a matching join and
       // relationship exists.  If so, use it instead of this join.

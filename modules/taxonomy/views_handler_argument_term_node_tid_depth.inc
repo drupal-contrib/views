@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_term_node_tid_depth.inc,v 1.3.4.2 2010-03-16 23:38:16 merlinofchaos Exp $
+// $Id: views_handler_argument_term_node_tid_depth.inc,v 1.3.4.3 2010-08-16 20:53:39 dereine Exp $
 /**
  * Argument handler for taxonomy terms with depth.
  *
@@ -100,9 +100,9 @@ class views_handler_argument_term_node_tid_depth extends views_handler_argument 
       $tids = array($this->argument);
     }
     // Now build the subqueries.
-    $subquery = db_select('term_node', 'tn');
-    $subquery->addField('tn', 'vid');
-    $where = db_or()->condition('tn.tid', $this->value, $operator);
+    $subquery = db_select('taxonomy_index', 'tn');
+    $subquery->addField('tn', 'nid');
+    $where = db_or()->condition('tn.tid', $tids, $operator);
     $last = "tn";
 
     if ($this->options['depth'] > 0) {

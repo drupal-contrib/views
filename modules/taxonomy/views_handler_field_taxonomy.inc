@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_taxonomy.inc,v 1.3 2009-01-30 00:01:42 merlinofchaos Exp $
+// $Id: views_handler_field_taxonomy.inc,v 1.3.6.1 2010-08-16 20:53:39 dereine Exp $
 
 /**
  * Field handler to provide simple renderer that allows linking to a taxonomy
@@ -9,7 +9,7 @@ class views_handler_field_taxonomy extends views_handler_field {
   /**
    * Constructor to provide additional field to add.
    *
-   * This constructer assumes the term_data table. If using another
+   * This constructer assumes the taxonomy_term_data table. If using another
    * table, we'll need to be more specific.
    */
   function construct() {
