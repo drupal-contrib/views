@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_string.inc,v 1.5.4.2 2010-08-12 05:21:28 dereine Exp $
+// $Id: views_handler_argument_string.inc,v 1.5.4.3 2010-08-16 15:42:46 dereine Exp $
 
 /**
  * Basic argument handler to implement string arguments that may have length
@@ -166,6 +166,7 @@ class views_handler_argument_string extends views_handler_argument {
     }
 
     $this->ensure_my_table();
+    $formula = FALSE;
     if (empty($this->options['glossary'])) {
       $field = "$this->table_alias.$this->real_field";
     }
@@ -196,8 +197,8 @@ class views_handler_argument_string extends views_handler_argument {
   }
 
   function case_transform($string, $option) {
-		global $multibyte;
-		
+    global $multibyte;
+
     switch ($this->options[$option]) {
       default:
         return $string;
