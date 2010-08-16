@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.14 2010-07-27 22:42:53 dereine Exp $
+// $Id: node.views.inc,v 1.97.4.15 2010-08-16 06:54:56 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -193,25 +193,6 @@ function node_views_data() {
     'filter' => array(
       'handler' => 'views_handler_filter_boolean_operator',
       'label' => t('Promoted to front page'),
-      'type' => 'yes-no',
-    ),
-    'sort' => array(
-      'handler' => 'views_handler_sort',
-    ),
-  );
-
-  // moderate
-  $data['node']['moderate'] = array(
-    'title' => t('In moderation'), // The item it appears as on the UI,
-    'help' => t('Whether or not the node is currently in the moderation queue.'), // The help that appears on the UI,
-     // Information for displaying a title as a field
-    'field' => array(
-      'handler' => 'views_handler_field_boolean',
-      'click sortable' => TRUE,
-    ),
-    'filter' => array(
-      'handler' => 'views_handler_filter_boolean_operator',
-      'label' => t('In the moderation queue'),
       'type' => 'yes-no',
     ),
     'sort' => array(
