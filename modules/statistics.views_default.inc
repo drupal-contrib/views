@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views_default.inc,v 1.5.6.2 2010-03-12 08:54:51 dereine Exp $
+// $Id: statistics.views_default.inc,v 1.5.6.3 2010-08-16 07:03:17 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the statistics module.
@@ -42,7 +42,7 @@ function statistics_views_default_views() {
     ),
     'timestamp' => array(
       'id' => 'timestamp',
-      'table' => 'history_user',
+      'table' => 'history',
       'field' => 'timestamp',
       'label' => '',
       'comments' => 1,
@@ -172,7 +172,7 @@ function statistics_views_default_views() {
     ),
     'timestamp' => array(
       'id' => 'timestamp',
-      'table' => 'history_user',
+      'table' => 'history',
       'field' => 'timestamp',
       'label' => '',
       'comments' => 1,
