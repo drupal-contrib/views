@@ -1,5 +1,5 @@
 <?php
-//$Id: profile.views.inc,v 1.10.4.5 2010-07-19 09:18:42 dereine Exp $
+//$Id: profile.views.inc,v 1.10.4.6 2010-08-19 06:03:47 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -17,16 +17,16 @@
 function profile_views_data() {
   // Define the base group of this table. Fields that don't
   // have a group defined will go into this field by default.
-  $data['profile_values']['table']['group']  = t('Profile');
+  $data['profile_value']['table']['group']  = t('Profile');
 
-  $data['profile_values']['table']['join'] = array(
+  $data['profile_value']['table']['join'] = array(
     'node' => array(
-      'left_table' => 'profile_values',
+      'left_table' => 'profile_value',
       'left_field' => 'uid',
       'field' => 'uid',
     ),
     'users' => array(
-      'left_table' => 'profile_values',
+      'left_table' => 'profile_value',
       'left_field' => 'uid',
       'field' => 'uid',
     ),
@@ -34,20 +34,20 @@ function profile_views_data() {
 
   $fields = profile_views_get_fields();
   foreach($fields as $field) {
-    $table_name = 'profile_values_' . $field->name;
+    $table_name = 'profile_value_' . $field->name;
     $data[$table_name] = array(
       'table' => array(
         'group' => t('Profile'),
         'join' => array(
           'node' => array(
-            'table' => 'profile_values',
+            'table' => 'profile_value',
             'left_table' => 'users',
             'left_field' => 'uid',
             'field' => 'uid',
             'extra' => array(array('field' => 'fid', 'value' => $field->fid)),
           ),
           'users' => array(
-            'table' => 'profile_values',
+            'table' => 'profile_value',
             'left_field' => 'uid',
             'field' => 'uid',
             'extra' => array(array('field' => 'fid', 'value' => $field->fid)),
