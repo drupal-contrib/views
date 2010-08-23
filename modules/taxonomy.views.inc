@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.4.12 2010-08-16 20:53:39 dereine Exp $
+// $Id: taxonomy.views.inc,v 1.57.4.13 2010-08-23 10:20:21 dereine Exp $
 /**
  * @file
  *
@@ -78,6 +78,7 @@ function taxonomy_views_data() {
     'field' => 'tid',
     'title' => t('Term'),
     'help' => t('Taxonomy terms are attached to nodes.'),
+    'access query tag' => 'term_access',
   );
 
 

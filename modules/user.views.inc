@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.59.4.11 2010-07-27 23:00:52 merlinofchaos Exp $
+//$Id: user.views.inc,v 1.59.4.12 2010-08-23 10:20:21 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -26,6 +26,7 @@ function user_views_data() {
     'field' => 'uid',
     'title' => t('User'),
     'help' => t('Users who have created accounts on your site.'),
+    'access query tag' => 'user_access',
   );
 
   $data['users']['table']['join'] = array(

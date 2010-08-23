@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.15 2010-08-16 06:54:56 dereine Exp $
+// $Id: node.views.inc,v 1.97.4.16 2010-08-23 10:20:21 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -29,6 +29,7 @@ function node_views_data() {
     'title' => t('Node'),
     'help' => t("Nodes are a Drupal site's primary content."),
     'weight' => -10,
+    'access query tag' => 'node_access',
   );
 
   // For other base tables, explain how we join
