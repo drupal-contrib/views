@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form.inc,v 1.2.2.12 2010-08-13 22:52:01 merlinofchaos Exp $
+// $Id: views_plugin_exposed_form.inc,v 1.2.2.13 2010-08-23 16:49:55 dereine Exp $
 
 /**
  * The base plugin to handle exposed filter forms.
@@ -137,7 +137,7 @@ class views_plugin_exposed_form extends views_plugin {
 
   function query() {
     $view = $this->view;
-    $exposed_data = $view->exposed_data;
+    $exposed_data = isset($view->exposed_data) ? $view->exposed_data : array();
     $sort_by = isset($exposed_data['sort_by']) ? $exposed_data['sort_by'] : NULL;
     if (!empty($sort_by)) {
       $handler = $view->sort[$sort_by];
