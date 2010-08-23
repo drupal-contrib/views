@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.109.6.9 2010-05-15 07:49:21 dereine Exp $
+// $Id: views_ui.module,v 1.109.6.10 2010-08-23 09:47:06 dereine Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -134,6 +134,17 @@ function views_ui_menu() {
       'delivery callback' => 'views_ui_ajax_deliver',
     );
   }
+
+  $items['admin/build/views/nojs/clone-display/%views_ui_cache'] = $callback + array(
+    'page callback' => 'views_ui_clone_display',
+    'page arguments' => array(FALSE, 5, 6),
+  );
+
+  $items['admin/build/views/ajax/clone-display/%views_ui_cache'] = $callback + array(
+    'page callback' => 'views_ui_clone_display',
+    'page arguments' => array(TRUE, 5, 6),
+    'delivery callback' => 'views_ui_ajax_deliver',
+  );
 
   $items['admin/structure/views/nojs/%/%views_ui_cache'] = $callback + array(
     'page callback' => 'views_ui_ajax_form',
