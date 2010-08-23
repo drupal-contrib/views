@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.23 2010-08-23 10:20:21 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.24 2010-08-23 12:08:18 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1127,8 +1127,7 @@ class views_plugin_query_default extends views_plugin_query {
     if ($query) {
       $additional_arguments = module_invoke_all('views_query_substitutions', $view);
       // Build the count query. db_select::countQuery does not work with groupby.
-      $count_query = db_select($count_query);
-      $count_query->addExpression('COUNT(*)');
+      $count_query = $count_query->countQuery();
       //  $count_query->distinct = FALSE;
 
       // Add additional arguments as a fake condition.
