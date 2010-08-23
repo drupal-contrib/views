@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.8 2010-08-15 20:30:51 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.9 2010-08-23 14:09:58 dereine Exp $
 
 /**
  * @file
@@ -235,6 +235,21 @@ function field_views_field_default_views_data($field) {
     }
   }
 
+  return $data;
+}
+
+/**
+ * Have a different filter handler for lists. This should allow to select values of the list.
+ */
+function list_field_views_data($field) {
+  $data = field_views_field_default_views_data($field);
+  foreach ($data as $table_name => $table_data) {
+    foreach ($table_data as $field_name => $field_data) {
+      if (!in_array(array('table', 'entity_id'), $field)) {
+        $data[$table_name][$field_name]['filter']['handler'] = 'views_handler_filter_field_list';
+      }
+    }
+  }
   return $data;
 }
 
