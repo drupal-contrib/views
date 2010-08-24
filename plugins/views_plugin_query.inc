@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.4.9 2010-08-23 15:18:31 dereine Exp $
+// $Id: views_plugin_query.inc,v 1.1.4.10 2010-08-24 16:13:23 dereine Exp $
 /**
  * @file views_plugin_query.inc
  * Defines the base query class, which is the underlying layer in a View.
@@ -102,45 +102,5 @@ class views_plugin_query extends views_plugin {
     return '';
   }
 
-  /**
-   * Create a new grouping for the WHERE or HAVING clause.
-   *
-   * @param $type
-   *   Either 'AND' or 'OR'. All items within this group will be added
-   *   to the WHERE clause with this logical operator.
-   * @param $group
-   *   An ID to use for this group. If unspecified, an ID will be generated.
-   * @param $where
-   *   'where' or 'having'.
-   *
-   * @return $group
-   *   The group ID generated.
-   */
-  function set_where_group($type = 'AND', $group = NULL, $where = 'where') {
-    // Set an alias.
-    $groups = &$this->$where;
-
-    if (!isset($group)) {
-      $group = empty($groups) ? 1 : max(array_keys($groups)) + 1;
-    }
-
-    // Create an empty group
-    if (empty($groups[$group])) {
-      $groups[$group] = array('clauses' => array(), 'args' => array());
-    }
-
-    $groups[$group]['type'] = strtoupper($type);
-    return $group;
-  }
-
-  /**
-   * Control how all WHERE and HAVING groups are put together.
-   *
-   * @param $type
-   *   Either 'AND' or 'OR'
-   */
-  function set_group_operator($type = 'AND') {
-    $this->group_operator = strtoupper($type);
-  }
 
 }
