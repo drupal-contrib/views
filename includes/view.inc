@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.25 2010-08-23 15:18:31 dereine Exp $
+// $Id: view.inc,v 1.167.4.26 2010-08-24 12:39:28 dereine Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1105,6 +1105,10 @@ class view extends views_db_object {
    */
   function build_title() {
     $this->init_display();
+
+    if (empty($this->built)) {   
+      $this->init_query();    
+    }
 
     $this->init_handlers();
 
