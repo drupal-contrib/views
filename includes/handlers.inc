@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.10 2010-07-19 09:18:42 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.11 2010-08-26 09:41:55 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -130,7 +130,7 @@ class views_handler extends views_object {
    *   The item from the database; the actual contents of this will vary
    *   based upon the type of handler.
    */
-  function init(&$view, $options) {
+  function init(&$view, &$options) {
     $this->view = &$view;
     $this->unpack_options($this->options, $options);
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.23 2010-08-26 07:10:56 dereine Exp $
+// $Id: views_handler_field.inc,v 1.33.4.24 2010-08-26 09:41:55 dereine Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -48,7 +48,7 @@ class views_handler_field extends views_handler {
     return TRUE;
   }
 
-  function init(&$view, $options) {
+  function init(&$view, &$options) {
     parent::init($view, $options);
 
     $this->options += array(

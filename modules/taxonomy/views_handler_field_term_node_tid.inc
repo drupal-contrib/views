@@ -1,11 +1,11 @@
 <?php
-// $Id: views_handler_field_term_node_tid.inc,v 1.4.4.2 2009-11-28 09:21:38 dereine Exp $
+// $Id: views_handler_field_term_node_tid.inc,v 1.4.4.3 2010-08-26 09:41:55 dereine Exp $
 
 /**
  * Field handler for terms.
  */
 class views_handler_field_term_node_tid extends views_handler_field_prerender_list {
-  function init(&$view, $options) {
+  function init(&$view, &$options) {
     parent::init($view, $options);
     if ($view->base_table == 'node_revisions') {
       $this->additional_fields['vid'] = array('table' => 'node_revisions', 'field' => 'vid');

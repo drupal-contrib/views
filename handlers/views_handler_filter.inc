@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.10.4.8 2010-08-24 16:13:21 dereine Exp $
+// $Id: views_handler_filter.inc,v 1.10.4.9 2010-08-26 09:41:55 dereine Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -21,7 +21,7 @@ class views_handler_filter extends views_handler {
    * This likely has to be overridden by filters which are more complex
    * than simple operator/value.
    */
-  function init(&$view, $options) {
+  function init(&$view, &$options) {
     parent::init($view, $options);
 
     $this->operator = $this->options['operator'];

@@ -1,5 +1,5 @@
 <?php
-// $Id: base.inc,v 1.3.4.4 2010-07-27 22:03:08 merlinofchaos Exp $
+// $Id: base.inc,v 1.3.4.5 2010-08-26 09:41:55 dereine Exp $
 /**
  * @file
  *
@@ -43,7 +43,7 @@ class views_object {
    * Set default options on this object. Called by the constructor in a
    * complex chain to deal with backward compatibility.
    */
-  function options() { }
+  function options(&$options) { }
 
   /**
    * Set default options.
