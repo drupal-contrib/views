@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_taxonomy.inc,v 1.3.6.1 2010-08-16 20:53:39 dereine Exp $
+// $Id: views_handler_field_taxonomy.inc,v 1.3.6.2 2010-08-30 20:11:08 dereine Exp $
 
 /**
  * Field handler to provide simple renderer that allows linking to a taxonomy
@@ -48,7 +48,8 @@ class views_handler_field_taxonomy extends views_handler_field {
       $term->tid = $values->{$this->aliases['tid']};
       $term->vid = $values->{$this->aliases['vid']};
       $this->options['alter']['make_link'] = TRUE;
-      $this->options['alter']['path'] = taxonomy_term_path($term);
+      $uri = entity_uri('taxonomy_term', $term);
+      $this->options['alter']['path'] = $uri['path'];
     }
     return $data;
   }
