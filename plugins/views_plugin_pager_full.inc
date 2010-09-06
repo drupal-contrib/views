@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager_full.inc,v 1.1.4.7 2010-03-22 20:25:10 merlinofchaos Exp $
+// $Id: views_plugin_pager_full.inc,v 1.1.4.8 2010-09-06 17:32:59 dereine Exp $
 
 /**
  * The plugin to handle full pager.
@@ -198,7 +198,7 @@ class views_plugin_pager_full extends views_plugin_pager {
     // based upon
     global $pager_page_array;
     // Extract the ['page'] info.
-    $pager_page_array = isset($_GET['page']) ? explode(',', $_GET['page']) : array();
+    $pager_page_array = isset($_GET['page']) ? explode(',', $_GET['page']) : array(0);
 
     $this->current_page = 0;
     if (!empty($pager_page_array[$this->options['id']])) {
