@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.27 2010-08-24 16:13:23 dereine Exp $
+// $Id: view.inc,v 1.167.4.28 2010-09-06 17:38:31 dereine Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -19,6 +19,7 @@
 class view extends views_db_object {
   var $db_table = 'views_view';
   var $base_table = 'node';
+  var $base_field = 'nid';
 
   // State variables
   var $built = FALSE;
