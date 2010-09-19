@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.6.4.5 2010-05-18 15:40:15 dereine Exp $
+// $Id: views_plugin_argument_validate_taxonomy_term.inc,v 1.6.4.6 2010-09-19 10:00:20 dereine Exp $
 /**
  * @file
  * Contains the 'taxonomy term' argument validator plugin.
@@ -64,7 +64,7 @@ class views_plugin_argument_validate_taxonomy_term extends views_plugin_argument
     if (!isset($options['vids']) && !empty($this->argument->options['validate_argument_vocabulary'])) {
       $options['vids'] = $this->argument->options['validate_argument_vocabulary'];
       $options['type'] = $this->argument->options['validate_argument_type'];
-      $options['transform'] = $this->argument->options['validate_argument_transform'];
+      $options['transform'] = isset($this->argument->options['validate_argument_transform']) ? $this->argument->options['validate_argument_transform'] : FALSE;
     }
   }
 
