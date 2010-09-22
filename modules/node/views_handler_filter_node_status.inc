@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_node_status.inc,v 1.2.4.4 2010-08-26 09:41:55 dereine Exp $
+// $Id: views_handler_filter_node_status.inc,v 1.2.4.5 2010-09-22 21:31:29 dereine Exp $
 /**
  * Filter by published status
  */
@@ -9,6 +9,6 @@ class views_handler_filter_node_status extends views_handler_filter {
 
   function query() {
     $table = $this->ensure_my_table();
-    $this->query->add_where($this->options['group'], "$table.status <> 0 OR ($table.uid = :user-current-user AND :user-current-user <> 0 AND :node-view-own-unpublished-nodes = 1) OR :node-administer-nodes = 1");
+    $this->query->add_where($this->options['group'], "$table.status <> 0 OR ($table.uid = ***CURRENT_USER*** AND ***CURRENT_USER*** <> 0 AND ***VIEW_OWN_UNPUBLISHED_NODES*** = 1) OR ***ADMINISTER_NODES*** = 1", array(), 'formula');
   }
 }

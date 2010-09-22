@@ -1,5 +1,5 @@
 <?php
-//$Id: user.views.inc,v 1.59.4.12 2010-08-23 10:20:21 dereine Exp $
+//$Id: user.views.inc,v 1.59.4.13 2010-09-22 21:31:29 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -426,7 +426,7 @@ function user_views_plugins() {
  */
 function user_views_query_substitutions($view) {
   global $user;
-  return array(':user-current-user' => intval($user->uid));
+  return array('***CURRENT_USER***' => intval($user->uid));
 }
 
 /**

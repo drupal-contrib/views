@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.26 2010-08-24 16:13:23 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.27 2010-09-22 21:31:29 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1016,7 +1016,7 @@ class views_plugin_query_default extends views_plugin_query {
     }
 
     // Go ahead and build the query.
-    $query = db_select($this->base_table, $this->base_table);
+    $query = db_select($this->base_table, $this->base_table)->addTag('views');
 
     $joins = $where = $having = $orderby = $groupby = '';
     $fields = $distinct = array();
@@ -1058,6 +1058,9 @@ class views_plugin_query_default extends views_plugin_query {
     if (!empty($this->where)) {
       $query->condition($this->build_condition('where'));
     }
+
+    // Add all query substitutions as metadata.
+    $query->addMetaData('views_substitutions', module_invoke_all('views_query_substitutions', $this));
 
     return $query;
   }
