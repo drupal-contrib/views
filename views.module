@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.32 2010-09-29 22:06:48 dereine Exp $
+// $Id: views.module,v 1.341.4.33 2010-09-29 22:15:51 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1195,7 +1195,7 @@ function _views_query_tag_alter_condition(&$conditions, $substitutions) {
     if (is_numeric($condition_id)) {
       if (is_string($condition['field'])) {
         $condition['field'] = str_replace(array_keys($substitutions), array_values($substitutions), $condition['field']);
-        if (is_string($condition['value'])) {
+        if (isset($condition['value'])) {
           $condition['value'] = str_replace(array_keys($substitutions), array_values($substitutions), $condition['value']);
         }
       }
