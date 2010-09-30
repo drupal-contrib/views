@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_user.inc,v 1.2.6.6 2010-08-06 17:28:35 dereine Exp $
+// $Id: views_plugin_argument_validate_user.inc,v 1.2.6.7 2010-09-30 20:40:50 dww Exp $
 
 /**
  * Validate whether an argument is a valid user.
@@ -71,7 +71,11 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
     if (is_numeric($argument) && $argument == (int)$argument) {
       if ($type == 'uid' || $type == 'either') {
         if ($argument == $GLOBALS['user']->uid) {
-          $account = $GLOBALS['user'];
+          // If you assign an object to a variable in PHP, the variable
+          // automatically acts as a reference, not a copy, so we use
+          // drupal_clone() to ensure that we don't actually mess with the
+          // real global $user object.
+          $account = drupal_clone($GLOBALS['user']);
         }
         $where = 'uid = :argument';
       }
@@ -79,7 +83,7 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
     else {
       if ($type == 'name' || $type == 'either') {
         if ($argument == $GLOBALS['user']->name) {
-          $account = $GLOBALS['user'];
+          $account = drupal_clone($GLOBALS['user']);
         }
         $where = "name = :argument";
       }
