@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.11 2010-08-26 09:41:55 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.12 2010-10-02 19:35:58 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -958,7 +958,7 @@ function views_date_sql_format($format, $field, $field_type = 'int', $set_offset
       $replace = array(
         'Y' => '%Y',
         'm' => '%m',
-        'd' => '%%d',
+        'd' => '%d',
         'H' => '%H',
         'i' => '%i',
         's' => '%s',
