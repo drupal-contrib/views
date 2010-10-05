@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.10 2010-09-30 20:07:59 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.11 2010-10-05 22:04:16 dereine Exp $
 
 /**
  * @file
@@ -127,17 +127,12 @@ function field_views_field_default_views_data($field) {
       case 'tinyint':
       case 'bigint':
       case 'serial':
+      case 'numeric':
+      case 'float':
         $filter = 'views_handler_filter_numeric';
         $argument = 'views_handler_argument_numeric';
         $sort = 'views_handler_sort';
         break;
-      case 'numeric':
-      case 'float':
-        $filter = 'views_handler_filter_float';
-        $argument = 'views_handler_argument_numeric';
-        $sort = 'views_handler_sort';
-        break;
-
       case 'text':
       case 'blob':
         // It does not make sense to sort by blob or text.

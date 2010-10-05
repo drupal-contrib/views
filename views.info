@@ -1,4 +1,4 @@
-; $Id: views.info,v 1.7.6.35 2010-08-23 14:09:58 dereine Exp $
+; $Id: views.info,v 1.7.6.36 2010-10-05 22:04:16 dereine Exp $
 name = Views
 description = Create customized lists and queries from your database.
 package = Views
@@ -40,7 +40,6 @@ files[] = handlers/views_handler_filter_boolean_operator.inc
 files[] = handlers/views_handler_filter_boolean_operator_string.inc
 files[] = handlers/views_handler_filter_date.inc
 files[] = handlers/views_handler_filter_equality.inc
-files[] = handlers/views_handler_filter_float.inc
 files[] = handlers/views_handler_filter_in_operator.inc
 files[] = handlers/views_handler_filter_in_operator.test
 files[] = handlers/views_handler_filter_many_to_one.inc
