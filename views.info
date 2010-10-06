@@ -1,4 +1,4 @@
-; $Id: views.info,v 1.7.6.36 2010-10-05 22:04:16 dereine Exp $
+; $Id: views.info,v 1.7.6.37 2010-10-06 17:47:37 dereine Exp $
 name = Views
 description = Create customized lists and queries from your database.
 package = Views
@@ -161,6 +161,8 @@ files[] = modules/statistics/views_handler_field_accesslog_path.inc
 files[] = modules/system.views.inc
 files[] = modules/system/views_handler_argument_file_fid.inc
 files[] = modules/system/views_handler_field_file.inc
+files[] = modules/system/views_handler_field_file_filemime.inc
+files[] = modules/system/views_handler_field_file_uri.inc
 files[] = modules/system/views_handler_field_file_status.inc
 files[] = modules/system/views_handler_filter_file_status.inc
 files[] = modules/taxonomy.views.inc
