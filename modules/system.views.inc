@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.7.6.4 2010-10-04 23:18:06 dereine Exp $
+// $Id: system.views.inc,v 1.7.6.5 2010-10-06 16:17:38 dereine Exp $
 /**
  * @file
  *
@@ -88,7 +88,7 @@ function system_views_data() {
     'title' => t('Path'),
     'help' => t('The path of the file.'),
     'field' => array(
-      'handler' => 'views_handler_field_file',
+      'handler' => 'views_handler_field_file_uri',
       'click sortable' => TRUE,
      ),
     'sort' => array(
@@ -107,7 +107,7 @@ function system_views_data() {
     'title' => t('Mime type'),
     'help' => t('The mime type of the file.'),
     'field' => array(
-      'handler' => 'views_handler_field_file',
+      'handler' => 'views_handler_field_file_filemime',
       'click sortable' => TRUE,
      ),
     'sort' => array(
