@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.24 2010-08-13 21:44:28 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.4.25 2010-10-07 19:18:51 dereine Exp $
 
 /**
  * @file theme.inc
@@ -101,7 +101,6 @@ function template_preprocess_views_view(&$vars) {
         'library' => array(array('contextual', 'contextual-links')),
       ),
     );
-    drupal_add_library('contextual', 'contextual-links');
     $vars['classes_array'][] = 'contextual-links-region';
     $vars['admin_links'] = drupal_render($build);
   }
