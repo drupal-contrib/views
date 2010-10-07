@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.33 2010-09-29 22:15:51 dereine Exp $
+// $Id: views.module,v 1.341.4.34 2010-10-07 20:55:23 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1184,24 +1184,31 @@ function views_query_views_alter(QueryAlterableInterface $query) {
   }
 
   // Replaces substitions in filter criterias.
-  _views_query_tag_alter_condition($where, $substitutions);
+  _views_query_tag_alter_condition($query, $where, $substitutions);
 }
 
 /**
  * Replaces the substitutions recursive foreach condition.
  */
-function _views_query_tag_alter_condition(&$conditions, $substitutions) {
+function _views_query_tag_alter_condition(QueryAlterableInterface $query, &$conditions, $substitutions) {
   foreach ($conditions as $condition_id => &$condition) {
     if (is_numeric($condition_id)) {
       if (is_string($condition['field'])) {
         $condition['field'] = str_replace(array_keys($substitutions), array_values($substitutions), $condition['field']);
-        if (isset($condition['value'])) {
-          $condition['value'] = str_replace(array_keys($substitutions), array_values($substitutions), $condition['value']);
-        }
       }
-      else {
+      elseif (is_object($condition['field'])) {
         $sub_conditions =& $condition['field']->conditions();
-        _views_query_tag_alter_condition($sub_conditions, $substitutions);
+        _views_query_tag_alter_condition($query, $sub_conditions, $substitutions);
+      }
+      // $condition['value'] is a subquery so alter the subquery recursive.
+      // Therefore take sure to get the metadata of the main query.
+      if (is_object($condition['value'])) {
+        $subquery = $condition['value'];
+        $subquery->addMetaData('views_substitutions', $query->getMetaData('views_substitutions'));
+        views_query_views_alter($condition['value']);
+      }
+      elseif (isset($condition['value'])) {
+        $condition['value'] = str_replace(array_keys($substitutions), array_values($substitutions), $condition['value']);
       }
     }
   }
