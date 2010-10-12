@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.48 2010-10-12 21:11:42 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.49 2010-10-12 21:46:33 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2579,12 +2579,12 @@ function views_ui_config_item_group_form($type, &$form_state) {
   $type = $form_state['type'];
   $id = $form_state['id'];
 
-  $view->init_query();
-
   $form = array('options' => array('#tree' => TRUE));
   if (!$view->set_display($display_id)) {
     views_ajax_render(t('Invalid display id @display', array('@display' => $display_id)));
   }
+
+  $view->init_query();
 
   $item = $view->get_item($display_id, $type, $id);
 
