@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.37 2010-10-12 21:46:38 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.38 2010-10-12 23:31:14 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1289,8 +1289,12 @@ function template_preprocess_views_ui_edit_item(&$vars) {
     }
   }
 
-  $vars['title'] = l($types[$type]['title'], "admin/build/views/nojs/config-type/$view->name/$display->id/$type", array('attributes' => array('class' => 'views-ajax-link')));
-//  $vars['title'] = l($types[$type]['title'], "admin/build/views/nojs/config-type/$view->name/$display->id/$type", array('attributes' => array('class' => 'views-ajax-link')));
+  if ($display->display_plugin != 'default') {
+    $vars['title'] = l($types[$type]['title'], "admin/build/views/nojs/config-type/$view->name/$display->id/$type", array('attributes' => array('class' => 'views-ajax-link')));
+  }
+  else {
+    $vars['title'] = $types[$type]['title'];
+  }
 
   $fields = array();
 
