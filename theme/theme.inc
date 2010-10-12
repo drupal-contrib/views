@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.16 2010-10-12 21:06:25 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.17 2010-10-12 21:33:47 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -24,7 +24,7 @@ function _views_theme_functions($hook, $view, $display = NULL) {
   if ($display) {
     $themes[] = $hook . '__' . $view->name . '__' . $display->id;
     $themes[] = $hook . '__' . $display->id;
-    $themes[] = $hook . '__' . preg_replace('/[^a-z0-9]/', '-', strtolower($view->tag));
+    $themes[] = $hook . '__' . preg_replace('/[^a-z0-9]/', '_', strtolower($view->tag));
     if ($display->id != $display->display_plugin) {
       $themes[] = $hook . '__' . $view->name . '__' . $display->display_plugin;
       $themes[] = $hook . '__' . $display->display_plugin;
