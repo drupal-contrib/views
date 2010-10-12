@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_area_text.inc,v 1.1.4.4 2010-07-02 18:51:41 dereine Exp $
+// $Id: views_handler_area_text.inc,v 1.1.4.5 2010-10-12 21:58:00 merlinofchaos Exp $
 
 class views_handler_area_text extends views_handler_area {
 
@@ -46,7 +46,7 @@ class views_handler_area_text extends views_handler_area {
       $formats[$format] = $filter->name;
     }
 
-    if (!$formats[$format]) {
+    if (!isset($formats[$format])) {
       return;
     }
 
