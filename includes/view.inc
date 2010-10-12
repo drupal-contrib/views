@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.2.9 2010-08-13 23:18:59 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.2.10 2010-10-12 21:27:45 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -589,6 +589,8 @@ class view extends views_db_object {
       $this->exposed_widgets = $this->render_exposed_form();
       if (form_set_error() || !empty($this->build_info['abort'])) {
         $this->built = TRUE;
+        // Don't execute the query, but rendering will still be executed to display the empty text.
+        $this->executed = TRUE;
         return empty($this->build_info['fail']);
       }
     }
