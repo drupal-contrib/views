@@ -1,5 +1,5 @@
 <?php
-// $Id: views_export.module,v 1.4.2.4 2009-09-15 17:26:53 merlinofchaos Exp $
+// $Id: views_export.module,v 1.4.2.5 2010-10-12 22:06:20 merlinofchaos Exp $
 
 /**
  * @file views_export.module
@@ -189,7 +189,7 @@ function views_export_export_form_submit(&$form, &$form_state) {
 
   $types = system_elements();
 
-  $info  = '; $Id: views_export.module,v 1.4.2.4 2009-09-15 17:26:53 merlinofchaos Exp $'."\n";
+  $info  = '; $Id: views_export.module,v 1.4.2.5 2010-10-12 22:06:20 merlinofchaos Exp $'."\n";
   $info .= "\n";
   $info .= strtr("name = @module Export Module\n", array('@module' => $form_state['values']['name']));
   $info .= strtr("description = Exports some views of @module\n", array('@module' => $form_state['values']['name']));
@@ -215,7 +215,7 @@ function views_export_export_form_submit(&$form, &$form_state) {
   $api .= " */\n";
   $api .= "function @module_views_api() {\n";
   $api .= "  return array(\n";
-  $api .= "    'api' => 2,\n";
+  $api .= "    'api' => '" . views_api_version() . "',\n";
   $api .= "    'path' => drupal_get_path('module', '@module'),\n";
   $api .= "    //'path' => drupal_get_path('module', '@module') . '/includes',\n";
   $api .= "  );\n";
