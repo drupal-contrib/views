@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.35 2010-08-24 16:13:23 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.36 2010-10-12 22:20:55 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1805,6 +1805,9 @@ class views_plugin_display extends views_plugin {
         $this->set_option($section, intval($form_state['values'][$section]));
         $this->set_option('use_more_always', intval($form_state['values']['use_more_always']));
         $this->set_option('use_more_text', $form_state['values']['use_more_text']);
+      case 'distinct':
+        $this->set_option($section, $form_state['values'][$section]);
+        break;
       case 'distinct':
         $this->set_option($section, $form_state['values'][$section]);
         break;
