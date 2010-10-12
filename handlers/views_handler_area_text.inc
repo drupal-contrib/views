@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_area_text.inc,v 1.1.2.2 2010-10-12 21:42:20 merlinofchaos Exp $
+// $Id: views_handler_area_text.inc,v 1.1.2.3 2010-10-12 21:58:05 merlinofchaos Exp $
 
 class views_handler_area_text extends views_handler_area {
 
@@ -48,7 +48,7 @@ class views_handler_area_text extends views_handler_area {
       $formats[$format] = db_result(db_query("SELECT name FROM {filter_formats} WHERE format = %d", $format));
     }
 
-    if (!$formats[$format]) {
+    if (!isset($formats[$format])) {
       return;
     }
 
