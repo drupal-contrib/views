@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node.inc,v 1.7.4.5 2010-08-26 09:41:55 dereine Exp $
+// $Id: views_handler_field_node.inc,v 1.7.4.6 2010-10-12 21:10:04 merlinofchaos Exp $
 /**
  * @file
  * Contains the basic 'node' field handler.
@@ -57,6 +57,9 @@ class views_handler_field_node extends views_handler_field {
           unset($this->options['alter']['language']);
         }
       }
+    }
+    else {
+      $this->options['alter']['make_link'] = FALSE;
     }
     return $data;
   }
