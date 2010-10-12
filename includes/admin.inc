@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.15 2010-08-13 23:18:59 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.16 2010-10-12 21:11:49 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -570,6 +570,7 @@ function views_ui_add_form(&$form_state) {
     '#title' => t('View description'),
     '#description' => t('This description will appear on the Views administrative UI to tell you what the view is about.'),
     '#default_value' => $view ? $view->description : '',
+    '#maxlength' => 255,
   );
 
   $form['tag'] = array(
