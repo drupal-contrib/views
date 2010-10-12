@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager_full.inc,v 1.1.4.8 2010-09-06 17:32:59 dereine Exp $
+// $Id: views_plugin_pager_full.inc,v 1.1.4.9 2010-10-12 20:59:02 merlinofchaos Exp $
 
 /**
  * The plugin to handle full pager.
@@ -205,6 +205,15 @@ class views_plugin_pager_full extends views_plugin_pager {
       $this->current_page = intval($pager_page_array[$this->options['id']]);
     }
   }
+  
+  function get_pager_total() {
+    if ($items_per_page = intval($this->get_items_per_page())) {
+      return ceil($this->total_items / $items_per_page);
+    }
+    else {
+      return 1;
+    }
+  }
 
   /**
    * Update global paging info.
@@ -228,7 +237,7 @@ class views_plugin_pager_full extends views_plugin_pager {
       // Set the item count for the pager.
       $pager_total_items[$this->options['id']] = $this->total_items;
       // Calculate and set the count of available pages.
-      $pager_total[$this->options['id']] = ceil($pager_total_items[$this->options['id']] / $this->get_items_per_page());
+      $pager_total[$this->options['id']] = $this->get_pager_total();
 
       // See if the requested page was within range:
       if ($this->current_page < 0) {
