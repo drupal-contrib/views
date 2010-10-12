@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.40 2010-10-12 22:02:35 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.41 2010-10-12 22:12:51 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -673,7 +673,10 @@ class views_handler_field extends views_handler {
         $tokens[$token] = '';
       }
 
-      $tokens['!' . $count] = isset($this->view->args[$count - 1]) ? check_plain($this->view->args[$count - 1]) : '';
+      // Use strip tags as there should never be HTML in the path.
+      // However, we need to preserve special characters like " that
+      // were removed by check_plain().
+      $tokens['!' . $count] = isset($this->view->args[$count - 1]) ? strip_tags(html_entity_decode($this->view->args[$count - 1])) : '';
     }
 
     // Now add replacements for our fields.
