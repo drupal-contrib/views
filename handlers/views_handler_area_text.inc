@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_area_text.inc,v 1.1.2.1 2010-01-19 22:11:27 merlinofchaos Exp $
+// $Id: views_handler_area_text.inc,v 1.1.2.2 2010-10-12 21:42:20 merlinofchaos Exp $
 
 class views_handler_area_text extends views_handler_area {
 
@@ -17,7 +17,6 @@ class views_handler_area_text extends views_handler_area {
       '#type' => 'textarea',
       '#default_value' => $this->options['content'],
       '#rows' => 6,
-      '#description' => $description,
     );
 
     $form['format'] = filter_form($this->options['format']);
