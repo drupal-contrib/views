@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.16.2.3 2010-10-12 21:02:36 merlinofchaos Exp $
+// $Id: docs.php,v 1.16.2.4 2010-10-12 23:20:34 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -309,9 +309,7 @@ function hook_views_default_views() {
   $view->name = 'frontpage';
   $view->description = t('Emulates the default Drupal front page; you may set the default home page path to this view to make it your front page.');
   $view->tag = t('default');
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = '0';
   $view->api_version = 2;
   $view->disabled = FALSE; // Edit this to true to make a default view disabled initially
   $view->display = array();

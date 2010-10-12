@@ -1,5 +1,5 @@
 <?php
-// $Id: views.install,v 1.50.2.5 2010-07-27 22:26:30 merlinofchaos Exp $
+// $Id: views.install,v 1.50.2.6 2010-10-12 23:20:34 merlinofchaos Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
@@ -450,6 +450,29 @@ function views_update_6009() {
   else {
     db_change_field($ret, 'views_display', 'display_options', 'display_options', $schema['views_display']['fields']['display_options']);
   }
+
+  return $ret;
+}
+
+/**
+ * Remove the view_php field
+ */
+function views_schema_6010() {
+  $schema = views_schema(__FUNCTION__);
+  unset($schema['views_view']['fields']['view_php']);
+  unset($schema['views_view']['fields']['is_cacheable']);
+  return $schema;
+}
+
+/**
+ * Remove the view_php and is_cacheable field
+ */
+function views_update_6010() {
+  $ret = array();
+
+  db_drop_field($ret, 'views_view', 'view_php');
+  db_drop_field($ret, 'views_view', 'is_cacheable');
+
 
   return $ret;
 }
