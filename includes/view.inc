@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.2.11 2010-10-12 21:52:20 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.2.12 2010-10-13 18:39:12 dereine Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1704,7 +1704,7 @@ class views_db_object {
         $values[] = $this->$field;
       }
       else {
-        $values[] = db_encode_blob(serialize($this->$field));
+        $values[] = serialize($this->$field);
       }
     }
     $query = '';
