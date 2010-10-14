@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.93.2.14 2010-07-27 22:31:21 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.93.2.15 2010-10-14 20:28:52 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -808,7 +808,9 @@ function template_preprocess_views_view_row_node(&$vars) {
   $vars['node'] = '';
   $vars['comments'] = '';
 
-  $nid = $vars['row']->{$vars['field_alias']};
+  if (!empty($vars['row']->{$vars['field_alias']})) {
+    $nid = $vars['row']->{$vars['field_alias']};
+  }
   if (!is_numeric($nid)) {
     return;
   }
