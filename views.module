@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.332.2.32 2010-10-12 22:10:11 merlinofchaos Exp $
+// $Id: views.module,v 1.332.2.33 2010-10-14 20:04:12 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1000,8 +1000,7 @@ function vpr_trace() {
  */
 function views_exposed_form(&$form_state) {
   // Don't show the form when batch operations are in progress.
-  $batch =& batch_get();
-  if (!empty($batch)) {
+  if ($batch = batch_get() && isset($batch['current_set'])) {
     return array(
       // Set the theme callback to be nothing to avoid errors in template_preprocess_views_exposed_form().
       '#theme' => '',
