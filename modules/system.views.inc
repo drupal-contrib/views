@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.7.6.5 2010-10-06 16:17:38 dereine Exp $
+// $Id: system.views.inc,v 1.7.6.6 2010-10-14 22:05:43 merlinofchaos Exp $
 /**
  * @file
  *
@@ -441,6 +441,18 @@ function _views_file_status($choice = NULL) {
 
   return $status;
 }
+
+  // uid field
+  $data['files']['uid'] = array(
+    'title' => t('User'),
+    'help' => t('The user, who uploaded the file.'),
+    'relationship' => array(
+      'base' => 'users',
+      'base field' => 'uid',
+      'handler' => 'views_handler_relationship',
+      'label' => t('User'),
+    ),
+  );
 
 
 /**
