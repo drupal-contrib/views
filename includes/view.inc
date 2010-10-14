@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.2.12 2010-10-13 18:39:12 dereine Exp $
+// $Id: view.inc,v 1.167.2.13 2010-10-14 20:08:22 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1058,6 +1058,11 @@ class view extends views_db_object {
    * this sets the display handler if it hasn't been.
    */
   function access($displays = NULL, $account = NULL) {
+    // Noone should have access to disabled views.
+    if (!empty($this->disabled)) {
+      return FALSE;
+    }
+
     if (!isset($this->current_display)) {
       $this->init_display();
     }
