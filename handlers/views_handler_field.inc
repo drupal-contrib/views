@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.2.20 2010-10-12 22:12:53 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.2.21 2010-10-15 00:20:11 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -600,6 +600,10 @@ class views_handler_field extends views_handler {
     }
     if (isset($url['fragment'])) {
       $path = strtr($path, array('#' . $url['fragment'] => ''));
+      // If the path is empty we want to have a fragment for the current site.
+      if ($path == '') {
+        $options['external'] = TRUE;
+      }
       $options['fragment'] = $url['fragment'];
     }
 
