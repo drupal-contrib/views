@@ -1,4 +1,4 @@
-// $Id: base.js,v 1.10.2.5 2010-10-14 20:52:03 merlinofchaos Exp $
+// $Id: base.js,v 1.10.2.6 2010-10-15 00:53:57 merlinofchaos Exp $
 /**
  * @file base.js
  *
@@ -75,7 +75,7 @@ Drupal.Views.parseQueryString = function (query) {
     query = query.substring(pos + 1);
   }
   var pairs = query.split('&');
-  for (var i = 0; i < pairs.length; i++) {
+  for(var i in pairs) {
     if (typeof(pairs[i]) == 'string') {
       var pair = pairs[i].split('=');
       // Ignore the 'q' path argument, if present.
@@ -126,7 +126,7 @@ Drupal.Views.getPath = function (href) {
     href = href.substring(3, href.length);
   }
   var chars = ['#', '?', '&'];
-  for (var i = 0; i < chars.length; i++) {
+  for (i in chars) {
     if (href.indexOf(chars[i]) > -1) {
       href = href.substr(0, href.indexOf(chars[i]));
     }
