@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_markup.inc,v 1.3.6.2 2009-11-18 22:08:35 dereine Exp $
+// $Id: views_handler_field_markup.inc,v 1.3.6.3 2010-10-16 05:45:05 dereine Exp $
 
 /**
  * A handler to run a field through check_markup, using a companion
@@ -30,6 +30,7 @@ class views_handler_field_markup extends views_handler_field {
     $value = $values->{$this->field_alias};
     $format = is_numeric($this->format) ? $this->format : $values->{$this->aliases['format']};
     if ($value) {
+      $value = str_replace('<!--break-->', '', $value);
       return check_markup($value, $format, '');
     }
   }
