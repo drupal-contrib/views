@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.13 2010-07-27 22:42:53 dereine Exp $
+// $Id: comment.views.inc,v 1.33.4.14 2010-10-16 08:36:43 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -378,7 +378,7 @@ function comment_views_data() {
     'title' => t('Last comment time'),
     'help' => t('Date and time of when the last comment was posted.'),
     'field' => array(
-      'handler' => 'views_handler_field_date',
+      'handler' => 'views_handler_field_last_comment_timestamp',
       'click sortable' => TRUE,
     ),
     'sort' => array(
