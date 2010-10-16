@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.views_default.inc,v 1.5.6.3 2010-08-16 07:03:17 dereine Exp $
+// $Id: statistics.views_default.inc,v 1.5.6.4 2010-10-16 08:41:24 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the statistics module.
@@ -13,9 +13,7 @@ function statistics_views_default_views() {
   $view->name = 'popular';
   $view->description = 'Shows the most-viewed nodes on the site. This requires the statistics to be enabled at administer >> reports >> access log settings.';
   $view->tag = 'default';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = '0';
   $view->api_version = 2;
   $view->disabled = TRUE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
