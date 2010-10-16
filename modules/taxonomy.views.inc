@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.4.14 2010-10-07 19:40:02 dereine Exp $
+// $Id: taxonomy.views.inc,v 1.57.4.15 2010-10-16 08:58:40 dereine Exp $
 /**
  * @file
  *
@@ -117,6 +117,7 @@ function taxonomy_views_data() {
     ),
     'argument' => array(
       'handler' => 'views_handler_argument_numeric',
+      'name field' => 'name',
       'skip base' => array('node'),
       'zero is null' => TRUE,
     ),
