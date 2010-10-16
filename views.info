@@ -1,4 +1,4 @@
-; $Id: views.info,v 1.7.6.38 2010-10-07 19:40:02 dereine Exp $
+; $Id: views.info,v 1.7.6.39 2010-10-16 07:20:53 dereine Exp $
 name = Views
 description = Create customized lists and queries from your database.
 package = Views
@@ -282,6 +282,7 @@ files[] = theme/views-view-table.tpl.php
 files[] = theme/views-view-unformatted.tpl.php
 files[] = theme/views-view.tpl.php
 ; Tests
+files[] = tests/handlers/views_handler_filter_date.test
 files[] = tests/views_access.test
 files[] = tests/views_basic.test
 files[] = tests/views_argument_default.test
