@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.52 2010-10-16 14:55:13 dereine Exp $
+// $Id: admin.inc,v 1.161.4.53 2010-10-16 15:23:15 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -573,7 +573,8 @@ function views_ui_add_page() {
     ),
   );
 
-  return drupal_render(drupal_build_form('views_ui_add_form', $form_state));
+  $form = drupal_build_form('views_ui_add_form', $form_state);
+  return drupal_render($form);
 }
 
 /**
