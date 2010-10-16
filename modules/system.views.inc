@@ -1,5 +1,5 @@
 <?php
-// $Id: system.views.inc,v 1.7.6.6 2010-10-14 22:05:43 merlinofchaos Exp $
+// $Id: system.views.inc,v 1.7.6.7 2010-10-16 09:06:51 dereine Exp $
 /**
  * @file
  *
@@ -119,6 +119,17 @@ function system_views_data() {
     'argument' => array(
       'handler' => 'views_handler_argument_string',
     ),
+  );
+
+  // extension
+  $data['files']['extension'] = array(
+    'title' => t('Extension'),
+    'help' => t('The extension of the file.'),
+    'real field' => 'filename',
+    'field' => array(
+      'handler' => 'views_handler_field_file_extension',
+      'click sortable' => FALSE,
+     ),
   );
 
   // filesize
