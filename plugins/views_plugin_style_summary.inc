@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_summary.inc,v 1.1.6.4 2010-08-13 21:44:28 merlinofchaos Exp $
+// $Id: views_plugin_style_summary.inc,v 1.1.6.5 2010-10-17 10:42:44 dereine Exp $
 /**
  * @file
  * Contains the default summary style plugin, which displays items in an HTML list.
@@ -53,8 +53,11 @@ class views_plugin_style_summary extends views_plugin_style {
       '#type' => 'textfield',
       '#title' => t('Items to display'),
       '#default_value' => $this->options['items_per_page'],
-      '#process' => array('views_process_dependency'),
-      '#dependency' => array('edit-style-options-override' => array(TRUE)),
+      '#states' => array(
+        'invisible' => array(
+          'input[name="style_options[override]"]' => array('checked' => FALSE),
+        ),
+      ),
     );
   }
 

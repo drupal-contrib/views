@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_exposed_form.inc,v 1.2.2.13 2010-08-23 16:49:55 dereine Exp $
+// $Id: views_plugin_exposed_form.inc,v 1.2.2.14 2010-10-17 10:42:44 dereine Exp $
 
 /**
  * The base plugin to handle exposed filter forms.
@@ -62,10 +62,11 @@ class views_plugin_exposed_form extends views_plugin {
       '#description' => t('Text to display in the reset button of the exposed form.'),
       '#default_value' => $this->options['reset_button_label'],
       '#required' => TRUE,
-      '#dependency' => array(
-        'edit-exposed-form-options-reset-button' => array(1)
+      '#states' => array(
+        'invisible' => array(
+          'input[name="exposed_form_options[reset_button]"]' => array('checked' => FALSE),
+        ),
       ),
-      '#process' => array('views_process_dependency'),
     );
 
     $form['exposed_sorts_label'] = array(

@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.53 2010-10-16 15:23:15 dereine Exp $
+// $Id: admin.inc,v 1.161.4.54 2010-10-17 10:42:44 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1020,7 +1020,6 @@ function views_ui_edit_view_form_delete($form, &$form_state) {
  */
 function template_preprocess_views_ui_edit_view(&$vars) {
   $view = &$vars['view'];
-  views_add_js('dependent');
 
   // The form has to be saved as variable because of strict warnings.
   $form = drupal_get_form('views_ui_edit_view_form', $view);
@@ -2432,7 +2431,6 @@ function views_ui_add_item_form($form, &$form_state) {
       '#value' => '<div class="form-item">' . t('There are no @types available to add.', array('@types' =>  $types[$type]['ltitle'])) . '</div>',
     );
   }
-  views_add_js('dependent');
   views_ui_standard_form_buttons($form, $form_state, 'views_ui_add_item_form', t('Add'));
 
   return $form;

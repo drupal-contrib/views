@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager_full.inc,v 1.1.4.9 2010-10-12 20:59:02 merlinofchaos Exp $
+// $Id: views_plugin_pager_full.inc,v 1.1.4.10 2010-10-17 10:42:44 dereine Exp $
 
 /**
  * The plugin to handle full pager.
@@ -88,9 +88,10 @@ class views_plugin_pager_full extends views_plugin_pager {
       '#required' => TRUE,
       '#description' => t('Label to use in the exposed items per page form element.'),
       '#default_value' => $this->options['expose']['items_per_page_label'],
-      '#process' => array('views_process_dependency'),
-      '#dependency' => array(
-        'edit-pager-options-expose-items-per-page' => array(1)
+      '#states' => array(
+        'invisible' => array(
+          'input[name="pager_options[expose][items_per_page]"]' => array('checked' => FALSE),
+        ),
       ),
     );
 
@@ -100,9 +101,10 @@ class views_plugin_pager_full extends views_plugin_pager {
       '#required' => TRUE,
       '#description' => t('Set between which values the user can choose when determining the items per page. Separated by comma.'),
       '#default_value' => $this->options['expose']['items_per_page_options'],
-      '#process' => array('views_process_dependency'),
-      '#dependency' => array(
-        'edit-pager-options-expose-items-per-page' => array(1)
+      '#states' => array(
+        'invisible' => array(
+          'input[name="pager_options[expose][items_per_page]"]' => array('checked' => FALSE),
+        ),
       ),
     );
 
@@ -119,9 +121,10 @@ class views_plugin_pager_full extends views_plugin_pager {
       '#required' => TRUE,
       '#description' => t('Label to use in the exposed offset form element.'),
       '#default_value' => $this->options['expose']['offset_label'],
-      '#process' => array('views_process_dependency'),
-      '#dependency' => array(
-        'edit-pager-options-expose-offset' => array(1)
+      '#states' => array(
+        'invisible' => array(
+          'input[name="pager_options[expose][offset]"]' => array('checked' => FALSE),
+        ),
       ),
     );
   }

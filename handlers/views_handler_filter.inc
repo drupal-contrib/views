@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.10.4.9 2010-08-26 09:41:55 dereine Exp $
+// $Id: views_handler_filter.inc,v 1.10.4.10 2010-10-17 10:42:44 dereine Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -210,9 +210,10 @@ class views_handler_filter extends views_handler {
         '#title' => t('Operator identifier'),
         '#size' => 40,
         '#description' => t('This will appear in the URL after the ? to identify this operator.'),
-        '#process' => array('views_process_dependency'),
-        '#dependency' => array(
-          'edit-options-expose-use-operator' => array(1)
+        '#states' => array(
+          'invisible' => array(
+            'input[name="options[expose][use_operator]"]' => array('checked' => FALSE),
+          ),
         ),
       );
     }

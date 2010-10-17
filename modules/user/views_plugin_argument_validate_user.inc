@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_validate_user.inc,v 1.2.6.8 2010-09-30 22:01:56 dereine Exp $
+// $Id: views_plugin_argument_validate_user.inc,v 1.2.6.9 2010-10-17 10:42:44 dereine Exp $
 
 /**
  * Validate whether an argument is a valid user.
@@ -44,9 +44,11 @@ class views_plugin_argument_validate_user extends views_plugin_argument_validate
       '#options' => user_roles(TRUE),
       '#default_value' => $this->options['roles'],
       '#description' => t('If no roles are selected, users from any role will be allowed.'),
-      '#process' => array('form_process_checkboxes', 'views_process_dependency'),
-      '#dependency' => array(
-        'edit-options-argument-validate-user-restrict-roles' => array(1),
+      '#process' => array('form_process_checkboxes'),
+      '#states' => array(
+        'invisible' => array(
+          'input[name="options[argument_validate][user][restrict_roles]"]' => array('checked' => FALSE),
+        ),
       ),
     );
   }
