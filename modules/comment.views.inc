@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.views.inc,v 1.33.4.14 2010-10-16 08:36:43 dereine Exp $
+// $Id: comment.views.inc,v 1.33.4.15 2010-10-26 20:26:38 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for comment.module
@@ -64,7 +64,7 @@ function comment_views_data() {
     'help' => t('The text of the comment.'),
     'field' => array(
       'handler' => 'views_handler_field_markup',
-      'format' => 'format',
+      'format' => array('field' => 'format'),
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_string',
