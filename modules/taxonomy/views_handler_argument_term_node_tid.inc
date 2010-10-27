@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_term_node_tid.inc,v 1.1.6.4 2010-10-07 19:40:02 dereine Exp $
+// $Id: views_handler_argument_term_node_tid.inc,v 1.1.6.5 2010-10-27 05:12:52 dereine Exp $
 /**
  * Allow taxonomy term ID(s) as argument
  */
@@ -32,7 +32,8 @@ class views_handler_argument_term_node_tid extends views_handler_argument_many_t
     $titles = array();
     $result = db_select('taxonomy_term_data', 'td')
       ->fields('td', array('name'))
-      ->condition('td.tid', $this->value);
+      ->condition('td.tid', $this->value)
+      ->execute();
     foreach ($result as $term) {
       $titles[] = check_plain($term->name);
     }
