@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.14 2010-10-17 10:42:44 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.15 2010-10-28 20:04:58 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1204,7 +1204,7 @@ class views_join {
           if (is_array($info['value'])) {
             $operator = !empty($info['operator']) ? $info['operator'] : 'IN';
             // Transform from IN() notation to = notation if just one value.
-            if (count($raw_value) == 1) {
+            if (count($info['value']) == 1) {
               $info['value'] = array_shift($info['value']);
               $operator = $operator == 'NOT IN' ? '!=' : '=';
             }
