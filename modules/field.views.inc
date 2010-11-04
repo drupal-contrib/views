@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.11 2010-10-05 22:04:16 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.12 2010-11-04 22:41:13 dereine Exp $
 
 /**
  * @file
@@ -198,7 +198,7 @@ function field_views_field_default_views_data($field) {
       // Expose additional delta column for multiple value fields.
       if ($field['cardinality'] > 1 || $field['cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
         $title = t('@label (!name) - delta', array('@label' => $field['field_name'], '!name' => $field['field_name']));
-        $title_short = t('!name - delta', array('@name' => $field['field_name']));
+        $title_short = t('!name - delta', array('!name' => $field['field_name']));
 
         $data[$table]['delta'] = array(
           'group' => $group,
