@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.39 2010-10-26 05:05:27 dereine Exp $
+// $Id: views.module,v 1.341.4.40 2010-11-05 07:20:54 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1074,6 +1074,7 @@ function views_exposed_form($form, &$form_state) {
   if ($view->use_ajax) {
     drupal_add_js('misc/jquery.form.js', array('group' => JS_LIBRARY));
   }
+  ctools_include('dependent');
 
   $exposed_form_plugin = $form_state['exposed_form_plugin'];
   $exposed_form_plugin->exposed_form_alter($form, $form_state);

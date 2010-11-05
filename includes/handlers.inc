@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.15 2010-10-28 20:04:58 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.16 2010-11-05 07:20:54 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -537,7 +537,7 @@ class views_many_to_one_helper {
     $this->handler = &$handler;
   }
 
-  static function option_definition(&$options) {
+  function option_definition(&$options) {
     $options['reduce_duplicates'] = array('default' => FALSE);
   }
 

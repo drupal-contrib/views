@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.37 2010-10-16 08:51:10 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.38 2010-11-05 07:20:54 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -98,7 +98,7 @@ class views_plugin_display extends views_plugin {
               'relationship' => 'none',
               'group_type' => 'group',
               'content' => $content,
-              'format' => !empty($format) ? $format : variable_get('filter_default_format', 1),
+              'format' => !empty($format) ? $format : filter_default_format(),
             );
 
             if ($area != 'empty' && $empty = $this->get_option($area . '_empty')) {

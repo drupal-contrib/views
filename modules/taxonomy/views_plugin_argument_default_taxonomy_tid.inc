@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_default_taxonomy_tid.inc,v 1.1.2.6 2010-10-17 10:42:44 dereine Exp $
+// $Id: views_plugin_argument_default_taxonomy_tid.inc,v 1.1.2.7 2010-11-05 07:20:54 dereine Exp $
 /**
  * @file
  *   Taxonomy tid default argument.
@@ -47,7 +47,10 @@ class views_plugin_argument_default_taxonomy_tid extends views_plugin_argument_d
       '#type' => 'checkbox',
       '#title' => t('Limit terms by vocabulary'),
       '#default_value'=> $this->options['limit'],
-      '#process' => array('form_process_checkboxes'),
+      '#process' => array('form_process_checkboxes', 'ctools_dependent_process'),
+      '#dependency' => array(
+        'edit-options-argument-default-taxonomy-tid-node' => array(1),
+      ),
     );
 
     $options = array();
@@ -63,11 +66,10 @@ class views_plugin_argument_default_taxonomy_tid extends views_plugin_argument_d
       '#title' => t('Vocabularies'),
       '#options' => $options,
       '#default_value' => $this->options['vocabularies'],
-      '#process' => array('form_process_checkboxes'),
-      '#states' => array(
-        'visible' => array(
-          ':input[name="options[argument_default][taxonomy_tid][limit]"]' => array('checked' => TRUE),
-        ),
+      '#process' => array('form_process_checkboxes', 'ctools_dependent_process'),
+      '#dependency' => array(
+        //'edit-options-argument-default-taxonomy-tid-limit' => array(1),
+        'edit-options-argument-default-taxonomy-tid-node' => array(1),
       ),
     );
   }
