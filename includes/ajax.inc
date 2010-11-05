@@ -1,5 +1,5 @@
 <?php
-// $Id: ajax.inc,v 1.20.4.14 2010-11-05 07:20:54 dereine Exp $
+// $Id: ajax.inc,v 1.20.4.15 2010-11-05 21:12:15 dereine Exp $
 
 /**
  * @file ajax.inc
@@ -209,7 +209,8 @@ function views_ajax_form_wrapper($form_id, &$form_state) {
     ),
   );
 
-  $output = drupal_render(drupal_build_form($form_id, $form_state));
+  $form = drupal_build_form($form_id, $form_state);
+  $output = drupal_render($form);
 
   // These forms have the title built in, so set the title here:
   if (empty($form_state['ajax']) && !empty($form_state['title'])) {
