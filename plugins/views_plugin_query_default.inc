@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.29 2010-10-18 15:48:33 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.30 2010-11-05 13:47:14 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -774,7 +774,7 @@ class views_plugin_query_default extends views_plugin_query {
    * @param $operator
    *   The comparison operator, such as =, <, or >=. It also accepts more complex
    *   options such as IN, LIKE, or BETWEEN. Defaults to IN if $value is an array
-   *   = otherwise.
+   *   = otherwise. If $field is a string you have to use 'formula' here.
    */
   function add_where($group, $field, $value = NULL, $operator = NULL) {
     // Ensure all variants of 0 are actually 0. Thus '', 0 and NULL are all
