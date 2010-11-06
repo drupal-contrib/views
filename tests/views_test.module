@@ -1,5 +1,5 @@
 <?php
-// $Id: views_test.module,v 1.1.2.6 2010-07-10 06:04:00 dereine Exp $
+// $Id: views_test.module,v 1.1.2.7 2010-11-06 21:25:06 dereine Exp $
 
 /**
  * Implements hook_permission().
@@ -18,7 +18,7 @@ function views_test_permission() {
  */
 function views_test_views_api() {
   return array(
-    'api' => 2.0,
+    'api' => '3.0-alpha1',
   );
 }
 
