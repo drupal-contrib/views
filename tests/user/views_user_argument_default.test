@@ -1,5 +1,5 @@
 <?php
-// $Id: views_user_argument_default.test,v 1.1.4.2 2010-10-16 15:17:33 dereine Exp $
+// $Id: views_user_argument_default.test,v 1.1.4.3 2010-11-06 17:56:10 dereine Exp $
 /**
  * @file
  * Tests views user argument default plugin.
@@ -45,7 +45,7 @@ class viewsUserArgumentDefault extends ViewsSqlTest {
     $view->view_php = '';
     $view->base_table = 'node';
     $view->is_cacheable = FALSE;
-    $view->api_version = 3.0-alpha1;
+    $view->api_version = '3.0-alpha1';
     $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
     /* Display: Defaults */

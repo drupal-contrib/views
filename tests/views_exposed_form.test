@@ -1,5 +1,5 @@
 <?php
-// $Id: views_exposed_form.test,v 1.1.2.3 2010-05-24 19:58:36 dereine Exp $
+// $Id: views_exposed_form.test,v 1.1.2.4 2010-11-06 17:56:10 dereine Exp $
 /**
  * @file
  * Test exposed forms.
@@ -16,6 +16,8 @@ class ViewsExposedFormTest extends ViewsSqlTest {
   public function setUp() {
     parent::setUp('views', 'views_ui');
     module_enable(array('views_ui'));
+    // Clear the module_implements cache.
+    module_implements('views_default_views', FALSE, TRUE);
   }
 
   /**
