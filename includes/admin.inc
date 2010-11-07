@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.57 2010-11-05 07:20:54 dereine Exp $
+// $Id: admin.inc,v 1.161.4.58 2010-11-07 19:47:42 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1701,7 +1701,7 @@ function views_ui_ajax_form($js, $key, $view, $display_id) {
   }
 
   $output = views_ajax_form_wrapper($form_state['form_id'], $form_state);
-  if ($form_state['submitted']) {
+  if ($form_state['submitted'] && empty($form_state['rerender'])) {
     // Sometimes we need to re-generate the form for multi-step type operations.
     $object = NULL;
     if (!empty($view->stack)) {
