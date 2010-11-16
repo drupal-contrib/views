@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.34 2010-10-12 21:31:54 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.35 2010-11-16 00:23:17 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -313,11 +313,10 @@ function template_preprocess_views_view_table(&$vars) {
         $vars['header'][$field] = $label;
       }
       else {
-        // @todo -- make this a setting
-        $initial = 'asc';
+        $initial = !empty($options['info'][$field]['default_sort_order']) ? $options['info'][$field]['default_sort_order'] : 'asc';
 
-        if ($active == $field && $order == 'asc') {
-          $initial = 'desc';
+        if ($active == $field) {
+          $initial = ($order == 'asc') ? 'desc' : 'asc';
         }
 
         $title = t('sort by @s', array('@s' => $label));
