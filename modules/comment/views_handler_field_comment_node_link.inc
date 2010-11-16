@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_comment_node_link.inc,v 1.1.6.2 2010-01-28 23:18:39 dereine Exp $
+// $Id: views_handler_field_comment_node_link.inc,v 1.1.6.3 2010-11-16 00:43:53 merlinofchaos Exp $
 /**
 * Handler for showing comment module's node link.
  */
@@ -32,7 +32,7 @@ class views_handler_field_comment_node_link extends views_handler_field {
       '#type' => 'checkbox',
       '#title' => t('Show teaser-style link'),
       '#default_value' => $this->options['teaser'],
-      '#description' => 'Show the comment link in the form used on standard node teasers, rather than the full node form.',
+      '#description' => t('Show the comment link in the form used on standard node teasers, rather than the full node form.'),
     );
 
   }
