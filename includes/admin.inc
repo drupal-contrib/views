@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.40 2010-11-16 00:23:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.41 2010-11-16 01:03:44 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -244,14 +244,14 @@ function views_ui_list_views_form(&$form_state) {
     );
   }
 
-  $all = array('all' => t('<All>'));
-  $none = array('none' => t('<None>'));
+  $all = array('all' => t('- All -'));
+  $none = array('none' => t('- None -'));
 
   $form['type'] = array(
     '#type' => 'select',
     '#title' => t('Storage'),
     '#options' => array(
-      'all' => t('<All>'),
+      'all' => t('- All -'),
       t('Normal') => t('Normal'),
       t('Default') => t('Default'),
       t('Overridden') => t('Overridden'),
@@ -3002,7 +3002,7 @@ function views_ui_add_item_form(&$form_state) {
   $options = views_fetch_fields(array_keys($base_tables), $type, $display->handler->use_group_by());
 
   if (!empty($options)) {
-    $groups = array('all' => t('<All>'));
+    $groups = array('all' => t('- All -'));
     $form['group'] = array(
       '#type' => 'select',
       '#title' => t('Groups'),
