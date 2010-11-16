@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.5.2.9 2010-04-29 18:21:50 merlinofchaos Exp $
+// $Id: views_plugin_style.inc,v 1.5.2.10 2010-11-16 00:26:19 merlinofchaos Exp $
 
 /**
  * @defgroup views_style_plugins Views' style plugins
@@ -210,7 +210,6 @@ class views_plugin_style extends views_plugin {
       return;
     }
 
-    $start = views_microtime();
     if (isset($this->rendered_fields)) {
       return $this->rendered_fields;
     }
