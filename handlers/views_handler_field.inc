@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.32 2010-11-18 01:16:08 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.33 2010-11-18 23:34:44 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -119,7 +119,9 @@ class views_handler_field extends views_handler {
    * Called to determine what to tell the clicksorter.
    */
   function click_sort($order) {
-    $this->query->add_orderby($this->table_alias, $this->real_field, $order, $this->field_alias);
+    // Since fields should always have themselves already added, just
+    // add a sort on the field.
+    $this->query->add_orderby(NULL, NULL, $order, $this->field_alias);
   }
 
   /**
