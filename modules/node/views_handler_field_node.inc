@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node.inc,v 1.7.4.6 2010-10-12 21:10:04 merlinofchaos Exp $
+// $Id: views_handler_field_node.inc,v 1.7.4.7 2010-11-18 00:36:23 merlinofchaos Exp $
 /**
  * @file
  * Contains the basic 'node' field handler.
@@ -22,7 +22,7 @@ class views_handler_field_node extends views_handler_field {
 
   function option_definition() {
     $options = parent::option_definition();
-    $options['link_to_node'] = array('default' => FALSE);
+    $options['link_to_node'] = array('default' => TRUE);
     return $options;
   }
 
