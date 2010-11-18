@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.13.2.8 2010-11-18 00:34:33 merlinofchaos Exp $
+// $Id: docs.php,v 1.13.2.9 2010-11-18 00:43:22 merlinofchaos Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -179,6 +179,8 @@ function hook_views_data() {
       'handler' => 'views_handler_filter_boolean_operator',
       'label' => t('Published'),
       'type' => 'yes-no',
+      // use boolean_field = 1 instead of boolean_field <> 0 in WHERE statment
+      'use equal' => TRUE,
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
