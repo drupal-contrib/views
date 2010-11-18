@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.44 2010-11-18 00:39:57 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.45 2010-11-18 23:05:56 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -433,12 +433,6 @@ class view extends views_db_object {
     // if we get a summary view.
     if (empty($this->argument)) {
       return TRUE;
-    }
- 
-    // Don't render exposed filter form when there's form errors.
-    // Applies when filters are in a block ("exposed_block" option).
-    if (form_get_errors() && empty($form_state['rerender'])) {
-      return NULL;
     }
 
     // build arguments.
