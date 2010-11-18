@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.38 2010-11-05 07:20:54 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.39 2010-11-18 07:57:06 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -2199,6 +2199,7 @@ class views_plugin_display extends views_plugin {
     return array(
       $delta => array(
         'info' => $desc,
+        'cache' => DRUPAL_NO_CACHE,
       )
     );
   }
