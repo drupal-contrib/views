@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.41 2010-11-18 00:50:28 merlinofchaos Exp $
+// $Id: views.module,v 1.341.4.42 2010-11-18 23:16:51 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -1330,7 +1330,7 @@ function views_var_export($var, $prefix = '', $init = TRUE) {
     else {
       $output = "array(\n";
       foreach ($var as $key => $value) {
-        $output .= "  '$key' => " . views_var_export($value, '  ', FALSE) . ",\n";
+        $output .= "  " . views_var_export($key, '', FALSE) . " => " . views_var_export($value, '  ', FALSE) . ",\n";
       }
       $output .= ')';
     }
