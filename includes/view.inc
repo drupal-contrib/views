@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.2.15 2010-11-18 00:40:00 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.2.16 2010-11-18 20:34:40 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -414,7 +414,7 @@ class view extends views_db_object {
     if (!empty($form_state['js settings'])) {
       $this->js_settings = $form_state['js settings'];
     }
- 
+
     // Don't render exposed filter form when there's form errors.
     // Applies when filters are in a block ("exposed_block" option).
     if (form_get_errors() && empty($form_state['rerender'])) {
