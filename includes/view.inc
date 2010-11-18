@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.43 2010-11-18 00:34:33 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.44 2010-11-18 00:39:57 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -328,7 +328,7 @@ class view extends views_db_object {
       return FALSE;
     }
 
-    // init the new display handler with data.
+    // init the new style handler with data.
     $this->style_plugin->init($this, $this->display[$this->current_display], $this->style_options);
     return TRUE;
   }
