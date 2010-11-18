@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.19 2010-11-16 01:03:50 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.20 2010-11-18 01:50:42 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -47,6 +47,9 @@ function views_ui_check_advanced_help() {
 function template_preprocess_views_ui_list_views(&$vars) {
   $items = array();
   $sorts = array();
+
+  // Add some js for easier gui.
+  views_add_js('view-list');
 
   $views = views_get_all_views();
 
