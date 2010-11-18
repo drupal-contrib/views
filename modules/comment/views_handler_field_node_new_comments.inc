@@ -1,20 +1,31 @@
 <?php
-// $Id: views_handler_field_node_new_comments.inc,v 1.6 2009-04-07 23:02:07 merlinofchaos Exp $
+// $Id: views_handler_field_node_new_comments.inc,v 1.7.2.1 2010-11-18 01:47:01 merlinofchaos Exp $
 
 /**
  * Field handler to display the number of new comments
  */
 class views_handler_field_node_new_comments extends views_handler_field_numeric {
+  function init(&$view, $options) {
+    parent::init($view, $options);
+    
+    // translate an older setting:
+    if (!empty($options['no_empty'])) {
+      $this->options['hide_empty'] = TRUE;
+      unset($this->options['no_empty']);
+    }
+  }
+
   function construct() {
     parent::construct();
-    $this->additional_fields = array('nid' => 'nid', 'type' => 'type');
+    $this->additional_fields['nid'] = 'nid';
+    $this->additional_fields['type'] = 'type';
+    $this->additional_fields['comment_count'] = array('table' => 'node_comment_statistics', 'field' => 'comment_count');
   }
 
   function option_definition() {
     $options = parent::option_definition();
 
     $options['link_to_comment'] = array('default' => TRUE);
-    $options['no_empty'] = array('default' => TRUE);
 
     return $options;
   }
@@ -26,11 +37,6 @@ class views_handler_field_node_new_comments extends views_handler_field_numeric 
       '#description' => t('This will override any other link you have set.'),
       '#type' => 'checkbox',
       '#default_value' => $this->options['link_to_comment'],
-    );
-    $form['no_empty'] = array(
-      '#title' => t('Display nothing if no new comments'),
-      '#type' => 'checkbox',
-      '#default_value' => $this->options['no_empty'],
     );
   }
 
@@ -77,7 +83,7 @@ class views_handler_field_node_new_comments extends views_handler_field_numeric 
       $node->type = $values->{$this->aliases['type']};
       $this->options['alter']['make_link'] = TRUE;
       $this->options['alter']['path'] = 'node/' . $node->nid;
-      $this->options['alter']['query'] = comment_new_page_count($values->node_comment_statistics_comment_count, $values->node_new_comments, $node);
+      $this->options['alter']['query'] = comment_new_page_count($values->{$this->aliases['comment_count']}, $values->{$this->field_alias}, $node);
       $this->options['alter']['fragment'] = 'new';
     }
 
@@ -85,7 +91,7 @@ class views_handler_field_node_new_comments extends views_handler_field_numeric 
   }
 
   function render($values) {
-    if (!empty($values->{$this->field_alias}) || empty($this->options['no_empty'])) {
+    if (!empty($values->{$this->field_alias})) {
       return $this->render_link(parent::render($values), $values);
     }
     else {
