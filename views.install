@@ -1,5 +1,5 @@
 <?php
-// $Id: views.install,v 1.46.2.13 2010-10-12 23:20:32 merlinofchaos Exp $
+// $Id: views.install,v 1.46.2.14 2010-11-18 01:06:56 merlinofchaos Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
@@ -475,5 +475,19 @@ function views_update_6010() {
   db_drop_field($ret, 'views_view', 'is_cacheable');
 
 
+  return $ret;
+}
+
+/**
+ * Correct the cache setting for exposed filter blocks.
+ *
+ * @see http://drupal.org/node/910864
+ */
+function views_update_6011() {
+  $ret = array();
+
+  // There is only one simple query to run.
+  $ret[] = update_sql("UPDATE {blocks} SET cache = " . BLOCK_NO_CACHE . " WHERE module = 'views' AND delta LIKE '-exp-%'");
+  
   return $ret;
 }
