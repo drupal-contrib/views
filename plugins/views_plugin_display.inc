@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.2.13 2010-06-17 02:46:53 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.2.14 2010-11-18 01:07:01 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1962,6 +1962,7 @@ class views_plugin_display extends views_plugin {
     return array(
       $delta => array(
         'info' => $desc,
+        'cache' => BLOCK_NO_CACHE,
       )
     );
   }
