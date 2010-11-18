@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.109.2.19 2010-10-14 21:31:07 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.109.2.20 2010-11-18 00:31:39 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -1362,15 +1362,15 @@ function views_views_handlers() {
  *   // PHP 4 doesn't call constructors of the base class automatically from a
  *   // constructor of a derived class. It is your responsibility to propagate
  *   // the call to constructors upstream where appropriate.
- *   function construct($table, $left_table, $left_field, $field, $extra = array(), $type = 'LEFT') {
+ *   function construct($table = NULL, $left_table = NULL, $left_field = NULL, $field = NULL, $extra = array(), $type = 'LEFT') {
  *     parent::construct($table, $left_table, $left_field, $field, $extra, $type);
  *   }
  *
  *   function join($table, &$query) {
  *     $output = parent::join($table, $query);
+ *     $output .= "AND foo.bar = baz.boing";
+ *     return $output;
  *   }
- *   $output .= "AND foo.bar = baz.boing";
- *   return $output;
  * }
  * @endcode
  */
