@@ -1,5 +1,5 @@
 <?php
-// $Id: views_ui.module,v 1.109.6.14 2010-11-20 21:40:58 dereine Exp $
+// $Id: views_ui.module,v 1.109.6.15 2010-11-20 23:49:29 dereine Exp $
 /**
  * @file views_ui.module
  * Provide structure for the administrative interface to Views.
@@ -121,6 +121,7 @@ function views_ui_menu() {
     'details' => 'views_ui_edit_details',
     'add-display' => 'views_ui_add_display',
     'preview' => 'views_ui_preview',
+    'reorder-displays' => 'views_ui_reorder_view',
   );
 
   foreach ($ajax_callbacks as $menu => $menu_callback) {
@@ -224,6 +225,11 @@ function views_ui_theme() {
     'views_tab' => array(
       'variables' => array('body' => NULL),
     ),
+    'views_ui_reorder_displays_form' => array(
+      'render element' => 'form',
+      'file' => 'includes/admin.inc',
+    ),
+
 
     // On behalf of a plugin
     'views_ui_style_plugin_table' => array(
