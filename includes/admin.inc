@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.62 2010-11-20 23:49:29 dereine Exp $
+// $Id: admin.inc,v 1.161.4.63 2010-11-21 00:27:59 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -352,11 +352,16 @@ function views_ui_list_views_form($form, &$form_state) {
     '#default_value' => 'asc',
   );
 
+  // Autosubmit all form elements.
+  ctools_add_js('auto-submit');
+  $form['#attributes']['class'][] = 'ctools-auto-submit-full-form';
+
   $form['submit'] = array(
     '#name' => '', // so it won't in the $_GET args
     '#type' => 'submit',
     '#id' => 'edit-views-apply',
     '#value' => t('Apply'),
+    '#attributes' => array('class' => array('ctools-use-ajax', 'ctools-auto-submit-click')),
   );
 
   if (!empty($_SESSION['views']['#admin'])) {
