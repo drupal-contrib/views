@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.33 2010-11-18 23:34:44 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.34 2010-11-25 20:22:04 dereine Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -647,7 +647,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
       // Convert the query to a string, perform token replacement, and then
       // convert back to an array form for l().
       $options['query'] = drupal_http_build_query($alter['query']);
-      $options['query'] = strtr($alter['query'], $tokens);
+      $options['query'] = strtr($options['query'], $tokens);
       $options['query'] = drupal_get_query_array($options['query']);
     }
     if (isset($alter['alias'])) {
