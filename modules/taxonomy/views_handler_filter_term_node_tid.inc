@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_term_node_tid.inc,v 1.8.6.11 2010-11-12 07:07:08 dereine Exp $
+// $Id: views_handler_filter_term_node_tid.inc,v 1.8.6.12 2010-11-25 18:37:53 dereine Exp $
 
 /**
  * Filter by term id
@@ -9,7 +9,7 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
     parent::init($view, $options);
 
     // Convert legacy vid option to machine name vocabulary.
-    if (!empty($this->options['vid'])) {
+    if (!empty($this->options['vid']) & empty($this->options['vocabulary'])) {
       $vocabularies = taxonomy_get_vocabularies();
       $vid = $this->options['vid'];
       if (isset($vocabularies[$vid], $vocabularies[$vid]->machine_name)) {
