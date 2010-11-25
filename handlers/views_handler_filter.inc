@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter.inc,v 1.10.4.12 2010-11-18 01:05:04 merlinofchaos Exp $
+// $Id: views_handler_filter.inc,v 1.10.4.13 2010-11-25 20:07:44 dereine Exp $
 /**
  * @defgroup views_filter_handlers Views' filter handlers
  * @{
@@ -268,10 +268,8 @@ class views_handler_filter extends views_handler {
    * Validate the options form.
    */
   function expose_validate($form, &$form_state) {
-    if (empty($this->options['expose']['identifier'])) {
-      if (empty($form_state['values']['options']['expose']['identifier'])) {
-        form_error($form['expose']['identifier'], t('The identifier is required if the filter is exposed.'));
-      }
+    if (empty($form_state['values']['options']['expose']['identifier'])) {
+      form_error($form['expose']['identifier'], t('The identifier is required if the filter is exposed.'));
     }
 
     if (!empty($form_state['values']['options']['expose']['identifier']) && $form_state['values']['options']['expose']['identifier'] == 'value') {

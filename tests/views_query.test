@@ -1,5 +1,5 @@
 <?php
-// $Id: views_query.test,v 1.1.2.13 2010-10-05 12:29:56 dereine Exp $
+// $Id: views_query.test,v 1.1.2.14 2010-11-25 20:07:44 dereine Exp $
 
 /**
  * @file
@@ -142,6 +142,20 @@ abstract class ViewsSqlTest extends ViewsTestCase {
       $query->values($record);
     }
     $query->execute();
+  }
+
+  /**
+   * This function allows to enable views ui from a higher class which can't change the setup function anymore.
+   * 
+   * @TODO
+   *   Convert existing setUp functions.
+   */
+  function enableViewsUi() {
+    module_enable(array('views_ui'));
+    // @TODO Figure out why it's required to clear the cache here.
+    views_module_include('views_default.inc', TRUE);
+    views_get_all_views(TRUE);
+    menu_rebuild();
   }
 
   /**
