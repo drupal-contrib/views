@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.8.4.6 2010-11-21 00:14:01 dereine Exp $
+// $Id: views_plugin_style.inc,v 1.8.4.7 2010-11-26 15:00:03 dereine Exp $
 
 /**
  * @defgroup views_style_plugins Views' style plugins
@@ -195,7 +195,7 @@ class views_plugin_style extends views_plugin {
             $grouping = $this->view->field[$grouping_field]->options['label'] . ': ' . $grouping;
           }
         }
-        $sets[$grouping][] = $row;
+        $sets[$grouping][$index] = $row;
       }
     }
     else {
