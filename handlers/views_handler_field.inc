@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.34 2010-11-25 20:22:04 dereine Exp $
+// $Id: views_handler_field.inc,v 1.33.4.35 2010-11-27 20:53:28 dereine Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -245,7 +245,7 @@ class views_handler_field extends views_handler {
          '#type' => 'checkbox',
          '#title' => t('Use absolute path'),
          '#default_value' => $this->options['alter']['absolute'],
-         '#process' => array('ctools_dependent_process'),
+         '#process' => array('form_process_checkbox', 'ctools_dependent_process'),
          '#dependency' => array(
            'edit-options-alter-make-link' => array(1)
          ),
@@ -378,7 +378,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
         '#title' => t('Trim only on a word boundary'),
         '#description' => t('If checked, this field be trimmed only on a word boundary. This is guaranteed to be the maximum characters stated or less. If there are no word boundaries this could trim a field to nothing.'),
         '#default_value' => $this->options['alter']['word_boundary'],
-        '#process' => array('ctools_dependent_process'),
+        '#process' => array('form_process_checkbox', 'ctools_dependent_process'),
         '#dependency' => array(
           'edit-options-alter-trim' => array(1)
         ),
@@ -389,7 +389,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
         '#title' => t('Add an ellipsis'),
         '#description' => t('If checked, a "..." will be added if a field was trimmed.'),
         '#default_value' => $this->options['alter']['ellipsis'],
-        '#process' => array('ctools_dependent_process'),
+        '#process' => array('form_process_checkbox', 'ctools_dependent_process'),
         '#dependency' => array(
           'edit-options-alter-trim' => array(1)
         ),
@@ -400,7 +400,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
         '#title' => t('Field can contain HTML'),
         '#description' => t('If checked, HTML corrector will be run to ensure tags are properly closed after trimming.'),
         '#default_value' => $this->options['alter']['html'],
-        '#process' => array('ctools_dependent_process'),
+        '#process' => array('form_process_checkbox', 'ctools_dependent_process'),
         '#dependency' => array(
           'edit-options-alter-trim' => array(1)
         ),
@@ -411,7 +411,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
         '#title' => t('Strip HTML tags'),
         '#description' => t('If checked, all HTML tags will be stripped.'),
         '#default_value' => $this->options['alter']['strip_tags'],
-        '#process' => array('ctools_dependent_process'),
+        '#process' => array('form_process_checkbox', 'ctools_dependent_process'),
       );
     }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_table.inc,v 1.7.4.9 2010-11-21 11:12:04 dereine Exp $
+// $Id: views_plugin_style_table.inc,v 1.7.4.10 2010-11-27 20:53:28 dereine Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -196,7 +196,7 @@ class views_plugin_style_table extends views_plugin_style {
         $form['info'][$field]['sortable'] = array(
           '#type' => 'checkbox',
           '#default_value' => !empty($this->options['info'][$field]['sortable']),
-          '#process' => array('ctools_dependent_process'),
+          '#process' => array('form_process_checkbox', 'ctools_dependent_process'),
           '#dependency' => array($id => array($field)),
         );
         $form['info'][$field]['default_sort_order'] = array(
