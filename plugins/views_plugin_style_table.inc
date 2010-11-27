@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_table.inc,v 1.7.4.10 2010-11-27 20:53:28 dereine Exp $
+// $Id: views_plugin_style_table.inc,v 1.7.4.11 2010-11-27 21:46:36 dereine Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -230,7 +230,7 @@ class views_plugin_style_table extends views_plugin_style {
           'views-align-center' => t('Center'),
           'views-align-right' => t('Right'),
           ),
-        '#process' => array('ctools_dependent_process'),
+        '#process' => array('form_process_select', 'ctools_dependent_process'),
         '#dependency' => array($id => array($field)),
       );
       $form['info'][$field]['separator'] = array(

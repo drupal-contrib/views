@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_in_operator.inc,v 1.12.4.9 2010-11-27 20:53:28 dereine Exp $
+// $Id: views_handler_filter_in_operator.inc,v 1.12.4.10 2010-11-27 21:46:36 dereine Exp $
 /**
  * Simple filter to handle matching of multiple options selectable via checkboxes
  *
@@ -198,7 +198,7 @@ class views_handler_filter_in_operator extends views_handler_filter {
         $process[] = 'views_process_check_options';
       }
       if ($which == 'all') {
-        if (empty($form_state['exposed']) && (in_array($this->value_form_type, array('checkbox', 'checkboxes', 'radios')))) {
+        if (empty($form_state['exposed']) && (in_array($this->value_form_type, array('checkbox', 'checkboxes', 'radios', 'select')))) {
           $process[] = "form_process_$this->value_form_type";
           $form['value']['#prefix'] = '<div id="edit-options-value-wrapper">';
           $form['value']['#suffix'] = '</div>';
