@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_comment_user_uid.inc,v 1.2.4.2 2010-01-28 00:00:56 dereine Exp $
+// $Id: views_handler_argument_comment_user_uid.inc,v 1.2.4.3 2010-11-27 07:51:13 dereine Exp $
 
 /**
  * Argument handler to accept a user id to check for nodes that
@@ -37,15 +37,19 @@ class views_handler_argument_comment_user_uid extends views_handler_argument {
   function query() {
     $this->ensure_my_table();
 
+    $nid_alias = $this->query->add_field('node', 'nid');
+
     $subselect = db_select('comment', 'c');
     $subselect->addField('c', 'cid');
-    $subselect->condition('uid', $this->argument);
-    $subselect->condition('nid', "$this->table_alias.nid");
+    $subselect->condition('c.uid', $this->argument);
+    $subselect->where("c.nid = $nid_alias");
     $subselect = $subselect->countQuery();
 
     $condition = db_or()
-      ->condition("$this->table_alias.uid", $this->argument, $this->operator)
-      ->condition(0, $subselect, '<');
+      ->condition("$this->table_alias.uid", $this->argument, '=')
+      // @TODO
+      //   Figure out another way to add () around a subquery.
+      ->where("0 < (" . (string) $subselect . ")");
 
     $this->query->add_where(0, $condition);
   }
