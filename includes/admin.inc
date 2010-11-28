@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.66 2010-11-27 19:31:31 dereine Exp $
+// $Id: admin.inc,v 1.161.4.67 2010-11-28 10:23:38 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -401,7 +401,8 @@ function views_ui_preview($js, $view) {
     ),
   );
 
-  $output = drupal_render(drupal_build_form('views_ui_preview_form', $form_state));
+  $form = drupal_build_form('views_ui_preview_form', $form_state);
+  $output = drupal_render($form);
   $args = array();
   if (isset($form_state['view_args']) && $form_state['view_args'] !== '') {
     $args = explode('/', $form_state['view_args']);
