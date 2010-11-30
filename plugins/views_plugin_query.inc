@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.4.10 2010-08-24 16:13:23 dereine Exp $
+// $Id: views_plugin_query.inc,v 1.1.4.11 2010-11-30 22:54:20 merlinofchaos Exp $
 /**
  * @file views_plugin_query.inc
  * Defines the base query class, which is the underlying layer in a View.
@@ -18,7 +18,9 @@ class views_plugin_query extends views_plugin {
    * Constructor; Create the basic query object and fill with default values.
    */
   function init($base_table, $base_field, $options) {
-    $this->options = $options;
+    $this->base_table = $base_table;
+    $this->base_field = $base_field;
+    $this->unpack_options($this->options, $options);
   }
 
   /**
