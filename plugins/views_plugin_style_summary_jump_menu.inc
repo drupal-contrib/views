@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_summary_jump_menu.inc,v 1.1.6.4 2010-11-18 01:33:58 merlinofchaos Exp $
+// $Id: views_plugin_style_summary_jump_menu.inc,v 1.1.6.5 2010-11-30 19:58:52 merlinofchaos Exp $
 /**
  * @file
  * Contains the default summary style plugin, which displays items in an HTML list.
@@ -24,8 +24,11 @@ class views_plugin_style_summary_jump_menu extends views_plugin_style {
   }
 
   function query() {
-    $this->view->set_items_per_page(0);
-    $this->view->set_use_pager(0);
+    $pager = array(
+      'type' => 'none',
+      'options' => array(),
+    );
+    $this->display->handler->set_option('pager', $pager);
   }
 
   function options_form(&$form, &$form_state) {
