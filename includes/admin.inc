@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.67 2010-11-28 10:23:38 dereine Exp $
+// $Id: admin.inc,v 1.161.4.68 2010-11-30 19:47:55 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1456,10 +1456,7 @@ function views_ui_standard_form_buttons(&$form, &$form_state, $form_id, $name = 
     $name = t('Update');
   }
 
-  // remove default validate handler
-  $form['#validate'] = array();
-
-    // Add the override and update button
+  // Add the override and update button
   if ($name == t('Update default display')) {
     $form['buttons']['override_update'] = array(
       '#type' => 'submit',
