@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.40 2010-11-18 23:15:37 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.41 2010-11-30 22:57:34 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -644,6 +644,10 @@ class views_plugin_display extends views_plugin {
         $plugin->init($this->view, $this->display, $options);
       }
       else {
+        if (!isset($this->base_field)) {
+          $views_data = views_fetch_data($this->view->base_table);
+          $this->view->base_field = $views_data['table']['base']['field'];
+        }
         $plugin->init($this->view->base_table, $this->view->base_field, $options);
       }
       $cache[$type][$name] = $plugin;
@@ -1250,7 +1254,7 @@ class views_plugin_display extends views_plugin {
               '#tree' => TRUE,
             ),
           );
-          
+
           $this->view->query->options_form($form['query']['options'], $form_state);
         }
         break;
