@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.43 2010-11-19 00:08:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.44 2010-11-30 20:44:34 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2988,13 +2988,14 @@ function views_ui_add_item_form(&$form_state) {
   $display = &$view->display[$display_id];
 
   $types = views_object_types();
+  $ltitle = $types[$type]['ltitle'];
 
   if (!empty($types[$type]['type'])) {
     $type = $types[$type]['type'];
   }
 
   $form['#title'] = check_plain($display->display_title) . ': ';
-  $form['#title'] .= t('Add @type', array('@type' => $types[$type]['ltitle']));
+  $form['#title'] .= t('Add @type', array('@type' => $ltitle));
   $form['#section'] = $display_id . 'add-item';
 
   // Figure out all the base tables allowed based upon what the relationships provide.
@@ -3043,7 +3044,7 @@ function views_ui_add_item_form(&$form_state) {
   }
   else {
     $form['markup'] = array(
-      '#value' => '<div class="form-item">' . t('There are no @types available to add.', array('@types' =>  $types[$type]['ltitle'])) . '</div>',
+      '#value' => '<div class="form-item">' . t('There are no @types available to add.', array('@types' =>  $ltitle)) . '</div>',
     );
   }
   views_ui_standard_form_buttons($form, $form_state, 'views_ui_add_item_form', t('Add'));
