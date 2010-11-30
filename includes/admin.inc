@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.69 2010-11-30 20:44:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.70 2010-11-30 20:54:00 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -3645,7 +3645,7 @@ function theme_views_ui_style_plugin_table($variables) {
   }
 
   // Add the special 'None' row.
-  $rows[] = array(t('None'), '', '', '', '', array('align' => 'center', 'data' => drupal_render($form['default'][-1])));
+  $rows[] = array(t('None'), '', '', '', '', '', array('align' => 'center', 'data' => drupal_render($form['default'][-1])));
 
   $output .= theme('table', array('header' => $header, 'rows' => $rows));
   $output .= drupal_render_children($form);
