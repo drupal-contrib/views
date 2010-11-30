@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.332.2.36 2010-11-18 23:16:54 merlinofchaos Exp $
+// $Id: views.module,v 1.332.2.37 2010-11-30 20:40:23 merlinofchaos Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -552,6 +552,7 @@ function views_access() {
     }
 
     list($callback, $arguments) = $arg;
+    $arguments = $arguments ? $arguments : array();
     if (function_exists($callback) && call_user_func_array($callback, $arguments)) {
       return TRUE;
     }
