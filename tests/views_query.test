@@ -1,5 +1,5 @@
 <?php
-// $Id: views_query.test,v 1.1.2.14 2010-11-25 20:07:44 dereine Exp $
+// $Id: views_query.test,v 1.1.2.15 2010-12-01 20:05:06 dereine Exp $
 
 /**
  * @file
@@ -124,7 +124,7 @@ abstract class ViewsTestCase extends DrupalWebTestCase {
 abstract class ViewsSqlTest extends ViewsTestCase {
 
   protected function setUp() {
-    parent::setUp('views');
+    parent::setUp('views', 'views_ui');
 
     // Define the schema and views data variable before enabling the test module.
     variable_set('views_test_schema', $this->schemaDefinition());
@@ -310,13 +310,6 @@ abstract class ViewsSqlTest extends ViewsTestCase {
       ),
     );
     return $data;
-  }
-
-  /**
-   * The views plugin definition. Override it if you test provides a plugin.
-   */
-  protected function viewsPlugins() {
-    return array();
   }
 
   /**
