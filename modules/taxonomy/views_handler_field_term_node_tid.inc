@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_term_node_tid.inc,v 1.4.4.6 2010-11-05 07:20:54 dereine Exp $
+// $Id: views_handler_field_term_node_tid.inc,v 1.4.4.7 2010-12-03 20:46:32 dereine Exp $
 
 /**
  * Field handler for terms.
@@ -77,7 +77,7 @@ class views_handler_field_term_node_tid extends views_handler_field_prerender_li
     $this->add_additional_fields();
   }
 
-  function pre_render($values) {
+  function pre_render(&$values) {
     $this->field_alias = $this->aliases['vid'];
     $vids = array();
     foreach ($values as $result) {

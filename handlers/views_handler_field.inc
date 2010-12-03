@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.35 2010-11-27 20:53:28 dereine Exp $
+// $Id: views_handler_field.inc,v 1.33.4.36 2010-12-03 20:46:32 dereine Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -453,7 +453,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
    * @param $values
    *   An array of all objects returned from the query.
    */
-  function pre_render($values) { }
+  function pre_render(&$values) { }
 
   /**
    * Render the field.
