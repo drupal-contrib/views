@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.32 2010-11-27 20:12:58 dereine Exp $
+// $Id: theme.inc,v 1.84.4.33 2010-12-04 07:34:40 dereine Exp $
 
 /**
  * @file theme.inc
@@ -205,7 +205,7 @@ function theme_views_view_field($vars) {
   $view = $vars['view'];
   $field = $vars['field'];
   $row = $vars['row'];
-  return $field->advanced_render($row);
+  return $vars['output'];
 }
 
 /**

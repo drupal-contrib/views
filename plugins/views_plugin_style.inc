@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.8.4.7 2010-11-26 15:00:03 dereine Exp $
+// $Id: views_plugin_style.inc,v 1.8.4.8 2010-12-04 07:34:40 dereine Exp $
 
 /**
  * @defgroup views_style_plugins Views' style plugins
@@ -223,10 +223,10 @@ class views_plugin_style extends views_plugin {
     $this->view->row_index = 0;
     $keys = array_keys($this->view->field);
     foreach ($result as $count => $row) {
+      $this->view->row_index = $count;
       foreach ($keys as $id) {
         $this->rendered_fields[$count][$id] = $this->view->field[$id]->theme($row);
       }
-      $this->view->row_index = $count;
     }
     unset($this->view->row_index);
   }
