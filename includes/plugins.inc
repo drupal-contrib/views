@@ -1,5 +1,5 @@
 <?php
-// $Id: plugins.inc,v 1.152.2.13 2010-12-01 00:02:05 merlinofchaos Exp $
+// $Id: plugins.inc,v 1.152.2.14 2010-12-04 00:15:13 merlinofchaos Exp $
 /**
  * @file plugins.inc
  * Built in plugins for Views output handling.
@@ -96,6 +96,7 @@ function views_views_plugins() {
         'handler' => 'views_plugin_style_default',
         'theme' => 'views_view_unformatted',
         'uses row plugin' => TRUE,
+        'uses row class' => TRUE,
         'uses grouping' => TRUE,
         'uses options' => TRUE,
         'type' => 'normal',
@@ -107,6 +108,7 @@ function views_views_plugins() {
         'handler' => 'views_plugin_style_list',
         'theme' => 'views_view_list',
         'uses row plugin' => TRUE,
+        'uses row class' => TRUE,
         'uses options' => TRUE,
         'type' => 'normal',
         'help topic' => 'style-list',
@@ -117,6 +119,7 @@ function views_views_plugins() {
         'handler' => 'views_plugin_style_grid',
         'theme' => 'views_view_grid',
         'uses row plugin' => TRUE,
+        'uses row class' => TRUE,
         'uses options' => TRUE,
         'type' => 'normal',
         'help topic' => 'style-grid',
@@ -127,6 +130,7 @@ function views_views_plugins() {
         'handler' => 'views_plugin_style_table',
         'theme' => 'views_view_table',
         'uses row plugin' => FALSE,
+        'uses row class' => TRUE,
         'uses fields' => TRUE,
         'uses options' => TRUE,
         'type' => 'normal',
