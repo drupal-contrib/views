@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.4.17 2010-11-26 11:04:28 dereine Exp $
+// $Id: taxonomy.views.inc,v 1.57.4.18 2010-12-04 07:46:13 dereine Exp $
 /**
  * @file
  *
@@ -173,7 +173,7 @@ function taxonomy_views_data() {
       'field' => 'description', // the real field
       'group' => t('Taxonomy'), // The group it appears in on the UI,
       'handler' => 'views_handler_field_markup',
-      'format' => filter_default_format(),
+      'format' => array('field' => 'format'),
     ),
   );
 
