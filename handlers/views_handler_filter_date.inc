@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_date.inc,v 1.3.6.4 2010-11-18 00:38:17 merlinofchaos Exp $
+// $Id: views_handler_filter_date.inc,v 1.3.6.5 2010-12-05 21:38:49 dereine Exp $
 
 /**
  * Filter to handle dates stored as a timestamp.
@@ -139,7 +139,7 @@ class views_handler_filter_date extends views_handler_filter_numeric {
     }
     // %s is safe here because strtotime scrubbed the input and we might
     // have a string if using offset.
-    $this->query->add_where($this->options['group'], $field, array($a, $b), 'BETWEEN');
+    $this->query->add_where($this->options['group'], "$field BETWEEN $a AND $b", array(), 'formula');
   }
 
   function op_simple($field) {
@@ -147,6 +147,6 @@ class views_handler_filter_date extends views_handler_filter_numeric {
     if (!empty($this->value['type']) && $this->value['type'] == 'offset') {
       $value = '***CURRENT_TIME***' . sprintf('%+d', $value); // keep sign
     }
-    $this->query->add_where($this->options['group'], $field, $value, $this->operator);
+    $this->query->add_where($this->options['group'], "$field $this->operator $value", array(), 'formula');
   }
 }
