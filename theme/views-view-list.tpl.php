@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view-list.tpl.php,v 1.3.6.2 2010-12-04 07:39:35 dereine Exp $
+// $Id: views-view-list.tpl.php,v 1.3.6.3 2010-12-07 17:19:09 dereine Exp $
 /**
  * @file views-view-list.tpl.php
  * Default simple view template to display a list of rows.
@@ -9,7 +9,6 @@
  * @ingroup views_templates
  */
 ?>
-<div class="item-list">
 <?php print $wrapper_prefix; ?>
   <?php if (!empty($title)) : ?>
     <h3><?php print $title; ?></h3>
