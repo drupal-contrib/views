@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.18 2010-12-08 20:27:58 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.19 2010-12-08 23:17:32 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -412,6 +412,11 @@ function template_preprocess_views_view_table(&$vars) {
     $vars['class'] .= " sticky-enabled";
   }
   $vars['class'] .= ' cols-'. count($vars['rows']);
+
+  $vars['attributes'] = '';
+  if (!empty($handler->options['summary'])) {
+    $vars['attributes'] = drupal_attributes(array('summary' => $handler->options['summary']));
+  }
 }
 
 /**
@@ -477,6 +482,10 @@ function template_preprocess_views_view_grid(&$vars) {
     }
   }
   $vars['rows'] = $rows;
+  $vars['attributes'] = '';
+  if (!empty($handler->options['summary'])) {
+    $vars['attributes'] = drupal_attributes(array('summary' => $handler->options['summary']));
+  }
 }
 
 /**

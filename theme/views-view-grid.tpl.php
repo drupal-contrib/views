@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view-grid.tpl.php,v 1.3.4.1 2010-03-12 01:05:46 merlinofchaos Exp $
+// $Id: views-view-grid.tpl.php,v 1.3.4.2 2010-12-08 23:17:32 merlinofchaos Exp $
 /**
  * @file views-view-grid.tpl.php
  * Default simple view template to display a rows in a grid.
@@ -13,7 +13,7 @@
 <?php if (!empty($title)) : ?>
   <h3><?php print $title; ?></h3>
 <?php endif; ?>
-<table class="views-view-grid">
+<table class="views-view-grid"<?php print $attributes; ?>>
   <tbody>
     <?php foreach ($rows as $row_number => $columns): ?>
       <?php
