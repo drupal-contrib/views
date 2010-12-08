@@ -1,5 +1,5 @@
 <?php
-//$Id: profile.views.inc,v 1.10.2.1 2010-03-10 19:52:42 merlinofchaos Exp $
+//$Id: profile.views.inc,v 1.10.2.2 2010-12-08 22:15:59 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -149,6 +149,7 @@ function profile_views_fetch_field($field) {
         ),
         'filter' => array(
           'handler' => 'views_handler_filter_boolean_operator',
+          'accept null' => TRUE,
         ),
         // @todo there ought to be a boolean argument handler
       );
