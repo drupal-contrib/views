@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.17 2010-10-12 21:33:47 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.18 2010-12-08 20:27:58 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -330,6 +330,8 @@ function template_preprocess_views_view_table(&$vars) {
   if ($query) {
     $query = '&' . $query;
   }
+
+  $header = array();
 
   // Fields must be rendered in order as of Views 2.3, so we will pre-render
   // everything.
