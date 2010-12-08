@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.34 2010-12-04 07:39:35 dereine Exp $
+// $Id: theme.inc,v 1.84.4.35 2010-12-08 20:27:53 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -389,6 +389,8 @@ function template_preprocess_views_view_table(&$vars) {
   $order    = !empty($handler->order) ? $handler->order : 'asc';
 
   $query    = tablesort_get_query_parameters();
+
+  $header = array();
 
   // Fields must be rendered in order as of Views 2.3, so we will pre-render
   // everything.
