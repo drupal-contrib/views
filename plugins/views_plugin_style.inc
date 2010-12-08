@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style.inc,v 1.5.2.12 2010-12-04 00:15:14 merlinofchaos Exp $
+// $Id: views_plugin_style.inc,v 1.5.2.13 2010-12-08 23:05:02 merlinofchaos Exp $
 
 /**
  * @defgroup views_style_plugins Views' style plugins
@@ -218,7 +218,7 @@ class views_plugin_style extends views_plugin {
         $rows = array();
         foreach ($records as $row_index => $row) {
           $this->view->row_index = $row_index;
-          $rows[] = $this->row_plugin->render($row);
+          $rows[$row_index] = $this->row_plugin->render($row);
         }
       }
       else {
