@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.47 2010-12-04 00:15:13 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.48 2010-12-08 20:23:40 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -848,7 +848,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
     $alt = strtr($alter['alt'], $tokens);
     // Set the title attribute of the link only if it improves accessibility
     if ($alt && $alt != $text) {
-      $options['attributes']['title'] = $alt;
+      $options['attributes']['title'] = html_entity_decode($alt, ENT_QUOTES);
     }
 
     $class = strtr($alter['link_class'], $tokens);
