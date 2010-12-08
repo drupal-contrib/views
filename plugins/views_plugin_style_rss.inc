@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_rss.inc,v 1.2.6.5 2010-11-05 07:20:54 dereine Exp $
+// $Id: views_plugin_style_rss.inc,v 1.2.6.6 2010-12-08 21:47:29 dereine Exp $
 /**
  * @file
  * Contains the RSS style plugin.
@@ -18,6 +18,7 @@ class views_plugin_style_rss extends views_plugin_style {
     if ($input) {
       $url_options['query'] = $input;
     }
+    $url_options['absolute'] = TRUE;
 
     $url = url($this->view->get_url(NULL, $path), $url_options);
     if ($display->has_path()) {
