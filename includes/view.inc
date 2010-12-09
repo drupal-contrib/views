@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.34 2010-12-01 20:05:06 dereine Exp $
+// $Id: view.inc,v 1.167.4.35 2010-12-09 19:24:16 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -726,6 +726,12 @@ class view extends views_db_object {
 
     if (!empty($this->executed)) {
       return TRUE;
+    }
+
+    // Don't allow to use deactivated displays.
+    if (!$this->display[$this->current_display]->handler->get_option('enabled')) {
+      $this->build_info['fail'] = TRUE;
+      return FALSE;
     }
 
     // Let modules modify the view just prior to executing it.
