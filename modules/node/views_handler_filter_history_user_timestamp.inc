@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_history_user_timestamp.inc,v 1.3.4.2 2010-02-06 16:29:52 dereine Exp $
+// $Id: views_handler_filter_history_user_timestamp.inc,v 1.3.4.3 2010-12-09 20:19:32 merlinofchaos Exp $
 /**
  * Filter for new content
  *
@@ -51,10 +51,10 @@ class views_handler_filter_history_user_timestamp extends views_handler_filter {
 
     $this->ensure_my_table();
     $field = "$this->table_alias.$this->real_field";
-    $node = $this->query->ensure_table('node');
+    $node = $this->query->ensure_table('node', $this->relationship);
 
     if (module_exists('comment')) {
-      $ncs = $this->query->ensure_table('node_comment_statistics');
+      $ncs = $this->query->ensure_table('node_comment_statistics', $this->relationship);
       $clause = ("OR $ncs.last_comment_timestamp > (***CURRENT_TIME*** - $limit)");
       $clause2 = "OR $field < $ncs.last_comment_timestamp";
     }
