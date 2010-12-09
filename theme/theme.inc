@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.19 2010-12-08 23:17:32 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.20 2010-12-09 23:54:16 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -481,6 +481,19 @@ function template_preprocess_views_view_grid(&$vars) {
       }
     }
   }
+  // Add first/last column class
+  foreach ($rows as $row_number => $row) {
+    foreach ($row as $column_number => $column) {
+      $column_classes[$row_number][$column_number] = 'col-' . ($column_number + 1);
+      if ($column_number == 0) {
+        $column_classes[$row_number][$column_number] .= ' col-first';
+      }
+      elseif (count($rows[$row_number]) == ($column_number + 1)) {
+        $column_classes[$row_number][$column_number] .= ' col-last';
+      }
+    }
+  }
+  $vars['column_classes'] = $column_classes;
   $vars['rows'] = $rows;
   $vars['attributes'] = '';
   if (!empty($handler->options['summary'])) {

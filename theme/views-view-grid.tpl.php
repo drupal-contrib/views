@@ -1,5 +1,5 @@
 <?php
-// $Id: views-view-grid.tpl.php,v 1.3.4.2 2010-12-08 23:17:32 merlinofchaos Exp $
+// $Id: views-view-grid.tpl.php,v 1.3.4.3 2010-12-09 23:54:16 merlinofchaos Exp $
 /**
  * @file views-view-grid.tpl.php
  * Default simple view template to display a rows in a grid.
@@ -27,7 +27,7 @@
       ?>
       <tr class="<?php print $row_class; ?>">
         <?php foreach ($columns as $column_number => $item): ?>
-          <td class="<?php print 'col-'. ($column_number + 1); ?>">
+          <td class="<?php print $column_classes[$row_number][$column_number]; ?>">
             <?php print $item; ?>
           </td>
         <?php endforeach; ?>
