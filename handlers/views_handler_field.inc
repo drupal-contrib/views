@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.50 2010-12-09 23:18:42 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.51 2010-12-09 23:28:56 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -868,8 +868,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
       $options['attributes']['class'] = $class;
     }
 
-    $rel = strtr($alter['rel'], $tokens);
-    if ($rel) {
+    if (!empty($alter['rel']) && $rel = strtr($alter['rel'], $tokens)) {
       $options['attributes']['rel'] = $rel;
     }
 
