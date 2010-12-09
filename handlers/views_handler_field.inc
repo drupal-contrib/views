@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.38 2010-12-08 20:23:37 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.39 2010-12-09 19:55:24 dereine Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -258,7 +258,6 @@ class views_handler_field extends views_handler {
       }
       else {
         $tokens = $last_field->get_render_tokens($fake_item);
-        dsm($tokens);
       }
 
       $value = strip_tags($this->render_altered($fake_item, $tokens));
