@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_term_node_tid.inc,v 1.3.2.1 2009-07-01 23:06:44 merlinofchaos Exp $
+// $Id: views_handler_field_term_node_tid.inc,v 1.3.2.2 2010-12-09 19:26:25 merlinofchaos Exp $
 
 /**
  * Field handler for terms.
@@ -78,7 +78,7 @@ class views_handler_field_term_node_tid extends views_handler_field_prerender_li
 
     if ($vids) {
       $voc = '';
-      if (!empty($this->options['limit']) && !empty($this->options['vids'])) {
+      if (!empty($this->options['limit']) && !empty(array_filter($this->options['vids']))) {
         $voc = " AND td.vid IN (" . implode(', ', array_keys(array_filter($this->options['vids']))) . ")";
       }
 
