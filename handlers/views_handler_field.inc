@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.49 2010-12-09 21:31:15 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.50 2010-12-09 23:18:42 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -487,6 +487,16 @@ class views_handler_field extends views_handler {
           'edit-options-alter-make-link' => array(1)
         ),
       );
+      $form['alter']['rel'] = array(
+        '#title' => t('Rel Text'),
+        '#type' => 'textfield',
+        '#default_value' => $this->options['alter']['rel'],
+        '#description' => t('Include Rel attribute for use in lightbox2 or other javascript utility.'),
+        '#process' => array('views_process_dependency'),
+        '#dependency' => array(
+          'edit-options-alter-make-link' => array(1)
+        ),
+      );
       $form['alter']['prefix'] = array(
         '#title' => t('Prefix text'),
         '#type' => 'textfield',
@@ -856,6 +866,11 @@ If you would like to have the characters %5B and %5D please use the html entity 
     $class = strtr($alter['link_class'], $tokens);
     if ($class) {
       $options['attributes']['class'] = $class;
+    }
+
+    $rel = strtr($alter['rel'], $tokens);
+    if ($rel) {
+      $options['attributes']['rel'] = $rel;
     }
 
     $target = check_plain(trim(strtr($alter['target'],$tokens)));
