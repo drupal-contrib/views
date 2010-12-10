@@ -1,5 +1,5 @@
 <?php
-// $Id: base.inc,v 1.3.2.2 2010-12-10 00:33:45 merlinofchaos Exp $
+// $Id: base.inc,v 1.3.2.3 2010-12-10 07:29:02 dereine Exp $
 /**
  * @file
  *
@@ -92,9 +92,6 @@ class views_object {
         }
 
         $this->unpack_options($storage[$key], $value, isset($definition[$key]['contains']) ? $definition[$key]['contains'] : array(), FALSE);
-      }
-      else if (!is_array($definition[$key])) {
-        vpr(t('There is some bad views data definition, the code should use options_definition. Some context: key: @key, value: @value', array('@key' => $key, '@value' => $value)));
       }
       else if (!empty($definition[$key]['translatable']) && !empty($value)) {
         $storage[$key] = t($value);
