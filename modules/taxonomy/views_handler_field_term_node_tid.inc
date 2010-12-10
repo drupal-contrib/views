@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_term_node_tid.inc,v 1.4.4.7 2010-12-03 20:46:32 dereine Exp $
+// $Id: views_handler_field_term_node_tid.inc,v 1.4.4.8 2010-12-10 00:04:07 dereine Exp $
 
 /**
  * Field handler for terms.
@@ -98,7 +98,7 @@ class views_handler_field_term_node_tid extends views_handler_field_prerender_li
       $query->orderby('td.name');
       $query->condition('tn.nid', $vids);
       $query->addTag('term_access');
-      if (!empty($this->options['limit']) && !empty($this->options['vocabularies'])) {
+      if (!empty($this->options['limit']) && !empty(array_filter($this->options['vocabularies']))) {
         $query->condition('tv.machine_name', $this->options['vocabularies']);
       }
       $result = $query->execute();
