@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_date.inc,v 1.3.6.5 2010-12-05 21:38:49 dereine Exp $
+// $Id: views_handler_filter_date.inc,v 1.3.6.6 2010-12-10 00:42:11 merlinofchaos Exp $
 
 /**
  * Filter to handle dates stored as a timestamp.
@@ -73,7 +73,7 @@ class views_handler_filter_date extends views_handler_filter_numeric {
 
     if ($operators[$operator]['values'] == 1) {
       $convert = strtotime($value['value']);
-      if ($convert == -1 || $convert === FALSE) {
+      if (!empty($form['value']) && ($convert == -1 || $convert === FALSE)) {
         form_error($form['value'], t('Invalid date format.'));
       }
     }
