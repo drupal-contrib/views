@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.37 2010-12-10 08:12:31 dereine Exp $
+// $Id: theme.inc,v 1.84.4.38 2010-12-10 08:19:15 dereine Exp $
 
 /**
  * @file theme.inc
@@ -519,6 +519,10 @@ function template_preprocess_views_view_table(&$vars) {
     $vars['classes_array'][] = "sticky-enabled";
   }
   $vars['classes_array'][] = 'cols-'. count($vars['rows']);
+
+  if (!empty($handler->options['summary'])) {
+    $vars['attributes_array'] = array('summary' => $handler->options['summary']);
+  }
 }
 
 /**
@@ -618,6 +622,10 @@ function template_preprocess_views_view_grid(&$vars) {
     }
   }
   $vars['rows'] = $rows;
+
+  if (!empty($handler->options['summary'])) {
+    $vars['attributes_array'] = array('summary' => $handler->options['summary']);
+  }
 }
 
 /**

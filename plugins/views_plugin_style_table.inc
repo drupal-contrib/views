@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_table.inc,v 1.7.4.11 2010-11-27 21:46:36 dereine Exp $
+// $Id: views_plugin_style_table.inc,v 1.7.4.12 2010-12-10 08:19:15 dereine Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -20,6 +20,7 @@ class views_plugin_style_table extends views_plugin_style {
     $options['override'] = array('default' => TRUE);
     $options['sticky'] = array('default' => FALSE);
     $options['order'] = array('default' => 'asc');
+    $options['summary'] = array('default' => '');
 
     return $options;
   }
@@ -161,6 +162,13 @@ class views_plugin_style_table extends views_plugin_style {
       '#options' => array('asc' => t('Ascending'), 'desc' => t('Descending')),
       '#default_value' => $this->options['order'],
       '#description' => t('If a default sort order is selected, what order should it use by default.'),
+    );
+
+    $form['summary'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Table summary'),
+      '#description' => t('This value will be displayed as table-summary attribute in the html. Set this for better accessiblity of your site.'),
+      '#default_value' => $this->options['summary'],
     );
 
     // Note: views UI registers this theme handler on our behalf. Your module
