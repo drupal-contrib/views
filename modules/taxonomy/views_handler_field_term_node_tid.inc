@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_term_node_tid.inc,v 1.4.2.1 2010-12-09 19:26:27 merlinofchaos Exp $
+// $Id: views_handler_field_term_node_tid.inc,v 1.4.2.2 2010-12-10 19:15:11 dereine Exp $
 
 /**
  * Field handler for terms.
@@ -78,8 +78,9 @@ class views_handler_field_term_node_tid extends views_handler_field_prerender_li
 
     if ($vids) {
       $voc = '';
-      if (!empty($this->options['limit']) && !empty(array_filter($this->options['vids']))) {
-        $voc = " AND td.vid IN (" . implode(', ', array_keys(array_filter($this->options['vids']))) . ")";
+      $vids = array_filter($this->options['vids']);
+      if (!empty($this->options['limit']) && !empty($vids)) {
+        $voc = " AND td.vid IN (" . implode(', ', array_keys($vids)) . ")";
       }
 
       $result = db_query("SELECT tn.vid AS node_vid, td.*, v.name as vocabulary FROM {term_data} td INNER JOIN {term_node} tn ON td.tid = tn.tid INNER JOIN {vocabulary} v ON v.vid = td.vid WHERE tn.vid IN (" . implode(', ', $vids) . ")$voc ORDER BY td.weight, td.name");
