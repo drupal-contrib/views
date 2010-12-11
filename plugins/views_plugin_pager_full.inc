@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager_full.inc,v 1.1.4.12 2010-12-10 00:52:18 merlinofchaos Exp $
+// $Id: views_plugin_pager_full.inc,v 1.1.4.13 2010-12-11 00:23:44 dereine Exp $
 
 /**
  * The plugin to handle full pager.
@@ -121,7 +121,7 @@ class views_plugin_pager_full extends views_plugin_pager {
       '#title' => t('All items label'),
       '#description' => t('Which label will be used to display all items'),
       '#default_value' => $this->options['expose']['items_per_page_options_all_label'],
-      '#process' => array('views_process_depency'),
+      '#process' => array('ctools_dependent_process'),
       '#dependency' => array(
         'edit-items-per-page-options-all' => array(1),
       ),
