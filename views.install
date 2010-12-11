@@ -1,5 +1,5 @@
 <?php
-// $Id: views.install,v 1.46.2.15 2010-12-10 00:39:21 merlinofchaos Exp $
+// $Id: views.install,v 1.46.2.16 2010-12-11 00:15:45 dereine Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
@@ -518,4 +518,6 @@ function views_update_6012() {
   );
 
   db_add_field($ret, 'views_view', 'human_name', $new_field);
+
+  return $ret;
 }
