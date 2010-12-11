@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.9 2010-12-11 19:10:53 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.10 2010-12-11 19:12:33 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -153,7 +153,7 @@ class views_handler_field_field extends views_handler_field {
 
     // Provide an instance array for hook_field_formatter_settings_form().
     ctools_include('fields');
-    $instance = ctools_fields_fake_field_instance($this->definition['field_name'], 'ctools', $formatter, $settings);
+    $instance = ctools_fields_fake_field_instance($this->definition['field_name'], '_dummy', $formatter, $settings);
 
     // Store the settings in a '_dummy' view mode.
     $instance['display']['_dummy'] = array(
