@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.93.2.17 2010-12-10 00:39:21 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.93.2.18 2010-12-13 23:42:28 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -489,6 +489,13 @@ function node_views_data() {
     // Information for sorting on a nid.
     'sort' => array(
       'handler' => 'views_handler_sort',
+    ),
+    'relationship' => array(
+      'handler' => 'views_handler_relationship',
+      'base' => 'node',
+      'base field' => 'nid',
+      'title' => t('Node'),
+      'label' => t('Get the actual node from a node revision.'),
     ),
   );
 
