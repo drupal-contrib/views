@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.22 2010-12-10 00:57:38 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.23 2010-12-13 23:16:48 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -2458,6 +2458,14 @@ function views_ui_config_item_form(&$form_state) {
 
       $form['#title'] = check_plain($view->display[$display_id]->display_title) . ': ';
       $form['#title'] .= t('Configure @type %item', array('@type' => $types[$type]['lstitle'], '%item' => $handler->ui_name()));
+
+      $form['form_description'] = array(
+        '#type' => 'markup',
+        '#weight' => -1000,
+        '#prefix' => '<div class="form-item description">',
+        '#suffix' => '</div>',
+        '#value' => $handler->definition['help'],
+      );
 
       $form['#section'] = $display_id . '-' . $type . '-' . $id;
 
