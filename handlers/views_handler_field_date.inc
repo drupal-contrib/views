@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_date.inc,v 1.2.2.2 2010-08-13 22:27:20 merlinofchaos Exp $
+// $Id: views_handler_field_date.inc,v 1.2.2.3 2010-12-13 22:47:27 merlinofchaos Exp $
 /**
  * A handler to provide proper displays for dates.
  *
@@ -23,9 +23,9 @@ class views_handler_field_date extends views_handler_field {
       '#type' => 'select',
       '#title' => t('Date format'),
       '#options' => array(
-        'small' => format_date($time, 'small'),
-        'medium' => format_date($time, 'medium'),
-        'large' => format_date($time, 'large'),
+        'small' => t('Short date format') . ' ' . format_date($time, 'small'),
+        'medium' => t('Medium date format') . ' ' . format_date($time, 'medium'),
+        'large' => t('Long date format') . ' ' . format_date($time, 'large'),
         'custom' => t('Custom'),
         'raw time ago' => t('Time ago'),
         'time ago' => t('Time ago (with "ago" appended)'),
