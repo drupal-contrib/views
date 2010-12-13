@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.23 2010-12-13 23:16:48 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.24 2010-12-13 23:46:36 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1250,13 +1250,16 @@ function template_preprocess_views_ui_edit_item(&$vars) {
     // Get relationship labels
     $relationships = array();
     // @todo: get_handlers()
-    foreach ($display->handler->get_option('relationships') as $id => $relationship) {
-      $handler = views_get_handler($relationship['table'], $relationship['field'], 'relationship');
-      if (empty($handler)) {
-        continue;
+    $handlers = $display->handler->get_handlers('relationship');
+    if ($handlers) {
+      foreach ($handlers as $id => $relationship) {
+        $handler = views_get_handler($relationship['table'], $relationship['field'], 'relationship');
+        if (empty($handler)) {
+          continue;
+        }
+        $handler->init($view, $relationship);
+        $relationships[$id] = $handler->label();
       }
-      $handler->init($view, $relationship);
-      $relationships[$id] = $handler->label();
     }
   }
 
