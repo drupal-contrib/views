@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.42 2010-12-09 23:59:01 dereine Exp $
+// $Id: views_handler_field.inc,v 1.33.4.43 2010-12-13 17:12:20 dereine Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -295,6 +295,7 @@ class views_handler_field extends views_handler {
         'path' => array('default' => '', 'translatable' => TRUE),
         'absolute' => array('default' => '', 'translatable' => FALSE),
         'alt' => array('default' => '', 'translatable' => TRUE),
+        'rel' => array('default' => ''),
         'link_class' => array('default' => ''),
         'prefix' => array('default' => '', 'translatable' => TRUE),
         'suffix' => array('default' => '', 'translatable' => TRUE),
