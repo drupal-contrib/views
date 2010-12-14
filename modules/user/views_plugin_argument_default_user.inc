@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_argument_default_user.inc,v 1.1 2008-09-03 19:21:30 merlinofchaos Exp $
+// $Id: views_plugin_argument_default_user.inc,v 1.1.4.1 2010-12-14 00:00:58 merlinofchaos Exp $
 /**
  * @file
  * Contains the user from URL argument default plugin.
@@ -53,10 +53,12 @@ class views_plugin_argument_default_user extends views_plugin_argument_default {
       return arg(1);
     }
 
-    if (arg(0) == 'node' && is_numeric(arg(1))) {
-      $node = node_load(arg(1));
-      if ($node) {
-        return $node->uid;
+    if (!empty($this->argument->options[$this->option_name])) {
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = node_load(arg(1));
+        if ($node) {
+          return $node->uid;
+        }
       }
     }
   }
