@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_jump_menu.inc,v 1.1.6.5 2010-10-14 21:59:45 merlinofchaos Exp $
+// $Id: views_plugin_style_jump_menu.inc,v 1.1.6.6 2010-12-14 00:33:49 merlinofchaos Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -120,17 +120,17 @@ class views_plugin_style_jump_menu extends views_plugin_style {
         // use parse_url() to preserve query and fragment in case the user
         // wants to do fun tricks.
         $url = parse_url($path);
-        $options = array();
+        $url_options = array();
         if (isset($url['query'])) {
           $path = strtr($path, array('?' . $url['query'] => ''));
-          $options['query'] = $url['query'];
+          $url_options['query'] = $url['query'];
         }
         if (isset($url['fragment'])) {
           $path = strtr($path, array('#' . $url['fragment'] => ''));
-          $options['fragment'] = $url['fragment'];
+          $url_options['fragment'] = $url['fragment'];
         }
 
-        $path = url($path, $options);
+        $path = url($path, $url_options);
         $field = strip_tags($this->row_plugin->render($row));
         if ($title) {
           $options[$title][$path] = $field;
