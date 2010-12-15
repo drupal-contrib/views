@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.20 2010-12-09 23:54:16 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.14.2.1 2010-12-15 05:24:41 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -24,7 +24,7 @@ function _views_theme_functions($hook, $view, $display = NULL) {
   if ($display) {
     $themes[] = $hook . '__' . $view->name . '__' . $display->id;
     $themes[] = $hook . '__' . $display->id;
-    $themes[] = $hook . '__' . preg_replace('/[^a-z0-9]/', '_', strtolower($view->tag));
+    $themes[] = $hook . '__' . preg_replace('/[^a-z0-9]/', '-', strtolower($view->tag));
     if ($display->id != $display->display_plugin) {
       $themes[] = $hook . '__' . $view->name . '__' . $display->display_plugin;
       $themes[] = $hook . '__' . $display->display_plugin;
@@ -150,8 +150,8 @@ function template_preprocess_views_view(&$vars) {
           array(
             'view_name' => $view->name,
             'view_display_id' => $view->current_display,
-            'view_args' => implode('/', $view->args),
-            'view_path' => $_GET['q'],
+            'view_args' => check_plain(implode('/', $view->args)),
+            'view_path' => check_plain($_GET['q']),
             // Pass through URL to ensure we get e.g. language prefixes.
 //            'view_base_path' => isset($view->display['page']) ? substr(url($view->display['page']->display_options['path']), strlen($base_path)) : '',
             'view_base_path' => $view->get_path(),
@@ -184,7 +184,7 @@ function template_preprocess_views_view_fields(&$vars) {
     // render this even if set to exclude so it can be used elsewhere.
     $field_output = $view->style_plugin->get_field($view->row_index, $id);
     $empty = $field_output !== 0 && empty($field_output);
-    if (empty($field->options['exclude']) && (!$empty || (empty($field->options['hide_empty']) && empty($vars['options']['hide_empty'])))) {
+    if (empty($field->options['exclude']) && (!$empty || empty($field->options['hide_empty']))) {
       $object = new stdClass();
 
       $object->content = $field_output;
@@ -254,11 +254,7 @@ function template_preprocess_views_view_summary(&$vars) {
     $args = $view->args;
     $args[$argument->position] = $argument->summary_argument($row);
 
-    $base_path = NULL;
-    if (!empty($argument->options['style_options']['base_path'])) {
-      $base_path = $argument->options['style_options']['base_path'];
-    }
-    $vars['rows'][$id]->url = url($view->get_url($args, $base_path), $url_options);
+    $vars['rows'][$id]->url = url($view->get_url($args), $url_options);
     $vars['rows'][$id]->count = intval($row->{$argument->count_alias});
     if ($vars['rows'][$id]->url == base_path() . $_GET['q'] || $vars['rows'][$id]->url == base_path() . drupal_get_path_alias($_GET['q'])) {
       $vars['classes'][$id] = 'active';
@@ -291,11 +287,7 @@ function template_preprocess_views_view_summary_unformatted(&$vars) {
     $args = $view->args;
     $args[$argument->position] = $argument->summary_argument($row);
 
-    $base_path = NULL;
-    if (!empty($argument->options['style_options']['base_path'])) {
-      $base_path = $argument->options['style_options']['base_path'];
-    }
-    $vars['rows'][$id]->url = url($view->get_url($args, $base_path), $url_options);
+    $vars['rows'][$id]->url = url($view->get_url($args), $url_options);
     $vars['rows'][$id]->count = intval($row->{$argument->count_alias});
     if ($vars['rows'][$id]->url == base_path() . $_GET['q'] || $vars['rows'][$id]->url == base_path() . drupal_get_path_alias($_GET['q'])) {
       $vars['classes'][$id] = 'active';
@@ -330,8 +322,6 @@ function template_preprocess_views_view_table(&$vars) {
   if ($query) {
     $query = '&' . $query;
   }
-
-  $header = array();
 
   // Fields must be rendered in order as of Views 2.3, so we will pre-render
   // everything.
@@ -412,11 +402,6 @@ function template_preprocess_views_view_table(&$vars) {
     $vars['class'] .= " sticky-enabled";
   }
   $vars['class'] .= ' cols-'. count($vars['rows']);
-
-  $vars['attributes'] = '';
-  if (!empty($handler->options['summary'])) {
-    $vars['attributes'] = drupal_attributes(array('summary' => $handler->options['summary']));
-  }
 }
 
 /**
@@ -481,24 +466,7 @@ function template_preprocess_views_view_grid(&$vars) {
       }
     }
   }
-  // Add first/last column class
-  foreach ($rows as $row_number => $row) {
-    foreach ($row as $column_number => $column) {
-      $column_classes[$row_number][$column_number] = 'col-' . ($column_number + 1);
-      if ($column_number == 0) {
-        $column_classes[$row_number][$column_number] .= ' col-first';
-      }
-      elseif (count($rows[$row_number]) == ($column_number + 1)) {
-        $column_classes[$row_number][$column_number] .= ' col-last';
-      }
-    }
-  }
-  $vars['column_classes'] = $column_classes;
   $vars['rows'] = $rows;
-  $vars['attributes'] = '';
-  if (!empty($handler->options['summary'])) {
-    $vars['attributes'] = drupal_attributes(array('summary' => $handler->options['summary']));
-  }
 }
 
 /**
