@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.73.2.40 2010-12-09 23:54:14 merlinofchaos Exp $
+// $Id: theme.inc,v 1.73.2.41 2010-12-15 20:51:49 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -120,8 +120,8 @@ function template_preprocess_views_view(&$vars) {
           array(
             'view_name' => $view->name,
             'view_display_id' => $view->current_display,
-            'view_args' => implode('/', $view->args),
-            'view_path' => $_GET['q'],
+            'view_args' => check_plain(implode('/', $view->args)),
+            'view_path' => check_plain($_GET['q']),
             // Pass through URL to ensure we get e.g. language prefixes.
 //            'view_base_path' => isset($view->display['page']) ? substr(url($view->display['page']->display_options['path']), strlen($base_path)) : '',
             'view_base_path' => $view->get_path(),
