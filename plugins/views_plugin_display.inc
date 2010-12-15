@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.43 2010-12-09 19:24:16 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.44 2010-12-15 23:35:49 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1880,6 +1880,9 @@ class views_plugin_display extends views_plugin {
             // send ajax form to options page if we use it.
             if (!empty($plugin->definition['uses options'])) {
               views_ui_add_form_to_stack('display', $this->view, $this->display->id, array('style_options'));
+            }
+            if (preg_match('/[^a-zA-Z0-9_]/', $form_state['values']['display_id'])) {
+              form_error($form['display_id'], t('Display name must be letters, numbers, or underscores only.'));
             }
           }
         }
