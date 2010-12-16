@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager_full.inc,v 1.1.4.13 2010-12-11 00:23:44 dereine Exp $
+// $Id: views_plugin_pager_full.inc,v 1.1.4.14 2010-12-16 20:32:17 dereine Exp $
 
 /**
  * The plugin to handle full pager.
@@ -201,7 +201,7 @@ class views_plugin_pager_full extends views_plugin_pager {
   function render($input) {
     $pager_theme = views_theme_functions('pager', $this->view, $this->display);
     $output = theme($pager_theme, array(
-      'tags' => $input, 'quantity' => $this->options['items_per_page'], 'element' => $this->options['id']));
+      'tags' => $input, 'element' => $this->options['id']));
     return $output;
   }
 
