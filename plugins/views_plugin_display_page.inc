@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display_page.inc,v 1.8.4.12 2010-11-27 21:46:36 dereine Exp $
+// $Id: views_plugin_display_page.inc,v 1.8.4.13 2010-12-16 07:00:17 dereine Exp $
 /**
  * @file
  * Contains the page display plugin.
@@ -62,7 +62,7 @@ class views_plugin_display_page extends views_plugin_display {
     foreach($bits as $pos => $bit) {
       if ($bit == '%') {
         $argument = array_shift($view_arguments);
-        if ($argument['validate_type'] != 'none') {
+        if (isset($argument['validate_type']) && $argument['validate_type'] != 'none') {
           $bits[$pos] = '%views_arg';
         }
         $page_arguments[] = $pos;
