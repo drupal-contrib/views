@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.47 2010-12-09 19:24:19 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.48 2010-12-16 00:57:28 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1472,7 +1472,7 @@ class view extends views_db_object {
     $output .= $indent . '$view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */' . "\n";
 
     foreach ($this->display as $id => $display) {
-      $output .= $indent . "\n/* Display: $display->display_title */\n";
+      $output .= "\n" . $indent . "/* Display: $display->display_title */\n";
       $output .= $indent . '$handler = $view->new_display(' . views_var_export($display->display_plugin, $indent) . ', ' . views_var_export($display->display_title, $indent) . ', \'' . $id . "');\n";
       if (empty($display->handler)) {
         // @todo -- probably need a method of exporting broken displays as
