@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_date.inc,v 1.3.2.2 2010-12-13 22:47:30 merlinofchaos Exp $
+// $Id: views_handler_field_date.inc,v 1.3.2.3 2010-12-16 01:31:12 merlinofchaos Exp $
 /**
  * A handler to provide proper displays for dates.
  *
@@ -51,10 +51,7 @@ class views_handler_field_date extends views_handler_field {
       $custom_format = $this->options['custom_date_format'];
     }
     
-    if (!$value) {
-      return theme('views_nodate');
-    }
-    else {
+    if ($value) {
       $time_diff = time() - $value; // will be positive for a datetime in the past (ago), and negative for a datetime in the future (hence)
       switch ($format) {
         case 'raw time ago':
