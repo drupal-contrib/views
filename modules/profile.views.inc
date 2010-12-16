@@ -1,5 +1,5 @@
 <?php
-//$Id: profile.views.inc,v 1.10.4.7 2010-12-08 22:15:49 merlinofchaos Exp $
+//$Id: profile.views.inc,v 1.10.4.8 2010-12-16 06:50:28 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for user.module
@@ -33,8 +33,8 @@ function profile_views_data() {
   );
 
   $fields = profile_views_get_fields();
-  foreach($fields as $field) {
-    $table_name = 'profile_value_' . $field->name;
+  foreach ($fields as $field) {
+    $table_name = 'profile_value_' . str_replace('-', '_', $field->name);
     $data[$table_name] = array(
       'table' => array(
         'group' => t('Profile'),
