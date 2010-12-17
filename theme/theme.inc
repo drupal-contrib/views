@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.39 2010-12-15 20:52:03 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.4.40 2010-12-17 22:09:53 dereine Exp $
 
 /**
  * @file theme.inc
@@ -81,9 +81,9 @@ function template_preprocess_views_view(&$vars) {
   // if administrator, add some links. These used to be tabs, but this is better.
   if (user_access('administer views') && module_exists('views_ui') && module_exists('contextual') && empty($view->hide_admin_links) && !variable_get('views_no_hover_links', FALSE)) {
     $links = array(
-      array(
+      'views-edit' => array(
         'title' => t('Edit view'),
-        'alt' => t("Edit this view"),
+        'attributes' => array('title' => t("Edit this view")),
         'href' => "admin/structure/views/edit/$view->name",
         'fragment' => 'views-tab-' . $view->current_display,
         'query' => drupal_get_destination(),
