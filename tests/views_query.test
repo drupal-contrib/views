@@ -1,5 +1,5 @@
 <?php
-// $Id: views_query.test,v 1.1.2.15 2010-12-01 20:05:06 dereine Exp $
+// $Id: views_query.test,v 1.1.2.16 2010-12-17 21:51:42 dereine Exp $
 
 /**
  * @file
@@ -310,6 +310,10 @@ abstract class ViewsSqlTest extends ViewsTestCase {
       ),
     );
     return $data;
+  }
+
+  protected function viewsPlugins() {
+    return array();
   }
 
   /**
