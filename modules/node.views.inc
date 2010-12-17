@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.2.13 2010-12-13 23:42:31 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.97.2.14 2010-12-17 23:55:03 merlinofchaos Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -161,6 +161,9 @@ function node_views_data() {
     'field' => array(
       'handler' => 'views_handler_field_boolean',
       'click sortable' => TRUE,
+      'output formats' => array(
+        'published-notpublished' => array(t('Published'), t('Not published')),
+      ),
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_boolean_operator',
