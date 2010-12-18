@@ -1,5 +1,5 @@
 <?php
-// $Id: docs.php,v 1.16.4.9 2010-12-17 21:13:16 merlinofchaos Exp $
+// $Id: docs.php,v 1.16.4.10 2010-12-18 08:02:37 dereine Exp $
 /**
  * @file
  * This file contains no working PHP code; it exists to provide additional documentation
@@ -513,7 +513,6 @@ function hook_views_default_views() {
     'style_plugin' => 'rss',
     'style_options' =>
     array (
-      'mission_description' => 1,
       'description' => '',
     ),
     'row_plugin' => 'node_rss',

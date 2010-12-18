@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views_default.inc,v 1.11.6.3 2010-10-16 08:41:24 dereine Exp $
+// $Id: node.views_default.inc,v 1.11.6.4 2010-12-18 08:02:38 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the node module.
@@ -91,7 +91,6 @@ function node_views_default_views() {
   $handler->override_option('sitename_title', '1');
   $handler->override_option('title', 'Front page feed');
   $handler->override_option('style_options', array(
-    'mission_description' => 1,
     'description' => '',
   ));
   $handler->override_option('row_plugin', 'node_rss');
