@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.11 2010-12-18 12:40:34 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.12 2010-12-19 22:09:17 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -211,29 +211,34 @@ class views_handler_field_field extends views_handler_field {
             // We might not have this field in the database results
             if (isset($this->aliases[$sql_column])) {
               $alias = $this->aliases[$sql_column];
-              $field_values[$language][$delta][$column_name] = $row->{$alias};
+              $field_values[$language][0][$column_name] = $row->{$alias};
             }
             else {
-              $field_values[$language][$delta][$column_name] = '';
+              $field_values[$language][0][$column_name] = '';
             }
           }
           $object->{$instance['field_name']} = $field_values;
         }
-        $objects[$row->{$this->field_alias}] = $object;
+        $objects[$delta][$row->{$this->field_alias}] = $object;
       }
 
-      // Invoke field-type module's hook_field_load().
-      _field_invoke_multiple('load', $entity_type, $objects);
+      foreach ($objects as $delta => &$entities) {
+        // Invoke field-type module's hook_field_load().
+        _field_invoke_multiple('load', $entity_type, $entities);
 
-      // Invoke hook_field_attach_load(): let other modules act on loading the
-      // entity.
-      module_invoke_all('field_attach_load', $entity_type, $objects);
+        // Invoke hook_field_attach_load(): let other modules act on loading the
+        // entity.
+        module_invoke_all('field_attach_load', $entity_type, $entities);
+      }
 
       foreach ($values as $key => $row) {
         if ($row->{$this->field_alias}) {
+          $delta = $row->{$this->aliases['delta']};
+          $entity_id = $row->{$this->field_alias};
+
           $values[$key]->_field_data[$this->field_alias] = array(
             'entity_type' => $entity_type,
-            'object' => $objects[$row->{$this->field_alias}],
+            'object' => $objects[$delta][$entity_id],
           );
         }
       }
