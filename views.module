@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.45 2010-12-17 21:52:44 dereine Exp $
+// $Id: views.module,v 1.341.4.46 2010-12-23 22:11:34 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -184,7 +184,7 @@ function _views_find_module_templates($cache, $path) {
             'template' => $file,
             'path' => dirname($files[$match]->filename),
             'variables' => $info['arguments'],
-            'original hook' => $hook,
+            'base hook' => $hook,
             'include files' => $info['include files'],
           );
         }
