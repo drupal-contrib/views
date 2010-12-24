@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.32 2010-12-18 11:57:01 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.33 2010-12-24 13:42:01 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -733,37 +733,6 @@ class views_plugin_query_default extends views_plugin_query {
    */
   function clear_fields() {
     $this->fields = array();
-  }
-
-  /**
-   * Create a new grouping for the WHERE or HAVING clause.
-   *
-   * @param $type
-   *   Either 'AND' or 'OR'. All items within this group will be added
-   *   to the WHERE clause with this logical operator.
-   * @param $group
-   *   An ID to use for this group. If unspecified, an ID will be generated.
-   * @param $where
-   *   'where' or 'having'.
-   *
-   * @return $group
-   *   The group ID generated.
-   */
-  function set_where_group($type = 'AND', $group = NULL, $where = 'where') {
-    // Set an alias.
-    $groups = &$this->$where;
-
-    if (!isset($group)) {
-      $group = empty($groups) ? 1 : max(array_keys($groups)) + 1;
-    }
-
-    // Create an empty group
-    if (empty($groups[$group])) {
-      $groups[$group] = array('clauses' => array(), 'args' => array());
-    }
-
-    $groups[$group]['type'] = strtoupper($type);
-    return $group;
   }
 
   /**

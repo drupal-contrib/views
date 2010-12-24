@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_term_node_tid.inc,v 1.8.6.13 2010-11-27 20:53:28 dereine Exp $
+// $Id: views_handler_filter_term_node_tid.inc,v 1.8.6.14 2010-12-24 13:42:01 dereine Exp $
 
 /**
  * Filter by term id
@@ -196,7 +196,7 @@ class views_handler_filter_term_node_tid extends views_handler_filter_many_to_on
     }
   }
 
-  function value_validate($form, &$form_state) {
+  function value_validate(&$form, &$form_state) {
     // We only validate if they've chosen the text field style.
     if ($this->options['type'] != 'textfield') {
       return;

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.46 2010-12-24 08:25:02 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.47 2010-12-24 13:42:01 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -290,7 +290,7 @@ class views_plugin_display extends views_plugin {
       'fields' => array('fields'),
       'sorts' => array('sorts'),
       'arguments' => array('arguments'),
-      'filters' => array('filters'),
+      'filters' => array('filters', 'filter_groups'),
     );
 
     // If the display cannot use a pager, then we cannot default it.
@@ -350,6 +350,7 @@ class views_plugin_display extends views_plugin {
           'sorts' => TRUE,
           'arguments' => TRUE,
           'filters' => TRUE,
+          'filter_groups' => TRUE,
         ),
         'export' => FALSE,
       ),
@@ -509,6 +510,12 @@ class views_plugin_display extends views_plugin {
         'default' => array(),
         'export' => 'export_handler',
         'unpack_translatable' => 'unpack_handler',
+      ),
+      'filter_groups' => array(
+        'contains' => array(
+          'operator' => array('default' => 'AND'),
+          'groups' => array('default' => array(0 => 'AND')),
+        ),
       ),
       'filters' => array(
         'default' => array(),
