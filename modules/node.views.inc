@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views.inc,v 1.97.4.24 2010-12-21 23:08:54 merlinofchaos Exp $
+// $Id: node.views.inc,v 1.97.4.25 2010-12-27 08:02:28 dereine Exp $
 /**
  * @file
  * Provide views data and handlers for node.module
@@ -559,7 +559,7 @@ function node_views_data() {
       'left_field' => 'nid',
       'field' => 'nid',
       'extra' => array(
-        array('field' => 'uid', 'value' => ':user-current-user', 'numeric' => TRUE),
+        array('field' => 'uid', 'value' => '***CURRENT_USER***', 'numeric' => TRUE),
       ),
     ),
   );
