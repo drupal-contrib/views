@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.33 2010-12-24 13:42:01 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.34 2010-12-27 22:06:04 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -65,8 +65,6 @@ class views_plugin_query_default extends views_plugin_query {
    * A flag as to whether or not to make the primary field distinct.
    */
   var $distinct = FALSE;
-
-  var $placeholder_counter = 0;
 
   var $has_aggregate = FALSE;
 
@@ -876,6 +874,20 @@ class views_plugin_query_default extends views_plugin_query {
     // Only add it if it's not already in there.
     if (!in_array($clause, $this->groupby)) {
       $this->groupby[] = $clause;
+    }
+  }
+
+  /**
+   * Generates a unique placeholder used in the db query.
+   */
+  function placeholder($base = 'views') {
+    static $placeholders = array();
+    if (!isset($placeholders[$base])) {
+      $placeholders[$base] = 0;
+      return ':' . $base;
+    }
+    else {
+      return ':' . $base . ++$placeholders[$base];
     }
   }
 

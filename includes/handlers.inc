@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.18 2010-12-24 07:04:23 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.19 2010-12-27 22:06:04 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -412,6 +412,13 @@ class views_handler extends views_object {
    * been fully run.
    */
   function pre_query() { }
+
+  /**
+   * Provides a unique placeholders for handlers.
+   */
+  function placeholder() {
+    return $this->query->placeholder($this->options['table'] . '_' . $this->options['field']);
+  }
 
   /**
    * Called just prior to query(), this lets a handler set up any relationship

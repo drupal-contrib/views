@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_string.inc,v 1.5.4.5 2010-11-05 07:20:54 dereine Exp $
+// $Id: views_handler_argument_string.inc,v 1.5.4.6 2010-12-27 22:06:04 dereine Exp $
 
 /**
  * Basic argument handler to implement string arguments that may have length
@@ -176,10 +176,11 @@ class views_handler_argument_string extends views_handler_argument {
     }
 
     if ($formula) {
-      $field .= ' = :views_handler_argument_string';
+      $placeholder = $this->placeholder();
+      $field .= ' = ' . $placeholder;
       $placeholders = array(
         ':length' => intval($this->options['limit']),
-        ':views_handler_argument_string' => $argument,
+        $placeholder => $argument,
       );
       $this->query->add_where(0, $field, $placeholders, 'formula');
     }
