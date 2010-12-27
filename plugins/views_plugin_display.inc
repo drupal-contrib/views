@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.53 2010-12-21 23:31:15 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.54 2010-12-27 16:28:58 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1772,7 +1772,7 @@ class views_plugin_display extends views_plugin {
       case 'display_id':
         if ($form_state['values']['display_id']) {
           if (preg_match('/[^a-zA-Z0-9_]/', $form_state['values']['display_id'])) {
-            form_error($form['display_id'], t('Display id must be alphanumeric or underscores only.'));
+            form_error($form['display_id'], t('Display name must be letters, numbers, or underscores only.'));
           }
 
           foreach ($this->view->display as $id => $display) {
@@ -1940,9 +1940,6 @@ class views_plugin_display extends views_plugin {
             // send ajax form to options page if we use it.
             if (!empty($plugin->definition['uses options'])) {
               views_ui_add_form_to_stack('display', $this->view, $this->display->id, array('style_options'));
-            }
-            if (preg_match('/[^a-zA-Z0-9_]/', $form_state['values']['display_id'])) {
-              form_error($form['display_id'], t('Display name must be letters, numbers, or underscores only.'));
             }
           }
         }
