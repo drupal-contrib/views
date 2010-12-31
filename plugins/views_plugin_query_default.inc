@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.4.35 2010-12-31 08:31:14 dereine Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.4.36 2010-12-31 08:33:28 dereine Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -928,7 +928,7 @@ class views_plugin_query_default extends views_plugin_query {
       $fieldname = (!empty($field['alias']) ? $field['alias'] : $string);
 
       if (!empty($field['distinct'])) {
-        throw new Exception("d7cx: Column-level distinct is not supported yet.");
+        throw new Exception("Column-level distinct is not supported anymore.");
       }
 
       if (!empty($field['count'])) {
@@ -992,7 +992,7 @@ class views_plugin_query_default extends views_plugin_query {
   function query($get_count = FALSE) {
     // Check query distinct value.
     if (empty($this->no_distinct) && $this->distinct && !empty($this->fields)) {
-      $base_field_alias = $this->add_field($this->base_table, $this->base_field, NULL, array('distinct' => TRUE));
+      $base_field_alias = $this->add_field($this->base_table, $this->base_field);
       $this->add_groupby($base_field_alias);
     }
 
@@ -1107,7 +1107,7 @@ class views_plugin_query_default extends views_plugin_query {
   function build(&$view) {
     // Make the query distinct if the option was set.
     if (!empty($this->options['distinct'])) {
-      // $this->set_distinct();
+      $this->set_distinct();
     }
 
     $view->init_pager();
