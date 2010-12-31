@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_numeric.inc,v 1.7.6.5 2010-12-31 08:31:14 dereine Exp $
+// $Id: views_handler_filter_numeric.inc,v 1.7.6.6 2010-12-31 08:31:59 dereine Exp $
 
 /**
  * Simple filter to handle greater than/less than filters
@@ -143,7 +143,6 @@ class views_handler_filter_numeric extends views_handler_filter {
     }
 
     if ($which == 'all') {
-      dsm($source);
       $form['value']['value'] = array(
         '#type' => 'textfield',
         '#title' => empty($form_state['exposed']) ? t('Value') : '',
