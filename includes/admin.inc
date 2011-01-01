@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.51 2010-12-30 18:48:33 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.52 2011-01-01 20:02:15 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1329,7 +1329,8 @@ function template_preprocess_views_ui_edit_item(&$vars) {
     // @todo: get_handlers()
     $handlers = $display->handler->get_option('relationships');
     if ($handlers) {
-      foreach ($handlers as $id => $handler) {
+      foreach ($handlers as $id => $info) {
+        $handler = $display->handler->get_handler('relationship', $id);
         $relationships[$id] = $handler->label();
       }
     }
