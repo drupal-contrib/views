@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.26 2010-11-15 23:45:31 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.27 2011-01-01 22:58:47 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -1067,7 +1067,7 @@ class views_plugin_query_default extends views_plugin_query{
    */
   function build(&$view) {
     // Make the query distinct if the option was set.
-    if ($this->options['distinct']) {
+    if (!empty($this->options['distinct'])) {
       $this->set_distinct();
     }
 
