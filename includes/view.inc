@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.4.37 2010-12-24 13:42:01 dereine Exp $
+// $Id: view.inc,v 1.167.4.38 2011-01-01 22:39:56 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -280,7 +280,7 @@ class view extends views_db_object {
 
     // If no display id sent in and one wasn't chosen above, we're finished.
     if (empty($display_id)) {
-      return TRUE;
+      return FALSE;
     }
 
     // Ensure the requested display exists.
