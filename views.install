@@ -1,5 +1,5 @@
 <?php
-// $Id: views.install,v 1.50.2.7 2010-11-18 01:07:01 merlinofchaos Exp $
+// $Id: views.install,v 1.50.2.8 2011-01-01 22:54:17 merlinofchaos Exp $
 /**
  * @file views.install
  * Contains install and update functions for Views.
@@ -490,3 +490,30 @@ function views_update_6011() {
   
   return $ret;
 }
+
+function views_schema_6013() {
+  $schema = views_schema(__FUNCTION__);
+  $schema['views_view']['fields']['core'] = array(
+    'type' => 'int',
+    'default' => 0,
+    'description' => 'Stores the drupal core version of the view.',
+  );
+  return $schema;
+}
+
+/**
+ * Add a drupal core version field.
+ */
+function views_update_6013() {
+  $ret = array();
+  $new_field = array(
+    'type' => 'int',
+    'default' => 0,
+    'description' => 'Stores the drupal core version of the view.',
+  );
+
+  db_add_field($ret, 'views_view', 'core', $new_field);
+
+  return $ret;
+}
+

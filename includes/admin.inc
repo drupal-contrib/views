@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.2.25 2010-12-30 18:48:37 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.2.26 2011-01-01 22:54:17 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -637,6 +637,7 @@ function views_ui_add_form_submit($form, &$form_state) {
   $view->name = $form_state['values']['name'];
   $view->description = $form_state['values']['description'];
   $view->tag = $form_state['values']['tag'];
+  $view->core = VERSION;
   if (empty($form['base_table']['#disabled'])) {
     $view->base_table = $form_state['values']['base_table'];
   }
