@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_pager_mini.inc,v 1.1.4.3 2011-01-03 22:56:39 merlinofchaos Exp $
+// $Id: views_plugin_pager_mini.inc,v 1.1.4.4 2011-01-03 23:03:56 merlinofchaos Exp $
 
 /**
  * The plugin to handle full pager.
@@ -15,7 +15,6 @@ class views_plugin_pager_mini extends views_plugin_pager_full {
   }
 
   function render($input) {
-    dsm($this->options['id']);
     $pager_theme = views_theme_functions('views_mini_pager', $this->view, $this->display);
     return theme($pager_theme, array(
       'tags' => $input, 'quantity' => $this->options['items_per_page'], 'element' => $this->options['id']));
