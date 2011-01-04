@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.161.4.84 2011-01-04 01:11:34 merlinofchaos Exp $
+// $Id: admin.inc,v 1.161.4.85 2011-01-04 23:10:37 dereine Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1161,8 +1161,7 @@ function template_preprocess_views_ui_edit_view(&$vars) {
   }
   views_add_css('views-admin');
   views_add_js('ajax');
-  drupal_add_js('misc/tabledrag.js', array('weight' => -1));
-  drupal_add_js('misc/jquery.form.js', array('group' => JS_LIBRARY));
+  drupal_add_library('system', 'jquery.form');
 
   // Also add any js files required by plugins:
   $plugins = views_fetch_plugin_data();
