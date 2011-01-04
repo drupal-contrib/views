@@ -1,5 +1,5 @@
 <?php
-// $Id: views_query.test,v 1.1.4.8 2010-12-24 08:08:01 dereine Exp $
+// $Id: views_query.test,v 1.1.4.9 2011-01-04 20:29:56 merlinofchaos Exp $
 
 /**
  * @file
@@ -108,9 +108,10 @@ abstract class ViewsSqlTest extends ViewsTestCase {
     foreach ($this->dataSet() as $record) {
       drupal_write_record('views_test', $record);
     }
+    $this->checkPermissions(array(), TRUE);
   }
-  
-   
+
+
   /**
    * This function allows to enable views ui from a higher class which can't change the setup function anymore.
    * 
