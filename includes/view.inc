@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.50 2011-01-04 19:29:37 dereine Exp $
+// $Id: view.inc,v 1.151.2.51 2011-01-04 21:24:31 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -749,13 +749,6 @@ class view extends views_db_object {
       $function = $module . '_views_pre_execute';
       $function($this);
     }
-
-    $query = db_rewrite_sql($this->build_info['query'], $this->base_table, $this->base_field, array('view' => &$this));
-    $count_query = db_rewrite_sql($this->build_info['count_query'], $this->base_table, $this->base_field, array('view' => &$this));
-
-    $args = $this->build_info['query_args'];
-
-    vpr($query);
 
     // Check for already-cached results.
     if (!empty($this->live_preview)) {

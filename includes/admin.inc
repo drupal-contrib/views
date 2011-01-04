@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.53 2011-01-01 22:54:12 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.54 2011-01-04 21:24:31 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -424,14 +424,9 @@ function views_ui_preview($js, $view) {
     $preview = $view->preview($form_state['display_id'], $args);
 
     // Get information from the preview for display.
-    if (!empty($view->build_info['query'])) {
-      $rows = array();
-      $query = db_prefix_tables($view->build_info['query']);
-      if ($view->build_info['query_args']) {
-        _db_query_callback($view->build_info['query_args'], TRUE);
-        $query = preg_replace_callback(DB_QUERY_REGEXP, '_db_query_callback', $query);
-      }
-      $rows[] = array('<strong>' . t('Query') . '</strong>', '<pre>' . check_plain($query) . '</pre>');
+    if (empty($view->build_info['fail'])) {
+      $rows = $view->query->get_preview_info();
+
       if (!empty($view->additional_queries)) {
         $queries = '<strong>' . t('These queries were run during view rendering:') . '</strong>';
         foreach ($view->additional_queries as $query) {
