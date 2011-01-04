@@ -1,5 +1,5 @@
 <?php
-// $Id: views.module,v 1.341.4.48 2011-01-03 22:56:39 merlinofchaos Exp $
+// $Id: views.module,v 1.341.4.49 2011-01-04 00:00:20 dereine Exp $
 /**
  * @file
  * Primarily Drupal hooks and global API functions to manipulate views.
@@ -133,7 +133,7 @@ function views_theme($existing, $type, $theme, $path) {
  *   The existing cache of theme hooks to test against.
  * @param $path
  *   The path to search.
- *
+ * 
  * @see drupal_find_theme_templates
  */
 function _views_find_module_templates($cache, $path) {
