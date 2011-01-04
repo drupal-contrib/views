@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.4.12 2010-12-24 13:42:01 dereine Exp $
+// $Id: views_plugin_query.inc,v 1.1.4.13 2011-01-04 01:11:34 merlinofchaos Exp $
 /**
  * @file views_plugin_query.inc
  * Defines the base query class, which is the underlying layer in a View.
@@ -128,7 +128,7 @@ class views_plugin_query extends views_plugin {
 
     // Create an empty group
     if (empty($groups[$group])) {
-      $groups[$group] = array('clauses' => array(), 'args' => array());
+      $groups[$group] = array('conditions' => array(), 'args' => array());
     }
 
     $groups[$group]['type'] = strtoupper($type);
