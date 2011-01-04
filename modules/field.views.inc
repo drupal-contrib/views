@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.16 2010-12-14 21:21:07 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.17 2011-01-04 23:54:35 dereine Exp $
 
 /**
  * @file
@@ -97,7 +97,7 @@ function field_views_field_default_views_data($field) {
     $tables[FIELD_LOAD_REVISION] = $revision_table;
   }
 
-  $add_fields = array('entity_type', 'delta', 'language');
+  $add_fields = array('entity_type', 'delta', 'language', 'bundle');
   foreach ($field['columns'] as $column_name => $attributes) {
     $add_fields[] = _field_sql_storage_columnname($field['field_name'], $column_name);
   }
