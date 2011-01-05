@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.14 2011-01-04 23:54:35 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.15 2011-01-05 08:17:08 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -87,17 +87,28 @@ class views_handler_field_field extends views_handler_field {
       return;
     }
 
-    // Query for revision field necessary for rendering fields and not otherwise
+    // Query for revision, bundle field necessary for rendering fields and not otherwise
     // included in additional_fields.
     // @TODO
     // The bundle system will be fixed in d8, so no special cases should be needed.
-    if (!in_array($entity_type, array('taxonomy_term', 'comment'))) {
-      foreach ($this->entity_info['entity keys'] as $key => $column) {
-        if (!empty($column) && $key == 'revision') {
-          $this->aliases[$this->definition['field_name'] . '_' . $key] = $this->query->add_field($this->table_alias, 'revision_id');
+    switch ($entity_type) {
+      case 'taxonomy_term':
+      case 'comment':
+        $this->aliases[$this->definition['field_name'] . '_' . 'bundle'] = $this->query->add_field($this->table_alias, 'bundle');
+        break;
+      default:
+        foreach ($this->entity_info['entity keys'] as $key => $column) {
+          if (!empty($column)) {
+            if ($key == 'bundle') {
+              $this->aliases[$this->definition['field_name'] . '_' . $key] = $this->query->add_field($this->table_alias, 'bundle');
+            }
+            elseif ($key == 'revision') {
+              $this->aliases[$this->definition['field_name'] . '_' . $key] = $this->query->add_field($this->table_alias, 'revision_id');
+            }
+          }
         }
-      }
-    }
+        break;
+     }
   }
 
   /**
