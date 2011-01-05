@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.119.4.20 2011-01-04 23:54:35 dereine Exp $
+// $Id: handlers.inc,v 1.119.4.21 2011-01-05 14:55:51 dereine Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -254,7 +254,7 @@ class views_handler extends views_object {
       '#type' => 'select',
       '#title' => t('Group type'),
       '#default_value' => $this->options['group_type'],
-      '#description' => t('Grouping is enabled for this display. You must select what function to use on this field.'),
+      '#description' => t('Select the grouping function to use on this field.'),
       '#options' => $group_types,
     );
   }
