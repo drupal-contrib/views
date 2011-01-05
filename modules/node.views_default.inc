@@ -1,5 +1,5 @@
 <?php
-// $Id: node.views_default.inc,v 1.11.6.4 2010-12-18 08:02:38 dereine Exp $
+// $Id: node.views_default.inc,v 1.11.6.5 2011-01-05 23:14:39 dereine Exp $
 /**
  * @file
  * Contains default views on behalf of the node module.
@@ -15,6 +15,7 @@ function node_views_default_views() {
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->api_version = 2;
+  $view->version = 7;
   $view->disabled = TRUE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('sorts', array(
@@ -120,6 +121,7 @@ function node_views_default_views() {
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->api_version = 2;
+  $view->version = 7;
   $view->disabled = TRUE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('fields', array(
@@ -275,6 +277,7 @@ function node_views_default_views() {
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->api_version = 2;
+  $view->version = 7;
   $view->disabled = TRUE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('title', 'Monthly archive');
