@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_string.inc,v 1.5.4.7 2011-01-05 22:40:08 dereine Exp $
+// $Id: views_handler_argument_string.inc,v 1.5.4.8 2011-01-06 18:07:56 dereine Exp $
 
 /**
  * Basic argument handler to implement string arguments that may have length
@@ -109,6 +109,7 @@ class views_handler_argument_string extends views_handler_argument {
    * Build the summary query based on a string
    */
   function summary_query() {
+    $this->placeholder_length = $this->placeholder();
     if (empty($this->definition['many to one'])) {
       $this->ensure_my_table();
     }
@@ -124,10 +125,9 @@ class views_handler_argument_string extends views_handler_argument {
     else {
       // Add the field.
       $formula = $this->get_formula();
-      $placeholder_length = $this->placeholder_length;
       $params = array(
         'placeholders' => array(
-          $placeholder_length => intval($this->options['limit']),
+          $this->placeholder_length => intval($this->options['limit']),
         ),
       );
 
