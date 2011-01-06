@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.21 2011-01-06 16:10:00 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.22 2011-01-06 16:26:26 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -177,17 +177,19 @@ class views_handler_field_field extends views_handler_field {
       if ($field['cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
         $type = 'textfield';
         $options = array();
+        $description = t('The sequence number of the value to show. Numbers start from 0. Leave empty to display all values.');
       }
       else {
         $type = 'select';
         $options = array_merge(array('' => t('All')), range(0, $field['cardinality'] - 1));
+        $description = t('The sequence number of the value to show.');
       }
       $form['delta'] = array(
         '#title' => t('Delta'),
         '#type' => $type,
         '#options' => $options,
         '#default_value' => $this->options['delta'],
-        '#description' => t('Numbers start from 0. Leave empty to display all values.'),
+        '#description' => $description,
       );
     }
 
