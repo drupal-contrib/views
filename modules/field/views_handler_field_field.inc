@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.23 2011-01-07 17:01:15 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.24 2011-01-07 17:34:14 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -133,7 +133,10 @@ class views_handler_field_field extends views_handler_field {
    */
   function click_sort($order) {
     $column = _field_sql_storage_columnname($this->definition['field_name'], $this->options['click_sort_column']);
-    // The field has already been added to the query, just add a sort on it.
+    $this->ensure_my_table();
+    if (!isset($this->aliases[$column])) {
+      $this->aliases[$column] = $this->query->add_field($this->table_alias, $column);
+    }
     $this->query->add_orderby(NULL, NULL, $order, $this->aliases[$column]);
   }
 
