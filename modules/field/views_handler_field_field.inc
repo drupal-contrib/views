@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.24 2011-01-07 17:34:14 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.25 2011-01-07 18:06:17 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -332,8 +332,9 @@ class views_handler_field_field extends views_handler_field {
       $display_entity = clone $entity;
       $langcode = $this->field_language();
 
-      // The field we are trying to display doesn't exist on this entity.
-      if (!isset($display_entity->{$this->definition['field_name']})) {
+      // The field we are trying to display is empty, or doesn't exist on
+      // this entity.
+      if (empty($display_entity->{$this->definition['field_name']})) {
         return '';
       }
 
