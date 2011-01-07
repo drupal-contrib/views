@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.49 2011-01-05 20:36:27 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.50 2011-01-07 19:46:21 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1803,7 +1803,7 @@ class views_plugin_display extends views_plugin {
           }
 
           foreach ($this->view->display as $id => $display) {
-            if ($id != $this->view->current_display && ($form_state['values']['display_id'] == $id || $form_state['values']['display_id'] == $display->new_id)) {
+            if ($id != $this->view->current_display && ($form_state['values']['display_id'] == $id || (isset($display->new_id) && $form_state['values']['display_id'] == $display->new_id))) {
               form_error($form['display_id'], t('Display id should be unique.'));
             }
           }
