@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.14.2.55 2011-01-10 23:14:26 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.14.2.56 2011-01-10 23:53:30 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -717,7 +717,9 @@ If you would like to have the characters %5B and %5D please use the html entity 
    */
   function get_value($values, $field = NULL) {
     $alias = isset($field) ? $this->aliases[$field] : $this->field_alias;
-    return $values->{$alias};
+    if (isset($values->{$alias})) {
+      return $values->{$alias};
+    }
   }
 
   /**

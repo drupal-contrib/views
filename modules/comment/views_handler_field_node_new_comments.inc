@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_node_new_comments.inc,v 1.6.2.3 2011-01-10 23:14:26 merlinofchaos Exp $
+// $Id: views_handler_field_node_new_comments.inc,v 1.6.2.4 2011-01-10 23:53:30 merlinofchaos Exp $
 
 /**
  * Field handler to display the number of new comments
@@ -7,7 +7,7 @@
 class views_handler_field_node_new_comments extends views_handler_field_numeric {
   function init(&$view, $options) {
     parent::init($view, $options);
-    
+
     // translate an older setting:
     if (!empty($options['no_empty'])) {
       $this->options['hide_empty'] = TRUE;
