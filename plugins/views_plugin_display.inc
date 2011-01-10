@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.50 2011-01-07 19:46:21 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.51 2011-01-10 22:40:54 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -2301,6 +2301,13 @@ class views_plugin_display extends views_plugin {
       if (!empty($result) && is_array($result)) {
         $errors = array_merge($errors, $result);
       }
+    }
+
+    // Validate query plugin.
+    $query = $this->get_plugin('query');
+    $result = $query->validate();
+    if (!empty($result) && is_array($result)) {
+      $errors = array_merge($errors, $result);
     }
 
     // Validate handlers
