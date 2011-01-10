@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_argument_string.inc,v 1.4.2.4 2010-12-09 21:38:45 merlinofchaos Exp $
+// $Id: views_handler_argument_string.inc,v 1.4.2.5 2011-01-10 23:07:43 merlinofchaos Exp $
 
 /**
  * Basic argument handler to implement string arguments that may have length
@@ -280,7 +280,7 @@ class views_handler_argument_string extends views_handler_argument {
    * Override for specific title lookups.
    */
   function title_query() {
-    return check_plain($this->value);
+    return drupal_map_assoc($this->value, 'check_plain');
   }
 
   function summary_name($data) {
