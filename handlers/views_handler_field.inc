@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.4.45 2011-01-10 22:50:01 merlinofchaos Exp $
+// $Id: views_handler_field.inc,v 1.33.4.46 2011-01-11 16:09:58 dereine Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -658,7 +658,7 @@ If you would like to have the characters %5B and %5D please use the html entity 
         '#title' => t('Convert newlines to HTML &lt;br&gt; tags'),
         '#description' => t('If checked, all newlines chars (e.g. \n) are converted into HTML &lt;br&gt; tags.'),
         '#default_value' => $this->options['alter']['nl2br'],
-        '#process' => array('views_process_dependency'),
+        '#process' => array('ctools_dependent_process'),
       );
     }
 
