@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.views.inc,v 1.57.2.7 2010-10-14 21:33:06 merlinofchaos Exp $
+// $Id: taxonomy.views.inc,v 1.57.2.8 2011-01-11 23:45:14 merlinofchaos Exp $
 /**
  * @file
  *
@@ -277,7 +277,7 @@ function taxonomy_views_data() {
     'argument' => array(
       'help' => t('A related term of the term.'),
       'handler' => 'views_handler_argument_numeric',
-    ),    
+    ),
   );
 
   // ----------------------------------------------------------------------
@@ -321,7 +321,7 @@ function taxonomy_views_data() {
     'argument' => array(
       'help' => t('The parent term of the term.'),
       'handler' => 'views_handler_argument_numeric',
-    ),    
+    ),
   );
 
   // ----------------------------------------------------------------------
@@ -458,14 +458,14 @@ function taxonomy_views_plugins() {
         'path' => drupal_get_path('module', 'views') . '/modules/taxonomy',
       ),
     ),
-    'argument default' => array(
-      'taxonomy_tid' => array(
-        'title' => t('Taxonomy Term ID from URL'),
-        'handler' => 'views_plugin_argument_default_taxonomy_tid',
-        'path' => drupal_get_path('module', 'views') . '/modules/taxonomy',
-        'parent' => 'fixed',
-      ),
-    ),
+//    'argument default' => array(
+//      'taxonomy_tid' => array(
+//        'title' => t('Taxonomy Term ID from URL'),
+//        'handler' => 'views_plugin_argument_default_taxonomy_tid',
+//        'path' => drupal_get_path('module', 'views') . '/modules/taxonomy',
+//        'parent' => 'fixed',
+//      ),
+//    ),
   );
 }
 
