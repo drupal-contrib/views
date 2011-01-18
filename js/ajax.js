@@ -1,4 +1,4 @@
-// $Id: ajax.js,v 1.26.2.11 2010-12-09 19:22:35 merlinofchaos Exp $
+// $Id: ajax.js,v 1.26.2.12 2011-01-18 22:00:50 merlinofchaos Exp $
 /**
  * @file ajax_admin.js
  *
@@ -234,7 +234,9 @@ Drupal.Views.updatePreviewFilterForm = function() {
 Drupal.Views.updatePreviewLink = function() {
   var url = $(this).attr('href');
   url = url.replace('nojs', 'ajax');
-  if (url.substring(0, 18) != '/admin/build/views') {
+  var intern_url = Drupal.Views.getPath(url);
+
+  if (intern_url.substring(0, 17) != 'admin/build/views') {
     return true;
   }
 
