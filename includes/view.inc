@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.151.2.52 2011-01-18 22:00:44 merlinofchaos Exp $
+// $Id: view.inc,v 1.151.2.53 2011-01-18 23:00:16 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -219,6 +219,7 @@ class view extends views_db_object {
       }
       $this->display[$id]->handler = views_get_plugin('display', $this->display[$id]->display_plugin);
       if (!empty($this->display[$id]->handler)) {
+        $this->display[$id]->handler->localization_keys = array($id);
         // Initialize the new display handler with data.
         $this->display[$id]->handler->init($this, $this->display[$id]);
         // If this is NOT the default display handler, let it know which is

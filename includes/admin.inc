@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.inc,v 1.154.2.56 2011-01-18 21:22:17 merlinofchaos Exp $
+// $Id: admin.inc,v 1.154.2.57 2011-01-18 23:00:16 merlinofchaos Exp $
 /**
  * @file admin.inc
  * Provides the Views' administrative interface.
@@ -1151,7 +1151,7 @@ function template_preprocess_views_ui_edit_tab(&$vars) {
   // Special fields if this is the default display.
   $vars['default'] = ($display->id == 'default');
   $vars['details_class'] = views_ui_item_css('details');
-  
+
   foreach (array('human_name', 'tag', 'description') as $property) {
     if (!empty($view->changed_sections[$property])) {
       $vars['details_changed'][$property] = TRUE;
@@ -2345,7 +2345,7 @@ function views_ui_edit_details_form(&$form_state) {
         '#default_value' => $view->human_name,
       );
       break;
-    
+
     case 'tag':
       $form['tag'] = array(
         '#type' => 'textfield',
@@ -2355,7 +2355,7 @@ function views_ui_edit_details_form(&$form_state) {
         '#autocomplete_path' => 'admin/views/ajax/autocomplete/tag',
       );
       break;
-    
+
     case 'description':
       $form['description'] = array(
         '#type' => 'textfield',
