@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.4.43 2011-01-04 00:00:20 dereine Exp $
+// $Id: theme.inc,v 1.84.4.44 2011-01-18 21:19:39 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -231,7 +231,7 @@ function template_preprocess_views_view_fields(&$vars) {
           if ($class) {
             $class .= ' ';
           }
-          $class .= ' ' . $classes;
+          $class .= $classes;
         }
 
         $object->wrapper_prefix = '<' . $object->inline_html;
