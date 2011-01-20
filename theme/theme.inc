@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.84.2.21 2010-12-15 20:51:10 merlinofchaos Exp $
+// $Id: theme.inc,v 1.84.2.22 2011-01-20 20:07:12 merlinofchaos Exp $
 
 /**
  * @file theme.inc
@@ -411,7 +411,7 @@ function template_preprocess_views_view_table(&$vars) {
     drupal_add_js('misc/tableheader.js');
     $vars['class'] .= " sticky-enabled";
   }
-  $vars['class'] .= ' cols-'. count($vars['rows']);
+  $vars['class'] .= ' cols-' . count($vars['header']);
 
   $vars['attributes'] = '';
   if (!empty($handler->options['summary'])) {
@@ -495,6 +495,7 @@ function template_preprocess_views_view_grid(&$vars) {
   }
   $vars['column_classes'] = $column_classes;
   $vars['rows'] = $rows;
+  $vars['class'] = 'views-view-grid col-' . $columns;
   $vars['attributes'] = '';
   if (!empty($handler->options['summary'])) {
     $vars['attributes'] = drupal_attributes(array('summary' => $handler->options['summary']));
