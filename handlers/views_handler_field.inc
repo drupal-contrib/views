@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field.inc,v 1.33.2.27 2010-12-13 17:17:34 dereine Exp $
+// $Id: views_handler_field.inc,v 1.33.2.28 2011-01-20 20:00:39 merlinofchaos Exp $
 /**
  * @defgroup views_field_handlers Views' field handlers
  * @{
@@ -638,6 +638,16 @@ If you would like to have the characters %5B and %5D please use the html entity 
     $target = check_plain(trim(strtr($alter['target'],$tokens)));
     if (!empty($target)) {
       $options['attributes']['target'] = $target;
+    }
+
+    // Allow the addition of arbitrary attributes to links. Additional attributes
+    // currently can only be altered in preprocessors and not within the UI.
+    if (isset($alter['link_attributes']) && is_array($alter['link_attributes'])) {
+      foreach ($alter['link_attributes'] as $key => $attribute) {
+        if (!isset($options['attributes'][$key])) {
+          $options['attributes'][$key] = strtr($attribute, $tokens);
+        }
+      }
     }
 
     // If the query and fragment were programatically assigned overwrite any
