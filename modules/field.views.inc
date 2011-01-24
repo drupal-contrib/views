@@ -1,5 +1,5 @@
 <?php
-// $Id: field.views.inc,v 1.1.2.18 2011-01-06 16:10:00 dereine Exp $
+// $Id: field.views.inc,v 1.1.2.19 2011-01-24 19:19:29 merlinofchaos Exp $
 
 /**
  * @file
@@ -129,6 +129,8 @@ function field_views_field_default_views_data($field) {
       'additional fields' => $add_fields,
       'entity_tables' => $entity_tables,
       'field_info' => $field,
+      // Default the element type to div, let the UI change it if necessary.
+      'element type' => 'div',
     );
   }
 
