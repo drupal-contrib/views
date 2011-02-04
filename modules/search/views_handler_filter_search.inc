@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_search.inc,v 1.5.2.1 2009-12-24 00:37:04 merlinofchaos Exp $
+// $Id: views_handler_filter_search.inc,v 1.5.2.2 2011-02-04 23:37:52 merlinofchaos Exp $
 
 /**
  * Field handler to provide simple renderer that allows linking to a node.
@@ -14,19 +14,19 @@ class views_handler_filter_search extends views_handler_filter {
     return $options;
   }
 
+  function operator_options() {
+    return array(
+      'optional' => t('Show All'),
+      'required' => t('Show None'),
+    );
+  }
+
   /**
    * Provide simple equality operator
    */
   function operator_form(&$form, &$form_state) {
-    $form['operator'] = array(
-      '#type' => 'radios',
-      '#title' => t('On empty input'),
-      '#default_value' => $this->operator,
-      '#options' => array(
-        'optional' => t('Show All'),
-        'required' => t('Show None'),
-      ),
-    );
+    parent::operator_form($form, $form_state);
+    $form['operator']['#title'] = t('On empty input');
   }
 
   /**
