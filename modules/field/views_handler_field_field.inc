@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_field_field.inc,v 1.1.2.30 2011-02-04 11:14:59 dereine Exp $
+// $Id: views_handler_field_field.inc,v 1.1.2.31 2011-02-04 12:03:56 dereine Exp $
 
 /**
  * Helper function: Return an array of formatter options for a field type.
@@ -37,7 +37,7 @@ class views_handler_field_field extends views_handler_field {
    */
   public $items = array();
 
-  function init(&$view, $options) {
+  function init(&$view, &$options) {
     parent::init($view, $options);
 
     $field = $this->definition['field_info'];
