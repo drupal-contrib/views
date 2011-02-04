@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.52 2011-01-20 20:09:03 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.53 2011-02-04 12:29:01 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -2182,7 +2182,7 @@ class views_plugin_display extends views_plugin {
         $theme = views_theme_functions('views_more', $this->view, $this->display);
         $path = check_url(url($path, $url_options));
 
-        return theme($theme, array('more_url' => $path, 'link_text' => $this->use_more_text()));
+        return theme($theme, array('more_url' => $path, 'link_text' => check_plain($this->use_more_text())));
       }
     }
   }
