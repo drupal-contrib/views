@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_style_jump_menu.inc,v 1.1.6.8 2011-02-04 13:51:01 dereine Exp $
+// $Id: views_plugin_style_jump_menu.inc,v 1.1.6.9 2011-02-04 14:13:16 dereine Exp $
 /**
  * @file
  * Contains the table style plugin.
@@ -31,7 +31,7 @@ class views_plugin_style_jump_menu extends views_plugin_style {
     $handlers = $this->display->handler->get_handlers('field');
     if (empty($handlers)) {
       $form['error_markup'] = array(
-        '#value' => t('You need at least one field before you can configure your jump menu settings'),
+        '#markup' => t('You need at least one field before you can configure your jump menu settings'),
         '#prefix' => '<div class="error messages">',
         '#suffix' => '</div>',
       );
@@ -39,7 +39,7 @@ class views_plugin_style_jump_menu extends views_plugin_style {
     }
 
     $form['markup'] = array(
-      '#value' => t('To properly configure a jump menu, you must select one field that will represent the path to utilize. You should then set that field to exclude. All other displayed fields will be part of the menu. Please note that all HTML will be stripped from this output as select boxes cannot show HTML.'),
+      '#markup' => t('To properly configure a jump menu, you must select one field that will represent the path to utilize. You should then set that field to exclude. All other displayed fields will be part of the menu. Please note that all HTML will be stripped from this output as select boxes cannot show HTML.'),
       '#prefix' => '<div class="form-item description">',
       '#suffix' => '</div>',
     );

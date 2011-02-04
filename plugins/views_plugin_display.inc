@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.53 2011-02-04 12:29:01 dereine Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.54 2011-02-04 14:13:16 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -1732,7 +1732,7 @@ class views_plugin_display extends views_plugin {
           $form['markup'] = array(
             '#prefix' => '<div class="form-item description">',
             '#suffix' => '</div>',
-            '#value' => t('You may also adjust the !settings for the currently selected style by clicking on the icon.', array('!settings' => $this->option_link(t('settings'), 'exposed_form_options'))),
+            '#markup' => t('You may also adjust the !settings for the currently selected style by clicking on the icon.', array('!settings' => $this->option_link(t('settings'), 'exposed_form_options'))),
           );
         }
         break;
@@ -1768,7 +1768,7 @@ class views_plugin_display extends views_plugin {
           $form['markup'] = array(
             '#prefix' => '<div class="form-item description">',
             '#suffix' => '</div>',
-            '#value' => t('You may also adjust the !settings for the currently selected pager by clicking on the icon.', array('!settings' => $this->option_link(t('settings'), 'pager_options'))),
+            '#markup' => t('You may also adjust the !settings for the currently selected pager by clicking on the icon.', array('!settings' => $this->option_link(t('settings'), 'pager_options'))),
           );
         }
 
