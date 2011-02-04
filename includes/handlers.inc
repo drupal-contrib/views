@@ -1,5 +1,5 @@
 <?php
-// $Id: handlers.inc,v 1.109.2.24 2011-01-18 23:00:16 merlinofchaos Exp $
+// $Id: handlers.inc,v 1.109.2.25 2011-02-04 23:34:12 merlinofchaos Exp $
 /**
  * @file handlers.inc
  * Defines the various handler objects to help build and display views.
@@ -249,6 +249,20 @@ function views_get_table_join($table, $base_table) {
  * - access arguments: An array of arguments for the access callback.
  */
 class views_handler extends views_object {
+  /**
+   * The top object of a view.
+   * 
+   * @var view
+   */
+  var $view = NULL;
+
+  /**
+   * Where the $query object will reside:
+   *
+   * @var views_plugin_query
+   */
+  var $query = NULL;
+
   /**
    * init the handler with necessary data.
    * @param $view

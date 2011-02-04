@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query_default.inc,v 1.1.2.28 2011-01-04 21:24:31 merlinofchaos Exp $
+// $Id: views_plugin_query_default.inc,v 1.1.2.29 2011-02-04 23:34:12 merlinofchaos Exp $
 /**
  * @file views_plugin_query_default.inc
  * Defines the default query object which builds SQL to execute using the
@@ -67,6 +67,13 @@ class views_plugin_query_default extends views_plugin_query{
   var $distinct = FALSE;
 
   var $has_aggregate = FALSE;
+
+  /**
+   * The current used pager plugin.
+   *
+   * @var views_plugin_pager
+   */
+   var $pager = NULL;
 
   /**
    * Constructor; Create the basic query object and fill with default values.
