@@ -1,5 +1,5 @@
 <?php
-// $Id: view.inc,v 1.167.2.19 2011-01-18 22:00:50 merlinofchaos Exp $
+// $Id: view.inc,v 1.167.2.20 2011-02-04 23:32:05 merlinofchaos Exp $
 /**
  * @file view.inc
  * Provides the view object type and associated methods.
@@ -1581,34 +1581,34 @@ class view extends views_db_object {
         $this->display[$display_id]->handler->destroy();
         unset($this->display[$display_id]->handler);
       }
+    }
 
-      foreach (views_object_types() as $type => $info) {
-        if (isset($this->$type)) {
-          $handlers = &$this->$type;
-          foreach ($handlers as $id => $item) {
-            $handlers[$id]->destroy();
-          }
-          unset($handlers);
+    foreach (views_object_types() as $type => $info) {
+      if (isset($this->$type)) {
+        $handlers = &$this->$type;
+        foreach ($handlers as $id => $item) {
+          $handlers[$id]->destroy();
         }
+        unset($handlers);
       }
+    }
 
-      if (isset($this->style_plugin)) {
-        $this->style_plugin->destroy();
-        unset($this->style_plugin);
-      }
+    if (isset($this->style_plugin)) {
+      $this->style_plugin->destroy();
+      unset($this->style_plugin);
+    }
 
-      // Clear these to make sure the view can be processed/used again.
-      if (isset($this->display_handler)) {
-        unset($this->display_handler);
-      }
+    // Clear these to make sure the view can be processed/used again.
+    if (isset($this->display_handler)) {
+      unset($this->display_handler);
+    }
 
-      if (isset($this->current_display)) {
-        unset($this->current_display);
-      }
+    if (isset($this->current_display)) {
+      unset($this->current_display);
+    }
 
-      if (isset($this->query)) {
-        unset($this->query);
-      }
+    if (isset($this->query)) {
+      unset($this->query);
     }
   }
 
