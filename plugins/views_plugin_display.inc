@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.55 2011-02-05 00:39:32 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.56 2011-02-05 01:15:34 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -2275,7 +2275,7 @@ class views_plugin_display extends views_plugin {
    */
   function pre_execute() {
     $this->view->set_use_ajax($this->use_ajax());
-    if ($this->use_more()) {
+    if ($this->use_more() && !$this->use_more_always()) {
       $this->view->get_total_rows = TRUE;
     }
     $this->view->init_handlers();
