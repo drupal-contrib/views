@@ -1,5 +1,5 @@
 <?php
-// $Id: views_handler_filter_string.inc,v 1.7.2.5 2010-04-29 19:29:15 merlinofchaos Exp $
+// $Id: views_handler_filter_string.inc,v 1.7.2.6 2011-02-05 00:55:21 merlinofchaos Exp $
 
 /**
  * Basic textfield filter to handle string filtering commands
@@ -8,10 +8,12 @@
 class views_handler_filter_string extends views_handler_filter {
   // exposed filter options
   var $no_single = TRUE;
+  var $no_optional = TRUE;
 
   function option_definition() {
     $options = parent::option_definition();
 
+    $options['expose']['contains']['optional'] = array('default' => FALSE);
     $options['case'] = array('default' => TRUE);
 
     return $options;
