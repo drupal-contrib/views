@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_query.inc,v 1.1.2.11 2011-01-04 21:24:31 merlinofchaos Exp $
+// $Id: views_plugin_query.inc,v 1.1.2.12 2011-02-05 00:39:36 merlinofchaos Exp $
 /**
  * @file
  * Defines the base query class, which is the underlying layer in a View.
@@ -96,11 +96,11 @@ class views_plugin_query extends views_plugin {
   /**
    * Render the pager, if necessary.
    */
-  function render_pager() {
+  function render_pager($exposed_input) {
     if (!empty($this->pager) && $this->pager->use_pager()) {
-      $exposed_input = isset($this->view->exposed_data_raw) ? $this->view->exposed_data_raw : NULL;
       return $this->pager->render($exposed_input);
     }
+
     return '';
   }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.20.2.58 2011-02-04 23:34:12 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.20.2.59 2011-02-05 00:39:36 merlinofchaos Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -2148,6 +2148,13 @@ class views_plugin_display extends views_plugin {
    * Not all display plugins will support filtering
    */
   function render_filters() { }
+
+  /**
+   * Not all display plugins will suppert pager rendering.
+   */
+  function render_pager() {
+    return TRUE;
+  }
 
   /**
    * Render the 'more' link
