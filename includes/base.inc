@@ -1,5 +1,5 @@
 <?php
-// $Id: base.inc,v 1.3.4.7 2011-02-05 00:16:12 merlinofchaos Exp $
+// $Id: base.inc,v 1.3.4.8 2011-02-05 16:50:37 dereine Exp $
 /**
  * @file
  *
@@ -14,6 +14,14 @@ class views_object {
    * Except for displays, options for the object will be held here.
    */
   var $options = array();
+  
+  /**
+   * The top object of a view.
+   * 
+   * @var view
+   */
+  var $view = NULL;
+
   /**
    * Information about options for all kinds of purposes will be held here.
    * @code

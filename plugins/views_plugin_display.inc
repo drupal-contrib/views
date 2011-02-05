@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_display.inc,v 1.27.4.56 2011-02-05 01:15:34 merlinofchaos Exp $
+// $Id: views_plugin_display.inc,v 1.27.4.57 2011-02-05 16:50:37 dereine Exp $
 /**
  * @file
  * Contains the base display plugin.
@@ -25,6 +25,13 @@
  * @ingroup views_display_plugins
  */
 class views_plugin_display extends views_plugin {
+  /**
+   * The top object of a view.
+   * 
+   * @var view
+   */
+  var $view = NULL;
+
   var $handlers = array();
 
   function init(&$view, &$display, $options = NULL) {
