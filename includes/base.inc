@@ -1,5 +1,5 @@
 <?php
-// $Id: base.inc,v 1.2.2.11 2011-02-04 23:34:12 merlinofchaos Exp $
+// $Id: base.inc,v 1.2.2.12 2011-02-05 00:16:16 merlinofchaos Exp $
 /**
  * @file
  *
@@ -296,7 +296,7 @@ class views_object {
       foreach ($options as $key => $value) {
         $translation_keys = array_merge($keys, array($key));
         if (is_array($value)) {
-          $this->unpack_translatable($translatable, $storage, $key, $definition, $parents, $translation_keys);
+          $this->unpack_translatable($translatable, $options, $key, $definition, $parents, $translation_keys);
         }
         else if (!empty($definition[$key]['translatable']) && !empty($value)) {
           // Build source data and add to the array
